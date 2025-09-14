@@ -23,7 +23,7 @@ export default function HomePage() {
                 </div>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Complete today's lesson to increase streak</p>
+                <p>Complete today&apos;s lesson to increase streak</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

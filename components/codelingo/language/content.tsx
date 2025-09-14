@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Play, BookOpen, Code, Zap } from "lucide-react"
+import { Play, BookOpen, Code } from "lucide-react"
 import { useSelectedLanguage } from "./use-selected-language"
 import { LANGUAGES } from "./data"
 import Link from "next/link"

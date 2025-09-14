@@ -8,13 +8,10 @@ import { LANGUAGES } from "./data"
 import Link from "next/link"
 
 export default function BasicsList() {
-  const { selected, selectedList } = useSelectedLanguage()
+  const { selected } = useSelectedLanguage()
 
   // Filter valid languages and avoid duplicating the primary continue card
-  const langs = selectedList
-    .map((id) => LANGUAGES.find((l) => l.id === id))
-    .filter((l): l is NonNullable<typeof l> => Boolean(l))
-    .filter((l) => l.id !== selected)
+  const langs = LANGUAGES.filter((l) => l.id !== selected)
 
   if (langs.length === 0) return null
 

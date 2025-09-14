@@ -8,7 +8,7 @@ export default function LanguageDropdown() {
   const { selected, setSelected } = useSelectedLanguage()
 
   return (
-    <Select value={selected} onValueChange={setSelected}>
+    <Select value={selected ?? undefined} onValueChange={setSelected}>
       <SelectTrigger className="w-full max-w-md">
         <SelectValue placeholder="Select language to continue" />
       </SelectTrigger>

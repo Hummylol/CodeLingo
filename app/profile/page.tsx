@@ -11,12 +11,6 @@ export default function ProfilePage() {
     { name: "Recursion", progress: 20 },
   ]
 
-  const badges = [
-    { id: "streak7", name: "7-Day Streak", description: "Learned 7 days in a row" },
-    { id: "loop-ace", name: "Loop Ace", description: "Mastered loops" },
-    { id: "starter", name: "Starter", description: "Completed first lesson" },
-  ]
-
   return (
     <main className="mx-auto max-w-xl p-4 md:p-6">
       <header className="mb-4">

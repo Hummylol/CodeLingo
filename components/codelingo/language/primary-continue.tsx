@@ -12,7 +12,6 @@ export default function PrimaryContinueCard() {
   const { selected } = useSelectedLanguage()
   const fallback = LANGUAGES[0]
   const lang = LANGUAGES.find((l) => l.id === selected) ?? fallback
-  const subtitle = (lang.sampleTopics && (lang.sampleTopics[1] ?? lang.sampleTopics[0])) || "Get started"
 
   const currentLesson = "Variables & Data Types"
   const progress = 65

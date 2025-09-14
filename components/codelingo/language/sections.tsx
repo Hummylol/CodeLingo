@@ -22,7 +22,7 @@ export default function LanguageSections() {
           <p className="text-sm text-muted-foreground mb-1">
             Select a programming language to unlock personalized practice and topics.
           </p>
-          <p className="text-xs text-muted-foreground">Tap "Add Language" above to get started.</p>
+          <p className="text-xs text-muted-foreground">Tap &quot;Add Language&quot; above to get started.</p>
         </CardContent>
       </Card>
     )
@@ -82,7 +82,7 @@ export default function LanguageSections() {
           </CardHeader>
           <CardContent className="pt-0">
             <div className="space-y-1 mb-4">
-              {lang.sampleTopics.slice(0, 3).map((topic, index) => (
+              {lang.sampleTopics.slice(0, 3).map((topic) => (
                 <div key={topic} className="flex items-center gap-2 text-xs text-muted-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary/40" />
                   <span>{topic}</span>

@@ -32,7 +32,6 @@ type InputQuestion = {
 type Question = MCQQuestion | InputQuestion
 
 export default function PracticePage() {
-  // Example question; would come from server in real app
   const question: Question = useMemo(
     () => ({
       id: "q1",
@@ -41,7 +40,8 @@ export default function PracticePage() {
       code: "for i in range(3):\n    print(i)\n",
       choices: ["0 1 2", "1 2 3", "0 1 2 3", "2 1 0"],
       correctIndex: 0,
-      explanation: "range(3) emits 0, 1, 2. The loop prints each on its own line, effectively outputting 0 1 2.",
+      explanation:
+        "range(3) emits 0, 1, 2. The loop prints each on its own line, effectively outputting 0 1 2.",
       hint: "range(n) starts at 0 and stops before n.",
     }),
     [],
@@ -54,12 +54,9 @@ export default function PracticePage() {
 
   const handleSubmit = () => {
     if (question.type === "mcq") {
-      const ok = selectedIndex === (question as MCQQuestion).correctIndex
-      setIsCorrect(ok)
+      setIsCorrect(selectedIndex === question.correctIndex)
     } else {
-      const expected = (question as InputQuestion).answer.trim().toLowerCase()
-      const got = inputValue.trim().toLowerCase()
-      setIsCorrect(expected === got)
+      setIsCorrect((question as InputQuestion).answer.trim().toLowerCase() === inputValue.trim().toLowerCase())
     }
     setSubmitted(true)
   }
@@ -69,6 +66,12 @@ export default function PracticePage() {
     setIsCorrect(null)
     setSelectedIndex(null)
     setInputValue("")
+  }
+
+  // Narrowed question for Feedback to avoid TypeScript warnings
+  let feedbackQuestion: MCQQuestion | InputQuestion | null = null
+  if (submitted && isCorrect !== null) {
+    feedbackQuestion = question
   }
 
   return (
@@ -87,7 +90,7 @@ export default function PracticePage() {
 
           <AnswerOptions
             type={question.type}
-            choices={question.type === "mcq" ? (question as MCQQuestion).choices : undefined}
+            choices={question.type === "mcq" ? question.choices : undefined}
             selectedIndex={selectedIndex}
             onSelect={setSelectedIndex}
             inputValue={inputValue}
@@ -95,7 +98,7 @@ export default function PracticePage() {
           />
 
           <div className="flex items-center gap-3">
-            <Hint text={(question as any).hint} />
+            <Hint text={question.hint} />
             <Button
               className="bg-emerald-600 hover:bg-emerald-700"
               onClick={handleSubmit}
@@ -105,8 +108,12 @@ export default function PracticePage() {
             </Button>
           </div>
 
-          {submitted && isCorrect !== null && (
-            <Feedback correct={isCorrect} explanation={(question as any).explanation} onNext={handleNext} />
+          {feedbackQuestion && (
+            <Feedback
+              correct={isCorrect!}
+              explanation={feedbackQuestion.explanation}
+              onNext={handleNext}
+            />
           )}
         </CardContent>
       </Card>
