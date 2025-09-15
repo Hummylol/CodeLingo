@@ -8,6 +8,17 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "CodeLingo",
   description: "Created with Love",
+  manifest: "/manifest.json",
+  themeColor: "#ffffff",
+  icons: {
+    icon: [
+      { url: "/next.svg", type: "image/svg+xml" },
+      { url: "/window.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/next.svg", type: "image/svg+xml" },
+    ],
+  },
 }
 
 export default function RootLayout({
