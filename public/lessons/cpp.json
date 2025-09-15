@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "languageId": "cpp",
+  "languageName": "C++",
+  "lessons": [
+    {
+      "id": "cpp-practice-1",
+      "title": "C++ Practice Path",
+      "description": "20+ questions from basics to intermediate C++.",
+      "questions": [
+        {"id":"q1","type":"single_choice","prompt":"Which header is required for std::cout?","options":[{"id":"o1","text":"<iostream>","correct":true},{"id":"o2","text":"<cstdio>","correct":false},{"id":"o3","text":"<vector>","correct":false}],"difficulty":"easy"},
+        {"id":"q2","type":"true_false","prompt":"std::vector can change size at runtime.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"easy"},
+        {"id":"q3","type":"single_choice","prompt":"Which creates a constant integer?","options":[{"id":"o1","text":"const int x = 5;","correct":true},{"id":"o2","text":"int const x;","correct":false},{"id":"o3","text":"int x; x = 5;","correct":false}],"difficulty":"easy"},
+        {"id":"q4","type":"single_choice","prompt":"Which container preserves insertion order iteration?","options":[{"id":"o1","text":"std::map","correct":false},{"id":"o2","text":"std::vector","correct":true},{"id":"o3","text":"std::unordered_map","correct":false}],"difficulty":"easy"},
+        {"id":"q5","type":"code_fill","prompt":"Fill to create a range-based for loop printing v.","code":"std::vector<int> v{1,2,3};\nfor (____ : v) { std::cout << x << std::endl; }","options":[{"id":"o1","text":"auto x","correct":true},{"id":"o2","text":"int& i","correct":false}],"difficulty":"easy"},
+        {"id":"q6","type":"true_false","prompt":"References in C++ must be initialized.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"easy"},
+        {"id":"q7","type":"single_choice","prompt":"Which keyword prevents inheritance?","options":[{"id":"o1","text":"final","correct":true},{"id":"o2","text":"static","correct":false},{"id":"o3","text":"override","correct":false}],"difficulty":"medium"},
+        {"id":"q8","type":"single_choice","prompt":"What does 'explicit' prevent?","options":[{"id":"o1","text":"Implicit conversions","correct":true},{"id":"o2","text":"Copy elision","correct":false},{"id":"o3","text":"Move semantics","correct":false}],"difficulty":"medium"},
+        {"id":"q9","type":"multiple_choice","prompt":"Select smart pointers.","options":[{"id":"o1","text":"std::unique_ptr","correct":true},{"id":"o2","text":"std::shared_ptr","correct":true},{"id":"o3","text":"std::auto_ptr","correct":false},{"id":"o4","text":"std::weak_ptr","correct":true}],"difficulty":"medium"},
+        {"id":"q10","type":"true_false","prompt":"Rule of five replaces rule of three for move-aware types.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"medium"},
+        {"id":"q11","type":"single_choice","prompt":"Which casts downcasts safely at runtime?","options":[{"id":"o1","text":"dynamic_cast","correct":true},{"id":"o2","text":"static_cast","correct":false},{"id":"o3","text":"reinterpret_cast","correct":false}],"difficulty":"medium"},
+        {"id":"q12","type":"code_fill","prompt":"Fill to delete copy operations and allow move.","code":"struct X {\n  X() = default;\n  ____ X(const X&) = delete;\n  ____ X& operator=(const X&) = delete;\n  X(X&&) = default;\n  X& operator=(X&&) = default;\n};","options":[{"id":"o1","text":"","correct":true},{"id":"o2","text":"virtual","correct":false}],"hints":[{"id":"h1","text":"Use default specifiers; no keyword is needed."}],"difficulty":"medium"},
+        {"id":"q13","type":"single_choice","prompt":"What's the complexity of std::unordered_map average lookup?","options":[{"id":"o1","text":"O(1)","correct":true},{"id":"o2","text":"O(log n)","correct":false},{"id":"o3","text":"O(n)","correct":false}],"difficulty":"medium"},
+        {"id":"q14","type":"single_choice","prompt":"Which ensures a function won't throw?","options":[{"id":"o1","text":"noexcept","correct":true},{"id":"o2","text":"throw()","correct":false},{"id":"o3","text":"try","correct":false}],"difficulty":"medium"},
+        {"id":"q15","type":"true_false","prompt":"emplace_back constructs the element in place.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"medium"},
+        {"id":"q16","type":"single_choice","prompt":"Which header defines std::optional?","options":[{"id":"o1","text":"<optional>","correct":true},{"id":"o2","text":"<variant>","correct":false},{"id":"o3","text":"<any>","correct":false}],"difficulty":"medium"},
+        {"id":"q17","type":"code_fill","prompt":"Fill to enable iteration with begin/end free functions.","code":"struct C {\n  std::vector<int> data;\n};\n____ begin(C& c) { return c.data.begin(); }\n____ end(C& c) { return c.data.end(); }","options":[{"id":"o1","text":"auto","correct":true},{"id":"o2","text":"int","correct":false}],"difficulty":"hard"},
+        {"id":"q18","type":"single_choice","prompt":"Which feature helps avoid copies when returning large objects?","options":[{"id":"o1","text":"Return Value Optimization (RVO)","correct":true},{"id":"o2","text":"Macros","correct":false},{"id":"o3","text":"Virtual functions","correct":false}],"difficulty":"hard"},
+        {"id":"q19","type":"multiple_choice","prompt":"Select all valid lambda captures.","options":[{"id":"o1","text":"[=]","correct":true},{"id":"o2","text":"[&]","correct":true},{"id":"o3","text":"[*]","correct":false},{"id":"o4","text":"[this]","correct":true}],"difficulty":"hard"},
+        {"id":"q20","type":"true_false","prompt":"Thread-safe usage of std::shared_ptr's reference count is guaranteed.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"hard"},
+        {"id":"q21","type":"single_choice","prompt":"Which avoids dangling by unique ownership?","options":[{"id":"o1","text":"std::unique_ptr","correct":true},{"id":"o2","text":"std::shared_ptr","correct":false},{"id":"o3","text":"raw pointer","correct":false}],"difficulty":"hard"},
+        {"id":"q22","type":"code_fill","prompt":"Fill to create a compile-time constant expression function.","code":"____ int square(int x) { return x * x; }","options":[{"id":"o1","text":"constexpr","correct":true},{"id":"o2","text":"inline","correct":false}],"difficulty":"hard"},
+        {"id":"q23","type":"single_choice","prompt":"Which is a valid way to prevent slicing?","options":[{"id":"o1","text":"Make destructor virtual","correct":true},{"id":"o2","text":"Delete operator new","correct":false},{"id":"o3","text":"Use macros","correct":false}],"difficulty":"hard"},
+        {"id":"q24","type":"multiple_choice","prompt":"Select RAII resources.","options":[{"id":"o1","text":"mutex lock_guard","correct":true},{"id":"o2","text":"fstream","correct":true},{"id":"o3","text":"malloc/free","correct":false},{"id":"o4","text":"vector","correct":false}],"difficulty":"hard"}
+      ]
+    }
+  ]
+}
+
+

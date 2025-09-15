@@ -2,64 +2,121 @@ import { Lock } from "lucide-react"
 
 const TOTAL_LEVELS = 20
 
-const topics = Array.from({ length: TOTAL_LEVELS }, (_, i) => ({
-  id: i + 1,
-  title: `Topic ${i + 1}`,
-  unlocked: i <= 15, // example: first 15 unlocked
+type Topic = {
+  id: number
+  title: string
+  unlocked: boolean
+}
+
+const topics: Topic[] = Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
+  id: index + 1,
+  title: `Level ${index + 1}`,
+  unlocked: index < 15,
 }))
 
 export default function LessonPage() {
+  const laneLeftPercent = 18
+  const laneRightPercent = 82
+  const stepY = 96
+  const topPadding = 24
+  const svgHeight = topPadding + (topics.length - 1) * stepY + 24
+
+  type Point = { x: number; y: number }
+  const points: Point[] = topics.map((_, index) => ({
+    x: index % 2 === 0 ? laneLeftPercent : laneRightPercent,
+    y: topPadding + index * stepY,
+  }))
+
+  const pathD = points.reduce((acc, point, index) => {
+    if (index === 0) return `M ${point.x} ${point.y}`
+    const prev = points[index - 1]
+    const midY = (prev.y + point.y) / 2
+    const c1x = prev.x
+    const c1y = midY
+    const c2x = point.x
+    const c2y = midY
+    return `${acc} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${point.x} ${point.y}`
+  }, "")
+
   return (
     <main className="mx-auto max-w-3xl p-6">
-      <h1 className="text-2xl font-bold text-foreground mb-4">Practice Mode</h1>
-      <p className="text-sm text-muted-foreground mb-8">
-        Sharpen your skills by completing topics sequentially. Unlock more challenges as you progress.
-      </p>
+      <h1 className="text-2xl font-bold text-foreground mb-4">Lessons</h1>
+      
 
-      <div className="relative">
-        {/* Vertical Line */}
-        <div className="absolute left-1/2 top-0 h-full w-px bg-border -translate-x-1/2"></div>
+      <div className="relative rounded-xl border bg-background/50 p-4">
+        <div style={{ height: svgHeight }} className="relative">
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox={`0 0 100 ${svgHeight}`}
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="candyPath" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stopColor="hsl(var(--primary))" />
+                <stop offset="100%" stopColor="hsl(var(--primary))" />
+              </linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <path
+              d={pathD}
+              fill="none"
+              stroke="url(#candyPath)"
+              strokeWidth={4}
+              strokeLinecap="round"
+              filter="url(#glow)"
+            />
+          </svg>
 
-        {/* Levels */}
-        {topics.map((topic, index) => {
-          const isLeft = index % 2 === 0
-          return (
-            <div
-              key={topic.id}
-              className={`flex w-full items-center mb-10 justify-${isLeft ? "start" : "end"} relative`}
-            >
-              <div className="flex items-center space-x-4">
-                {/* Circle */}
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold ${
-                    topic.unlocked ? "bg-primary" : "bg-muted"
-                  }`}
-                >
-                  {topic.unlocked ? topic.id : <Lock className="w-4 h-4" />}
-                </div>
-
-                {/* Topic Title */}
-                <span className={`text-foreground ${isLeft ? "ml-4" : "mr-4"}`}>
-                  {topic.title}
-                </span>
-              </div>
-
-              {/* Connector Line */}
+          {topics.map((topic, index) => {
+            const isLeft = index % 2 === 0
+            const point = points[index]
+            const leftPercent = `${point.x}%`
+            const topPx = point.y
+            const isUnlocked = topic.unlocked
+            return (
               <div
-                className={`absolute top-10 w-1/2 h-px bg-border ${isLeft ? "left-10" : "right-10"}`}
-              ></div>
-            </div>
-          )
-        })}
+                key={topic.id}
+                className="absolute"
+                style={{ left: leftPercent, top: topPx, transform: "translate(-50%, -50%)" }}
+              >
+                <button
+                  className={
+                    "group relative flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold transition-transform active:scale-95 " +
+                    (isUnlocked
+                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                      : "bg-muted text-muted-foreground")
+                  }
+                  aria-label={topic.title}
+                  disabled={!isUnlocked}
+                >
+                  {isUnlocked ? topic.id : <Lock className="h-4 w-4" />}
+                  <span
+                    className={
+                      "pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-xs " +
+                      (isUnlocked
+                        ? "bg-primary/10 text-foreground"
+                        : "bg-muted text-muted-foreground")
+                    }
+                  >
+                    {topic.title}
+                  </span>
+                </button>
+              </div>
+            )
+          })}
+        </div>
 
-        {/* Final Lock */}
-        <div className="flex w-full items-center justify-center mt-6">
-          <div className="w-12 h-12 rounded-full flex items-center justify-center bg-muted text-white">
-            <Lock className="w-5 h-5" />
+        <div className="mt-12 flex items-center justify-center gap-3 text-muted-foreground">
+          <div className="h-10 w-10 rounded-full bg-muted inline-flex items-center justify-center">
+            <Lock className="h-4 w-4" />
           </div>
-          <span className="ml-4 text-muted-foreground">
-            Unlock more after reaching Level 20
-          </span>
+          <span>Reach Level {TOTAL_LEVELS} to unlock more worlds</span>
         </div>
       </div>
     </main>

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "languageId": "java",
+  "languageName": "Java",
+  "lessons": [
+    {
+      "id": "java-practice-1",
+      "title": "Java Practice Path",
+      "description": "20+ questions from basics to intermediate Java.",
+      "questions": [
+        {"id":"q1","type":"single_choice","prompt":"Which keyword defines a class in Java?","options":[{"id":"o1","text":"class","correct":true},{"id":"o2","text":"struct","correct":false},{"id":"o3","text":"def","correct":false}],"difficulty":"easy"},
+        {"id":"q2","type":"true_false","prompt":"A Java class can have multiple public classes in one file.","options":[{"id":"o1","text":"True","correct":false},{"id":"o2","text":"False","correct":true}],"explanation":"Only one public top-level class per file.","difficulty":"easy"},
+        {"id":"q3","type":"single_choice","prompt":"Which type is 64-bit signed integer?","options":[{"id":"o1","text":"int","correct":false},{"id":"o2","text":"long","correct":true},{"id":"o3","text":"short","correct":false}],"difficulty":"easy"},
+        {"id":"q4","type":"single_choice","prompt":"Which collection disallows duplicates?","options":[{"id":"o1","text":"List","correct":false},{"id":"o2","text":"Set","correct":true},{"id":"o3","text":"Queue","correct":false}],"difficulty":"easy"},
+        {"id":"q5","type":"true_false","prompt":"Strings in Java are immutable.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"easy"},
+        {"id":"q6","type":"single_choice","prompt":"Which access modifier is most restrictive?","options":[{"id":"o1","text":"private","correct":true},{"id":"o2","text":"protected","correct":false},{"id":"o3","text":"public","correct":false}],"difficulty":"easy"},
+        {"id":"q7","type":"single_choice","prompt":"Which interface supports iteration with enhanced for?","options":[{"id":"o1","text":"Iterable","correct":true},{"id":"o2","text":"Iterator","correct":false},{"id":"o3","text":"Enumeration","correct":false}],"difficulty":"medium"},
+        {"id":"q8","type":"true_false","prompt":"ArrayList implements RandomAccess.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"medium"},
+        {"id":"q9","type":"single_choice","prompt":"Which keyword prevents method overriding?","options":[{"id":"o1","text":"final","correct":true},{"id":"o2","text":"static","correct":false},{"id":"o3","text":"abstract","correct":false}],"difficulty":"medium"},
+        {"id":"q10","type":"single_choice","prompt":"Which map maintains insertion order?","options":[{"id":"o1","text":"HashMap","correct":false},{"id":"o2","text":"LinkedHashMap","correct":true},{"id":"o3","text":"TreeMap","correct":false}],"difficulty":"medium"},
+        {"id":"q11","type":"multiple_choice","prompt":"Select functional interfaces in java.util.function.","options":[{"id":"o1","text":"Function","correct":true},{"id":"o2","text":"Predicate","correct":true},{"id":"o3","text":"Runnable","correct":false},{"id":"o4","text":"Consumer","correct":true}],"difficulty":"medium"},
+        {"id":"q12","type":"true_false","prompt":"Streams are evaluated lazily.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"medium"},
+        {"id":"q13","type":"single_choice","prompt":"Which creates an unmodifiable list in Java 9+?","options":[{"id":"o1","text":"List.of(1,2)","correct":true},{"id":"o2","text":"new ArrayList<>()","correct":false},{"id":"o3","text":"Arrays.asList(1,2)","correct":false}],"difficulty":"medium"},
+        {"id":"q14","type":"code_fill","prompt":"Fill to declare a generic method that returns its argument.","code":"public static <T> ____ echo(T x) { return x; }","options":[{"id":"o1","text":"T","correct":true},{"id":"o2","text":"Object","correct":false}],"difficulty":"medium"},
+        {"id":"q15","type":"single_choice","prompt":"Which exception must be declared or handled?","options":[{"id":"o1","text":"IOException","correct":true},{"id":"o2","text":"RuntimeException","correct":false},{"id":"o3","text":"NullPointerException","correct":false}],"difficulty":"medium"},
+        {"id":"q16","type":"true_false","prompt":"final class members cannot be reassigned.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"medium"},
+        {"id":"q17","type":"single_choice","prompt":"Which keyword enables polymorphic behavior at runtime?","options":[{"id":"o1","text":"override","correct":false},{"id":"o2","text":"virtual","correct":false},{"id":"o3","text":"dynamic dispatch via 'override' is implicit","correct":true}],"difficulty":"hard"},
+        {"id":"q18","type":"multiple_choice","prompt":"Select thread-safe constructs.","options":[{"id":"o1","text":"ConcurrentHashMap","correct":true},{"id":"o2","text":"CopyOnWriteArrayList","correct":true},{"id":"o3","text":"HashMap","correct":false},{"id":"o4","text":"ArrayList","correct":false}],"difficulty":"hard"},
+        {"id":"q19","type":"single_choice","prompt":"What does 'volatile' guarantee?","options":[{"id":"o1","text":"Visibility across threads","correct":true},{"id":"o2","text":"Atomicity for compound ops","correct":false},{"id":"o3","text":"Mutual exclusion","correct":false}],"difficulty":"hard"},
+        {"id":"q20","type":"single_choice","prompt":"Which operation on streams is terminal?","options":[{"id":"o1","text":"map","correct":false},{"id":"o2","text":"filter","correct":false},{"id":"o3","text":"collect","correct":true}],"difficulty":"hard"},
+        {"id":"q21","type":"true_false","prompt":"CompletableFuture can compose async tasks.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"hard"},
+        {"id":"q22","type":"single_choice","prompt":"Which creates a stream from a list?","options":[{"id":"o1","text":"list.stream()","correct":true},{"id":"o2","text":"new Stream(list)","correct":false},{"id":"o3","text":"Stream.make(list)","correct":false}],"difficulty":"hard"},
+        {"id":"q23","type":"code_fill","prompt":"Fill to create a record Point(int x, int y).","code":"public ____ Point(int x, int y) {}","options":[{"id":"o1","text":"record","correct":true},{"id":"o2","text":"final class","correct":false}],"difficulty":"hard"},
+        {"id":"q24","type":"multiple_choice","prompt":"Select all checked exceptions.","options":[{"id":"o1","text":"SQLException","correct":true},{"id":"o2","text":"FileNotFoundException","correct":true},{"id":"o3","text":"IllegalArgumentException","correct":false},{"id":"o4","text":"NullPointerException","correct":false}],"difficulty":"hard"}
+      ]
+    }
+  ]
+}
+
+

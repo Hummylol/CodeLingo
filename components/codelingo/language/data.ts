@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react"
-import { Terminal, Braces, Brackets as BracketsSquare } from "lucide-react"
+import { Terminal, Brackets as BracketsSquare } from "lucide-react"
 
 export type Language = {
   id: string
@@ -18,17 +18,17 @@ export const LANGUAGES: Language[] = [
     sampleTopics: ["Variables & Types", "Loops", "Functions", "Lists & Dicts"],
   },
   {
-    id: "javascript",
-    name: "JavaScript",
-    icon: Braces,
-    description: "The language of the web. Build interactive experiences.",
-    sampleTopics: ["ES6 Basics", "Arrays & Objects", "Functions", "DOM Basics"],
-  },
-  {
     id: "cpp",
     name: "C++",
     icon: BracketsSquare,
     description: "High-performance systems programming and algorithms.",
     sampleTopics: ["IO & Types", "Loops", "Functions", "Vectors & Maps"],
+  },
+  {
+    id: "java",
+    name: "Java",
+    icon: Terminal,
+    description: "Strongly-typed OOP for enterprise and Android.",
+    sampleTopics: ["Basics", "Classes & Objects", "Collections", "Streams"],
   },
 ]

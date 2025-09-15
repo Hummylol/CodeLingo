@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "languageId": "python",
+  "languageName": "Python",
+  "lessons": [
+    {
+      "id": "py-practice-1",
+      "title": "Python Practice Path",
+      "description": "20+ questions from basics to intermediate Python.",
+      "questions": [
+        {"id":"q1","type":"single_choice","prompt":"What is the type of 3.0?","options":[{"id":"o1","text":"int","correct":false},{"id":"o2","text":"float","correct":true},{"id":"o3","text":"decimal.Decimal","correct":false}],"hints":[{"id":"h1","text":"Has a decimal point."}],"explanation":"Literals with a decimal are float.","difficulty":"easy"},
+        {"id":"q2","type":"true_false","prompt":"Lists in Python are mutable.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"explanation":"Lists can be modified in place.","difficulty":"easy"},
+        {"id":"q3","type":"single_choice","prompt":"Which creates a tuple?","options":[{"id":"o1","text":"[1,2,3]","correct":false},{"id":"o2","text":"(1,2,3)","correct":true},{"id":"o3","text":"{1,2,3}","correct":false}],"difficulty":"easy"},
+        {"id":"q4","type":"code_fill","prompt":"Fill the blank to define a function named add.","code":"def ____ (a, b):\n    return a + b","options":[{"id":"o1","text":"add","correct":true},{"id":"o2","text":"def","correct":false}],"hints":[{"id":"h1","text":"Function name comes after def."}],"difficulty":"easy"},
+        {"id":"q5","type":"single_choice","prompt":"Which method adds an item to the end of a list?","options":[{"id":"o1","text":"append","correct":true},{"id":"o2","text":"add","correct":false},{"id":"o3","text":"push","correct":false}],"difficulty":"easy"},
+        {"id":"q6","type":"true_false","prompt":"Dictionaries keep insertion order in Python 3.7+.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"easy"},
+        {"id":"q7","type":"single_choice","prompt":"What does len({1,2,2,3}) return?","options":[{"id":"o1","text":"4","correct":false},{"id":"o2","text":"3","correct":true},{"id":"o3","text":"2","correct":false}],"explanation":"Sets remove duplicates.","difficulty":"easy"},
+        {"id":"q8","type":"code_fill","prompt":"Fill to open a file for reading as f.","code":"with open('data.txt', '____') as f:\n    data = f.read()","options":[{"id":"o1","text":"r","correct":true},{"id":"o2","text":"w","correct":false}],"difficulty":"easy"},
+        {"id":"q9","type":"single_choice","prompt":"Which raises a KeyError?","options":[{"id":"o1","text":"d['x']","correct":true},{"id":"o2","text":"d.get('x')","correct":false},{"id":"o3","text":"'x' in d","correct":false}],"difficulty":"easy"},
+        {"id":"q10","type":"true_false","prompt":"List comprehension [x*x for x in range(3)] yields [0,1,4].","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"easy"},
+        {"id":"q11","type":"single_choice","prompt":"Which is a generator?","options":[{"id":"o1","text":"(x for x in range(3))","correct":true},{"id":"o2","text":"[x for x in range(3)]","correct":false},{"id":"o3","text":"{x for x in range(3)}","correct":false}],"difficulty":"medium"},
+        {"id":"q12","type":"code_fill","prompt":"Fill to handle exceptions and continue.","code":"try:\n    risky()\nexcept ______ as e:\n    print(e)","options":[{"id":"o1","text":"Exception","correct":true},{"id":"o2","text":"BaseClass","correct":false}],"difficulty":"medium"},
+        {"id":"q13","type":"single_choice","prompt":"Which copies a list shallowly?","options":[{"id":"o1","text":"list(a)","correct":true},{"id":"o2","text":"a","correct":false},{"id":"o3","text":"copy.deepcopy(a)","correct":false}],"difficulty":"medium"},
+        {"id":"q14","type":"multiple_choice","prompt":"Pick all truthy values.","options":[{"id":"o1","text":"[]","correct":false},{"id":"o2","text":"[0]","correct":true},{"id":"o3","text":"''","correct":false},{"id":"o4","text":"1","correct":true}],"difficulty":"medium"},
+        {"id":"q15","type":"single_choice","prompt":"What is the result of {x:x*x for x in range(3)}[2]?","options":[{"id":"o1","text":"2","correct":false},{"id":"o2","text":"4","correct":true},{"id":"o3","text":"KeyError","correct":false}],"difficulty":"medium"},
+        {"id":"q16","type":"true_false","prompt":"Functions are first-class objects in Python.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"medium"},
+        {"id":"q17","type":"single_choice","prompt":"Which decorator preserves function metadata best?","options":[{"id":"o1","text":"functools.wraps","correct":true},{"id":"o2","text":"functools.lru_cache","correct":false},{"id":"o3","text":"property","correct":false}],"difficulty":"medium"},
+        {"id":"q18","type":"code_fill","prompt":"Fill to create a dataclass Person(name: str).","code":"from dataclasses import dataclass\n@____\nclass Person:\n    name: str","options":[{"id":"o1","text":"dataclass","correct":true},{"id":"o2","text":"classmethod","correct":false}],"difficulty":"medium"},
+        {"id":"q19","type":"single_choice","prompt":"What does enumerate([10,20]) yield first?","options":[{"id":"o1","text":"(0, 10)","correct":true},{"id":"o2","text":"(1, 10)","correct":false},{"id":"o3","text":"(10, 0)","correct":false}],"difficulty":"medium"},
+        {"id":"q20","type":"true_false","prompt":"defaultdict requires specifying a default factory.","options":[{"id":"o1","text":"True","correct":true},{"id":"o2","text":"False","correct":false}],"difficulty":"medium"},
+        {"id":"q21","type":"single_choice","prompt":"Which opens a file in binary write mode?","options":[{"id":"o1","text":"'wb'","correct":true},{"id":"o2","text":"'bw'","correct":false},{"id":"o3","text":"'wt'","correct":false}],"difficulty":"medium"},
+        {"id":"q22","type":"single_choice","prompt":"What is the time complexity of 'x in set_s'?","options":[{"id":"o1","text":"O(1) average","correct":true},{"id":"o2","text":"O(n)","correct":false},{"id":"o3","text":"O(log n)","correct":false}],"difficulty":"hard"},
+        {"id":"q23","type":"code_fill","prompt":"Fill to create a context manager with contextlib.","code":"from contextlib import ____\n@____\ndef temp_dir():\n    yield '/tmp'","options":[{"id":"o1","text":"contextmanager","correct":true},{"id":"o2","text":"suppress","correct":false}],"difficulty":"hard"},
+        {"id":"q24","type":"multiple_choice","prompt":"Select all that create an iterator.","options":[{"id":"o1","text":"iter([1,2])","correct":true},{"id":"o2","text":"range(5)","correct":true},{"id":"o3","text":"[1,2]","correct":false},{"id":"o4","text":"next(5)","correct":false}],"difficulty":"hard"}
+      ]
+    }
+  ]
+}
+
+

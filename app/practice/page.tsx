@@ -1,12 +1,15 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import LessonQuestion from "@/components/codelingo/lesson/lesson-question"
 import AnswerOptions from "@/components/codelingo/lesson/answer-options"
 import Hint from "@/components/codelingo/lesson/hint"
 import Feedback from "@/components/codelingo/lesson/feedback"
+import { useSelectedLanguage } from "@/components/codelingo/language/use-selected-language"
+import { fetchLanguageLessons } from "@/lib/lessons/loaders"
+import type { LessonBundle, LessonQuestion as RemoteQuestion } from "@/lib/lessons/types"
 
 type MCQQuestion = {
   id: string
@@ -29,34 +32,115 @@ type InputQuestion = {
   hint: string
 }
 
-type Question = MCQQuestion | InputQuestion
+type LocalQuestion = MCQQuestion | InputQuestion
+
+function mapRemoteToLocal(q: RemoteQuestion): LocalQuestion | null {
+  if (q.type === "single_choice") {
+    const choices = q.options.map((o) => o.text)
+    const idx = q.options.findIndex((o) => o.correct)
+    if (idx < 0) return null
+    return {
+      id: q.id,
+      type: "mcq",
+      prompt: q.prompt,
+      code: q.code,
+      choices,
+      correctIndex: idx,
+      explanation: q.explanation ?? "",
+      hint: q.hints?.[0]?.text ?? "",
+    }
+  }
+  if (q.type === "true_false") {
+    const trueIdx = q.options.findIndex((o) => o.text.toLowerCase() === "true" && o.correct)
+    const falseIdx = q.options.findIndex((o) => o.text.toLowerCase() === "false" && o.correct)
+    const correctIndex = trueIdx >= 0 ? 0 : falseIdx >= 0 ? 1 : -1
+    if (correctIndex < 0) return null
+    return {
+      id: q.id,
+      type: "mcq",
+      prompt: q.prompt,
+      code: q.code,
+      choices: ["True", "False"],
+      correctIndex,
+      explanation: q.explanation ?? "",
+      hint: q.hints?.[0]?.text ?? "",
+    }
+  }
+  if (q.type === "code_fill") {
+    const correct = q.options.find((o) => o.correct)
+    if (!correct) return null
+    return {
+      id: q.id,
+      type: "input",
+      prompt: q.prompt,
+      code: q.code,
+      answer: correct.text,
+      explanation: q.explanation ?? "",
+      hint: q.hints?.[0]?.text ?? "",
+    }
+  }
+  // Skip unsupported types (e.g., multiple_choice) for now
+  return null
+}
 
 export default function PracticePage() {
-  const question: Question = useMemo(
-    () => ({
-      id: "q1",
-      type: "mcq",
-      prompt: "What will this Python code print?",
-      code: "for i in range(3):\n    print(i)\n",
-      choices: ["0 1 2", "1 2 3", "0 1 2 3", "2 1 0"],
-      correctIndex: 0,
-      explanation:
-        "range(3) emits 0, 1, 2. The loop prints each on its own line, effectively outputting 0 1 2.",
-      hint: "range(n) starts at 0 and stops before n.",
-    }),
-    [],
-  )
+  const { selected } = useSelectedLanguage()
+  const languageId = selected ?? "python"
+  const [bundle, setBundle] = useState<LessonBundle | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
+  const [current, setCurrent] = useState(0)
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const [inputValue, setInputValue] = useState("")
   const [submitted, setSubmitted] = useState(false)
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
+  useEffect(() => {
+    let mounted = true
+    setLoading(true)
+    setError(null)
+    setBundle(null)
+    setCurrent(0)
+    setSelectedIndex(null)
+    setInputValue("")
+    setSubmitted(false)
+    setIsCorrect(null)
+    fetchLanguageLessons(languageId)
+      .then((b) => {
+        if (!mounted) return
+        setBundle(b)
+      })
+      .catch(() => {
+        if (!mounted) return
+        setError("Failed to load practice questions.")
+      })
+      .finally(() => {
+        if (!mounted) return
+        setLoading(false)
+      })
+    return () => {
+      mounted = false
+    }
+  }, [languageId])
+
+  const questions: LocalQuestion[] = useMemo(() => {
+    if (!bundle) return []
+    const firstLesson = bundle.lessons[0]
+    if (!firstLesson) return []
+    return firstLesson.questions
+      .map(mapRemoteToLocal)
+      .filter((q): q is LocalQuestion => q !== null)
+  }, [bundle])
+
+  const question = questions[current]
+
   const handleSubmit = () => {
+    if (!question) return
     if (question.type === "mcq") {
       setIsCorrect(selectedIndex === question.correctIndex)
     } else {
-      setIsCorrect((question as InputQuestion).answer.trim().toLowerCase() === inputValue.trim().toLowerCase())
+      setIsCorrect(question.answer.trim().toLowerCase() === inputValue.trim().toLowerCase())
     }
     setSubmitted(true)
   }
@@ -66,54 +150,53 @@ export default function PracticePage() {
     setIsCorrect(null)
     setSelectedIndex(null)
     setInputValue("")
-  }
-
-  // Narrowed question for Feedback to avoid TypeScript warnings
-  let feedbackQuestion: MCQQuestion | InputQuestion | null = null
-  if (submitted && isCorrect !== null) {
-    feedbackQuestion = question
+    setCurrent((c) => (c + 1 < questions.length ? c + 1 : 0))
   }
 
   return (
     <main className="mx-auto max-w-xl p-4 md:p-6">
       <header className="mb-4">
-        <h1 className="text-balance text-xl font-semibold">Lesson</h1>
-        <p className="text-sm text-muted-foreground">Loops and Iteration</p>
+        <h1 className="text-balance text-xl font-semibold">Practice</h1>
+        <p className="text-sm text-muted-foreground">Language: {languageId}</p>
       </header>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Question</CardTitle>
+          <CardTitle className="text-base">{loading ? "Loading..." : error ? "Error" : `Question ${current + 1} of ${questions.length}`}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <LessonQuestion prompt={question.prompt} code={question.code} />
+          {error ? (
+            <p className="text-sm text-destructive">{error}</p>
+          ) : loading || !question ? (
+            <p className="text-sm text-muted-foreground">{loading ? "Fetching questions..." : "No questions available."}</p>
+          ) : (
+            <>
+              <LessonQuestion prompt={question.prompt} code={question.code} />
 
-          <AnswerOptions
-            type={question.type}
-            choices={question.type === "mcq" ? question.choices : undefined}
-            selectedIndex={selectedIndex}
-            onSelect={setSelectedIndex}
-            inputValue={inputValue}
-            onInputChange={setInputValue}
-          />
+              <AnswerOptions
+                type={question.type}
+                choices={question.type === "mcq" ? question.choices : undefined}
+                selectedIndex={selectedIndex}
+                onSelect={setSelectedIndex}
+                inputValue={inputValue}
+                onInputChange={setInputValue}
+              />
 
-          <div className="flex items-center gap-3">
-            <Hint text={question.hint} />
-            <Button
-              className="bg-emerald-600 hover:bg-emerald-700"
-              onClick={handleSubmit}
-              disabled={question.type === "mcq" ? selectedIndex === null : inputValue.trim().length === 0}
-            >
-              Submit
-            </Button>
-          </div>
+              <div className="flex items-center gap-3">
+                <Hint text={question.hint} />
+                <Button
+                  className="bg-emerald-600 hover:bg-emerald-700"
+                  onClick={handleSubmit}
+                  disabled={question.type === "mcq" ? selectedIndex === null : inputValue.trim().length === 0}
+                >
+                  Submit
+                </Button>
+              </div>
 
-          {feedbackQuestion && (
-            <Feedback
-              correct={isCorrect!}
-              explanation={feedbackQuestion.explanation}
-              onNext={handleNext}
-            />
+              {submitted && isCorrect !== null ? (
+                <Feedback correct={isCorrect} explanation={question.explanation} onNext={handleNext} />
+              ) : null}
+            </>
           )}
         </CardContent>
       </Card>
