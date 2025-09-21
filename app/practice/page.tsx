@@ -146,11 +146,22 @@ export default function PracticePage() {
   }
 
   const handleNext = () => {
+    // Reset all state first
     setSubmitted(false)
     setIsCorrect(null)
     setSelectedIndex(null)
     setInputValue("")
+    
+    // Then move to next question
     setCurrent((c) => (c + 1 < questions.length ? c + 1 : 0))
+  }
+
+  const handleRetry = () => {
+    // Reset submission state to allow retry
+    setSubmitted(false)
+    setIsCorrect(null)
+    setSelectedIndex(null)
+    setInputValue("")
   }
 
   return (
@@ -174,6 +185,7 @@ export default function PracticePage() {
               <LessonQuestion prompt={question.prompt} code={question.code} />
 
               <AnswerOptions
+                key={`question-${current}`}
                 type={question.type}
                 choices={question.type === "mcq" ? question.choices : undefined}
                 selectedIndex={selectedIndex}
@@ -183,7 +195,6 @@ export default function PracticePage() {
               />
 
               <div className="flex items-center gap-3">
-                <Hint text={question.hint} />
                 <Button
                   className="bg-emerald-600 hover:bg-emerald-700"
                   onClick={handleSubmit}
@@ -192,9 +203,16 @@ export default function PracticePage() {
                   Submit
                 </Button>
               </div>
+              <Hint text={question.hint} />
+
 
               {submitted && isCorrect !== null ? (
-                <Feedback correct={isCorrect} explanation={question.explanation} onNext={handleNext} />
+                <Feedback 
+                  correct={isCorrect} 
+                  explanation={question.explanation} 
+                  onNext={handleNext}
+                  onRetry={handleRetry}
+                />
               ) : null}
             </>
           )}

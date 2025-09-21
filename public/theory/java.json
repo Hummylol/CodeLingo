@@ -1,0 +1,6 @@
+{
+    "levelno": 1,
+    "theory": "In Java, variables act as containers for storing data values. Every variable must be declared with a specific data type before you can use it. For example, an integer variable can store whole numbers, while a double variable can store decimal numbers. This ensures type safety, meaning the compiler knows what kind of data a variable will hold.\n\nJava supports different types of variables: local variables (declared inside methods), instance variables (defined in a class but outside methods), and static variables (shared among all objects of a class). Choosing the right kind of variable depends on where you need to use it.\n\nTo declare a variable in Java, you specify the type followed by the name, such as `int age = 25;`. Variables must follow naming rules: they can’t start with a digit, can’t use reserved keywords, and should be descriptive for readability.",
+    "practice_questions": ""
+  }
+  

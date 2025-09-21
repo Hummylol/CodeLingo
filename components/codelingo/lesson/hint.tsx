@@ -1,26 +1,31 @@
+// components/codelingo/lesson/hint.tsx
 "use client"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 
 export default function Hint({ text }: { text: string }) {
-  const [open, setOpen] = useState(false)
+  const [show, setShow] = useState(false)
+
+  if (!text) return null
+
   return (
-    <div className="flex items-center gap-2">
+    <div className="w-full">
       <Button
         type="button"
         variant="outline"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-controls="lesson-hint"
+        size="sm"
+        onClick={() => setShow((prev) => !prev)}
       >
-        {open ? "Hide hint" : "Hint"}
+        {show ? "Hide Hint" : "Show Hint"}
       </Button>
-      {open ? (
-        <span id="lesson-hint" className="text-sm text-muted-foreground">
+
+      {show && (
+        <Card className="mt-3 p-3 text-sm text-muted-foreground">
           {text}
-        </span>
-      ) : null}
+        </Card>
+      )}
     </div>
   )
 }

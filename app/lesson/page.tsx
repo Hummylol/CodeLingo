@@ -1,4 +1,10 @@
+"use client"
+
 import { Lock } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useSelectedLanguage } from "@/components/codelingo/language/use-selected-language"
+import { LANGUAGES } from "@/components/codelingo/language/data"
+
 
 const TOTAL_LEVELS = 20
 
@@ -11,10 +17,13 @@ type Topic = {
 const topics: Topic[] = Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
   id: index + 1,
   title: `Level ${index + 1}`,
-  unlocked: index < 15,
+  unlocked: index < 1,
 }))
 
 export default function LessonPage() {
+  const { selected } = useSelectedLanguage()
+  const selectedLanguage = LANGUAGES.find(lang => lang.id === selected)
+  
   const laneLeftPercent = 18
   const laneRightPercent = 82
   const stepY = 96
@@ -38,15 +47,29 @@ export default function LessonPage() {
     return `${acc} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${point.x} ${point.y}`
   }, "")
 
+
+  const router = useRouter()
+
+
   return (
     <main className="mx-auto max-w-3xl p-6">
-      <h1 className="text-2xl font-bold text-foreground mb-4">Lessons</h1>
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-foreground mb-2">Lessons</h1>
+        {selectedLanguage ? (
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <selectedLanguage.icon className="h-4 w-4 text-emerald-600" />
+            <span>Learning {selectedLanguage.name}</span>
+          </div>
+        ) : (
+          <p className="text-muted-foreground">Select a language to start learning</p>
+        )}
+      </div>
       
 
       <div className="relative rounded-xl border bg-background/50 p-4">
         <div style={{ height: svgHeight }} className="relative">
           <svg
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full "
             viewBox={`0 0 100 ${svgHeight}`}
             preserveAspectRatio="none"
           >
@@ -66,15 +89,14 @@ export default function LessonPage() {
             <path
               d={pathD}
               fill="none"
-              stroke="url(#candyPath)"
-              strokeWidth={4}
+              stroke="white"
+              opacity={0.5}
+              strokeWidth={3}
               strokeLinecap="round"
-              filter="url(#glow)"
             />
           </svg>
 
           {topics.map((topic, index) => {
-            const isLeft = index % 2 === 0
             const point = points[index]
             const leftPercent = `${point.x}%`
             const topPx = point.y
@@ -92,6 +114,9 @@ export default function LessonPage() {
                       ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
                       : "bg-muted text-muted-foreground")
                   }
+                  onClick={() => {
+                    router.push(`/lesson/theory/${topic.id}`)
+                  }}
                   aria-label={topic.title}
                   disabled={!isUnlocked}
                 >

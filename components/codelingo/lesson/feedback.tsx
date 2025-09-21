@@ -7,10 +7,12 @@ export default function Feedback({
   correct,
   explanation,
   onNext,
+  onRetry,
 }: {
   correct: boolean
   explanation: string
   onNext: () => void
+  onRetry?: () => void
 }) {
   return (
     <div
@@ -28,11 +30,23 @@ export default function Feedback({
       <div className="flex-1">
         <p className="text-sm font-medium">{correct ? "Correct!" : "Not quite"}</p>
         <p className="mt-1 text-sm text-muted-foreground">{explanation}</p>
-        <div className="mt-2">
-          <Button onClick={onNext} className="bg-emerald-600 hover:bg-emerald-700">
-            Next
-          </Button>
-        </div>
+        {correct && (
+          <div className="mt-2">
+            <Button onClick={onNext} className="bg-emerald-600 hover:bg-emerald-700">
+              Next
+            </Button>
+          </div>
+        )}
+        {!correct && (
+          <div className="mt-2">
+            <p className="text-sm text-muted-foreground mb-2">Please try again to continue.</p>
+            {onRetry && (
+              <Button onClick={onRetry} variant="outline" size="sm">
+                Try Again
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )

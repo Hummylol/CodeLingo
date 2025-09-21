@@ -1,0 +1,6 @@
+{
+    "levelno": 1,
+    "theory": "In Python, variables are created when you first assign them a value. Unlike Java or C++, you don’t need to declare a type — Python automatically figures it out. This makes Python dynamically typed and flexible. For instance, you can write `age = 25` and Python will treat it as an integer, or `name = 'Alice'` and Python will treat it as a string.\n\nVariables in Python don’t need explicit memory management. They are references to objects stored in memory, and Python’s garbage collector automatically frees unused memory. This makes it beginner-friendly and reduces programming errors.\n\nPython variable names must follow certain rules: they must start with a letter or underscore, cannot contain spaces or special characters, and are case-sensitive (`Age` and `age` are different variables). Following clear naming conventions improves readability and maintainability of your code.",
+    "practice_questions": ""
+  }
+  

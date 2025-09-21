@@ -1,0 +1,8 @@
+{
+    "levelno": 1,
+    "theory": "In C++, variables are strongly typed, meaning you must declare the type before using them. For example, `int age = 25;` declares an integer variable, while `double price = 19.99;` declares a floating-point variable. This explicit declaration helps the compiler allocate the right amount of memory and prevents type errors.\n\nThere are several types of variables in C++: local variables (declared inside a block), global variables (declared outside all functions), and static variables (which preserve their value between function calls). Understanding the lifetime and scope of variables is crucial in C++ programming.\n\nC++ also allows constant variables using the `const` keyword, which makes a variable’s value unchangeable after initialization. This is useful for defining fixed values like `const double PI = 3.14159;`. Using constants improves code clarity and prevents accidental modifications.",
+    "practice_questions":{
+        
+    }
+  }
+  
