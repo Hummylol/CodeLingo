@@ -1,6 +1,1142 @@
-{
+[
+  {
     "levelno": 1,
-    "theory": "In Java, variables act as containers for storing data values. Every variable must be declared with a specific data type before you can use it. For example, an integer variable can store whole numbers, while a double variable can store decimal numbers. This ensures type safety, meaning the compiler knows what kind of data a variable will hold.\n\nJava supports different types of variables: local variables (declared inside methods), instance variables (defined in a class but outside methods), and static variables (shared among all objects of a class). Choosing the right kind of variable depends on where you need to use it.\n\nTo declare a variable in Java, you specify the type followed by the name, such as `int age = 25;`. Variables must follow naming rules: they can’t start with a digit, can’t use reserved keywords, and should be descriptive for readability.",
-    "practice_questions": ""
+    "topic": "Variables and Data Types",
+    "theory": "In Java, variables act as containers for storing data values. Every variable must be declared with a specific data type before you can use it. For example, an `int` variable stores whole numbers (e.g., 10, -50), a `double` stores floating-point numbers (e.g., 19.99), a `char` stores single characters (e.g., 'A'), and a `boolean` stores true or false values.\n\nJava supports different types of variables:\n- **Local Variables:** Declared inside a method, constructor, or block. Their scope is limited to that block.\n- **Instance Variables:** Declared in a class but outside any method. They belong to an instance (object) of the class.\n- **Static Variables:** Declared with the `static` keyword. They are shared among all instances of the class.\n\nTo declare a variable, you specify the type followed by the name, such as `int age = 25;`. Naming rules are important: they can’t start with a digit, can’t be a reserved keyword (like `int` or `class`), and should be descriptive (e.g., `firstName` instead of `fn`).",
+    "practice_questions": [
+      {
+        "question": "Which of these is NOT a primitive data type in Java?",
+        "options": ["int", "String", "boolean", "char"],
+        "answer": "String"
+      },
+      {
+        "question": "What is the default value of a boolean variable in Java?",
+        "options": ["true", "false", "0", "null"],
+        "answer": "false"
+      },
+      {
+        "question": "Which of the following is a valid variable name in Java?",
+        "options": ["2variable", "_myvariable", "my-variable", "default"],
+        "answer": "_myvariable"
+      },
+      {
+        "question": "What is the size of a `long` data type in Java?",
+        "options": ["8 bits", "16 bits", "32 bits", "64 bits"],
+        "answer": "64 bits"
+      },
+      {
+        "question": "A variable declared with the `static` keyword is known as a:",
+        "options": ["Local Variable", "Instance Variable", "Static Variable", "Final Variable"],
+        "answer": "Static Variable"
+      },
+      {
+        "question": "Which data type is most suitable for storing a single letter?",
+        "options": ["String", "int", "char", "boolean"],
+        "answer": "char"
+      },
+      {
+        "question": "What keyword is used to declare a variable whose value cannot be changed?",
+        "options": ["static", "const", "final", "abstract"],
+        "answer": "final"
+      },
+      {
+        "question": "A variable defined inside a method is called a:",
+        "options": ["Global variable", "Instance variable", "Static variable", "Local variable"],
+        "answer": "Local variable"
+      },
+      {
+        "question": "Which data type would you use to store a precise decimal value like 19.99?",
+        "options": ["int", "float", "double", "long"],
+        "answer": "double"
+      },
+      {
+        "question": "What is the correct way to declare and initialize an integer variable named 'score' to 100?",
+        "options": ["int score = 100;", "score = 100;", "integer score = 100;", "100 = int score;"],
+        "answer": "int score = 100;"
+      }
+    ]
+  },
+  {
+    "levelno": 2,
+    "topic": "Operators",
+    "theory": "Operators are special symbols that perform specific operations on one, two, or three operands, and then return a result. Java provides a rich set of operators.\n\n- **Arithmetic Operators:** Used for mathematical calculations. Examples include `+` (addition), `-` (subtraction), `*` (multiplication), `/` (division), and `%` (modulus, which gives the remainder of a division).\n- **Relational Operators:** Used to compare two values. They return a `boolean` result (`true` or `false`). Examples: `==` (equal to), `!=` (not equal to), `>` (greater than), `<` (less than), `>=` (greater than or equal to), `<=` (less than or equal to).\n- **Logical Operators:** Used to combine boolean expressions. The main ones are `&&` (logical AND), `||` (logical OR), and `!` (logical NOT).\n\nFor example, `int result = 10 + 5;` uses the addition operator. `boolean isAdult = age >= 18;` uses a relational operator to check a condition.",
+    "practice_questions": [
+      {
+        "question": "What is the result of the expression `17 % 5`?",
+        "options": ["3", "2", "3.4", "1"],
+        "answer": "2"
+      },
+      {
+        "question": "Which operator is used to check for equality between two values?",
+        "options": ["=", "==", "!=", "equals"],
+        "answer": "=="
+      },
+      {
+        "question": "If `x = true` and `y = false`, what is the value of `x || y`?",
+        "options": ["true", "false", "0", "1"],
+        "answer": "true"
+      },
+      {
+        "question": "Which of the following is the logical AND operator?",
+        "options": ["|", "||", "&", "&&"],
+        "answer": "&&"
+      },
+      {
+        "question": "What does the `++` operator do?",
+        "options": ["Adds two to a variable", "Increments a variable by one", "Multiplies a variable by two", "It is not a valid operator"],
+        "answer": "Increments a variable by one"
+      },
+      {
+        "question": "Which operator has the highest precedence?",
+        "options": ["+", "*", "()", "="],
+        "answer": "()"
+      },
+      {
+        "question": "What is the result of `10 / 4` when both operands are integers?",
+        "options": ["2.5", "2", "3", "2.0"],
+        "answer": "2"
+      },
+      {
+        "question": "The `!=` operator is used to test for:",
+        "options": ["Equality", "Inequality", "Greater than", "Less than"],
+        "answer": "Inequality"
+      },
+      {
+        "question": "If `a = 5` and `b = 10`, what is the result of `!(a > b)`?",
+        "options": ["true", "false", "5", "10"],
+        "answer": "true"
+      },
+      {
+        "question": "Which operator is used for string concatenation?",
+        "options": ["&", "+", "%", "concat()"],
+        "answer": "+"
+      }
+    ]
+  },
+  {
+    "levelno": 3,
+    "topic": "Control Flow: If-Else",
+    "theory": "Control flow statements regulate the order in which the program executes its statements. The `if-else` statement is the most basic decision-making construct. It executes a block of code if a specified condition is true.\n\nThe basic syntax is:\n`if (condition) {`\n`  // block of code to be executed if the condition is true`\n`}`\n\nYou can also use an `else` statement to execute a block of code if the condition is false. For multiple conditions, you can use `else if`.\n\n`if (score >= 90) {`\n`  System.out.println(\"Grade A\");`\n`} else if (score >= 80) {`\n`  System.out.println(\"Grade B\");`\n`} else {`\n`  System.out.println(\"Grade C\");`\n`}`\nThis structure allows your program to respond differently to various inputs or situations.",
+    "practice_questions": [
+        {
+            "question": "Which part of an `if-else` statement is executed if the condition is false?",
+            "options": ["if block", "else block", "Both blocks", "Neither block"],
+            "answer": "else block"
+        },
+        {
+            "question": "What kind of expression is required inside the parentheses of an `if` statement?",
+            "options": ["An integer expression", "A string expression", "A boolean expression", "A floating-point expression"],
+            "answer": "A boolean expression"
+        },
+        {
+            "question": "To test for multiple conditions sequentially, which statement should you use after an `if`?",
+            "options": ["then", "another if", "else if", "catch"],
+            "answer": "else if"
+        },
+        {
+            "question": "Is the `else` part of an `if-else` statement always required?",
+            "options": ["Yes, an `if` must have an `else`", "No, the `else` block is optional", "Only if you have an `else if`", "Yes, to prevent compile errors"],
+            "answer": "No, the `else` block is optional"
+        },
+        {
+            "question": "What will be the output of the code: `int x = 10; if (x > 10) { System.out.println(\"A\"); } else { System.out.println(\"B\"); }`?",
+            "options": ["A", "B", "No output", "Compile Error"],
+            "answer": "B"
+        },
+        {
+            "question": "What is a 'nested' if statement?",
+            "options": ["An `if` statement with multiple conditions", "An `if` statement inside another `if` or `else` block", "An `if` statement that uses logical operators", "An `if` statement that calls a method"],
+            "answer": "An `if` statement inside another `if` or `else` block"
+        },
+        {
+            "question": "Which operator would you use in an `if` condition to check if `a` is greater than or equal to `b`?",
+            "options": [">", "=>", ">=", "=="],
+            "answer": ">="
+        },
+        {
+            "question": "What is the purpose of the curly braces `{}` in an `if` statement?",
+            "options": ["To define the condition", "To group multiple statements into a single block", "To declare variables", "They are optional and have no purpose"],
+            "answer": "To group multiple statements into a single block"
+        },
+        {
+            "question": "If `score = 85`, which grade would be printed by the example code in the theory section?",
+            "options": ["Grade A", "Grade B", "Grade C", "No grade printed"],
+            "answer": "Grade B"
+        },
+        {
+            "question": "Can you have an `else` block without a preceding `if` block?",
+            "options": ["Yes, if it's at the end of a method", "Yes, if you use parentheses", "No, it will cause a compilation error", "Only in a `switch` statement"],
+            "answer": "No, it will cause a compilation error"
+        }
+    ]
+  },
+  {
+    "levelno": 4,
+    "topic": "Control Flow: Switch",
+    "theory": "The `switch` statement is another control flow statement that allows a variable to be tested for equality against a list of values. It can be a cleaner alternative to a long chain of `if-else if` statements, especially when dealing with a single variable.\n\nThe syntax involves a variable being 'switched' on, and `case` labels for each possible value:\n`switch (dayOfWeek) {`\n`  case 1:`\n`    System.out.println(\"Monday\");`\n`    break;`\n`  case 2:`\n`    System.out.println(\"Tuesday\");`\n`    break;`\n`  default:`\n`    System.out.println(\"Invalid day\");`\n`}`\nThe `break` statement is crucial; it exits the `switch` block. Without it, execution 'falls through' to the next case. The `default` case is optional and runs if no other case matches.",
+    "practice_questions": [
+        {
+            "question": "What is the purpose of the `break` statement in a `switch` case?",
+            "options": ["To end the program", "To skip the current case", "To exit the `switch` block and prevent fall-through", "To return a value from the `switch` statement"],
+            "answer": "To exit the `switch` block and prevent fall-through"
+        },
+        {
+            "question": "Which `case` is executed if no other `case` values match the switch expression?",
+            "options": ["error", "null", "default", "finally"],
+            "answer": "default"
+        },
+        {
+            "question": "What happens if you forget a `break` statement in a `case`?",
+            "options": ["A compile-time error occurs", "The program skips to the `default` case", "Execution continues to the next `case` block (fall-through)", "An exception is thrown at runtime"],
+            "answer": "Execution continues to the next `case` block (fall-through)"
+        },
+        {
+            "question": "Which of the following types can be used in a `switch` statement expression (in modern Java)?",
+            "options": ["int, String, and enum", "double and float", "boolean", "long"],
+            "answer": "int, String, and enum"
+        },
+        {
+            "question": "A `switch` statement is often a better alternative to:",
+            "options": ["A `for` loop", "A long series of `if-else if-else` statements", "A `while` loop", "A method call"],
+            "answer": "A long series of `if-else if-else` statements"
+        },
+        {
+            "question": "Is the `default` case mandatory in a `switch` statement?",
+            "options": ["Yes, it must always be present", "Only if there are more than two cases", "No, it is optional", "Yes, to handle potential errors"],
+            "answer": "No, it is optional"
+        },
+        {
+            "question": "Can you have multiple `case` labels for the same block of code?",
+            "options": ["No, each case must be unique", "Yes, by stacking them without `break` statements in between", "Only if they are of different data types", "No, this will cause a syntax error"],
+            "answer": "Yes, by stacking them without `break` statements in between"
+        },
+        {
+            "question": "In the example `switch (dayOfWeek)`, `dayOfWeek` is the:",
+            "options": ["Switch expression", "Case label", "Break point", "Default value"],
+            "answer": "Switch expression"
+        },
+        {
+            "question": "Which of these cannot be a `case` label?",
+            "options": ["A constant integer value", "A character literal", "A variable name", "A string literal"],
+            "answer": "A variable name"
+        },
+        {
+            "question": "The `switch` statement tests for:",
+            "options": ["Equality", "Inequality", "Greater than or less than", "Logical AND"],
+            "answer": "Equality"
+        }
+    ]
+  },
+  {
+    "levelno": 5,
+    "topic": "Loops: The 'for' Loop",
+    "theory": "Loops are used to execute a block of code repeatedly as long as a certain condition is true. The `for` loop is ideal when you know exactly how many times you want to loop.\n\nIt has three parts, separated by semicolons:\n1. **Initialization:** Executed once at the beginning (e.g., `int i = 0`).\n2. **Condition:** Evaluated before each iteration. The loop continues as long as this is true (e.g., `i < 5`).\n3. **Update:** Executed at the end of each iteration (e.g., `i++`).\n\nExample to print numbers from 0 to 4:\n`for (int i = 0; i < 5; i++) {`\n`  System.out.println(i);`\n`}`\nThis is a very common and powerful way to iterate over ranges of numbers or elements in a collection.",
+    "practice_questions": [
+        {
+            "question": "In a `for` loop `for (A; B; C)`, which part is executed only once?",
+            "options": ["A (Initialization)", "B (Condition)", "C (Update)", "All parts are executed multiple times"],
+            "answer": "A (Initialization)"
+        },
+        {
+            "question": "How many times will the following loop execute? `for (int i = 0; i < 5; i++)`",
+            "options": ["4 times", "5 times", "6 times", "Infinitely"],
+            "answer": "5 times"
+        },
+        {
+            "question": "What is the purpose of the 'update' part in a `for` loop (e.g., `i++`)?",
+            "options": ["To set the initial value of the counter", "To check if the loop should continue", "To modify the loop counter after each iteration", "To declare the loop variable"],
+            "answer": "To modify the loop counter after each iteration"
+        },
+        {
+            "question": "Which of the following creates a `for` loop that prints numbers from 10 down to 1?",
+            "options": ["`for (int i = 10; i > 0; i--)`", "`for (int i = 1; i <= 10; i++)`", "`for (int i = 10; i < 0; i--)`", "`for (int i = 1; i > 10; i++)`"],
+            "answer": "`for (int i = 10; i > 0; i--)`"
+        },
+        {
+            "question": "What is an infinite loop?",
+            "options": ["A loop that runs exactly 1000 times", "A loop with a condition that is never met", "A loop with a condition that is always true", "A loop that contains an error"],
+            "answer": "A loop with a condition that is always true"
+        },
+        {
+            "question": "Can you declare the loop variable outside the `for` loop?",
+            "options": ["No, it must be declared in the initialization part", "Yes, and its scope will be limited to the loop", "Yes, and it will be accessible after the loop finishes", "No, this will cause a compile error"],
+            "answer": "Yes, and it will be accessible after the loop finishes"
+        },
+        {
+            "question": "What will be the final value of `i` after this loop? `for (int i = 1; i <= 3; i++)`",
+            "options": ["2", "3", "4", "The variable `i` is not accessible outside the loop"],
+            "answer": "The variable `i` is not accessible outside the loop"
+        },
+        {
+            "question": "The three parts of the `for` loop header are separated by:",
+            "options": ["Commas (,)", "Semicolons (;)", "Colons (:)", "Periods (.)"],
+            "answer": "Semicolons (;)"
+        },
+        {
+            "question": "A `for` loop is most appropriate when:",
+            "options": ["The number of iterations is unknown", "You need a loop that runs at least once", "The loop condition is complex", "You know the exact number of times you need to iterate"],
+            "answer": "You know the exact number of times you need to iterate"
+        },
+        {
+            "question": "What is the output of `for (int i = 0; i < 3; i++) { System.out.print(i); }`?",
+            "options": ["012", "123", "0123", "0 1 2"],
+            "answer": "012"
+        }
+    ]
+  },
+    {
+    "levelno": 6,
+    "topic": "Loops: 'while' and 'do-while'",
+    "theory": "Besides the `for` loop, Java has two other primary loop structures: `while` and `do-while`.\n\n- **The `while` loop:** This loop executes a block of code as long as a specified condition is true. The condition is checked *before* the loop body is executed. If the condition is false initially, the loop body will never run.\n`int i = 0;`\n`while (i < 5) {`\n`  System.out.println(i);`\n`  i++;`\n`}`\n\n- **The `do-while` loop:** This is similar to the `while` loop, but the condition is checked *after* the loop body is executed. This guarantees that the loop body will run at least once.\n`int i = 0;`\n`do {`\n`  System.out.println(i);`\n`  i++;`\n`} while (i < 5);`",
+    "practice_questions": [
+        {
+            "question": "What is the main difference between a `while` loop and a `do-while` loop?",
+            "options": ["A `while` loop runs faster", "A `do-while` loop's body is guaranteed to execute at least once", "A `while` loop can only use integer conditions", "There is no difference"],
+            "answer": "A `do-while` loop's body is guaranteed to execute at least once"
+        },
+        {
+            "question": "In a `while` loop, when is the condition checked?",
+            "options": ["After each iteration", "Before each iteration", "Only once at the beginning", "Only once at the end"],
+            "answer": "Before each iteration"
+        },
+        {
+            "question": "If the condition in a `while` loop is initially `false`, how many times will the loop body execute?",
+            "options": ["At least once", "Zero times", "Infinitely", "It will cause an error"],
+            "answer": "Zero times"
+        },
+        {
+            "question": "Which loop is best suited for a situation where you need to perform an action and then check if it needs to be repeated?",
+            "options": ["for loop", "while loop", "do-while loop", "enhanced for loop"],
+            "answer": "do-while loop"
+        },
+        {
+            "question": "What is a common cause of an infinite `while` loop?",
+            "options": ["The condition is initially false", "The loop variable is not updated within the loop body", "Using a complex boolean expression", "Declaring the loop variable inside the loop"],
+            "answer": "The loop variable is not updated within the loop body"
+        },
+        {
+            "question": "Which of these is the correct syntax for a `do-while` loop?",
+            "options": ["`do { } while ();`", "`while () { } do;`", "`do while () { };`", "`do ( ) { } while;`"],
+            "answer": "`do { } while ();`"
+        },
+        {
+            "question": "What will be the output? `int i = 5; while (i > 5) { System.out.println(i); i--; }`",
+            "options": ["5", "4", "No output", "Infinite loop"],
+            "answer": "No output"
+        },
+        {
+            "question": "What will be the output? `int i = 5; do { System.out.println(i); } while (i > 5);`",
+            "options": ["5", "No output", "Compile Error", "Infinite loop"],
+            "answer": "5"
+        },
+        {
+            "question": "A `while` loop is considered an:",
+            "options": ["Entry-controlled loop", "Exit-controlled loop", "Counter-controlled loop", "Uncontrolled loop"],
+            "answer": "Entry-controlled loop"
+        },
+        {
+            "question": "A `do-while` loop is considered an:",
+            "options": ["Entry-controlled loop", "Exit-controlled loop", "Condition-controlled loop", "Uncontrolled loop"],
+            "answer": "Exit-controlled loop"
+        }
+    ]
+  },
+    {
+    "levelno": 7,
+    "topic": "Arrays",
+    "theory": "An array is a data structure that stores a fixed-size sequential collection of elements of the same type. Think of it as a list of variables of the same data type, accessed by a common name.\n\nTo declare an array, you define the variable type with square brackets `[]`.\n`int[] numbers;`\n\nTo create the array and allocate memory for its elements, you use the `new` keyword:\n`numbers = new int[5]; // This array can hold 5 integers`\n\nYou can also declare and initialize an array in one line:\n`String[] names = {\"Alice\", \"Bob\", \"Charlie\"};`\n\nElements are accessed by their index, which is a number starting from 0. So, `names[0]` would be \"Alice\" and `names[2]` would be \"Charlie\". The length of an array can be found using the `.length` property (e.g., `names.length` is 3).",
+    "practice_questions": [
+        {
+            "question": "What is the index of the first element in a Java array?",
+            "options": ["1", "0", "-1", "It depends on the array size"],
+            "answer": "0"
+        },
+        {
+            "question": "How do you get the number of elements in an array named `myArray`?",
+            "options": ["`myArray.size()`", "`myArray.length()`", "`myArray.length`", "`myArray.capacity()`"],
+            "answer": "`myArray.length`"
+        },
+        {
+            "question": "Which of the following correctly declares an array of integers?",
+            "options": ["`int array[];`", "`int[] array;`", "`array<int>;`", "Both A and B are correct"],
+            "answer": "Both A and B are correct"
+        },
+        {
+            "question": "What happens if you try to access an array element with an invalid index (e.g., index 5 in an array of size 5)?",
+            "options": ["It returns a default value like 0 or null", "The program continues without error", "It throws an `ArrayIndexOutOfBoundsException`", "It causes a compile-time error"],
+            "answer": "It throws an `ArrayIndexOutOfBoundsException`"
+        },
+        {
+            "question": "Which of the following is the correct way to initialize an array with specific values?",
+            "options": ["`int[] nums = (1, 2, 3);`", "`int[] nums = {1, 2, 3};`", "`int[] nums = [1, 2, 3];`", "`int nums[] = new int{1, 2, 3};`"],
+            "answer": "`int[] nums = {1, 2, 3};`"
+        },
+        {
+            "question": "Can you change the size of an array after it has been created?",
+            "options": ["Yes, using the `resize()` method", "Yes, by assigning a new length to the `.length` property", "No, arrays have a fixed size", "Only if it's an array of objects"],
+            "answer": "No, arrays have a fixed size"
+        },
+        {
+            "question": "What is the default value for elements in an array of integers?",
+            "options": ["null", "1", "0", "undefined"],
+            "answer": "0"
+        },
+        {
+            "question": "Given `String[] names = {\"A\", \"B\", \"C\"};`, what does `names[1]` refer to?",
+            "options": ["\"A\"", "\"B\"", "\"C\"", "An error will occur"],
+            "answer": "\"B\""
+        },
+        {
+            "question": "How do you access the last element in an array `arr` of length `n`?",
+            "options": ["`arr[n]`", "`arr[n-1]`", "`arr[last]`", "`arr[length]`"],
+            "answer": "`arr[n-1]`"
+        },
+        {
+            "question": "All elements in an array must be of the...",
+            "options": ["Same data type", "Same name", "Same size", "Primitive data type"],
+            "answer": "Same data type"
+        }
+    ]
+  },
+  {
+    "levelno": 8,
+    "topic": "Multi-Dimensional Arrays",
+    "theory": "A multi-dimensional array is an array of arrays. The most common type is a 2D array, which can be visualized as a grid or a table with rows and columns. It's useful for representing data like matrices, game boards, or spreadsheets.\n\nDeclaration and initialization of a 2D array:\n`int[][] matrix = new int[3][4]; // A grid with 3 rows and 4 columns`\n\nThis creates a structure where `matrix[0]`, `matrix[1]`, and `matrix[2]` are themselves arrays, each capable of holding 4 integers.\n\nYou can also initialize it with values directly:\n`int[][] numbers = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };`\n\nTo access an element, you need two indices: one for the row and one for the column. For example, `numbers[1][2]` would access the element in the second row, third column, which is `6`.",
+    "practice_questions": [
+        {
+            "question": "How do you declare a 2D integer array named `grid`?",
+            "options": ["`int grid[][];`", "`int[][] grid;`", "`int[] grid[];`", "All of the above"],
+            "answer": "All of the above"
+        },
+        {
+            "question": "In a 2D array `int[][] data = new int[3][5];`, what does the `3` represent?",
+            "options": ["The number of columns", "The number of rows", "The total number of elements", "The size of each element"],
+            "answer": "The number of rows"
+        },
+        {
+            "question": "Given `int[][] matrix = { {1, 2}, {3, 4} };`, what is the value of `matrix[1][0]`?",
+            "options": ["1", "2", "3", "4"],
+            "answer": "3"
+        },
+        {
+            "question": "How would you get the number of rows in a 2D array `board`?",
+            "options": ["`board.length`", "`board[0].length`", "`board.rows`", "`board.size()`"],
+            "answer": "`board.length`"
+        },
+        {
+            "question": "How would you get the number of columns in the first row of a 2D array `board`?",
+            "options": ["`board.length`", "`board[0].length`", "`board.columns`", "`board[].length`"],
+            "answer": "`board[0].length`"
+        },
+        {
+            "question": "A 2D array in Java is essentially an...",
+            "options": ["Array of objects", "Array of arrays", "A grid-like data structure only", "A list of pointers"],
+            "answer": "Array of arrays"
+        },
+        {
+            "question": "Can the rows in a 2D Java array have different lengths (a 'jagged' array)?",
+            "options": ["No, all rows must have the same length", "Yes, this is possible", "Only if it is an array of Strings", "It will cause a runtime error"],
+            "answer": "Yes, this is possible"
+        },
+        {
+            "question": "Which pair of loops is typically used to iterate over all elements of a 2D array?",
+            "options": ["A single `for` loop", "Two separate `while` loops", "Nested `for` loops", "A `do-while` loop inside a `for` loop"],
+            "answer": "Nested `for` loops"
+        },
+        {
+            "question": "What is the first index in a 2D array for?",
+            "options": ["The column", "The depth", "The row", "The element value"],
+            "answer": "The row"
+        },
+        {
+            "question": "To create a 3x3 tic-tac-toe board, you would declare it as:",
+            "options": ["`char[][] board = new char[3][3];`", "`char[] board = new char[9];`", "`char board = new char[3][3];`", "`char[][] board = new char[2][2];`"],
+            "answer": "`char[][] board = new char[3][3];`"
+        }
+    ]
+  },
+  {
+    "levelno": 9,
+    "topic": "Methods",
+    "theory": "A method is a block of code that performs a specific task and only runs when it is called. Methods allow you to reuse code without retyping it. They are defined within a class.\n\nA method declaration has several components:\n- **Return Type:** The data type of the value the method returns (e.g., `int`, `String`). If the method doesn't return anything, you use the keyword `void`.\n- **Method Name:** A descriptive name for the method.\n- **Parameters:** A list of variables passed into the method (optional).\n- **Method Body:** The code to be executed, enclosed in curly braces `{}`.\n\nExample of a simple method:\n`public int add(int a, int b) {`\n`  int sum = a + b;`\n`  return sum;`\n`}`\n\nTo use this method, you would 'call' it:\n`int result = add(5, 3); // result would be 8`",
+    "practice_questions": [
+        {
+            "question": "What is the keyword `void` used for in a method declaration?",
+            "options": ["It specifies the method has no parameters", "It specifies the method returns no value", "It specifies the method is public", "It specifies the method cannot be changed"],
+            "answer": "It specifies the method returns no value"
+        },
+        {
+            "question": "The variables listed in a method's declaration are called:",
+            "options": ["Arguments", "Properties", "Parameters", "Attributes"],
+            "answer": "Parameters"
+        },
+        {
+            "question": "How do you execute the code inside a method?",
+            "options": ["By declaring the method", "By calling the method", "By initializing the method", "By defining the method"],
+            "answer": "By calling the method"
+        },
+        {
+            "question": "What does the `return` keyword do in a method?",
+            "options": ["Stops the execution of the entire program", "Prints a value to the console", "Ends the execution of the method and optionally sends a value back", "Skips the rest of the code in the method body"],
+            "answer": "Ends the execution of the method and optionally sends a value back"
+        },
+        {
+            "question": "The values passed to a method when it is called are known as:",
+            "options": ["Parameters", "Arguments", "Variables", "Constants"],
+            "answer": "Arguments"
+        },
+        {
+            "question": "A method's signature consists of its:",
+            "options": ["Return type and name", "Name and parameter list", "Access modifier and return type", "Name and body"],
+            "answer": "Name and parameter list"
+        },
+        {
+            "question": "Can a method be defined inside another method in Java?",
+            "options": ["Yes, these are called nested methods", "Only if the inner method is static", "No, Java does not support nested methods", "Yes, but it's not good practice"],
+            "answer": "No, Java does not support nested methods"
+        },
+        {
+            "question": "What is the main purpose of using methods in programming?",
+            "options": ["To make the program run faster", "To reduce the program's memory usage", "To reuse code and make the program more organized", "To declare all variables in one place"],
+            "answer": "To reuse code and make the program more organized"
+        },
+        {
+            "question": "Which part of the method declaration is `public`?",
+            "options": ["The return type", "The access modifier", "The method name", "The parameter"],
+            "answer": "The access modifier"
+        },
+        {
+            "question": "A method that belongs to a class rather than an object is called a:",
+            "options": ["Instance method", "Static method", "Abstract method", "Final method"],
+            "answer": "Static method"
+        }
+    ]
+  },
+    {
+    "levelno": 10,
+    "topic": "Method Overloading",
+    "theory": "Method overloading allows you to define multiple methods with the same name within the same class, as long as their parameter lists are different. The difference can be in the number of parameters, the data type of parameters, or the order of the data types.\n\nThis is useful for creating methods that perform similar tasks but with different types of input. For example, you might have a method to add numbers, but you want it to work for both integers and doubles.\n\n`class Calculator {`\n`  public int add(int a, int b) {`\n`    return a + b;`\n`  }`\n`  `\n`  public double add(double a, double b) {`\n`    return a + b;`\n`  }`\n`}`\n\nJava determines which version of the `add` method to call based on the arguments you provide. `add(5, 10)` would call the integer version, while `add(3.5, 2.2)` would call the double version. The return type alone is not sufficient to overload a method.",
+    "practice_questions": [
+        {
+            "question": "What is the primary requirement for method overloading?",
+            "options": ["Methods must have the same name and same parameter list", "Methods must have the same name and different return types", "Methods must have the same name but different parameter lists", "Methods must have different names but the same functionality"],
+            "answer": "Methods must have the same name but different parameter lists"
+        },
+        {
+            "question": "Can you overload a method by only changing its return type?",
+            "options": ["Yes, as long as the return types are different", "No, this will cause a compilation error", "Only if one method is static and the other is not", "Yes, but you must use the `@Override` annotation"],
+            "answer": "No, this will cause a compilation error"
+        },
+        {
+            "question": "Which of the following is a valid way to overload a method `void display(int a)`?",
+            "options": ["`int display(int a)`", "`void display(int b)`", "`void display(double a)`", "`public void display(int a)`"],
+            "answer": "`void display(double a)`"
+        },
+        {
+            "question": "How does the Java compiler decide which overloaded method to call?",
+            "options": ["Based on the method's return type", "Based on the number and type of arguments passed in the call", "It always calls the first one defined in the class", "Based on the access modifier of the method"],
+            "answer": "Based on the number and type of arguments passed in the call"
+        },
+        {
+            "question": "Method overloading is an example of which OOP concept?",
+            "options": ["Inheritance", "Encapsulation", "Polymorphism", "Abstraction"],
+            "answer": "Polymorphism"
+        },
+        {
+            "question": "Is it possible to overload a class constructor?",
+            "options": ["No, a class can only have one constructor", "Yes, this is a common practice", "Only in abstract classes", "No, because constructors don't have return types"],
+            "answer": "Yes, this is a common practice"
+        },
+        {
+            "question": "Consider `print(int a)` and `print(int a, int b)`. This is an example of overloading based on:",
+            "options": ["Change in data type of parameters", "Change in number of parameters", "Change in return type", "Change in sequence of parameters"],
+            "answer": "Change in number of parameters"
+        },
+        {
+            "question": "Consider `calculate(int a, double b)` and `calculate(double a, int b)`. This is an example of overloading based on:",
+            "options": ["Change in return type", "Change in number of parameters", "Change in data type of parameters", "Change in sequence of data types of parameters"],
+            "answer": "Change in sequence of data types of parameters"
+        },
+        {
+            "question": "What is the main advantage of method overloading?",
+            "options": ["It makes the program run faster", "It improves code readability and reusability", "It reduces the memory footprint of the program", "It is required for creating classes"],
+            "answer": "It improves code readability and reusability"
+        },
+        {
+            "question": "Can `static` methods be overloaded?",
+            "options": ["No, only instance methods can be overloaded", "Yes, static methods can be overloaded", "Only if they are also `final`", "No, because they belong to the class"],
+            "answer": "Yes, static methods can be overloaded"
+        }
+    ]
+  },
+  {
+    "levelno": 11,
+    "topic": "Classes and Objects",
+    "theory": "Object-Oriented Programming (OOP) is a programming paradigm based on the concept of 'objects'. An object can contain data (in the form of fields, often known as attributes or properties) and code (in the form of procedures, often known as methods).\n\n- **Class:** A class is a blueprint or template for creating objects. It defines the properties and behaviors that all objects of that class will have. For example, a `Car` class would define properties like `color` and `speed`, and behaviors like `startEngine()` and `accelerate()`.\n\n- **Object:** An object is an instance of a class. When a class is defined, no memory is allocated. Memory is allocated only when an object is created from the class. You can create multiple objects from the same class. For example, `myBlueCar` and `yourRedCar` could be two distinct objects of the `Car` class.\n\nCreating an object (instantiation):\n`Car myCar = new Car();`\nNow, `myCar` is an object, and you can access its properties and methods, for example: `myCar.color = \"Blue\";` or `myCar.startEngine();`",
+    "practice_questions": [
+        {
+            "question": "What is a class in the context of OOP?",
+            "options": ["A real-world entity with state and behavior", "A blueprint or template for creating objects", "A block of code that performs a specific task", "A variable that holds data"],
+            "answer": "A blueprint or template for creating objects"
+        },
+        {
+            "question": "What is an object?",
+            "options": ["An instance of a class", "A data type", "A method", "A keyword in Java"],
+            "answer": "An instance of a class"
+        },
+        {
+            "question": "Which keyword is used to create an object from a class?",
+            "options": ["`create`", "`instance`", "`new`", "`object`"],
+            "answer": "`new`"
+        },
+        {
+            "question": "The properties or data of an object are also known as:",
+            "options": ["Methods or behaviors", "Attributes or fields", "Constructors", "Classes"],
+            "answer": "Attributes or fields"
+        },
+        {
+            "question": "The behaviors or actions of an object are represented by its:",
+            "options": ["Fields", "Variables", "Constructors", "Methods"],
+            "answer": "Methods"
+        },
+        {
+            "question": "If `Car` is a class, how would you correctly create a `Car` object named `myCar`?",
+            "options": ["`Car myCar = new Car();`", "`new Car() = myCar;`", "`Car myCar = Car();`", "`myCar = new Car;`"],
+            "answer": "`Car myCar = new Car();`"
+        },
+        {
+            "question": "The process of creating an object is called:",
+            "options": ["Declaration", "Compilation", "Inheritance", "Instantiation"],
+            "answer": "Instantiation"
+        },
+        {
+            "question": "Can you create multiple objects from a single class?",
+            "options": ["No, only one object per class is allowed", "Yes, you can create as many as you need", "Only if the class is abstract", "Yes, but they will all share the same data"],
+            "answer": "Yes, you can create as many as you need"
+        },
+        {
+            "question": "How do you access an instance variable `color` of an object `myCar`?",
+            "options": ["`myCar(color)`", "`myCar.color`", "`color.myCar`", "`Car.color`"],
+            "answer": "`myCar.color`"
+        },
+        {
+            "question": "State and behavior are the two main components of an:",
+            "options": ["Method", "Class", "Object", "Variable"],
+            "answer": "Object"
+        }
+    ]
+  },
+  {
+    "levelno": 12,
+    "topic": "Constructors",
+    "theory": "A constructor in Java is a special method that is used to initialize objects. It is called automatically when an object is created using the `new` keyword.\n\nKey properties of a constructor:\n- It must have the same name as the class.\n- It does not have an explicit return type, not even `void`.\n\nA class can have multiple constructors, as long as they have different parameter lists (this is known as constructor overloading).\n\n`class Car {`\n`  String model;`\n`  `\n`  // Constructor`\n`  public Car(String carModel) {`\n`    model = carModel; // Initialize the model property`\n`    System.out.println(\"A car of model \" + model + \" was created.\");`\n`  }`\n`}`\n\nNow, when you create an object, you must provide the required parameter:\n`Car myCar = new Car(\"Tesla Model S\");`\n\nIf you don't define any constructor, Java provides a default no-argument constructor for you.",
+    "practice_questions": [
+        {
+            "question": "What is the primary purpose of a constructor?",
+            "options": ["To create objects", "To initialize the state of an object", "To destroy objects", "To define the behavior of an object"],
+            "answer": "To initialize the state of an object"
+        },
+        {
+            "question": "Which of these is a key rule for a constructor?",
+            "options": ["It can have any name", "It must have a `void` return type", "It must have the same name as the class", "It must return an object"],
+            "answer": "It must have the same name as the class"
+        },
+        {
+            "question": "What happens if you do not define any constructor in your class?",
+            "options": ["You cannot create objects of the class", "The Java compiler provides a default, no-argument constructor", "The program will not compile", "You must create a constructor in a subclass"],
+            "answer": "The Java compiler provides a default, no-argument constructor"
+        },
+        {
+            "question": "Can a constructor have a return type?",
+            "options": ["Yes, it must return `void`", "Yes, it must return an instance of the class", "No, constructors do not have an explicit return type", "Only if it is a private constructor"],
+            "answer": "No, constructors do not have an explicit return type"
+        },
+        {
+            "question": "Having multiple constructors in the same class is an example of:",
+            "options": ["Constructor overriding", "Inheritance", "Constructor overloading", "Encapsulation"],
+            "answer": "Constructor overloading"
+        },
+        {
+            "question": "When is a constructor called?",
+            "options": ["When a class is defined", "When a method of the object is called", "When an object is created using the `new` keyword", "When the program starts"],
+            "answer": "When an object is created using the `new` keyword"
+        },
+        {
+            "question": "A constructor that takes no arguments is called a:",
+            "options": ["Default constructor", "Parameterized constructor", "No-argument constructor", "Empty constructor"],
+            "answer": "No-argument constructor"
+        },
+        {
+            "question": "Can constructors be `private`?",
+            "options": ["No, they must be `public`", "Yes, this is often used in the Singleton design pattern", "Only if the class is also `private`", "No, this will cause a compile error"],
+            "answer": "Yes, this is often used in the Singleton design pattern"
+        },
+        {
+            "question": "Which is a valid constructor declaration for a class named `Book`?",
+            "options": ["`public void Book() {}`", "`public Book() {}`", "`public construct Book() {}`", "`Book newBook() {}`"],
+            "answer": "`public Book() {}`"
+        },
+        {
+            "question": "If a class has a constructor `public Student(String name)`, how would you create an object?",
+            "options": ["`new Student();`", "`new Student(\"John\");`", "`Student.new(\"John\");`", "`Student s = new Student();`"],
+            "answer": "`new Student(\"John\");`"
+        }
+    ]
+  },
+    {
+    "levelno": 13,
+    "topic": "The 'this' Keyword",
+    "theory": "The `this` keyword in Java is a reference variable that refers to the current object. It can be used in several ways, but its most common use is to resolve ambiguity between instance variables and parameters.\n\nWhen a method parameter has the same name as an instance variable, the local parameter 'shadows' the instance variable. To refer to the instance variable, you must use `this`.\n\n`class Student {`\n`  String name;`\n`  `\n`  public Student(String name) {`\n`    // this.name refers to the instance variable`\n`    // name refers to the parameter`\n`    this.name = name;`\n`  }`\n`}`\n\nWithout `this.name`, the line `name = name;` would just assign the parameter's value to itself, leaving the instance variable unchanged. `this` can also be used to call another constructor from within a constructor (`this(...)`) or to pass the current object as an argument to another method.",
+    "practice_questions": [
+        {
+            "question": "What does the `this` keyword refer to?",
+            "options": ["The superclass object", "The current class (Class object)", "The current instance of the object", "A static context"],
+            "answer": "The current instance of the object"
+        },
+        {
+            "question": "In which context is `this` most commonly used?",
+            "options": ["To call static methods", "To distinguish between instance variables and local parameters with the same name", "To create a new object", "To check if two objects are equal"],
+            "answer": "To distinguish between instance variables and local parameters with the same name"
+        },
+        {
+            "question": "Can `this` be used inside a `static` method?",
+            "options": ["Yes, always", "Only if the class has instance variables", "No, because static methods are not associated with a specific object instance", "Yes, but it refers to the class itself"],
+            "answer": "No, because static methods are not associated with a specific object instance"
+        },
+        {
+            "question": "What is the purpose of using `this()` inside a constructor?",
+            "options": ["To create a new object", "To call another overloaded constructor in the same class", "To call the superclass constructor", "It is not a valid syntax"],
+            "answer": "To call another overloaded constructor in the same class"
+        },
+        {
+            "question": "If you use `this()` to call another constructor, where must it be placed?",
+            "options": ["Anywhere in the constructor", "As the last statement in the constructor", "As the first statement in the constructor", "Outside the constructor"],
+            "answer": "As the first statement in the constructor"
+        },
+        {
+            "question": "What is the effect of `name = name;` inside a constructor `public Person(String name)` if `name` is also an instance variable?",
+            "options": ["It correctly assigns the parameter to the instance variable", "It assigns the instance variable's value to itself", "It assigns the parameter's value to itself, leaving the instance variable unchanged", "It causes a compilation error"],
+            "answer": "It assigns the parameter's value to itself, leaving the instance variable unchanged"
+        },
+        {
+            "question": "How can you pass the current object as an argument to another method?",
+            "options": ["By using `this`", "By using `new Object()`", "By using the class name", "You cannot pass the current object"],
+            "answer": "By using `this`"
+        },
+        {
+            "question": "The `this` keyword is a...",
+            "options": ["Primitive data type", "Class name", "Reference variable", "Method name"],
+            "answer": "Reference variable"
+        },
+        {
+            "question": "Using `this` improves code...",
+            "options": ["Performance", "Clarity and reduces ambiguity", "Memory usage", "Security"],
+            "answer": "Clarity and reduces ambiguity"
+        },
+        {
+            "question": "Which of the following is a valid use of `this`?",
+            "options": ["`this.myStaticMethod()`", "`System.out.println(this);`", "`int x = this;`", "`this = new MyClass();`"],
+            "answer": "`System.out.println(this);`"
+        }
+    ]
+  },
+  {
+    "levelno": 14,
+    "topic": "Inheritance",
+    "theory": "Inheritance is one of the key pillars of OOP. It is a mechanism where one class acquires the properties (fields) and behaviors (methods) of another class. The class that inherits is called the subclass (or child class), and the class being inherited from is the superclass (or parent class).\n\nThe `extends` keyword is used to achieve inheritance.\n\n`class Animal { // Superclass`\n`  void eat() {`\n`    System.out.println(\"This animal eats food.\");`\n`  }`\n`}`\n\n`class Dog extends Animal { // Subclass`\n`  void bark() {`\n`    System.out.println(\"The dog barks.\");`\n`  }`\n`}`\n\nNow, an object of the `Dog` class can use both its own methods and the methods of its parent:\n`Dog myDog = new Dog();`\n`myDog.eat();  // Inherited from Animal`\n`myDog.bark(); // Defined in Dog`\n\nInheritance promotes code reusability and establishes an 'is-a' relationship (e.g., a Dog 'is-a' Animal).",
+    "practice_questions": [
+        {
+            "question": "Which keyword is used for a class to inherit from another class?",
+            "options": ["`implements`", "`inherits`", "`extends`", "`super`"],
+            "answer": "`extends`"
+        },
+        {
+            "question": "The class being inherited from is called the:",
+            "options": ["Subclass", "Child class", "Derived class", "Superclass"],
+            "answer": "Superclass"
+        },
+        {
+            "question": "The class that inherits from another class is called the:",
+            "options": ["Parent class", "Superclass", "Base class", "Subclass"],
+            "answer": "Subclass"
+        },
+        {
+            "question": "What is the main benefit of inheritance?",
+            "options": ["Code reusability", "Faster execution", "Reduced memory usage", "Improved security"],
+            "answer": "Code reusability"
+        },
+        {
+            "question": "Inheritance represents which kind of relationship?",
+            "options": ["A 'has-a' relationship", "An 'is-a' relationship", "A 'uses-a' relationship", "A 'part-of' relationship"],
+            "answer": "An 'is-a' relationship"
+        },
+        {
+            "question": "Can a class in Java extend multiple other classes (multiple inheritance)?",
+            "options": ["Yes, using the `extends` keyword with a comma-separated list", "No, Java does not support multiple inheritance for classes", "Only if the parent classes are abstract", "Yes, but it's not recommended"],
+            "answer": "No, Java does not support multiple inheritance for classes"
+        },
+        {
+            "question": "What is the keyword `super` used for in the context of inheritance?",
+            "options": ["To refer to the current object", "To create an instance of the subclass", "To call the constructor or methods of the superclass", "To declare a class as final"],
+            "answer": "To call the constructor or methods of the superclass"
+        },
+        {
+            "question": "If a method in a subclass has the same signature as a method in the superclass, this is called:",
+            "options": ["Method overloading", "Method overriding", "Method hiding", "Method duplicating"],
+            "answer": "Method overriding"
+        },
+        {
+            "question": "Can a subclass access `private` members of its superclass?",
+            "options": ["Yes, always", "Only if they are in the same package", "No, `private` members are not inherited", "Yes, by using the `super` keyword"],
+            "answer": "No, `private` members are not inherited"
+        },
+        {
+            "question": "What is the root class of all classes in Java?",
+            "options": ["`Main`", "`System`", "`Object`", "`Class`"],
+            "answer": "`Object`"
+        }
+    ]
+  },
+  {
+    "levelno": 15,
+    "topic": "Polymorphism and Method Overriding",
+    "theory": "Polymorphism, another pillar of OOP, means 'many forms'. In Java, it allows us to perform a single action in different ways. The most common form of polymorphism is method overriding.\n\nMethod overriding occurs when a subclass provides a specific implementation for a method that is already defined in its superclass. The method in the subclass must have the same name, same parameters, and same return type as the one in the parent class.\n\n`class Animal {`\n`  public void makeSound() {`\n`    System.out.println(\"Animal makes a sound\");`\n`  }`\n`}`\n\n`class Cat extends Animal {`\n`  @Override // Annotation to indicate overriding`\n`  public void makeSound() {`\n`    System.out.println(\"The cat says: Meow\");`\n`  }`\n`}`\n\nNow, if you have a `Cat` object and call `makeSound()`, the version from the `Cat` class will be executed, not the one from the `Animal` class. This allows for more specific behavior in subclasses.",
+    "practice_questions": [
+        {
+            "question": "What does 'Polymorphism' literally mean?",
+            "options": ["Many classes", "Many forms", "Many methods", "Many objects"],
+            "answer": "Many forms"
+        },
+        {
+            "question": "What is method overriding?",
+            "options": ["Creating multiple methods with the same name but different parameters in the same class", "Providing a specific implementation in a subclass for a method defined in its superclass", "Hiding a method from a superclass", "Making a method `final` so it cannot be changed"],
+            "answer": "Providing a specific implementation in a subclass for a method defined in its superclass"
+        },
+        {
+            "question": "Which of these is a requirement for method overriding?",
+            "options": ["The method must have a different name", "The method must have a different parameter list", "The method must have the same signature (name and parameters) as in the superclass", "The method must have a different return type"],
+            "answer": "The method must have the same signature (name and parameters) as in the superclass"
+        },
+        {
+            "question": "What is the purpose of the `@Override` annotation?",
+            "options": ["It is required to override a method", "It tells the compiler to check if the method is correctly overriding a superclass method", "It makes the method run faster", "It changes the method's behavior"],
+            "answer": "It tells the compiler to check if the method is correctly overriding a superclass method"
+        },
+        {
+            "question": "Can a `static` method be overridden?",
+            "options": ["Yes, just like instance methods", "Only if the subclass is in the same package", "No, static methods cannot be overridden (they can be hidden)", "Yes, but it's called static overriding"],
+            "answer": "No, static methods cannot be overridden (they can be hidden)"
+        },
+        {
+            "question": "Can a `final` method be overridden?",
+            "options": ["Yes, but it's not recommended", "No, a `final` method cannot be overridden", "Only in an abstract class", "Yes, if you use the `@Override` annotation"],
+            "answer": "No, a `final` method cannot be overridden"
+        },
+        {
+            "question": "If `Dog extends Animal` and both have a `makeSound()` method, what will `Animal myAnimal = new Dog(); myAnimal.makeSound();` execute?",
+            "options": ["The `makeSound()` method from the `Animal` class", "The `makeSound()` method from the `Dog` class", "It will cause a compilation error", "It depends on the JVM"],
+            "answer": "The `makeSound()` method from the `Dog` class"
+        },
+        {
+            "question": "The ability of an object reference to refer to objects of different types is called:",
+            "options": ["Static binding", "Dynamic binding (or late binding)", "Early binding", "Compile-time polymorphism"],
+            "answer": "Dynamic binding (or late binding)"
+        },
+        {
+            "question": "Method overriding is resolved at:",
+            "options": ["Compile-time", "Runtime", "Both compile-time and runtime", "Link-time"],
+            "answer": "Runtime"
+        },
+        {
+            "question": "Can the overriding method in the subclass have a more restrictive access modifier (e.g., `public` in superclass, `protected` in subclass)?",
+            "options": ["Yes, it's allowed", "Only for `void` methods", "No, it must be the same or less restrictive", "Only for `static` methods"],
+            "answer": "No, it must be the same or less restrictive"
+        }
+    ]
+  },
+    {
+    "levelno": 16,
+    "topic": "Abstraction",
+    "theory": "Abstraction is an OOP concept that focuses on hiding the complex implementation details and showing only the essential features of an object. It helps in managing complexity. In Java, abstraction is achieved using abstract classes and interfaces.\n\nAn **abstract class** is a restricted class that cannot be used to create objects (it cannot be instantiated). It acts as a blueprint for other classes. An abstract class is declared with the `abstract` keyword.\n\nAn **abstract method** is a method that is declared without an implementation (without braces, and followed by a semicolon). It can only exist within an abstract class.\n\n`abstract class Shape {`\n`  // Abstract method`\n`  public abstract double getArea();`\n`}`\n\nAny subclass that extends an abstract class must either implement all of the abstract methods from the parent, or be declared abstract itself. This forces subclasses to provide their own specific implementation for the required behaviors.",
+    "practice_questions": [
+        {
+            "question": "What is the main goal of abstraction?",
+            "options": ["To show all the details of an object", "To hide complex implementation details and show only essential features", "To reuse code from another class", "To bundle data and methods together"],
+            "answer": "To hide complex implementation details and show only essential features"
+        },
+        {
+            "question": "Which keyword is used to declare an abstract class?",
+            "options": ["`implements`", "`interface`", "`abstract`", "`final`"],
+            "answer": "`abstract`"
+        },
+        {
+            "question": "Can you create an instance (object) of an abstract class?",
+            "options": ["Yes, using the `new` keyword", "No, an abstract class cannot be instantiated", "Only if it has a constructor", "Yes, but it will have no methods"],
+            "answer": "No, an abstract class cannot be instantiated"
+        },
+        {
+            "question": "What is an abstract method?",
+            "options": ["A method with a full implementation", "A method declared with the `final` keyword", "A method that has no implementation body", "A method that can only be called from a subclass"],
+            "answer": "A method that has no implementation body"
+        },
+        {
+            "question": "If a class contains at least one abstract method, what must be true about the class?",
+            "options": ["The class must be declared `final`", "The class must be declared `abstract`", "The class must be declared `public`", "The class cannot have a constructor"],
+            "answer": "The class must be declared `abstract`"
+        },
+        {
+            "question": "What must a non-abstract subclass do if it inherits from an abstract class?",
+            "options": ["It must ignore the abstract methods", "It must declare all inherited methods as `final`", "It must provide an implementation for all abstract methods of the superclass", "It cannot have its own methods"],
+            "answer": "It must provide an implementation for all abstract methods of the superclass"
+        },
+        {
+            "question": "Can an abstract class have a constructor?",
+            "options": ["No, because you can't create an object from it", "Yes, it can be called from a subclass constructor using `super()`", "Only if it is a `public` abstract class", "No, this will cause a compile error"],
+            "answer": "Yes, it can be called from a subclass constructor using `super()`"
+        },
+        {
+            "question": "Can an abstract class have non-abstract (concrete) methods?",
+            "options": ["No, all methods in an abstract class must be abstract", "Only if they are `static`", "Yes, an abstract class can have a mix of abstract and non-abstract methods", "No, this violates the principle of abstraction"],
+            "answer": "Yes, an abstract class can have a mix of abstract and non-abstract methods"
+        },
+        {
+            "question": "Which of the following is a primary way to achieve abstraction in Java?",
+            "options": ["Method overloading", "Using `private` variables", "Loops and conditional statements", "Abstract classes and interfaces"],
+            "answer": "Abstract classes and interfaces"
+        },
+        {
+            "question": "An abstract method declaration ends with a:",
+            "options": ["`{}` (curly braces)", "`;` (semicolon)", "`()` (parentheses)", "`:` (colon)"],
+            "answer": "`;` (semicolon)"
+        }
+    ]
+  },
+  {
+    "levelno": 17,
+    "topic": "Encapsulation",
+    "theory": "Encapsulation is the practice of bundling the data (instance variables) and the methods that operate on that data into a single unit, i.e., a class. It is a protective shield that prevents the data from being accessed directly from outside the class.\n\nTo achieve encapsulation:\n1. Declare the instance variables of a class as `private`. This makes them inaccessible from outside the class.\n2. Provide public 'setter' and 'getter' methods to modify and view the variable values.\n\n`class Person {`\n`  private String name; // private data`\n`  `\n`  // public getter method`\n`  public String getName() {`\n`    return name;`\n`  }`\n`  `\n`  // public setter method`\n`  public void setName(String newName) {`\n`    this.name = newName;`\n`  }`\n`}`\nThis gives you more control over your data. For example, you can add validation logic inside the setter method (e.g., ensure `newName` is not empty) before changing the value of the `name` variable.",
+    "practice_questions": [
+        {
+            "question": "What is the primary goal of encapsulation?",
+            "options": ["To hide implementation details", "To bundle data and the methods that work on that data together", "To allow inheritance", "To achieve polymorphism"],
+            "answer": "To bundle data and the methods that work on that data together"
+        },
+        {
+            "question": "How is encapsulation typically achieved in Java?",
+            "options": ["By making all class members `public`", "By declaring instance variables as `private` and providing `public` getter/setter methods", "By using the `abstract` keyword", "By using nested classes"],
+            "answer": "By declaring instance variables as `private` and providing `public` getter/setter methods"
+        },
+        {
+            "question": "Which access modifier is used to restrict access to a variable to the class it is declared in?",
+            "options": ["`public`", "`protected`", "`private`", "`default`"],
+            "answer": "`private`"
+        },
+        {
+            "question": "Public methods used to access and modify private data fields are called:",
+            "options": ["Constructors", "Destructors", "Accessors and Mutators (Getters and Setters)", "Static methods"],
+            "answer": "Accessors and Mutators (Getters and Setters)"
+        },
+        {
+            "question": "A method that is used to retrieve the value of a private variable is called a:",
+            "options": ["Setter", "Constructor", "Getter", "Mutator"],
+            "answer": "Getter"
+        },
+        {
+            "question": "What is a major advantage of encapsulation?",
+            "options": ["It makes the code run faster", "It increases control over the data and allows for validation logic", "It reduces the amount of code you have to write", "It allows multiple inheritance"],
+            "answer": "It increases control over the data and allows for validation logic"
+        },
+        {
+            "question": "Encapsulation is also known as:",
+            "options": ["Data hiding", "Polymorphism", "Inheritance", "Abstraction"],
+            "answer": "Data hiding"
+        },
+        {
+            "question": "A method used to change the value of a private variable is called a:",
+            "options": ["Accessor", "Getter", "Retriever", "Setter"],
+            "answer": "Setter"
+        },
+        {
+            "question": "By convention, a getter method for a boolean variable `isAvailable` would be named:",
+            "options": ["`getIsAvailable()`", "`isAvailable()`", "`readAvailable()`", "`checkAvailable()`"],
+            "answer": "`isAvailable()`"
+        },
+        {
+            "question": "If a class is properly encapsulated, how should other classes interact with its data?",
+            "options": ["By directly accessing the private variables", "Through its public methods (getters and setters)", "By creating a subclass", "They cannot interact with its data"],
+            "answer": "Through its public methods (getters and setters)"
+        }
+    ]
+  },
+  {
+    "levelno": 18,
+    "topic": "Interfaces",
+    "theory": "An interface is a completely 'abstract class' that is used to group related methods with empty bodies. It's a way to achieve full abstraction. A class can 'implement' an interface, thereby inheriting the abstract methods of the interface.\n\nKey features of an interface:\n- All methods in an interface are implicitly `public` and `abstract`.\n- All variables are implicitly `public`, `static`, and `final` (constants).\n- A class uses the `implements` keyword to use an interface.\n- A class can implement multiple interfaces, which is how Java achieves a form of multiple inheritance.\n\n`interface Drawable {`\n`  void draw(); // implicitly public abstract`\n`}`\n\n`class Circle implements Drawable {`\n`  public void draw() {`\n`    System.out.println(\"Drawing a circle\");`\n`  }`\n`}`\nInterfaces define a 'contract' for what a class can do. Any class that implements `Drawable` must provide an implementation for the `draw()` method.",
+    "practice_questions": [
+        {
+            "question": "Which keyword is used by a class to use an interface?",
+            "options": ["`extends`", "`inherits`", "`implements`", "`uses`"],
+            "answer": "`implements`"
+        },
+        {
+            "question": "What is a key difference between an abstract class and an interface?",
+            "options": ["An interface can have instance variables", "An abstract class can have implemented (non-abstract) methods, while an interface (before Java 8) could not", "An abstract class cannot have a constructor", "A class can extend multiple abstract classes"],
+            "answer": "An abstract class can have implemented (non-abstract) methods, while an interface (before Java 8) could not"
+        },
+        {
+            "question": "Methods in an interface are implicitly...",
+            "options": ["`private` and `final`", "`public` and `abstract`", "`protected` and `static`", "`public` and `final`"],
+            "answer": "`public` and `abstract`"
+        },
+        {
+            "question": "Variables declared in an interface are implicitly...",
+            "options": ["`private` and `transient`", "`protected`", "`instance variables`", "`public`, `static`, and `final`"],
+            "answer": "`public`, `static`, and `final`"
+        },
+        {
+            "question": "Can a class implement multiple interfaces?",
+            "options": ["No, a class can only implement one interface", "Yes, this is how Java supports a form of multiple inheritance", "Only if the interfaces have no methods", "No, this will cause a compilation error"],
+            "answer": "Yes, this is how Java supports a form of multiple inheritance"
+        },
+        {
+            "question": "What must a class do if it implements an interface?",
+            "options": ["It must extend the `Object` class", "It must provide an implementation for all the methods of the interface", "It must declare all its variables as `final`", "It must have a private constructor"],
+            "answer": "It must provide an implementation for all the methods of the interface"
+        },
+        {
+            "question": "Can you create an instance (object) of an interface?",
+            "options": ["Yes, using `new InterfaceName();`", "Only if it has no methods", "No, an interface cannot be instantiated directly", "Yes, but it is not recommended"],
+            "answer": "No, an interface cannot be instantiated directly"
+        },
+        {
+            "question": "An interface is used to define a...",
+            "options": ["Blueprint for an object", "Set of related constants", "Contract of behaviors", "Parent class"],
+            "answer": "Contract of behaviors"
+        },
+        {
+            "question": "Can an interface extend another interface?",
+            "options": ["No, interfaces cannot be part of an inheritance hierarchy", "Yes, using the `extends` keyword", "Yes, using the `implements` keyword", "No, only classes can use inheritance"],
+            "answer": "Yes, using the `extends` keyword"
+        },
+        {
+            "question": "What is a functional interface?",
+            "options": ["An interface with no methods", "An interface with exactly one abstract method", "An interface with only `static` methods", "An interface used for mathematical functions"],
+            "answer": "An interface with exactly one abstract method"
+        }
+    ]
+  },
+  {
+    "levelno": 19,
+    "topic": "Exception Handling",
+    "theory": "Exception handling is a powerful mechanism to handle runtime errors, such as ClassNotFoundException, IOException, SQLException, etc. It ensures that the normal flow of the application is not disrupted when an error occurs.\n\nThe main components are the `try`, `catch`, and `finally` blocks.\n\n- **try:** The `try` block contains the set of statements where an exception can occur.\n- **catch:** If an exception occurs in the `try` block, the `catch` block is executed. It 'catches' the exception and allows you to handle it gracefully.\n- **finally:** The `finally` block is always executed, whether an exception occurred or not. It's often used for cleanup tasks, like closing a file or a network connection.\n\n`try {`\n`  int result = 10 / 0; // This will cause an ArithmeticException`\n`} catch (ArithmeticException e) {`\n`  System.out.println(\"Error: Cannot divide by zero.\");`\n`} finally {`\n`  System.out.println(\"This block always executes.\");`\n`}`",
+    "practice_questions": [
+        {
+            "question": "Which block of code is used to enclose code that might throw an exception?",
+            "options": ["`catch`", "`finally`", "`throw`", "`try`"],
+            "answer": "`try`"
+        },
+        {
+            "question": "Which block is executed if an exception is thrown in the `try` block?",
+            "options": ["`finally`", "`catch`", "`throws`", "The program terminates"],
+            "answer": "`catch`"
+        },
+        {
+            "question": "Which block is always executed after the `try-catch` blocks, regardless of whether an exception occurred?",
+            "options": ["`finally`", "`default`", "`always`", "`execute`"],
+            "answer": "`finally`"
+        },
+        {
+            "question": "What type of exception is thrown by the code `int result = 10 / 0;`?",
+            "options": ["`NumberFormatException`", "`NullPointerException`", "`ArithmeticException`", "`ArrayIndexOutOfBoundsException`"],
+            "answer": "`ArithmeticException`"
+        },
+        {
+            "question": "The `throws` keyword is used to:",
+            "options": ["Manually throw an exception", "Declare the exceptions that can be thrown by a method", "Catch an exception", "Create a custom exception"],
+            "answer": "Declare the exceptions that can be thrown by a method"
+        },
+        {
+            "question": "Which class is at the top of the Java exception hierarchy?",
+            "options": ["`Exception`", "`Error`", "`Throwable`", "`RuntimeException`"],
+            "answer": "`Throwable`"
+        },
+        {
+            "question": "Is it mandatory to have a `catch` block after a `try` block?",
+            "options": ["Yes, always", "No, you can have a `finally` block instead", "Only if the `try` block can throw a checked exception", "No, a `try` block can stand alone"],
+            "answer": "No, you can have a `finally` block instead"
+        },
+        {
+            "question": "What is the difference between checked and unchecked exceptions?",
+            "options": ["Checked exceptions are errors, unchecked are not", "Checked exceptions must be handled at compile-time, unchecked occur at runtime", "There is no difference", "Unchecked exceptions are more severe"],
+            "answer": "Checked exceptions must be handled at compile-time, unchecked occur at runtime"
+        },
+        {
+            "question": "The `throw` keyword is used to:",
+            "options": ["Catch an exception", "Declare an exception", "Create an instance of an exception and manually throw it", "Handle an exception"],
+            "answer": "Create an instance of an exception and manually throw it"
+        },
+        {
+            "question": "What is the purpose of the `finally` block?",
+            "options": ["To handle exceptions", "To contain code that may cause exceptions", "To execute cleanup code like closing resources", "To re-throw an exception"],
+            "answer": "To execute cleanup code like closing resources"
+        }
+    ]
+  },
+  {
+    "levelno": 20,
+    "topic": "Java Collections Framework",
+    "theory": "The Java Collections Framework provides a set of interfaces and classes to represent and manage groups of objects. It offers pre-packaged data structures and algorithms, saving you from having to write them from scratch.\n\nOne of the most commonly used collection classes is `ArrayList`. An `ArrayList` is a resizable array. Unlike a standard array, its size can grow and shrink dynamically as you add or remove elements.\n\nTo use it, you must first import it: `import java.util.ArrayList;`\n\n`// Create an ArrayList of Strings`\n`ArrayList<String> names = new ArrayList<>();`\n\n`// Add elements`\n`names.add(\"Alice\");`\n`names.add(\"Bob\");`\n\n`// Access an element`\n`String firstName = names.get(0); // Gets \"Alice\"`\n\n`// Get size`\n`int count = names.size(); // Returns 2`\n\nThe Collections Framework also includes other useful structures like `LinkedList`, `HashMap`, and `HashSet`, each with its own specific use cases.",
+    "practice_questions": [
+        {
+            "question": "What is the primary advantage of an `ArrayList` over a standard array?",
+            "options": ["It is faster for accessing elements", "It has a fixed size", "It has a dynamic size that can grow or shrink", "It can store elements of different data types"],
+            "answer": "It has a dynamic size that can grow or shrink"
+        },
+        {
+            "question": "Which method is used to get the number of elements in an `ArrayList`?",
+            "options": ["`.length`", "`.length()`", "`.size()`", "`.capacity()`"],
+            "answer": "`.size()`"
+        },
+        {
+            "question": "Which method is used to add an element to an `ArrayList`?",
+            "options": ["`.add()`", "`.put()`", "`.insert()`", "`.push()`"],
+            "answer": "`.add()`"
+        },
+        {
+            "question": "Which collection class stores elements in a key-value pair format?",
+            "options": ["`ArrayList`", "`HashSet`", "`LinkedList`", "`HashMap`"],
+            "answer": "`HashMap`"
+        },
+        {
+            "question": "Which collection does not allow duplicate elements?",
+            "options": ["`ArrayList`", "`LinkedList`", "`Set`", "`List`"],
+            "answer": "`Set`"
+        },
+        {
+            "question": "How do you access the element at index `i` in an `ArrayList` named `list`?",
+            "options": ["`list[i]`", "`list.get(i)`", "`list.access(i)`", "`list.element(i)`"],
+            "answer": "`list.get(i)`"
+        },
+        {
+            "question": "What is the root interface of the Java Collections Framework hierarchy?",
+            "options": ["`List`", "`Set`", "`Collection`", "`Map`"],
+            "answer": "`Collection`"
+        },
+        {
+            "question": "Which is generally faster for adding and removing elements from the middle of the collection?",
+            "options": ["`ArrayList`", "`Array`", "`LinkedList`", "`HashSet`"],
+            "answer": "`LinkedList`"
+        },
+        {
+            "question": "Which of these correctly creates an `ArrayList` to store integers?",
+            "options": ["`ArrayList<int> list = new ArrayList<>();`", "`ArrayList<Integer> list = new ArrayList<>();`", "`ArrayList list = new ArrayList<int>();`", "`ArrayList<Integer> list = new ArrayList<int>();`"],
+            "answer": "`ArrayList<Integer> list = new ArrayList<>();`"
+        },
+        {
+            "question": "The `Map` interface stores elements as:",
+            "options": ["An ordered sequence of items", "A set of unique items", "Key-value pairs", "A last-in, first-out stack"],
+            "answer": "Key-value pairs"
+        }
+    ]
   }
-  
+]

@@ -1,6 +1,1143 @@
-{
+[
+  {
     "levelno": 1,
-    "theory": "In Python, variables are created when you first assign them a value. Unlike Java or C++, you don’t need to declare a type — Python automatically figures it out. This makes Python dynamically typed and flexible. For instance, you can write `age = 25` and Python will treat it as an integer, or `name = 'Alice'` and Python will treat it as a string.\n\nVariables in Python don’t need explicit memory management. They are references to objects stored in memory, and Python’s garbage collector automatically frees unused memory. This makes it beginner-friendly and reduces programming errors.\n\nPython variable names must follow certain rules: they must start with a letter or underscore, cannot contain spaces or special characters, and are case-sensitive (`Age` and `age` are different variables). Following clear naming conventions improves readability and maintainability of your code.",
-    "practice_questions": ""
+    "topic": "Hello, World & Basic Syntax",
+    "theory": "Python is known for its simple and readable syntax. The entry point of a script is simply the first line. To print output to the console, we use the built-in `print()` function. Unlike many other languages, Python uses indentation (whitespace at the beginning of a line) to define blocks of code, such as loops or functions. Comments in Python start with a hash symbol `#`.\n\nExample of a basic program:\n`# This line is a comment`\n`print(\"Hello, World!\") # This prints the text to the console`",
+    "practice_questions": [
+      {
+        "question": "Which function is used to display output on the console in Python?",
+        "options": ["`display()`", "`cout <<`", "`print()`", "`log()`"],
+        "answer": "`print()`"
+      },
+      {
+        "question": "How do you start a single-line comment in Python?",
+        "options": ["`//`", "`/*`", "`#`", "`--`"],
+        "answer": "`#`"
+      },
+      {
+        "question": "What is used in Python to define a block of code (e.g., inside a function or loop)?",
+        "options": ["Curly braces `{}`", "Parentheses `()`", "Indentation", "The `begin` and `end` keywords"],
+        "answer": "Indentation"
+      },
+      {
+        "question": "Will this code run without an error? `print(\"Hello\") print(\"World\")`",
+        "options": ["Yes, it will print Hello and World on the same line", "Yes, it will print them on separate lines", "No, it will cause a syntax error", "It will only print Hello"],
+        "answer": "No, it will cause a syntax error"
+      },
+      {
+        "question": "What is the primary purpose of comments in code?",
+        "options": ["To make the code run faster", "To be executed by the interpreter", "To explain the code to human readers", "To store data"],
+        "answer": "To explain the code to human readers"
+      },
+      {
+        "question": "Which of the following is the correct syntax to print a message?",
+        "options": ["`print \"Hello\"`", "`print('Hello')`", "`Print(\"Hello\")`", "`echo \"Hello\"`"],
+        "answer": "`print('Hello')`"
+      },
+      {
+        "question": "What does a Python script file typically end with?",
+        "options": [".pyt", ".pt", ".exe", ".py"],
+        "answer": ".py"
+      },
+      {
+        "question": "In Python, a 'syntax error' means:",
+        "options": ["The program is too slow", "The code violates the language's grammatical rules", "The program has a logical flaw", "The program uses too much memory"],
+        "answer": "The code violates the language's grammatical rules"
+      },
+      {
+        "question": "What is the role of the Python interpreter?",
+        "options": ["To convert the code to a different language", "To read and execute the code line by line", "To check for spelling mistakes in comments", "To format the code automatically"],
+        "answer": "To read and execute the code line by line"
+      },
+      {
+        "question": "Is Python case-sensitive? (i.e., is `myVar` different from `myvar`?)",
+        "options": ["Yes", "No", "Only for function names", "Only for variable names"],
+        "answer": "Yes"
+      }
+    ]
+  },
+  {
+    "levelno": 2,
+    "topic": "Variables & Data Types",
+    "theory": "In Python, variables are created the moment you first assign a value to them. You don't need to declare the data type explicitly; this is known as **dynamic typing**. Python automatically determines the type based on the value assigned.\n\nCore data types include:\n- `int`: for whole numbers (e.g., `10`, `-200`).\n- `float`: for numbers with a decimal point (e.g., `3.14`, `-0.5`).\n- `str`: for text, enclosed in single `'` or double `\"` quotes (e.g., `'Hello'`).\n- `bool`: for logical values `True` or `False`.\n\n`age = 25           # This is an integer`\n`price = 19.99      # This is a float`\n`name = \"Alice\"       # This is a string`\n`is_active = True   # This is a boolean`",
+    "practice_questions": [
+      {
+        "question": "Which of the following correctly assigns the integer `5` to a variable named `x`?",
+        "options": ["`int x = 5`", "`x = 5`", "`x := 5`", "`let x = 5`"],
+        "answer": "`x = 5`"
+      },
+      {
+        "question": "What is dynamic typing?",
+        "options": ["You must declare the type of a variable", "The data type of a variable is determined at runtime and can change", "Variables must be dynamic", "Data types do not exist"],
+        "answer": "The data type of a variable is determined at runtime and can change"
+      },
+      {
+        "question": "Which data type would you use for the value `9.81`?",
+        "options": ["`int`", "`string`", "`bool`", "`float`"],
+        "answer": "`float`"
+      },
+      {
+        "question": "What is the data type of the value `\"False\"`?",
+        "options": ["`bool`", "`str`", "`int`", "Error"],
+        "answer": "`str`"
+      },
+      {
+        "question": "How can you check the data type of a variable `var`?",
+        "options": ["`typeof(var)`", "`type(var)`", "`var.type()`", "`datatype(var)`"],
+        "answer": "`type(var)`"
+      },
+      {
+        "question": "What is the result of `int(7.9)`?",
+        "options": ["7", "8", "7.0", "Error"],
+        "answer": "7"
+      },
+      {
+        "question": "Which of these is a valid variable name in Python?",
+        "options": ["`2_users`", "`user-name`", "`my_var`", "`global`"],
+        "answer": "`my_var`"
+      },
+      {
+        "question": "What are the two possible values for the `bool` data type?",
+        "options": ["`0` and `1`", "`'yes'` and `'no'`", "`True` and `False`", "`T` and `F`"],
+        "answer": "`True` and `False`"
+      },
+      {
+        "question": "What is the value of `is_done` after this code? `is_done = False`",
+        "options": ["A string 'False'", "The integer 0", "The boolean `False`", "null"],
+        "answer": "The boolean `False`"
+      },
+      {
+        "question": "The process of converting one data type to another is called:",
+        "options": ["Casting", "Assigning", "Declaring", "Printing"],
+        "answer": "Casting"
+      }
+    ]
+  },
+  {
+    "levelno": 3,
+    "topic": "Operators",
+    "theory": "Operators are special symbols used to perform operations on variables and values.\n\n- **Arithmetic Operators:** `+`, `-`, `*`, `/` (float division), `//` (integer division), `%` (modulus), `**` (exponent).\n- **Comparison Operators:** `==`, `!=`, `>`, `<`, `>=`, `<=`.\n- **Logical Operators:** `and`, `or`, `not`.\n\n`x = 10`\n`y = 3`\n`print(x / y)   # Prints 3.333...`\n`print(x // y)  # Prints 3`\n`print(x ** y)  # Prints 1000`\n\n`is_valid = x > 5 and y < 5 # True`",
+    "practice_questions": [
+      {
+        "question": "What is the result of `13 // 4`?",
+        "options": ["3.25", "4", "3", "1"],
+        "answer": "3"
+      },
+      {
+        "question": "What is the result of `2 ** 4`?",
+        "options": ["8", "6", "16", "24"],
+        "answer": "16"
+      },
+      {
+        "question": "Which operator checks if two values are equal?",
+        "options": ["`=`", "`is`", "`==`", "`!=`"],
+        "answer": "`==`"
+      },
+      {
+        "question": "What is the value of this expression? `True and False`",
+        "options": ["`True`", "`False`", "`1`", "Error"],
+        "answer": "`False`"
+      },
+      {
+        "question": "What is the value of this expression? `not False`",
+        "options": ["`True`", "`False`", "`0`", "Error"],
+        "answer": "`True`"
+      },
+      {
+        "question": "The `%` operator is used for:",
+        "options": ["Percentage", "Division", "Modulus (remainder)", "Exponentiation"],
+        "answer": "Modulus (remainder)"
+      },
+
+      {
+        "question": "What is the result of `10 != 10`?",
+        "options": ["`True`", "`False`", "10", "Error"],
+        "answer": "`False`"
+      },
+      {
+        "question": "Which of these is the logical OR operator?",
+        "options": ["`||`", "`|`", "`or`", "`OR`"],
+        "answer": "`or`"
+      },
+      {
+        "question": "What is the result of `5 + 3 * 2`?",
+        "options": ["16", "11", "13", "10"],
+        "answer": "11"
+      },
+      {
+        "question": "The `/` operator in Python 3 performs:",
+        "options": ["Integer division", "Float division", "Modulus", "String concatenation"],
+        "answer": "Float division"
+      }
+    ]
+  },
+  {
+    "levelno": 4,
+    "topic": "Strings",
+    "theory": "Strings are sequences of characters used to store text. They are immutable, meaning they cannot be changed after creation. You can create them with single `'` or double `\"` quotes.\n\n- **Concatenation:** Use `+` to join strings.\n- **f-Strings:** A modern way to format strings by embedding expressions inside string literals.\n- **Indexing:** Access individual characters using square brackets `[]`, starting from index 0.\n- **Slicing:** Extract a substring using a range like `[start:end]`.\n- **Methods:** Strings have many useful built-in methods, like `.upper()`, `.lower()`, `.strip()`, `.replace()`.\n\n`name = \"Alice\"`\n`age = 30`\n`greeting = f\"Hello, my name is {name} and I am {age} years old.\"`\n`print(greeting)`\n`print(name[0])       # Prints 'A'`\n`print(name.upper())  # Prints 'ALICE'`",
+    "practice_questions": [
+      {
+        "question": "What is the output of `print(\"Hello\" + \"World\")`?",
+        "options": ["`Hello World`", "`HelloWorld`", "`Hello`", "Error"],
+        "answer": "`HelloWorld`"
+      },
+      {
+        "question": "If `s = \"Python\"`, what is `s[0]`?",
+        "options": ["`\"Python\"`", "`\"P\"`", "`\"n\"`", "Error"],
+        "answer": "`\"P\"`"
+      },
+      {
+        "question": "If `s = \"Python\"`, what is `s[-1]`?",
+        "options": ["`\"P\"`", "`\"o\"`", "`\"n\"`", "Error"],
+        "answer": "`\"n\"`"
+      },
+      {
+        "question": "Which method converts a string to all uppercase letters?",
+        "options": ["`.uppercase()`", "`.to_upper()`", "`.upper()`", "`.capitalize()`"],
+        "answer": "`.upper()`"
+      },
+      {
+        "question": "What does string slicing `s[1:4]` do if `s = \"Programming\"`?",
+        "options": ["`\"Prog\"`", "`\"rog\"`", "`\"roga\"`", "`\"Pro\"`"],
+        "answer": "`\"rog\"`"
+      },
+      {
+        "question": "How do you get the length of a string `s`?",
+        "options": ["`len(s)`", "`s.length()`", "`length(s)`", "`s.size()`"],
+        "answer": "`len(s)`"
+      },
+      {
+        "question": "What is the best way to format this string? `name=\"Bob\"; age=40`",
+        "options": ["`\"Name: \" + name + \" Age: \" + str(age)`", "`f'Name: {name} Age: {age}'`", "`'Name: %s Age: %d' % (name, age)`", "All are valid, but f-string is most modern"],
+        "answer": "All are valid, but f-string is most modern"
+      },
+      {
+        "question": "Are strings in Python mutable or immutable?",
+        "options": ["Mutable (can be changed)", "Immutable (cannot be changed)", "Both", "Neither"],
+        "answer": "Immutable (cannot be changed)"
+      },
+      {
+        "question": "What is the output of `\"apple\" * 3`?",
+        "options": ["Error", "`\"appleappleapple\"`", "`\"apple3\"`", "`\"apple apple apple\"`"],
+        "answer": "`\"appleappleapple\"`"
+      },
+      {
+        "question": "Which method removes whitespace from the beginning and end of a string?",
+        "options": ["`.trim()`", "`.remove_space()`", "`.cut()`", "`.strip()`"],
+        "answer": "`.strip()`"
+      }
+    ]
+  },
+  {
+    "levelno": 5,
+    "topic": "User Input",
+    "theory": "Interacting with the user is a key part of many programs. In Python, you can get input from the user via the console using the `input()` function.\n\nThe `input()` function always returns the user's input as a **string**, even if they type in numbers. If you need to perform mathematical calculations, you must convert the input string to a numeric type like `int` or `float`.\n\n`name = input(\"Enter your name: \")`\n`age_str = input(\"Enter your age: \")`\n\n`# Convert age from string to integer`\n`age_int = int(age_str)`\n\n`print(f\"Hello, {name}! You will be {age_int + 1} next year.\")`",
+    "practice_questions": [
+      {
+        "question": "Which function is used to get input from the user in the console?",
+        "options": ["`get_input()`", "`read()`", "`input()`", "`scan()`"],
+        "answer": "`input()`"
+      },
+      {
+        "question": "What is the data type of the value returned by the `input()` function?",
+        "options": ["`int`", "`float`", "`str`", "It depends on what the user types"],
+        "answer": "`str`"
+      },
+      {
+        "question": "If a user enters `25` at an `input()` prompt, what do you need to do before you can add 1 to it?",
+        "options": ["Nothing, you can add 1 directly", "Convert it to an integer using `int()`", "Convert it to a string using `str()`", "Use a special `add()` function"],
+        "answer": "Convert it to an integer using `int()`"
+      },
+      {
+        "question": "What will this code do? `num = input(\"Enter a number: \"); print(num * 2)`",
+        "options": ["Print twice the number entered", "Print the number entered, repeated twice (e.g., '1010')", "Cause an error", "Print the number plus two"],
+        "answer": "Print the number entered, repeated twice (e.g., '1010')"
+      },
+      {
+        "question": "Which line of code correctly gets a user's age and stores it as an integer?",
+        "options": ["`age = int.input(\"Age: \")`", "`age = input.int(\"Age: \")`", "`age = int(input(\"Age: \"))`", "`age = input(\"Age: \")`"],
+        "answer": "`age = int(input(\"Age: \"))`"
+      },
+      {
+        "question": "The text inside the parentheses of `input()` is called a:",
+        "options": ["Variable", "Prompt", "Function", "Parameter"],
+        "answer": "Prompt"
+      },
+      {
+        "question": "What happens if you try to run `int(\"hello\")`?",
+        "options": ["It returns 0", "It returns `None`", "It works correctly", "It raises a `ValueError`"],
+        "answer": "It raises a `ValueError`"
+      },
+      {
+        "question": "To get a decimal number from the user, you should use:",
+        "options": ["`int(input())`", "`str(input())`", "`float(input())`", "`bool(input())`"],
+        "answer": "`float(input())`"
+      },
+      {
+        "question": "Does the `input()` function automatically add a space after the prompt?",
+        "options": ["Yes, always", "No, you should add it yourself if you want one", "Only on Windows", "Only on Linux"],
+        "answer": "No, you should add it yourself if you want one"
+      },
+      {
+        "question": "What is the purpose of the `input()` function's prompt?",
+        "options": ["To provide a default value", "To tell the user what kind of input is expected", "To store the user's input", "To validate the user's input"],
+        "answer": "To tell the user what kind of input is expected"
+      }
+    ]
+  },
+  {
+    "levelno": 6,
+    "topic": "Control Flow (If-Elif-Else)",
+    "theory": "Conditional statements allow your program to make decisions and execute different blocks of code based on whether a condition is `True` or `False`.\n\n- `if`: The block of code under `if` is executed if the condition is `True`.\n- `elif`: Short for 'else if'. It allows you to check multiple alternative conditions.\n- `else`: The block of code under `else` is executed if all preceding conditions were `False`.\n\nRemember that the code blocks are defined by their indentation.\n\n`score = 85`\n`if score >= 90:`\n`    print(\"Grade: A\")`\n`elif score >= 80:`\n`    print(\"Grade: B\")`\n`else:`\n`    print(\"Grade: C\")`",
+    "practice_questions": [
+      {
+        "question": "Which keyword is used to check an alternative condition if the first `if` is false?",
+        "options": ["`else if`", "`or`", "`elif`", "`then`"],
+        "answer": "`elif`"
+      },
+      {
+        "question": "What punctuation mark must end an `if`, `elif`, or `else` statement line?",
+        "options": ["Semicolon `;`", "Period `.`", "Colon `:`", "None"],
+        "answer": "Colon `:`"
+      },
+      {
+        "question": "What defines the block of code that belongs to an `if` statement?",
+        "options": ["Curly braces `{}`", "Parentheses `()`", "Indentation", "The `end` keyword"],
+        "answer": "Indentation"
+      },
+      {
+        "question": "Is the `else` block mandatory?",
+        "options": ["Yes, every `if` needs an `else`", "No, it is optional", "Only if you have an `elif`", "Yes, to prevent errors"],
+        "answer": "No, it is optional"
+      },
+      {
+        "question": "What will be the output? `x = 10; if x > 10: print('A'); else: print('B')`",
+        "options": ["A", "B", "AB", "No output"],
+        "answer": "B"
+      },
+      {
+        "question": "How many `elif` blocks can you have?",
+        "options": ["Only one", "A maximum of two", "As many as you need", "None"],
+        "answer": "As many as you need"
+      },
+      {
+        "question": "In an `if-elif-else` chain, how many blocks of code can be executed at most?",
+        "options": ["Zero", "One", "Two", "All of them"],
+        "answer": "One"
+      },
+      {
+        "question": "What is the boolean equivalent of an empty string `\"\"`?",
+        "options": ["`True`", "`False`", "It causes an error", "`None`"],
+        "answer": "`False`"
+      },
+      {
+        "question": "Which of these expressions is a valid condition for an `if` statement?",
+        "options": ["`age = 18`", "`age == 18`", "`age`", "Both B and C are valid"],
+        "answer": "Both B and C are valid"
+      },
+      {
+        "question": "The `else` statement executes when:",
+        "options": ["The `if` condition is true", "All preceding `if` and `elif` conditions are false", "Always", "Never"],
+        "answer": "All preceding `if` and `elif` conditions are false"
+      }
+    ]
+  },
+  {
+    "levelno": 7,
+    "topic": "Lists",
+    "theory": "A list is an ordered and mutable (changeable) collection of items. Lists are one of the most versatile data types in Python. They are created using square brackets `[]`.\n\n- **Indexing:** Access elements with `[]`, starting at index 0.\n- **Slicing:** Get a sub-list with `[start:end]`.\n- **Mutability:** You can change, add, and remove items after the list has been created.\n\nCommon list methods:\n- `.append(item)`: Adds an item to the end.\n- `.pop(index)`: Removes and returns the item at the given index (or the last item if index is not specified).\n- `.remove(item)`: Removes the first occurrence of an item.\n\n`fruits = [\"apple\", \"banana\", \"cherry\"]`\n`fruits.append(\"orange\")`\n`print(fruits[0])      # Prints \"apple\"`\n`print(fruits)       # Prints ['apple', 'banana', 'cherry', 'orange']`",
+    "practice_questions": [
+      {
+        "question": "How do you create an empty list in Python?",
+        "options": ["`list()`", "`[]`", "`{}`", "Both A and B"],
+        "answer": "Both A and B"
+      },
+      {
+        "question": "If `my_list = [10, 20, 30, 40]`, what is `my_list[1]`?",
+        "options": ["10", "20", "30", "Error"],
+        "answer": "20"
+      },
+      {
+        "question": "Which method adds an element to the end of a list?",
+        "options": ["`.add()`", "`.insert()`", "`.push()`", "`.append()`"],
+        "answer": "`.append()`"
+      },
+      {
+        "question": "Are lists mutable or immutable?",
+        "options": ["Mutable (changeable)", "Immutable (not changeable)", "Both", "Neither"],
+        "answer": "Mutable (changeable)"
+      },
+      {
+        "question": "How do you get the number of items in a list `my_list`?",
+        "options": ["`my_list.length()`", "`len(my_list)`", "`my_list.size()`", "`size(my_list)`"],
+        "answer": "`len(my_list)`"
+      },
+      {
+        "question": "If `my_list = [1, 2, 3]`, what does `my_list.pop()` do?",
+        "options": ["Removes `1` and returns it", "Removes `3` and returns it", "Causes an error", "Empties the list"],
+        "answer": "Removes `3` and returns it"
+      },
+      {
+        "question": "Can a single list contain items of different data types?",
+        "options": ["No, all items must be the same type", "Yes, a list can hold integers, strings, etc. together", "Only if it is a list of lists", "No, it will cause a TypeError"],
+        "answer": "Yes, a list can hold integers, strings, etc. together"
+      },
+      {
+        "question": "What does `my_list[-1]` refer to?",
+        "options": ["The first element", "The last element", "The second element", "An error"],
+        "answer": "The last element"
+      },
+      {
+        "question": "How can you check if an item `x` is in a list `my_list`?",
+        "options": ["`my_list.contains(x)`", "`x in my_list`", "`my_list.find(x)`", "`x.exists(my_list)`"],
+        "answer": "`x in my_list`"
+      },
+      {
+        "question": "What is the result of `[1, 2] + [3, 4]`?",
+        "options": ["`[4, 6]`", "`[1, 2, 3, 4]`", "`[[1, 2], [3, 4]]`", "Error"],
+        "answer": "`[1, 2, 3, 4]`"
+      }
+    ]
+  },
+  {
+    "levelno": 8,
+    "topic": "Loops (for)",
+    "theory": "A `for` loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).\n\nYou can loop directly over the items of a list:\n`fruits = [\"apple\", \"banana\", \"cherry\"]`\n`for fruit in fruits:`\n`    print(fruit)`\n\nTo loop a specific number of times, you can use the `range()` function. `range(5)` generates numbers from 0 up to (but not including) 5.\n\n`for i in range(5):`\n`    print(i)  # Prints 0, 1, 2, 3, 4`",
+    "practice_questions": [
+      {
+        "question": "What is a `for` loop in Python typically used for?",
+        "options": ["Executing a block of code if a condition is true", "Executing a block of code repeatedly while a condition is true", "Iterating over a sequence of items", "Defining a function"],
+        "answer": "Iterating over a sequence of items"
+      },
+      {
+        "question": "In `for item in my_list:`, what is `item`?",
+        "options": ["The list itself", "The index of the current element", "A variable that holds the current element in each iteration", "A keyword"],
+        "answer": "A variable that holds the current element in each iteration"
+      },
+      {
+        "question": "What sequence of numbers does `range(3)` generate?",
+        "options": ["`1, 2, 3`", "`0, 1, 2`", "`0, 1, 2, 3`", "`3, 2, 1, 0`"],
+        "answer": "`0, 1, 2`"
+      },
+      {
+        "question": "How would you print the numbers 1, 2, and 3 using `range()`?",
+        "options": ["`for i in range(3): print(i)`", "`for i in range(1, 3): print(i)`", "`for i in range(1, 4): print(i)`", "`for i in range(4): print(i)`"],
+        "answer": "`for i in range(1, 4): print(i)`"
+      },
+      {
+        "question": "Can you loop through the characters of a string using a `for` loop?",
+        "options": ["No, only lists", "Yes, a string is an iterable sequence", "Only by converting it to a list first", "No, it causes an error"],
+        "answer": "Yes, a string is an iterable sequence"
+      },
+      {
+        "question": "What does `range(1, 10, 2)` produce?",
+        "options": ["`1, 3, 5, 7, 9`", "`1, 2, 3, 4, 5, 6, 7, 8, 9`", "`2, 4, 6, 8`", "`1, 10, 2`"],
+        "answer": "`1, 3, 5, 7, 9`"
+      },
+      {
+        "question": "What is an iterable?",
+        "options": ["Any variable that can be changed", "Any object that can be looped over (like a list, string, or range)", "A function that returns a list", "A number"],
+        "answer": "Any object that can be looped over (like a list, string, or range)"
+      },
+      {
+        "question": "What is the output? `for _ in range(3): print('Hi')`",
+        "options": ["`Hi Hi Hi`", "`Hi` on three separate lines", "`0 1 2`", "Error"],
+        "answer": "`Hi` on three separate lines"
+      },
+      {
+        "question": "A `for` loop in Python is also known as a:",
+        "options": ["Conditional loop", "Count-controlled loop", "Collection-controlled loop", "While loop"],
+        "answer": "Collection-controlled loop"
+      },
+      {
+        "question": "What is a 'nested loop'?",
+        "options": ["A loop inside another loop", "A loop that never ends", "A loop that iterates backwards", "A loop that iterates over two lists at once"],
+        "answer": "A loop inside another loop"
+      }
+    ]
+  },
+  {
+    "levelno": 9,
+    "topic": "Loops (while)",
+    "theory": "A `while` loop executes a block of code as long as a condition is `True`. It's used when you don't know beforehand how many times the loop needs to run.\n\nIt's crucial to have a way for the condition to eventually become `False`, otherwise you'll create an infinite loop.\n\n`count = 0`\n`while count < 5:`\n`    print(count)`\n`    count += 1  # This is essential to prevent an infinite loop`\n\nTwo important statements can be used inside loops:\n- `break`: Immediately exits the current loop.\n- `continue`: Skips the rest of the current iteration and moves to the next one.",
+    "practice_questions": [
+      {
+        "question": "A `while` loop continues to execute as long as:",
+        "options": ["A counter is less than 10", "Its condition is `True`", "Its condition is `False`", "It has not encountered a `break` statement"],
+        "answer": "Its condition is `True`"
+      },
+      {
+        "question": "What is a common cause of an infinite `while` loop?",
+        "options": ["The condition never becomes `False`", "The condition is `False` from the start", "Using a `break` statement", "The loop body is too short"],
+        "answer": "The condition never becomes `False`"
+      },
+      {
+        "question": "What does the `break` statement do?",
+        "options": ["Ends the entire program", "Skips the current iteration and continues with the next", "Exits the current loop immediately", "Pauses the loop for a short time"],
+        "answer": "Exits the current loop immediately"
+      },
+      {
+        "question": "What does the `continue` statement do?",
+        "options": ["Ends the entire program", "Skips the rest of the current iteration and moves to the next", "Exits the current loop immediately", "Restarts the loop from the beginning"],
+        "answer": "Skips the rest of the current iteration and moves to the next"
+      },
+      {
+        "question": "How many times will this loop print 'Hello'? `i = 0; while i > 3: print('Hello'); i += 1`",
+        "options": ["3", "4", "0", "Infinitely"],
+        "answer": "0"
+      },
+      {
+        "question": "What is the output? `i = 0; while i < 5: print(i); i += 1; if i == 3: break`",
+        "options": ["`0 1 2`", "`0 1 2 3`", "`0 1 2 3 4`", "`0 1`"],
+        "answer": "`0 1 2`"
+      },
+      {
+        "question": "What is the output? `i = 0; while i < 5: i += 1; if i == 3: continue; print(i)`",
+        "options": ["`1 2 4 5`", "`1 2 3 4 5`", "`1 2 4`", "`1 2`"],
+        "answer": "`1 2 4 5`"
+      },
+      {
+        "question": "A `while` loop is best used when:",
+        "options": ["You are iterating over a list", "You know exactly how many times to loop", "The number of iterations is unknown and depends on a condition", "You need to loop through a string"],
+        "answer": "The number of iterations is unknown and depends on a condition"
+      },
+      {
+        "question": "A `while` loop is also known as a:",
+        "options": ["Count-controlled loop", "Collection-controlled loop", "Condition-controlled loop", "For loop"],
+        "answer": "Condition-controlled loop"
+      },
+      {
+        "question": "What must be done to the loop control variable inside a `while` loop to avoid an infinite loop?",
+        "options": ["It must be incremented", "It must be decremented", "It must be updated in a way that will eventually make the condition false", "It must be printed"],
+        "answer": "It must be updated in a way that will eventually make the condition false"
+      }
+    ]
+  },
+  {
+    "levelno": 10,
+    "topic": "Dictionaries",
+    "theory": "A dictionary is an unordered collection of data values, used to store data values like a map. Unlike other data types that hold only a single value as an element, a dictionary holds **key:value** pairs. Keys must be unique and are typically strings or numbers.\n\nDictionaries are created with curly braces `{}`.\n\n`# Creating a dictionary`\n`person = {`\n`    \"name\": \"Alice\",`\n`    \"age\": 30,`\n`    \"city\": \"New York\"`\n`}`\n\n`# Accessing a value by its key`\n`print(person[\"name\"])  # Prints \"Alice\"`\n\n`# Adding a new key-value pair`\n`person[\"job\"] = \"Engineer\"`\n\n`# Modifying a value`\n`person[\"age\"] = 31`",
+    "practice_questions": [
+      {
+        "question": "How are items in a dictionary stored?",
+        "options": ["As a sorted list", "As key-value pairs", "As an indexed sequence", "As unique items"],
+        "answer": "As key-value pairs"
+      },
+      {
+        "question": "Which syntax is used to create an empty dictionary?",
+        "options": ["`[]`", "`()`", "`{}`", "`<>`"],
+        "answer": "`{}`"
+      },
+      {
+        "question": "If `d = {\"a\": 1, \"b\": 2}`, how do you get the value associated with the key `\"a\"`?",
+        "options": ["`d[0]`", "`d.get(\"a\")`", "`d[\"a\"]`", "Both B and C"],
+        "answer": "Both B and C"
+      },
+      {
+        "question": "What happens if you try to access a key that does not exist in a dictionary using square brackets, like `d[\"c\"]`?",
+        "options": ["It returns `None`", "It returns `0`", "It raises a `KeyError`", "It returns `False`"],
+        "answer": "It raises a `KeyError`"
+      },
+      {
+        "question": "How do you add a new key-value pair `\"c\": 3` to a dictionary `d`?",
+        "options": ["`d.append(\"c\": 3)`", "`d[\"c\"] = 3`", "`d.add(\"c\", 3)`", "`d.insert(\"c\", 3)`"],
+        "answer": "`d[\"c\"] = 3`"
+      },
+      {
+        "question": "Can a dictionary have duplicate keys?",
+        "options": ["Yes", "No, keys must be unique", "Only if the values are different", "Only for integer keys"],
+        "answer": "No, keys must be unique"
+      },
+      {
+        "question": "How do you get a list of all keys in a dictionary `d`?",
+        "options": ["`d.keys()`", "`keys(d)`", "`d.get_keys()`", "`d.values()`"],
+        "answer": "`d.keys()`"
+      },
+      {
+        "question": "How can you remove a key-value pair from a dictionary `d` using its key `\"a\"`?",
+        "options": ["`d.remove(\"a\")`", "`d.pop(\"a\")`", "`del d[\"a\"]`", "Both B and C"],
+        "answer": "Both B and C"
+      },
+      {
+        "question": "Are dictionaries ordered in modern Python (3.7+)?",
+        "options": ["No, they are always unordered", "Yes, they maintain insertion order", "They are ordered alphabetically by key", "Only if all keys are integers"],
+        "answer": "Yes, they maintain insertion order"
+      },
+      {
+        "question": "Which of these data types can be used as a dictionary key?",
+        "options": ["A list", "A string", "Another dictionary", "A set"],
+        "answer": "A string"
+      }
+    ]
+  },
+  {
+    "levelno": 11,
+    "topic": "Tuples & Sets",
+    "theory": "Python has other useful data structures besides lists and dictionaries.\n\n- **Tuple:** A tuple is an **ordered** and **immutable** (unchangeable) collection of items. They are created with round brackets `()`. Because they are immutable, they are faster than lists and can be used as keys in dictionaries.\n`my_tuple = (1, \"hello\", 3.14)`\n\n- **Set:** A set is an **unordered** and **unindexed** collection of **unique** items. They are created with curly braces `{}` (like dictionaries, but without key-value pairs). Sets are highly optimized for checking if an item is present.\n`my_set = {1, 2, 3, 2, 1} # The set will only contain {1, 2, 3}`",
+    "practice_questions": [
+      {
+        "question": "What are the main characteristics of a tuple?",
+        "options": ["Ordered and mutable", "Unordered and mutable", "Ordered and immutable", "Unordered and immutable"],
+        "answer": "Ordered and immutable"
+      },
+      {
+        "question": "Which syntax is used to create a tuple?",
+        "options": ["`[]`", "`()`", "`{}`", "`<>`"],
+        "answer": "`()`"
+      },
+      {
+        "question": "What is the key characteristic of a set?",
+        "options": ["It maintains insertion order", "It allows duplicate items", "It contains only unique items", "It is immutable"],
+        "answer": "It contains only unique items"
+      },
+      {
+        "question": "What is the result of `my_set = {1, 2, 2, 3, 4, 3}; print(my_set)`?",
+        "options": ["`{1, 2, 2, 3, 4, 3}`", "`{1, 2, 3, 4}`", "`[1, 2, 3, 4]`", "Error"],
+        "answer": "`{1, 2, 3, 4}`"
+      },
+      {
+        "question": "Can you change an element in a tuple after it's created, e.g., `my_tuple[0] = 5`?",
+        "options": ["Yes", "No, it will raise a TypeError", "Only if the element is an integer", "Yes, by using the `.set()` method"],
+        "answer": "No, it will raise a TypeError"
+      },
+      {
+        "question": "How do you add an item to a set `s`?",
+        "options": ["`s.append(item)`", "`s.add(item)`", "`s[0] = item`", "`s.insert(item)`"],
+        "answer": "`s.add(item)`"
+      },
+      {
+        "question": "Which of these data types can be a key in a dictionary?",
+        "options": ["A list", "A set", "A tuple", "Another dictionary"],
+        "answer": "A tuple"
+      },
+      {
+        "question": "Which operation is very fast with sets?",
+        "options": ["Accessing an element by index", "Slicing the set", "Checking for the presence of an item (`item in my_set`)", "Reversing the set"],
+        "answer": "Checking for the presence of an item (`item in my_set`)"
+      },
+      {
+        "question": "What is the result of `set([1, 2, 3]) - set([2, 3, 4])` (set difference)?",
+        "options": ["`{1}`", "`{4}`", "`{1, 2, 3, 4}`", "`{2, 3}`"],
+        "answer": "`{1}`"
+      },
+      {
+        "question": "How do you create an empty set?",
+        "options": ["`{}`", "`[]`", "`()`", "`set()`"],
+        "answer": "`set()`"
+      }
+    ]
+  },
+  {
+    "levelno": 12,
+    "topic": "Functions",
+    "theory": "A function is a block of code that only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result.\n\nIn Python, a function is defined using the `def` keyword, followed by the function name and parentheses `()`.\n\n`# Defining a function`\n`def greet(name):`\n`    \"\"\"This function greets the person passed in as a parameter.\"\"\"`\n`    return f\"Hello, {name}!\"`\n\n`# Calling the function`\n`message = greet(\"Alice\")`\n`print(message)  # Prints \"Hello, Alice!\"`\n\nThe string right after the function definition is called a **docstring**, which explains what the function does.",
+    "practice_questions": [
+      {
+        "question": "Which keyword is used to define a function in Python?",
+        "options": ["`function`", "`def`", "`fun`", "`define`"],
+        "answer": "`def`"
+      },
+      {
+        "question": "What is the purpose of the `return` statement in a function?",
+        "options": ["To print a value to the console", "To stop the script", "To send a value back from the function to the caller", "To declare a variable"],
+        "answer": "To send a value back from the function to the caller"
+      },
+      {
+        "question": "A variable passed into a function is called a:",
+        "options": ["Parameter (when defining), Argument (when calling)", "Return value", "Global variable", "Local variable"],
+        "answer": "Parameter (when defining), Argument (when calling)"
+      },
+      {
+        "question": "What does a function return if it doesn't have a `return` statement?",
+        "options": ["`0`", "`False`", "`None`", "It causes an error"],
+        "answer": "`None`"
+      },
+      {
+        "question": "What is a docstring?",
+        "options": ["A comment that is ignored by the interpreter", "A string literal that is the first statement in a function, used for documentation", "A variable that holds documentation", "A special type of print statement"],
+        "answer": "A string literal that is the first statement in a function, used for documentation"
+      },
+      {
+        "question": "How do you call a function named `my_function`?",
+        "options": ["`call my_function()`", "`my_function`", "`my_function()`", "`def my_function()`"],
+        "answer": "`my_function()`"
+      },
+      {
+        "question": "Variables defined inside a function are:",
+        "options": ["Global and can be accessed anywhere", "Local to that function", "Permanent", "Always integers"],
+        "answer": "Local to that function"
+      },
+      {
+        "question": "What is the primary benefit of using functions?",
+        "options": ["They make the code run faster", "They allow for code reuse and better organization", "They reduce the file size", "They are the only way to use loops"],
+        "answer": "They allow for code reuse and better organization"
+      },
+      {
+        "question": "Can a function call another function?",
+        "options": ["No", "Yes", "Only if the other function is defined in the same file", "Only if the other function has no parameters"],
+        "answer": "Yes"
+      },
+      {
+        "question": "What is recursion?",
+        "options": ["A loop that never ends", "A function that calls another function", "A function that calls itself", "A data type"],
+        "answer": "A function that calls itself"
+      }
+    ]
+  },
+  {
+    "levelno": 13,
+    "topic": "Function Arguments",
+    "theory": "Python offers flexible ways to pass arguments to functions.\n\n- **Positional Arguments:** The standard way, where arguments are matched based on their position.\n- **Keyword Arguments:** You can specify arguments by their parameter name, which allows you to pass them in any order.\n- **Default Arguments:** You can provide a default value for a parameter. If an argument for that parameter is not provided in the function call, the default value is used.\n\n`def describe_pet(pet_name, animal_type='dog'):`\n`    print(f\"I have a {animal_type} named {pet_name}.\")`\n\n`describe_pet(\"Willie\") # Uses the default 'dog'`\n`describe_pet(\"Fido\", \"dog\") # Positional arguments`\n`describe_pet(animal_type=\"hamster\", pet_name=\"Harry\") # Keyword arguments`",
+    "practice_questions": [
+      {
+        "question": "What is a keyword argument?",
+        "options": ["An argument that is a string", "An argument passed to a function by specifying the parameter name", "A special argument that cannot be changed", "The last argument passed to a function"],
+        "answer": "An argument passed to a function by specifying the parameter name"
+      },
+      {
+        "question": "Consider `def my_func(a, b):`. How would you call this using keyword arguments?",
+        "options": ["`my_func(a=1, b=2)`", "`my_func(1, 2)`", "`my_func({a:1, b:2})`", "You cannot use keyword arguments here"],
+        "answer": "`my_func(a=1, b=2)`"
+      },
+      {
+        "question": "What is a default argument?",
+        "options": ["An argument that is always 0", "An argument that is optional", "A default value for a parameter if no argument is provided", "The first argument of a function"],
+        "answer": "A default value for a parameter if no argument is provided"
+      },
+      {
+        "question": "Which of the following function definitions is valid?",
+        "options": ["`def func(a=1, b):`", "`def func(a, b=1):`", "`def func(a=1, b=1):`", "Both B and C"],
+        "answer": "Both B and C"
+      },
+      {
+        "question": "In a function call, which must come first: positional or keyword arguments?",
+        "options": ["Keyword arguments", "Positional arguments", "It doesn't matter", "They cannot be mixed"],
+        "answer": "Positional arguments"
+      },
+      {
+        "question": "What is the purpose of `*args` in a function definition?",
+        "options": ["To accept any number of keyword arguments", "To accept any number of positional arguments into a tuple", "To indicate that the function is important", "To accept only one argument"],
+        "answer": "To accept any number of positional arguments into a tuple"
+      },
+      {
+        "question": "What is the purpose of `**kwargs` in a function definition?",
+        "options": ["To accept any number of keyword arguments into a dictionary", "To accept any number of positional arguments", "To perform a multiplication operation", "To indicate the function returns a dictionary"],
+        "answer": "To accept any number of keyword arguments into a dictionary"
+      },
+      {
+        "question": "If you define `def greet(name, msg=\"Hello\"):`, what is the output of `greet(\"Bob\")`?",
+        "options": ["An error", "`Hello Bob` (assuming the function prints `msg` and `name`)", "`Bob Hello`", "`None`"],
+        "answer": "`Hello Bob` (assuming the function prints `msg` and `name`)"
+      },
+      {
+        "question": "Which of these is a valid function call for `def my_func(a, b, c=3):`?",
+        "options": ["`my_func(1, c=5, b=2)`", "`my_func(a=1, 2, 5)`", "`my_func(1, 2)`", "Both A and C"],
+        "answer": "Both A and C"
+      },
+      {
+        "question": "What is the data type of `args` when using `*args`?",
+        "options": ["List", "Dictionary", "Tuple", "Set"],
+        "answer": "Tuple"
+      }
+    ]
+  },
+  {
+    "levelno": 14,
+    "topic": "Scope",
+    "theory": "Scope refers to the region of a program where a variable can be accessed. \n\n- **Local Scope:** A variable created inside a function belongs to the local scope of that function and can only be used inside that function.\n- **Global Scope:** A variable created in the main body of the Python code is a global variable and belongs to the global scope. Global variables are available from within any scope, global and local.\n\nTo modify a global variable from within a function, you must use the `global` keyword.\n\n`x = 10  # Global variable`\n\n`def my_function():`\n`    y = 5  # Local variable`\n`    print(x) # Can read global variable`\n\n`def modify_global():`\n`    global x`\n`    x = 20 # Modify global variable`\n",
+    "practice_questions": [
+      {
+        "question": "A variable defined inside a function is said to have:",
+        "options": ["Global scope", "Local scope", "Permanent scope", "No scope"],
+        "answer": "Local scope"
+      },
+      {
+        "question": "Can a function access a global variable?",
+        "options": ["No, never", "Yes, it can read its value", "Only if the variable is an integer", "Only if the function is defined inside another function"],
+        "answer": "Yes, it can read its value"
+      },
+      {
+        "question": "What keyword must you use to modify a global variable from inside a function?",
+        "options": ["`var`", "`global`", "`let`", "`modify`"],
+        "answer": "`global`"
+      },
+      {
+        "question": "What will be the output? `x = 5; def func(): x = 10; func(); print(x)`",
+        "options": ["10", "5", "Error", "None"],
+        "answer": "5"
+      },
+      {
+        "question": "What will be the output? `x = 5; def func(): global x; x = 10; func(); print(x)`",
+        "options": ["10", "5", "Error", "None"],
+        "answer": "10"
+      },
+      {
+        "question": "What is the LEGB rule for scope resolution?",
+        "options": ["Local, External, Global, Built-in", "Local, Enclosing, Global, Built-in", "Large, Expansive, Grand, Broad", "Local, Global, External, Built-in"],
+        "answer": "Local, Enclosing, Global, Built-in"
+      },
+      {
+        "question": "A variable defined outside all functions is in:",
+        "options": ["Local scope", "No scope", "Global scope", "The built-in scope"],
+        "answer": "Global scope"
+      },
+      {
+        "question": "What happens if you try to use a local variable before it is assigned a value?",
+        "options": ["It defaults to 0", "It defaults to `None`", "It raises an `UnboundLocalError`", "It uses the value of a global variable with the same name"],
+        "answer": "It raises an `UnboundLocalError`"
+      },
+      {
+        "question": "Is it generally considered good practice to modify global variables inside functions?",
+        "options": ["Yes, it's the standard way", "No, it can make code harder to debug and understand", "It doesn't matter", "Yes, it's more efficient"],
+        "answer": "No, it can make code harder to debug and understand"
+      },
+      {
+        "question": "The `nonlocal` keyword is used to work with variables in:",
+        "options": ["Global scope", "Local scope", "Enclosing scope (for nested functions)", "Built-in scope"],
+        "answer": "Enclosing scope (for nested functions)"
+      }
+    ]
+  },
+  {
+    "levelno": 15,
+    "topic": "Intro to OOP (Classes & Objects)",
+    "theory": "Object-Oriented Programming (OOP) is a way of structuring programs so that they model real-world concepts. \n\n- **Class:** A blueprint for creating objects. It defines a set of attributes (data) and methods (functions) that the objects will have.\n- **Object:** An instance of a class.\n\nThe `__init__()` method is a special method, called a constructor, that runs when an object is created. It's used to initialize the object's attributes. The `self` parameter is a reference to the current instance of the class and is used to access variables that belong to the class.\n\n`class Dog:`\n`    def __init__(self, name, age):`\n`        self.name = name  # Instance attribute`\n`        self.age = age    # Instance attribute`\n\n`    def bark(self):`\n`        return \"Woof!\"`\n\n`# Create an object (instance) of the Dog class`\n`my_dog = Dog(\"Fido\", 5)`\n`print(my_dog.name)  # Prints \"Fido\"`",
+    "practice_questions": [
+      {
+        "question": "What is a class in Python?",
+        "options": ["An object", "A blueprint for creating objects", "A built-in function", "A data type"],
+        "answer": "A blueprint for creating objects"
+      },
+      {
+        "question": "What is the process of creating an object from a class called?",
+        "options": ["Instantiation", "Definition", "Declaration", "Initialization"],
+        "answer": "Instantiation"
+      },
+      {
+        "question": "What is the special method `__init__()` used for?",
+        "options": ["To destroy an object", "To initialize an object's attributes (constructor)", "To print the object", "To define the class"],
+        "answer": "To initialize an object's attributes (constructor)"
+      },
+      {
+        "question": "What does the `self` parameter in a method refer to?",
+        "options": ["The class itself", "A global variable", "The specific instance of the object the method was called on", "The parent class"],
+        "answer": "The specific instance of the object the method was called on"
+      },
+      {
+        "question": "How do you define a class named `Car`?",
+        "options": ["`def Car:`", "`class Car:`", "`Car():`", "`object Car:`"],
+        "answer": "`class Car:`"
+      },
+      {
+        "question": "If you have a class `Person` with `def __init__(self, name):`, how do you create an object?",
+        "options": ["`p = Person()`", "`p = Person.new(\"Alice\")`", "`p = Person(\"Alice\")`", "`p = new Person(\"Alice\")`"],
+        "answer": "`p = Person(\"Alice\")`"
+      },
+      {
+        "question": "Variables that belong to an object are called:",
+        "options": ["Global variables", "Local variables", "Class attributes", "Instance attributes"],
+        "answer": "Instance attributes"
+      },
+      {
+        "question": "Functions that belong to a class are called:",
+        "options": ["Global functions", "Methods", "Procedures", "Lambdas"],
+        "answer": "Methods"
+      },
+      {
+        "question": "Do you need to explicitly pass a value for the `self` parameter when calling a method on an object?",
+        "options": ["Yes, always", "No, Python does it automatically", "Only for the `__init__` method", "Only if there are other parameters"],
+        "answer": "No, Python does it automatically"
+      },
+      {
+        "question": "How do you access an attribute `color` of an object `my_car`?",
+        "options": ["`my_car[\"color\"]`", "`my_car(color)`", "`my_car.color`", "`color(my_car)`"],
+        "answer": "`my_car.color`"
+      }
+    ]
+  },
+  {
+    "levelno": 16,
+    "topic": "Class Attributes & Methods",
+    "theory": "Attributes in a class can be either **instance attributes** or **class attributes**.\n\n- **Instance attributes** are specific to each object. They are defined inside the `__init__()` method using `self.attribute = value`.\n- **Class attributes** are shared by all instances of the class. They are defined directly inside the class, outside of any method.\n\n`class Car:`\n`    # Class attribute (shared by all cars)`\n`    wheels = 4`\n\n`    def __init__(self, color, brand):`\n`        # Instance attributes (specific to each car)`\n`        self.color = color`\n`        self.brand = brand`\n\n`car1 = Car(\"Red\", \"Toyota\")`\n`car2 = Car(\"Blue\", \"Honda\")`\n`print(car1.wheels)  # Prints 4`\n`print(Car.wheels)   # Prints 4`",
+    "practice_questions": [
+      {
+        "question": "What is a class attribute?",
+        "options": ["An attribute specific to one instance", "An attribute shared by all instances of a class", "A local variable inside a method", "A global variable"],
+        "answer": "An attribute shared by all instances of a class"
+      },
+      {
+        "question": "What is an instance attribute?",
+        "options": ["An attribute that belongs to a specific instance of a class", "A variable shared by all instances", "A method of the class", "The name of the class"],
+        "answer": "An attribute that belongs to a specific instance of a class"
+      },
+      {
+        "question": "Where are instance attributes typically defined?",
+        "options": ["Directly inside the class, outside any method", "Inside the `__init__()` method", "Outside the class definition", "After the class is defined"],
+        "answer": "Inside the `__init__()` method"
+      },
+      {
+        "question": "How do you access a class attribute `attr` from outside the class `MyClass`?",
+        "options": ["`MyClass.attr`", "`MyClass(attr)`", "`MyClass->attr`", "You cannot access it"],
+        "answer": "`MyClass.attr`"
+      },
+      {
+        "question": "If you change a class attribute, does it affect all instances of that class?",
+        "options": ["No, only new instances", "Yes, all existing instances will see the change (unless they have their own instance attribute with the same name)", "No, it only affects the class itself", "It causes an error"],
+        "answer": "Yes, all existing instances will see the change (unless they have their own instance attribute with the same name)"
+      },
+      {
+        "question": "In the `__init__` method, what does `self.name = name` do?",
+        "options": ["Creates a class attribute", "Creates a local variable", "Creates an instance attribute", "Compares `self.name` to `name`"],
+        "answer": "Creates an instance attribute"
+      },
+      {
+        "question": "What is the first parameter of any instance method?",
+        "options": ["`cls`", "`self`", "The first data attribute", "It has no special first parameter"],
+        "answer": "`self`"
+      },
+      {
+        "question": "A method that works with the class itself rather than an instance is called a:",
+        "options": ["Instance method", "Class method (marked with `@classmethod`)", "Global function", "Private method"],
+        "answer": "Class method (marked with `@classmethod`)"
+      },
+      {
+        "question": "A method that doesn't need access to the class or instance is called a:",
+        "options": ["Instance method", "Static method (marked with `@staticmethod`)", "Class method", "Friend function"],
+        "answer": "Static method (marked with `@staticmethod`)"
+      },
+      {
+        "question": "If `car1` is an instance of `Car`, can you change the value of `car1.wheels` to 3?",
+        "options": ["No, class attributes are read-only", "Yes, but it only affects `car1` and not other instances", "Yes, and it changes `wheels` for all instances", "No, it causes an error"],
+        "answer": "Yes, but it only affects `car1` and not other instances"
+      }
+    ]
+  },
+  {
+    "levelno": 17,
+    "topic": "Inheritance",
+    "theory": "Inheritance allows us to define a class that inherits all the methods and properties from another class. \n\n- **Parent class** (or base class) is the class being inherited from.\n- **Child class** (or derived class) is the class that inherits from another class.\n\nA child class can add its own new methods and attributes, or **override** methods from the parent class.\nThe `super()` function is used to give the child class access to the parent class's methods, especially its `__init__()` method.\n\n`class Animal:`\n`    def __init__(self, name):`\n`        self.name = name`\n`    def speak(self):`\n`        return \"Some animal sound\"`\n\n`class Dog(Animal):  # Dog inherits from Animal`\n`    def speak(self):  # Overriding the speak method`\n`        return \"Woof!\"`\n\n`my_dog = Dog(\"Fido\")`\n`print(my_dog.speak())  # Prints \"Woof!\"`",
+    "practice_questions": [
+      {
+        "question": "What is inheritance?",
+        "options": ["The ability of a class to have multiple methods", "The process of a class acquiring the properties and methods of another class", "The process of hiding data", "The ability to create multiple objects"],
+        "answer": "The process of a class acquiring the properties and methods of another class"
+      },
+      {
+        "question": "In `class Dog(Animal):`, which is the child class?",
+        "options": ["`Dog`", "`Animal`", "Neither", "Both"],
+        "answer": "`Dog`"
+      },
+      {
+        "question": "The class being inherited from is called the:",
+        "options": ["Child class", "Subclass", "Derived class", "Parent class or Base class"],
+        "answer": "Parent class or Base class"
+      },
+      {
+        "question": "When a child class provides its own implementation of a parent class method, it's called:",
+        "options": ["Overloading", "Overriding", "Inheriting", "Constructing"],
+        "answer": "Overriding"
+      },
+      {
+        "question": "What is the purpose of the `super()` function?",
+        "options": ["To call methods of the child class", "To call methods of the parent class", "To create a super-powered object", "To end the program"],
+        "answer": "To call methods of the parent class"
+      },
+      {
+        "question": "Does a child class inherit the `__init__` method of its parent?",
+        "options": ["No, constructors are not inherited", "Yes, it is inherited like any other method", "Only if it is called explicitly", "Only if the parent has no other methods"],
+        "answer": "Yes, it is inherited like any other method"
+      },
+      {
+        "question": "What is method resolution order (MRO)?",
+        "options": ["The order in which methods are defined", "The order in which a method is searched for in a class hierarchy", "The order of arguments in a method call", "The number of methods in a class"],
+        "answer": "The order in which a method is searched for in a class hierarchy"
+      },
+      {
+        "question": "Does Python support multiple inheritance (a class inheriting from more than one parent)?",
+        "options": ["No", "Yes", "Only for built-in classes", "Only through special libraries"],
+        "answer": "Yes"
+      },
+      {
+        "question": "The `isinstance(obj, ClassName)` function checks if:",
+        "options": ["`obj` is the same as `ClassName`", "`obj` is an instance of `ClassName` or any of its subclasses", "`obj` has the same methods as `ClassName`", "`ClassName` is an instance of `obj`"],
+        "answer": "`obj` is an instance of `ClassName` or any of its subclasses"
+      },
+      {
+        "question": "What is the main benefit of inheritance?",
+        "options": ["It makes code run faster", "It encourages code reuse and creates a logical hierarchy", "It reduces the number of classes you need", "It simplifies debugging"],
+        "answer": "It encourages code reuse and creates a logical hierarchy"
+      }
+    ]
+  },
+  {
+    "levelno": 18,
+    "topic": "Modules & Packages",
+    "theory": "A **module** is simply a Python file with a `.py` extension. Modules allow you to logically organize your Python code. \n\nA **package** is a way of organizing related modules into a directory hierarchy.\n\nThe `import` statement is used to bring the code from one module into another. You can import the entire module, or specific functions from it.\n\nPython has a rich **standard library** with many useful built-in modules, such as `math` for mathematical functions, and `random` for generating random numbers.\n\n`# Import the entire math module`\n`import math`\n`print(math.sqrt(16))  # Prints 4.0`\n\n`# Import only the choice function from the random module`\n`from random import choice`\n`options = [\"rock\", \"paper\", \"scissors\"]`\n`print(choice(options))`",
+    "practice_questions": [
+      {
+        "question": "What is a module in Python?",
+        "options": ["A function", "A class", "A Python file with a `.py` extension containing code", "A directory of Python files"],
+        "answer": "A Python file with a `.py` extension containing code"
+      },
+      {
+        "question": "What is the keyword used to bring code from a module into your current script?",
+        "options": ["`include`", "`using`", "`import`", "`load`"],
+        "answer": "`import`"
+      },
+      {
+        "question": "If you use `import math`, how do you access the square root function?",
+        "options": ["`sqrt(16)`", "`math.sqrt(16)`", "`math->sqrt(16)`", "`math::sqrt(16)`"],
+        "answer": "`math.sqrt(16)`"
+      },
+      {
+        "question": "If you use `from math import sqrt`, how do you access the square root function?",
+        "options": ["`sqrt(16)`", "`math.sqrt(16)`", "You must use an alias", "It's not possible"],
+        "answer": "`sqrt(16)`"
+      },
+      {
+        "question": "What is the Python Standard Library?",
+        "options": ["A collection of all third-party packages", "The official Python documentation", "A collection of modules that comes with every standard Python installation", "A set of coding conventions"],
+        "answer": "A collection of modules that comes with every standard Python installation"
+      },
+      {
+        "question": "What is `pip`?",
+        "options": ["A Python keyword", "The Python interpreter", "The standard package manager for Python, used to install third-party libraries", "A built-in module for math operations"],
+        "answer": "The standard package manager for Python, used to install third-party libraries"
+      },
+      {
+        "question": "A directory containing multiple Python modules and a special `__init__.py` file is called a:",
+        "options": ["Module", "Library", "Package", "Script"],
+        "answer": "Package"
+      },
+      {
+        "question": "How can you import a module and give it a different name (alias)?",
+        "options": ["`import math as m`", "`import math rename m`", "`alias math as m`", "You cannot rename modules"],
+        "answer": "`import math as m`"
+      },
+      {
+        "question": "Which module would you use to generate a random integer?",
+        "options": ["`math`", "`sys`", "`random`", "`os`"],
+        "answer": "`random`"
+      },
+      {
+        "question": "The main benefit of using modules is:",
+        "options": ["To make your program run faster", "To organize code, improve reusability, and avoid naming conflicts", "To make your script file smaller", "To get free access to paid libraries"],
+        "answer": "To organize code, improve reusability, and avoid naming conflicts"
+      }
+    ]
+  },
+  {
+    "levelno": 19,
+    "topic": "File Handling",
+    "theory": "Python provides easy ways to work with files. The key function is `open()`, which returns a file object.\n\nThe recommended way to open a file is using the `with` statement. It ensures that the file is automatically closed when the block is exited, even if errors occur.\n\n- **Reading a file:** Use mode `'r'`. Methods include `.read()`, `.readline()`, and `.readlines()`.\n- **Writing to a file:** Use mode `'w'`. This will overwrite the file if it exists. The `.write()` method is used.\n- **Appending to a file:** Use mode `'a'`. This will add new content to the end of an existing file.\n\n`# Writing to a file`\n`with open(\"test.txt\", \"w\") as f:`\n`    f.write(\"Hello, file!\\n\")`\n\n`# Reading from a file`\n`with open(\"test.txt\", \"r\") as f:`\n`    content = f.read()`\n`    print(content)`",
+    "practice_questions": [
+      {
+        "question": "Which is the recommended way to open a file to ensure it's automatically closed?",
+        "options": ["`f = open(...); f.close()`", "`try...finally` block", "`with open(...) as f:`", "`open(...)`"],
+        "answer": "`with open(...) as f:`"
+      },
+      {
+        "question": "Which mode is used to open a file for writing, overwriting its contents if it exists?",
+        "options": ["`'r'`", "`'a'`", "`'w'`", "`'x'`"],
+        "answer": "`'w'`"
+      },
+      {
+        "question": "Which mode is used to open a file for appending new content to the end?",
+        "options": ["`'r'`", "`'a'`", "`'w'`", "`'c'`"],
+        "answer": "`'a'`"
+      },
+      {
+        "question": "Which method reads the entire content of a file into a single string?",
+        "options": ["`.readline()`", "`.readlines()`", "`.read()`", "`.getall()`"],
+        "answer": "`.read()`"
+      },
+      {
+        "question": "Which method reads a single line from a file?",
+        "options": ["`.readline()`", "`.readlines()`", "`.read()`", "`.line()`"],
+        "answer": "`.readline()`"
+      },
+      {
+        "question": "Which method reads all lines from a file into a list of strings?",
+        "options": ["`.readline()`", "`.readlines()`", "`.read()`", "`.read_list()`"],
+        "answer": "`.readlines()`"
+      },
+      {
+        "question": "What happens if you open a non-existent file in read mode `'r'`?",
+        "options": ["It creates a new empty file", "It returns `None`", "It raises a `FileNotFoundError`", "It waits for the file to be created"],
+        "answer": "It raises a `FileNotFoundError`"
+      },
+      {
+        "question": "What happens if you open a non-existent file in write mode `'w'`?",
+        "options": ["It creates the file", "It raises a `FileNotFoundError`", "It returns an error code", "It does nothing"],
+        "answer": "It creates the file"
+      },
+      {
+        "question": "The `.write()` method takes what as an argument?",
+        "options": ["A list of strings", "A single string", "An integer", "A boolean"],
+        "answer": "A single string"
+      },
+      {
+        "question": "What does the `'b'` mode modifier do, as in `'rb'` or `'wb'`?",
+        "options": ["Opens the file in 'big' mode", "Opens the file in binary mode", "Creates a backup", "Opens the file in both read and write mode"],
+        "answer": "Opens the file in binary mode"
+      }
+    ]
+  },
+  {
+    "levelno": 20,
+    "topic": "Exception Handling",
+    "theory": "Errors that occur during execution are called exceptions. If not handled, they will stop your program. Python's exception handling allows you to gracefully manage these errors.\n\n- **`try`:** The `try` block lets you test a block of code for errors.\n- **`except`:** The `except` block lets you handle the error. You can specify the type of exception to catch.\n- **`else`:** The `else` block lets you execute code when there is no error.\n- **`finally`:** The `finally` block lets you execute code, regardless of the result of the try- and except blocks.\n\n`try:`\n`    result = 10 / 0`\n`except ZeroDivisionError:`\n`    print(\"You can't divide by zero!\")`\n`finally:`\n`    print(\"This block always runs.\")`",
+    "practice_questions": [
+      {
+        "question": "Which block contains the code that might cause an exception?",
+        "options": ["`except`", "`finally`", "`try`", "`else`"],
+        "answer": "`try`"
+      },
+      {
+        "question": "Which block is executed if an exception occurs in the `try` block?",
+        "options": ["`except`", "`finally`", "`try`", "`else`"],
+        "answer": "`except`"
+      },
+      {
+        "question": "Which block is executed regardless of whether an exception occurred or not?",
+        "options": ["`except`", "`finally`", "`try`", "`else`"],
+        "answer": "`finally`"
+      },
+      {
+        "question": "What type of error does `10 / 0` raise?",
+        "options": ["`TypeError`", "`ValueError`", "`SyntaxError`", "`ZeroDivisionError`"],
+        "answer": "`ZeroDivisionError`"
+      },
+      {
+        "question": "Which block is executed only if the `try` block completes without any exceptions?",
+        "options": ["`except`", "`finally`", "`try`", "`else`"],
+        "answer": "`else`"
+      },
+      {
+        "question": "What is the keyword used to manually trigger an exception?",
+        "options": ["`throw`", "`raise`", "`except`", "`error`"],
+        "answer": "`raise`"
+      },
+      {
+        "question": "What is the purpose of a `try...except` block?",
+        "options": ["To make code run faster", "To handle runtime errors gracefully without crashing the program", "To fix syntax errors", "To write comments"],
+        "answer": "To handle runtime errors gracefully without crashing the program"
+      },
+      {
+        "question": "Can you have multiple `except` blocks for a single `try` block?",
+        "options": ["No, only one is allowed", "Yes, to handle different types of exceptions", "Only if you also have a `finally` block", "No, it's a syntax error"],
+        "answer": "Yes, to handle different types of exceptions"
+      },
+      {
+        "question": "A generic `except:` block without a specified exception type will catch:",
+        "options": ["No exceptions", "Only `SyntaxError`", "Only `TypeError`", "Any exception"],
+        "answer": "Any exception"
+      },
+      {
+        "question": "What is a `ValueError` typically raised for?",
+        "options": ["Dividing by zero", "An operation on an inappropriate data type", "Calling a function with the right type but an inappropriate value (e.g., `int('abc')`)", "Accessing an index that is out of range"],
+        "answer": "Calling a function with the right type but an inappropriate value (e.g., `int('abc')`)"
+      }
+    ]
   }
-  
+]

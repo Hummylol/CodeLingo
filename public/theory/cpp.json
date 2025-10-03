@@ -1,8 +1,1142 @@
-{
+[
+  {
     "levelno": 1,
-    "theory": "In C++, variables are strongly typed, meaning you must declare the type before using them. For example, `int age = 25;` declares an integer variable, while `double price = 19.99;` declares a floating-point variable. This explicit declaration helps the compiler allocate the right amount of memory and prevents type errors.\n\nThere are several types of variables in C++: local variables (declared inside a block), global variables (declared outside all functions), and static variables (which preserve their value between function calls). Understanding the lifetime and scope of variables is crucial in C++ programming.\n\nC++ also allows constant variables using the `const` keyword, which makes a variable’s value unchangeable after initialization. This is useful for defining fixed values like `const double PI = 3.14159;`. Using constants improves code clarity and prevents accidental modifications.",
-    "practice_questions":{
-        
-    }
+    "topic": "Basic Structure & I/O",
+    "theory": "Every C++ program has a main function, `int main()`, which is the starting point of execution. To print output to the console, we use `std::cout`. To get input from the user, we use `std::cin`. These features are available by including the iostream header file with `#include <iostream>`.\n\n`std::` signifies that `cout` and `cin` belong to the standard namespace. A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it.\n\nExample of a basic program:\n`#include <iostream>`\n\n`int main() {`\n`    std::cout << \"Hello, World!\\n\";`\n`    return 0; // Indicates successful execution`\n`}`",
+    "practice_questions": [
+      {
+        "question": "What is the entry point for every C++ program?",
+        "options": ["`start()`", "`main()`", "`begin()`", "`program()`"],
+        "answer": "`main()`"
+      },
+      {
+        "question": "Which header file must be included to use `std::cout` and `std::cin`?",
+        "options": ["`#include <stdio>`", "`#include <string>`", "`#include <iostream>`", "`#include <main>`"],
+        "answer": "`#include <iostream>`"
+      },
+      {
+        "question": "Which object is used to print output to the console?",
+        "options": ["`std::cin`", "`std::cout`", "`std::print`", "`std::log`"],
+        "answer": "`std::cout`"
+      },
+      {
+        "question": "What does the `<<` operator do with `std::cout`?",
+        "options": ["It reads input from the console", "It compares two values", "It inserts data into the output stream", "It performs a bitwise shift"],
+        "answer": "It inserts data into the output stream"
+      },
+      {
+        "question": "What does `return 0;` at the end of `main()` signify?",
+        "options": ["The program has an error", "The program executed successfully", "The program is returning the value 0", "The program needs to be restarted"],
+        "answer": "The program executed successfully"
+      },
+      {
+        "question": "Which object is used to read input from the user?",
+        "options": ["`std::cout`", "`std::read`", "`std::get`", "`std::cin`"],
+        "answer": "`std::cin`"
+      },
+      {
+        "question": "What does `std::` before `cout` represent?",
+        "options": ["It's a required keyword", "It indicates `cout` is part of the standard namespace", "It means `cout` is a secure function", "It is an old syntax that is no longer needed"],
+        "answer": "It indicates `cout` is part of the standard namespace"
+      },
+      {
+        "question": "What is the purpose of a semicolon `;` in C++?",
+        "options": ["To mark the end of a statement", "To separate variables", "To create a comment", "It is optional"],
+        "answer": "To mark the end of a statement"
+      },
+      {
+        "question": "Which operator is used with `std::cin` to get user input?",
+        "options": ["`<<`", "`>>`", "`<-`", "`->`"],
+        "answer": "`>>`"
+      },
+      {
+        "question": "How do you write a single-line comment in C++?",
+        "options": ["`// comment`", "`/* comment */`", "``", "`# comment`"],
+        "answer": "`// comment`"
+      }
+    ]
+  },
+  {
+    "levelno": 2,
+    "topic": "Variables and Data Types",
+    "theory": "Variables are containers for storing data values. In C++, every variable must be declared with a specific data type. Common data types include:\n- `int`: for whole numbers (e.g., 10, -150).\n- `double`: for floating-point numbers with high precision (e.g., 3.14159).\n- `char`: for single characters (e.g., 'a', 'Z').\n- `bool`: for true/false values.\n- `std::string`: for sequences of characters (text). To use `std::string`, you must include the `<string>` header.\n\nTo declare a variable, you specify the type followed by the name, and you can initialize it at the same time: `int age = 25;`.",
+    "practice_questions": [
+      {
+        "question": "Which data type is most suitable for storing the number 42?",
+        "options": ["`double`", "`char`", "`int`", "`bool`"],
+        "answer": "`int`"
+      },
+      {
+        "question": "What is the correct way to declare a variable to store a person's name?",
+        "options": ["`char name;`", "`int name;`", "`string name;`", "`std::string name;`"],
+        "answer": "`std::string name;`"
+      },
+      {
+        "question": "Which header file is required to use the `std::string` data type?",
+        "options": ["`<iostream>`", "`<string>`", "`<text>`", "`<str>`"],
+        "answer": "`<string>`"
+      },
+      {
+        "question": "A `bool` variable can hold which of the following values?",
+        "options": ["0 or 1", "`'Y'` or `'N'`", "`true` or `false`", "Any integer"],
+        "answer": "`true` or `false`"
+      },
+      {
+        "question": "Which data type would be best for storing the value of pi (3.14)?",
+        "options": ["`int`", "`char`", "`double`", "`short`"],
+        "answer": "`double`"
+      },
+      {
+        "question": "How do you declare a character variable `initial` and assign it the value 'J'?",
+        "options": ["`char initial = \"J\";`", "`character initial = 'J';`", "`char initial = 'J';`", "`string initial = 'J';`"],
+        "answer": "`char initial = 'J';`"
+      },
+      {
+        "question": "What is the main difference between `float` and `double`?",
+        "options": ["`double` is for integers", "`double` has higher precision", "`float` is for text", "There is no difference"],
+        "answer": "`double` has higher precision"
+      },
+      {
+        "question": "What happens if you assign a floating-point value to an `int` variable, like `int x = 9.99;`?",
+        "options": ["It causes a compile error", "The value is rounded up to 10", "The decimal part is truncated, and `x` becomes 9", "It throws a runtime exception"],
+        "answer": "The decimal part is truncated, and `x` becomes 9"
+      },
+      {
+        "question": "The `const` keyword is used to:",
+        "options": ["Declare a variable that cannot be modified", "Create a comment", "Declare a data type", "Include a header file"],
+        "answer": "Declare a variable that cannot be modified"
+      },
+      {
+        "question": "Which of the following is a valid variable name in C++?",
+        "options": ["`$amount`", "`2_items`", "`_total_cost`", "`int`"],
+        "answer": "`_total_cost`"
+      }
+    ]
+  },
+  {
+    "levelno": 3,
+    "topic": "Operators",
+    "theory": "Operators are symbols that perform operations on variables and values. C++ supports various types of operators:\n- **Arithmetic Operators:** `+` (addition), `-` (subtraction), `*` (multiplication), `/` (division), `%` (modulus).\n- **Relational Operators:** `==` (equal to), `!=` (not equal to), `>` (greater than), `<` (less than), `>=` (greater than or equal to), `<=` (less than or equal to).\n- **Logical Operators:** `&&` (logical AND), `||` (logical OR), `!` (logical NOT).\n- **Assignment Operators:** `=` (assignment), `+=`, `-=`, `*=`, `/=`, etc.\n- **Increment/Decrement Operators:** `++` (increment by one), `--` (decrement by one).",
+    "practice_questions": [
+      {
+        "question": "What is the result of the expression `10 % 3`?",
+        "options": ["3", "1", "0", "3.33"],
+        "answer": "1"
+      },
+      {
+        "question": "Which operator is used to check if two values are equal?",
+        "options": ["`=`", "`:=`", "`==`", "`!=`"],
+        "answer": "`==`"
+      },
+      {
+        "question": "If `x = 5;`, what is the value of `x++` in the same expression?",
+        "options": ["6", "5", "4", "It causes an error"],
+        "answer": "5"
+      },
+      {
+        "question": "If `x = 5;`, what is the value of `++x` in the same expression?",
+        "options": ["6", "5", "4", "It causes an error"],
+        "answer": "6"
+      },
+      {
+        "question": "What is the purpose of the `&&` operator?",
+        "options": ["Logical OR", "Logical NOT", "Logical AND", "Bitwise AND"],
+        "answer": "Logical AND"
+      },
+      {
+        "question": "The expression `a += 5;` is equivalent to:",
+        "options": ["`a = a + 5;`", "`a = 5;`", "`a + 5 = a;`", "`a = a * 5;`"],
+        "answer": "`a = a + 5;`"
+      },
+      {
+        "question": "What is the result of `10 / 4` if both are integers?",
+        "options": ["2.5", "3", "2", "It causes an error"],
+        "answer": "2"
+      },
+      {
+        "question": "What is the result of `10.0 / 4.0`?",
+        "options": ["2.5", "3.0", "2.0", "2"],
+        "answer": "2.5"
+      },
+      {
+        "question": "If `a = true` and `b = false`, what is the value of `a || b`?",
+        "options": ["`true`", "`false`", "1", "0"],
+        "answer": "`true`"
+      },
+      {
+        "question": "Which operator has the highest precedence among the following?",
+        "options": ["`+`", "`*`", "`=`", "`()`"],
+        "answer": "`()`"
+      }
+    ]
+  },
+  {
+    "levelno": 4,
+    "topic": "Control Flow (If-Else)",
+    "theory": "Control flow statements allow you to alter the execution path of your program. The `if-else` statement is used to execute code based on a condition.\n\nThe `if` statement executes a block of code if its condition is true. The `else if` statement can be used to test another condition if the first one was false. The `else` statement provides a block of code to be executed if all preceding conditions are false.\n\n`int score = 85;`\n`if (score >= 90) {`\n`    std::cout << \"Grade A\";`\n`} else if (score >= 80) {`\n`    std::cout << \"Grade B\";`\n`} else {`\n`    std::cout << \"Grade C\";`\n`}`",
+    "practice_questions": [
+      {
+        "question": "Which part of an `if-else if-else` statement is executed if the `if` condition is `true`?",
+        "options": ["The `if` block", "The `else if` block", "The `else` block", "All of them"],
+        "answer": "The `if` block"
+      },
+      {
+        "question": "What type of expression is required in an `if` statement's condition?",
+        "options": ["An integer", "A string", "An expression that evaluates to a boolean (or can be converted to one)", "A function call"],
+        "answer": "An expression that evaluates to a boolean (or can be converted to one)"
+      },
+      {
+        "question": "Is the `else` block mandatory for an `if` statement?",
+        "options": ["Yes, always", "No, it is optional", "Only if there is an `else if`", "Yes, to avoid errors"],
+        "answer": "No, it is optional"
+      },
+      {
+        "question": "In C++, what does a non-zero integer value evaluate to in a boolean context?",
+        "options": ["`true`", "`false`", "It causes an error", "0"],
+        "answer": "`true`"
+      },
+      {
+        "question": "What is a 'nested' `if` statement?",
+        "options": ["An `if` statement with multiple `else if` blocks", "An `if` statement inside another `if` or `else` block", "An `if` statement that uses `&&` and `||`", "An `if` statement that is never executed"],
+        "answer": "An `if` statement inside another `if` or `else` block"
+      },
+      {
+        "question": "What will be the output? `int x = 5; if (x > 10) { std::cout << \"A\"; } else { std::cout << \"B\"; }`",
+        "options": ["A", "B", "AB", "No output"],
+        "answer": "B"
+      },
+      {
+        "question": "What is the purpose of curly braces `{}` after an `if` statement?",
+        "options": ["They are just for style", "They group multiple statements into a single block to be executed", "They are only needed for nested `if` statements", "They are only needed if you have an `else` block"],
+        "answer": "They group multiple statements into a single block to be executed"
+      },
+      {
+        "question": "If you have a long chain of conditions to check for a single variable, what might be a better alternative to `if-else if`?",
+        "options": ["A `for` loop", "A `while` loop", "A `switch` statement", "A function"],
+        "answer": "A `switch` statement"
+      },
+      {
+        "question": "Can you have an `else` block without a preceding `if` block?",
+        "options": ["Yes, it's allowed", "Only in the `main` function", "No, it will cause a compile-time error", "Yes, if it's the last statement"],
+        "answer": "No, it will cause a compile-time error"
+      },
+      {
+        "question": "What will be the output? `if (0) { std::cout << \"True\"; } else { std::cout << \"False\"; }`",
+        "options": ["True", "False", "No output", "Compile-time error"],
+        "answer": "False"
+      }
+    ]
+  },
+  {
+    "levelno": 5,
+    "topic": "Control Flow (Switch)",
+    "theory": "The `switch` statement provides a way to control flow by comparing the value of a variable or expression against multiple constant values called cases.\n\nIt can be a more readable alternative to a long `if-else if-else` chain. Each `case` is followed by the value to be compared to and a colon. The `break` statement is crucial; it terminates the `switch` block. Without it, execution 'falls through' to the next case. The `default` case is executed if no other case matches.\n\n`int day = 4;`\n`switch (day) {`\n`  case 1: std::cout << \"Monday\"; break;`\n`  case 2: std::cout << \"Tuesday\"; break;`\n`  default: std::cout << \"Some other day\";`\n`}`",
+    "practice_questions": [
+      {
+        "question": "What is the purpose of the `break` statement in a `switch`?",
+        "options": ["To end the program", "To skip the current case", "To exit the `switch` block and prevent fall-through", "To go to the `default` case"],
+        "answer": "To exit the `switch` block and prevent fall-through"
+      },
+      {
+        "question": "What happens if you omit the `break` statement in a `case`?",
+        "options": ["A compile-time error occurs", "Execution 'falls through' to the next case's statements", "The program terminates", "The `switch` statement is skipped"],
+        "answer": "Execution 'falls through' to the next case's statements"
+      },
+      {
+        "question": "The `default` case in a `switch` statement is executed when:",
+        "options": ["Always", "Never", "When the `switch` variable is 0", "When no other `case` matches the expression"],
+        "answer": "When no other `case` matches the expression"
+      },
+      {
+        "question": "The expression in a `switch` statement must evaluate to what kind of type?",
+        "options": ["A floating-point type", "An integral type (like `int`, `char`) or `enum`", "A `std::string`", "A boolean type"],
+        "answer": "An integral type (like `int`, `char`) or `enum`"
+      },
+      {
+        "question": "Is the `default` case required in a `switch` statement?",
+        "options": ["Yes, always", "No, it is optional", "Only if there are more than 2 cases", "Yes, to handle errors"],
+        "answer": "No, it is optional"
+      },
+      {
+        "question": "What must follow the `case` keyword?",
+        "options": ["A variable name", "A constant integral expression", "A boolean expression", "A semicolon"],
+        "answer": "A constant integral expression"
+      },
+      {
+        "question": "Can you stack multiple `case` labels to execute the same code block?",
+        "options": ["No, that causes an error", "Yes, by listing them before the code block", "Only if they are consecutive numbers", "No, each case must have its own block"],
+        "answer": "Yes, by listing them before the code block"
+      },
+      {
+        "question": "A `switch` statement is a form of:",
+        "options": ["Looping", "Multi-way branching", "Variable declaration", "Function definition"],
+        "answer": "Multi-way branching"
+      },
+      {
+        "question": "If `x = 2;`, what is the output of `switch(x){ case 1: cout<<'A'; break; case 2: cout<<'B'; case 3: cout<<'C';}`?",
+        "options": ["B", "BC", "ABC", "C"],
+        "answer": "BC"
+      },
+      {
+        "question": "Which of these cannot be used in a `switch` statement?",
+        "options": ["`char`", "`int`", "`double`", "`enum`"],
+        "answer": "`double`"
+      }
+    ]
+  },
+  {
+    "levelno": 6,
+    "topic": "Loops (for)",
+    "theory": "Loops allow you to execute a block of code multiple times. The `for` loop is ideal when you know the number of iterations beforehand.\n\nIt consists of three parts, separated by semicolons:\n1. **Initialization:** Executed once at the beginning of the loop (e.g., `int i = 0`).\n2. **Condition:** Checked before each iteration. The loop continues as long as this is true (e.g., `i < 5`).\n3. **Increment/Decrement:** Executed at the end of each iteration (e.g., `i++`).\n\n`for (int i = 0; i < 5; i++) {`\n`    std::cout << i << \"\\n\";`\n`}`\nThis loop will print the numbers 0, 1, 2, 3, and 4, each on a new line.",
+    "practice_questions": [
+      {
+        "question": "How many times will this loop run? `for (int i = 1; i <= 5; i++)`",
+        "options": ["4", "5", "6", "Infinitely"],
+        "answer": "5"
+      },
+      {
+        "question": "In a `for` loop `for(A; B; C)`, which part is the condition?",
+        "options": ["A", "B", "C", "None of them"],
+        "answer": "B"
+      },
+      {
+        "question": "What is the purpose of the third part (`i++`) in a standard `for` loop?",
+        "options": ["To initialize the counter", "To test the loop condition", "To update the loop counter", "To end the loop"],
+        "answer": "To update the loop counter"
+      },
+      {
+        "question": "Which `for` loop will print `5 4 3 2 1`?",
+        "options": ["`for (int i = 5; i >= 1; i--)`", "`for (int i = 1; i <= 5; i++)`", "`for (int i = 5; i > 1; i--)`", "`for (int i = 1; i < 5; i++)`"],
+        "answer": "`for (int i = 5; i >= 1; i--)`"
+      },
+      {
+        "question": "What is an infinite loop?",
+        "options": ["A loop that runs 1000 times", "A loop whose condition is always true", "A loop whose condition is always false", "A loop that contains an error"],
+        "answer": "A loop whose condition is always true"
+      },
+      {
+        "question": "What is the scope of a variable declared in the initialization part of a `for` loop (e.g., `int i = 0`)?",
+        "options": ["The entire program", "The entire function", "Only within the `for` loop", "It is not a real variable"],
+        "answer": "Only within the `for` loop"
+      },
+      {
+        "question": "Can you have multiple statements in the initialization or increment parts of a `for` loop?",
+        "options": ["No, only one is allowed", "Yes, separated by commas", "Yes, separated by semicolons", "Only in the initialization part"],
+        "answer": "Yes, separated by commas"
+      },
+      {
+        "question": "The three expressions in a `for` loop header are separated by what?",
+        "options": ["Commas", "Colons", "Semicolons", "Spaces"],
+        "answer": "Semicolons"
+      },
+      {
+        "question": "A `for` loop is considered an:",
+        "options": ["Exit-controlled loop", "Entry-controlled loop", "Uncontrolled loop", "Branching statement"],
+        "answer": "Entry-controlled loop"
+      },
+      {
+        "question": "What will be the output? `for (int i = 0; i < 3; i++) { std::cout << i; }`",
+        "options": ["012", "123", "0123", "It causes an error"],
+        "answer": "012"
+      }
+    ]
+  },
+  {
+    "levelno": 7,
+    "topic": "Loops (while, do-while)",
+    "theory": "C++ also provides `while` and `do-while` loops for situations where the number of iterations is not known in advance.\n\n- **while loop:** An entry-controlled loop. The condition is checked *before* the loop body is executed. If the condition is initially false, the loop never runs.\n`int i = 0;`\n`while (i < 5) {`\n`    std::cout << i;`\n`    i++;`\n`}`\n\n- **do-while loop:** An exit-controlled loop. The loop body is executed first, and *then* the condition is checked. This guarantees the loop runs at least once.\n`int i = 0;`\n`do {`\n`    std::cout << i;`\n`    i++;`\n`} while (i < 5);`",
+    "practice_questions": [
+      {
+        "question": "What is the key difference between a `while` and a `do-while` loop?",
+        "options": ["`while` is faster", "A `do-while` loop's body is guaranteed to execute at least once", "`while` loops are for integers only", "There is no difference"],
+        "answer": "A `do-while` loop's body is guaranteed to execute at least once"
+      },
+      {
+        "question": "In a `while` loop, when is the condition evaluated?",
+        "options": ["Before each iteration", "After each iteration", "Only once at the start", "After the loop finishes"],
+        "answer": "Before each iteration"
+      },
+      {
+        "question": "If the condition of a `while` loop is `false` initially, how many times will its body run?",
+        "options": ["1", "0", "Infinitely", "It causes an error"],
+        "answer": "0"
+      },
+      {
+        "question": "Which loop is also known as an exit-controlled loop?",
+        "options": ["`for`", "`while`", "`do-while`", "None of them"],
+        "answer": "`do-while`"
+      },
+      {
+        "question": "What is a common cause of an infinite `while` loop?",
+        "options": ["The condition is initially false", "The variable in the condition is not updated inside the loop", "Using `break` inside the loop", "Declaring variables inside the loop"],
+        "answer": "The variable in the condition is not updated inside theloop"
+      },
+      {
+        "question": "What punctuation mark must end a `do-while` loop statement?",
+        "options": ["A colon `:`", "Curly braces `{}`", "No punctuation", "A semicolon `;`"],
+        "answer": "A semicolon `;`"
+      },
+      {
+        "question": "When is a `while` loop a better choice than a `for` loop?",
+        "options": ["When you know the exact number of iterations", "When the number of iterations is unknown and depends on a condition", "Never, `for` loops are always better", "When you need to iterate backwards"],
+        "answer": "When the number of iterations is unknown and depends on a condition"
+      },
+      {
+        "question": "What will be the output? `int i = 5; do { std::cout << 'A'; } while (i < 5);`",
+        "options": ["A", "No output", "Infinite loop", "Compile error"],
+        "answer": "A"
+      },
+      {
+        "question": "What will be the output? `int i = 5; while (i < 5) { std::cout << 'A'; }`",
+        "options": ["A", "No output", "Infinite loop", "Compile error"],
+        "answer": "No output"
+      },
+      {
+        "question": "Which loop type is considered entry-controlled?",
+        "options": ["`do-while`", "`while`", "Both `while` and `do-while`", "Neither"],
+        "answer": "`while`"
+      }
+    ]
+  },
+  {
+    "levelno": 8,
+    "topic": "Functions",
+    "theory": "Functions are blocks of code designed to perform a particular task. They help in making code reusable and organized. A function must be declared before it is used.\n\nA function declaration includes the **return type**, the **function name**, and a list of **parameters** in parentheses.\n\n`// Function declaration (prototype)`\n`int add(int a, int b);`\n\n`int main() {`\n`    int sum = add(5, 3); // Function call`\n`    std::cout << sum; // Prints 8`\n`    return 0;`\n`}`\n\n`// Function definition`\n`int add(int a, int b) {`\n`    return a + b;`\n`}`\nIf a function does not return a value, its return type is `void`.",
+    "practice_questions": [
+      {
+        "question": "What is the main purpose of functions?",
+        "options": ["To make programs run faster", "To reduce memory usage", "To promote code reusability and organization", "To declare all variables"],
+        "answer": "To promote code reusability and organization"
+      },
+      {
+        "question": "What is the return type of a function that does not return any value?",
+        "options": ["`int`", "`null`", "`void`", "`none`"],
+        "answer": "`void`"
+      },
+      {
+        "question": "The variables defined in a function's parameter list are called:",
+        "options": ["Arguments", "Parameters", "Global variables", "Return values"],
+        "answer": "Parameters"
+      },
+      {
+        "question": "The values passed to a function when it is called are called:",
+        "options": ["Arguments", "Parameters", "Local variables", "Constants"],
+        "answer": "Arguments"
+      },
+      {
+        "question": "What is a function prototype?",
+        "options": ["The main body of the function", "A declaration of the function that tells the compiler about its name, return type, and parameters", "Another name for a function call", "A comment explaining the function"],
+        "answer": "A declaration of the function that tells the compiler about its name, return type, and parameters"
+      },
+      {
+        "question": "What does the `return` keyword do?",
+        "options": ["Stops the entire program", "Prints a value to the console", "Exits the function and optionally passes a value back to the caller", "Calls another function"],
+        "answer": "Exits the function and optionally passes a value back to the caller"
+      },
+      {
+        "question": "A function's signature consists of its:",
+        "options": ["Name and return type", "Name and parameter list", "Return type and body", "Access specifier and name"],
+        "answer": "Name and parameter list"
+      },
+      {
+        "question": "Where does the execution of a C++ program begin?",
+        "options": ["At the first function defined", "At the function named `start()`", "At the function named `main()`", "At the top of the file"],
+        "answer": "At the function named `main()`"
+      },
+      {
+        "question": "Variables declared inside a function are:",
+        "options": ["Global and accessible everywhere", "Static by default", "Local to that function", "Automatically initialized to zero"],
+        "answer": "Local to that function"
+      },
+      {
+        "question": "What is recursion?",
+        "options": ["A function that calls another function", "A function that calls itself", "A function with no return type", "A function inside a loop"],
+        "answer": "A function that calls itself"
+      }
+    ]
+  },
+  {
+    "levelno": 9,
+    "topic": "Function Overloading",
+    "theory": "Function overloading allows you to have multiple functions with the same name but with different parameters. The compiler decides which function to call based on the number, types, and sequence of the arguments passed.\n\nThis is a form of compile-time polymorphism. It makes your code more readable by allowing you to use the same name for similar operations on different data types.\n\n`int add(int a, int b) {`\n`    return a + b;`\n`}`\n\n`double add(double a, double b) {`\n`    return a + b;`\n`}`\n\n`int main() {`\n`    add(5, 10);      // Calls the integer version`\n`    add(3.5, 2.2); // Calls the double version`\n`}`",
+    "practice_questions": [
+      {
+        "question": "What is function overloading?",
+        "options": ["Creating a function that performs too many tasks", "Defining multiple functions with the same name but different parameter lists", "Defining a function with the same name and parameters in different files", "Defining a function that can be called in different ways"],
+        "answer": "Defining multiple functions with the same name but different parameter lists"
+      },
+      {
+        "question": "How does the compiler differentiate between overloaded functions?",
+        "options": ["By their return types", "By their function names", "By their parameter lists (number, type, order)", "By their access specifiers"],
+        "answer": "By their parameter lists (number, type, order)"
+      },
+      {
+        "question": "Can you overload a function based only on a different return type?",
+        "options": ["Yes, it is a common practice", "No, it will cause a compilation error", "Only if one is static", "Only if the return types are compatible"],
+        "answer": "No, it will cause a compilation error"
+      },
+      {
+        "question": "Function overloading is an example of:",
+        "options": ["Runtime polymorphism", "Compile-time polymorphism", "Inheritance", "Data hiding"],
+        "answer": "Compile-time polymorphism"
+      },
+      {
+        "question": "Which of the following is a valid overload of `void print(int x)`?",
+        "options": ["`int print(int y)`", "`void print(int x, int y)`", "`void Print(int x)`", "`void print(const int x)`"],
+        "answer": "`void print(int x, int y)`"
+      },
+      {
+        "question": "What is the main advantage of function overloading?",
+        "options": ["It reduces compile time", "It improves code readability and allows for intuitive function calls", "It reduces the program's memory usage", "It is required for object-oriented programming"],
+        "answer": "It improves code readability and allows for intuitive function calls"
+      },
+      {
+        "question": "If you have `void func(int, double)` and `void func(double, int)`, and you call `func(5, 10.5)`, which function is called?",
+        "options": ["`void func(int, double)`", "`void func(double, int)`", "It is an ambiguous call and will cause an error", "The first one defined"],
+        "answer": "`void func(int, double)`"
+      },
+      {
+        "question": "If you call `func(10, 20)`, which of the two functions `void func(int, double)` and `void func(double, int)` would be called?",
+        "options": ["`void func(int, double)`", "`void func(double, int)`", "It is an ambiguous call and will cause an error", "Neither"],
+        "answer": "It is an ambiguous call and will cause an error"
+      },
+      {
+        "question": "Can class constructors be overloaded?",
+        "options": ["No, a class can only have one constructor", "Yes, this is very common", "Only in derived classes", "No, because they don't have a return type"],
+        "answer": "Yes, this is very common"
+      },
+      {
+        "question": "The process of the compiler selecting the appropriate overloaded function is called:",
+        "options": ["Overload resolution", "Function selection", "Dynamic binding", "Late binding"],
+        "answer": "Overload resolution"
+      }
+    ]
+  },
+  {
+    "levelno": 10,
+    "topic": "Arrays",
+    "theory": "An array is a collection of items of the same data type stored at contiguous memory locations. It's a fixed-size data structure. You can store a group of similar items, like a list of scores or temperatures.\n\nTo declare an array, you specify the type, name, and size in square brackets.\n`int scores[5]; // Declares an integer array that can hold 5 elements`\n\nYou can initialize an array at the time of declaration:\n`int scores[5] = {98, 87, 92, 79, 85};`\n\nElements are accessed using a zero-based index. `scores[0]` is the first element, and `scores[4]` is the last.",
+    "practice_questions": [
+      {
+        "question": "What is the index of the first element in a C++ array?",
+        "options": ["1", "0", "-1", "It depends on the declaration"],
+        "answer": "0"
+      },
+      {
+        "question": "Which of the following correctly declares an array named `numbers` that can hold 10 integers?",
+        "options": ["`int numbers[10];`", "`int numbers[];`", "`numbers[10] int;`", "`array int[10];`"],
+        "answer": "`int numbers[10];`"
+      },
+      {
+        "question": "If an array is declared as `int arr[5];`, what is the index of the last element?",
+        "options": ["5", "6", "4", "It has no last element"],
+        "answer": "4"
+      },
+      {
+        "question": "What happens if you try to access an array element outside of its bounds (e.g., `arr[10]` for an array of size 10)?",
+        "options": ["It always causes a compile-time error", "The program automatically resizes the array", "It results in undefined behavior, which could be a crash or reading garbage data", "It returns the value 0"],
+        "answer": "It results in undefined behavior, which could be a crash or reading garbage data"
+      },
+      {
+        "question": "Which is the correct way to initialize an array at declaration?",
+        "options": ["`int arr[3] = (1, 2, 3);`", "`int arr[3] = {1, 2, 3};`", "`int arr = {1, 2, 3};`", "`int arr(3) = {1, 2, 3};`"],
+        "answer": "`int arr[3] = {1, 2, 3};`"
+      },
+      {
+        "question": "Can you change the size of an array after it has been declared?",
+        "options": ["Yes, by assigning a new value to its size", "No, C-style arrays have a fixed size determined at compile time", "Yes, by using a special `resize` function", "Only if it is an array of characters"],
+        "answer": "No, C-style arrays have a fixed size determined at compile time"
+      },
+      {
+        "question": "How are the elements of an array stored in memory?",
+        "options": ["Randomly", "In contiguous memory locations", "In a linked list", "Based on their value"],
+        "answer": "In contiguous memory locations"
+      },
+      {
+        "question": "What is a common way to iterate through all elements of an array?",
+        "options": ["Using a `switch` statement", "Using recursion", "Using a `for` loop from index 0 to size-1", "Using an `if-else` statement"],
+        "answer": "Using a `for` loop from index 0 to size-1"
+      },
+      {
+        "question": "What is a C-style string?",
+        "options": ["A `std::string` object", "An array of characters ending with a null terminator `\\0`", "A special data type for text", "An array of strings"],
+        "answer": "An array of characters ending with a null terminator `\\0`"
+      },
+      {
+        "question": "If you don't initialize a global array of integers, its elements will have what value by default?",
+        "options": ["Garbage values", "Null", "Zero", "One"],
+        "answer": "Zero"
+      }
+    ]
+  },
+  {
+    "levelno": 11,
+    "topic": "Pointers",
+    "theory": "A pointer is a variable that stores the memory address of another variable. They are one of the most powerful and unique features of C++. Pointers allow for dynamic memory allocation, efficient array handling, and passing large data structures to functions without copying them.\n\n- The **address-of operator `&`** gets the memory address of a variable.\n- The **dereference operator `*`** accesses the value at the address stored in a pointer.\n\n`int var = 20;`\n`int* ptr;      // Declare a pointer to an integer`\n`ptr = &var;    // Store the address of 'var' in the pointer`\n\n`std::cout << *ptr; // Dereference the pointer to get the value (prints 20)`",
+    "practice_questions": [
+      {
+        "question": "What does a pointer variable store?",
+        "options": ["The value of another variable", "The data type of another variable", "The memory address of another variable", "The name of another variable"],
+        "answer": "The memory address of another variable"
+      },
+      {
+        "question": "Which operator is used to get the memory address of a variable?",
+        "options": ["`*`", "`&`", "`@`", "`->`"],
+        "answer": "`&`"
+      },
+      {
+        "question": "Which operator is used to access the value stored at the address pointed to by a pointer?",
+        "options": ["`*` (dereference)", "`&` (address-of)", "`%` (modulus)", "`#` (hash)"],
+        "answer": "`*` (dereference)"
+      },
+      {
+        "question": "How do you declare a pointer `p` that can point to an integer?",
+        "options": ["`int p;`", "`pointer p;`", "`int *p;`", "`int &p;`"],
+        "answer": "`int *p;`"
+      },
+      {
+        "question": "What is a null pointer?",
+        "options": ["A pointer that points to address 0", "A pointer that has not been initialized", "A pointer that points to nothing, often represented by `nullptr`", "An uninitialized pointer"],
+        "answer": "A pointer that points to nothing, often represented by `nullptr`"
+      },
+      {
+        "question": "If `int x = 10; int *p = &x;`, what is the value of `*p`?",
+        "options": ["The memory address of `x`", "10", "The memory address of `p`", "It causes an error"],
+        "answer": "10"
+      },
+      {
+        "question": "What is the `new` keyword used for in the context of pointers?",
+        "options": ["To create a new variable", "To allocate memory dynamically on the heap", "To declare a pointer", "To assign a value to a pointer"],
+        "answer": "To allocate memory dynamically on the heap"
+      },
+      {
+        "question": "What must you do with memory allocated using `new`?",
+        "options": ["It is automatically freed", "You must free it using the `delete` keyword to avoid memory leaks", "It lasts until the program ends", "You must assign it to `nullptr`"],
+        "answer": "You must free it using the `delete` keyword to avoid memory leaks"
+      },
+      {
+        "question": "In C++, an array name can be used as a pointer to its:",
+        "options": ["Last element", "Size", "First element", "Data type"],
+        "answer": "First element"
+      },
+      {
+        "question": "What is a dangling pointer?",
+        "options": ["A pointer that is `nullptr`", "A pointer pointing to a memory location that has been freed", "A pointer that has not been initialized", "A pointer to a pointer"],
+        "answer": "A pointer pointing to a memory location that has been freed"
+      }
+    ]
+  },
+  {
+    "levelno": 12,
+    "topic": "References",
+    "theory": "A reference is an alias or another name for an already existing variable. Once a reference is initialized to a variable, it cannot be changed to refer to another variable. References are often simpler and safer to use than pointers.\n\nThey are declared using the ampersand `&` symbol. Unlike pointers, references must be initialized upon declaration.\n\n`int original = 100;`\n`int& ref = original; // 'ref' is now an alias for 'original'`\n\n`ref = 200; // This changes the value of 'original' to 200`\n`std::cout << original; // Prints 200`\n\nReferences are commonly used for passing arguments to functions to avoid making unnecessary copies (`pass-by-reference`).",
+    "practice_questions": [
+      {
+        "question": "What is a reference in C++?",
+        "options": ["A variable that stores a memory address", "An alias or another name for an existing variable", "A copy of a variable", "A special type of pointer"],
+        "answer": "An alias or another name for an existing variable"
+      },
+      {
+        "question": "Which symbol is used to declare a reference?",
+        "options": ["`*`", "`&`", "`@`", "`%`"],
+        "answer": "`&`"
+      },
+      {
+        "question": "Which of the following statements about references is TRUE?",
+        "options": ["A reference can be null", "A reference must be initialized when it is declared", "A reference can be changed to refer to another variable later", "A reference stores the memory address of a variable"],
+        "answer": "A reference must be initialized when it is declared"
+      },
+      {
+        "question": "If `int x = 10; int& r = x; r = 20;`, what is the value of `x`?",
+        "options": ["10", "20", "The memory address of `r`", "It causes an error"],
+        "answer": "20"
+      },
+      {
+        "question": "What is a primary use case for references?",
+        "options": ["Dynamic memory allocation", "Creating arrays of aliases", "Passing arguments to functions to avoid copying (pass-by-reference)", "Storing null values"],
+        "answer": "Passing arguments to functions to avoid copying (pass-by-reference)"
+      },
+      {
+        "question": "How is a reference different from a pointer?",
+        "options": ["A reference is automatically dereferenced and cannot be null", "A pointer is an alias, while a reference stores an address", "There is no difference", "References are less safe than pointers"],
+        "answer": "A reference is automatically dereferenced and cannot be null"
+      },
+      {
+        "question": "Which declaration is invalid?",
+        "options": ["`int x = 5; int& r = x;`", "`int &r;`", "`const int x = 5; const int& r = x;`", "`int x=5, y=10; int& r = x;`"],
+        "answer": "`int &r;`"
+      },
+      {
+        "question": "When you pass a variable by reference to a function, the function works with:",
+        "options": ["A copy of the original variable", "The original variable itself", "A pointer to the original variable", "A constant version of the variable"],
+        "answer": "The original variable itself"
+      },
+      {
+        "question": "To prevent a function from modifying a variable passed by reference, you should declare the parameter as:",
+        "options": ["`static`", "`void`", "`const`", "`private`"],
+        "answer": "`const`"
+      },
+      {
+        "question": "Do references require dereferencing like pointers do?",
+        "options": ["Yes, using the `*` operator", "Yes, using the `&` operator", "No, they are used just like the original variable", "Only when used inside functions"],
+        "answer": "No, they are used just like the original variable"
+      }
+    ]
+  },
+  {
+    "levelno": 13,
+    "topic": "Intro to OOP (Classes & Objects)",
+    "theory": "Object-Oriented Programming (OOP) is a paradigm that uses objects and classes. A **class** is a blueprint for creating objects. It bundles data (attributes or member variables) and methods (member functions) that work on that data.\n\nAn **object** is an instance of a class. When a class is defined, no memory is allocated until an object is created.\n\n`class Dog {`\n`public: // Access specifier`\n`    std::string breed;`\n`    int age;`\n\n`    void bark() { // Member function`\n`        std::cout << \"Woof!\\n\";`\n`    }`\n`};`\n\n`int main() {`\n`    Dog myDog; // Create an object of the Dog class`\n`    myDog.breed = \"Beagle\";`\n`    myDog.age = 5;`\n`    myDog.bark(); // Call the member function`\n`}`",
+    "practice_questions": [
+      {
+        "question": "In OOP, what is a class?",
+        "options": ["An instance of an object", "A blueprint for creating objects", "A function that returns a value", "A built-in data type"],
+        "answer": "A blueprint for creating objects"
+      },
+      {
+        "question": "What is an object?",
+        "options": ["A data type", "A keyword", "An instance of a class", "A function"],
+        "answer": "An instance of a class"
+      },
+      {
+        "question": "Which keyword is used to define a class?",
+        "options": ["`object`", "`struct`", "`class`", "`type`"],
+        "answer": "`class`"
+      },
+      {
+        "question": "The data members of a class are also known as:",
+        "options": ["Member functions", "Methods", "Attributes or member variables", "Constructors"],
+        "answer": "Attributes or member variables"
+      },
+      {
+        "question": "The functions defined inside a class are known as:",
+        "options": ["Member functions or methods", "Attributes", "Global functions", "Friend functions"],
+        "answer": "Member functions or methods"
+      },
+      {
+        "question": "How do you create an object named `c1` of a class named `Car`?",
+        "options": ["`Car c1 = new Car();`", "`Car c1;`", "`new Car c1;`", "`object c1 = Car;`"],
+        "answer": "`Car c1;`"
+      },
+      {
+        "question": "How do you access a public member `speed` of an object `c1`?",
+        "options": ["`c1->speed`", "`c1::speed`", "`c1.speed`", "`speed(c1)`"],
+        "answer": "`c1.speed`"
+      },
+      {
+        "question": "What is the `public` keyword in a class definition?",
+        "options": ["A data type", "A return type", "An access specifier", "A function name"],
+        "answer": "An access specifier"
+      },
+      {
+        "question": "By default, members of a class in C++ are:",
+        "options": ["`public`", "`private`", "`protected`", "`global`"],
+        "answer": "`private`"
+      },
+      {
+        "question": "By default, members of a `struct` in C++ are:",
+        "options": ["`public`", "`private`", "`protected`", "`global`"],
+        "answer": "`public`"
+      }
+    ]
+  },
+  {
+    "levelno": 14,
+    "topic": "Member Functions & Access Specifiers",
+    "theory": "Member functions define the behavior of an object. They can be defined inside or outside the class definition.\n\n**Access Specifiers** control the visibility of class members:\n- **`public`**: Members are accessible from outside the class.\n- **`private`**: Members cannot be accessed from outside the class. They can only be accessed by member functions and friends of the class. This is key to encapsulation.\n- **`protected`**: Similar to `private`, but members can also be accessed by derived classes (subclasses).\n\n`class Circle {`\n`private:`\n`    double radius; // Accessible only within the class`\n`public:`\n`    void setRadius(double r) { // Public 'setter' method`\n`        if (r >= 0) { radius = r; }`\n`    }`\n`    double getArea() { // Public 'getter' method`\n`        return 3.14159 * radius * radius;`\n`    }`\n`};`",
+    "practice_questions": [
+      {
+        "question": "Which access specifier makes members accessible from anywhere?",
+        "options": ["`private`", "`protected`", "`public`", "`global`"],
+        "answer": "`public`"
+      },
+      {
+        "question": "Which access specifier makes members accessible only within the class itself and its friend functions?",
+        "options": ["`private`", "`protected`", "`public`", "`hidden`"],
+        "answer": "`private`"
+      },
+      {
+        "question": "If you don't specify an access specifier for members of a `class`, what is their default access?",
+        "options": ["`public`", "`protected`", "`private`", "It's a compile error"],
+        "answer": "`private`"
+      },
+      {
+        "question": "The concept of hiding data and allowing access only through public methods is known as:",
+        "options": ["Inheritance", "Polymorphism", "Abstraction", "Encapsulation"],
+        "answer": "Encapsulation"
+      },
+      {
+        "question": "A public function that is used to set the value of a private member variable is often called a:",
+        "options": ["Getter", "Setter", "Constructor", "Friend function"],
+        "answer": "Setter"
+      },
+      {
+        "question": "A public function used to retrieve the value of a private member is called a:",
+        "options": ["Setter", "Mutator", "Getter", "Accessor"],
+        "answer": "Getter"
+      },
+      {
+        "question": "What is the Scope Resolution Operator `::` used for?",
+        "options": ["To access global variables", "To define a member function outside the class definition", "To access static members", "All of the above"],
+        "answer": "All of the above"
+      },
+      {
+        "question": "Which specifier allows access to members from derived classes but not from outside?",
+        "options": ["`private`", "`protected`", "`public`", "`internal`"],
+        "answer": "`protected`"
+      },
+      {
+        "question": "Can a `private` member function be called from an object in `main()`?",
+        "options": ["Yes, always", "No, it will cause a compile error", "Only if the object is `const`", "Yes, by using the `->` operator"],
+        "answer": "No, it will cause a compile error"
+      },
+      {
+        "question": "Why is it good practice to make data members `private`?",
+        "options": ["To make the program run faster", "To have better control over the data and enforce validation", "It is required by the C++ standard", "To reduce the memory used by the object"],
+        "answer": "To have better control over the data and enforce validation"
+      }
+    ]
+  },
+  {
+    "levelno": 15,
+    "topic": "Constructors & Destructors",
+    "theory": "A **constructor** is a special member function that is automatically called when an object of a class is created. Its main purpose is to initialize the object's member variables. A constructor has the same name as the class and no return type.\n\n- A **default constructor** has no parameters.\n- A **parameterized constructor** accepts parameters to initialize members.\n\nA **destructor** is a special member function that is automatically called when an object is destroyed (e.g., goes out of scope). Its name is the class name preceded by a tilde (`~`). It is used to release resources.\n\n`class Box {`\n`public:`\n`    Box() { std::cout << \"Box created!\\n\"; } // Default Constructor`\n`    ~Box() { std::cout << \"Box destroyed!\\n\"; } // Destructor`\n`};`",
+    "practice_questions": [
+      {
+        "question": "What is a constructor?",
+        "options": ["A function to destroy objects", "A special member function to initialize objects", "A regular member function that returns an object", "A global function for creating objects"],
+        "answer": "A special member function to initialize objects"
+      },
+      {
+        "question": "Which of these is a valid rule for a constructor?",
+        "options": ["It can have any name", "It must have a return type", "It must have the same name as the class and no return type", "It cannot be overloaded"],
+        "answer": "It must have the same name as the class and no return type"
+      },
+      {
+        "question": "When is a constructor called?",
+        "options": ["When the program ends", "When an object of the class is created", "When a member function is called", "Manually by the programmer"],
+        "answer": "When an object of the class is created"
+      },
+      {
+        "question": "What is a destructor?",
+        "options": ["A function to initialize an object", "A special member function called when an object is destroyed", "A function that takes an object as a parameter", "Another name for a constructor"],
+        "answer": "A special member function called when an object is destroyed"
+      },
+      {
+        "question": "How is a destructor named?",
+        "options": ["The class name followed by `_destruct`", "The class name preceded by a tilde (`~`)", "The class name preceded by `*`", "`destructor()`"],
+        "answer": "The class name preceded by a tilde (`~`)"
+      },
+      {
+        "question": "What is a default constructor?",
+        "options": ["A constructor that is automatically generated", "A constructor with no parameters", "A constructor with default arguments", "The first constructor defined in a class"],
+        "answer": "A constructor with no parameters"
+      },
+      {
+        "question": "Can a class have multiple constructors?",
+        "options": ["No, only one is allowed", "Yes, this is called constructor overloading", "Only if it is a derived class", "No, it causes a linker error"],
+        "answer": "Yes, this is called constructor overloading"
+      },
+      {
+        "question": "What is the main purpose of a destructor?",
+        "options": ["To set member variables to zero", "To print a message", "To release resources (like freeing memory) allocated by the object", "To create a copy of the object"],
+        "answer": "To release resources (like freeing memory) allocated by the object"
+      },
+      {
+        "question": "When is the destructor for a global object called?",
+        "options": ["When the object is created", "When the `main` function ends", "When the program terminates", "Never"],
+        "answer": "When the program terminates"
+      },
+      {
+        "question": "What is a copy constructor?",
+        "options": ["A constructor that takes another constructor as an argument", "A constructor that initializes an object using another object of the same class", "A constructor used to copy files", "A constructor that is empty"],
+        "answer": "A constructor that initializes an object using another object of the same class"
+      }
+    ]
+  },
+  {
+    "levelno": 16,
+    "topic": "Inheritance",
+    "theory": "Inheritance is a fundamental OOP principle that allows a new class (the **derived class**) to be based on an existing class (the **base class**). The derived class inherits the members of the base class, enabling code reuse.\n\nThe relationship is specified with a colon `:` and an access specifier (`public`, `protected`, or `private`). `public` inheritance is the most common and models an 'is-a' relationship.\n\n`class Animal { // Base class`\n`public:`\n`    void eat() { std::cout << \"I can eat!\\n\"; }`\n`};`\n\n`class Dog : public Animal { // Derived class`\n`public:`\n`    void bark() { std::cout << \"I can bark!\\n\"; }`\n`};`\n\nAn object of `Dog` can now use both `eat()` and `bark()`.",
+    "practice_questions": [
+      {
+        "question": "In `class B : public A`, which is the base class?",
+        "options": ["`B`", "`A`", "`public`", "Neither"],
+        "answer": "`A`"
+      },
+      {
+        "question": "Which symbol is used to indicate inheritance in a class declaration?",
+        "options": ["`->`", "`::`", "`:`", "`&`"],
+        "answer": "`:`"
+      },
+      {
+        "question": "The class that inherits from a base class is called a:",
+        "options": ["Parent class", "Superclass", "Derived class", "Friend class"],
+        "answer": "Derived class"
+      },
+      {
+        "question": "What is the primary benefit of inheritance?",
+        "options": ["Faster program execution", "Code reusability", "Reduced compile time", "Simpler syntax"],
+        "answer": "Code reusability"
+      },
+      {
+        "question": "What kind of relationship does `public` inheritance model?",
+        "options": ["'has-a'", "'is-a'", "'part-of'", "'uses-a'"],
+        "answer": "'is-a'"
+      },
+      {
+        "question": "If a member in the base class is `private`, can a derived class access it directly?",
+        "options": ["Yes, always", "No", "Only if the inheritance is `public`", "Only if the inheritance is `private`"],
+        "answer": "No"
+      },
+      {
+        "question": "If a member in the base class is `protected`, can a derived class access it?",
+        "options": ["Yes", "No", "Only if it is a `friend`", "Only if the base class is `virtual`"],
+        "answer": "Yes"
+      },
+      {
+        "question": "Does C++ support multiple inheritance (a class deriving from more than one base class)?",
+        "options": ["No, it's not allowed", "Yes, it does", "Only for abstract classes", "Only through interfaces"],
+        "answer": "Yes, it does"
+      },
+      {
+        "question": "When a derived class object is created, which constructor is called first?",
+        "options": ["The derived class constructor", "The base class constructor", "It depends on the compiler", "They are called simultaneously"],
+        "answer": "The base class constructor"
+      },
+      {
+        "question": "When a derived class object is destroyed, which destructor is called first?",
+        "options": ["The derived class destructor", "The base class destructor", "It depends on the compiler", "They are called simultaneously"],
+        "answer": "The derived class destructor"
+      }
+    ]
+  },
+  {
+    "levelno": 17,
+    "topic": "Polymorphism (Virtual Functions)",
+    "theory": "Polymorphism allows objects of different classes to be treated as objects of a common base class. A key mechanism for achieving runtime polymorphism in C++ is through **virtual functions**.\n\nWhen a member function in a base class is declared as `virtual`, it allows a derived class to provide its own implementation of that function (**override** it). When the function is called through a base class pointer or reference, the C++ runtime will determine which version of the function to call based on the actual type of the object.\n\n`class Animal {`\n`public:`\n`    virtual void makeSound() { std::cout << \"Animal sound\\n\"; }`\n`};`\n\n`class Dog : public Animal {`\n`public:`\n`    void makeSound() override { std::cout << \"Woof\\n\"; }`\n`};`",
+    "practice_questions": [
+      {
+        "question": "What does polymorphism mean?",
+        "options": ["Many classes", "Many forms", "Many methods", "Many objects"],
+        "answer": "Many forms"
+      },
+      {
+        "question": "Which keyword is used to declare a function that can be overridden in a derived class?",
+        "options": ["`override`", "`static`", "`virtual`", "`dynamic`"],
+        "answer": "`virtual`"
+      },
+      {
+        "question": "When a derived class provides its own implementation for a base class's virtual function, it's called:",
+        "options": ["Overloading", "Overriding", "Hiding", "Constructing"],
+        "answer": "Overriding"
+      },
+      {
+        "question": "The decision of which function to call for a virtual function is made at:",
+        "options": ["Compile-time", "Runtime", "Link-time", "It is never decided"],
+        "answer": "Runtime"
+      },
+      {
+        "question": "What is the purpose of the `override` specifier in a derived class method?",
+        "options": ["It is mandatory to override a function", "It tells the compiler to check that the function is correctly overriding a base class virtual function", "It makes the function virtual", "It hides the base class function"],
+        "answer": "It tells the compiler to check that the function is correctly overriding a base class virtual function"
+      },
+      {
+        "question": "Runtime polymorphism is also known as:",
+        "options": ["Static binding", "Compile-time polymorphism", "Early binding", "Dynamic binding or Late binding"],
+        "answer": "Dynamic binding or Late binding"
+      },
+      {
+        "question": "To achieve polymorphism, you typically use:",
+        "options": ["Base class objects", "Derived class objects", "Base class pointers or references pointing to derived class objects", "Global functions"],
+        "answer": "Base class pointers or references pointing to derived class objects"
+      },
+      {
+        "question": "Can a constructor be virtual?",
+        "options": ["Yes", "No", "Only in abstract classes", "Only if it is a template"],
+        "answer": "No"
+      },
+      {
+        "question": "Should a destructor in a base class typically be virtual?",
+        "options": ["No, never", "Yes, if you intend to delete a derived class object through a base class pointer", "Only if the class has other virtual functions", "No, it causes memory leaks"],
+        "answer": "Yes, if you intend to delete a derived class object through a base class pointer"
+      },
+      {
+        "question": "If `Dog d; Animal *a = &d; a->makeSound();` and `makeSound` is virtual, which version is called?",
+        "options": ["`Animal::makeSound`", "`Dog::makeSound`", "It's a compile error", "It's undefined behavior"],
+        "answer": "`Dog::makeSound`"
+      }
+    ]
+  },
+  {
+    "levelno": 18,
+    "topic": "Abstraction (Abstract Classes)",
+    "theory": "Abstraction means hiding complexity and showing only the essential features. In C++, one way to achieve abstraction is with **abstract classes**.\n\nAn abstract class is a class that is designed to be specifically used as a base class. It cannot be instantiated. A class becomes abstract if it has at least one **pure virtual function**.\n\nA pure virtual function is a virtual function that has no implementation in the base class. It is declared by assigning `= 0`.\n\n`class Shape { // Abstract Base Class`\n`public:`\n`    virtual double getArea() = 0; // Pure virtual function`\n`};`\n\n`class Circle : public Shape {`\n`public:`\n`    double getArea() override { /* implementation */ return 1.0; }`\n`};`\nDerived classes *must* override all pure virtual functions, or they too will be abstract.",
+    "practice_questions": [
+      {
+        "question": "What is an abstract class in C++?",
+        "options": ["A class with no member variables", "A class that cannot be instantiated", "A class with only private members", "A class defined in another file"],
+        "answer": "A class that cannot be instantiated"
+      },
+      {
+        "question": "How is a pure virtual function declared?",
+        "options": ["By adding `virtual` and `pure` keywords", "By setting its body to `{}`", "By assigning `= 0` to its declaration", "By not declaring it in the base class"],
+        "answer": "By assigning `= 0` to its declaration"
+      },
+      {
+        "question": "What happens if a class has at least one pure virtual function?",
+        "options": ["It cannot have member variables", "It becomes an abstract class", "It cannot be used as a base class", "It must be a template class"],
+        "answer": "It becomes an abstract class"
+      },
+      {
+        "question": "If a class inherits from an abstract class, what must it do?",
+        "options": ["It must also be abstract", "It must provide implementations for all pure virtual functions from the base class", "It cannot have its own member functions", "It must have a private constructor"],
+        "answer": "It must provide implementations for all pure virtual functions from the base class"
+      },
+      {
+        "question": "Can you create an object of an abstract class?",
+        "options": ["Yes, `MyAbstractClass obj;`", "No, it's a compile-time error", "Only if it has a constructor", "Yes, but only on the heap using `new`"],
+        "answer": "No, it's a compile-time error"
+      },
+      {
+        "question": "Can you create a pointer to an abstract class?",
+        "options": ["No, it's not allowed", "Yes, and it can point to objects of derived concrete classes", "Only if the class has no pure virtual functions", "No, it would be a dangling pointer"],
+        "answer": "Yes, and it can point to objects of derived concrete classes"
+      },
+      {
+        "question": "What is the main purpose of an abstract class?",
+        "options": ["To store data", "To serve as an interface for its derived classes, enforcing a contract", "To be instantiated many times", "To hide all its member functions"],
+        "answer": "To serve as an interface for its derived classes, enforcing a contract"
+      },
+      {
+        "question": "An abstract class is a form of:",
+        "options": ["Encapsulation", "Abstraction", "Polymorphism", "Inheritance"],
+        "answer": "Abstraction"
+      },
+      {
+        "question": "If a derived class does not override all pure virtual functions of its base, the derived class is:",
+        "options": ["A concrete class", "Also an abstract class", "A `final` class", "Invalid and will not compile"],
+        "answer": "Also an abstract class"
+      },
+      {
+        "question": "Can an abstract class have constructors?",
+        "options": ["No, because it cannot be instantiated", "Yes, they are called by the constructors of derived classes", "Only if they are private", "Only if it has no pure virtual functions"],
+        "answer": "Yes, they are called by the constructors of derived classes"
+      }
+    ]
+  },
+  {
+    "levelno": 19,
+    "topic": "File I/O",
+    "theory": "C++ provides a way to interact with files through the `<fstream>` header. This header gives you three main classes:\n- `std::ofstream`: Output file stream. Used for writing to files.\n- `std::ifstream`: Input file stream. Used for reading from files.\n- `std::fstream`: A file stream that can be used for both reading and writing.\n\nFirst, you create a stream object and open a file. Then you can use the insertion (`<<`) and extraction (`>>`) operators, just like with `cout` and `cin`.\n\n`#include <fstream>`\n`// Writing to a file`\n`std::ofstream outFile(\"example.txt\");`\n`outFile << \"This is a line.\\n\";`\n`outFile.close();`\n\n`// Reading from a file`\n`std::ifstream inFile(\"example.txt\");`\n`std::string line;`\n`std::getline(inFile, line);`\n`inFile.close();`",
+    "practice_questions": [
+      {
+        "question": "Which header file is needed for file input and output in C++?",
+        "options": ["`<iostream>`", "`<file>`", "`<io>`", "`<fstream>`"],
+        "answer": "`<fstream>`"
+      },
+      {
+        "question": "Which class is specifically used for writing to a file?",
+        "options": ["`ifstream`", "`ofstream`", "`fstream`", "`iostream`"],
+        "answer": "`ofstream`"
+      },
+      {
+        "question": "Which class is specifically used for reading from a file?",
+        "options": ["`ifstream`", "`ofstream`", "`fstream`", "`iostream`"],
+        "answer": "`ifstream`"
+      },
+      {
+        "question": "How do you open a file named `data.txt` for writing?",
+        "options": ["`ofstream myFile(\"data.txt\");`", "`ifstream myFile(\"data.txt\");`", "`fstream myFile = open(\"data.txt\");`", "`open(\"data.txt\");`"],
+        "answer": "`ofstream myFile(\"data.txt\");`"
+      },
+      {
+        "question": "Which function is often used to close a file stream?",
+        "options": ["`end()`", "terminate()", "close()", "stop()"],
+        "answer": "close()"
+      },
+      {
+        "question": "Which operator is used to write data to an `ofstream` object?",
+        "options": ["`>>`", "`<<`", "`&`", "`|`"],
+        "answer": "`<<`"
+      },
+      {
+        "question": "Which operator is used to read data from an `ifstream` object?",
+        "options": ["`>>`", "`<<`", "`@`", "`#`"],
+        "answer": "`>>`"
+      },
+      {
+        "question": "What is a common way to check if a file was opened successfully?",
+        "options": ["`if (myFile.isOpen())`", "`if (myFile.good())`", "`if (myFile)`", "All of the above"],
+        "answer": "All of the above"
+      },
+      {
+        "question": "What function is best for reading an entire line of text (including spaces) from a file?",
+        "options": ["`operator>>`", "`read()`", "`getline()`", "`get()`"],
+        "answer": "`getline()`"
+      },
+      {
+        "question": "If you open an existing file with `ofstream`, what happens to the file's original content by default?",
+        "options": ["The new content is appended", "It asks for confirmation", "The original content is erased", "It causes an error"],
+        "answer": "The original content is erased"
+      }
+    ]
+  },
+  {
+    "levelno": 20,
+    "topic": "STL (Vectors)",
+    "theory": "The Standard Template Library (STL) is a powerful set of C++ template classes that provide general-purpose data structures and functions. It is a core part of the language.\n\nOne of the most useful containers in the STL is `std::vector`. A vector is a dynamic, resizable array. It automatically handles its own memory management, growing as you add elements.\n\nTo use it, you must include the `<vector>` header.\n\n`#include <vector>`\n`#include <iostream>`\n\n`int main() {`\n`    std::vector<int> numbers;`\n`    numbers.push_back(10); // Add an element to the end`\n`    numbers.push_back(20);`\n\n`    std::cout << numbers[0]; // Access element like an array (prints 10)`\n`    std::cout << numbers.size(); // Get the number of elements (prints 2)`\n`}`",
+    "practice_questions": [
+      {
+        "question": "What is the primary advantage of `std::vector` over a C-style array?",
+        "options": ["It is always faster", "It can store different data types", "It is a dynamic array that can change its size automatically", "It uses less memory"],
+        "answer": "It is a dynamic array that can change its size automatically"
+      },
+      {
+        "question": "Which header file must be included to use `std::vector`?",
+        "options": ["`<array>`", "`<iostream>`", "`<vector>`", "`<stl>`"],
+        "answer": "`<vector>`"
+      },
+      {
+        "question": "Which function is used to add an element to the end of a vector?",
+        "options": ["`add()`", "`insert()`", "`push_back()`", "`append()`"],
+        "answer": "`push_back()`"
+      },
+      {
+        "question": "How do you get the number of elements currently in a vector named `vec`?",
+        "options": ["`vec.length`", "`vec.size()`", "`vec.capacity()`", "`size(vec)`"],
+        "answer": "`vec.size()`"
+      },
+      {
+        "question": "How do you access the element at index `i` in a vector `vec`?",
+        "options": ["`vec.get(i)`", "`vec[i]`", "`vec.at(i)`", "Both B and C are correct"],
+        "answer": "Both B and C are correct"
+      },
+      {
+        "question": "What is the difference between `size()` and `capacity()` for a vector?",
+        "options": ["There is no difference", "`size()` is the number of elements, `capacity()` is the storage space allocated", "`capacity()` is the number of elements, `size()` is the storage space", "`capacity()` is measured in bytes"],
+        "answer": "`size()` is the number of elements, `capacity()` is the storage space allocated"
+      },
+      {
+        "question": "Which of the following correctly creates a vector of strings?",
+        "options": ["`std::vector<string> names;`", "`vector<std::string> names;`", "`std::vector<char*> names;`", "`std::vector<std::string> names;`"],
+        "answer": "`std::vector<std::string> names;`"
+      },
+      {
+        "question": "How can you remove the last element from a vector `vec`?",
+        "options": ["`vec.remove_last()`", "`vec.pop_back()`", "`vec.erase_back()`", "`vec.size()--;`"],
+        "answer": "`vec.pop_back()`"
+      },
+      {
+        "question": "What does `vec.clear()` do?",
+        "options": ["Deletes the vector from memory", "Sets all elements to 0", "Removes all elements from the vector", "Reduces the vector's capacity to 0"],
+        "answer": "Removes all elements from the vector"
+      },
+      {
+        "question": "What is the STL?",
+        "options": ["A C++ compiler", "A specific data structure", "A library of template classes for data structures and algorithms", "A syntax highlighting tool"],
+        "answer": "A library of template classes for data structures and algorithms"
+      }
+    ]
   }
-  
+]

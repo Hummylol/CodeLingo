@@ -17,7 +17,7 @@ type Topic = {
 const topics: Topic[] = Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
   id: index + 1,
   title: `Level ${index + 1}`,
-  unlocked: index < 1,
+  unlocked: index < 5,
 }))
 
 export default function LessonPage() {
