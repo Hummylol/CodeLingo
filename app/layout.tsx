@@ -9,7 +9,21 @@ export const metadata: Metadata = {
   title: "CodeLingo",
   description: "Created with Love",
   manifest: "/manifest.json",
-  themeColor: "#ffffff",
+  applicationName: "CodeLingo",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    viewportFit: "cover",
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+  ],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "CodeLingo",
+  },
   icons: {
     icon: [
       { url: "/next.svg", type: "image/svg+xml" },
@@ -30,7 +44,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans `}>
         <Suspense fallback={<div>Loading...</div>}>
-          <div className="min-h-screen pb-16">{children}</div>
+          <div className="min-h-[100dvh] pb-16">{children}</div>
           <MobileNav />
         </Suspense>
       </body>

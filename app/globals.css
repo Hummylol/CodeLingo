@@ -156,3 +156,22 @@ body {
   border-color: var(--border);
   outline-color: var(--ring);
 }
+
+/* PWA safe-area and background coverage */
+html,
+body {
+  /* Ensure background extends under status bars on notch devices */
+  background-color: var(--background);
+  min-height: 100dvh;
+}
+
+/* Account for iOS safe areas when status bar is translucent */
+@supports (padding-top: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    box-sizing: border-box;
+  }
+}

@@ -3,7 +3,7 @@
   "short_name": "CodeLingo",
   "description": "Practice coding topics and track your progress.",
   "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "background_color": "#0f172a",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
