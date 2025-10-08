@@ -4,9 +4,14 @@ import { useParams, useRouter } from "next/navigation"
 import { useSelectedLanguage } from "@/components/codelingo/language/use-selected-language"
 import { LANGUAGES } from "@/components/codelingo/language/data"
 import { useEffect, useState } from "react"
-import { ArrowLeft, Lock, CheckCircle, XCircle } from "lucide-react"
+import { ArrowLeft, Lock, CheckCircle, XCircle, MessageCircle, X, Bot } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Switch } from "@/components/ui/switch"
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Input } from "@/components/ui/input"
+import ChatDrawer from "@/components/codelingo/ChatDrawer";
+
 
 // --- INTERFACES ---
 interface PracticeQuestion {
@@ -37,6 +42,40 @@ export default function TheoryPage() {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
   const [score, setScore] = useState<number | null>(null);
   const [isQuizChecked, setIsQuizChecked] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [eli5, setEli5] = useState(true);
+  const [chatMessages, setChatMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
+  const [chatInput, setChatInput] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
+  const escapeHtml = (unsafe: string) => {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  const formatAssistantMarkdown = (raw: string) => {
+    // Escape HTML first
+    let text = escapeHtml(raw);
+    // Code blocks ```...```
+    text = text.replace(/```[\s\S]*?```/g, (block) => {
+      const inner = block.slice(3, -3);
+      return `<pre class="overflow-x-auto rounded-md bg-muted p-3"><code>${inner}</code></pre>`;
+    });
+    // Inline code `code`
+    text = text.replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-muted">$1</code>');
+    // Bold **text**
+    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // Simple headings: lines starting with '## ' or '# '
+    text = text.replace(/^##\s+(.+)$/gm, '<strong class="text-base">$1</strong>');
+    text = text.replace(/^#\s+(.+)$/gm, '<strong class="text-base">$1</strong>');
+    // Preserve newlines as <br/>
+    text = text.replace(/\n/g, '<br/>');
+    return text;
+  };
 
   const selectedLanguage = LANGUAGES.find(lang => lang.id === selected)
   const currentLevelId = parseInt(id as string, 10);
@@ -102,6 +141,38 @@ export default function TheoryPage() {
   const handleNextLevel = () => {
     if (score !== null && score >= requiredScore && currentLevelId < totalLevels) {
       router.push(`/lesson/theory/${currentLevelId + 1}`);
+    }
+  };
+
+  const sendChat = async () => {
+    if (!levelData) return;
+    const trimmed = chatInput.trim();
+    if (!trimmed || isSending) return;
+    const pending = { role: "user" as const, content: trimmed };
+    setChatMessages(prev => [...prev, pending]);
+    setChatInput("");
+    setIsSending(true);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...chatMessages, pending],
+          languageId: selected,
+          eli5,
+          topic: levelData.topic,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || "Failed to get response");
+      if (data?.message) {
+        setChatMessages(prev => [...prev, data.message]);
+      }
+    } catch (e: any) {
+      const message = e?.message ? `Error: ${e.message}` : "Sorry, something went wrong. Please try again.";
+      setChatMessages(prev => [...prev, { role: "assistant", content: message }]);
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -202,7 +273,7 @@ export default function TheoryPage() {
         </div>
       </div>
       
-      <div className="mt-8 flex flex-col items-center gap-4">
+      <div className="mt-8 flex flex-col items-center gap-4 mb-20">
         {!isQuizChecked ? (
           <Button onClick={handleCheckAnswers} size="lg">
             Check Answers
@@ -231,6 +302,20 @@ export default function TheoryPage() {
           {currentLevelId >= totalLevels ? "Last Level" : "Next Level"}
           {(score === null || score < requiredScore) && currentLevelId < totalLevels && <Lock className="h-4 w-4 ml-2" />}
         </Button>
+      </div>
+
+      {/* Floating Chat Button - Mobile First */}
+      <button
+        aria-label="Open chat"
+        onClick={() => setIsChatOpen(true)}
+        className="fixed bottom-24 right-6 z-40 rounded-full bg-emerald-600 text-white shadow-lg p-4 md:p-4 active:scale-95 transition"
+      >
+        <Bot className="h-6 w-6" />
+      </button>
+
+      {/* Chat Drawer */}
+      <div className="relative bottom-24 right-6 z-10000">
+        <ChatDrawer  topic={levelData.topic} languageId={selected || ""} />
       </div>
     </main>
   )
