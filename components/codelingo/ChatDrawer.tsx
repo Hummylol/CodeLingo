@@ -121,7 +121,7 @@ export default function ChatDrawer({ topic, languageId }: ChatDrawerProps) {
               </div>
 
               <div className="flex items-center justify-between px-4 py-2 border-b gap-3">
-                <div className="text-sm">Explain like I'm 5</div>
+                <div className="text-sm">Explain like I&apos;m 5</div>
                 <Switch checked={eli5} onCheckedChange={setEli5} />
               </div>
 
