@@ -71,8 +71,9 @@ export default function ChatDrawer({ topic, languageId }: ChatDrawerProps) {
       if (data?.message) {
         setChatMessages(prev => [...prev, data.message]);
       }
-    } catch (e: any) {
-      const message = e?.message ? `Error: ${e.message}` : "Sorry, something went wrong.";
+    } catch (e: unknown) {
+      const error = e as { message?: string };
+      const message = error?.message ? `Error: ${error.message}` : "Sorry, something went wrong.";
       setChatMessages(prev => [...prev, { role: "assistant", content: message }]);
     } finally {
       setIsSending(false);
@@ -127,7 +128,7 @@ export default function ChatDrawer({ topic, languageId }: ChatDrawerProps) {
               <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-0">
                 {chatMessages.length === 0 ? (
                   <div className="text-sm text-muted-foreground">
-                    Stuck? Ask a question about "{topic}".
+                    Stuck? Ask a question about &quot;{topic}&quot;.
                   </div>
                 ) : (
                   chatMessages.map((m, i) => (

@@ -31,8 +31,8 @@ export async function POST(req: NextRequest) {
     async function listModels(version: "v1" | "v1beta") {
       const url = `https://generativelanguage.googleapis.com/${version}/models?key=${apiKey}`;
       const r = await fetch(url);
-      if (!r.ok) return { version, models: [] as any[] };
-      const j = await r.json();
+      if (!r.ok) return { version, models: [] as unknown[] };
+      const j = await r.json() as { models?: unknown[] };
       return { version, models: Array.isArray(j.models) ? j.models : [] };
     }
 
@@ -61,9 +61,15 @@ export async function POST(req: NextRequest) {
       // If envPreferred is set, try to find it first in either list
       if (envPreferred) {
         for (const { version, models } of all) {
-          const found = models.find((m: any) => m.name?.endsWith(`/${envPreferred}`) || m.name === envPreferred || m.name === `models/${envPreferred}`);
-          if (found && (found.supportedGenerationMethods || []).includes("generateContent")) {
-            return { version, modelName: found.name.replace(/^models\//, "") } as const;
+          const found = models.find((m: unknown) => {
+            const model = m as { name?: string; supportedGenerationMethods?: string[] };
+            return model.name?.endsWith(`/${envPreferred}`) || model.name === envPreferred || model.name === `models/${envPreferred}`;
+          });
+          if (found) {
+            const model = found as { name: string; supportedGenerationMethods?: string[] };
+            if ((model.supportedGenerationMethods || []).includes("generateContent")) {
+              return { version, modelName: model.name.replace(/^models\//, "") } as const;
+            }
           }
         }
       }
@@ -71,15 +77,27 @@ export async function POST(req: NextRequest) {
       // Otherwise pick the first preferred pattern that supports generateContent
       for (const { version, models } of all) {
         for (const pat of preference) {
-          const found = models.find((m: any) => pat.test(m.name) && (m.supportedGenerationMethods || []).includes("generateContent"));
-          if (found) return { version, modelName: found.name.replace(/^models\//, "") } as const;
+          const found = models.find((m: unknown) => {
+            const model = m as { name?: string; supportedGenerationMethods?: string[] };
+            return pat.test(model.name || "") && (model.supportedGenerationMethods || []).includes("generateContent");
+          });
+          if (found) {
+            const model = found as { name: string };
+            return { version, modelName: model.name.replace(/^models\//, "") } as const;
+          }
         }
       }
 
       // Fallback: any that supports generateContent
       for (const { version, models } of all) {
-        const found = models.find((m: any) => (m.supportedGenerationMethods || []).includes("generateContent"));
-        if (found) return { version, modelName: found.name.replace(/^models\//, "") } as const;
+        const found = models.find((m: unknown) => {
+          const model = m as { supportedGenerationMethods?: string[] };
+          return (model.supportedGenerationMethods || []).includes("generateContent");
+        });
+        if (found) {
+          const model = found as { name: string };
+          return { version, modelName: model.name.replace(/^models\//, "") } as const;
+        }
       }
       return null;
     }
@@ -112,8 +130,9 @@ export async function POST(req: NextRequest) {
     for (const { version, models } of [v1List, v1bList]) {
       for (const pat of preferOrder) {
         for (const m of models) {
-          const compact = String(m.name || '').replace(/^models\//, '');
-          if (pat.test(compact) && (m.supportedGenerationMethods || []).includes("generateContent")) addCandidate(version as any, compact);
+          const model = m as { name?: string; supportedGenerationMethods?: string[] };
+          const compact = String(model.name || '').replace(/^models\//, '');
+          if (pat.test(compact) && (model.supportedGenerationMethods || []).includes("generateContent")) addCandidate(version, compact);
         }
       }
     }
@@ -149,7 +168,7 @@ export async function POST(req: NextRequest) {
         // Check overloaded conditions
         const status = r.status;
         let msg = "";
-        try { const j = await r.clone().json(); msg = j?.error?.message || j?.message || ""; } catch { try { msg = await r.clone().text(); } catch { msg = ""; } }
+        try { const j = await r.clone().json() as { error?: { message?: string }; message?: string }; msg = j?.error?.message || j?.message || ""; } catch { try { msg = await r.clone().text(); } catch { msg = ""; } }
         const overloaded = status === 429 || status === 503 || /overloaded/i.test(msg);
         if (!overloaded) return r;
         // Backoff
@@ -168,9 +187,10 @@ export async function POST(req: NextRequest) {
     }
 
     if (!resp || !resp.ok) {
-      let detail: any;
+      let detail: unknown;
       try { detail = await resp?.json(); } catch { detail = await resp?.text(); }
-      const message = detail?.error?.message || detail?.message || `Gemini error (tried ${tried.join(", ")})`;
+      const errorDetail = detail as { error?: { message?: string }; message?: string };
+      const message = errorDetail?.error?.message || errorDetail?.message || `Gemini error (tried ${tried.join(", ")})`;
       return NextResponse.json({ error: message, detail }, { status: 500 });
     }
 
@@ -185,7 +205,8 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ message: { role: "assistant", content: assistantText } });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message || "Unknown error" }, { status: 500 });
+  } catch (err: unknown) {
+    const error = err as { message?: string };
+    return NextResponse.json({ error: error.message || "Unknown error" }, { status: 500 });
   }
 }
