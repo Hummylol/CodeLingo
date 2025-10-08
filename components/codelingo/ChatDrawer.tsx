@@ -86,7 +86,7 @@ export default function ChatDrawer({ topic, languageId }: ChatDrawerProps) {
       <motion.button
         aria-label="Open chat"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-6 z-[10000] rounded-full bg-emerald-600 text-white shadow-lg p-4 md:p-4 active:scale-95"
+        className="fixed bottom-24 right-6 z-[9999] rounded-full bg-emerald-600 text-white shadow-lg p-4 md:p-4 active:scale-95"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -103,14 +103,14 @@ export default function ChatDrawer({ topic, languageId }: ChatDrawerProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/50 z-40"
+              className="fixed inset-0 bg-black/50 z-[9998]"
             />
             <motion.div
               initial={{ y: "80%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              className="fixed bottom-0 left-0 right-0 h-[85vh] bg-background border-t z-50 rounded-t-2xl shadow-xl overflow-hidden"
+              className="fixed bottom-0 left-0 right-0 h-[85vh] bg-background border-t z-[9999] rounded-t-2xl shadow-xl overflow-hidden"
             >
             <div className="flex flex-col h-full">
               <div className="flex items-center justify-between px-4 py-3 border-b">
