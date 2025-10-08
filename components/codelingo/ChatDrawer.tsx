@@ -86,7 +86,7 @@ export default function ChatDrawer({ topic, languageId }: ChatDrawerProps) {
       <motion.button
         aria-label="Open chat"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-6 z-40 rounded-full bg-emerald-600 text-white shadow-lg p-4 md:p-4 active:scale-95"
+        className="fixed bottom-24 right-6 z-[10000] rounded-full bg-emerald-600 text-white shadow-lg p-4 md:p-4 active:scale-95"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
