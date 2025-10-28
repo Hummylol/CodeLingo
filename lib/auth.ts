@@ -1,8 +1,8 @@
-import NextAuth from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -15,16 +15,12 @@ export const authOptions = {
   ],
   callbacks: {
     async session({ session, token }) {
-      // Ensure we return the actual session data
-      if (session?.user) {
-        session.user.id = token.sub || token.id
-      }
+      // Return the session data as-is since we use email as ID
       return session
     },
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       // Store user data in token
       if (user) {
-        token.id = user.id
         token.name = user.name
         token.email = user.email
         token.picture = user.image
