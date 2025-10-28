@@ -27,7 +27,7 @@ export function useAuth() {
     } else if (status === 'authenticated' && session?.user) {
       // Use the actual NextAuth session data from Google
       const userData: User = {
-        id: session.user.id || session.user.email || '1',
+        id: session.user.email || '1',
         name: session.user.name || 'User',
         email: session.user.email || '',
         avatar: session.user.image || undefined,
