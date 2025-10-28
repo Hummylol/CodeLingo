@@ -1,3 +1,5 @@
+"use client"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Flame } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -46,9 +48,7 @@ export default function HomePage() {
 
         <LanguageContent />
 
-        <footer className="mt-8 text-center text-sm text-muted-foreground border-t border-border pt-6">
-          Friendly, colorful, and minimal — just like your learning journey.
-        </footer>
+        
       </div>
     </main>
   )
