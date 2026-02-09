@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react"
 import { useSelectedLanguage } from "@/components/codelingo/language/use-selected-language"
 import { useEffect, useState } from "react"
 import ChatDrawer from "@/components/codelingo/ChatDrawer"
-import { LANGUAGES } from "@/components/codelingo/language/data"
+
 
 // --- INTERFACES ---
 interface PracticeQuestion {

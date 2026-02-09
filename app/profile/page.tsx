@@ -5,13 +5,12 @@ import { Award, Star, Target, Flame, BookOpen, Trophy } from "lucide-react"
 import TopicProgress from "@/components/codelingo/profile/topic-progress"
 import AuthSection from "@/components/codelingo/profile/auth-section"
 import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useAuth } from "@/lib/auth-context"
 
 function ProfileContent() {
   const { user } = useAuth()
-  
+
   const topics = [
     { name: "Variables", progress: 95, color: "bg-green-500" },
     { name: "Loops", progress: 75, color: "bg-blue-500" },
@@ -20,37 +19,37 @@ function ProfileContent() {
   ]
 
   const achievements = [
-    { 
-      id: 1, 
-      name: "First Lesson", 
-      description: "Completed your first lesson", 
-      icon: Star, 
+    {
+      id: 1,
+      name: "First Lesson",
+      description: "Completed your first lesson",
+      icon: Star,
       color: "text-yellow-500",
-      earned: true 
+      earned: true
     },
-    { 
-      id: 2, 
-      name: "Week Warrior", 
-      description: "Reached weekly goal", 
-      icon: Target, 
+    {
+      id: 2,
+      name: "Week Warrior",
+      description: "Reached weekly goal",
+      icon: Target,
       color: "text-blue-500",
-      earned: true 
+      earned: true
     },
-    { 
-      id: 3, 
-      name: "Streak Master", 
-      description: "7-day learning streak", 
-      icon: Flame, 
+    {
+      id: 3,
+      name: "Streak Master",
+      description: "7-day learning streak",
+      icon: Flame,
       color: "text-red-500",
-      earned: true 
+      earned: true
     },
-    { 
-      id: 4, 
-      name: "Code Master", 
-      description: "Complete 50 lessons", 
-      icon: Trophy, 
+    {
+      id: 4,
+      name: "Code Master",
+      description: "Complete 50 lessons",
+      icon: Trophy,
       color: "text-purple-500",
-      earned: false 
+      earned: false
     },
   ]
 
@@ -78,7 +77,7 @@ function ProfileContent() {
               </p>
             </div>
           </div>
-          
+
           {/* Level & XP Stats */}
           <div className="grid grid-cols-2 gap-4">
             <Card className="animate-in fade-in-50 duration-500">
@@ -136,11 +135,10 @@ function ProfileContent() {
               {achievements.map((achievement, index) => (
                 <div
                   key={achievement.id}
-                  className={`flex items-center gap-3 p-3 rounded-lg border transition-all duration-300 hover:shadow-md ${
-                    achievement.earned 
-                      ? "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 animate-in fade-in-50 duration-300" 
+                  className={`flex items-center gap-3 p-3 rounded-lg border transition-all duration-300 hover:shadow-md ${achievement.earned
+                      ? "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 animate-in fade-in-50 duration-300"
                       : "bg-slate-50/50 dark:bg-slate-800/50 border-slate-200/50 dark:border-slate-700/50 opacity-60"
-                  }`}
+                    }`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <achievement.icon className={`h-5 w-5 ${achievement.color}`} />

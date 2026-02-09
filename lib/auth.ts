@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async session({ session, token }) {
+    async session({ session }) {
       // Return the session data as-is since we use email as ID
       return session
     },

@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 type Badge = {
   id: string
   name: string
@@ -13,9 +15,11 @@ export default function Badges({ badges }: { badges: Badge[] }) {
           className="flex flex-col items-center gap-2 rounded-md border p-3 text-center"
           aria-labelledby={`badge-${b.id}-title`}
         >
-          <img
+          <Image
             src={"/placeholder.svg?height=64&width=64&query=achievement-badge"}
             alt={`${b.name} badge`}
+            width={48}
+            height={48}
             className="h-12 w-12"
           />
           <figcaption className="flex flex-col">

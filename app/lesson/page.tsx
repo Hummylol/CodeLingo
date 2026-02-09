@@ -34,7 +34,7 @@ export default function LessonPage() {
         try {
           const res = await fetch('/theory/dsa.json');
           if (!res.ok) throw new Error('Failed to fetch');
-          const data = await res.json();
+          const data: { levelno: number; topic: string }[] = await res.json();
 
           setTopics(prevTopics => {
             // Map over the existing fixed-size array or create a new one based on fetched data?
@@ -42,7 +42,7 @@ export default function LessonPage() {
             // We should probably keep 20 levels but update titles for those that exist.
 
             return prevTopics.map(topic => {
-              const matchingData = data.find((d: any) => d.levelno === topic.id);
+              const matchingData = data.find((d) => d.levelno === topic.id);
               if (matchingData) {
                 // Simplify the topic name for mobile screens (e.g. "Arrays - Basics" -> "Arrays")
                 const simpleTitle = matchingData.topic.split('–')[0].split('&')[0].trim();

@@ -35,7 +35,7 @@ export const LANGUAGES: Language[] = [
     id: "dsa",
     name: "DSA",
     icon: Network,
-    description: "Core Data Structures & Algorithms for interviews and problem solving.[Frequently asked in FAANG interviews] ",
+    description: "Core Data Structures & Algorithms for interviews and problem solving.",
     sampleTopics: ["Arrays", "Linked Lists", "Stacks & Queues", "Trees", "Graphs & Traversals"],
   },
 ]
