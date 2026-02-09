@@ -1,0 +1,459 @@
+[
+  {
+    "levelno": 1,
+    "topic": "Arrays – Basics & Operations",
+    "theory": "An **array** is a linear data structure that stores a collection of elements in **contiguous memory**. Each element can be accessed in constant time using its **index**.\n\nKey properties:\n- Fixed size in low-level languages (e.g., C/C++); dynamic in high-level languages via wrappers (like Python lists, Java `ArrayList`).\n- Fast **random access**: accessing `arr[i]` is typically O(1).\n- Insertions/deletions in the middle require shifting elements and are usually O(n).\n\nCommon operations & complexities:\n- Access by index: O(1)\n- Search (unsorted): O(n)\n- Search (sorted + binary search): O(log n)\n- Insert/delete at end (amortized for dynamic arrays): O(1)\n- Insert/delete at arbitrary position: O(n)\n\nMentally, picture an array as boxes laid out in a straight line, each with an index starting from 0.",
+    "practice_questions": [
+      {
+        "question": "What is the time complexity of accessing an element by index in an array (e.g., arr[i])?",
+        "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(1)"
+      },
+      {
+        "question": "Arrays are stored in memory as:",
+        "options": ["Random scattered cells", "Linked blocks", "Contiguous blocks of memory", "Tree-shaped nodes"],
+        "answer": "Contiguous blocks of memory"
+      },
+      {
+        "question": "In most languages, the first element of an array has index:",
+        "options": ["-1", "0", "1", "Depends on the language, but 0 is very common"],
+        "answer": "Depends on the language, but 0 is very common"
+      },
+      {
+        "question": "What is a drawback of arrays compared to linked lists?",
+        "options": ["Slower random access", "Cannot store multiple elements", "Expensive insertions/deletions in the middle", "They do not support iteration"],
+        "answer": "Expensive insertions/deletions in the middle"
+      },
+      {
+        "question": "If you frequently need fast random access by index, which structure is generally better?",
+        "options": ["Array", "Singly Linked List", "Binary Tree", "Hash Table"],
+        "answer": "Array"
+      },
+      {
+        "question": "What is the worst-case time complexity to insert an element at the beginning of an array of size n (shifting required)?",
+        "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(n)"
+      },
+      {
+        "question": "Dynamic arrays (like Python lists) can grow by:",
+        "options": ["Reallocating to a bigger contiguous block when needed", "Adding new disconnected memory chunks", "Storing elements in a tree", "Using hashing for positions"],
+        "answer": "Reallocating to a bigger contiguous block when needed"
+      },
+      {
+        "question": "What does \"amortized O(1)\" mean for appending to a dynamic array?",
+        "options": ["Each single append is exactly O(1)", "The average cost over many appends is O(1), even if some appends are more expensive", "Appending is always O(log n)", "Appending sometimes fails"],
+        "answer": "The average cost over many appends is O(1), even if some appends are more expensive"
+      },
+      {
+        "question": "If you only ever push and pop from the end of an array-based list, the typical complexity for each operation is:",
+        "options": ["O(1) amortized", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(1) amortized"
+      },
+      {
+        "question": "Which scenario is a poor fit for plain arrays?",
+        "options": ["Random access by index", "Fixed-size data like days of the week", "Constantly inserting and deleting from the middle of the collection", "Storing a list of exam scores once"],
+        "answer": "Constantly inserting and deleting from the middle of the collection"
+      }
+    ]
+  },
+  {
+    "levelno": 2,
+    "topic": "Linked Lists – Structure & Traversal",
+    "theory": "A **linked list** is a linear data structure where elements (called **nodes**) store data and a pointer/reference to the next node.\n\nKey characteristics:\n- Nodes are not stored contiguously in memory.\n- Common variants: singly linked list, doubly linked list, circular linked list.\n- No random access: you must traverse from the head to reach a given position.\n\nTypical node structure (conceptually):\n- `value`: the data stored in the node.\n- `next`: reference/pointer to the next node (or `null` / `None`).\n\nComplexities (singly linked list):\n- Access by index: O(n)\n- Insert at head: O(1)\n- Insert after a known node: O(1)\n- Search by value: O(n)\n\nThink of a linked list as a chain of people where each person only knows who comes next.",
+    "practice_questions": [
+      {
+        "question": "A node in a singly linked list typically stores:",
+        "options": ["Only data", "Only a pointer", "Data and a pointer/reference to the next node", "Index and data"],
+        "answer": "Data and a pointer/reference to the next node"
+      },
+      {
+        "question": "Where does a singly linked list usually start?",
+        "options": ["At the tail", "At the middle node", "At the head pointer", "At a random node"],
+        "answer": "At the head pointer"
+      },
+      {
+        "question": "What is the time complexity to access the k-th element in a singly linked list (by position)?",
+        "options": ["O(1)", "O(log n)", "O(k) which is O(n) in worst case", "O(n log n)"],
+        "answer": "O(k) which is O(n) in worst case"
+      },
+      {
+        "question": "What happens to the `next` pointer of the last node in a typical singly linked list?",
+        "options": ["Points back to the head", "Points to itself", "Is `null` / `None`", "Points to a random node"],
+        "answer": "Is `null` / `None`"
+      },
+      {
+        "question": "Which operation is usually O(1) in a singly linked list (given the head pointer)?",
+        "options": ["Insert at the head", "Insert at the end without a tail pointer", "Search for an element", "Get middle element"],
+        "answer": "Insert at the head"
+      },
+      {
+        "question": "A doubly linked list node typically stores:",
+        "options": ["Data and only next pointer", "Data, next pointer, and previous pointer", "Data and index", "Only index"],
+        "answer": "Data, next pointer, and previous pointer"
+      },
+      {
+        "question": "One advantage of linked lists over arrays is:",
+        "options": ["Faster random access", "Better cache locality always", "Easy O(1) insertions/deletions when you already have a pointer to the node", "Guaranteed less memory usage"],
+        "answer": "Easy O(1) insertions/deletions when you already have a pointer to the node"
+      },
+      {
+        "question": "Which of the following is a common application of linked lists?",
+        "options": ["Implementing dynamically sized queues", "Implementing hash tables", "Binary search trees", "All of the above, depending on design"],
+        "answer": "All of the above, depending on design"
+      },
+      {
+        "question": "If you must often insert in the middle and also need fast traversal in both directions, you might choose:",
+        "options": ["Singly linked list", "Doubly linked list", "Static array only", "Hash table"],
+        "answer": "Doubly linked list"
+      },
+      {
+        "question": "A circular linked list is one in which:",
+        "options": ["The memory is circular", "The last node points back to some earlier node (often the head)", "Indices wrap around automatically", "Nodes are stored in a circle in RAM"],
+        "answer": "The last node points back to some earlier node (often the head)"
+      }
+    ]
+  },
+  {
+    "levelno": 3,
+    "topic": "Stacks – LIFO & Common Uses",
+    "theory": "A **stack** is a linear data structure that follows the **LIFO (Last In, First Out)** principle.\n\nCore operations:\n- `push(x)`: add an element to the top.\n- `pop()`: remove and return the top element.\n- `peek()` / `top()`: return the top element without removing it.\n- `isEmpty()`: check if the stack is empty.\n\nTypical implementations:\n- Array-based or dynamic array.\n- Linked-list-based (pushing/popping at the head).\n\nTime complexity (amortized for dynamic arrays):\n- Push: O(1)\n- Pop: O(1)\n- Peek: O(1)\n\nCommon use-cases:\n- Expression evaluation (e.g., postfix/postfix to infix).\n- Checking balanced parentheses/brackets.\n- Function call stack / recursion.\n- Undo/redo functionality.",
+    "practice_questions": [
+      {
+        "question": "Stacks follow which access order?",
+        "options": ["FIFO", "LIFO", "Random", "Sorted"],
+        "answer": "LIFO"
+      },
+      {
+        "question": "Which operation removes the top element from a stack?",
+        "options": ["push", "peek", "pop", "insert"],
+        "answer": "pop"
+      },
+      {
+        "question": "What is the typical time complexity of `push` and `pop` operations on a stack?",
+        "options": ["O(1) on average", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(1) on average"
+      },
+      {
+        "question": "Which of the following is a classic use-case for a stack?",
+        "options": ["Breadth-first search", "Checking balanced parentheses", "Storing key-value pairs", "Implementing priority queues"],
+        "answer": "Checking balanced parentheses"
+      },
+      {
+        "question": "If you push elements 1, 2, 3 (in that order) onto an empty stack and then pop three times, what is the sequence of popped values?",
+        "options": ["1, 2, 3", "3, 2, 1", "1, 3, 2", "2, 3, 1"],
+        "answer": "3, 2, 1"
+      },
+      {
+        "question": "The function call stack in most programming languages is conceptually a:",
+        "options": ["Queue", "Heap", "Stack", "Graph"],
+        "answer": "Stack"
+      },
+      {
+        "question": "In an array-based stack implementation, where does the stack typically grow?",
+        "options": ["From the middle of the array", "From index 0 upwards or from the end downwards, depending on design", "Always from index 1", "Randomly"],
+        "answer": "From index 0 upwards or from the end downwards, depending on design"
+      },
+      {
+        "question": "Which operation allows you to see the top element of the stack without removing it?",
+        "options": ["peek/top", "pop", "swap", "height"],
+        "answer": "peek/top"
+      },
+      {
+        "question": "If `isEmpty()` returns true on a stack, then:",
+        "options": ["You can safely pop", "You should not pop, as it would underflow", "The stack has one element", "The stack has infinite capacity"],
+        "answer": "You should not pop, as it would underflow"
+      },
+      {
+        "question": "A stack can be implemented using:",
+        "options": ["Arrays only", "Linked lists only", "Arrays or linked lists", "Graphs only"],
+        "answer": "Arrays or linked lists"
+      }
+    ]
+  },
+  {
+    "levelno": 4,
+    "topic": "Queues – FIFO & Variants",
+    "theory": "A **queue** is a linear data structure that follows the **FIFO (First In, First Out)** principle.\n\nCore operations:\n- `enqueue(x)`: insert element at the back (tail).\n- `dequeue()`: remove and return element from the front (head).\n- `front()` / `peek()`: view the front element without removing it.\n\nCommon implementations:\n- Linked list with pointers to both head and tail.\n- Circular array (ring buffer) to avoid shifting.\n\nComplexities (well-implemented queue):\n- Enqueue: O(1)\n- Dequeue: O(1)\n- Peek: O(1)\n\nVariants:\n- **Deque (double-ended queue)**: insertion/removal from both ends.\n- **Priority queue**: elements are removed based on priority instead of insertion order.",
+    "practice_questions": [
+      {
+        "question": "Queues follow which access order?",
+        "options": ["FIFO", "LIFO", "Random", "Priority-based only"],
+        "answer": "FIFO"
+      },
+      {
+        "question": "Which operation inserts an element at the back of a queue?",
+        "options": ["enqueue", "dequeue", "push", "pop"],
+        "answer": "enqueue"
+      },
+      {
+        "question": "Which operation removes an element from the front of a queue?",
+        "options": ["enqueue", "dequeue", "insert", "append"],
+        "answer": "dequeue"
+      },
+      {
+        "question": "What is a common real-world analogy for a queue?",
+        "options": ["Stack of plates", "Line of people waiting for a bus", "Tree of directories", "Friend recommendation graph"],
+        "answer": "Line of people waiting for a bus"
+      },
+      {
+        "question": "In a naive array-based queue (no circular behavior), why is `dequeue` from the front inefficient?",
+        "options": ["Because it is O(1)", "Because it may require shifting all elements left, which is O(n)", "Because arrays do not allow deletion", "Because front pointers cannot move"],
+        "answer": "Because it may require shifting all elements left, which is O(n)"
+      },
+      {
+        "question": "A circular buffer implementation of a queue:",
+        "options": ["Uses extra memory but keeps operations O(n)", "Allows front and rear indices to wrap around the array end", "Is only used in linked lists", "Does not support dequeue"],
+        "answer": "Allows front and rear indices to wrap around the array end"
+      },
+      {
+        "question": "What is a deque (double-ended queue)?",
+        "options": ["A queue that only works on even numbers", "A queue that allows insertion and removal at both front and back", "A queue with two heads", "A queue with random access"],
+        "answer": "A queue that allows insertion and removal at both front and back"
+      },
+      {
+        "question": "Breadth-first search (BFS) on a graph is typically implemented using:",
+        "options": ["Stack", "Queue", "Heap", "Hash table"],
+        "answer": "Queue"
+      },
+      {
+        "question": "In a priority queue:",
+        "options": ["Elements leave strictly in the order they arrived", "Elements with highest (or lowest) priority leave first", "There is no notion of priority", "It is the same as a stack"],
+        "answer": "Elements with highest (or lowest) priority leave first"
+      },
+      {
+        "question": "If you frequently need to insert and remove at both ends, which structure is most suitable?",
+        "options": ["Simple queue", "Stack", "Deque", "Priority queue"],
+        "answer": "Deque"
+      }
+    ]
+  },
+  {
+    "levelno": 5,
+    "topic": "Trees – Terminology & Binary Trees",
+    "theory": "A **tree** is a hierarchical data structure made up of **nodes** connected by edges, with no cycles.\n\nCore terminology:\n- **Root**: the topmost node.\n- **Parent/Child**: relationships between connected nodes.\n- **Leaf**: a node with no children.\n- **Depth**: distance (number of edges) from root to a node.\n- **Height**: maximum depth of any node in the tree.\n\nA **binary tree** is a tree where each node has at most two children, often called `left` and `right`.\n\nTraversal orders (binary tree):\n- **Preorder (Root, Left, Right)**\n- **Inorder (Left, Root, Right)**\n- **Postorder (Left, Right, Root)**\n- **Level-order (BFS by levels)**\n\nBalanced trees (e.g., AVL, Red-Black) maintain height ~O(log n) so search/insert/delete operations can be O(log n).",
+    "practice_questions": [
+      {
+        "question": "Which of the following is true for a tree (as a data structure)?",
+        "options": ["It may contain cycles", "It is a connected acyclic graph", "Every node has exactly two children", "It has exactly one leaf"],
+        "answer": "It is a connected acyclic graph"
+      },
+      {
+        "question": "In a rooted tree, the topmost node is called the:",
+        "options": ["Leaf", "Root", "Parent", "Child"],
+        "answer": "Root"
+      },
+      {
+        "question": "A node with no children is called a:",
+        "options": ["Root", "Leaf", "Internal node", "Sibling"],
+        "answer": "Leaf"
+      },
+      {
+        "question": "In a binary tree, a node can have:",
+        "options": ["Exactly two children", "At most two children", "At most three children", "Unlimited children"],
+        "answer": "At most two children"
+      },
+      {
+        "question": "Which traversal order is `Root, Left, Right`?",
+        "options": ["Inorder", "Preorder", "Postorder", "Level-order"],
+        "answer": "Preorder"
+      },
+      {
+        "question": "Which traversal order is `Left, Root, Right`?",
+        "options": ["Inorder", "Preorder", "Postorder", "Reverse level-order"],
+        "answer": "Inorder"
+      },
+      {
+        "question": "Which traversal visits nodes level by level from the root downward?",
+        "options": ["Preorder", "Inorder", "Postorder", "Level-order (BFS)"],
+        "answer": "Level-order (BFS)"
+      },
+      {
+        "question": "In a balanced binary search tree, the average time complexity of search is:",
+        "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(log n)"
+      },
+      {
+        "question": "The height of a tree is defined as:",
+        "options": ["Number of nodes", "Number of leaves", "Maximum depth (number of edges) from the root to any node", "Number of children of the root"],
+        "answer": "Maximum depth (number of edges) from the root to any node"
+      },
+      {
+        "question": "Binary Search Tree (BST) property says:",
+        "options": ["Left child < node < right child (by key)", "All children have same value", "Parent always smaller than its children in max-heap", "Tree is always complete"],
+        "answer": "Left child < node < right child (by key)"
+      }
+    ]
+  },
+  {
+    "levelno": 6,
+    "topic": "Graphs – Representation & BFS/DFS",
+    "theory": "A **graph** is a set of **vertices (nodes)** connected by **edges**. Graphs can be **directed** or **undirected**, **weighted** or **unweighted**.\n\nCommon representations:\n- **Adjacency matrix**: 2D array where `matrix[u][v]` indicates an edge (and possibly weight) between `u` and `v`.\n- **Adjacency list**: for each vertex, store a list of neighbors; efficient for sparse graphs.\n\nTraversal algorithms:\n- **Breadth-First Search (BFS)**: explores neighbors level by level using a queue. Great for shortest path in unweighted graphs.\n- **Depth-First Search (DFS)**: explores as far as possible along each branch using recursion or an explicit stack.\n\nTypical applications:\n- Shortest path (BFS, Dijkstra, etc.).\n- Connectivity, cycle detection.\n- Topological sort in DAGs.\n- Modeling networks: social networks, maps, dependencies.",
+    "practice_questions": [
+      {
+        "question": "A graph consists of:",
+        "options": ["Only vertices", "Only edges", "Vertices (nodes) and edges", "Stacks and queues"],
+        "answer": "Vertices (nodes) and edges"
+      },
+      {
+        "question": "In an undirected graph, an edge between u and v means:",
+        "options": ["Only u -> v", "Only v -> u", "Both u -> v and v -> u (no direction)", "No connection"],
+        "answer": "Both u -> v and v -> u (no direction)"
+      },
+      {
+        "question": "An adjacency list for a graph stores:",
+        "options": ["A 2D array of all distances", "For each vertex, a list of its neighbors", "Only weights of edges", "Only degrees of vertices"],
+        "answer": "For each vertex, a list of its neighbors"
+      },
+      {
+        "question": "Which traversal uses a queue and explores nodes level by level?",
+        "options": ["DFS", "BFS", "Dijkstra's algorithm only", "Kruskal's algorithm"],
+        "answer": "BFS"
+      },
+      {
+        "question": "Which traversal can be implemented using recursion or an explicit stack and goes as deep as possible before backtracking?",
+        "options": ["BFS", "DFS", "SPFA", "Bellman–Ford"],
+        "answer": "DFS"
+      },
+      {
+        "question": "For finding the shortest path in an unweighted graph (fewest edges), a standard choice is:",
+        "options": ["DFS", "BFS", "Random walk", "Binary search"],
+        "answer": "BFS"
+      },
+      {
+        "question": "A cycle in a graph is:",
+        "options": ["A path that starts and ends at different vertices", "A path that starts and ends at the same vertex with at least one edge", "A tree", "An isolated vertex"],
+        "answer": "A path that starts and ends at the same vertex with at least one edge"
+      },
+      {
+        "question": "A connected undirected graph is one where:",
+        "options": ["Every vertex has degree 2", "There is a path between every pair of vertices", "It has no cycles", "It is a tree"],
+        "answer": "There is a path between every pair of vertices"
+      },
+      {
+        "question": "A Directed Acyclic Graph (DAG) is a directed graph that:",
+        "options": ["Has exactly one cycle", "Has no edges", "Has no directed cycles", "Is always complete"],
+        "answer": "Has no directed cycles"
+      },
+      {
+        "question": "Topological sorting of a graph is defined only for:",
+        "options": ["Any graph", "Undirected graphs only", "Directed Acyclic Graphs (DAGs)", "Complete graphs only"],
+        "answer": "Directed Acyclic Graphs (DAGs)"
+      }
+    ]
+  },
+  {
+    "levelno": 7,
+    "topic": "Hash Tables – Hashing & Collisions",
+    "theory": "A **hash table** (or hash map) stores key–value pairs and offers **average O(1)** time complexity for insert, delete, and lookup.\n\nCore ideas:\n- A **hash function** maps a key to an index (bucket) in an array.\n- **Collisions** occur when multiple keys map to the same bucket.\n- Collision resolution strategies: **separate chaining** (each bucket holds a list of entries) or **open addressing** (probing: linear, quadratic, double hashing).\n\nLoad factor:\n- Defined as `n / m` where `n` is number of stored keys and `m` is number of buckets.\n- When load factor becomes too high, the table is typically **resized and rehashed**.\n\nHash tables are widely used for dictionaries, sets, caches, and indexing.",
+    "practice_questions": [
+      {
+        "question": "The main purpose of a hash function in a hash table is to:",
+        "options": ["Encrypt data", "Compress data", "Map a key to an index in an array", "Sort keys"],
+        "answer": "Map a key to an index in an array"
+      },
+      {
+        "question": "What is a collision in a hash table?",
+        "options": ["Two keys having the same value", "Two keys mapping to the same index", "An invalid key", "A key not found"],
+        "answer": "Two keys mapping to the same index"
+      },
+      {
+        "question": "In separate chaining, each bucket typically stores:",
+        "options": ["Exactly one key", "A linked list or other structure containing all keys hashed to that bucket", "Only integers", "Only strings"],
+        "answer": "A linked list or other structure containing all keys hashed to that bucket"
+      },
+      {
+        "question": "In open addressing, when a collision occurs:",
+        "options": ["We discard the new key", "We store the key in a separate list", "We probe other buckets according to some sequence", "We rehash the entire table immediately"],
+        "answer": "We probe other buckets according to some sequence"
+      },
+      {
+        "question": "The load factor of a hash table is defined as:",
+        "options": ["Number of buckets / number of keys", "Number of keys / number of buckets", "Number of collisions", "Table size only"],
+        "answer": "Number of keys / number of buckets"
+      },
+      {
+        "question": "On average, successful lookup in a well-designed hash table is:",
+        "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(1)"
+      },
+      {
+        "question": "Which of the following is a common use-case for hash tables?",
+        "options": ["Fast membership tests (e.g., `key in set`)", "Implementing DFS", "Implementing heaps", "Sorting lists"],
+        "answer": "Fast membership tests (e.g., `key in set`)"
+      },
+      {
+        "question": "What might happen if the load factor becomes very high and we do not resize the table?",
+        "options": ["Operations may become closer to O(n)", "Operations get faster", "Table overflows and crashes always", "Keys get automatically deleted"],
+        "answer": "Operations may become closer to O(n)"
+      },
+      {
+        "question": "A good hash function should:",
+        "options": ["Map all keys to index 0", "Be very slow but accurate", "Distribute keys uniformly among buckets", "Return sequential indices for sorted keys"],
+        "answer": "Distribute keys uniformly among buckets"
+      },
+      {
+        "question": "Which data structures in high-level languages (like Python dict / set, Java HashMap) are typically backed by hash tables?",
+        "options": ["Lists/arrays", "Stacks and queues", "Dictionaries/maps and sets", "Binary heaps"],
+        "answer": "Dictionaries/maps and sets"
+      }
+    ]
+  },
+  {
+    "levelno": 8,
+    "topic": "Heaps & Priority Queues",
+    "theory": "A **heap** is a specialized tree-based data structure that satisfies the **heap property**:\n- In a **min-heap**, every parent node is less than or equal to its children.\n- In a **max-heap**, every parent node is greater than or equal to its children.\n\nHeaps are typically implemented using arrays, representing a **complete binary tree**.\n\nIndex relationships (0-based array):\n- Node at index `i` has children at indices `2i + 1` and `2i + 2`.\n\nKey operations & complexities:\n- Insert (push): O(log n)\n- Extract-min / extract-max: O(log n)\n- Peek-min / peek-max: O(1)\n\nHeaps underpin **priority queues**, where each element has a priority and the highest (or lowest) priority element is removed first.",
+    "practice_questions": [
+      {
+        "question": "A min-heap has which property?",
+        "options": ["Parent is always greater than children", "Parent is always less than or equal to children", "Tree has to be perfectly balanced", "All keys are unique"],
+        "answer": "Parent is always less than or equal to children"
+      },
+      {
+        "question": "Heaps are commonly used to implement:",
+        "options": ["Stacks", "Queues", "Priority queues", "Hash tables"],
+        "answer": "Priority queues"
+      },
+      {
+        "question": "In a binary heap stored in a 0-based array, the children of index i are at:",
+        "options": ["i+1 and i+2", "2i and 2i+1", "2i+1 and 2i+2", "i-1 and i+1"],
+        "answer": "2i+1 and 2i+2"
+      },
+      {
+        "question": "The height of a heap with n elements is:",
+        "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(log n)"
+      },
+      {
+        "question": "The time complexity of inserting an element into a binary heap is:",
+        "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(log n)"
+      },
+      {
+        "question": "The time complexity of extracting the minimum from a min-heap is:",
+        "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        "answer": "O(log n)"
+      },
+      {
+        "question": "Heaps are usually implemented as:",
+        "options": ["Linked lists", "Hash tables", "Arrays representing complete binary trees", "Graphs"],
+        "answer": "Arrays representing complete binary trees"
+      },
+      {
+        "question": "Which of the following is a typical use of a heap?",
+        "options": ["Depth-first search", "Dijkstra's shortest path algorithm (priority queue of nodes)", "Hash-based caching", "String searching"],
+        "answer": "Dijkstra's shortest path algorithm (priority queue of nodes)"
+      },
+      {
+        "question": "Heap sort is based on which data structure?",
+        "options": ["Stack", "Queue", "Heap", "Hash table"],
+        "answer": "Heap"
+      },
+      {
+        "question": "In a max-heap, the maximum element is always found at:",
+        "options": ["A leaf node", "Middle of the array", "The root (index 0 in array representation)", "It depends on the implementation"],
+        "answer": "The root (index 0 in array representation)"
+      }
+    ]
+  }
+]
+

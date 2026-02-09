@@ -2,8 +2,7 @@
   "languages": [
     { "id": "python", "name": "Python", "path": "/lessons/python.json" },
     { "id": "cpp", "name": "C++", "path": "/lessons/cpp.json" },
-    { "id": "java", "name": "Java", "path": "/lessons/java.json" }
+    { "id": "java", "name": "Java", "path": "/lessons/java.json" },
+    { "id": "dsa", "name": "DSA", "path": "/lessons/dsa.json" }
   ]
 }
-
-

@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation"
 import { useSelectedLanguage } from "@/components/codelingo/language/use-selected-language"
 import { LANGUAGES } from "@/components/codelingo/language/data"
 import { useEffect, useState } from "react"
-import { ArrowLeft, Lock, CheckCircle, XCircle } from "lucide-react"
+import { ArrowLeft, Lock, CheckCircle, XCircle, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import ChatDrawer from "@/components/codelingo/ChatDrawer";
@@ -24,18 +24,36 @@ interface TheoryData {
   practice_questions: PracticeQuestion[];
 }
 
+// --- HELPERS ---
+// Minimal formatting: turn **bold** segments into <strong> while preserving line breaks.
+function renderFormattedTheory(text: string) {
+  // Split on **...** while keeping the delimiters as separate segments
+  const segments = text.split(/(\*\*[^*]+\*\*)/g)
+
+  return segments.map((segment, index) => {
+    const boldMatch = segment.match(/^\*\*(.+)\*\*$/)
+    if (boldMatch) {
+      return (
+        <strong key={index} className="font-semibold">
+          {boldMatch[1]}
+        </strong>
+      )
+    }
+    return <span key={index}>{segment}</span>
+  })
+}
 
 export default function TheoryPage() {
   const params = useParams()
   const router = useRouter()
   const { selected } = useSelectedLanguage()
   const { id } = params
-  
+
   const [levelData, setLevelData] = useState<TheoryData | null>(null)
   const [totalLevels, setTotalLevels] = useState(0);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  
+
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
   const [score, setScore] = useState<number | null>(null);
   const [isQuizChecked, setIsQuizChecked] = useState(false);
@@ -43,7 +61,8 @@ export default function TheoryPage() {
 
   const selectedLanguage = LANGUAGES.find(lang => lang.id === selected)
   const currentLevelId = parseInt(id as string, 10);
-  const requiredScore = 7; 
+  const requiredScore = 7;
+  const isDSA = selectedLanguage?.id === "dsa"
 
   useEffect(() => {
     const loadTheoryData = async () => {
@@ -66,7 +85,7 @@ export default function TheoryPage() {
       try {
         const response = await fetch(`/theory/${selected}.json`)
         if (!response.ok) throw new Error(`Failed to load theory data for ${selected}`)
-        
+
         const allLevels: TheoryData[] = await response.json()
         const currentLevelData = allLevels.find(level => level.levelno === currentLevelId)
 
@@ -166,11 +185,26 @@ export default function TheoryPage() {
         <div className="bg-background/50 rounded-lg p-6 border">
           <h2 className="text-xl font-semibold mb-4 mt-0">Key Concepts</h2>
           <div className="whitespace-pre-wrap text-foreground/90 leading-relaxed">
-            {levelData.theory}
+            {renderFormattedTheory(levelData.theory)}
           </div>
         </div>
       </div>
-      
+
+      {isDSA && (
+        <section className="mb-10">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-xl font-semibold">Visualize Concept</h2>
+          </div>
+          <Button
+            onClick={() => router.push(`/lesson/theory/${id}/visualize`)}
+            className="w-full sm:w-auto bg-[#009966] hover:bg-[#009966]/80 text-white"
+          >
+            <Eye className="mr-2 h-4 w-4" />
+            Visualize {levelData.topic}
+          </Button>
+        </section>
+      )}
+
       <div>
         <h2 className="text-xl font-semibold mb-4">Practice Quiz</h2>
         <div className="space-y-6">
@@ -205,7 +239,7 @@ export default function TheoryPage() {
           ))}
         </div>
       </div>
-      
+
       <div className="mt-8 flex flex-col items-center gap-4 mb-20">
         {!isQuizChecked ? (
           <Button onClick={handleCheckAnswers} size="lg">
@@ -220,7 +254,7 @@ export default function TheoryPage() {
                 score >= requiredScore ? "bg-green-500/20 text-green-800 dark:text-green-300" : "bg-red-500/20 text-red-800 dark:text-red-300"
               )}
             >
-              {score >= requiredScore ? <CheckCircle className="inline-block mr-2 h-5 w-5"/> : <XCircle className="inline-block mr-2 h-5 w-5"/>}
+              {score >= requiredScore ? <CheckCircle className="inline-block mr-2 h-5 w-5" /> : <XCircle className="inline-block mr-2 h-5 w-5" />}
               You scored {score} out of {levelData.practice_questions.length}.
             </div>
           )

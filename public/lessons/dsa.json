@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "languageId": "dsa",
+  "languageName": "DSA",
+  "lessons": [
+    {
+      "id": "dsa-practice-1",
+      "title": "DSA Practice Path",
+      "description": "Core questions on arrays, linked lists, stacks, queues, trees, and graphs.",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single_choice",
+          "prompt": "What is the time complexity of accessing an element by index in an array (ignoring dynamic resizing)?",
+          "options": [
+            { "id": "o1", "text": "O(1)", "correct": true },
+            { "id": "o2", "text": "O(log n)", "correct": false },
+            { "id": "o3", "text": "O(n)", "correct": false }
+          ],
+          "difficulty": "easy",
+          "explanation": "Arrays provide constant-time indexed access because the address can be computed via base + index * element_size."
+        },
+        {
+          "id": "q2",
+          "type": "true_false",
+          "prompt": "In a singly linked list, inserting a new node at the head can be done in O(1) time.",
+          "options": [
+            { "id": "o1", "text": "True", "correct": true },
+            { "id": "o2", "text": "False", "correct": false }
+          ],
+          "difficulty": "easy",
+          "explanation": "You just create a new node, point its next to the old head, and update the head pointer."
+        },
+        {
+          "id": "q3",
+          "type": "single_choice",
+          "prompt": "Which data structure is most appropriate for implementing an undo feature in a text editor?",
+          "options": [
+            { "id": "o1", "text": "Queue", "correct": false },
+            { "id": "o2", "text": "Stack", "correct": true },
+            { "id": "o3", "text": "Hash table", "correct": false }
+          ],
+          "difficulty": "easy",
+          "explanation": "Undo is naturally modeled as a stack of previous actions (LIFO)."
+        },
+        {
+          "id": "q4",
+          "type": "single_choice",
+          "prompt": "Which operation combination defines a queue?",
+          "options": [
+            { "id": "o1", "text": "push / pop (LIFO)", "correct": false },
+            { "id": "o2", "text": "enqueue / dequeue (FIFO)", "correct": true },
+            { "id": "o3", "text": "insert / delete at random", "correct": false }
+          ],
+          "difficulty": "easy",
+          "explanation": "A queue is FIFO: first in, first out, using enqueue at the back and dequeue at the front."
+        },
+        {
+          "id": "q5",
+          "type": "true_false",
+          "prompt": "In a binary tree, every node has at most two children.",
+          "options": [
+            { "id": "o1", "text": "True", "correct": true },
+            { "id": "o2", "text": "False", "correct": false }
+          ],
+          "difficulty": "easy",
+          "explanation": "By definition a binary tree node has 0, 1, or 2 children."
+        },
+        {
+          "id": "q6",
+          "type": "single_choice",
+          "prompt": "Which traversal is typically used by Breadth-First Search (BFS) on a tree or graph?",
+          "options": [
+            { "id": "o1", "text": "Depth-first using a stack", "correct": false },
+            { "id": "o2", "text": "Level-order using a queue", "correct": true },
+            { "id": "o3", "text": "Random order", "correct": false }
+          ],
+          "difficulty": "easy",
+          "explanation": "BFS explores nodes level by level and is implemented with a queue."
+        },
+        {
+          "id": "q7",
+          "type": "single_choice",
+          "prompt": "In a singly linked list of length n, what is the worst-case time complexity of searching for a value?",
+          "options": [
+            { "id": "o1", "text": "O(1)", "correct": false },
+            { "id": "o2", "text": "O(log n)", "correct": false },
+            { "id": "o3", "text": "O(n)", "correct": true }
+          ],
+          "difficulty": "easy",
+          "explanation": "You may need to traverse all n nodes in the worst case."
+        },
+        {
+          "id": "q8",
+          "type": "code_fill",
+          "prompt": "Fill in the blank to push an element onto a stack implemented using a dynamic array named `st`.\n\n```python\n# st is a Python list used as a stack\nst.____(value)\n```",
+          "code": "# st is a Python list used as a stack\nst.____(value)\n",
+          "options": [
+            { "id": "o1", "text": "append", "correct": true },
+            { "id": "o2", "text": "push_back", "correct": false },
+            { "id": "o3", "text": "insert", "correct": false }
+          ],
+          "difficulty": "easy",
+          "hints": [
+            { "id": "h1", "text": "Python lists use the `append` method to add to the end." }
+          ],
+          "explanation": "In Python, lists support `append` to push to the end, which works perfectly for a stack."
+        },
+        {
+          "id": "q9",
+          "type": "single_choice",
+          "prompt": "Which of these is a correct property of a Binary Search Tree (BST)?",
+          "options": [
+            { "id": "o1", "text": "All keys in the left subtree are less than the node key, and all keys in the right subtree are greater", "correct": true },
+            { "id": "o2", "text": "All keys in the left subtree are greater than the node key", "correct": false },
+            { "id": "o3", "text": "Children always have the same key as the parent", "correct": false }
+          ],
+          "difficulty": "medium",
+          "explanation": "The BST property is: left subtree < node < right subtree (by key)."
+        },
+        {
+          "id": "q10",
+          "type": "true_false",
+          "prompt": "In an undirected connected graph, there is always at least one path between any two vertices.",
+          "options": [
+            { "id": "o1", "text": "True", "correct": true },
+            { "id": "o2", "text": "False", "correct": false }
+          ],
+          "difficulty": "medium",
+          "explanation": "Connectedness of an undirected graph means there is a path between every pair of vertices."
+        },
+        {
+          "id": "q11",
+          "type": "single_choice",
+          "prompt": "Which data structure is typically used to implement DFS (Depth-First Search) iteratively?",
+          "options": [
+            { "id": "o1", "text": "Queue", "correct": false },
+            { "id": "o2", "text": "Stack", "correct": true },
+            { "id": "o3", "text": "Heap", "correct": false }
+          ],
+          "difficulty": "medium",
+          "explanation": "DFS uses a stack—either the call stack via recursion or an explicit stack."
+        },
+        {
+          "id": "q12",
+          "type": "single_choice",
+          "prompt": "Which representation is usually more space-efficient for a sparse graph (few edges)?",
+          "options": [
+            { "id": "o1", "text": "Adjacency matrix", "correct": false },
+            { "id": "o2", "text": "Adjacency list", "correct": true },
+            { "id": "o3", "text": "Edge matrix", "correct": false }
+          ],
+          "difficulty": "medium",
+          "explanation": "Adjacency lists store only existing edges, which is efficient when the graph is sparse."
+        },
+        {
+          "id": "q13",
+          "type": "code_fill",
+          "prompt": "Fill in the blank to enqueue an element `x` into a queue implemented with `collections.deque` in Python.\n\n```python\nfrom collections import deque\nq = deque()\nq.____(x)\n```",
+          "code": "from collections import deque\nq = deque()\nq.____(x)\n",
+          "options": [
+            { "id": "o1", "text": "append", "correct": true },
+            { "id": "o2", "text": "push", "correct": false },
+            { "id": "o3", "text": "enqueue", "correct": false }
+          ],
+          "difficulty": "medium",
+          "hints": [
+            { "id": "h1", "text": "Deque uses `append` at the right end for enqueue by default." }
+          ],
+          "explanation": "Using `append` on a deque adds to the right end, which can serve as enqueue."
+        },
+        {
+          "id": "q14",
+          "type": "single_choice",
+          "prompt": "What is the worst-case time complexity of inserting a node into a Binary Search Tree that is completely skewed (like a linked list)?",
+          "options": [
+            { "id": "o1", "text": "O(1)", "correct": false },
+            { "id": "o2", "text": "O(log n)", "correct": false },
+            { "id": "o3", "text": "O(n)", "correct": true }
+          ],
+          "difficulty": "medium",
+          "explanation": "In a skewed BST, the height is O(n), so insert/search operations degrade to O(n)."
+        },
+        {
+          "id": "q15",
+          "type": "true_false",
+          "prompt": "In a min-heap, the minimum element is always at the root.",
+          "options": [
+            { "id": "o1", "text": "True", "correct": true },
+            { "id": "o2", "text": "False", "correct": false }
+          ],
+          "difficulty": "easy",
+          "explanation": "By definition of a min-heap, the smallest key is at the root."
+        },
+        {
+          "id": "q16",
+          "type": "single_choice",
+          "prompt": "Which operation is typically O(log n) in a binary heap?",
+          "options": [
+            { "id": "o1", "text": "Finding the minimum", "correct": false },
+            { "id": "o2", "text": "Inserting a new element", "correct": true },
+            { "id": "o3", "text": "Checking if the heap is empty", "correct": false }
+          ],
+          "difficulty": "medium",
+          "explanation": "Insertion may trigger a 'bubble up' along the height of the heap, which is O(log n)."
+        },
+        {
+          "id": "q17",
+          "type": "single_choice",
+          "prompt": "Which of the following operations on an array-backed dynamic list is amortized O(1)?",
+          "options": [
+            { "id": "o1", "text": "Appending at the end", "correct": true },
+            { "id": "o2", "text": "Inserting at the front (index 0)", "correct": false },
+            { "id": "o3", "text": "Deleting at an arbitrary middle index", "correct": false }
+          ],
+          "difficulty": "medium",
+          "explanation": "Appending at the end is amortized O(1); inserting at the front or middle requires shifting elements."
+        },
+        {
+          "id": "q18",
+          "type": "code_fill",
+          "prompt": "Complete the code to perform a BFS traversal from source `s` on an unweighted graph represented as an adjacency list `graph`.\n\n```python\nfrom collections import deque\n\ndef bfs(graph, s):\n    visited = set([s])\n    q = deque([s])\n    while q:\n        u = q.popleft()\n        print(u)\n        for v in graph[u]:\n            if v not in visited:\n                visited.add(v)\n                q.____(v)\n```",
+          "code": "from collections import deque\n\ndef bfs(graph, s):\n    visited = set([s])\n    q = deque([s])\n    while q:\n        u = q.popleft()\n        print(u)\n        for v in graph[u]:\n            if v not in visited:\n                visited.add(v)\n                q.____(v)\n",
+          "options": [
+            { "id": "o1", "text": "append", "correct": true },
+            { "id": "o2", "text": "push", "correct": false },
+            { "id": "o3", "text": "insert", "correct": false }
+          ],
+          "difficulty": "hard",
+          "hints": [
+            { "id": "h1", "text": "Use the normal deque method to add an item at the back." }
+          ],
+          "explanation": "We enqueue unseen neighbors by appending them to the deque."
+        },
+        {
+          "id": "q19",
+          "type": "true_false",
+          "prompt": "A Directed Acyclic Graph (DAG) can be topologically sorted.",
+          "options": [
+            { "id": "o1", "text": "True", "correct": true },
+            { "id": "o2", "text": "False", "correct": false }
+          ],
+          "difficulty": "medium",
+          "explanation": "Topological ordering is defined exactly for DAGs."
+        },
+        {
+          "id": "q20",
+          "type": "single_choice",
+          "prompt": "Which of the following best describes a hash table?",
+          "options": [
+            { "id": "o1", "text": "A tree-based index", "correct": false },
+            { "id": "o2", "text": "An array of buckets indexed using a hash function on keys", "correct": true },
+            { "id": "o3", "text": "A sorted linked list", "correct": false }
+          ],
+          "difficulty": "medium",
+          "explanation": "Hash tables use a hash function to map keys to bucket indices in an underlying array."
+        }
+      ]
+    }
+  ]
+}
+

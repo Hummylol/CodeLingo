@@ -13,6 +13,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async session({ session, token }) {
       // Return the session data as-is since we use email as ID
@@ -34,7 +35,7 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt' as const,
   },
-  debug: true, // Enable debug mode to see what's happening
+  debug: process.env.NODE_ENV === 'development',
 }
 
 export default NextAuth(authOptions)

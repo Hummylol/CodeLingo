@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react"
-import { Terminal, Brackets as BracketsSquare } from "lucide-react"
+import { Terminal, Brackets as BracketsSquare, Network } from "lucide-react"
 
 export type Language = {
   id: string
@@ -30,5 +30,12 @@ export const LANGUAGES: Language[] = [
     icon: Terminal,
     description: "Strongly-typed OOP for enterprise and Android.",
     sampleTopics: ["Basics", "Classes & Objects", "Collections", "Streams"],
+  },
+  {
+    id: "dsa",
+    name: "DSA",
+    icon: Network,
+    description: "Core Data Structures & Algorithms for interviews and problem solving.",
+    sampleTopics: ["Arrays", "Linked Lists", "Stacks & Queues", "Trees", "Graphs & Traversals"],
   },
 ]

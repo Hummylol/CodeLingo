@@ -3,14 +3,14 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Trophy, Medal, Award } from "lucide-react"
 
 const SAMPLE_LEADERBOARD = [
-  { rank: 1, name: "Alex Chen", xp: 2450, streak: 15, icon: Trophy, color: "text-yellow-500" },
-  { rank: 2, name: "Sarah Kim", xp: 2280, streak: 12, icon: Medal, color: "text-gray-400" },
-  { rank: 3, name: "Mike Johnson", xp: 2150, streak: 8, icon: Award, color: "text-amber-600" },
-  { rank: 4, name: "Emma Davis", xp: 1980, streak: 10, icon: null, color: "text-muted-foreground" },
+  { rank: 1, name: "Sakhtivel", xp: 2450, streak: 15, icon: Trophy, color: "text-yellow-500" },
+  { rank: 2, name: "Robert Kennedy", xp: 2280, streak: 12, icon: Medal, color: "text-gray-400" },
+  { rank: 3, name: "Harish", xp: 2150, streak: 8, icon: Award, color: "text-amber-600" },
+  { rank: 4, name: "Hemachandran", xp: 1980, streak: 10, icon: null, color: "text-muted-foreground" },
   { rank: 5, name: "You", xp: 1850, streak: 7, icon: null, color: "text-primary" },
-  { rank: 6, name: "David Wilson", xp: 1720, streak: 5, icon: null, color: "text-muted-foreground" },
-  { rank: 7, name: "Lisa Brown", xp: 1650, streak: 9, icon: null, color: "text-muted-foreground" },
-  { rank: 8, name: "Tom Garcia", xp: 1580, streak: 4, icon: null, color: "text-muted-foreground" },
+  { rank: 6, name: "Ayyapan", xp: 1720, streak: 5, icon: null, color: "text-muted-foreground" },
+  { rank: 7, name: "Aswath", xp: 1650, streak: 9, icon: null, color: "text-muted-foreground" },
+  { rank: 8, name: "Kiran", xp: 1580, streak: 4, icon: null, color: "text-muted-foreground" },
 ]
 
 export default function LeaderboardPage() {

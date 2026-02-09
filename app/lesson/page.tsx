@@ -4,6 +4,7 @@ import { Lock } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useSelectedLanguage } from "@/components/codelingo/language/use-selected-language"
 import { LANGUAGES } from "@/components/codelingo/language/data"
+import { useState, useEffect } from "react"
 
 
 const TOTAL_LEVELS = 20
@@ -14,16 +15,59 @@ type Topic = {
   unlocked: boolean
 }
 
-const topics: Topic[] = Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
-  id: index + 1,
-  title: `Level ${index + 1}`,
-  unlocked: index < 5,
-}))
-
 export default function LessonPage() {
   const { selected } = useSelectedLanguage()
   const selectedLanguage = LANGUAGES.find(lang => lang.id === selected)
-  
+
+  // State for topics
+  const [topics, setTopics] = useState<Topic[]>(() =>
+    Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
+      id: index + 1,
+      title: `Level ${index + 1}`,
+      unlocked: index < 5,
+    }))
+  );
+
+  useEffect(() => {
+    async function fetchTopics() {
+      if (selected === 'dsa') {
+        try {
+          const res = await fetch('/theory/dsa.json');
+          if (!res.ok) throw new Error('Failed to fetch');
+          const data = await res.json();
+
+          setTopics(prevTopics => {
+            // Map over the existing fixed-size array or create a new one based on fetched data?
+            // The visual path depends on TOTAL_LEVELS (20). 
+            // We should probably keep 20 levels but update titles for those that exist.
+
+            return prevTopics.map(topic => {
+              const matchingData = data.find((d: any) => d.levelno === topic.id);
+              if (matchingData) {
+                // Simplify the topic name for mobile screens (e.g. "Arrays - Basics" -> "Arrays")
+                const simpleTitle = matchingData.topic.split('–')[0].split('&')[0].trim();
+                return { ...topic, title: simpleTitle };
+              }
+              return topic;
+            });
+          });
+
+        } catch (error) {
+          console.error("Failed to fetch DSA topics:", error);
+        }
+      } else {
+        // Reset to default if not DSA (or handle other languages if needed in future)
+        setTopics(Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
+          id: index + 1,
+          title: `Level ${index + 1}`,
+          unlocked: index < 5,
+        })));
+      }
+    }
+
+    fetchTopics();
+  }, [selected]);
+
   const laneLeftPercent = 18
   const laneRightPercent = 82
   const stepY = 96
@@ -64,7 +108,7 @@ export default function LessonPage() {
           <p className="text-muted-foreground">Select a language to start learning</p>
         )}
       </div>
-      
+
 
       <div className="relative rounded-xl border bg-background/50 p-4">
         <div style={{ height: svgHeight }} className="relative">
