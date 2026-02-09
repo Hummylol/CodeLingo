@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation"
 import { useSelectedLanguage } from "@/components/codelingo/language/use-selected-language"
 import { LANGUAGES } from "@/components/codelingo/language/data"
 import { useEffect, useState } from "react"
-import { ArrowLeft, Lock, CheckCircle, XCircle } from "lucide-react"
+import { ArrowLeft, Lock, CheckCircle, XCircle, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import ChatDrawer from "@/components/codelingo/ChatDrawer";
@@ -22,11 +22,6 @@ interface TheoryData {
   topic: string;
   theory: string;
   practice_questions: PracticeQuestion[];
-}
-
-type VisualAsset = {
-  src: string
-  alt: string
 }
 
 // --- HELPERS ---
@@ -48,66 +43,17 @@ function renderFormattedTheory(text: string) {
   })
 }
 
-// Return placeholder visual assets for DSA levels.
-// These will point at /lessons/visuals/*.png under /public as you described.
-function getDsaVisuals(levelno: number): VisualAsset[] {
-  switch (levelno) {
-    case 1:
-      return [
-        { src: "/lessons/visuals/array1.png", alt: "Array visualization 1" },
-        { src: "/lessons/visuals/array2.png", alt: "Array visualization 2" },
-      ]
-    case 2:
-      return [
-        { src: "/lessons/visuals/linkedlist1.png", alt: "Linked list visualization 1" },
-        { src: "/lessons/visuals/linkedlist2.png", alt: "Linked list visualization 2" },
-      ]
-    case 3:
-      return [
-        { src: "/lessons/visuals/stack1.png", alt: "Stack visualization 1" },
-        { src: "/lessons/visuals/stack2.png", alt: "Stack visualization 2" },
-      ]
-    case 4:
-      return [
-        { src: "/lessons/visuals/queue1.png", alt: "Queue visualization 1" },
-        { src: "/lessons/visuals/queue2.png", alt: "Queue visualization 2" },
-      ]
-    case 5:
-      return [
-        { src: "/lessons/visuals/tree1.png", alt: "Tree visualization 1" },
-        { src: "/lessons/visuals/tree2.png", alt: "Tree visualization 2" },
-      ]
-    case 6:
-      return [
-        { src: "/lessons/visuals/graph1.png", alt: "Graph visualization 1" },
-        { src: "/lessons/visuals/graph2.png", alt: "Graph visualization 2" },
-      ]
-    case 7:
-      return [
-        { src: "/lessons/visuals/hashtable1.png", alt: "Hash table visualization 1" },
-        { src: "/lessons/visuals/hashtable2.png", alt: "Hash table visualization 2" },
-      ]
-    case 8:
-      return [
-        { src: "/lessons/visuals/heap1.png", alt: "Heap visualization 1" },
-        { src: "/lessons/visuals/heap2.png", alt: "Heap visualization 2" },
-      ]
-    default:
-      return []
-  }
-}
-
 export default function TheoryPage() {
   const params = useParams()
   const router = useRouter()
   const { selected } = useSelectedLanguage()
   const { id } = params
-  
+
   const [levelData, setLevelData] = useState<TheoryData | null>(null)
   const [totalLevels, setTotalLevels] = useState(0);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  
+
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
   const [score, setScore] = useState<number | null>(null);
   const [isQuizChecked, setIsQuizChecked] = useState(false);
@@ -115,7 +61,7 @@ export default function TheoryPage() {
 
   const selectedLanguage = LANGUAGES.find(lang => lang.id === selected)
   const currentLevelId = parseInt(id as string, 10);
-  const requiredScore = 7; 
+  const requiredScore = 7;
   const isDSA = selectedLanguage?.id === "dsa"
 
   useEffect(() => {
@@ -139,7 +85,7 @@ export default function TheoryPage() {
       try {
         const response = await fetch(`/theory/${selected}.json`)
         if (!response.ok) throw new Error(`Failed to load theory data for ${selected}`)
-        
+
         const allLevels: TheoryData[] = await response.json()
         const currentLevelData = allLevels.find(level => level.levelno === currentLevelId)
 
@@ -248,43 +194,17 @@ export default function TheoryPage() {
         <section className="mb-10">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-xl font-semibold">Visualize Concept</h2>
-            <p className="text-xs text-muted-foreground">
-              Future images will load from <code className="text-[0.75rem]">/public/lessons/visuals</code>
-            </p>
           </div>
-          <div className="bg-background/50 rounded-lg p-4 border">
-            <p className="text-sm text-muted-foreground mb-4">
-              Visual placeholders are shown for now. Once you add real PNGs under{" "}
-              <code className="text-[0.75rem]">public/lessons/visuals</code> (e.g.{" "}
-              <code className="text-[0.75rem]">array1.png</code>), you can wire them up here.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {getDsaVisuals(levelData.levelno).map((visual) => (
-                <div
-                  key={visual.src}
-                  className="relative aspect-video overflow-hidden rounded-md border bg-muted/40 flex flex-col items-center justify-center text-center px-3"
-                >
-                  <div className="mb-2 text-xs font-medium text-foreground/80">
-                    {visual.alt}
-                  </div>
-                  <div className="text-[0.7rem] text-muted-foreground">
-                    Placeholder for{" "}
-                    <code className="text-[0.7rem]">{visual.src}</code>
-                  </div>
-                </div>
-              ))}
-              {getDsaVisuals(levelData.levelno).length === 0 && (
-                <div className="text-sm text-muted-foreground">
-                  No visuals configured for this level yet. Add PNG files under{" "}
-                  <code className="text-[0.75rem]">public/lessons/visuals</code> and map them in{" "}
-                  <code className="text-[0.75rem]">getDsaVisuals()</code>.
-                </div>
-              )}
-            </div>
-          </div>
+          <Button
+            onClick={() => router.push(`/lesson/theory/${id}/visualize`)}
+            className="w-full sm:w-auto bg-[#009966] hover:bg-[#009966]/80 text-white"
+          >
+            <Eye className="mr-2 h-4 w-4" />
+            Visualize {levelData.topic}
+          </Button>
         </section>
       )}
-      
+
       <div>
         <h2 className="text-xl font-semibold mb-4">Practice Quiz</h2>
         <div className="space-y-6">
@@ -319,7 +239,7 @@ export default function TheoryPage() {
           ))}
         </div>
       </div>
-      
+
       <div className="mt-8 flex flex-col items-center gap-4 mb-20">
         {!isQuizChecked ? (
           <Button onClick={handleCheckAnswers} size="lg">
@@ -334,7 +254,7 @@ export default function TheoryPage() {
                 score >= requiredScore ? "bg-green-500/20 text-green-800 dark:text-green-300" : "bg-red-500/20 text-red-800 dark:text-red-300"
               )}
             >
-              {score >= requiredScore ? <CheckCircle className="inline-block mr-2 h-5 w-5"/> : <XCircle className="inline-block mr-2 h-5 w-5"/>}
+              {score >= requiredScore ? <CheckCircle className="inline-block mr-2 h-5 w-5" /> : <XCircle className="inline-block mr-2 h-5 w-5" />}
               You scored {score} out of {levelData.practice_questions.length}.
             </div>
           )
