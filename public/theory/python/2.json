@@ -1,0 +1,327 @@
+{
+    "levelno": 2,
+    "topic": "Variables & Data Types",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Variables & Data Types — Beginner Level",
+            "theory": "In Python, a **variable** is a named container for storing data. You create a variable simply by assigning a value to it using `=`:\n`name = 'Alice'`\n`age = 25`\n\nPython has four basic built-in data types:\n- `int` — whole numbers: `10`, `-5`, `0`\n- `float` — decimal numbers: `3.14`, `-0.5`\n- `str` — text in quotes: `'Hello'`, `\"World\"`\n- `bool` — logical values: `True` or `False`\n\nPython is **dynamically typed** — you do not declare the type; Python figures it out automatically. Use `type(variable)` to check the type of any variable.",
+            "questions": [
+                {
+                    "question": "How do you assign the integer 10 to a variable `x` in Python?",
+                    "options": [
+                        "int x = 10",
+                        "x := 10",
+                        "x = 10",
+                        "let x = 10"
+                    ],
+                    "answer": "x = 10"
+                },
+                {
+                    "question": "What data type is `3.14`?",
+                    "options": [
+                        "int",
+                        "str",
+                        "bool",
+                        "float"
+                    ],
+                    "answer": "float"
+                },
+                {
+                    "question": "What data type is `'Hello'`?",
+                    "options": [
+                        "char",
+                        "int",
+                        "str",
+                        "bool"
+                    ],
+                    "answer": "str"
+                },
+                {
+                    "question": "What are the two possible values of the `bool` type?",
+                    "options": [
+                        "0 and 1",
+                        "Yes and No",
+                        "True and False",
+                        "T and F"
+                    ],
+                    "answer": "True and False"
+                },
+                {
+                    "question": "Which function tells you the data type of a variable `x`?",
+                    "options": [
+                        "typeof(x)",
+                        "x.type()",
+                        "type(x)",
+                        "datatype(x)"
+                    ],
+                    "answer": "type(x)"
+                },
+                {
+                    "question": "Which of these is a valid Python variable name?",
+                    "options": [
+                        "2users",
+                        "my-var",
+                        "my_var",
+                        "global"
+                    ],
+                    "answer": "my_var"
+                },
+                {
+                    "question": "What is dynamic typing?",
+                    "options": [
+                        "You must declare the type explicitly",
+                        "The type is determined at runtime and can change",
+                        "Variables must always be dynamic",
+                        "Data types do not exist"
+                    ],
+                    "answer": "The type is determined at runtime and can change"
+                },
+                {
+                    "question": "What is the data type of `\"False\"` (with quotes)?",
+                    "options": [
+                        "bool",
+                        "int",
+                        "str",
+                        "NoneType"
+                    ],
+                    "answer": "str"
+                },
+                {
+                    "question": "What does `type(True)` return?",
+                    "options": [
+                        "<class 'int'>",
+                        "<class 'bool'>",
+                        "<class 'str'>",
+                        "<class 'float'>"
+                    ],
+                    "answer": "<class 'bool'>"
+                },
+                {
+                    "question": "Can you assign a string to a variable that previously held an integer in Python?",
+                    "options": [
+                        "No, types are fixed once assigned",
+                        "Yes, Python allows it (dynamic typing)",
+                        "Only with a cast function",
+                        "Only using a special keyword"
+                    ],
+                    "answer": "Yes, Python allows it (dynamic typing)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Variables & Data Types — Intermediate Level",
+            "theory": "Python provides built-in functions for **type casting** (converting between types):\n- `int('5')` → `5`\n- `float(7)` → `7.0`\n- `str(42)` → `'42'`\n- `bool(0)` → `False`\n\n**Multiple assignment** lets you assign in one line:\n`x, y, z = 1, 2, 3`\n`a = b = c = 0`\n\n**Truthiness**: Every object in Python has a boolean value. `0`, `0.0`, `''`, `[]`, `{}`, `None` are all **falsy**; everything else is **truthy**.\n\nYou can use `isinstance(x, int)` to check if a variable is of a specific type — this is safer than `type(x) == int` because it also handles subclasses.",
+            "questions": [
+                {
+                    "question": "What is the result of `int(7.9)` in Python?",
+                    "options": [
+                        "7",
+                        "8",
+                        "7.9",
+                        "Error"
+                    ],
+                    "answer": "7"
+                },
+                {
+                    "question": "What does `str(42)` return?",
+                    "options": [
+                        "42 as an integer",
+                        "'42' as a string",
+                        "Error",
+                        "True"
+                    ],
+                    "answer": "'42' as a string"
+                },
+                {
+                    "question": "What does `bool(0)` return?",
+                    "options": [
+                        "True",
+                        "False",
+                        "0",
+                        "Error"
+                    ],
+                    "answer": "False"
+                },
+                {
+                    "question": "Which of these values is falsy in Python?",
+                    "options": [
+                        "1",
+                        "'hello'",
+                        "[]",
+                        "[0]"
+                    ],
+                    "answer": "[]"
+                },
+                {
+                    "question": "What is the result of `x, y = 5, 10; x, y = y, x; print(x, y)`?",
+                    "options": [
+                        "5 10",
+                        "10 5",
+                        "Error",
+                        "None None"
+                    ],
+                    "answer": "10 5"
+                },
+                {
+                    "question": "What does `isinstance(3.0, float)` return?",
+                    "options": [
+                        "False",
+                        "True",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What does `bool('')` return?",
+                    "options": [
+                        "True",
+                        "False",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "False"
+                },
+                {
+                    "question": "What is the result of `int('hello')`?",
+                    "options": [
+                        "0",
+                        "None",
+                        "ValueError",
+                        "False"
+                    ],
+                    "answer": "ValueError"
+                },
+                {
+                    "question": "Which is safer for type checking: `type(x) == int` or `isinstance(x, int)`?",
+                    "options": [
+                        "type(x) == int (always more precise)",
+                        "isinstance(x, int) (handles subclasses)",
+                        "They are identical",
+                        "Neither works"
+                    ],
+                    "answer": "isinstance(x, int) (handles subclasses)"
+                },
+                {
+                    "question": "What does `a = b = c = 0` do?",
+                    "options": [
+                        "Assigns 0 only to a",
+                        "Assigns 0 to a, b, and c simultaneously",
+                        "Raises a SyntaxError",
+                        "Creates a tuple (a, b, c)"
+                    ],
+                    "answer": "Assigns 0 to a, b, and c simultaneously"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Variables & Data Types — Expert Level",
+            "theory": "At the expert level, we explore Python's **object model**:\n\n**`id()`** returns the unique memory address of an object. The `is` operator checks if two variables point to the **same object** in memory, while `==` checks **value equality**.\n\n`a = [1, 2]; b = a; a is b  # True — same object`\n`a = [1, 2]; b = [1, 2]; a == b  # True; a is b  # False`\n\n**Small integer interning**: CPython caches integers from -5 to 256. Variables assigned these values will share the same object in memory.\n\n**Mutable vs Immutable:**\n- Immutable: `int`, `float`, `str`, `bool`, `tuple` — cannot be changed in place\n- Mutable: `list`, `dict`, `set` — can be changed in place\n\n`None` is a singleton — there is exactly one `None` object. Check for it with `x is None`, not `x == None`.",
+            "questions": [
+                {
+                    "question": "What does `id(x)` return?",
+                    "options": [
+                        "The type of x",
+                        "The value of x",
+                        "The memory address (identity) of the object x refers to",
+                        "The size of x in bytes"
+                    ],
+                    "answer": "The memory address (identity) of the object x refers to"
+                },
+                {
+                    "question": "What is the difference between `is` and `==`?",
+                    "options": [
+                        "They are identical",
+                        "`is` checks object identity (same object); `==` checks value equality",
+                        "`==` checks identity; `is` checks value",
+                        "`is` only works with numbers"
+                    ],
+                    "answer": "`is` checks object identity (same object); `==` checks value equality"
+                },
+                {
+                    "question": "What is 'integer interning' in CPython?",
+                    "options": [
+                        "Storing integers as floats internally",
+                        "Caching small integers (-5 to 256) so they share the same object",
+                        "Converting integers to strings for speed",
+                        "Storing all integers in a global list"
+                    ],
+                    "answer": "Caching small integers (-5 to 256) so they share the same object"
+                },
+                {
+                    "question": "Which of the following types is mutable?",
+                    "options": [
+                        "int",
+                        "str",
+                        "tuple",
+                        "list"
+                    ],
+                    "answer": "list"
+                },
+                {
+                    "question": "What is the correct way to check if a variable `x` is None?",
+                    "options": [
+                        "x == None",
+                        "x === None",
+                        "x is None",
+                        "x.isNone()"
+                    ],
+                    "answer": "x is None"
+                },
+                {
+                    "question": "What is the output? `a = [1,2]; b = a; b.append(3); print(a)`",
+                    "options": [
+                        "[1, 2]",
+                        "[1, 2, 3]",
+                        "Error",
+                        "[3]"
+                    ],
+                    "answer": "[1, 2, 3]"
+                },
+                {
+                    "question": "Which data types are immutable? (select best answer)",
+                    "options": [
+                        "list, dict, set",
+                        "int, str, tuple",
+                        "int, list, bool",
+                        "float, set, dict"
+                    ],
+                    "answer": "int, str, tuple"
+                },
+                {
+                    "question": "What does `a = 256; b = 256; a is b` most likely return in CPython?",
+                    "options": [
+                        "False",
+                        "True (due to integer interning)",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "True (due to integer interning)"
+                },
+                {
+                    "question": "What does `a = 257; b = 257; a is b` most likely return in CPython?",
+                    "options": [
+                        "True",
+                        "False (not interned)",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "False (not interned)"
+                },
+                {
+                    "question": "How many `None` objects exist in a Python program?",
+                    "options": [
+                        "One per variable",
+                        "One per module",
+                        "Exactly one — None is a singleton",
+                        "It depends on memory"
+                    ],
+                    "answer": "Exactly one — None is a singleton"
+                }
+            ]
+        }
+    ]
+}

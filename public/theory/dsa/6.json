@@ -1,0 +1,327 @@
+{
+    "levelno": 6,
+    "topic": "Graphs",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Graphs — Beginner Level",
+            "theory": "A **graph** is a collection of nodes (vertices) connected by edges.\n\n**Types:**\n- Directed / Undirected\n- Weighted / Unweighted\n- Cyclic / Acyclic\n- Connected / Disconnected\n\n**Representations:**\n```python\n# Adjacency List (preferred for sparse graphs)\ngraph = {\n    0: [1, 2],\n    1: [0, 3],\n    2: [0],\n    3: [1]\n}\n\n# Adjacency Matrix (dense graphs)\nmatrix = [[0,1,1,0],\n          [1,0,0,1],\n          [1,0,0,0],\n          [0,1,0,0]]\n```\n\n**BFS:** explores neighbors level by level — uses Queue.\n**DFS:** explores as deep as possible — uses Stack/Recursion.",
+            "questions": [
+                {
+                    "question": "BFS uses which data structure?",
+                    "options": [
+                        "Stack",
+                        "Priority queue",
+                        "Queue",
+                        "Array"
+                    ],
+                    "answer": "Queue"
+                },
+                {
+                    "question": "DFS uses which data structure?",
+                    "options": [
+                        "Queue",
+                        "Stack or recursion",
+                        "Heap",
+                        "Set"
+                    ],
+                    "answer": "Stack or recursion"
+                },
+                {
+                    "question": "Adjacency list is preferred for:",
+                    "options": [
+                        "Dense graphs O(V^2) edges",
+                        "Sparse graphs — saves space O(V+E)",
+                        "Matrix multiplication",
+                        "Weighted graphs only"
+                    ],
+                    "answer": "Sparse graphs — saves space O(V+E)"
+                },
+                {
+                    "question": "Adjacency matrix space complexity:",
+                    "options": [
+                        "O(V+E)",
+                        "O(E)",
+                        "O(V^2)",
+                        "O(V log V)"
+                    ],
+                    "answer": "O(V^2)"
+                },
+                {
+                    "question": "BFS finds shortest path in:",
+                    "options": [
+                        "Weighted graphs",
+                        "Unweighted graphs",
+                        "Any graph",
+                        "DAGs only"
+                    ],
+                    "answer": "Unweighted graphs"
+                },
+                {
+                    "question": "A connected graph has:",
+                    "options": [
+                        "Cycles",
+                        "Path between every pair of vertices",
+                        "No loops",
+                        "All edges weighted"
+                    ],
+                    "answer": "Path between every pair of vertices"
+                },
+                {
+                    "question": "A tree is a special graph that is:",
+                    "options": [
+                        "Directed cyclic",
+                        "Undirected, connected, acyclic with V-1 edges",
+                        "Dense",
+                        "Always weighted"
+                    ],
+                    "answer": "Undirected, connected, acyclic with V-1 edges"
+                },
+                {
+                    "question": "In-degree of a vertex is:",
+                    "options": [
+                        "Number of outgoing edges",
+                        "Number of incoming edges",
+                        "Total edges",
+                        "Degree squared"
+                    ],
+                    "answer": "Number of incoming edges"
+                },
+                {
+                    "question": "Graph DFS time complexity:",
+                    "options": [
+                        "O(V)",
+                        "O(E)",
+                        "O(V + E)",
+                        "O(V * E)"
+                    ],
+                    "answer": "O(V + E)"
+                },
+                {
+                    "question": "Detect cycle in undirected graph using DFS requires:",
+                    "options": [
+                        "No parent tracking",
+                        "Tracking visited nodes + parent to avoid revisiting parent",
+                        "Parent tracking only",
+                        "Color marking"
+                    ],
+                    "answer": "Tracking visited nodes + parent to avoid revisiting parent"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Graphs — Intermediate Level",
+            "theory": "**Topological Sort:** order vertices so all edges go from earlier to later — only for DAGs.\n- Kahn's algorithm (BFS-based): process 0 in-degree nodes\n- DFS-based: reverse postorder\n\n**Dijkstra's algorithm:** shortest path from source in weighted graph (non-negative edges), O((V+E)log V).\n\n**Connected components:** BFS/DFS — count disconnected subgraphs.\n\n**Bipartite check:** 2-color graph — BFS/DFS, detect odd cycles.\n\n**Union-Find (Disjoint Set Union):** efficient cycle detection, connected components — O(α(n)) per operation.",
+            "questions": [
+                {
+                    "question": "Topological sort is only possible for:",
+                    "options": [
+                        "Any graph",
+                        "DAGs (Directed Acyclic Graphs)",
+                        "Undirected graphs",
+                        "Complete graphs"
+                    ],
+                    "answer": "DAGs (Directed Acyclic Graphs)"
+                },
+                {
+                    "question": "Kahn's algorithm for topological sort processes:",
+                    "options": [
+                        "Max degree nodes first",
+                        "Nodes with 0 in-degree first, removing their edges",
+                        "All nodes at once",
+                        "Random order"
+                    ],
+                    "answer": "Nodes with 0 in-degree first, removing their edges"
+                },
+                {
+                    "question": "Dijkstra's algorithm requires:",
+                    "options": [
+                        "No negative edges",
+                        "Negative edges allowed",
+                        "Only unweighted",
+                        "Acyclic graph"
+                    ],
+                    "answer": "No negative edges"
+                },
+                {
+                    "question": "Dijkstra's time complexity with min-heap:",
+                    "options": [
+                        "O(V^2)",
+                        "O((V+E) log V)",
+                        "O(VE)",
+                        "O(E log V)"
+                    ],
+                    "answer": "O((V+E) log V)"
+                },
+                {
+                    "question": "Union-Find 'find' with path compression: amortized complexity?",
+                    "options": [
+                        "O(log n)",
+                        "O(n)",
+                        "O(α(n)) — inverse Ackermann, practically O(1)",
+                        "O(1)"
+                    ],
+                    "answer": "O(α(n)) — inverse Ackermann, practically O(1)"
+                },
+                {
+                    "question": "Bipartite graph can have:",
+                    "options": [
+                        "Odd cycles",
+                        "Only even cycles",
+                        "Any cycles",
+                        "No edges"
+                    ],
+                    "answer": "Only even cycles"
+                },
+                {
+                    "question": "Detect cycle in directed graph requires:",
+                    "options": [
+                        "Simple visited array",
+                        "Three-color DFS: white/gray/black — gray node visited again = cycle",
+                        "Union-Find",
+                        "Both B and C"
+                    ],
+                    "answer": "Three-color DFS: white/gray/black — gray node visited again = cycle"
+                },
+                {
+                    "question": "Flood fill algorithm uses:",
+                    "options": [
+                        "Topological sort",
+                        "BFS or DFS from start cell",
+                        "Dijkstra",
+                        "Union-Find"
+                    ],
+                    "answer": "BFS or DFS from start cell"
+                },
+                {
+                    "question": "Number of islands problem approach:",
+                    "options": [
+                        "Counting cells",
+                        "BFS/DFS from each unvisited '1' cell, mark entire island",
+                        "BFS level count",
+                        "Union-Find from each cell"
+                    ],
+                    "answer": "BFS/DFS from each unvisited '1' cell, mark entire island"
+                },
+                {
+                    "question": "Clone a graph approach:",
+                    "options": [
+                        "DFS/BFS + hash map: map original node → clone",
+                        "Adjacency matrix copy",
+                        "Serialize then deserialize",
+                        "Topological sort copy"
+                    ],
+                    "answer": "DFS/BFS + hash map: map original node → clone"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Graphs — Expert Level",
+            "theory": "**Bellman-Ford:** shortest path with negative edges, detect negative cycles — O(VE).\n\n**Floyd-Warshall:** all-pairs shortest path — O(V^3).\n\n**Prim's / Kruskal's:** Minimum Spanning Tree.\n\n**Tarjan's SCC:** Strongly Connected Components using DFS + low-link values — O(V+E).\n\n**Articulation points / Bridges:** critical nodes/edges whose removal disconnects graph — Tarjan's O(V+E).",
+            "questions": [
+                {
+                    "question": "Bellman-Ford can handle:",
+                    "options": [
+                        "Only non-negative weights",
+                        "Negative edges and detect negative cycles — O(VE)",
+                        "Only DAGs",
+                        "Only dense graphs"
+                    ],
+                    "answer": "Negative edges and detect negative cycles — O(VE)"
+                },
+                {
+                    "question": "Floyd-Warshall computes:",
+                    "options": [
+                        "Single-source shortest paths",
+                        "All-pairs shortest paths in O(V^3)",
+                        "MST",
+                        "Topological order"
+                    ],
+                    "answer": "All-pairs shortest paths in O(V^3)"
+                },
+                {
+                    "question": "Kruskal's MST algorithm:",
+                    "options": [
+                        "Grows tree from source greedily",
+                        "Sort edges by weight, add if it doesn't form cycle (Union-Find) — O(E log E)",
+                        "BFS-based MST",
+                        "DFS-based MST"
+                    ],
+                    "answer": "Sort edges by weight, add if it doesn't form cycle (Union-Find) — O(E log E)"
+                },
+                {
+                    "question": "Prim's vs Kruskal's: prefer Prim's when:",
+                    "options": [
+                        "Sparse graphs",
+                        "Dense graphs or adjacency matrix — O(V^2) or O(E log V) with heap",
+                        "Disconnected graphs",
+                        "Negative weights"
+                    ],
+                    "answer": "Dense graphs or adjacency matrix — O(V^2) or O(E log V) with heap"
+                },
+                {
+                    "question": "Tarjan's SCC uses:",
+                    "options": [
+                        "Two DFS passes",
+                        "One DFS with discovery/low-link values and a stack",
+                        "BFS + backtracking",
+                        "Union-Find"
+                    ],
+                    "answer": "One DFS with discovery/low-link values and a stack"
+                },
+                {
+                    "question": "Kosaraju's SCC algorithm uses:",
+                    "options": [
+                        "One DFS",
+                        "Two DFS: first on original, second on reversed graph in reverse finish order",
+                        "BFS twice",
+                        "Topological sort only"
+                    ],
+                    "answer": "Two DFS: first on original, second on reversed graph in reverse finish order"
+                },
+                {
+                    "question": "An articulation point is:",
+                    "options": [
+                        "The most connected vertex",
+                        "A vertex whose removal increases the number of connected components",
+                        "The source vertex",
+                        "A bridge vertex"
+                    ],
+                    "answer": "A vertex whose removal increases the number of connected components"
+                },
+                {
+                    "question": "A⁻ algorithm: optimal when:",
+                    "options": [
+                        "No heuristic available",
+                        "Good admissible heuristic exists — guides search to goal efficiently",
+                        "Grid graphs only",
+                        "Unweighted graphs"
+                    ],
+                    "answer": "Good admissible heuristic exists — guides search to goal efficiently"
+                },
+                {
+                    "question": "Hungarian algorithm solves:",
+                    "options": [
+                        "Graph coloring",
+                        "Assignment problem in O(V^3) — minimum cost perfect matching in bipartite graph",
+                        "Maximum flow",
+                        "MST in bipartite"
+                    ],
+                    "answer": "Assignment problem in O(V^3) — minimum cost perfect matching in bipartite graph"
+                },
+                {
+                    "question": "Max-flow min-cut theorem states:",
+                    "options": [
+                        "Max flow = min path sum",
+                        "Maximum flow in network = minimum capacity cut separating source from sink",
+                        "Flow = edge count",
+                        "Matching = flow rate"
+                    ],
+                    "answer": "Maximum flow in network = minimum capacity cut separating source from sink"
+                }
+            ]
+        }
+    ]
+}

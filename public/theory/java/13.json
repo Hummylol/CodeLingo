@@ -1,0 +1,327 @@
+{
+    "levelno": 13,
+    "topic": "File I/O",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "File I/O — Beginner Level",
+            "theory": "Java provides classes in `java.io` to read/write files.\n\n**Writing a file:**\n```java\nimport java.io.*;\nFileWriter fw = new FileWriter(\"output.txt\");\nfw.write(\"Hello, World!\");\nfw.close();\n```\n\n**Reading a file line by line:**\n```java\nBufferedReader br = new BufferedReader(new FileReader(\"input.txt\"));\nString line;\nwhile ((line = br.readLine()) != null) {\n    System.out.println(line);\n}\nbr.close();\n```\n\n**try-with-resources:** automatically closes the stream:\n```java\ntry (BufferedReader b = new BufferedReader(new FileReader(\"f.txt\"))) {\n    System.out.println(b.readLine());\n}\n```",
+            "questions": [
+                {
+                    "question": "Which class writes text to a file?",
+                    "options": [
+                        "`FileReader`",
+                        "`FileWriter`",
+                        "`Scanner`",
+                        "`DataOutputStream`"
+                    ],
+                    "answer": "`FileWriter`"
+                },
+                {
+                    "question": "Which class reads lines from a text file efficiently?",
+                    "options": [
+                        "`FileReader`",
+                        "`Scanner`",
+                        "`BufferedReader`",
+                        "`InputStreamReader`"
+                    ],
+                    "answer": "`BufferedReader`"
+                },
+                {
+                    "question": "What does `br.readLine()` return when end-of-file is reached?",
+                    "options": [
+                        "Empty string",
+                        "`null`",
+                        "`EOF`",
+                        "Throws exception"
+                    ],
+                    "answer": "`null`"
+                },
+                {
+                    "question": "What does try-with-resources guarantee?",
+                    "options": [
+                        "No exception",
+                        "Resource is closed at end — even if exception occurs",
+                        "File always created",
+                        "Performance improvement"
+                    ],
+                    "answer": "Resource is closed at end — even if exception occurs"
+                },
+                {
+                    "question": "What is `FileNotFoundException`?",
+                    "options": [
+                        "Thrown when file can't be written",
+                        "Thrown when file doesn't exist on read",
+                        "An unchecked exception",
+                        "A warning"
+                    ],
+                    "answer": "Thrown when file doesn't exist on read"
+                },
+                {
+                    "question": "Does `FileWriter` without append flag overwrite existing file?",
+                    "options": [
+                        "No, it fails",
+                        "Yes, it truncates the file",
+                        "Appends by default",
+                        "Throws exception"
+                    ],
+                    "answer": "Yes, it truncates the file"
+                },
+                {
+                    "question": "What does `new FileWriter(\"file.txt\", true)` do?",
+                    "options": [
+                        "Opens in read mode",
+                        "Opens in append mode",
+                        "Overwrites the file",
+                        "Creates if not exists only"
+                    ],
+                    "answer": "Opens in append mode"
+                },
+                {
+                    "question": "Why use `BufferedReader` instead of `FileReader` directly?",
+                    "options": [
+                        "Required API",
+                        "Buffering reduces system calls for line-by-line reading — much more efficient",
+                        "Cannot use FileReader alone",
+                        "Both are same speed"
+                    ],
+                    "answer": "Buffering reduces system calls for line-by-line reading — much more efficient"
+                },
+                {
+                    "question": "Which checked exception must file I/O handle?",
+                    "options": [
+                        "`RuntimeException`",
+                        "`IOException`",
+                        "`FileException`",
+                        "`StreamException`"
+                    ],
+                    "answer": "`IOException`"
+                },
+                {
+                    "question": "What does closing a stream do?",
+                    "options": [
+                        "Deletes the file",
+                        "Flushes and releases the resource",
+                        "Locks the file",
+                        "Nothing important"
+                    ],
+                    "answer": "Flushes and releases the resource"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "File I/O — Intermediate Level",
+            "theory": "**`java.nio.file` (Java 7+):** modern file API:\n```java\nimport java.nio.file.*;\nPath path = Path.of(\"data.txt\");\n\n// Write all text at once\nFiles.writeString(path, \"Hello\\n\", StandardOpenOption.APPEND);\n\n// Read all lines\nList<String> lines = Files.readAllLines(path);\n\n// Stream of lines\nFiles.lines(path).filter(l -> l.startsWith(\"#\")).forEach(System.out::println);\n\n// Directory listing\nFiles.list(Path.of(\".\")).forEach(System.out::println);\n```\n\n**`Files.copy`, `Files.move`, `Files.delete`** — common operations.\n\n**`ObjectOutputStream` / `ObjectInputStream`** — Java object serialization.",
+            "questions": [
+                {
+                    "question": "Which NIO class represents a file path?",
+                    "options": [
+                        "`File`",
+                        "`Path`",
+                        "`URI`",
+                        "`String`"
+                    ],
+                    "answer": "`Path`"
+                },
+                {
+                    "question": "What does `Files.readAllLines(path)` return?",
+                    "options": [
+                        "`String[]`",
+                        "`Stream<String>`",
+                        "`List<String>`",
+                        "`byte[]`"
+                    ],
+                    "answer": "`List<String>`"
+                },
+                {
+                    "question": "What does `Files.lines(path)` return?",
+                    "options": [
+                        "`List<String>`",
+                        "`Stream<String>` — lazy, line-by-line",
+                        "`String[]`",
+                        "`BufferedReader`"
+                    ],
+                    "answer": "`Stream<String>` — lazy, line-by-line"
+                },
+                {
+                    "question": "What is `StandardOpenOption.APPEND` used for?",
+                    "options": [
+                        "Reading from end",
+                        "Appending to existing file instead of truncating",
+                        "Opening in binary",
+                        "Opening without close"
+                    ],
+                    "answer": "Appending to existing file instead of truncating"
+                },
+                {
+                    "question": "What does `Files.exists(path)` do?",
+                    "options": [
+                        "Creates the file",
+                        "Returns true if path exists on the filesystem",
+                        "Counts files",
+                        "Throws if missing"
+                    ],
+                    "answer": "Returns true if path exists on the filesystem"
+                },
+                {
+                    "question": "What does `Files.createDirectories(path)` do?",
+                    "options": [
+                        "Creates only the last dir",
+                        "Creates all missing parent directories and the given directory",
+                        "Throws if dir exists",
+                        "Creates a file"
+                    ],
+                    "answer": "Creates all missing parent directories and the given directory"
+                },
+                {
+                    "question": "What is object serialization?",
+                    "options": [
+                        "Converting object to JSON",
+                        "Converting object to a byte stream for storage/transfer — requires class to implement Serializable",
+                        "JSON to object",
+                        "A network protocol"
+                    ],
+                    "answer": "Converting object to a byte stream for storage/transfer — requires class to implement Serializable"
+                },
+                {
+                    "question": "What is `serialVersionUID`?",
+                    "options": [
+                        "An object ID",
+                        "A version identifier for a serializable class — ensures compatibility during deserialization",
+                        "A GUID",
+                        "A file offset"
+                    ],
+                    "answer": "A version identifier for a serializable class — ensures compatibility during deserialization"
+                },
+                {
+                    "question": "What does `Files.walk(path)` return?",
+                    "options": [
+                        "A directory tree as string",
+                        "`Stream<Path>` recursively traversing all files and dirs",
+                        "A sorted list",
+                        "A count of files"
+                    ],
+                    "answer": "`Stream<Path>` recursively traversing all files and dirs"
+                },
+                {
+                    "question": "What is a `WatchService` in NIO?",
+                    "options": [
+                        "A file existence checker",
+                        "Monitors a directory for file change events (ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE)",
+                        "A file reader",
+                        "A progress tracker"
+                    ],
+                    "answer": "Monitors a directory for file change events (ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "File I/O — Expert Level",
+            "theory": "**Memory-mapped files (`FileChannel` + `MappedByteBuffer`):** maps file content to memory for zero-copy, high-performance large file access.\n\n**`AsynchronousFileChannel` (Java 7+):** non-blocking file I/O using `CompletableFuture` or callbacks.\n\n**`java.nio.file.attribute` package:** read/set POSIX permissions, ownership, creation/modification times.\n\n**Direct buffers (`ByteBuffer.allocateDirect(n)`):** off-heap memory for I/O — avoids copy from kernel space.\n\n**`Channels.newInputStream(channel)`:** bridge between channel-based and stream-based I/O.",
+            "questions": [
+                {
+                    "question": "What is a memory-mapped file?",
+                    "options": [
+                        "An in-memory file copy",
+                        "File content mapped to process address space via OS — large file access without explicit read/write calls",
+                        "A RAM disk",
+                        "A file in a HashMap"
+                    ],
+                    "answer": "File content mapped to process address space via OS — large file access without explicit read/write calls"
+                },
+                {
+                    "question": "What does `FileChannel.map(MapMode.READ_ONLY, 0, size)` return?",
+                    "options": [
+                        "`byte[]`",
+                        "`MappedByteBuffer` — memory-mapped view of the file",
+                        "`ByteBuffer`",
+                        "`InputStream`"
+                    ],
+                    "answer": "`MappedByteBuffer` — memory-mapped view of the file"
+                },
+                {
+                    "question": "What is `AsynchronousFileChannel` used for?",
+                    "options": [
+                        "Sync file reading",
+                        "Non-blocking file I/O — read/write operations return immediately with Future or callback",
+                        "Atomic file operations",
+                        "Large batch reads"
+                    ],
+                    "answer": "Non-blocking file I/O — read/write operations return immediately with Future or callback"
+                },
+                {
+                    "question": "What is a `DirectByteBuffer`?",
+                    "options": [
+                        "A heap buffer",
+                        "Off-heap memory buffer used in NIO I/O — avoids buffer copy between JVM and OS",
+                        "A thread-safe buffer",
+                        "A read-only view"
+                    ],
+                    "answer": "Off-heap memory buffer used in NIO I/O — avoids buffer copy between JVM and OS"
+                },
+                {
+                    "question": "What does `Files.readAttributes(path, BasicFileAttributes.class)` provide?",
+                    "options": [
+                        "File content",
+                        "File metadata: creation/modification time, size, isDirectory, etc.",
+                        "File permissions only",
+                        "File hash"
+                    ],
+                    "answer": "File metadata: creation/modification time, size, isDirectory, etc."
+                },
+                {
+                    "question": "What does `StandardCopyOption.ATOMIC_MOVE` do?",
+                    "options": [
+                        "Copies atomically",
+                        "Moves file atomically — either fully completes or not — no partial states",
+                        "Thread-safe copy",
+                        "Same as REPLACE_EXISTING"
+                    ],
+                    "answer": "Moves file atomically — either fully completes or not — no partial states"
+                },
+                {
+                    "question": "What is a `FileChannel.lock()` used for?",
+                    "options": [
+                        "Thread-synchronization",
+                        "Acquires a file lock — useful for inter-process file access coordination",
+                        "Memory-mapping only",
+                        "Encryption"
+                    ],
+                    "answer": "Acquires a file lock — useful for inter-process file access coordination"
+                },
+                {
+                    "question": "What is scatter/gather I/O in NIO?",
+                    "options": [
+                        "Distributing files",
+                        "Reading into multiple buffers in one system call (scatter) or writing from multiple buffers (gather)",
+                        "A security technique",
+                        "Pipeline processing"
+                    ],
+                    "answer": "Reading into multiple buffers in one system call (scatter) or writing from multiple buffers (gather)"
+                },
+                {
+                    "question": "What is `Paths.get(parts...)` vs `Path.of(parts...)` (Java 11+)?",
+                    "options": [
+                        "Different",
+                        "Functionally equivalent — `Path.of` is the preferred modern API",
+                        "Path.of is faster",
+                        "Only `Paths.get` is deprecated"
+                    ],
+                    "answer": "Functionally equivalent — `Path.of` is the preferred modern API"
+                },
+                {
+                    "question": "What is the overhead of object serialization vs JSON serialization?",
+                    "options": [
+                        "Same",
+                        "Java serialization: binary, not human-readable, brittle; JSON: slower parse but portable",
+                        "JSON is always faster",
+                        "Both are identical performance"
+                    ],
+                    "answer": "Java serialization: binary, not human-readable, brittle; JSON: slower parse but portable"
+                }
+            ]
+        }
+    ]
+}

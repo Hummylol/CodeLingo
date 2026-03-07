@@ -1,0 +1,327 @@
+{
+    "levelno": 7,
+    "topic": "Lists",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Lists — Beginner Level",
+            "theory": "A **list** is an ordered, mutable sequence of items created with square brackets:\n`fruits = ['apple', 'banana', 'cherry']`\n\nLists can hold items of any type, including mixed types.\n\n**Key operations:**\n- Access: `fruits[0]` → `'apple'`, `fruits[-1]` → `'cherry'`\n- Length: `len(fruits)` → `3`\n- Add to end: `fruits.append('mango')`\n- Remove by value: `fruits.remove('banana')`\n- Check membership: `'apple' in fruits` → `True`\n\nLists are **mutable** — you can change, add, or remove items after creation.",
+            "questions": [
+                {
+                    "question": "How do you create an empty list?",
+                    "options": [
+                        "list()",
+                        "[]",
+                        "{}",
+                        "Both A and B"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "If `lst = [10, 20, 30]`, what is `lst[1]`?",
+                    "options": [
+                        "10",
+                        "20",
+                        "30",
+                        "Error"
+                    ],
+                    "answer": "20"
+                },
+                {
+                    "question": "Which method adds an item to the end of a list?",
+                    "options": [
+                        ".add()",
+                        ".insert()",
+                        ".push()",
+                        ".append()"
+                    ],
+                    "answer": ".append()"
+                },
+                {
+                    "question": "Are lists mutable or immutable?",
+                    "options": [
+                        "Immutable",
+                        "Mutable",
+                        "Both",
+                        "Neither"
+                    ],
+                    "answer": "Mutable"
+                },
+                {
+                    "question": "How do you get the number of items in `my_list`?",
+                    "options": [
+                        "my_list.length()",
+                        "len(my_list)",
+                        "my_list.size()",
+                        "size(my_list)"
+                    ],
+                    "answer": "len(my_list)"
+                },
+                {
+                    "question": "What does `my_list[-1]` refer to?",
+                    "options": [
+                        "First element",
+                        "Last element",
+                        "Second element",
+                        "Error"
+                    ],
+                    "answer": "Last element"
+                },
+                {
+                    "question": "Can a list contain items of different types?",
+                    "options": [
+                        "No, all must be same type",
+                        "Yes",
+                        "Only if it's a list of lists",
+                        "No, TypeError"
+                    ],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "What is the result of `[1, 2] + [3, 4]`?",
+                    "options": [
+                        "[4, 6]",
+                        "[1, 2, 3, 4]",
+                        "[[1,2],[3,4]]",
+                        "Error"
+                    ],
+                    "answer": "[1, 2, 3, 4]"
+                },
+                {
+                    "question": "How do you check if `x` is in `my_list`?",
+                    "options": [
+                        "my_list.contains(x)",
+                        "x in my_list",
+                        "my_list.find(x)",
+                        "x.exists(my_list)"
+                    ],
+                    "answer": "x in my_list"
+                },
+                {
+                    "question": "What does `[1, 2, 3].pop()` do?",
+                    "options": [
+                        "Removes and returns 1",
+                        "Removes and returns 3",
+                        "Raises Error",
+                        "Empties the list"
+                    ],
+                    "answer": "Removes and returns 3"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Lists — Intermediate Level",
+            "theory": "**Slicing** extracts a sublist: `lst[start:stop:step]`\n`lst = [0,1,2,3,4,5]`\n`lst[1:4]` → `[1,2,3]`, `lst[::2]` → `[0,2,4]`, `lst[::-1]` → `[5,4,3,2,1,0]`\n\n**Useful list methods:**\n- `.sort()` — sorts in-place; `sorted(lst)` returns a new sorted list\n- `.reverse()` — reverses in-place\n- `.insert(i, val)` — inserts at index i\n- `.index(val)` — returns index of first occurrence\n- `.count(val)` — counts occurrences\n- `.extend(iterable)` — adds all items from another iterable\n\n**List comprehension** — concise way to create lists:\n`squares = [x**2 for x in range(5)]  # [0,1,4,9,16]`",
+            "questions": [
+                {
+                    "question": "What does `[0,1,2,3,4][1:4]` return?",
+                    "options": [
+                        "[1,2,3]",
+                        "[0,1,2,3]",
+                        "[1,2,3,4]",
+                        "[0,1,2]"
+                    ],
+                    "answer": "[1,2,3]"
+                },
+                {
+                    "question": "What does `[1,2,3,4,5][::-1]` return?",
+                    "options": [
+                        "[1,2,3,4,5]",
+                        "[5,4,3,2,1]",
+                        "Error",
+                        "[]"
+                    ],
+                    "answer": "[5,4,3,2,1]"
+                },
+                {
+                    "question": "What does `[x**2 for x in range(4)]` produce?",
+                    "options": [
+                        "[1,4,9,16]",
+                        "[0,1,4,9]",
+                        "[0,2,4,6]",
+                        "Error"
+                    ],
+                    "answer": "[0,1,4,9]"
+                },
+                {
+                    "question": "What is the difference between `.sort()` and `sorted()`?",
+                    "options": [
+                        "They are identical",
+                        ".sort() modifies the list in place; sorted() returns a new list",
+                        "sorted() modifies in place; .sort() returns new list",
+                        ".sort() works only on numbers"
+                    ],
+                    "answer": ".sort() modifies the list in place; sorted() returns a new list"
+                },
+                {
+                    "question": "What does `[1,2,3].insert(1, 99)` result in?",
+                    "options": [
+                        "[1,99,2,3]",
+                        "[99,1,2,3]",
+                        "[1,2,99,3]",
+                        "Error"
+                    ],
+                    "answer": "[1,99,2,3]"
+                },
+                {
+                    "question": "What does `[1,2,2,3].count(2)` return?",
+                    "options": [
+                        "1",
+                        "2",
+                        "3",
+                        "Error"
+                    ],
+                    "answer": "2"
+                },
+                {
+                    "question": "What does `[1,2].extend([3,4])` result in?",
+                    "options": [
+                        "[[1,2],[3,4]]",
+                        "[1,2,3,4]",
+                        "[1,2,[3,4]]",
+                        "Error"
+                    ],
+                    "answer": "[1,2,3,4]"
+                },
+                {
+                    "question": "What does `sorted([3,1,2])` return?",
+                    "options": [
+                        "[1,2,3]",
+                        "[3,1,2] (unchanged)",
+                        "None",
+                        "Error"
+                    ],
+                    "answer": "[1,2,3]"
+                },
+                {
+                    "question": "What does `[x for x in range(10) if x % 2 == 0]` produce?",
+                    "options": [
+                        "[0,2,4,6,8]",
+                        "[1,3,5,7,9]",
+                        "[0,1,2,3,4]",
+                        "Error"
+                    ],
+                    "answer": "[0,2,4,6,8]"
+                },
+                {
+                    "question": "What does `[1,2,3].index(2)` return?",
+                    "options": [
+                        "0",
+                        "1",
+                        "2",
+                        "Error"
+                    ],
+                    "answer": "1"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Lists — Expert Level",
+            "theory": "**Shallow vs Deep copy:**\n- `b = a` — both variables reference the **same** list\n- `b = a.copy()` or `b = a[:]` — creates a **shallow copy** (nested objects still shared)\n- `import copy; b = copy.deepcopy(a)` — creates a fully independent copy\n\n**Memory:** A Python list is a dynamic array of object pointers. Appending is O(1) amortized; inserting at position 0 is O(n).\n\n**`*` unpacking in lists:**\n`a, *b, c = [1,2,3,4,5]  # a=1, b=[2,3,4], c=5`\n\n**`list.__slots__` doesn't exist** — lists use dynamic arrays internally. For huge sequences of homogeneous numbers, prefer `array.array` or `numpy.ndarray` for memory efficiency.",
+            "questions": [
+                {
+                    "question": "What does `b = a[:]` do if `a = [1,2,3]`?",
+                    "options": [
+                        "Makes b point to same list",
+                        "Creates a shallow copy of a",
+                        "Creates a deep copy of a",
+                        "Raises Error"
+                    ],
+                    "answer": "Creates a shallow copy of a"
+                },
+                {
+                    "question": "What is the time complexity of `list.append()`?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1) amortized",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1) amortized"
+                },
+                {
+                    "question": "What is the time complexity of inserting at index 0 of a list?",
+                    "options": [
+                        "O(1)",
+                        "O(log n)",
+                        "O(n)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "What does `a, *b, c = [1,2,3,4,5]` assign to `b`?",
+                    "options": [
+                        "[2,3]",
+                        "[2,3,4]",
+                        "[2]",
+                        "Error"
+                    ],
+                    "answer": "[2,3,4]"
+                },
+                {
+                    "question": "What module provides `deepcopy`?",
+                    "options": [
+                        "collections",
+                        "copy",
+                        "shutil",
+                        "sys"
+                    ],
+                    "answer": "copy"
+                },
+                {
+                    "question": "What is the difference between shallow copy and deep copy?",
+                    "options": [
+                        "They are the same",
+                        "Shallow copy shares nested objects; deep copy creates fully independent copies",
+                        "Deep copy is only for dicts",
+                        "Shallow copy is slower"
+                    ],
+                    "answer": "Shallow copy shares nested objects; deep copy creates fully independent copies"
+                },
+                {
+                    "question": "For storing many homogeneous numbers efficiently, prefer:",
+                    "options": [
+                        "Regular Python list",
+                        "array.array or numpy.ndarray",
+                        "Tuple",
+                        "Dict"
+                    ],
+                    "answer": "array.array or numpy.ndarray"
+                },
+                {
+                    "question": "What does `[[0]*3 for _ in range(3)]` create?",
+                    "options": [
+                        "A 1D list of 9 zeros",
+                        "A 3x3 matrix of zeros (list of lists)",
+                        "An error",
+                        "A flat list [0,3,3]"
+                    ],
+                    "answer": "A 3x3 matrix of zeros (list of lists)"
+                },
+                {
+                    "question": "Why is `[[0]*3]*3` risky for a 2D matrix?",
+                    "options": [
+                        "It raises an error",
+                        "All rows reference the same list object — modifying one modifies all",
+                        "It creates the wrong size",
+                        "It uses too much memory"
+                    ],
+                    "answer": "All rows reference the same list object — modifying one modifies all"
+                },
+                {
+                    "question": "What does `list(map(str, [1,2,3]))` produce?",
+                    "options": [
+                        "[1,2,3]",
+                        "['1','2','3']",
+                        "Error",
+                        "1 2 3"
+                    ],
+                    "answer": "['1','2','3']"
+                }
+            ]
+        }
+    ]
+}

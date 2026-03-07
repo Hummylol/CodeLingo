@@ -1,0 +1,327 @@
+{
+    "levelno": 9,
+    "topic": "Exception Handling",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Exception Handling — Beginner Level",
+            "theory": "Java exceptions handle runtime errors gracefully.\n\n```java\ntry {\n    int result = 10 / 0; // throws ArithmeticException\n} catch (ArithmeticException e) {\n    System.out.println(\"Error: \" + e.getMessage());\n} finally {\n    System.out.println(\"Always runs\");\n}\n```\n\n- `try` — code that may throw an exception\n- `catch` — handles a specific exception type\n- `finally` — always runs (cleanup code)\n- Hierarchy: `Throwable` → `Exception` / `Error`\n- **Checked exceptions** must be declared or caught\n- **Unchecked exceptions** (`RuntimeException` subclasses) don't need to be declared\n- **Errors** (like `OutOfMemoryError`) are serious JVM problems",
+            "questions": [
+                {
+                    "question": "What keyword throws an exception?",
+                    "options": [
+                        "`catch`",
+                        "`try`",
+                        "`throw`",
+                        "`throws`"
+                    ],
+                    "answer": "`throw`"
+                },
+                {
+                    "question": "What does `finally` block do?",
+                    "options": [
+                        "Runs only if exception occurs",
+                        "Runs only if no exception",
+                        "Always runs after try-catch",
+                        "Runs once at program start"
+                    ],
+                    "answer": "Always runs after try-catch"
+                },
+                {
+                    "question": "What is a checked exception?",
+                    "options": [
+                        "Exception checked at runtime",
+                        "Exception that MUST be caught or declared with `throws`",
+                        "A subclass of RuntimeException",
+                        "An Error"
+                    ],
+                    "answer": "Exception that MUST be caught or declared with `throws`"
+                },
+                {
+                    "question": "What is an unchecked exception?",
+                    "options": [
+                        "Never thrown",
+                        "Subclass of RuntimeException — no forced catch/declare",
+                        "Hardware error",
+                        "A checked exception not caught"
+                    ],
+                    "answer": "Subclass of RuntimeException — no forced catch/declare"
+                },
+                {
+                    "question": "Which is a checked exception?",
+                    "options": [
+                        "`NullPointerException`",
+                        "`ArrayIndexOutOfBoundsException`",
+                        "`IOException`",
+                        "`ArithmeticException`"
+                    ],
+                    "answer": "`IOException`"
+                },
+                {
+                    "question": "What does `throws` in a method signature do?",
+                    "options": [
+                        "Throws the exception immediately",
+                        "Declares that the method may throw this exception — caller must handle it",
+                        "Handles the exception",
+                        "Suppresses the exception"
+                    ],
+                    "answer": "Declares that the method may throw this exception — caller must handle it"
+                },
+                {
+                    "question": "Root of the Java exception hierarchy?",
+                    "options": [
+                        "`Exception`",
+                        "`Error`",
+                        "`Throwable`",
+                        "`RuntimeException`"
+                    ],
+                    "answer": "`Throwable`"
+                },
+                {
+                    "question": "What is `e.getMessage()` used for?",
+                    "options": [
+                        "Get class name",
+                        "Get the exception's error description string",
+                        "Get stack trace",
+                        "Get error code"
+                    ],
+                    "answer": "Get the exception's error description string"
+                },
+                {
+                    "question": "When is `ArithmeticException` thrown?",
+                    "options": [
+                        "Null access",
+                        "Number format error",
+                        "Division by zero (integer)",
+                        "Array out of bounds"
+                    ],
+                    "answer": "Division by zero (integer)"
+                },
+                {
+                    "question": "Can you have multiple catch blocks?",
+                    "options": [
+                        "No, only one",
+                        "Yes — each handles a different exception type",
+                        "Only two maximum",
+                        "Only for checked exceptions"
+                    ],
+                    "answer": "Yes — each handles a different exception type"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Exception Handling — Intermediate Level",
+            "theory": "**try-with-resources (Java 7+):** automatically closes resources:\n```java\ntry (BufferedReader br = new BufferedReader(new FileReader(\"file.txt\"))) {\n    String line = br.readLine();\n} catch (IOException e) {\n    e.printStackTrace();\n}\n// br is automatically closed\n```\n\n**Multi-catch (Java 7+):** `catch (IOException | SQLException e)`\n\n**Custom exceptions:**\n```java\nclass InvalidAgeException extends RuntimeException {\n    public InvalidAgeException(String msg) { super(msg); }\n}\n```\n\n**Chaining exceptions:** `throw new RuntimeException(\"wrap\", cause);`",
+            "questions": [
+                {
+                    "question": "What does try-with-resources do?",
+                    "options": [
+                        "Tries multiple times",
+                        "Automatically closes resources implementing AutoCloseable when try block exits",
+                        "A try with finally only",
+                        "Retries on exception"
+                    ],
+                    "answer": "Automatically closes resources implementing AutoCloseable when try block exits"
+                },
+                {
+                    "question": "What interface must a resource implement for try-with-resources?",
+                    "options": [
+                        "`Closeable`",
+                        "`AutoCloseable`",
+                        "Either `Closeable` or `AutoCloseable`",
+                        "`Resource`"
+                    ],
+                    "answer": "Either `Closeable` or `AutoCloseable`"
+                },
+                {
+                    "question": "What is multi-catch syntax?",
+                    "options": [
+                        "`catch (Ex1 e, Ex2 e)`",
+                        "`catch (Ex1 | Ex2 e)` — handle multiple exception types in one catch",
+                        "`catch (Ex1 && Ex2 e)`",
+                        "`multicatch (Ex1, Ex2)`"
+                    ],
+                    "answer": "`catch (Ex1 | Ex2 e)` — handle multiple exception types in one catch"
+                },
+                {
+                    "question": "How do you create a custom exception?",
+                    "options": [
+                        "Extend `Error`",
+                        "Extend `Exception` or `RuntimeException` and provide constructors",
+                        "Implement `Throwable`",
+                        "Use `@Exception` annotation"
+                    ],
+                    "answer": "Extend `Exception` or `RuntimeException` and provide constructors"
+                },
+                {
+                    "question": "What is exception chaining?",
+                    "options": [
+                        "Catching one throwing another",
+                        "Wrapping an original exception inside a new one to preserve context: `new Ex(msg, cause)`",
+                        "Multiple catch blocks",
+                        "Re-throwing always"
+                    ],
+                    "answer": "Wrapping an original exception inside a new one to preserve context: `new Ex(msg, cause)`"
+                },
+                {
+                    "question": "What does `e.getCause()` return?",
+                    "options": [
+                        "The exception type",
+                        "The cause exception that was wrapped inside `e`",
+                        "The stack trace",
+                        "The error code"
+                    ],
+                    "answer": "The cause exception that was wrapped inside `e`"
+                },
+                {
+                    "question": "What happens if both try and finally throw an exception?",
+                    "options": [
+                        "Both propagate",
+                        "The finally exception suppresses the try exception — original is lost unless using suppressed",
+                        "Try exception wins",
+                        "Both are caught"
+                    ],
+                    "answer": "The finally exception suppresses the try exception — original is lost unless using suppressed"
+                },
+                {
+                    "question": "What is `Throwable.addSuppressed(e)` for?",
+                    "options": [
+                        "Adding multiple messages",
+                        "Attaching a suppressed exception (from finally/closing) to the primary exception in try-with-resources",
+                        "Suppressing all exceptions",
+                        "Performance optimization"
+                    ],
+                    "answer": "Attaching a suppressed exception (from finally/closing) to the primary exception in try-with-resources"
+                },
+                {
+                    "question": "Should you catch `Error` in production code?",
+                    "options": [
+                        "Always",
+                        "Generally no — Errors indicate serious JVM problems (e.g., OOM) that can't be meaningfully recovered",
+                        "Only for network errors",
+                        "Yes, with empty catch"
+                    ],
+                    "answer": "Generally no — Errors indicate serious JVM problems (e.g., OOM) that can't be meaningfully recovered"
+                },
+                {
+                    "question": "Which is the correct order for multiple catch blocks?",
+                    "options": [
+                        "Most general first",
+                        "Most specific first (subtype before supertype)",
+                        "Alphabetical",
+                        "Random order"
+                    ],
+                    "answer": "Most specific first (subtype before supertype)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Exception Handling — Expert Level",
+            "theory": "**`Optional<T>` as exception alternative (Java 8+):**\n```java\nOptional<String> name = findName(id);\nname.ifPresent(System.out::println);\nString n = name.orElse(\"Unknown\");\n```\n\n**Exception-free with `Result` types (Vavr/Arrow):** functional alternatives.\n\n**`Thread.UncaughtExceptionHandler`:** handle uncaught exceptions in threads.\n\n**Stack trace analysis:** `e.getStackTrace()` returns `StackTraceElement[]` — useful for logging frameworks.\n\n**`StackWalker` (Java 9+):** lazy, filter-based stack walking more efficient than `getStackTrace()`.",
+            "questions": [
+                {
+                    "question": "What is `Optional<T>` used for?",
+                    "options": [
+                        "Storing null",
+                        "Representing an optional value — eliminates NullPointerException for absent values",
+                        "A thread-safe wrapper",
+                        "A collection of one element"
+                    ],
+                    "answer": "Representing an optional value — eliminates NullPointerException for absent values"
+                },
+                {
+                    "question": "What does `Optional.orElseThrow()` do?",
+                    "options": [
+                        "Returns null if empty",
+                        "Returns value or throws NoSuchElementException if empty",
+                        "Returns a default value",
+                        "Throws always"
+                    ],
+                    "answer": "Returns value or throws NoSuchElementException if empty"
+                },
+                {
+                    "question": "What is `Thread.UncaughtExceptionHandler`?",
+                    "options": [
+                        "A try-catch replacement",
+                        "Handler called when a thread terminates due to an uncaught exception",
+                        "A shutdown hook",
+                        "Error logging API"
+                    ],
+                    "answer": "Handler called when a thread terminates due to an uncaught exception"
+                },
+                {
+                    "question": "What does `e.getStackTrace()` return?",
+                    "options": [
+                        "A String",
+                        "An array of `StackTraceElement` representing the call stack",
+                        "An Integer count",
+                        "The exception cause"
+                    ],
+                    "answer": "An array of `StackTraceElement` representing the call stack"
+                },
+                {
+                    "question": "What is `StackWalker` (Java 9+) advantage over `getStackTrace()`?",
+                    "options": [
+                        "Same performance",
+                        "Lazy, filter-based — only captures frames you need, avoiding expensive full trace allocation",
+                        "Thread-safe stack trace",
+                        "Returns a List instead of array"
+                    ],
+                    "answer": "Lazy, filter-based — only captures frames you need, avoiding expensive full trace allocation"
+                },
+                {
+                    "question": "What is the overhead of creating an exception vs a simple return value?",
+                    "options": [
+                        "No overhead",
+                        "Creating exceptions is expensive due to stack trace capture — avoid using exceptions for flow control",
+                        "Only first exception is expensive",
+                        "Depends on JVM version"
+                    ],
+                    "answer": "Creating exceptions is expensive due to stack trace capture — avoid using exceptions for flow control"
+                },
+                {
+                    "question": "What does `Optional.flatMap(f)` do?",
+                    "options": [
+                        "Same as map",
+                        "Applies f which returns an Optional — avoids Optional<Optional<T>> nesting",
+                        "Converts to Stream",
+                        "Filters values"
+                    ],
+                    "answer": "Applies f which returns an Optional — avoids Optional<Optional<T>> nesting"
+                },
+                {
+                    "question": "What is the \"exception tunnel\" pattern?",
+                    "options": [
+                        "A try-catch chain",
+                        "Wrapping a checked exception in an unchecked one to pass through lambda/stream code",
+                        "Catching then rethrowing",
+                        "A multi-catch technique"
+                    ],
+                    "answer": "Wrapping a checked exception in an unchecked one to pass through lambda/stream code"
+                },
+                {
+                    "question": "What does `@SneakyThrows` (Lombok) do?",
+                    "options": [
+                        "Logs exceptions",
+                        "Bytecode-level trick to throw checked exceptions without declaring them — controversial",
+                        "Suppresses exceptions",
+                        "Converts checked to unchecked"
+                    ],
+                    "answer": "Bytecode-level trick to throw checked exceptions without declaring them — controversial"
+                },
+                {
+                    "question": "What is `Throwable.fillInStackTrace()`?",
+                    "options": [
+                        "Clears the trace",
+                        "Captures the current stack trace into the exception — expensive; override to return `this` for perf",
+                        "Adds caller info",
+                        "Formats trace to string"
+                    ],
+                    "answer": "Captures the current stack trace into the exception — expensive; override to return `this` for perf"
+                }
+            ]
+        }
+    ]
+}

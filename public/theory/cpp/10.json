@@ -1,0 +1,327 @@
+{
+    "levelno": 10,
+    "topic": "Arrays",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Arrays — Beginner Level",
+            "theory": "An array stores a fixed number of elements of the same type in contiguous memory.\n\n```cpp\nint scores[5] = {98, 87, 92, 79, 85};\nstd::cout << scores[0]; // 98 (first element)\nstd::cout << scores[4]; // 85 (last element)\n```\n\n- Zero-based indexing: first element is index 0, last is index `size-1`\n- Fixed size — determined at compile time\n- Accessing out-of-bounds causes **undefined behavior** (crash or garbage)\n- Global/static arrays of integers are zero-initialized; local ones are not\n- Use a `for` loop to traverse all elements",
+            "questions": [
+                {
+                    "question": "What is the index of the first element in a C++ array?",
+                    "options": [
+                        "1",
+                        "0",
+                        "-1",
+                        "Depends on declaration"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "Which correctly declares an array named `numbers` for 10 integers?",
+                    "options": [
+                        "`int numbers[10];`",
+                        "`int numbers[];`",
+                        "`numbers[10] int;`",
+                        "`array int[10];`"
+                    ],
+                    "answer": "`int numbers[10];`"
+                },
+                {
+                    "question": "For `int arr[5]`, what is the index of the last element?",
+                    "options": [
+                        "5",
+                        "6",
+                        "4",
+                        "None"
+                    ],
+                    "answer": "4"
+                },
+                {
+                    "question": "Accessing `arr[10]` in an array of size 10 results in:",
+                    "options": [
+                        "Compile-time error always",
+                        "Auto-resize",
+                        "Undefined behavior — crash or garbage",
+                        "Returns 0"
+                    ],
+                    "answer": "Undefined behavior — crash or garbage"
+                },
+                {
+                    "question": "Correct way to initialize an array at declaration?",
+                    "options": [
+                        "`int arr[3] = (1,2,3);`",
+                        "`int arr[3] = {1,2,3};`",
+                        "`int arr = {1,2,3};`",
+                        "`int arr(3) = {1,2,3};`"
+                    ],
+                    "answer": "`int arr[3] = {1,2,3};`"
+                },
+                {
+                    "question": "Can you resize a C-style array after declaration?",
+                    "options": [
+                        "Yes with resize()",
+                        "No — fixed at compile time",
+                        "Yes by assigning new size",
+                        "Only char arrays"
+                    ],
+                    "answer": "No — fixed at compile time"
+                },
+                {
+                    "question": "How are array elements stored in memory?",
+                    "options": [
+                        "Randomly",
+                        "In contiguous memory",
+                        "In a linked list",
+                        "By value"
+                    ],
+                    "answer": "In contiguous memory"
+                },
+                {
+                    "question": "What is a common way to iterate through an array?",
+                    "options": [
+                        "switch statement",
+                        "Recursion",
+                        "`for` loop from index 0 to size-1",
+                        "`if-else` statement"
+                    ],
+                    "answer": "`for` loop from index 0 to size-1"
+                },
+                {
+                    "question": "What is a C-style string?",
+                    "options": [
+                        "A `std::string` object",
+                        "Array of chars ending with null `\\0`",
+                        "Special data type",
+                        "Array of strings"
+                    ],
+                    "answer": "Array of chars ending with null `\\0`"
+                },
+                {
+                    "question": "Default value of elements in a global array of integers?",
+                    "options": [
+                        "Garbage",
+                        "Null",
+                        "Zero",
+                        "One"
+                    ],
+                    "answer": "Zero"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Arrays — Intermediate Level",
+            "theory": "**`std::array<T, N>` (C++11)** — a safer, fixed-size array with STL compatibility:\n```cpp\n#include <array>\nstd::array<int, 5> arr = {1, 2, 3, 4, 5};\narr.size();   // 5\narr.at(10);   // throws std::out_of_range\n```\n\n**`std::vector<T>`** — dynamic array that grows as needed:\n```cpp\nstd::vector<int> v = {1, 2, 3};\nv.push_back(4); // now {1,2,3,4}\nv.size();       // 4\n```\n\n**2D arrays:** `int matrix[3][4];` — array of arrays.\n\n**Passing arrays to functions:** arrays decay to pointers, so size info is lost. Prefer `std::array` or `std::span<T>` (C++20).",
+            "questions": [
+                {
+                    "question": "What does `std::array<int,5>.at(10)` do?",
+                    "options": [
+                        "Returns 0",
+                        "Returns garbage",
+                        "Throws `std::out_of_range`",
+                        "Undefined behavior"
+                    ],
+                    "answer": "Throws `std::out_of_range`"
+                },
+                {
+                    "question": "How does `std::vector` differ from a C-style array?",
+                    "options": [
+                        "No difference",
+                        "Vector is dynamic — can grow/shrink; C array is fixed-size",
+                        "Vector stores strings only",
+                        "C arrays are faster always"
+                    ],
+                    "answer": "Vector is dynamic — can grow/shrink; C array is fixed-size"
+                },
+                {
+                    "question": "What happens when an array is passed to a function?",
+                    "options": [
+                        "Full copy is made",
+                        "It decays to a pointer — size information is lost",
+                        "Only first element passed",
+                        "Compile error"
+                    ],
+                    "answer": "It decays to a pointer — size information is lost"
+                },
+                {
+                    "question": "How do you access element at row 1, column 2 of `int mat[3][4]`?",
+                    "options": [
+                        "`mat[2][1]`",
+                        "`mat[1][2]`",
+                        "`mat(1,2)`",
+                        "`mat{1,2}`"
+                    ],
+                    "answer": "`mat[1][2]`"
+                },
+                {
+                    "question": "What does `std::vector::push_back(x)` do?",
+                    "options": [
+                        "Inserts at front",
+                        "Removes x",
+                        "Appends x to end",
+                        "Inserts at position x"
+                    ],
+                    "answer": "Appends x to end"
+                },
+                {
+                    "question": "What is `std::span<int>` (C++20)?",
+                    "options": [
+                        "A dynamic array",
+                        "A non-owning view over a contiguous sequence — no size loss when passed to functions",
+                        "A string span",
+                        "Same as vector"
+                    ],
+                    "answer": "A non-owning view over a contiguous sequence — no size loss when passed to functions"
+                },
+                {
+                    "question": "What is `v.reserve(100)` on a vector?",
+                    "options": [
+                        "Sets size to 100",
+                        "Reserves capacity for 100 elements without changing size — avoids reallocations",
+                        "Fills with zeros",
+                        "Shrinks to 100"
+                    ],
+                    "answer": "Reserves capacity for 100 elements without changing size — avoids reallocations"
+                },
+                {
+                    "question": "What is the time complexity of `vector::push_back`?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1) amortized",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1) amortized"
+                },
+                {
+                    "question": "What does `std::array` guarantee that `vector` doesn't?",
+                    "options": [
+                        "Dynamic size",
+                        "No heap allocation — elements stored on the stack",
+                        "Can hold any type",
+                        "No bounds checking"
+                    ],
+                    "answer": "No heap allocation — elements stored on the stack"
+                },
+                {
+                    "question": "What is the purpose of `std::array::fill(v)`?",
+                    "options": [
+                        "Resizes to v",
+                        "Sets all elements to value v",
+                        "Counts elements equal to v",
+                        "Finds v"
+                    ],
+                    "answer": "Sets all elements to value v"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Arrays — Expert Level",
+            "theory": "**Small-buffer optimization (SBO):** some `string`/`vector` implementations store small data inline to avoid heap allocation.\n\n**`std::mdspan` (C++23):** multi-dimensional span for arrays without ownership.\n\n**Cache efficiency:** row-major traversal of 2D arrays is faster than column-major because adjacent elements in a row share cache lines.\n\n**`std::inplace_vector` (proposed C++26):** vector with inline storage.\n\n**Pointer arithmetic:** `arr + i` is the same as `&arr[i]`. Understanding this aids SIMD and low-level optimizations.",
+            "questions": [
+                {
+                    "question": "What is row-major order?",
+                    "options": [
+                        "Elements stored column by column",
+                        "Elements stored row by row in memory — adjacent row elements are contiguous",
+                        "Random storage order",
+                        "Sorted by value"
+                    ],
+                    "answer": "Elements stored row by row in memory — adjacent row elements are contiguous"
+                },
+                {
+                    "question": "Why is row-major traversal faster than column-major for cache?",
+                    "options": [
+                        "Column access is always faster",
+                        "Row traversal accesses contiguous memory, staying in cache; column access jumps by row width",
+                        "They are equally fast",
+                        "Depends on array size only"
+                    ],
+                    "answer": "Row traversal accesses contiguous memory, staying in cache; column access jumps by row width"
+                },
+                {
+                    "question": "What does `arr + 3` mean (where arr is `int arr[10]`)?",
+                    "options": [
+                        "Adds 3 to arr[0]",
+                        "Points to the 4th element (arr[3])",
+                        "Points to arr[0] + 3 bytes",
+                        "Invalid"
+                    ],
+                    "answer": "Points to the 4th element (arr[3])"
+                },
+                {
+                    "question": "What is small-buffer optimization (SBO)?",
+                    "options": [
+                        "A sorting trick",
+                        "Storing small data inline in the object itself, avoiding heap allocation for small sizes",
+                        "Compressing array elements",
+                        "A compiler pass"
+                    ],
+                    "answer": "Storing small data inline in the object itself, avoiding heap allocation for small sizes"
+                },
+                {
+                    "question": "What is `std::mdspan` (C++23)?",
+                    "options": [
+                        "A multi-threaded span",
+                        "A non-owning multi-dimensional view over contiguous memory",
+                        "A dynamic 2D vector",
+                        "A matrix library"
+                    ],
+                    "answer": "A non-owning multi-dimensional view over contiguous memory"
+                },
+                {
+                    "question": "What is the effect of over-allocating vector with `reserve` on performance?",
+                    "options": [
+                        "Slows inserts",
+                        "Eliminates reallocations during push_back up to reserved capacity, improving performance",
+                        "Increases memory by 2x always",
+                        "No effect after construction"
+                    ],
+                    "answer": "Eliminates reallocations during push_back up to reserved capacity, improving performance"
+                },
+                {
+                    "question": "What does `std::vector::shrink_to_fit()` do?",
+                    "options": [
+                        "Removes all elements",
+                        "Requests that capacity be reduced to size (may not be honored by implementation)",
+                        "Sets capacity to 1",
+                        "Clears the vector"
+                    ],
+                    "answer": "Requests that capacity be reduced to size (may not be honored by implementation)"
+                },
+                {
+                    "question": "What is a 'jagged array' in C++?",
+                    "options": [
+                        "An unsorted array",
+                        "An array of pointers where each sub-array can have different length (e.g., `int* jagged[]`)",
+                        "A 3D array",
+                        "An std::vector<std::array>"
+                    ],
+                    "answer": "An array of pointers where each sub-array can have different length (e.g., `int* jagged[]`)"
+                },
+                {
+                    "question": "What does `std::span<const int>` provide?",
+                    "options": [
+                        "Read-only non-owning view over int sequence",
+                        "Read-write view",
+                        "A const vector",
+                        "A compile-time array"
+                    ],
+                    "answer": "Read-only non-owning view over int sequence"
+                },
+                {
+                    "question": "Why might you choose `std::array` over `std::vector` for performance-critical fixed-size data?",
+                    "options": [
+                        "Array is slower but safer",
+                        "Array avoids heap allocation, has no capacity tracking, and can be entirely stack-resident",
+                        "Vector is always faster",
+                        "No practical difference"
+                    ],
+                    "answer": "Array avoids heap allocation, has no capacity tracking, and can be entirely stack-resident"
+                }
+            ]
+        }
+    ]
+}

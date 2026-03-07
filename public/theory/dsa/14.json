@@ -1,0 +1,327 @@
+{
+    "levelno": 14,
+    "topic": "Bit Manipulation",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Bit Manipulation — Beginner Level",
+            "theory": "Bit manipulation uses binary operators for efficient operations.\n\n**Bitwise operators:**\n```python\na = 0b1010  # 10\nb = 0b1100  # 12\n\na & b   # AND  = 0b1000 = 8  (both 1)\na | b   # OR   = 0b1110 = 14 (either 1)\na ^ b   # XOR  = 0b0110 = 6  (different)\n~a      # NOT  = -11 (two's complement)\na << 1  # Left shift  = 20  (×2)\na >> 1  # Right shift = 5   (÷2)\n```\n\n**Common tricks:**\n- `n & 1` — check if odd\n- `n >> 1` — divide by 2\n- `n & (n-1)` — clear lowest set bit\n- `n & (-n)` — isolate lowest set bit\n- `n ^ n = 0`, `n ^ 0 = n`",
+            "questions": [
+                {
+                    "question": "What does `n & (n-1)` do?",
+                    "options": [
+                        "Checks if n is even",
+                        "Clears the lowest set bit of n",
+                        "Sets all bits to 1",
+                        "Isolates lowest set bit"
+                    ],
+                    "answer": "Clears the lowest set bit of n"
+                },
+                {
+                    "question": "What does `n & (-n)` return?",
+                    "options": [
+                        "0 always",
+                        "Lowest set bit (least significant bit) of n",
+                        "-n",
+                        "~n"
+                    ],
+                    "answer": "Lowest set bit (least significant bit) of n"
+                },
+                {
+                    "question": "What does XOR (^) of a number with itself give?",
+                    "options": [
+                        "The number itself",
+                        "All 1s",
+                        "0",
+                        "The complement"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "Check if n is a power of 2:",
+                    "options": [
+                        "`n % 2 == 0`",
+                        "`n & (n-1) == 0 and n > 0`",
+                        "`n >> 1 == 0`",
+                        "`n & 0 == 0`"
+                    ],
+                    "answer": "`n & (n-1) == 0 and n > 0`"
+                },
+                {
+                    "question": "Left shift `n << k` is equivalent to:",
+                    "options": [
+                        "`n / 2^k`",
+                        "`n * 2^k`",
+                        "`n + k`",
+                        "`n XOR k`"
+                    ],
+                    "answer": "`n * 2^k`"
+                },
+                {
+                    "question": "Right shift `n >> k` is equivalent to:",
+                    "options": [
+                        "`n * 2^k`",
+                        "`n // 2^k`",
+                        "`n + k`",
+                        "`n - k`"
+                    ],
+                    "answer": "`n // 2^k`"
+                },
+                {
+                    "question": "Single number in array where all others appear twice — use:",
+                    "options": [
+                        "Frequency hash map",
+                        "XOR all elements — duplicates cancel out, single remains",
+                        "Sort and find unique",
+                        "Sum formula"
+                    ],
+                    "answer": "XOR all elements — duplicates cancel out, single remains"
+                },
+                {
+                    "question": "Count set bits (Hamming weight) of n:",
+                    "options": [
+                        "`bin(n).count('1')` O(log n)",
+                        "Brian Kernighan's — loop `n & (n-1)` per set bit O(popcount)",
+                        "Both are O(log n)",
+                        "Both are valid"
+                    ],
+                    "answer": "Both are valid"
+                },
+                {
+                    "question": "Swap two ints without temp variable using XOR:",
+                    "options": [
+                        "`a = a^b; b = a^b; a = a^b`",
+                        "`a ^= b ^= a ^= b` — same logic but undefined behavior in C",
+                        "Both A only",
+                        "XOR swap doesn't work"
+                    ],
+                    "answer": "`a = a^b; b = a^b; a = a^b`"
+                },
+                {
+                    "question": "What does `~0` equal in Python?",
+                    "options": [
+                        "0",
+                        "1",
+                        "-1",
+                        "All 1s (int is unbounded)"
+                    ],
+                    "answer": "-1"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Bit Manipulation — Intermediate Level",
+            "theory": "**Bitmask for subsets:**\n```python\nn = 3\n# Enumerate all subsets of {0,1,2}\nfor mask in range(1 << n):\n    subset = [i for i in range(n) if mask & (1 << i)]\n    print(subset)\n```\n\n**Bitmask DP:** state = bitmask of selected elements.\n\n**Gray code:** consecutive codes differ by 1 bit — `i ^ (i >> 1)`.\n\n**Bit tricks:**\n- `x | (x-1)` — set all bits after lowest set bit\n- `(x-1) & original_mask` — next smaller subset of mask\n- `popcount(x)` — `bin(x).count('1')` or hardware instruction",
+            "questions": [
+                {
+                    "question": "Number of subsets of a set of n elements:",
+                    "options": [
+                        "n!",
+                        "n^2",
+                        "2^n",
+                        "n log n"
+                    ],
+                    "answer": "2^n"
+                },
+                {
+                    "question": "How to check if bit k is set in n?",
+                    "options": [
+                        "`n >> k`",
+                        "`(n >> k) & 1`",
+                        "`n & k`",
+                        "`n ^ (1 << k)`"
+                    ],
+                    "answer": "`(n >> k) & 1`"
+                },
+                {
+                    "question": "How to set bit k in n?",
+                    "options": [
+                        "`n & (1 << k)`",
+                        "`n | (1 << k)`",
+                        "`n ^ (1 << k)`",
+                        "`n >> k`"
+                    ],
+                    "answer": "`n | (1 << k)`"
+                },
+                {
+                    "question": "How to clear bit k in n?",
+                    "options": [
+                        "`n & ~(1 << k)`",
+                        "`n | (1 << k)`",
+                        "`n ^ (1 << k)`",
+                        "`n & (1 << k)`"
+                    ],
+                    "answer": "`n & ~(1 << k)`"
+                },
+                {
+                    "question": "How to toggle bit k in n?",
+                    "options": [
+                        "`n | (1 << k)`",
+                        "`n & ~(1 << k)`",
+                        "`n ^ (1 << k)`",
+                        "`n >> k`"
+                    ],
+                    "answer": "`n ^ (1 << k)`"
+                },
+                {
+                    "question": "Gray code for integer i:",
+                    "options": [
+                        "`i ^ (i+1)`",
+                        "`i ^ (i >> 1)`",
+                        "`i >> 1`",
+                        "`i | (i-1)`"
+                    ],
+                    "answer": "`i ^ (i >> 1)`"
+                },
+                {
+                    "question": "Iterate all subsets of a bitmask `mask`:",
+                    "options": [
+                        "`for s in range(mask+1): if s & mask == s`",
+                        "`for s = mask; s > 0; s = (s-1) & mask` — O(2^popcount) in C/Python",
+                        "Both A and B",
+                        "range(mask) with filter"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "Reverse bits of a 32-bit integer: approach?",
+                    "options": [
+                        "Loop 32 times extracting and placing bits",
+                        "Divide-and-conquer bit reversal: swap halves iteratively with masks",
+                        "Both valid approaches",
+                        "Only one is O(log 32)"
+                    ],
+                    "answer": "Both valid approaches"
+                },
+                {
+                    "question": "Sum of XOR of all pairs — formula using bit independence?",
+                    "options": [
+                        "Sum prefix XOR",
+                        "For each bit, count pairs where bits differ: (ones * zeros) * 2 * (1 << bit)",
+                        "XOR all elements twice",
+                        "Hash each bit"
+                    ],
+                    "answer": "For each bit, count pairs where bits differ: (ones * zeros) * 2 * (1 << bit)"
+                },
+                {
+                    "question": "Population count (popcount) hardware instruction is:",
+                    "options": [
+                        "A software function",
+                        "POPCNT — single clock cycle on modern CPUs",
+                        "Available only in Python",
+                        "Requires loop"
+                    ],
+                    "answer": "POPCNT — single clock cycle on modern CPUs"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Bit Manipulation — Expert Level",
+            "theory": "**SIMD bit operations:** process 256+ bits in one instruction with AVX2.\n\n**Bitboard chess:** 64-bit integers represent chess board state — mask-based move generation.\n\n**Fast multiplication tricks:** `n * 7 = (n << 3) - n`, `n * 3 = n + (n << 1)`.\n\n**Carry-less multiplication (XOR multiply):** used in GCM mode AES, CRC — no carry propagation.\n\n**de Bruijn sequence bit trick:** find lowest set bit index in O(1) using multiplication and lookup table.",
+            "questions": [
+                {
+                    "question": "de Bruijn sequence is used for:",
+                    "options": [
+                        "Encrypting bitsets",
+                        "O(1) find lowest set bit index via `(n & -n) * debruijn_const >> 27` + lookup table",
+                        "Data compression",
+                        "A sorting algorithm"
+                    ],
+                    "answer": "O(1) find lowest set bit index via `(n & -n) * debruijn_const >> 27` + lookup table"
+                },
+                {
+                    "question": "Bitboard representation uses:",
+                    "options": [
+                        "One bit per board cell for O(1) move generation with bitwise ops",
+                        "A 2D array of booleans",
+                        "A linked list of positions",
+                        "A hash map of positions"
+                    ],
+                    "answer": "One bit per board cell for O(1) move generation with bitwise ops"
+                },
+                {
+                    "question": "Carry-less multiplication (CLMUL/XMUL):",
+                    "options": [
+                        "Same as normal multiplication",
+                        "XOR replaces addition — no carries propagate; used in CRC and GCM cryptographic mode",
+                        "Carries go right not left",
+                        "A floating-point technique"
+                    ],
+                    "answer": "XOR replaces addition — no carries propagate; used in CRC and GCM cryptographic mode"
+                },
+                {
+                    "question": "SIMD (AVX2) bit operations work on:",
+                    "options": [
+                        "1 64-bit integer",
+                        "256 bits simultaneously — 32 bytes in one instruction",
+                        "128 bits",
+                        "Only integer types"
+                    ],
+                    "answer": "256 bits simultaneously — 32 bytes in one instruction"
+                },
+                {
+                    "question": "What is a bitset optimization in competitive programming?",
+                    "options": [
+                        "Using sets of bits",
+                        "Using 64-bit integers as arrays of bits — speed up DP/subset enumeration by factor of 64",
+                        "A compressed tree",
+                        "A hash set variant"
+                    ],
+                    "answer": "Using 64-bit integers as arrays of bits — speed up DP/subset enumeration by factor of 64"
+                },
+                {
+                    "question": "XOR linear basis (F2 basis) is used for:",
+                    "options": [
+                        "Sorting XOR values",
+                        "Finding maximum XOR of a subset — Gaussian elimination over GF(2)",
+                        "Hashing XOR values",
+                        "XOR sort"
+                    ],
+                    "answer": "Finding maximum XOR of a subset — Gaussian elimination over GF(2)"
+                },
+                {
+                    "question": "What is the bit-parallel string matching advantage?",
+                    "options": [
+                        "O(1) matching",
+                        "Process w characters per step (w = word size 64) — Shift-And/BNDM algorithms",
+                        "No preprocessing needed",
+                        "Works on compressed strings"
+                    ],
+                    "answer": "Process w characters per step (w = word size 64) — Shift-And/BNDM algorithms"
+                },
+                {
+                    "question": "Maximum XOR of two numbers in array — O(n log maxVal):",
+                    "options": [
+                        "Sort then scan",
+                        "Trie-based: insert each number bit-by-bit, query for greedy opposing bit",
+                        "XOR all pairs O(n^2)",
+                        "Segment tree on XOR"
+                    ],
+                    "answer": "Trie-based: insert each number bit-by-bit, query for greedy opposing bit"
+                },
+                {
+                    "question": "What is bit-slicing in cryptography?",
+                    "options": [
+                        "Slicing arrays by bit count",
+                        "Representing n parallel objects bit-by-bit across n CPU words — massive bit-parallel SIMD without SIMD",
+                        "Bit-level compression",
+                        "A hash function optimization"
+                    ],
+                    "answer": "Representing n parallel objects bit-by-bit across n CPU words — massive bit-parallel SIMD without SIMD"
+                },
+                {
+                    "question": "Counting bits from 0 to n inclusive using DP:",
+                    "options": [
+                        "Sum popcount(i) for each i O(n log n)",
+                        "DP: `dp[i] = dp[i >> 1] + (i & 1)` — O(n) O(n) space",
+                        "Brian Kernighan per number O(n log n)",
+                        "Both A and C but not B"
+                    ],
+                    "answer": "DP: `dp[i] = dp[i >> 1] + (i & 1)` — O(n) O(n) space"
+                }
+            ]
+        }
+    ]
+}

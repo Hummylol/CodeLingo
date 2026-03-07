@@ -1,0 +1,327 @@
+{
+    "levelno": 3,
+    "topic": "Operators",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Operators — Beginner Level",
+            "theory": "Java operators perform operations on variables and values.\n\n**Arithmetic:** `+` `-` `*` `/` `%`\n**Relational:** `==` `!=` `>` `<` `>=` `<=`\n**Logical:** `&&` (AND) `||` (OR) `!` (NOT)\n**Assignment:** `=` `+=` `-=` `*=` `/=` `%=`\n**Increment/Decrement:** `++` `--`\n\n```java\nint x = 10;\nx++;      // post-increment: x = 11\n++x;      // pre-increment: x = 12\nint y = x++; // y = 12, then x = 13\nint z = ++x; // x = 14, z = 14\n```\n\nInteger division truncates: `7 / 2` → `3`\n`%` gives the remainder: `7 % 2` → `1`",
+            "questions": [
+                {
+                    "question": "What is `7 % 3`?",
+                    "options": [
+                        "2",
+                        "1",
+                        "3",
+                        "0"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "What is `7 / 2` when both are `int`?",
+                    "options": [
+                        "3.5",
+                        "4",
+                        "3",
+                        "Error"
+                    ],
+                    "answer": "3"
+                },
+                {
+                    "question": "If `x = 5`, what is the value returned by `x++`?",
+                    "options": [
+                        "6",
+                        "5",
+                        "4",
+                        "Error"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "If `x = 5`, what is the value returned by `++x`?",
+                    "options": [
+                        "6",
+                        "5",
+                        "4",
+                        "Error"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "`a += 10` is shorthand for:",
+                    "options": [
+                        "`a = a + 10`",
+                        "`a = 10`",
+                        "`a = 10 + 1`",
+                        "`a + 10`"
+                    ],
+                    "answer": "`a = a + 10`"
+                },
+                {
+                    "question": "Which operator tests equality?",
+                    "options": [
+                        "`=`",
+                        "`!=`",
+                        "`==`",
+                        "`equals`"
+                    ],
+                    "answer": "`==`"
+                },
+                {
+                    "question": "What does `&&` represent?",
+                    "options": [
+                        "Bitwise AND",
+                        "Logical OR",
+                        "Logical AND",
+                        "Address-of"
+                    ],
+                    "answer": "Logical AND"
+                },
+                {
+                    "question": "What is `10.0 / 4`?",
+                    "options": [
+                        "2",
+                        "2.5",
+                        "3",
+                        "Error"
+                    ],
+                    "answer": "2.5"
+                },
+                {
+                    "question": "What does `!true` evaluate to?",
+                    "options": [
+                        "`true`",
+                        "`false`",
+                        "`null`",
+                        "Error"
+                    ],
+                    "answer": "`false`"
+                },
+                {
+                    "question": "Operator precedence: which has highest precedence?",
+                    "options": [
+                        "`=`",
+                        "`+`",
+                        "`*`",
+                        "`()`"
+                    ],
+                    "answer": "`()`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Operators — Intermediate Level",
+            "theory": "**Bitwise operators:** `&` `|` `^` `~` `<<` `>>` `>>>`\n- `>>>` — unsigned right shift (fills with 0, unlike `>>` which preserves sign)\n\n```java\nint a = 5;  // 0101\nint b = 3;  // 0011\na & b;  // 0001 = 1\na | b;  // 0111 = 7\na ^ b;  // 0110 = 6\na << 1; // 1010 = 10\na >> 1; // 0010 = 2\n-1 >>> 1; // 2147483647 (unsigned shift)\n```\n\n**Ternary operator:** `condition ? valueIfTrue : valueIfFalse`\n\n**`instanceof`:** `obj instanceof String s` (Java 16+ pattern matching)",
+            "questions": [
+                {
+                    "question": "What is `5 & 3` (bitwise AND)?",
+                    "options": [
+                        "8",
+                        "7",
+                        "1",
+                        "0"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "What is `5 | 3` (bitwise OR)?",
+                    "options": [
+                        "8",
+                        "7",
+                        "2",
+                        "0"
+                    ],
+                    "answer": "7"
+                },
+                {
+                    "question": "What is `5 ^ 3` (bitwise XOR)?",
+                    "options": [
+                        "8",
+                        "7",
+                        "6",
+                        "0"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "What does `>>>` do differently from `>>`?",
+                    "options": [
+                        "Shifts more bits",
+                        "Unsigned right shift — fills with 0 regardless of sign",
+                        "Same as >>",
+                        "Works on long only"
+                    ],
+                    "answer": "Unsigned right shift — fills with 0 regardless of sign"
+                },
+                {
+                    "question": "What does `condition ? a : b` return?",
+                    "options": [
+                        "Always a",
+                        "Always b",
+                        "a if condition is true, else b",
+                        "null"
+                    ],
+                    "answer": "a if condition is true, else b"
+                },
+                {
+                    "question": "What does `8 << 2` evaluate to?",
+                    "options": [
+                        "2",
+                        "4",
+                        "32",
+                        "64"
+                    ],
+                    "answer": "32"
+                },
+                {
+                    "question": "How do you check if `obj` is a `String` AND bind it?",
+                    "options": [
+                        "`obj.instanceof(String s)`",
+                        "`instanceof String obj`",
+                        "`obj instanceof String s`",
+                        "`(String) obj`"
+                    ],
+                    "answer": "`obj instanceof String s`"
+                },
+                {
+                    "question": "What does `x &= mask` do?",
+                    "options": [
+                        "`x = x && mask`",
+                        "`x = x & mask`",
+                        "`x = x | mask`",
+                        "`x = mask`"
+                    ],
+                    "answer": "`x = x & mask`"
+                },
+                {
+                    "question": "Associativity of assignment operators in Java?",
+                    "options": [
+                        "Left to right",
+                        "Right to left",
+                        "No associativity",
+                        "Depends on type"
+                    ],
+                    "answer": "Right to left"
+                },
+                {
+                    "question": "What is `~5` (bitwise NOT of 5) in Java?",
+                    "options": [
+                        "-5",
+                        "-6",
+                        "4",
+                        "250"
+                    ],
+                    "answer": "-6"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Operators — Expert Level",
+            "theory": "**Java doesn't support operator overloading** (unlike C++).\n\n**`String` concatenation operator `+`:** if either operand is a `String`, the other is converted via `.toString()`. Under the hood, Java 9+ uses `StringConcatFactory` (invoke dynamic) instead of `StringBuilder`.\n\n**Compound assignment and type narrowing:** `byte b = 10; b += 1;` is legal because compound assignment includes an implicit narrowing cast.\n\n**`Math.floorDiv` vs `/`:** `Math.floorDiv(-7, 2)` = -4 (floor), while `-7 / 2` = -3 (truncates toward zero).\n\n**Switch expressions (Java 14+):**\n```java\nint result = switch (day) {\n    case MONDAY -> 1;\n    case FRIDAY -> 5;\n    default -> -1;\n};\n```",
+            "questions": [
+                {
+                    "question": "Does Java support operator overloading?",
+                    "options": [
+                        "Yes for all operators",
+                        "Yes for + on Strings only",
+                        "No — Java does not support user-defined operator overloading",
+                        "Yes in Java 21"
+                    ],
+                    "answer": "No — Java does not support user-defined operator overloading"
+                },
+                {
+                    "question": "What optimization does Java 9+ use for String concatenation?",
+                    "options": [
+                        "StringBuilder always",
+                        "`StringConcatFactory` via invoke dynamic — more efficient than StringBuilder chaining",
+                        "String.format internally",
+                        "No change from Java 8"
+                    ],
+                    "answer": "`StringConcatFactory` via invoke dynamic — more efficient than StringBuilder chaining"
+                },
+                {
+                    "question": "Why is `byte b = 10; b += 1;` legal but `b = b + 1;` not?",
+                    "options": [
+                        "No difference",
+                        "Compound operators include an implicit narrowing cast; plain `b = b + 1` promotes to int — won't fit byte without explicit cast",
+                        "b+1 returns byte",
+                        "Only in Java 8+"
+                    ],
+                    "answer": "Compound operators include an implicit narrowing cast; plain `b = b + 1` promotes to int — won't fit byte without explicit cast"
+                },
+                {
+                    "question": "What does `Math.floorDiv(-7, 2)` return?",
+                    "options": [
+                        "-3",
+                        "-4",
+                        "-3.5",
+                        "3"
+                    ],
+                    "answer": "-4"
+                },
+                {
+                    "question": "What is the difference between `-7 / 2` and `Math.floorDiv(-7, 2)`?",
+                    "options": [
+                        "No difference",
+                        "`-7/2` = -3 (truncates toward zero); `floorDiv` = -4 (toward negative infinity)",
+                        "`-7/2` = -4; `floorDiv` = -3",
+                        "Both throw ArithmeticException"
+                    ],
+                    "answer": "`-7/2` = -3 (truncates toward zero); `floorDiv` = -4 (toward negative infinity)"
+                },
+                {
+                    "question": "What does a switch expression with `->` (Java 14+) return?",
+                    "options": [
+                        "void always",
+                        "A value — the arrow branch result is used as the expression value",
+                        "A statement",
+                        "Only strings"
+                    ],
+                    "answer": "A value — the arrow branch result is used as the expression value"
+                },
+                {
+                    "question": "What is `Math.floorMod(-7, 3)`?",
+                    "options": [
+                        "-1",
+                        "2",
+                        "-2",
+                        "1"
+                    ],
+                    "answer": "2"
+                },
+                {
+                    "question": "What does `Integer.bitCount(n)` return?",
+                    "options": [
+                        "Bit length of n",
+                        "Number of set bits (1s) in the binary representation of n",
+                        "Highest set bit",
+                        "n mod 2"
+                    ],
+                    "answer": "Number of set bits (1s) in the binary representation of n"
+                },
+                {
+                    "question": "What is `Long.highestOneBit(12)`?",
+                    "options": [
+                        "4",
+                        "8",
+                        "12",
+                        "16"
+                    ],
+                    "answer": "8"
+                },
+                {
+                    "question": "What does `yield` do in a switch expression block?",
+                    "options": [
+                        "Exits the method",
+                        "Provides the value of the switch expression when using a block (not arrow) case",
+                        "Suspends the thread",
+                        "Breaks the switch"
+                    ],
+                    "answer": "Provides the value of the switch expression when using a block (not arrow) case"
+                }
+            ]
+        }
+    ]
+}

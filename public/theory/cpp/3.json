@@ -1,0 +1,327 @@
+{
+    "levelno": 3,
+    "topic": "Operators",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Operators — Beginner Level",
+            "theory": "Operators perform operations on variables and values.\n\n**Arithmetic:** `+` `-` `*` `/` `%`\n**Relational:** `==` `!=` `>` `<` `>=` `<=`\n**Logical:** `&&` (AND) `||` (OR) `!` (NOT)\n**Assignment:** `=` `+=` `-=` `*=` `/=`\n**Increment/Decrement:** `++` `--`\n\n```cpp\nint x = 5;\nx++;     // post-increment: x becomes 6\n++x;     // pre-increment: x becomes 7\nint y = x++ ; // y = 7, then x = 8\nint z = ++x ; // x = 9, z = 9\n```\n\n`10 % 3` → `1` (remainder of division)",
+            "questions": [
+                {
+                    "question": "What is the result of `10 % 3`?",
+                    "options": [
+                        "3",
+                        "1",
+                        "0",
+                        "3.33"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "Which operator checks equality?",
+                    "options": [
+                        "`=`",
+                        "`:=`",
+                        "`==`",
+                        "`!=`"
+                    ],
+                    "answer": "`==`"
+                },
+                {
+                    "question": "If `x = 5`, what is the value of `x++` in the same expression?",
+                    "options": [
+                        "6",
+                        "5",
+                        "4",
+                        "Error"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "If `x = 5`, what is the value of `++x` in the same expression?",
+                    "options": [
+                        "6",
+                        "5",
+                        "4",
+                        "Error"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "What does `&&` represent?",
+                    "options": [
+                        "Bitwise AND",
+                        "Logical OR",
+                        "Logical AND",
+                        "Power"
+                    ],
+                    "answer": "Logical AND"
+                },
+                {
+                    "question": "`a += 5;` is equivalent to:",
+                    "options": [
+                        "`a = a + 5;`",
+                        "`a = 5;`",
+                        "`a + 5 = a;`",
+                        "`a = a * 5;`"
+                    ],
+                    "answer": "`a = a + 5;`"
+                },
+                {
+                    "question": "What is `10 / 4` when both are integers?",
+                    "options": [
+                        "2.5",
+                        "3",
+                        "2",
+                        "Error"
+                    ],
+                    "answer": "2"
+                },
+                {
+                    "question": "What is `10.0 / 4.0`?",
+                    "options": [
+                        "2.5",
+                        "3.0",
+                        "2.0",
+                        "2"
+                    ],
+                    "answer": "2.5"
+                },
+                {
+                    "question": "If `a = true` and `b = false`, what is `a || b`?",
+                    "options": [
+                        "`true`",
+                        "`false`",
+                        "1",
+                        "0"
+                    ],
+                    "answer": "`true`"
+                },
+                {
+                    "question": "Which operator has the highest precedence?",
+                    "options": [
+                        "`+`",
+                        "`*`",
+                        "`=`",
+                        "`()`"
+                    ],
+                    "answer": "`()`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Operators — Intermediate Level",
+            "theory": "**Bitwise operators:** `&` `|` `^` `~` `<<` `>>`\n```cpp\nint a = 5;  // 0101\nint b = 3;  // 0011\na & b;  // 0001 = 1\na | b;  // 0111 = 7\na ^ b;  // 0110 = 6\na << 1; // 1010 = 10 (multiply by 2)\na >> 1; // 0010 = 2  (divide by 2)\n```\n\n**Ternary operator:** `condition ? value_if_true : value_if_false`\n```cpp\nint max = (a > b) ? a : b;\n```\n\n**Comma operator:** evaluates left-to-right, returns rightmost value.\n**`sizeof` operator:** returns size in bytes of a type or variable.",
+            "questions": [
+                {
+                    "question": "What is `5 & 3` (bitwise AND)?",
+                    "options": [
+                        "8",
+                        "7",
+                        "1",
+                        "0"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "What is `5 | 3` (bitwise OR)?",
+                    "options": [
+                        "8",
+                        "7",
+                        "2",
+                        "0"
+                    ],
+                    "answer": "7"
+                },
+                {
+                    "question": "What is `5 ^ 3` (bitwise XOR)?",
+                    "options": [
+                        "8",
+                        "7",
+                        "6",
+                        "0"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "What does `x << 1` do?",
+                    "options": [
+                        "Shifts bits left by 1 (multiplies by 2)",
+                        "Shifts bits right by 1",
+                        "Inserts into stream",
+                        "Gets address of x"
+                    ],
+                    "answer": "Shifts bits left by 1 (multiplies by 2)"
+                },
+                {
+                    "question": "What does `(a > b) ? a : b` return?",
+                    "options": [
+                        "Always a",
+                        "Always b",
+                        "The larger of a and b",
+                        "The boolean result of a>b"
+                    ],
+                    "answer": "The larger of a and b"
+                },
+                {
+                    "question": "What does `~5` (bitwise NOT) do?",
+                    "options": [
+                        "Flips all bits; gives -6 in two's complement",
+                        "Makes 5 negative",
+                        "Returns 0",
+                        "Gives 4"
+                    ],
+                    "answer": "Flips all bits; gives -6 in two's complement"
+                },
+                {
+                    "question": "What is `16 >> 2`?",
+                    "options": [
+                        "64",
+                        "4",
+                        "8",
+                        "2"
+                    ],
+                    "answer": "4"
+                },
+                {
+                    "question": "What is the associativity of assignment operators?",
+                    "options": [
+                        "Left to right",
+                        "Right to left",
+                        "No associativity",
+                        "Depends on type"
+                    ],
+                    "answer": "Right to left"
+                },
+                {
+                    "question": "What does `x &= mask;` do?",
+                    "options": [
+                        "`x = x & mask`",
+                        "`x = mask & &x`",
+                        "`x = &mask`",
+                        "`x = x && mask`"
+                    ],
+                    "answer": "`x = x & mask`"
+                },
+                {
+                    "question": "Which operator tests if two pointers point to the same address?",
+                    "options": [
+                        "`===`",
+                        "`==`",
+                        "`is`",
+                        "`eq`"
+                    ],
+                    "answer": "`==`"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Operators — Expert Level",
+            "theory": "**Operator overloading** — define how operators work with user-defined types:\n```cpp\nstruct Vec2 {\n    double x, y;\n    Vec2 operator+(const Vec2& o) const { return {x+o.x, y+o.y}; }\n    bool operator==(const Vec2& o) const { return x==o.x && y==o.y; }\n};\n```\n\n**Spaceship operator `<=>` (C++20)** — one operator for all comparisons:\n```cpp\nauto operator<=>(const Vec2&) const = default;\n```\n\n**`std::exchange(old, new)`** — replaces a value and returns the old one.\n**Fold expressions (C++17, variadic):** `(args + ...)` expands and combines all args with `+`.",
+            "questions": [
+                {
+                    "question": "What is operator overloading?",
+                    "options": [
+                        "Using too many operators",
+                        "Defining custom behavior for operators on user-defined types",
+                        "Overloading function with operators",
+                        "Disabling built-in operators"
+                    ],
+                    "answer": "Defining custom behavior for operators on user-defined types"
+                },
+                {
+                    "question": "What is the spaceship operator `<=>` used for?",
+                    "options": [
+                        "Navigation",
+                        "Three-way comparison — returns negative, zero, or positive",
+                        "Pointer arithmetic",
+                        "Stream insertion"
+                    ],
+                    "answer": "Three-way comparison — returns negative, zero, or positive"
+                },
+                {
+                    "question": "What does `auto operator<=>(const T&) const = default;` generate?",
+                    "options": [
+                        "Only == operator",
+                        "All six comparison operators based on member-wise comparison",
+                        "A custom spaceship implementation",
+                        "Only < and >"
+                    ],
+                    "answer": "All six comparison operators based on member-wise comparison"
+                },
+                {
+                    "question": "Can you overload `::` (scope resolution)?",
+                    "options": [
+                        "Yes",
+                        "No — `::`  is not overloadable",
+                        "Yes, but only for classes",
+                        "Yes, in C++20"
+                    ],
+                    "answer": "No — `::` is not overloadable"
+                },
+                {
+                    "question": "What does `std::exchange(x, 0)` do?",
+                    "options": [
+                        "Swaps x with 0",
+                        "Sets x=0 and returns the old value of x",
+                        "Sets x=0 only",
+                        "Adds 0 to x"
+                    ],
+                    "answer": "Sets x=0 and returns the old value of x"
+                },
+                {
+                    "question": "Which operators cannot be overloaded in C++?",
+                    "options": [
+                        "All operators can be overloaded",
+                        "`::`, `.`, `.*`, `?:`, `sizeof` cannot",
+                        "`+`, `-`, `*` cannot",
+                        "`[]`, `()` cannot"
+                    ],
+                    "answer": "`::`, `.`, `.*`, `?:`, `sizeof` cannot"
+                },
+                {
+                    "question": "What is a fold expression in C++17?",
+                    "options": [
+                        "A lambda that folds a sequence",
+                        "A syntax for applying a binary operator over a variadic parameter pack",
+                        "A std::transform call",
+                        "An iterator fold"
+                    ],
+                    "answer": "A syntax for applying a binary operator over a variadic parameter pack"
+                },
+                {
+                    "question": "What is the return type of `operator==` typically?",
+                    "options": [
+                        "`int`",
+                        "`bool`",
+                        "`void`",
+                        "The class type"
+                    ],
+                    "answer": "`bool`"
+                },
+                {
+                    "question": "When overloading `operator<<` for `std::ostream`, what should it return?",
+                    "options": [
+                        "`void`",
+                        "`std::string`",
+                        "`std::ostream&`",
+                        "`bool`"
+                    ],
+                    "answer": "`std::ostream&`"
+                },
+                {
+                    "question": "What does `operator[]` overloading allow?",
+                    "options": [
+                        "Using objects as arrays",
+                        "Custom subscript access on user-defined types",
+                        "Both A and B",
+                        "Neither — it's built-in only"
+                    ],
+                    "answer": "Both A and B"
+                }
+            ]
+        }
+    ]
+}

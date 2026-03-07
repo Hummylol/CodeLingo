@@ -1,0 +1,327 @@
+{
+    "levelno": 9,
+    "topic": "While Loops",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "While Loops — Beginner Level",
+            "theory": "A **`while` loop** repeats a block of code **as long as its condition is `True`**:\n\n`count = 0`\n`while count < 5:`\n`    print(count)`\n`    count += 1`\n\nYou **must** update the loop variable inside the loop — otherwise the condition never becomes `False` and you create an **infinite loop**.\n\n`break` exits the loop immediately.\n`continue` skips the rest of the current iteration.\n\nUse a `while` loop when you **don't know in advance** how many iterations you need (e.g., keep asking the user for input until valid).",
+            "questions": [
+                {
+                    "question": "A `while` loop executes as long as:",
+                    "options": [
+                        "A counter < 10",
+                        "Its condition is True",
+                        "Its condition is False",
+                        "break is not hit"
+                    ],
+                    "answer": "Its condition is True"
+                },
+                {
+                    "question": "What causes an infinite while loop?",
+                    "options": [
+                        "The condition never becomes False",
+                        "The condition starts as False",
+                        "Using break",
+                        "The loop body is too short"
+                    ],
+                    "answer": "The condition never becomes False"
+                },
+                {
+                    "question": "What does `break` do inside a while loop?",
+                    "options": [
+                        "Ends the entire program",
+                        "Skips the current iteration",
+                        "Exits the loop immediately",
+                        "Pauses the loop"
+                    ],
+                    "answer": "Exits the loop immediately"
+                },
+                {
+                    "question": "What does `continue` do in a loop?",
+                    "options": [
+                        "Exits the loop",
+                        "Ends the program",
+                        "Skips the rest of current iteration and moves to next check",
+                        "Restarts from beginning"
+                    ],
+                    "answer": "Skips the rest of current iteration and moves to next check"
+                },
+                {
+                    "question": "How many times will this print 'Hi'? `i=0; while i > 3: print('Hi'); i+=1`",
+                    "options": [
+                        "3",
+                        "4",
+                        "0",
+                        "Infinitely"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "When should you prefer a while loop over a for loop?",
+                    "options": [
+                        "When iterating over a list",
+                        "When you know exactly how many times to loop",
+                        "When the iterations depend on a condition that changes dynamically",
+                        "When looping over a string"
+                    ],
+                    "answer": "When the iterations depend on a condition that changes dynamically"
+                },
+                {
+                    "question": "What is a while loop also known as?",
+                    "options": [
+                        "Count-controlled loop",
+                        "Collection-controlled loop",
+                        "Condition-controlled loop",
+                        "Iterator loop"
+                    ],
+                    "answer": "Condition-controlled loop"
+                },
+                {
+                    "question": "To avoid an infinite loop, what must happen to the loop control variable?",
+                    "options": [
+                        "It must be incremented",
+                        "It must be decremented",
+                        "It must be updated so the condition eventually becomes False",
+                        "It must be printed"
+                    ],
+                    "answer": "It must be updated so the condition eventually becomes False"
+                },
+                {
+                    "question": "What is the output? `i=0; while i < 3: print(i); i += 1`",
+                    "options": [
+                        "0 1 2 3",
+                        "0 1 2",
+                        "1 2 3",
+                        "Error"
+                    ],
+                    "answer": "0 1 2"
+                },
+                {
+                    "question": "What is `while True:` used for?",
+                    "options": [
+                        "Syntax error",
+                        "An intentional infinite loop, usually with a break condition inside",
+                        "Loops that run once",
+                        "Loops that never run"
+                    ],
+                    "answer": "An intentional infinite loop, usually with a break condition inside"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "While Loops — Intermediate Level",
+            "theory": "**`while...else`**: The `else` block runs when the while condition becomes `False` normally — it is **skipped** if the loop exited via `break`:\n\n```python\ni = 0\nwhile i < 5:\n    if condition: break\n    i += 1\nelse:\n    print('Completed without break')\n```\n\n**Do-while pattern** — Python has no `do-while` keyword, but you can emulate it:\n```python\nwhile True:\n    action()\n    if condition: break\n```\n\n**Sentinel values** — a special value that signals the loop to stop:\n```python\nwhile (line := input()) != 'quit':\n    process(line)\n```",
+            "questions": [
+                {
+                    "question": "When does the `else` block of a `while...else` run?",
+                    "options": [
+                        "Always",
+                        "Only if break was hit",
+                        "Only if the condition became False naturally (no break)",
+                        "Never"
+                    ],
+                    "answer": "Only if the condition became False naturally (no break)"
+                },
+                {
+                    "question": "What is a sentinel value in a while loop?",
+                    "options": [
+                        "A security guard variable",
+                        "A special value that signals the loop to stop",
+                        "A loop counter",
+                        "A variable initialized to 0"
+                    ],
+                    "answer": "A special value that signals the loop to stop"
+                },
+                {
+                    "question": "What is the output? `i=0; while i < 5: i+=1; if i==3: break\\nelse: print('done')`",
+                    "options": [
+                        "done",
+                        "Nothing (else is skipped due to break)",
+                        "Error",
+                        "3"
+                    ],
+                    "answer": "Nothing (else is skipped due to break)"
+                },
+                {
+                    "question": "How do you emulate a do-while loop in Python?",
+                    "options": [
+                        "do: ... while condition",
+                        "Use `while True:` with a break inside after the main action",
+                        "while condition: ... before",
+                        "It's not possible"
+                    ],
+                    "answer": "Use `while True:` with a break inside after the main action"
+                },
+                {
+                    "question": "What is the output? `i=0; while i < 5: i+=1; if i==3: continue; print(i)`",
+                    "options": [
+                        "1 2 3 4 5",
+                        "1 2 4 5",
+                        "1 2",
+                        "Error"
+                    ],
+                    "answer": "1 2 4 5"
+                },
+                {
+                    "question": "What does `while (n := int(input())) != 0: print(n)` do?",
+                    "options": [
+                        "Prints until user types 0 (walrus operator assigns and checks)",
+                        "Raises SyntaxError",
+                        "Always loops infinitely",
+                        "Prints 0 then stops"
+                    ],
+                    "answer": "Prints until user types 0 (walrus operator assigns and checks)"
+                },
+                {
+                    "question": "What is the difference between break and continue?",
+                    "options": [
+                        "They are the same",
+                        "break exits the loop; continue skips to the next iteration",
+                        "continue exits the loop; break skips current iteration",
+                        "break ends the program; continue exits the loop"
+                    ],
+                    "answer": "break exits the loop; continue skips to the next iteration"
+                },
+                {
+                    "question": "How many times does this run? `i=10; while i > 0: i -= 3`",
+                    "options": [
+                        "3",
+                        "4",
+                        "10",
+                        "Infinite"
+                    ],
+                    "answer": "4"
+                },
+                {
+                    "question": "What happens if a while condition is False from the start?",
+                    "options": [
+                        "The loop body runs once then stops",
+                        "The loop body never runs",
+                        "Error",
+                        "The else block is skipped"
+                    ],
+                    "answer": "The loop body never runs"
+                },
+                {
+                    "question": "Which loop is better when collecting user input until a valid entry?",
+                    "options": [
+                        "for loop",
+                        "while loop",
+                        "Both are identical",
+                        "Neither works"
+                    ],
+                    "answer": "while loop"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "While Loops — Expert Level",
+            "theory": "**`asyncio` event loops** are a form of while loops at a high level — they repeatedly check for pending tasks and run the next available coroutine.\n\n**Performance of tight loops:** Python's while loop has overhead per iteration from bytecode dispatch and the GIL. For tight numerical loops, consider `numpy` vectorization or `Cython`.\n\n**Loop invariants** — a condition that is true before and after each iteration of a loop. Writing invariants helps prove correctness.\n\n**Turing completeness** — a while loop (or recursion) is sufficient to express any computable function — for loops can always be rewritten as while loops, but not always vice versa efficiently.\n\n**`sys.setrecursionlimit()`** — Python defaults to ~1000 recursion levels; deep recursion can be replaced with explicit while + stack (manual stack unwinding).",
+            "questions": [
+                {
+                    "question": "What is a loop invariant?",
+                    "options": [
+                        "A variable that doesn't change in the loop",
+                        "A condition that is true before and after every loop iteration, used to prove correctness",
+                        "A loop that never changes direction",
+                        "A constant defined outside the loop"
+                    ],
+                    "answer": "A condition that is true before and after every loop iteration, used to prove correctness"
+                },
+                {
+                    "question": "Can any for loop be rewritten as a while loop?",
+                    "options": [
+                        "No, they are fundamentally different",
+                        "Yes, always",
+                        "Only for numeric ranges",
+                        "Only if there's a break statement"
+                    ],
+                    "answer": "Yes, always"
+                },
+                {
+                    "question": "Why are Python while loops slower than equivalent C loops for tight numerical code?",
+                    "options": [
+                        "Python uses slower hardware",
+                        "Bytecode dispatch and GIL overhead per iteration",
+                        "Python only supports for loops natively",
+                        "While loops in Python don't use the CPU cache"
+                    ],
+                    "answer": "Bytecode dispatch and GIL overhead per iteration"
+                },
+                {
+                    "question": "What is the output of `i=1; result=0; while i<=5: result+=i; i+=1; print(result)`?",
+                    "options": [
+                        "5",
+                        "10",
+                        "15",
+                        "20"
+                    ],
+                    "answer": "15"
+                },
+                {
+                    "question": "How can you replace deep recursion with a while loop?",
+                    "options": [
+                        "Use sys.setrecursionlimit only",
+                        "Manually maintain a stack and use a while loop to simulate the call stack",
+                        "Use asyncio instead",
+                        "It is not possible"
+                    ],
+                    "answer": "Manually maintain a stack and use a while loop to simulate the call stack"
+                },
+                {
+                    "question": "What does `sys.setrecursionlimit(n)` do?",
+                    "options": [
+                        "Sets max while loop iterations",
+                        "Sets the maximum recursion depth for function calls",
+                        "Limits the size of the call stack in bytes",
+                        "Prevents all recursion"
+                    ],
+                    "answer": "Sets the maximum recursion depth for function calls"
+                },
+                {
+                    "question": "At a high level, what is an asyncio event loop?",
+                    "options": [
+                        "A type of for loop",
+                        "A while loop that repeatedly checks for pending async tasks and runs them",
+                        "A multi-threaded scheduler",
+                        "A C extension for parallel while loops"
+                    ],
+                    "answer": "A while loop that repeatedly checks for pending async tasks and runs them"
+                },
+                {
+                    "question": "What is Turing completeness and what does it say about while loops?",
+                    "options": [
+                        "While loops are turing incomplete",
+                        "A while loop (or recursion) is sufficient to express any computable function",
+                        "Turing completeness requires both for and while loops",
+                        "It means a language is only complete if it has goto"
+                    ],
+                    "answer": "A while loop (or recursion) is sufficient to express any computable function"
+                },
+                {
+                    "question": "For performance-critical numerical loops, what should you use instead of a Python while loop?",
+                    "options": [
+                        "Faster while loop syntax",
+                        "numpy vectorized operations or Cython",
+                        "C-style for loops",
+                        "asyncio"
+                    ],
+                    "answer": "numpy vectorized operations or Cython"
+                },
+                {
+                    "question": "What is the default maximum recursion depth in CPython?",
+                    "options": [
+                        "100",
+                        "500",
+                        "~1000",
+                        "Unlimited"
+                    ],
+                    "answer": "~1000"
+                }
+            ]
+        }
+    ]
+}

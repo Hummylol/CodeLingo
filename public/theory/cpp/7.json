@@ -1,0 +1,327 @@
+{
+    "levelno": 7,
+    "topic": "Loops (while, do-while)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Loops (while/do-while) — Beginner Level",
+            "theory": "**while loop** — entry-controlled: condition checked BEFORE the body runs.\n```cpp\nint i = 0;\nwhile (i < 5) {\n    std::cout << i;\n    i++;\n}\n```\nIf the condition is initially false, the body never runs.\n\n**do-while loop** — exit-controlled: body runs FIRST, then the condition is checked. Guaranteed to run at least once.\n```cpp\nint i = 0;\ndo {\n    std::cout << i;\n    i++;\n} while (i < 5);\n```\nNote: `do-while` ends with a semicolon after `while(...)`.",
+            "questions": [
+                {
+                    "question": "What is the key difference between `while` and `do-while`?",
+                    "options": [
+                        "`while` is faster",
+                        "`do-while` body is guaranteed to execute at least once",
+                        "`while` is only for integers",
+                        "No difference"
+                    ],
+                    "answer": "`do-while` body is guaranteed to execute at least once"
+                },
+                {
+                    "question": "When is the condition of a `while` loop evaluated?",
+                    "options": [
+                        "After each iteration",
+                        "Before each iteration",
+                        "Once at start",
+                        "After loop finishes"
+                    ],
+                    "answer": "Before each iteration"
+                },
+                {
+                    "question": "If the condition of a `while` is initially false, how many times does the body run?",
+                    "options": [
+                        "1",
+                        "0",
+                        "Infinitely",
+                        "Error"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "Which loop is exit-controlled?",
+                    "options": [
+                        "`for`",
+                        "`while`",
+                        "`do-while`",
+                        "None"
+                    ],
+                    "answer": "`do-while`"
+                },
+                {
+                    "question": "What is a common cause of an infinite `while` loop?",
+                    "options": [
+                        "Condition is initially false",
+                        "Variable in condition not updated inside loop",
+                        "Using break",
+                        "Declaring variables inside loop"
+                    ],
+                    "answer": "Variable in condition not updated inside loop"
+                },
+                {
+                    "question": "What must end a `do-while` loop statement?",
+                    "options": [
+                        "A colon `:`",
+                        "Curly braces `{}`",
+                        "No punctuation",
+                        "A semicolon `;`"
+                    ],
+                    "answer": "A semicolon `;`"
+                },
+                {
+                    "question": "When is a `while` loop better than a `for` loop?",
+                    "options": [
+                        "You know exact iterations",
+                        "Number of iterations unknown and depends on a condition",
+                        "Never",
+                        "When iterating backwards"
+                    ],
+                    "answer": "Number of iterations unknown and depends on a condition"
+                },
+                {
+                    "question": "Output of: `int i=5; do { cout<<'A'; } while(i<5);`",
+                    "options": [
+                        "A",
+                        "No output",
+                        "Infinite loop",
+                        "Error"
+                    ],
+                    "answer": "A"
+                },
+                {
+                    "question": "Output of: `int i=5; while(i<5) { cout<<'A'; }`",
+                    "options": [
+                        "A",
+                        "No output",
+                        "Infinite loop",
+                        "Error"
+                    ],
+                    "answer": "No output"
+                },
+                {
+                    "question": "Which loop is entry-controlled?",
+                    "options": [
+                        "`do-while`",
+                        "`while`",
+                        "Both",
+                        "Neither"
+                    ],
+                    "answer": "`while`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Loops (while/do-while) — Intermediate Level",
+            "theory": "**`break` and `continue` in while loops:**\n```cpp\nwhile (true) {\n    int x; std::cin >> x;\n    if (x == -1) break;    // exit on sentinel\n    if (x < 0) continue;   // skip negatives\n    process(x);\n}\n```\n\n**Input validation with do-while:**\n```cpp\nint n;\ndo {\n    std::cout << \"Enter a positive number: \";\n    std::cin >> n;\n} while (n <= 0);\n```\n\n**Loop flag pattern:**\n```cpp\nbool found = false;\nwhile (!found) { ... }\n```\n\n**Avoiding infinite loops:** always ensure the loop condition eventually becomes false.",
+            "questions": [
+                {
+                    "question": "What pattern is ideal for input validation with do-while?",
+                    "options": [
+                        "Read once",
+                        "Read in do block, check in while condition — guarantees at least one read",
+                        "Loop with break only",
+                        "Use for loop"
+                    ],
+                    "answer": "Read in do block, check in while condition — guarantees at least one read"
+                },
+                {
+                    "question": "What does `while(true) { if(done) break; ... }` do?",
+                    "options": [
+                        "Always infinite",
+                        "Infinite loop with explicit break condition inside",
+                        "Never runs",
+                        "Runs once"
+                    ],
+                    "answer": "Infinite loop with explicit break condition inside"
+                },
+                {
+                    "question": "What does `continue` skip in a while loop body?",
+                    "options": [
+                        "The condition check",
+                        "The rest of the current iteration body, jumps back to condition",
+                        "The entire loop",
+                        "The next iteration's body"
+                    ],
+                    "answer": "The rest of the current iteration body, jumps back to condition"
+                },
+                {
+                    "question": "Can you have `do-while(false)` run the body?",
+                    "options": [
+                        "No — body skipped",
+                        "Yes — body runs once, then condition (false) exits",
+                        "Error",
+                        "Infinite loop"
+                    ],
+                    "answer": "Yes — body runs once, then condition (false) exits"
+                },
+                {
+                    "question": "What is a sentinel value in a while loop?",
+                    "options": [
+                        "The loop counter",
+                        "A special value used to terminate the loop (e.g., -1 means stop)",
+                        "The condition variable",
+                        "An initial value"
+                    ],
+                    "answer": "A special value used to terminate the loop (e.g., -1 means stop)"
+                },
+                {
+                    "question": "Why can a while loop cause undefined behavior if the condition references uninitialized variables?",
+                    "options": [
+                        "Compiler error",
+                        "Reading uninitialized memory is undefined behavior — any value could be there",
+                        "Loop would run 0 times",
+                        "No impact"
+                    ],
+                    "answer": "Reading uninitialized memory is undefined behavior — any value could be there"
+                },
+                {
+                    "question": "What is the difference between a `while` and `for` loop in terms of power?",
+                    "options": [
+                        "for is more powerful",
+                        "while is more powerful",
+                        "They are equally powerful — any for can be rewritten as while and vice versa",
+                        "for cannot be infinite"
+                    ],
+                    "answer": "They are equally powerful — any for can be rewritten as while and vice versa"
+                },
+                {
+                    "question": "What does `std::cin >> x` return that enables loop conditions like `while(cin >> x)`?",
+                    "options": [
+                        "The read value",
+                        "A reference to `cin` that is `true` on success",
+                        "A bool",
+                        "An integer"
+                    ],
+                    "answer": "A reference to `cin` that is `true` on success"
+                },
+                {
+                    "question": "What is an off-by-one error in a while loop?",
+                    "options": [
+                        "Using wrong variable",
+                        "Loop runs one iteration too many or too few due to wrong comparison operator",
+                        "Syntax error",
+                        "Wrong type"
+                    ],
+                    "answer": "Loop runs one iteration too many or too few due to wrong comparison operator"
+                },
+                {
+                    "question": "Can a `do-while` body execute with side effects before the condition is tested?",
+                    "options": [
+                        "No",
+                        "Yes — that's the defining feature: body always executes at least once before check",
+                        "Only if condition is true",
+                        "Only in debug mode"
+                    ],
+                    "answer": "Yes — that's the defining feature: body always executes at least once before check"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Loops (while/do-while) — Expert Level",
+            "theory": "**Loop invariants** — a logical statement that holds true before and after each loop iteration. Used to reason about loop correctness formally.\n\n**Coroutines (C++20)** — replace complex state machines that used to be expressed with loops:\n```cpp\n// Generator coroutine replaces while(hasNext())\nfor (auto val : myGenerator()) { ... }\n```\n\n**Memory fences in concurrent loops:** in multithreaded code, loops reading shared data may need `std::atomic` or `std::memory_order` to prevent stale reads.\n\n**Tail recursion** — some while loops can be expressed as tail-recursive functions, which compilers may optimize to the same machine code.",
+            "questions": [
+                {
+                    "question": "What is a loop invariant?",
+                    "options": [
+                        "A variable unchanged in the loop",
+                        "A logical condition true before and after each loop iteration, used to prove correctness",
+                        "A compile-time constant in the loop",
+                        "An infinite loop marker"
+                    ],
+                    "answer": "A logical condition true before and after each loop iteration, used to prove correctness"
+                },
+                {
+                    "question": "How do coroutines (C++20) simplify complex stateful loops?",
+                    "options": [
+                        "They remove loops entirely",
+                        "Coroutine generators can yield values lazily, eliminating manual state tracking in while loops",
+                        "They run loops in parallel",
+                        "They use GPU acceleration"
+                    ],
+                    "answer": "Coroutine generators can yield values lazily, eliminating manual state tracking in while loops"
+                },
+                {
+                    "question": "What is a data race in a multithreaded while loop?",
+                    "options": [
+                        "Two loops reading the same data",
+                        "Two threads reading/writing shared data without synchronization, causing undefined behavior",
+                        "An off-by-one error",
+                        "A deadlock"
+                    ],
+                    "answer": "Two threads reading/writing shared data without synchronization, causing undefined behavior"
+                },
+                {
+                    "question": "What does `std::atomic<bool> running{true};` provide in a while loop?",
+                    "options": [
+                        "Performance boost",
+                        "Thread-safe reads/writes of `running` across threads",
+                        "Memory compression",
+                        "Compile-time constant"
+                    ],
+                    "answer": "Thread-safe reads/writes of `running` across threads"
+                },
+                {
+                    "question": "What is tail recursion and how does it relate to loops?",
+                    "options": [
+                        "Unrelated",
+                        "A recursive call as the last operation — compilers may optimize it into a loop (tail call optimization)",
+                        "A reverse loop",
+                        "A do-while loop in disguise"
+                    ],
+                    "answer": "A recursive call as the last operation — compilers may optimize it into a loop (tail call optimization)"
+                },
+                {
+                    "question": "In a tight computational while loop, what is 'false sharing'?",
+                    "options": [
+                        "Checking a wrong condition",
+                        "Multiple threads writing different variables that happen to share a cache line, causing cache invalidation",
+                        "A bug where variables share the same address",
+                        "A loop that runs twice"
+                    ],
+                    "answer": "Multiple threads writing different variables that happen to share a cache line, causing cache invalidation"
+                },
+                {
+                    "question": "What is the time complexity of a while loop that halves its variable each iteration (e.g., `while(n>1) n/=2`)?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(log n)"
+                },
+                {
+                    "question": "What does `std::memory_order_acquire` on a load in a while loop ensure?",
+                    "options": [
+                        "The loop runs faster",
+                        "All memory operations before the corresponding release store are visible to this thread",
+                        "Random iteration order",
+                        "Exclusive access to the variable"
+                    ],
+                    "answer": "All memory operations before the corresponding release store are visible to this thread"
+                },
+                {
+                    "question": "What is 'spin-waiting' (busy-wait loop) and when might it be used?",
+                    "options": [
+                        "A loop with no body",
+                        "A tight while loop checking a condition, used when the wait is expected to be very short to avoid OS context switch overhead",
+                        "A recursive function",
+                        "An infinite loop that's a bug"
+                    ],
+                    "answer": "A tight while loop checking a condition, used when the wait is expected to be very short to avoid OS context switch overhead"
+                },
+                {
+                    "question": "What is the advantage of `std::latch` / `std::barrier` (C++20) over a spin-wait loop?",
+                    "options": [
+                        "Faster",
+                        "OS-level blocking — threads sleep instead of burning CPU cycles while waiting",
+                        "More memory efficient",
+                        "Simpler syntax only"
+                    ],
+                    "answer": "OS-level blocking — threads sleep instead of burning CPU cycles while waiting"
+                }
+            ]
+        }
+    ]
+}

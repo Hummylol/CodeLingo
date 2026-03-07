@@ -17,12 +17,246 @@ interface PracticeQuestion {
   answer: string;
 }
 
-interface TheoryData {
-  levelno: number;
+interface Sublevel {
+  sublevel: "beginner" | "intermediate" | "expert";
   topic: string;
   theory: string;
-  practice_questions: PracticeQuestion[];
+  questions: PracticeQuestion[];
 }
+
+interface LevelFile {
+  levelno: number;
+  topic: string;
+  sublevels: Sublevel[];
+}
+
+// --- DIFFICULTY LEVELS ---
+type Difficulty = "beginner" | "intermediate" | "expert";
+
+const DIFFICULTY_LABELS: Record<Difficulty, string> = {
+  beginner: "Beginner",
+  intermediate: "Intermediate",
+  expert: "Expert",
+};
+
+// All questions are loaded from /theory/{language}/{levelId}.json sublevel data.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _REMOVED_HARDCODED: Record<Difficulty, PracticeQuestion[]> = {
+  // --- LEVEL 1.1: BEGINNER ---
+  // Topics: syntax, variables, data types, basic I/O, operators, strings
+  beginner: [
+    {
+      question: "Which of the following is the correct way to output 'Hello, World!' in Python?",
+      options: ["echo 'Hello, World!'", "print('Hello, World!')", "console.log('Hello, World!')", "printf('Hello, World!')"],
+      answer: "print('Hello, World!')",
+    },
+    {
+      question: "What symbol is used to start a single-line comment in Python?",
+      options: ["//", "/*", "#", "--"],
+      answer: "#",
+    },
+    {
+      question: "Which of the following is a valid Python variable name?",
+      options: ["2myVar", "my-var", "_my_var", "my var"],
+      answer: "_my_var",
+    },
+    {
+      question: "What is the data type of the value returned by input() in Python?",
+      options: ["int", "float", "str", "bool"],
+      answer: "str",
+    },
+    {
+      question: "What will `type(3.14)` return in Python?",
+      options: ["<class 'int'>", "<class 'float'>", "<class 'double'>", "<class 'str'>"],
+      answer: "<class 'float'>",
+    },
+    {
+      question: "Which operator is used for exponentiation in Python?",
+      options: ["^", "exp()", "**", "^^"],
+      answer: "**",
+    },
+    {
+      question: "What is the result of `10 % 3` in Python?",
+      options: ["3", "1", "0.33", "3.33"],
+      answer: "1",
+    },
+    {
+      question: "What does `len('Python')` return?",
+      options: ["5", "6", "7", "Error"],
+      answer: "6",
+    },
+    {
+      question: "Which of the following creates a string in Python?",
+      options: ["x = 42", "x = True", "x = 'hello'", "x = [1, 2]"],
+      answer: "x = 'hello'",
+    },
+    {
+      question: "What is the output of `print(2 + 3 * 4)`?",
+      options: ["20", "14", "24", "10"],
+      answer: "14",
+    },
+  ],
+
+  // --- LEVEL 1.2: INTERMEDIATE ---
+  // Topics: OOP, list comprehensions, decorators, generators, exception handling, file I/O
+  intermediate: [
+    {
+      question: "What is the output of `[x**2 for x in range(4)]`?",
+      options: ["[1, 4, 9, 16]", "[0, 1, 4, 9]", "[0, 2, 4, 6]", "[1, 2, 3, 4]"],
+      answer: "[0, 1, 4, 9]",
+    },
+    {
+      question: "Which keyword is used to define a generator function in Python?",
+      options: ["return", "yield", "generate", "async"],
+      answer: "yield",
+    },
+    {
+      question: "What does the `@staticmethod` decorator do?",
+      options: [
+        "Binds the method to the class instead of an instance",
+        "Makes the method asynchronous",
+        "Defines a method that does not receive an implicit first argument",
+        "Marks the method as private",
+      ],
+      answer: "Defines a method that does not receive an implicit first argument",
+    },
+    {
+      question: "What is the difference between `__str__` and `__repr__` in Python?",
+      options: [
+        "__str__ is for developers; __repr__ is for end users",
+        "__repr__ is for developers; __str__ is for end users",
+        "They are identical",
+        "__str__ is used in loops; __repr__ in conditions",
+      ],
+      answer: "__repr__ is for developers; __str__ is for end users",
+    },
+    {
+      question: "What does `*args` allow in a function definition?",
+      options: [
+        "Accept keyword arguments into a dict",
+        "Accept any number of positional arguments into a tuple",
+        "Accept a single optional argument",
+        "Spread a list into a function call",
+      ],
+      answer: "Accept any number of positional arguments into a tuple",
+    },
+    {
+      question: "Which exception is raised when you divide by zero in Python?",
+      options: ["ValueError", "ArithmeticError", "ZeroDivisionError", "OverflowError"],
+      answer: "ZeroDivisionError",
+    },
+    {
+      question: "What is the output of: `d = {'a': 1, 'b': 2}; d.get('c', 0)`?",
+      options: ["None", "Error (KeyError)", "0", "'c'"],
+      answer: "0",
+    },
+    {
+      question: "In Python OOP, which method is called automatically when an object is created?",
+      options: ["__start__", "__new__", "__init__", "__create__"],
+      answer: "__init__",
+    },
+    {
+      question: "What does `super()` do inside a child class method?",
+      options: [
+        "Creates a new parent class instance",
+        "Overrides the parent method completely",
+        "Calls the method from the parent class",
+        "Deletes the parent class",
+      ],
+      answer: "Calls the method from the parent class",
+    },
+    {
+      question: "Which built-in function returns an iterator of (index, value) pairs from a list?",
+      options: ["zip()", "map()", "enumerate()", "iter()"],
+      answer: "enumerate()",
+    },
+  ],
+
+  // --- LEVEL 1.3: EXPERT ---
+  // Topics: GIL, metaclasses, memory management, descriptors, concurrency, CPython internals
+  expert: [
+    {
+      question: "What is the Global Interpreter Lock (GIL) in CPython?",
+      options: [
+        "A lock that allows true parallel execution of Python threads",
+        "A mutex that ensures only one thread executes Python bytecode at a time",
+        "A security feature preventing unauthorized code execution",
+        "A garbage collection mechanism",
+      ],
+      answer: "A mutex that ensures only one thread executes Python bytecode at a time",
+    },
+    {
+      question: "Which Python module is best for achieving true CPU parallelism, bypassing the GIL?",
+      options: ["threading", "asyncio", "multiprocessing", "concurrent.futures with ThreadPoolExecutor"],
+      answer: "multiprocessing",
+    },
+    {
+      question: "Which built-in type is the default metaclass for all Python classes?",
+      options: ["object", "class", "type", "meta"],
+      answer: "type",
+    },
+    {
+      question: "What is the primary memory management mechanism used by CPython?",
+      options: [
+        "Mark-and-sweep garbage collection",
+        "Reference counting",
+        "Tracing garbage collection",
+        "Manual malloc/free",
+      ],
+      answer: "Reference counting",
+    },
+    {
+      question: "What is the purpose of `__slots__` in a Python class?",
+      options: [
+        "To make attributes read-only",
+        "To define a fixed set of attributes, preventing __dict__ and reducing memory usage",
+        "To enable dynamic attribute creation",
+        "To restrict which classes can inherit from this class",
+      ],
+      answer: "To define a fixed set of attributes, preventing __dict__ and reducing memory usage",
+    },
+    {
+      question: "How does Python handle circular references that reference counting cannot clean up?",
+      options: [
+        "They are never cleaned up (memory leak)",
+        "A generational garbage collector periodically detects and collects them",
+        "The OS reclaims the memory",
+        "Python raises a MemoryError",
+      ],
+      answer: "A generational garbage collector periodically detects and collects them",
+    },
+    {
+      question: "What is a Python descriptor?",
+      options: [
+        "A class that documents itself automatically",
+        "An object that defines __get__, __set__, or __delete__ to control attribute access",
+        "A function that returns metadata about a class",
+        "A decorator that adds type-checking",
+      ],
+      answer: "An object that defines __get__, __set__, or __delete__ to control attribute access",
+    },
+    {
+      question: "What does the `__new__` method do in Python?",
+      options: [
+        "Initialises instance attributes after object creation",
+        "Creates and returns a new instance of the class before __init__ is called",
+        "Destroys an existing instance",
+        "Copies an existing instance",
+      ],
+      answer: "Creates and returns a new instance of the class before __init__ is called",
+    },
+    {
+      question: "In Python's LEGB rule, what does 'E' stand for?",
+      options: ["External", "Enclosing", "Exported", "Environment"],
+      answer: "Enclosing",
+    },
+    {
+      question: "What is the output of: `a = [1,2,3]; b = a; b.append(4); print(a)`?",
+      options: ["[1, 2, 3]", "[1, 2, 3, 4]", "Error", "[4]"],
+      answer: "[1, 2, 3, 4]",
+    },
+  ],
+};
 
 // --- HELPERS ---
 // Minimal formatting: turn **bold** segments into <strong> while preserving line breaks.
@@ -49,20 +283,42 @@ export default function TheoryPage() {
   const { selected } = useSelectedLanguage()
   const { id } = params
 
-  const [levelData, setLevelData] = useState<TheoryData | null>(null)
+  const [levelData, setLevelData] = useState<LevelFile | null>(null)
   const [totalLevels, setTotalLevels] = useState(0);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
-  const [score, setScore] = useState<number | null>(null);
-  const [isQuizChecked, setIsQuizChecked] = useState(false);
+  // --- Difficulty tab state ---
+  const [activeDifficulty, setActiveDifficulty] = useState<Difficulty>("beginner");
+  const [unlockedLevels, setUnlockedLevels] = useState<Record<Difficulty, boolean>>({
+    beginner: true,
+    intermediate: false,
+    expert: false,
+  });
 
+  // Per-difficulty quiz state
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<Difficulty, Record<number, string>>>({
+    beginner: {},
+    intermediate: {},
+    expert: {},
+  });
+  const [scores, setScores] = useState<Record<Difficulty, number | null>>({
+    beginner: null,
+    intermediate: null,
+    expert: null,
+  });
+  const [isQuizChecked, setIsQuizChecked] = useState<Record<Difficulty, boolean>>({
+    beginner: false,
+    intermediate: false,
+    expert: false,
+  });
 
   const selectedLanguage = LANGUAGES.find(lang => lang.id === selected)
   const currentLevelId = parseInt(id as string, 10);
-  const requiredScore = 7;
   const isDSA = selectedLanguage?.id === "dsa"
+
+  // 70% threshold for unlocking next difficulty
+  const UNLOCK_THRESHOLD = 0.7;
 
   useEffect(() => {
     const loadTheoryData = async () => {
@@ -77,24 +333,20 @@ export default function TheoryPage() {
         return;
       }
 
-      setSelectedAnswers({});
-      setScore(null);
-      setIsQuizChecked(false);
+      setSelectedAnswers({ beginner: {}, intermediate: {}, expert: {} });
+      setScores({ beginner: null, intermediate: null, expert: null });
+      setIsQuizChecked({ beginner: false, intermediate: false, expert: false });
+      setUnlockedLevels({ beginner: true, intermediate: false, expert: false });
+      setActiveDifficulty("beginner");
       setLoading(true);
 
       try {
-        const response = await fetch(`/theory/${selected}.json`)
-        if (!response.ok) throw new Error(`Failed to load theory data for ${selected}`)
+        const response = await fetch(`/theory/${selected}/${currentLevelId}.json`)
+        if (!response.ok) throw new Error(`Level ${currentLevelId} not found for ${selected}`)
 
-        const allLevels: TheoryData[] = await response.json()
-        const currentLevelData = allLevels.find(level => level.levelno === currentLevelId)
-
-        if (currentLevelData) {
-          setLevelData(currentLevelData)
-          setTotalLevels(allLevels.length)
-        } else {
-          setError(`Level ${currentLevelId} not found.`)
-        }
+        const levelFile: LevelFile = await response.json()
+        setLevelData(levelFile)
+        setTotalLevels(20) // Python has 20 levels
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load theory data")
       } finally {
@@ -104,28 +356,49 @@ export default function TheoryPage() {
     loadTheoryData()
   }, [selected, currentLevelId])
 
-  const handleOptionSelect = (questionIndex: number, option: string) => {
-    if (isQuizChecked) return;
-    setSelectedAnswers(prev => ({ ...prev, [questionIndex]: option }));
+  // --- Difficulty quiz handlers ---
+  const handleDifficultyOptionSelect = (questionIndex: number, option: string) => {
+    if (isQuizChecked[activeDifficulty]) return;
+    setSelectedAnswers(prev => ({
+      ...prev,
+      [activeDifficulty]: {
+        ...prev[activeDifficulty],
+        [questionIndex]: option,
+      },
+    }));
   };
 
-  const handleCheckAnswers = () => {
-    if (!levelData) return;
-    let correctAnswers = 0;
-    levelData.practice_questions.forEach((q, index) => {
-      if (selectedAnswers[index] === q.answer) {
-        correctAnswers++;
-      }
+  const handleDifficultyCheckAnswers = () => {
+    const questions = levelData?.sublevels.find(s => s.sublevel === activeDifficulty)?.questions ?? [];
+    let correct = 0;
+    questions.forEach((q, i) => {
+      if (selectedAnswers[activeDifficulty][i] === q.answer) correct++;
     });
-    setScore(correctAnswers);
-    setIsQuizChecked(true);
-  };
 
-  const handleNextLevel = () => {
-    if (score !== null && score >= requiredScore && currentLevelId < totalLevels) {
-      router.push(`/lesson/theory/${currentLevelId + 1}`);
+    const newScores = { ...scores, [activeDifficulty]: correct };
+    setScores(newScores);
+
+    const newChecked = { ...isQuizChecked, [activeDifficulty]: true };
+    setIsQuizChecked(newChecked);
+
+    const pct = correct / questions.length;
+
+    // Unlock next tier if >= 70%
+    if (pct >= UNLOCK_THRESHOLD) {
+      if (activeDifficulty === "beginner") {
+        setUnlockedLevels(prev => ({ ...prev, intermediate: true }));
+      } else if (activeDifficulty === "intermediate") {
+        setUnlockedLevels(prev => ({ ...prev, expert: true }));
+      }
     }
   };
+
+  const handleDifficultyRetry = () => {
+    setSelectedAnswers(prev => ({ ...prev, [activeDifficulty]: {} }));
+    setScores(prev => ({ ...prev, [activeDifficulty]: null }));
+    setIsQuizChecked(prev => ({ ...prev, [activeDifficulty]: false }));
+  };
+
 
 
   if (loading) {
@@ -161,6 +434,8 @@ export default function TheoryPage() {
     )
   }
 
+  const difficultyOrder: Difficulty[] = ["beginner", "intermediate", "expert"];
+
   // --- Main Render Logic ---
   return (
     <main className="mx-auto max-w-4xl p-6">
@@ -181,14 +456,21 @@ export default function TheoryPage() {
         </div>
         <h1 className="text-2xl font-bold">Level {levelData.levelno} - {levelData.topic}</h1>
       </div>
-      <div className="prose prose-slate dark:prose-invert max-w-none mb-8">
-        <div className="bg-background/50 rounded-lg p-6 border">
-          <h2 className="text-xl font-semibold mb-4 mt-0">Key Concepts</h2>
-          <div className="whitespace-pre-wrap text-foreground/90 leading-relaxed">
-            {renderFormattedTheory(levelData.theory)}
+      {(() => {
+        const activeSublevel = levelData.sublevels.find(s => s.sublevel === activeDifficulty);
+        return (
+          <div className="prose prose-slate dark:prose-invert max-w-none mb-8">
+            <div className="bg-background/50 rounded-lg p-6 border">
+              <h2 className="text-xl font-semibold mb-4 mt-0">
+                {activeSublevel?.topic ?? levelData.topic}
+              </h2>
+              <div className="whitespace-pre-wrap text-foreground/90 leading-relaxed">
+                {activeSublevel ? renderFormattedTheory(activeSublevel.theory) : null}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        );
+      })()}
 
       {isDSA && (
         <section className="mb-10">
@@ -205,69 +487,178 @@ export default function TheoryPage() {
         </section>
       )}
 
+      {/* ====== PRACTICE QUIZ SECTION ====== */}
       <div>
         <h2 className="text-xl font-semibold mb-4">Practice Quiz</h2>
-        <div className="space-y-6">
-          {levelData.practice_questions.map((q, index) => (
-            <div key={index} className="bg-background/50 rounded-lg p-6 border">
-              <p className="font-semibold mb-4">{index + 1}. {q.question}</p>
-              <div className="space-y-2">
-                {q.options.map((option) => {
-                  const isSelected = selectedAnswers[index] === option;
-                  const isCorrect = isQuizChecked && option === q.answer;
-                  const isIncorrect = isQuizChecked && isSelected && option !== q.answer;
 
-                  return (
-                    <button
-                      key={option}
-                      onClick={() => handleOptionSelect(index, option)}
-                      disabled={isQuizChecked}
+        {/* --- Difficulty Tabs --- */}
+        <div className="flex gap-2 mb-6">
+          {difficultyOrder.map((diff, idx) => {
+            const isUnlocked = unlockedLevels[diff];
+            const isActive = activeDifficulty === diff;
+            const diffScore = scores[diff];
+            const diffChecked = isQuizChecked[diff];
+
+            return (
+              <button
+                key={diff}
+                onClick={() => isUnlocked && setActiveDifficulty(diff)}
+                disabled={!isUnlocked}
+                title={!isUnlocked ? `Score 70%+ on ${DIFFICULTY_LABELS[difficultyOrder[idx - 1]]} to unlock` : undefined}
+                className={cn(
+                  "relative flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-semibold transition-all duration-200 select-none",
+                  isActive && isUnlocked
+                    ? diff === "beginner"
+                      ? "bg-emerald-500/20 border-emerald-500 text-emerald-700 dark:text-emerald-300"
+                      : diff === "intermediate"
+                        ? "bg-amber-500/20 border-amber-500 text-amber-700 dark:text-amber-300"
+                        : "bg-rose-500/20 border-rose-500 text-rose-700 dark:text-rose-300"
+                    : isUnlocked
+                      ? "bg-background border-border text-foreground hover:bg-muted hover:text-foreground"
+                      : "bg-muted/40 border-border text-muted-foreground cursor-not-allowed opacity-60"
+                )}
+              >
+                {!isUnlocked && <Lock className="h-3.5 w-3.5" />}
+                {DIFFICULTY_LABELS[diff]}
+                {diffChecked && diffScore !== null && (
+                  <span
+                    className={cn(
+                      "ml-1 text-xs font-normal",
+                      (() => {
+                        const qLen = levelData?.sublevels.find(s => s.sublevel === diff)?.questions.length ?? 10;
+                        return diffScore / qLen >= UNLOCK_THRESHOLD
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-red-500 dark:text-red-400";
+                      })()
+                    )}
+                  >
+                    {(() => {
+                      const qLen = levelData?.sublevels.find(s => s.sublevel === diff)?.questions.length ?? 10;
+                      return `(${diffScore}/${qLen})`;
+                    })()}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* --- Active Difficulty Questions --- */}
+        {(() => {
+          const questions = levelData?.sublevels.find(s => s.sublevel === activeDifficulty)?.questions ?? [];
+          const currentAnswers = selectedAnswers[activeDifficulty];
+          const currentChecked = isQuizChecked[activeDifficulty];
+          const currentScore = scores[activeDifficulty];
+          const totalQ = questions.length;
+          const pct = currentScore !== null ? currentScore / totalQ : null;
+
+          return (
+            <div>
+              <div className="space-y-6">
+                {questions.map((q, index) => (
+                  <div key={index} className="bg-background/50 rounded-lg p-6 border">
+                    <p className="font-semibold mb-4">{index + 1}. {q.question}</p>
+                    <div className="space-y-2">
+                      {q.options.map((option) => {
+                        const isSelected = currentAnswers[index] === option;
+                        const isCorrect = currentChecked && option === q.answer;
+                        const isIncorrect = currentChecked && isSelected && option !== q.answer;
+
+                        return (
+                          <button
+                            key={option}
+                            onClick={() => handleDifficultyOptionSelect(index, option)}
+                            disabled={currentChecked}
+                            className={cn(
+                              "w-full text-left p-3 rounded-md border transition-colors disabled:cursor-not-allowed text-foreground",
+                              !currentChecked && !isSelected && "hover:bg-muted/60 hover:border-muted-foreground/40",
+                              isSelected && !currentChecked && "bg-blue-500/20 border-blue-500 text-blue-700 dark:text-blue-300",
+                              isCorrect && "bg-green-500/20 border-green-500 text-green-800 dark:text-green-300 font-semibold",
+                              isIncorrect && "bg-red-500/20 border-red-500 text-red-700 dark:text-red-300"
+                            )}
+                          >
+                            {option}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Quiz actions */}
+              <div className="mt-6 flex flex-col items-center gap-3">
+                {!currentChecked ? (
+                  <Button onClick={handleDifficultyCheckAnswers} size="lg">
+                    Check Answers
+                  </Button>
+                ) : (
+                  currentScore !== null && (
+                    <div
                       className={cn(
-                        "w-full text-left p-3 rounded-md border transition-colors disabled:cursor-not-allowed",
-                        !isQuizChecked && "hover:bg-accent",
-                        isSelected && !isQuizChecked && "bg-blue-500/20 border-blue-500",
-                        isCorrect && "bg-green-500/20 border-green-500 font-semibold",
-                        isIncorrect && "bg-red-500/20 border-red-500"
+                        "text-center font-semibold text-base p-4 rounded-md w-full",
+                        pct !== null && pct >= UNLOCK_THRESHOLD
+                          ? "bg-green-500/20 text-green-800 dark:text-green-300"
+                          : "bg-red-500/20 text-red-800 dark:text-red-300"
                       )}
                     >
-                      {option}
-                    </button>
-                  );
-                })}
+                      {pct !== null && pct >= UNLOCK_THRESHOLD ? (
+                        <CheckCircle className="inline-block mr-2 h-5 w-5" />
+                      ) : (
+                        <XCircle className="inline-block mr-2 h-5 w-5" />
+                      )}
+                      You scored {currentScore} out of {totalQ} ({Math.round((pct ?? 0) * 100)}%)
+                      {pct !== null && pct >= UNLOCK_THRESHOLD && activeDifficulty !== "expert" && (
+                        <span className="block text-sm font-normal mt-1">
+                          🎉 {DIFFICULTY_LABELS[difficultyOrder[difficultyOrder.indexOf(activeDifficulty) + 1]]} unlocked!
+                        </span>
+                      )}
+                      {pct !== null && pct < UNLOCK_THRESHOLD && (
+                        <span className="block text-sm font-normal mt-1">
+                          Score 70%+ to unlock the next difficulty.
+                        </span>
+                      )}
+                    </div>
+                  )
+                )}
+
+                {currentChecked && (
+                  <Button variant="outline" size="sm" onClick={() => { handleDifficultyRetry(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                    Retry this level
+                  </Button>
+                )}
+
+                {/* Advance to next difficulty button (shortcut) */}
+                {currentChecked && currentScore !== null && pct !== null && pct >= UNLOCK_THRESHOLD && activeDifficulty !== "expert" && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => setActiveDifficulty(difficultyOrder[difficultyOrder.indexOf(activeDifficulty) + 1])}
+                    className="border-emerald-500 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/10"
+                  >
+                    Go to {DIFFICULTY_LABELS[difficultyOrder[difficultyOrder.indexOf(activeDifficulty) + 1]]} →
+                  </Button>
+                )}
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })()}
       </div>
 
       <div className="mt-8 flex flex-col items-center gap-4 mb-20">
-        {!isQuizChecked ? (
-          <Button onClick={handleCheckAnswers} size="lg">
-            Check Answers
-          </Button>
-        ) : (
-          // THIS IS THE FIX: We check if score is not null before using it.
-          score !== null && (
-            <div
-              className={cn(
-                "text-center font-semibold text-lg p-4 rounded-md w-full",
-                score >= requiredScore ? "bg-green-500/20 text-green-800 dark:text-green-300" : "bg-red-500/20 text-red-800 dark:text-red-300"
-              )}
-            >
-              {score >= requiredScore ? <CheckCircle className="inline-block mr-2 h-5 w-5" /> : <XCircle className="inline-block mr-2 h-5 w-5" />}
-              You scored {score} out of {levelData.practice_questions.length}.
-            </div>
-          )
-        )}
-
         <Button
-          onClick={handleNextLevel}
-          disabled={score === null || score < requiredScore || currentLevelId >= totalLevels}
+          onClick={() => {
+            if (currentLevelId < totalLevels) {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              router.push(`/lesson/theory/${currentLevelId + 1}`);
+            }
+          }}
+          disabled={scores.expert === null || currentLevelId >= totalLevels}
           size="lg"
-          className="bg-green-600 hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed"
+          className="bg-green-600 hover:bg-green-700 text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
         >
           {currentLevelId >= totalLevels ? "Last Level" : "Next Level"}
-          {(score === null || score < requiredScore) && currentLevelId < totalLevels && <Lock className="h-4 w-4 ml-2" />}
+          {scores.expert === null && currentLevelId < totalLevels && <Lock className="h-4 w-4 ml-2" />}
         </Button>
       </div>
 

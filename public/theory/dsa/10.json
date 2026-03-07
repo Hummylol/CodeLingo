@@ -1,0 +1,327 @@
+{
+    "levelno": 10,
+    "topic": "Greedy Algorithms",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Greedy Algorithms — Beginner Level",
+            "theory": "A **greedy algorithm** makes the locally optimal choice at each step, hoping to find the global optimum.\n\n**Works when:** greedy choice property + optimal substructure exist.\n\n**Classic examples:**\n- **Activity Selection:** pick activity that finishes earliest\n- **Fractional Knapsack:** pick items with highest value/weight ratio\n- **Coin change (canonical coins):** always pick largest coin ≤ remaining\n\n```python\n# Activity selection — greedy by end time\ndef max_activities(activities):\n    activities.sort(key=lambda x: x[1])  # sort by end time\n    selected = [activities[0]]\n    for start, end in activities[1:]:\n        if start >= selected[-1][1]:\n            selected.append((start, end))\n    return len(selected)\n```",
+            "questions": [
+                {
+                    "question": "Greedy algorithm makes:",
+                    "options": [
+                        "Globally optimal choices always",
+                        "Locally optimal choices at each step",
+                        "Random choices",
+                        "DP-based choices"
+                    ],
+                    "answer": "Locally optimal choices at each step"
+                },
+                {
+                    "question": "Activity selection — greedy choice:",
+                    "options": [
+                        "Pick activity with earliest start",
+                        "Pick activity with fewest conflicts",
+                        "Pick activity with earliest finish time",
+                        "Pick shortest activity"
+                    ],
+                    "answer": "Pick activity with earliest finish time"
+                },
+                {
+                    "question": "Fractional knapsack — greedy choice:",
+                    "options": [
+                        "Heaviest item first",
+                        "Most valuable item first",
+                        "Highest value-to-weight ratio first",
+                        "Smallest item first"
+                    ],
+                    "answer": "Highest value-to-weight ratio first"
+                },
+                {
+                    "question": "Coin change with canonical coins (USD) — greedy works?",
+                    "options": [
+                        "Never",
+                        "Yes — always pick largest coin ≤ remaining amount",
+                        "Only for odd amounts",
+                        "Only with sorted coins"
+                    ],
+                    "answer": "Yes — always pick largest coin ≤ remaining amount"
+                },
+                {
+                    "question": "Greedy does NOT work for 0/1 knapsack because:",
+                    "options": [
+                        "Items are indivisible — greedy by ratio might leave wasted capacity",
+                        "DP is faster",
+                        "Items are too heavy",
+                        "No ratio can be computed"
+                    ],
+                    "answer": "Items are indivisible — greedy by ratio might leave wasted capacity"
+                },
+                {
+                    "question": "Huffman encoding is a greedy algorithm that:",
+                    "options": [
+                        "Sorts by length",
+                        "Assigns shorter codes to more frequent characters — build tree from two smallest frequencies",
+                        "Encodes equal-length codes",
+                        "Uses a stack"
+                    ],
+                    "answer": "Assigns shorter codes to more frequent characters — build tree from two smallest frequencies"
+                },
+                {
+                    "question": "Minimum number of platforms needed (intervals): approach?",
+                    "options": [
+                        "Sort + DP",
+                        "Sort arrivals/departures, track simultaneous trains greedily",
+                        "Count overlaps brute",
+                        "Graph coloring"
+                    ],
+                    "answer": "Sort arrivals/departures, track simultaneous trains greedily"
+                },
+                {
+                    "question": "Job scheduling to maximize profit (deadline constraints): approach?",
+                    "options": [
+                        "Brute force all orderings",
+                        "Sort by profit descending, use Union-Find to assign to latest available slot",
+                        "DP on profits",
+                        "Heap-based selection"
+                    ],
+                    "answer": "Sort by profit descending, use Union-Find to assign to latest available slot"
+                },
+                {
+                    "question": "Greedy choice property means:",
+                    "options": [
+                        "Always sorted",
+                        "A globally optimal solution can be reached by making the locally optimal choice first",
+                        "No backtracking ever",
+                        "Trade-off between speed and accuracy"
+                    ],
+                    "answer": "A globally optimal solution can be reached by making the locally optimal choice first"
+                },
+                {
+                    "question": "Gas station problem: can we complete the circuit?",
+                    "options": [
+                        "DFS from each start",
+                        "Total gas >= total cost → yes; greedy start at index after running out",
+                        "DP on stations",
+                        "Binary search on start"
+                    ],
+                    "answer": "Total gas >= total cost → yes; greedy start at index after running out"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Greedy Algorithms — Intermediate Level",
+            "theory": "**Interval problems:** meet in the middle, scheduling, covering.\n\n**Minimum spanning tree (Greedy):**\n- Kruskal: add shortest edge not forming a cycle\n- Prim: grow MST by adding nearest vertex\n\n**Dijkstra (greedy shortest path):** always process the vertex with minimum tentative distance.\n\n**Jump Game (greedy):** at each position, track maximum reachable.\n\n**Candy problem, task scheduler, boats to save people** — all greedy with careful design.\n\nGreedy correctness often proven by **exchange argument:** assume any other choice leads to a worse or equal solution.",
+            "questions": [
+                {
+                    "question": "Exchange argument proves greedy by:",
+                    "options": [
+                        "Testing all cases",
+                        "Showing swapping any non-greedy choice with greedy choice doesn't improve the solution",
+                        "Mathematical induction only",
+                        "Counter-example testing"
+                    ],
+                    "answer": "Showing swapping any non-greedy choice with greedy choice doesn't improve the solution"
+                },
+                {
+                    "question": "Minimum number of arrows to burst all balloons (intervals):",
+                    "options": [
+                        "Sort by length",
+                        "Sort by end, shoot through end — each arrow hits all overlapping intervals",
+                        "BFS from leftmost",
+                        "DP on balloon count"
+                    ],
+                    "answer": "Sort by end, shoot through end — each arrow hits all overlapping intervals"
+                },
+                {
+                    "question": "Jump Game — greedy tracks:",
+                    "options": [
+                        "DFS paths",
+                        "Maximum reachable index from current position",
+                        "Minimum jumps at each step",
+                        "All reachable positions"
+                    ],
+                    "answer": "Maximum reachable index from current position"
+                },
+                {
+                    "question": "Candy problem — greedy approach:",
+                    "options": [
+                        "Give all 1 candy",
+                        "Two passes: left-to-right (right neighbor rule), then right-to-left (left neighbor rule), take max",
+                        "One pass only",
+                        "Sort by rating"
+                    ],
+                    "answer": "Two passes: left-to-right (right neighbor rule), then right-to-left (left neighbor rule), take max"
+                },
+                {
+                    "question": "Task scheduler (CPU with cooldown n) — optimal idle time:",
+                    "options": [
+                        "Brute force",
+                        "Greedy: most frequent tasks need most spacing, idle = max(0, (f_max-1)*n - others)",
+                        "DP on task order",
+                        "BFS on task graph"
+                    ],
+                    "answer": "Greedy: most frequent tasks need most spacing, idle = max(0, (f_max-1)*n - others)"
+                },
+                {
+                    "question": "Boats to save people (pairs, weight limit):",
+                    "options": [
+                        "Sort + greedy two pointers: heaviest with lightest if possible, else heaviest alone",
+                        "DP on pairs",
+                        "All combinations check",
+                        "Knapsack approach"
+                    ],
+                    "answer": "Sort + greedy two pointers: heaviest with lightest if possible, else heaviest alone"
+                },
+                {
+                    "question": "Remove k digits for smallest number — greedy:",
+                    "options": [
+                        "Remove k largest",
+                        "Monotonic stack — remove digits where a larger digit precedes a smaller one",
+                        "Remove first k",
+                        "Sort then remove"
+                    ],
+                    "answer": "Monotonic stack — remove digits where a larger digit precedes a smaller one"
+                },
+                {
+                    "question": "Greedy proof for Huffman encoding:",
+                    "options": [
+                        "Exchange argument — two least frequent characters should be deepest in tree",
+                        "Mathematical induction on tree size",
+                        "Minimum spanning tree analogy",
+                        "Both A and B"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "Meeting rooms II (minimum rooms) greedy:",
+                    "options": [
+                        "Sort by duration",
+                        "Sort events, use min-heap tracking room end times — assign to earliest available room",
+                        "BFS on meetings",
+                        "DP on meeting order"
+                    ],
+                    "answer": "Sort events, use min-heap tracking room end times — assign to earliest available room"
+                },
+                {
+                    "question": "When does greedy fail to find optimal?",
+                    "options": [
+                        "Never",
+                        "When subproblems interact or greedy choice at one step harms future choices",
+                        "Only for NP problems",
+                        "When input is unsorted"
+                    ],
+                    "answer": "When subproblems interact or greedy choice at one step harms future choices"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Greedy Algorithms — Expert Level",
+            "theory": "**Matroid theory:** formal mathematical framework where greedy is optimal — graphic matroids (MST), partition matroids.\n\n**Monotone queue greedy:** maintain monotone structure to greedily pick best candidate.\n\n**Half-plane intersection:** geometry greedy/divide-and-conquer for convex polygon intersection.\n\n**Online algorithms:** greedy decisions without future knowledge — competitive ratio vs offline optimum.\n\n**Lazy propagation greedy:** defer updates when possible — tree or segment-tree-based greedy problems.",
+            "questions": [
+                {
+                    "question": "What is a matroid in the context of greedy algorithms?",
+                    "options": [
+                        "A matrix problem",
+                        "An algebraic structure where greedy gives the optimal solution for weighted maximization",
+                        "A graph with special properties",
+                        "A polynomial-time DP structure"
+                    ],
+                    "answer": "An algebraic structure where greedy gives the optimal solution for weighted maximization"
+                },
+                {
+                    "question": "Graphic matroid guarantees greedy optimality for:",
+                    "options": [
+                        "Graph coloring",
+                        "Minimum spanning tree — independent sets are acyclic edge subsets",
+                        "Shortest path",
+                        "Maximum flow"
+                    ],
+                    "answer": "Minimum spanning tree — independent sets are acyclic edge subsets"
+                },
+                {
+                    "question": "Competitive ratio measures:",
+                    "options": [
+                        "Algorithm speed",
+                        "Ratio of online algorithm cost to offline optimum — quality of greedy without future knowledge",
+                        "Cache hit ratio",
+                        "Greedy vs DP gap"
+                    ],
+                    "answer": "Ratio of online algorithm cost to offline optimum — quality of greedy without future knowledge"
+                },
+                {
+                    "question": "K-Server problem greedy competitive ratio:",
+                    "options": [
+                        "O(1)",
+                        "O(k) — greedy 'work function' algorithm achieves 2k-1 or k depending on metric",
+                        "O(log k)",
+                        "Always optimal"
+                    ],
+                    "answer": "O(k) — greedy 'work function' algorithm achieves 2k-1 or k depending on metric"
+                },
+                {
+                    "question": "Patience sorting (greedy LIS) creates piles where:",
+                    "options": [
+                        "Each pile is sorted descending",
+                        "Card placed on leftmost pile with top card >= new, or new pile — pile count = LIS length",
+                        "Cards sorted by value",
+                        "Piles by size"
+                    ],
+                    "answer": "Card placed on leftmost pile with top card >= new, or new pile — pile count = LIS length"
+                },
+                {
+                    "question": "Regret-based greedy (undo greedy choice using heap) is used for:",
+                    "options": [
+                        "When greedy is suboptimal",
+                        "When later items may be better — undo previous greedy choice if replacement is significant",
+                        "Any greedy problem",
+                        "Job scheduling with deadlines"
+                    ],
+                    "answer": "When later items may be better — undo previous greedy choice if replacement is significant"
+                },
+                {
+                    "question": "Maximum reward with k deletions (array) — greedy + heap:",
+                    "options": [
+                        "Sort and pick top k",
+                        "Greedy: take all positive, replace smallest positive with negative if improving profit — heap",
+                        "DP on k and array",
+                        "Sort descending, pick first k"
+                    ],
+                    "answer": "Greedy: take all positive, replace smallest positive with negative if improving profit — heap"
+                },
+                {
+                    "question": "Ski rental problem (online greedy) optimal deterministic ratio:",
+                    "options": [
+                        "1.0",
+                        "2 − 1/B (where B=buy cost) — rent until total equals buy cost",
+                        "O(log n)",
+                        "1.5"
+                    ],
+                    "answer": "2 − 1/B (where B=buy cost) — rent until total equals buy cost"
+                },
+                {
+                    "question": "Reduce array to zero with x ≤ k operations — greedy feasibility:",
+                    "options": [
+                        "Sort and binary search",
+                        "Binary search on answer + greedy check",
+                        "DP on operations",
+                        "Both B and some greedy only"
+                    ],
+                    "answer": "Binary search on answer + greedy check"
+                },
+                {
+                    "question": "Interval point cover (minimum points to pierce all intervals):",
+                    "options": [
+                        "Sort by start, pick midpoints",
+                        "Sort by end, stab each interval at its end — if new interval starts after last stab, add new stab",
+                        "DP on intervals",
+                        "Greedy by length descending"
+                    ],
+                    "answer": "Sort by end, stab each interval at its end — if new interval starts after last stab, add new stab"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 8,
+    "topic": "For Loops",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "For Loops — Beginner Level",
+            "theory": "A **`for` loop** iterates over a sequence of items (list, string, range, etc.):\n\n`for fruit in ['apple','banana','cherry']:`\n`    print(fruit)`\n\nThe `range()` function generates a sequence of numbers:\n- `range(5)` → 0, 1, 2, 3, 4\n- `range(2, 6)` → 2, 3, 4, 5\n- `range(1, 10, 2)` → 1, 3, 5, 7, 9\n\nYou can loop over a **string** character by character. The variable after `for` (e.g., `fruit`) is called the **loop variable**.",
+            "questions": [
+                {
+                    "question": "What is a `for` loop used for?",
+                    "options": [
+                        "Executing code if a condition is True",
+                        "Executing code while a condition is True",
+                        "Iterating over a sequence of items",
+                        "Defining a function"
+                    ],
+                    "answer": "Iterating over a sequence of items"
+                },
+                {
+                    "question": "What sequence does `range(3)` generate?",
+                    "options": [
+                        "1, 2, 3",
+                        "0, 1, 2",
+                        "0, 1, 2, 3",
+                        "3, 2, 1"
+                    ],
+                    "answer": "0, 1, 2"
+                },
+                {
+                    "question": "In `for item in my_list:`, what is `item`?",
+                    "options": [
+                        "The list itself",
+                        "The index of the element",
+                        "The current element in each iteration",
+                        "A keyword"
+                    ],
+                    "answer": "The current element in each iteration"
+                },
+                {
+                    "question": "Can you loop through a string with a `for` loop?",
+                    "options": [
+                        "No, only lists",
+                        "Yes, a string is iterable",
+                        "Only by converting to list first",
+                        "No, it raises Error"
+                    ],
+                    "answer": "Yes, a string is iterable"
+                },
+                {
+                    "question": "What does `range(1, 10, 2)` produce?",
+                    "options": [
+                        "1,3,5,7,9",
+                        "2,4,6,8,10",
+                        "1,2,3,4,5,6,7,8,9",
+                        "1,10,2"
+                    ],
+                    "answer": "1,3,5,7,9"
+                },
+                {
+                    "question": "What is the output of `for i in range(3): print(i)`?",
+                    "options": [
+                        "1 2 3",
+                        "0 1 2",
+                        "0 1 2 3",
+                        "Error"
+                    ],
+                    "answer": "0 1 2"
+                },
+                {
+                    "question": "What does `for _ in range(3): print('Hi')` print?",
+                    "options": [
+                        "Hi Hi Hi on one line",
+                        "Hi three times on separate lines",
+                        "0 1 2",
+                        "Error"
+                    ],
+                    "answer": "Hi three times on separate lines"
+                },
+                {
+                    "question": "How do you print numbers 1 to 5 using `range()`?",
+                    "options": [
+                        "for i in range(5)",
+                        "for i in range(1,5)",
+                        "for i in range(1,6)",
+                        "for i in range(6)"
+                    ],
+                    "answer": "for i in range(1,6)"
+                },
+                {
+                    "question": "What is a nested loop?",
+                    "options": [
+                        "A loop that never ends",
+                        "A loop inside another loop",
+                        "A loop over two lists",
+                        "A backwards loop"
+                    ],
+                    "answer": "A loop inside another loop"
+                },
+                {
+                    "question": "What does `range(10, 0, -2)` generate?",
+                    "options": [
+                        "10,8,6,4,2",
+                        "0,2,4,6,8,10",
+                        "10,9,8...1",
+                        "Error"
+                    ],
+                    "answer": "10,8,6,4,2"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "For Loops — Intermediate Level",
+            "theory": "**`enumerate()`** gives you both the index and value:\n`for i, val in enumerate(['a','b','c']):`\n`    print(i, val)  # 0 a, 1 b, 2 c`\n\n**`zip()`** iterates over multiple iterables in parallel:\n`for name, score in zip(['Alice','Bob'], [90, 85]):`\n`    print(name, score)`\n\n**`break`** exits the loop early; **`continue`** skips the rest of the current iteration and moves to the next.\n\n**`for...else`**: The `else` block runs only if the loop finished **without** hitting a `break`:\n`for x in lst:`\n`    if x == target: break`\n`else:`\n`    print('Not found')`",
+            "questions": [
+                {
+                    "question": "What does `enumerate(['a','b','c'])` give you in a for loop?",
+                    "options": [
+                        "Only values",
+                        "Only indices",
+                        "Both index and value as tuples",
+                        "A reversed sequence"
+                    ],
+                    "answer": "Both index and value as tuples"
+                },
+                {
+                    "question": "What does `zip([1,2],[3,4])` produce when iterated?",
+                    "options": [
+                        "[(1,2),(3,4)]",
+                        "[(1,3),(2,4)]",
+                        "[1,2,3,4]",
+                        "Error"
+                    ],
+                    "answer": "[(1,3),(2,4)]"
+                },
+                {
+                    "question": "What does `break` do inside a `for` loop?",
+                    "options": [
+                        "Skips current iteration",
+                        "Exits the loop immediately",
+                        "Ends the program",
+                        "Restarts the loop"
+                    ],
+                    "answer": "Exits the loop immediately"
+                },
+                {
+                    "question": "What does `continue` do in a loop?",
+                    "options": [
+                        "Exits the loop",
+                        "Ends the program",
+                        "Skips the rest of the current iteration and goes to next",
+                        "Restarts from beginning"
+                    ],
+                    "answer": "Skips the rest of the current iteration and goes to next"
+                },
+                {
+                    "question": "When does the `else` block of a `for...else` run?",
+                    "options": [
+                        "Always",
+                        "Only if the loop raised an error",
+                        "Only if the loop completed without a break",
+                        "Only if the loop ran zero times"
+                    ],
+                    "answer": "Only if the loop completed without a break"
+                },
+                {
+                    "question": "What does `enumerate(['x','y'], start=1)` produce?",
+                    "options": [
+                        "(0,'x'),(1,'y')",
+                        "(1,'x'),(2,'y')",
+                        "['x','y']",
+                        "Error"
+                    ],
+                    "answer": "(1,'x'),(2,'y')"
+                },
+                {
+                    "question": "What is the output of `for i in range(5):\\n  if i == 3: break\\n  print(i)`?",
+                    "options": [
+                        "0 1 2 3",
+                        "0 1 2",
+                        "1 2 3",
+                        "Error"
+                    ],
+                    "answer": "0 1 2"
+                },
+                {
+                    "question": "What is the output of `for i in range(5):\\n  if i == 2: continue\\n  print(i)`?",
+                    "options": [
+                        "0 1 2 3 4",
+                        "0 1 3 4",
+                        "0 1",
+                        "Error"
+                    ],
+                    "answer": "0 1 3 4"
+                },
+                {
+                    "question": "What does `zip('abc','123')` produce when iterated?",
+                    "options": [
+                        "[('a','1'),('b','2'),('c','3')]",
+                        "['a1','b2','c3']",
+                        "Error",
+                        "['abc','123']"
+                    ],
+                    "answer": "[('a','1'),('b','2'),('c','3')]"
+                },
+                {
+                    "question": "How do you iterate over a dictionary's key-value pairs?",
+                    "options": [
+                        "for k in d",
+                        "for k,v in d.items()",
+                        "for v in d.values()",
+                        "for k,v in d"
+                    ],
+                    "answer": "for k,v in d.items()"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "For Loops — Expert Level",
+            "theory": "**Generator expressions** are memory-efficient alternatives to list comprehensions:\n`sum(x**2 for x in range(1000000))` — never builds a list in memory\n\n**`itertools` module** provides advanced iteration tools:\n- `itertools.chain(a, b)` — iterate over a then b\n- `itertools.product(a, b)` — Cartesian product\n- `itertools.islice(it, n)` — take first n from iterator\n- `itertools.groupby(it, key)` — group consecutive elements\n\n**`__iter__` and `__next__`** — any object implementing these becomes iterable. `for` loops call `iter()` to get an iterator, then repeatedly call `next()` until `StopIteration`.\n\nBuilt-in `any()` and `all()` short-circuit over iterables — prefer them over explicit loops when checking conditions.",
+            "questions": [
+                {
+                    "question": "What is the difference between a list comprehension and a generator expression?",
+                    "options": [
+                        "They are identical",
+                        "List comprehension builds the full list in memory; generator expression is lazy/streams values",
+                        "Generator expressions are faster but less accurate",
+                        "Generator expressions use []"
+                    ],
+                    "answer": "List comprehension builds the full list in memory; generator expression is lazy/streams values"
+                },
+                {
+                    "question": "What does `sum(x for x in range(5))` compute?",
+                    "options": [
+                        "0",
+                        "10",
+                        "15",
+                        "Error"
+                    ],
+                    "answer": "10"
+                },
+                {
+                    "question": "What does `any([False, False, True])` return?",
+                    "options": [
+                        "False",
+                        "True",
+                        "[True]",
+                        "Error"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What does `all([True, True, False])` return?",
+                    "options": [
+                        "True",
+                        "False",
+                        "[False]",
+                        "Error"
+                    ],
+                    "answer": "False"
+                },
+                {
+                    "question": "What does a `for` loop call internally to start iterating?",
+                    "options": [
+                        "iter(obj).__next__()",
+                        "obj.loop()",
+                        "iter(obj), then next() repeatedly",
+                        "obj.iterate()"
+                    ],
+                    "answer": "iter(obj), then next() repeatedly"
+                },
+                {
+                    "question": "What exception signals the end of an iterator?",
+                    "options": [
+                        "IndexError",
+                        "StopIteration",
+                        "EndOfSequence",
+                        "IteratorEmpty"
+                    ],
+                    "answer": "StopIteration"
+                },
+                {
+                    "question": "What does `itertools.chain([1,2],[3,4])` produce?",
+                    "options": [
+                        "[[1,2],[3,4]]",
+                        "[(1,2),(3,4)]",
+                        "1,2,3,4",
+                        "Error"
+                    ],
+                    "answer": "1,2,3,4"
+                },
+                {
+                    "question": "How do you make a class iterable?",
+                    "options": [
+                        "Define a __loop__ method",
+                        "Define __iter__ returning an iterator and __next__ raising StopIteration when done",
+                        "Inherit from list",
+                        "Use @iterable decorator"
+                    ],
+                    "answer": "Define __iter__ returning an iterator and __next__ raising StopIteration when done"
+                },
+                {
+                    "question": "What is a 'lazy' evaluation strategy in iteration?",
+                    "options": [
+                        "Values are computed only when needed, not all at once",
+                        "The loop runs slowly on purpose",
+                        "All values are computed before iteration starts",
+                        "Loops with sleep() calls"
+                    ],
+                    "answer": "Values are computed only when needed, not all at once"
+                },
+                {
+                    "question": "What does `list(itertools.islice(range(100), 5))` produce?",
+                    "options": [
+                        "[0,1,2,3,4]",
+                        "[95,96,97,98,99]",
+                        "[1,2,3,4,5]",
+                        "Error"
+                    ],
+                    "answer": "[0,1,2,3,4]"
+                }
+            ]
+        }
+    ]
+}

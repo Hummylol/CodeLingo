@@ -1,0 +1,327 @@
+{
+    "levelno": 3,
+    "topic": "Operators",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Operators — Beginner Level",
+            "theory": "Operators are symbols that perform operations on values (operands).\n\n**Arithmetic Operators:**\n- `+` addition, `-` subtraction, `*` multiplication\n- `/` true division (always returns float): `7 / 2 = 3.5`\n- `//` floor division (integer result): `7 // 2 = 3`\n- `%` modulus (remainder): `7 % 2 = 1`\n- `**` exponentiation: `2 ** 3 = 8`\n\n**Comparison Operators** return `True` or `False`:\n`==` equal, `!=` not equal, `>` greater, `<` less, `>=`, `<=`",
+            "questions": [
+                {
+                    "question": "What is the result of `7 // 2`?",
+                    "options": [
+                        "3.5",
+                        "4",
+                        "3",
+                        "1"
+                    ],
+                    "answer": "3"
+                },
+                {
+                    "question": "What is the result of `7 % 3`?",
+                    "options": [
+                        "2",
+                        "1",
+                        "3",
+                        "0"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "What does `2 ** 4` evaluate to?",
+                    "options": [
+                        "8",
+                        "16",
+                        "6",
+                        "24"
+                    ],
+                    "answer": "16"
+                },
+                {
+                    "question": "What is the result of `10 / 4` in Python 3?",
+                    "options": [
+                        "2",
+                        "2.5",
+                        "3",
+                        "2.0"
+                    ],
+                    "answer": "2.5"
+                },
+                {
+                    "question": "Which operator checks for value equality?",
+                    "options": [
+                        "=",
+                        ":=",
+                        "===",
+                        "=="
+                    ],
+                    "answer": "=="
+                },
+                {
+                    "question": "What is the result of `5 + 3 * 2`?",
+                    "options": [
+                        "16",
+                        "11",
+                        "10",
+                        "13"
+                    ],
+                    "answer": "11"
+                },
+                {
+                    "question": "What does `10 != 10` evaluate to?",
+                    "options": [
+                        "True",
+                        "False",
+                        "10",
+                        "Error"
+                    ],
+                    "answer": "False"
+                },
+                {
+                    "question": "What is the result of `3 ** 3`?",
+                    "options": [
+                        "9",
+                        "27",
+                        "6",
+                        "33"
+                    ],
+                    "answer": "27"
+                },
+                {
+                    "question": "What does `15 % 4` evaluate to?",
+                    "options": [
+                        "3",
+                        "4",
+                        "1",
+                        "2"
+                    ],
+                    "answer": "3"
+                },
+                {
+                    "question": "What does `10 / 2` return in Python 3?",
+                    "options": [
+                        "5 (int)",
+                        "5.0 (float)",
+                        "Error",
+                        "2"
+                    ],
+                    "answer": "5.0 (float)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Operators — Intermediate Level",
+            "theory": "**Logical Operators** combine boolean expressions:\n- `and` — True if both operands are True: `True and False → False`\n- `or` — True if at least one operand is True: `True or False → True`\n- `not` — negates: `not True → False`\n\n**Augmented Assignment Operators** are shorthand:\n`x += 5` is the same as `x = x + 5`\nSimilarly: `-=`, `*=`, `/=`, `//=`, `%=`, `**=`\n\n**Bitwise Operators** work on integer bits:\n- `&` AND, `|` OR, `^` XOR, `~` NOT, `<<` left shift, `>>` right shift\n`5 & 3 → 1`, `5 | 3 → 7`, `5 ^ 3 → 6`",
+            "questions": [
+                {
+                    "question": "What does `True and False` evaluate to?",
+                    "options": [
+                        "True",
+                        "False",
+                        "1",
+                        "Error"
+                    ],
+                    "answer": "False"
+                },
+                {
+                    "question": "What does `True or False` evaluate to?",
+                    "options": [
+                        "True",
+                        "False",
+                        "None",
+                        "Error"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What does `not True` evaluate to?",
+                    "options": [
+                        "True",
+                        "False",
+                        "0",
+                        "Error"
+                    ],
+                    "answer": "False"
+                },
+                {
+                    "question": "Which is the logical OR operator in Python?",
+                    "options": [
+                        "||",
+                        "|",
+                        "or",
+                        "OR"
+                    ],
+                    "answer": "or"
+                },
+                {
+                    "question": "What does `x += 3` mean if `x = 5`?",
+                    "options": [
+                        "x becomes 3",
+                        "x becomes 8",
+                        "x becomes 15",
+                        "Error"
+                    ],
+                    "answer": "x becomes 8"
+                },
+                {
+                    "question": "What is the result of `5 & 3` (bitwise AND)?",
+                    "options": [
+                        "7",
+                        "1",
+                        "8",
+                        "2"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "What is the result of `5 | 3` (bitwise OR)?",
+                    "options": [
+                        "1",
+                        "7",
+                        "8",
+                        "15"
+                    ],
+                    "answer": "7"
+                },
+                {
+                    "question": "What does `x //= 2` do when `x = 7`?",
+                    "options": [
+                        "x becomes 3.5",
+                        "x becomes 3",
+                        "x becomes 4",
+                        "Error"
+                    ],
+                    "answer": "x becomes 3"
+                },
+                {
+                    "question": "What is the result of `4 << 1` (left shift by 1)?",
+                    "options": [
+                        "2",
+                        "8",
+                        "16",
+                        "4"
+                    ],
+                    "answer": "8"
+                },
+                {
+                    "question": "What does `~5` (bitwise NOT of 5) evaluate to in Python?",
+                    "options": [
+                        "5",
+                        "-6",
+                        "-5",
+                        "0"
+                    ],
+                    "answer": "-6"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Operators — Expert Level",
+            "theory": "**Operator Precedence** (high to low summary): `**` → unary `-`, `~` → `* / // %` → `+ -` → bitwise shifts → `& ^ |` → comparison → `not` → `and` → `or`.\n\nUse parentheses `()` to override precedence.\n\n**Short-circuit evaluation**: Python's `and` and `or` stop evaluating as soon as the result is known:\n- `False and anything` immediately returns `False`\n- `True or anything` immediately returns `True`\n\n**Walrus operator `:=`** (Python 3.8+) assigns a value inside an expression:\n`while chunk := f.read(8192):  # assigns AND tests in one step`\n\n**Chained comparisons** work naturally:\n`1 < x < 10` — Python evaluates this as `1 < x and x < 10`",
+            "questions": [
+                {
+                    "question": "What is the result of `2 + 3 ** 2`?",
+                    "options": [
+                        "25",
+                        "11",
+                        "13",
+                        "Error"
+                    ],
+                    "answer": "11"
+                },
+                {
+                    "question": "What does short-circuit evaluation mean for `False and foo()`?",
+                    "options": [
+                        "foo() is called first",
+                        "foo() is never called because the result is already False",
+                        "An error occurs",
+                        "Both sides are always evaluated"
+                    ],
+                    "answer": "foo() is never called because the result is already False"
+                },
+                {
+                    "question": "What did the walrus operator `:=` introduce in Python 3.8?",
+                    "options": [
+                        "A new comparison operator",
+                        "Assignment inside an expression",
+                        "Dictionary merging",
+                        "Pattern matching"
+                    ],
+                    "answer": "Assignment inside an expression"
+                },
+                {
+                    "question": "What does `1 < 3 < 5` evaluate to in Python?",
+                    "options": [
+                        "True",
+                        "False",
+                        "Error",
+                        "Depends on Python version"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What is the result of `not not True`?",
+                    "options": [
+                        "True",
+                        "False",
+                        "None",
+                        "Error"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What is the output of `0 or 'hello'`?",
+                    "options": [
+                        "0",
+                        "'hello'",
+                        "True",
+                        "False"
+                    ],
+                    "answer": "'hello'"
+                },
+                {
+                    "question": "What is the output of `5 and 0`?",
+                    "options": [
+                        "5",
+                        "0",
+                        "True",
+                        "False"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "What does `5 ^ 3` evaluate to (XOR)?",
+                    "options": [
+                        "6",
+                        "7",
+                        "8",
+                        "1"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "Which has higher precedence: `*` or `+`?",
+                    "options": [
+                        "+ has higher precedence",
+                        "* has higher precedence",
+                        "They are equal",
+                        "It depends on the operands"
+                    ],
+                    "answer": "* has higher precedence"
+                },
+                {
+                    "question": "What does `True or False and False` evaluate to? (considering precedence)",
+                    "options": [
+                        "False",
+                        "True",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "True"
+                }
+            ]
+        }
+    ]
+}

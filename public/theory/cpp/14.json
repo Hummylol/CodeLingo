@@ -1,0 +1,327 @@
+{
+    "levelno": 14,
+    "topic": "Member Functions & Access Specifiers",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Member Functions & Access Specifiers — Beginner Level",
+            "theory": "**Access specifiers** control member visibility:\n- `public` — accessible from anywhere\n- `private` — only accessible from within the class and friend functions\n- `protected` — accessible from within the class and derived classes\n\nGetters and setters let you safely expose private data:\n```cpp\nclass Circle {\nprivate:\n    double radius;\npublic:\n    void setRadius(double r) { if (r >= 0) radius = r; }\n    double getRadius() const { return radius; }\n    double getArea() const { return 3.14159 * radius * radius; }\n};\n```\n\nThe **scope resolution operator** `::` defines member functions outside the class.",
+            "questions": [
+                {
+                    "question": "Which specifier makes members accessible from anywhere?",
+                    "options": [
+                        "`private`",
+                        "`protected`",
+                        "`public`",
+                        "`global`"
+                    ],
+                    "answer": "`public`"
+                },
+                {
+                    "question": "Which specifier makes members accessible only within the class?",
+                    "options": [
+                        "`private`",
+                        "`protected`",
+                        "`public`",
+                        "`hidden`"
+                    ],
+                    "answer": "`private`"
+                },
+                {
+                    "question": "Default access for class members in C++?",
+                    "options": [
+                        "`public`",
+                        "`protected`",
+                        "`private`",
+                        "Compile error"
+                    ],
+                    "answer": "`private`"
+                },
+                {
+                    "question": "Hiding data and allowing access through public methods is called:",
+                    "options": [
+                        "Inheritance",
+                        "Polymorphism",
+                        "Abstraction",
+                        "Encapsulation"
+                    ],
+                    "answer": "Encapsulation"
+                },
+                {
+                    "question": "A public function used to set a private member is called a:",
+                    "options": [
+                        "Getter",
+                        "Setter",
+                        "Constructor",
+                        "Friend function"
+                    ],
+                    "answer": "Setter"
+                },
+                {
+                    "question": "A public function used to retrieve a private member is called a:",
+                    "options": [
+                        "Setter",
+                        "Mutator",
+                        "Getter",
+                        "Accessor"
+                    ],
+                    "answer": "Getter"
+                },
+                {
+                    "question": "What is `::` used for?",
+                    "options": [
+                        "Access global variables",
+                        "Define member functions outside the class",
+                        "Access static members",
+                        "All of the above"
+                    ],
+                    "answer": "All of the above"
+                },
+                {
+                    "question": "Which specifier allows access from derived classes but not from outside?",
+                    "options": [
+                        "`private`",
+                        "`protected`",
+                        "`public`",
+                        "`internal`"
+                    ],
+                    "answer": "`protected`"
+                },
+                {
+                    "question": "Can a `private` member function be called from `main()`?",
+                    "options": [
+                        "Yes, always",
+                        "No, compile error",
+                        "Only if const",
+                        "Yes, with `->`"
+                    ],
+                    "answer": "No, compile error"
+                },
+                {
+                    "question": "Why is it good practice to make data members `private`?",
+                    "options": [
+                        "Faster runtime",
+                        "Better control over data and enforce validation",
+                        "Required by C++ standard",
+                        "Less memory"
+                    ],
+                    "answer": "Better control over data and enforce validation"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Member Functions & Access Specifiers — Intermediate Level",
+            "theory": "**`const` member functions** promise not to modify the object:\n```cpp\ndouble getArea() const { return 3.14 * radius * radius; }\n```\n\n**`mutable`** — allows a specific member to be modified even inside a `const` function:\n`mutable int callCount = 0;`\n\n**Friend functions/classes:** can access private members:\n```cpp\nclass Box {\n    friend void printVolume(Box& b);\nprivate:\n    int volume;\n};\nvoid printVolume(Box& b) { std::cout << b.volume; }\n```\n\n**Operator member overloads:** `operator+`, `operator[]`, `operator()` are often member functions.",
+            "questions": [
+                {
+                    "question": "What does `const` after a member function signature mean?",
+                    "options": [
+                        "The return is const",
+                        "The function won't modify the object's state",
+                        "The parameters are const",
+                        "It can only return primitive types"
+                    ],
+                    "answer": "The function won't modify the object's state"
+                },
+                {
+                    "question": "What does `mutable` do to a data member?",
+                    "options": [
+                        "Makes it public",
+                        "Allows it to be modified inside a `const` member function",
+                        "Makes it static",
+                        "Prevents assignment"
+                    ],
+                    "answer": "Allows it to be modified inside a `const` member function"
+                },
+                {
+                    "question": "What is a friend function?",
+                    "options": [
+                        "A public member function",
+                        "A non-member function granted access to a class's private members",
+                        "A static member function",
+                        "A derived class method"
+                    ],
+                    "answer": "A non-member function granted access to a class's private members"
+                },
+                {
+                    "question": "Can you call a non-const member function on a const object?",
+                    "options": [
+                        "Yes",
+                        "No — const objects can only call const member functions",
+                        "Only if using const_cast",
+                        "Only static functions"
+                    ],
+                    "answer": "No — const objects can only call const member functions"
+                },
+                {
+                    "question": "Where is `mutable` most commonly used?",
+                    "options": [
+                        "Network sockets",
+                        "Caching results in a logically-const function (e.g., lazy evaluation cache)",
+                        "Preventing copies",
+                        "Thread synchronization"
+                    ],
+                    "answer": "Caching results in a logically-const function (e.g., lazy evaluation cache)"
+                },
+                {
+                    "question": "Can a class be a friend of another class?",
+                    "options": [
+                        "No",
+                        "Yes — granting the friend class access to all private members",
+                        "Only in the same file",
+                        "Only if they're in the same hierarchy"
+                    ],
+                    "answer": "Yes — granting the friend class access to all private members"
+                },
+                {
+                    "question": "Is friendship in C++ inherited?",
+                    "options": [
+                        "Yes",
+                        "No — friendship is not inherited by derived classes",
+                        "Only for public members",
+                        "Only in templates"
+                    ],
+                    "answer": "No — friendship is not inherited by derived classes"
+                },
+                {
+                    "question": "What does defining `operator()` on a class create?",
+                    "options": [
+                        "An overloaded comma",
+                        "A functor — an object that can be called like a function",
+                        "A copy constructor",
+                        "A conversion operator"
+                    ],
+                    "answer": "A functor — an object that can be called like a function"
+                },
+                {
+                    "question": "What is `const_cast` used for?",
+                    "options": [
+                        "Adding const to a type",
+                        "Removing const qualification — use with extreme care",
+                        "Casting between numeric types",
+                        "Casting pointer types"
+                    ],
+                    "answer": "Removing const qualification — use with extreme care"
+                },
+                {
+                    "question": "What does `explicit` on a single-parameter constructor do?",
+                    "options": [
+                        "Makes it public",
+                        "Prevents implicit conversion using that constructor",
+                        "Makes it constexpr",
+                        "Deletes the copy ctor"
+                    ],
+                    "answer": "Prevents implicit conversion using that constructor"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Member Functions & Access Specifiers — Expert Level",
+            "theory": "**`[[nodiscard]]` (C++17/20):** on methods to warn if return is silently dropped.\n\n**Ref-qualified member functions (C++11):**\n```cpp\nclass Str {\n    std::string data;\npublic:\n    std::string& get() &  { return data; }      // lvalue object\n    std::string  get() && { return std::move(data); } // rvalue object\n};\n```\n\n**Concept-constrained member functions (C++20):** `template<typename T> requires std::integral<T> void set(T v);`\n\n**`protected` inheritance:** the public members of the base become protected in the derived — rarely used.",
+            "questions": [
+                {
+                    "question": "What is a ref-qualified member function?",
+                    "options": [
+                        "A function taking a ref parameter",
+                        "A function with `&` or `&&` qualifier — called differently on lvalue vs rvalue objects",
+                        "A const function",
+                        "A virtual function"
+                    ],
+                    "answer": "A function with `&` or `&&` qualifier — called differently on lvalue vs rvalue objects"
+                },
+                {
+                    "question": "What does `std::string get() &&` (rvalue-qualified) enable?",
+                    "options": [
+                        "Returns a const ref",
+                        "Can steal (move) the data when called on an rvalue/temporary object",
+                        "Copies always",
+                        "Only works in constructors"
+                    ],
+                    "answer": "Can steal (move) the data when called on an rvalue/temporary object"
+                },
+                {
+                    "question": "What does `protected` inheritance do?",
+                    "options": [
+                        "All base members become private",
+                        "Public and protected members of base become protected in derived",
+                        "All base members become public",
+                        "Prevents further inheritance"
+                    ],
+                    "answer": "Public and protected members of base become protected in derived"
+                },
+                {
+                    "question": "What is `private` inheritance?",
+                    "options": [
+                        "All base members become private in derived — implementation inheritance, IS-A is hidden",
+                        "Same as composition",
+                        "Makes base members inaccessible",
+                        "Only allowed with single inheritance"
+                    ],
+                    "answer": "All base members become private in derived — implementation inheritance, IS-A is hidden"
+                },
+                {
+                    "question": "What is an 'attorney-client' idiom?",
+                    "options": [
+                        "A legal concept",
+                        "A pattern giving a specific class limited access to private members of another without full friendship",
+                        "Using protected vs private",
+                        "A polymorphism pattern"
+                    ],
+                    "answer": "A pattern giving a specific class limited access to private members of another without full friendship"
+                },
+                {
+                    "question": "What does `std::launder` on a pointer to a `mutable` member inside a `const` function risk?",
+                    "options": [
+                        "Nothing",
+                        "Undefined behavior if the const object is truly constant (static/const storage)",
+                        "Always safe",
+                        "Only risk with shared_ptr"
+                    ],
+                    "answer": "Undefined behavior if the const object is truly constant (static/const storage)"
+                },
+                {
+                    "question": "What is a pure virtual function?",
+                    "options": [
+                        "`virtual void f() {}`",
+                        "`virtual void f() = 0;` — makes the class abstract",
+                        "`virtual void f() = default;`",
+                        "A static virtual function"
+                    ],
+                    "answer": "`virtual void f() = 0;` — makes the class abstract"
+                },
+                {
+                    "question": "What does `final` on a class prevent?",
+                    "options": [
+                        "Instantiation",
+                        "Further inheritance from that class",
+                        "All virtual overrides",
+                        "Friend declarations"
+                    ],
+                    "answer": "Further inheritance from that class"
+                },
+                {
+                    "question": "What is an abstract class?",
+                    "options": [
+                        "A class with only private members",
+                        "A class with at least one pure virtual function — cannot be instantiated directly",
+                        "A template class",
+                        "A class with no constructors"
+                    ],
+                    "answer": "A class with at least one pure virtual function — cannot be instantiated directly"
+                },
+                {
+                    "question": "What does `override` on a derived class function do?",
+                    "options": [
+                        "Makes it virtual",
+                        "Explicitly marks it as overriding a base class virtual — compiler error if it doesn't",
+                        "Prevents further overriding",
+                        "Deprecated in C++20"
+                    ],
+                    "answer": "Explicitly marks it as overriding a base class virtual — compiler error if it doesn't"
+                }
+            ]
+        }
+    ]
+}

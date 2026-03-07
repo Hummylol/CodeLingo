@@ -1,0 +1,327 @@
+{
+    "levelno": 6,
+    "topic": "Control Flow (If-Elif-Else)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Control Flow — Beginner Level",
+            "theory": "**Control flow** lets your program make decisions.\n\n`if condition:` — runs the block if the condition is `True`\n`elif condition:` — (else if) checked when the `if` was False\n`else:` — runs when all above conditions are False\n\nKey rules:\n- Every `if`, `elif`, `else` line ends with a **colon `:`**\n- The code block inside must be **indented**\n- `else` and `elif` are optional\n\nExample:\n`score = 75`\n`if score >= 90: print('A')`\n`elif score >= 70: print('B')`\n`else: print('C')`\n\nOutput: `B`",
+            "questions": [
+                {
+                    "question": "What keyword checks an alternative condition after `if`?",
+                    "options": [
+                        "else if",
+                        "or",
+                        "elif",
+                        "then"
+                    ],
+                    "answer": "elif"
+                },
+                {
+                    "question": "What punctuation ends an `if`, `elif`, or `else` line?",
+                    "options": [
+                        "Semicolon ;",
+                        "Period .",
+                        "Colon :",
+                        "Nothing"
+                    ],
+                    "answer": "Colon :"
+                },
+                {
+                    "question": "Is the `else` block mandatory?",
+                    "options": [
+                        "Yes, always needed",
+                        "No, it is optional",
+                        "Only when using elif",
+                        "Yes, to prevent errors"
+                    ],
+                    "answer": "No, it is optional"
+                },
+                {
+                    "question": "What output does `x = 10; if x > 10: print('A'); else: print('B')` produce?",
+                    "options": [
+                        "A",
+                        "B",
+                        "AB",
+                        "No output"
+                    ],
+                    "answer": "B"
+                },
+                {
+                    "question": "How many `elif` blocks can you have in a chain?",
+                    "options": [
+                        "Only one",
+                        "Maximum two",
+                        "As many as needed",
+                        "None"
+                    ],
+                    "answer": "As many as needed"
+                },
+                {
+                    "question": "In an if-elif-else chain, how many blocks can execute at most?",
+                    "options": [
+                        "Zero",
+                        "One",
+                        "Two",
+                        "All of them"
+                    ],
+                    "answer": "One"
+                },
+                {
+                    "question": "What defines the code block that belongs to an `if` statement?",
+                    "options": [
+                        "Curly braces {}",
+                        "Parentheses ()",
+                        "Indentation",
+                        "The `end` keyword"
+                    ],
+                    "answer": "Indentation"
+                },
+                {
+                    "question": "What is the boolean value of an empty string `''`?",
+                    "options": [
+                        "True",
+                        "False",
+                        "None",
+                        "Error"
+                    ],
+                    "answer": "False"
+                },
+                {
+                    "question": "The `else` statement runs when:",
+                    "options": [
+                        "The if condition is True",
+                        "All preceding if/elif conditions are False",
+                        "Always",
+                        "Never"
+                    ],
+                    "answer": "All preceding if/elif conditions are False"
+                },
+                {
+                    "question": "Which of these is a valid `if` condition?",
+                    "options": [
+                        "if x = 5:",
+                        "if x == 5:",
+                        "if (x == 5)",
+                        "ifx == 5:"
+                    ],
+                    "answer": "if x == 5:"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Control Flow — Intermediate Level",
+            "theory": "**Ternary (conditional) expression** — a one-line if/else:\n`result = 'even' if n % 2 == 0 else 'odd'`\n\n**Truthy and Falsy values** — any value can be used as a condition:\n- Falsy: `0`, `0.0`, `''`, `[]`, `{}`, `()`, `set()`, `None`, `False`\n- Truthy: everything else\n\n**Nested `if` statements** — placing an `if` inside another `if`. This should be done sparingly; consider using `and`/`or` conditions instead to keep code flat.\n\nThe `in` operator is handy in conditions:\n`if name in ['Alice', 'Bob']:  # checks membership`",
+            "questions": [
+                {
+                    "question": "What does `'even' if 4 % 2 == 0 else 'odd'` evaluate to?",
+                    "options": [
+                        "'odd'",
+                        "'even'",
+                        "Error",
+                        "True"
+                    ],
+                    "answer": "'even'"
+                },
+                {
+                    "question": "Which values are falsy in Python? (best answer)",
+                    "options": [
+                        "0, '', None, [], {}",
+                        "0, False, 'False'",
+                        "Only 0 and None",
+                        "Only False"
+                    ],
+                    "answer": "0, '', None, [], {}"
+                },
+                {
+                    "question": "What is a ternary expression?",
+                    "options": [
+                        "An expression with three operands using if/else in one line",
+                        "A three-way loop",
+                        "An expression using three variables",
+                        "A bitwise operation"
+                    ],
+                    "answer": "An expression with three operands using if/else in one line"
+                },
+                {
+                    "question": "What does `if 'x' in 'python':` check?",
+                    "options": [
+                        "Whether 'x' equals 'python'",
+                        "Whether the character 'x' is in the string 'python'",
+                        "Whether 'python' contains 'x' as a key",
+                        "Raises TypeError"
+                    ],
+                    "answer": "Whether the character 'x' is in the string 'python'"
+                },
+                {
+                    "question": "What is the output? `x = 5; print('yes' if x else 'no')`",
+                    "options": [
+                        "yes",
+                        "no",
+                        "5",
+                        "Error"
+                    ],
+                    "answer": "yes"
+                },
+                {
+                    "question": "What is the output? `x = 0; print('yes' if x else 'no')`",
+                    "options": [
+                        "yes",
+                        "no",
+                        "0",
+                        "Error"
+                    ],
+                    "answer": "no"
+                },
+                {
+                    "question": "Which avoids deeply nested ifs? (best answer)",
+                    "options": [
+                        "Use more elif chains",
+                        "Combine conditions with and/or",
+                        "Use more comments",
+                        "Use a for loop instead"
+                    ],
+                    "answer": "Combine conditions with and/or"
+                },
+                {
+                    "question": "What does `if not []:` evaluate to?",
+                    "options": [
+                        "False",
+                        "True",
+                        "Error",
+                        "[]"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What is the output? `a = 3; b = 5; print(a if a > b else b)`",
+                    "options": [
+                        "3",
+                        "5",
+                        "True",
+                        "Error"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "What does `if x is None:` check?",
+                    "options": [
+                        "If x equals None in value",
+                        "If x is the exact None singleton object",
+                        "If x is empty",
+                        "If x is False"
+                    ],
+                    "answer": "If x is the exact None singleton object"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Control Flow — Expert Level",
+            "theory": "**`match`-`case`** (Python 3.10+ Structural Pattern Matching) — a powerful switch-like construct:\n```python\nmatch command:\n    case 'quit': quit()\n    case 'help': print('Help text')\n    case _: print('Unknown')\n```\n\nCases can also **destructure** objects and check types.\n\n**Guard clauses** (early return pattern) — returning early from a function to avoid deep nesting:\n```python\ndef process(x):\n    if x is None: return\n    if x < 0: raise ValueError\n    # main logic here\n```\n\n**Short-circuit with `and`/`or`** can replace simple `if` statements:\n`x > 0 and print('positive')  # rarely used, but valid`",
+            "questions": [
+                {
+                    "question": "What Python version introduced `match`-`case` (structural pattern matching)?",
+                    "options": [
+                        "3.8",
+                        "3.9",
+                        "3.10",
+                        "3.12"
+                    ],
+                    "answer": "3.10"
+                },
+                {
+                    "question": "In a `match`-`case`, what does the `_` pattern match?",
+                    "options": [
+                        "Nothing",
+                        "Any value (wildcard/default case)",
+                        "Only None",
+                        "Only integers"
+                    ],
+                    "answer": "Any value (wildcard/default case)"
+                },
+                {
+                    "question": "What is a 'guard clause' in control flow?",
+                    "options": [
+                        "A try/except block",
+                        "Checking security permissions",
+                        "An early return that handles edge cases before main logic",
+                        "A loop guard preventing infinite loops"
+                    ],
+                    "answer": "An early return that handles edge cases before main logic"
+                },
+                {
+                    "question": "What does `False or 'default'` return?",
+                    "options": [
+                        "False",
+                        "'default'",
+                        "True",
+                        "Error"
+                    ],
+                    "answer": "'default'"
+                },
+                {
+                    "question": "What does `'value' and None` return?",
+                    "options": [
+                        "'value'",
+                        "None",
+                        "True",
+                        "False"
+                    ],
+                    "answer": "None"
+                },
+                {
+                    "question": "What is the benefit of guard clauses over deeply nested ifs?",
+                    "options": [
+                        "They run faster",
+                        "They reduce nesting and make the happy path clearer",
+                        "They are required by PEP 8",
+                        "They eliminate the need for else"
+                    ],
+                    "answer": "They reduce nesting and make the happy path clearer"
+                },
+                {
+                    "question": "What does `match x: case int():` match?",
+                    "options": [
+                        "Only the integer literal 'int'",
+                        "Any integer value",
+                        "The string 'int'",
+                        "Nothing"
+                    ],
+                    "answer": "Any integer value"
+                },
+                {
+                    "question": "What does `if x := compute(): ...` do?",
+                    "options": [
+                        "Raises SyntaxError",
+                        "Assigns result of compute() to x and checks its truthiness in one step",
+                        "Only computes if x is already truthy",
+                        "Is equivalent to assert x == compute()"
+                    ],
+                    "answer": "Assigns result of compute() to x and checks its truthiness in one step"
+                },
+                {
+                    "question": "What is the output of `x = 5; y = 10 if x > 0 else -10; print(y)`?",
+                    "options": [
+                        "-10",
+                        "10",
+                        "0",
+                        "Error"
+                    ],
+                    "answer": "10"
+                },
+                {
+                    "question": "When should you prefer `match`-`case` over `if`-`elif`?",
+                    "options": [
+                        "Never, if-elif is always better",
+                        "When matching complex structures or many cases against patterns/types",
+                        "When working with strings only",
+                        "When performance is critical"
+                    ],
+                    "answer": "When matching complex structures or many cases against patterns/types"
+                }
+            ]
+        }
+    ]
+}

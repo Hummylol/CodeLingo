@@ -1,0 +1,327 @@
+{
+    "levelno": 15,
+    "topic": "Divide & Conquer",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Divide & Conquer — Beginner Level",
+            "theory": "**Divide & Conquer** solves problems by:\n1. **Divide** — split into subproblems\n2. **Conquer** — recursively solve each subproblem\n3. **Combine** — merge solutions\n\n**Master Theorem** analyzes recurrences `T(n) = aT(n/b) + f(n)`:\n- If `f(n) = O(n^c)` where `c < log_b(a)` → `T(n) = O(n^log_b(a))`\n- If `f(n) = Θ(n^log_b(a))` → `T(n) = O(n^log_b(a) * log n)`\n- If `f(n) = Ω(n^c)` where `c > log_b(a)` → `T(n) = O(f(n))`\n\n**Examples:**\n- Merge sort: `T(n) = 2T(n/2) + O(n)` → O(n log n)\n- Binary search: `T(n) = T(n/2) + O(1)` → O(log n)",
+            "questions": [
+                {
+                    "question": "Merge sort recurrence is:",
+                    "options": [
+                        "`T(n) = T(n-1) + O(n)`",
+                        "`T(n) = 2T(n/2) + O(n)`",
+                        "`T(n) = 2T(n/2) + O(1)`",
+                        "`T(n) = T(n/2) + O(n)`"
+                    ],
+                    "answer": "`T(n) = 2T(n/2) + O(n)`"
+                },
+                {
+                    "question": "Binary search recurrence is:",
+                    "options": [
+                        "`T(n) = 2T(n/2) + O(1)`",
+                        "`T(n) = T(n/2) + O(1)`",
+                        "`T(n) = T(n-1) + O(1)`",
+                        "`T(n) = T(n/3) + O(1)`"
+                    ],
+                    "answer": "`T(n) = T(n/2) + O(1)`"
+                },
+                {
+                    "question": "Master Theorem applies to recurrences of the form:",
+                    "options": [
+                        "`T(n) = T(n-1) + f(n)`",
+                        "`T(n) = aT(n/b) + f(n)` where a>=1, b>1",
+                        "`T(n) = aT(n-b) + f(n)`",
+                        "Any recurrence"
+                    ],
+                    "answer": "`T(n) = aT(n/b) + f(n)` where a>=1, b>1"
+                },
+                {
+                    "question": "Divide and conquer is best when:",
+                    "options": [
+                        "Subproblems are independent",
+                        "Subproblems overlap significantly",
+                        "Only two branches always",
+                        "Problem is already sorted"
+                    ],
+                    "answer": "Subproblems are independent"
+                },
+                {
+                    "question": "Quick sort also uses divide and conquer by:",
+                    "options": [
+                        "Splitting at midpoint",
+                        "Partitioning around a pivot and recursing on both halves",
+                        "Sorted split always",
+                        "Finding median first"
+                    ],
+                    "answer": "Partitioning around a pivot and recursing on both halves"
+                },
+                {
+                    "question": "Karatsuba algorithm for multiplication: complexity?",
+                    "options": [
+                        "O(n^2) naive",
+                        "O(n^1.585) via 3 recursive multiplications instead of 4",
+                        "O(n log n)",
+                        "O(n)"
+                    ],
+                    "answer": "O(n^1.585) via 3 recursive multiplications instead of 4"
+                },
+                {
+                    "question": "QuickSort recurrence (balanced):  `T(n) = 2T(n/2) + O(n)` → complexity?",
+                    "options": [
+                        "O(n)",
+                        "O(n^2)",
+                        "O(n log n)",
+                        "O(n log^2 n)"
+                    ],
+                    "answer": "O(n log n)"
+                },
+                {
+                    "question": "Fibonacci using divide & conquer (naive) is:",
+                    "options": [
+                        "O(n)",
+                        "O(n log n)",
+                        "O(2^n) — exponential — overlapping subproblems need DP instead",
+                        "O(log n)"
+                    ],
+                    "answer": "O(2^n) — exponential — overlapping subproblems need DP instead"
+                },
+                {
+                    "question": "Closest pair of points divide & conquer complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log^2 n) or O(n log n)",
+                        "O(n)",
+                        "O(n log n) — include strip merge step"
+                    ],
+                    "answer": "O(n log n) — include strip merge step"
+                },
+                {
+                    "question": "What distinguishes D&C from DP?",
+                    "options": [
+                        "No recursion in DP",
+                        "D&C subproblems are independent; DP has overlapping subproblems",
+                        "D&C always faster",
+                        "DP always uses tabulation"
+                    ],
+                    "answer": "D&C subproblems are independent; DP has overlapping subproblems"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Divide & Conquer — Intermediate Level",
+            "theory": "**Inversions count:** modified merge sort — count cross-inversions during merge step.\n\n**Strassen's matrix multiplication:** 7 recursive multiplications instead of 8 → O(n^2.807).\n\n**Median of medians:** find rank-k element in O(n) worst case.\n\n**Skyline problem:** divide and merge skyline strips.\n\n**Expression tree evaluation:** recursively evaluate left/right subtrees and apply root operator.",
+            "questions": [
+                {
+                    "question": "Count inversions using merge sort: when counting?",
+                    "options": [
+                        "Before sorting",
+                        "While merging — if left[i] > right[j], all remaining left elements form inversions",
+                        "After sorting",
+                        "During split"
+                    ],
+                    "answer": "While merging — if left[i] > right[j], all remaining left elements form inversions"
+                },
+                {
+                    "question": "Strassen's algorithm multiplies n×n matrices in:",
+                    "options": [
+                        "O(n^3)",
+                        "O(n^2.807)",
+                        "O(n^2.5)",
+                        "O(n^2 log n)"
+                    ],
+                    "answer": "O(n^2.807)"
+                },
+                {
+                    "question": "Median of medians guarantees O(n) worst-case by:",
+                    "options": [
+                        "Sorting all elements",
+                        "Choosing pivot that's at least 3n/10 from both ends — ensures balanced partition",
+                        "Using random pivot",
+                        "Using Fibonacci heap"
+                    ],
+                    "answer": "Choosing pivot that's at least 3n/10 from both ends — ensures balanced partition"
+                },
+                {
+                    "question": "Skyline problem merging two strips:",
+                    "options": [
+                        "Merge like merge sort, tracking current max height from both sides",
+                        "BFS across buildings",
+                        "Sort by x, track heights",
+                        "Both A and C describe the merge step"
+                    ],
+                    "answer": "Both A and C describe the merge step"
+                },
+                {
+                    "question": "Search in 2D matrix (not row-sorted) — D&C approach:",
+                    "options": [
+                        "Binary search each row O(m log n)",
+                        "Divide into 4 quadrants, eliminate 1 based on midpoint comparison — O(n^1.585)",
+                        "Sort rows then search",
+                        "Linear scan O(nm)"
+                    ],
+                    "answer": "Divide into 4 quadrants, eliminate 1 based on midpoint comparison — O(n^1.585)"
+                },
+                {
+                    "question": "Closest pair: why check only ±d strip?",
+                    "options": [
+                        "Arbitrary choice",
+                        "The minimum distance from either half bounds how far points across the dividing line can be",
+                        "Random sampling reduces area",
+                        "Both sides have at most d distance from boundary"
+                    ],
+                    "answer": "The minimum distance from either half bounds how far points across the dividing line can be"
+                },
+                {
+                    "question": "Ternary search for unimodal function min/max:",
+                    "options": [
+                        "Binary search on sorted function",
+                        "Evaluate at n/3 and 2n/3, eliminate 1/3 of range each step — O(log n / log 1.5)",
+                        "DFS on function values",
+                        "Grid search O(n)"
+                    ],
+                    "answer": "Evaluate at n/3 and 2n/3, eliminate 1/3 of range each step — O(log n / log 1.5)"
+                },
+                {
+                    "question": "Fast fourier transform (FFT) uses D&C — complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n) — split even/odd coefficients",
+                        "O(n)",
+                        "O(n log^2 n)"
+                    ],
+                    "answer": "O(n log n) — split even/odd coefficients"
+                },
+                {
+                    "question": "Matrix chain multiplication with D&C (no DP):",
+                    "options": [
+                        "O(n log n)",
+                        "O(2^n) without memoization — exponential",
+                        "O(n^3) with DP",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(2^n) without memoization — exponential"
+                },
+                {
+                    "question": "Karatsuba: to multiply (a+b)*(c+d), it computes:",
+                    "options": [
+                        "ac, bd, (a+b)(c+d) — only 3 multiplications",
+                        "ac, ad, bc, bd — 4 multiplications",
+                        "Only (a+b)(c+d)",
+                        "(a+b)(c+d) - ac - bd = ad+bc — key insight"
+                    ],
+                    "answer": "(a+b)(c+d) - ac - bd = ad+bc — key insight"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Divide & Conquer — Expert Level",
+            "theory": "**Fast Matrix Multiplication:** current best is Coppersmith-Winograd variant O(n^2.372...) — theoretical.\n\n**Bit complexity model:** multiply n-bit numbers in O(M(n)) where M(n) = n log n log log n (Harvey-Hoeven 2019).\n\n**D&C for DP optimization:** O(n^2) → O(n log n) when opt(i) is monotone.\n\n**Randomized QuickSelect:** O(n) expected for median/kth element.\n\n**Parallel D&C:** span O(log n) in PRAM model for merge sort.",
+            "questions": [
+                {
+                    "question": "Current best theoretical matrix multiplication exponent ω is:",
+                    "options": [
+                        "3",
+                        "2.807 (Strassen)",
+                        "2.372... (Coppersmith-Winograd family)",
+                        "2 (lower bound conjecture)"
+                    ],
+                    "answer": "2.372... (Coppersmith-Winograd family)"
+                },
+                {
+                    "question": "Harvey-Hoeven (2019) algorithm multiplies n-bit integers in:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n) — optimal in word RAM model",
+                        "O(n log n log log n)",
+                        "O(n log n log n)"
+                    ],
+                    "answer": "O(n log n) — optimal in word RAM model"
+                },
+                {
+                    "question": "QuickSelect average complexity vs worst case:",
+                    "options": [
+                        "Same O(n)",
+                        "Average O(n), worst O(n^2) — randomized pivot avoids worst case in expectation",
+                        "O(n log n) both",
+                        "O(n^2) average"
+                    ],
+                    "answer": "Average O(n), worst O(n^2) — randomized pivot avoids worst case in expectation"
+                },
+                {
+                    "question": "D&C DP optimization applies when:",
+                    "options": [
+                        "f(n) is O(n)",
+                        "Cost function satisfies SMAWK-like conditions — opt(i) is monotone non-decreasing",
+                        "Problem has overlapping subproblems",
+                        "Any divide-and-conquer"
+                    ],
+                    "answer": "Cost function satisfies SMAWK-like conditions — opt(i) is monotone non-decreasing"
+                },
+                {
+                    "question": "PRAM parallel merge sort span (critical path):",
+                    "options": [
+                        "O(n)",
+                        "O(log^2 n) — using parallel merge",
+                        "O(log n)",
+                        "O(n/p) for p processors"
+                    ],
+                    "answer": "O(log^2 n) — using parallel merge"
+                },
+                {
+                    "question": "Number-theoretic transform (NTT) is FFT but:",
+                    "options": [
+                        "Over complex numbers",
+                        "Over modular arithmetic — avoids floating-point precision for polynomial multiplication mod prime p",
+                        "Faster asymptotically",
+                        "Only for integers up to 10^9"
+                    ],
+                    "answer": "Over modular arithmetic — avoids floating-point precision for polynomial multiplication mod prime p"
+                },
+                {
+                    "question": "Akra-Bazzi method generalizes Master Theorem for:",
+                    "options": [
+                        "Only integer b values",
+                        "Recurrences with different-sized subproblems and additive/multiplicative tolls",
+                        "Only b=2 case",
+                        "Always gives tighter bounds"
+                    ],
+                    "answer": "Recurrences with different-sized subproblems and additive/multiplicative tolls"
+                },
+                {
+                    "question": "2D closest pair: in the strip, why at most 8 points in a d×2d rectangle?",
+                    "options": [
+                        "Arbitrary limit",
+                        "Geometric argument: packing constraint from d/2-separated points in 2×2 unit squares",
+                        "6 points exactly",
+                        "The 8 constant is not tight"
+                    ],
+                    "answer": "Geometric argument: packing constraint from d/2-separated points in 2×2 unit squares"
+                },
+                {
+                    "question": "Randomized median-of-medians alternatives:",
+                    "options": [
+                        "Always deterministic",
+                        "Random sampling — pick random subset, find median of that as pivot — O(n) expected simpler",
+                        "HeapSort approach",
+                        "Binary search on sorted array"
+                    ],
+                    "answer": "Random sampling — pick random subset, find median of that as pivot — O(n) expected simpler"
+                },
+                {
+                    "question": "FFT-based polynomial multiplication complexity for degree-n polynomials:",
+                    "options": [
+                        "O(n^2) naive",
+                        "O(n log n) using FFT/NTT",
+                        "O(n log^2 n)",
+                        "O(n)"
+                    ],
+                    "answer": "O(n log n) using FFT/NTT"
+                }
+            ]
+        }
+    ]
+}

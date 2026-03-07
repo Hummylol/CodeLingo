@@ -1,0 +1,327 @@
+{
+    "levelno": 5,
+    "topic": "Trees",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Trees — Beginner Level",
+            "theory": "A **tree** is a hierarchical data structure with a root node and children.\n\n**Binary tree:** each node has at most 2 children.\n\n```python\nclass TreeNode:\n    def __init__(self, val=0):\n        self.val = val\n        self.left = None\n        self.right = None\n```\n\n**Tree traversals:**\n- **Inorder (L-Root-R):** gives sorted order in BST\n- **Preorder (Root-L-R):** copy tree, prefix expression\n- **Postorder (L-R-Root):** delete tree, postfix expression\n- **Level-order (BFS):** level by level using queue\n\n**Key terms:** root, leaf, height, depth, parent, sibling, ancestor.",
+            "questions": [
+                {
+                    "question": "Which traversal visits nodes in L-Root-R order?",
+                    "options": [
+                        "Preorder",
+                        "Inorder",
+                        "Postorder",
+                        "BFS"
+                    ],
+                    "answer": "Inorder"
+                },
+                {
+                    "question": "BFS (level-order) traversal uses:",
+                    "options": [
+                        "Stack",
+                        "Recursion",
+                        "Queue",
+                        "Heap"
+                    ],
+                    "answer": "Queue"
+                },
+                {
+                    "question": "DFS tree traversal naturally uses:",
+                    "options": [
+                        "Queue",
+                        "Stack (recursion or explicit)",
+                        "Heap",
+                        "Array"
+                    ],
+                    "answer": "Stack (recursion or explicit)"
+                },
+                {
+                    "question": "What is the height of a single-node tree?",
+                    "options": [
+                        "0",
+                        "1",
+                        "-1",
+                        "Undefined"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "Binary tree max nodes at height h:",
+                    "options": [
+                        "h",
+                        "2h",
+                        "2^(h+1) - 1",
+                        "h^2"
+                    ],
+                    "answer": "2^(h+1) - 1"
+                },
+                {
+                    "question": "Inorder traversal of a BST gives:",
+                    "options": [
+                        "Random order",
+                        "Decreasing order",
+                        "Increasing (sorted) order",
+                        "Reverse sorted"
+                    ],
+                    "answer": "Increasing (sorted) order"
+                },
+                {
+                    "question": "Which traversal is used to delete a tree?",
+                    "options": [
+                        "Preorder",
+                        "Inorder",
+                        "Postorder",
+                        "BFS"
+                    ],
+                    "answer": "Postorder"
+                },
+                {
+                    "question": "How do you check if a binary tree is symmetric?",
+                    "options": [
+                        "Compare inorder to sorted inorder",
+                        "Compare left and right subtrees recursively: left.left vs right.right, left.right vs right.left",
+                        "Count nodes per level",
+                        "BFS level comparison"
+                    ],
+                    "answer": "Compare left and right subtrees recursively: left.left vs right.right, left.right vs right.left"
+                },
+                {
+                    "question": "Max depth of a binary tree — recursive formula?",
+                    "options": [
+                        "`depth(node) = 1 + max(depth(left), depth(right))`",
+                        "`depth(node) = depth(left) + depth(right)`",
+                        "Count all nodes",
+                        "Only count right side"
+                    ],
+                    "answer": "`depth(node) = 1 + max(depth(left), depth(right))`"
+                },
+                {
+                    "question": "Diameter of a binary tree is:",
+                    "options": [
+                        "Height × 2",
+                        "Longest path between any two nodes — passes through root or a subtree",
+                        "Sum of all nodes",
+                        "Count of leaf nodes"
+                    ],
+                    "answer": "Longest path between any two nodes — passes through root or a subtree"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Trees — Intermediate Level",
+            "theory": "**Binary Search Tree (BST):**\n- Left subtree values < node < right subtree\n- O(h) search, insert, delete (h=height)\n- Balanced BST: h = O(log n)\n\n**BST operations:**\n```python\ndef search(root, val):\n    if not root or root.val == val: return root\n    if val < root.val: return search(root.left, val)\n    return search(root.right, val)\n```\n\n**Lowest Common Ancestor (LCA):** use parent pointers or recursive split.\n\n**Serialize/Deserialize tree:** preorder with null markers.\n\n**Morris traversal:** O(1) space inorder traversal using threading.",
+            "questions": [
+                {
+                    "question": "BST average-case search complexity?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(n log n)",
+                        "O(1)"
+                    ],
+                    "answer": "O(log n)"
+                },
+                {
+                    "question": "BST worst-case search complexity (unbalanced)?",
+                    "options": [
+                        "O(log n)",
+                        "O(n) — skewed tree",
+                        "O(n^2)",
+                        "O(1)"
+                    ],
+                    "answer": "O(n) — skewed tree"
+                },
+                {
+                    "question": "LCA (Lowest Common Ancestor) algorithm: if both values less than root?",
+                    "options": [
+                        "LCA is root",
+                        "Search left subtree",
+                        "Search right subtree",
+                        "Return null"
+                    ],
+                    "answer": "Search left subtree"
+                },
+                {
+                    "question": "Validate BST — correct approach?",
+                    "options": [
+                        "Check each node has left < right",
+                        "Inorder traversal should be strictly increasing",
+                        "Both A and B",
+                        "Level-order comparison"
+                    ],
+                    "answer": "Inorder traversal should be strictly increasing"
+                },
+                {
+                    "question": "Path sum in binary tree equals target — approach?",
+                    "options": [
+                        "BFS",
+                        "DFS: subtract node value from target as you go, check at leaf",
+                        "Inorder accumulation",
+                        "Level-by-level sum"
+                    ],
+                    "answer": "DFS: subtract node value from target as you go, check at leaf"
+                },
+                {
+                    "question": "Right side view of binary tree:",
+                    "options": [
+                        "Last element of each BFS level",
+                        "Always the rightmost node",
+                        "Rightmost via DFS preorder",
+                        "Both A and C are valid approaches"
+                    ],
+                    "answer": "Both A and C are valid approaches"
+                },
+                {
+                    "question": "Convert sorted array to balanced BST?",
+                    "options": [
+                        "Insert one by one",
+                        "Recursively use middle element as root",
+                        "Build from leaves",
+                        "Sort + insert"
+                    ],
+                    "answer": "Recursively use middle element as root"
+                },
+                {
+                    "question": "Morris Traversal advantage:",
+                    "options": [
+                        "Faster than recursive",
+                        "O(1) space inorder traversal using threading",
+                        "Recursive simplicity",
+                        "Parallel traversal"
+                    ],
+                    "answer": "O(1) space inorder traversal using threading"
+                },
+                {
+                    "question": "Kth smallest in BST — optimal approach?",
+                    "options": [
+                        "Sort all nodes",
+                        "Inorder traversal — stop at kth element O(k)",
+                        "Search all O(n)",
+                        "Level-order then sort"
+                    ],
+                    "answer": "Inorder traversal — stop at kth element O(k)"
+                },
+                {
+                    "question": "Flatten binary tree to linked list (in-place):",
+                    "options": [
+                        "Preorder traversal then connect",
+                        "Morris-like traversal: for each node, move right subtree after leftmost right-child of left subtree",
+                        "BFS then connect",
+                        "Postorder"
+                    ],
+                    "answer": "Morris-like traversal: for each node, move right subtree after leftmost right-child of left subtree"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Trees — Expert Level",
+            "theory": "**AVL Tree:** self-balancing BST — height difference between children ≤ 1. Rotations maintain balance.\n\n**Red-Black Tree:** another self-balancing BST — less strict than AVL (fewer rotations, faster insert/delete). Used in Java TreeMap, C++ map.\n\n**Treap:** BST + heap — random priority ensures O(log n) expected height.\n\n**Heavy-Light Decomposition:** decomposes tree into chains for O(log^2 n) path queries.\n\n**Euler Tour / DFS timestamp:** encodes subtree as a range for range queries on trees.",
+            "questions": [
+                {
+                    "question": "AVL tree guarantees height:",
+                    "options": [
+                        "O(1)",
+                        "O(log n)",
+                        "O(n)",
+                        "O(sqrt(n))"
+                    ],
+                    "answer": "O(log n)"
+                },
+                {
+                    "question": "Red-Black tree vs AVL: why prefer Red-Black for frequent inserts?",
+                    "options": [
+                        "Easier to implement",
+                        "Fewer rotations needed — O(1) amortized rotations vs O(log n) for AVL",
+                        "Better balance always",
+                        "Smaller constants"
+                    ],
+                    "answer": "Fewer rotations needed — O(1) amortized rotations vs O(log n) for AVL"
+                },
+                {
+                    "question": "Treap combines:",
+                    "options": [
+                        "Array + BST",
+                        "BST by key + heap by random priority — expected O(log n) height",
+                        "AVL + hash",
+                        "B-tree + heap"
+                    ],
+                    "answer": "BST by key + heap by random priority — expected O(log n) height"
+                },
+                {
+                    "question": "Heavy-Light Decomposition is used for:",
+                    "options": [
+                        "Memory optimization",
+                        "O(log^2 n) path queries on trees by decomposing into chains",
+                        "Faster BFS",
+                        "Balancing trees"
+                    ],
+                    "answer": "O(log^2 n) path queries on trees by decomposing into chains"
+                },
+                {
+                    "question": "Euler Tour / DFS timestamps are useful for:",
+                    "options": [
+                        "Quicksort on trees",
+                        "Converting subtree/path queries into range queries — subtree of v maps to [in[v], out[v]]",
+                        "Graph isomorphism",
+                        "Tree serialization"
+                    ],
+                    "answer": "Converting subtree/path queries into range queries — subtree of v maps to [in[v], out[v]]"
+                },
+                {
+                    "question": "Lowest Common Ancestor (LCA) in O(log n) per query: algorithm?",
+                    "options": [
+                        "DFS path intersection",
+                        "Binary lifting: precompute 2^k ancestors for each node",
+                        "Euler tour + RMQ",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "Centroid decomposition is used for:",
+                    "options": [
+                        "Balancing trees",
+                        "Divide-and-conquer on trees: split at centroid (≤ n/2 subtree), O(n log n) tree problems",
+                        "Finding centers",
+                        "LCA queries"
+                    ],
+                    "answer": "Divide-and-conquer on trees: split at centroid (≤ n/2 subtree), O(n log n) tree problems"
+                },
+                {
+                    "question": "Splay tree gives:",
+                    "options": [
+                        "O(log n) worst-case",
+                        "O(log n) amortized — recently accessed nodes moved to root (self-adjusting BST)",
+                        "O(1) all operations",
+                        "O(n) amortized worst"
+                    ],
+                    "answer": "O(log n) amortized — recently accessed nodes moved to root (self-adjusting BST)"
+                },
+                {
+                    "question": "B-tree is used in databases because:",
+                    "options": [
+                        "Simple to implement",
+                        "High branching factor minimizes disk I/O — node fills an OS page, O(log_B n) disk reads",
+                        "Faster than BST in RAM",
+                        "Thread-safe naturally"
+                    ],
+                    "answer": "High branching factor minimizes disk I/O — node fills an OS page, O(log_B n) disk reads"
+                },
+                {
+                    "question": "Link-Cut Tree supports:",
+                    "options": [
+                        "Static tree queries only",
+                        "Dynamic O(log n) path queries on forests with link and cut operations",
+                        "Range queries on arrays",
+                        "Minimum spanning tree construction"
+                    ],
+                    "answer": "Dynamic O(log n) path queries on forests with link and cut operations"
+                }
+            ]
+        }
+    ]
+}

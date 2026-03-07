@@ -1,0 +1,327 @@
+{
+    "levelno": 20,
+    "topic": "Error Handling",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Error Handling — Beginner Level",
+            "theory": "Python uses `try`/`except` to handle errors (exceptions) gracefully:\n\n```python\ntry:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero!')\n```\n\n**Common built-in exceptions:**\n- `ValueError` — wrong value type (e.g., `int('abc')`)\n- `TypeError` — wrong type (e.g., `'a' + 1`)\n- `ZeroDivisionError` — dividing by zero\n- `IndexError` — index out of range\n- `KeyError` — missing dict key\n- `FileNotFoundError` — file doesn't exist\n- `NameError` — variable not defined\n\n`finally` — always runs, even if an exception occurred (used for cleanup).",
+            "questions": [
+                {
+                    "question": "Which block catches an exception?",
+                    "options": [
+                        "try",
+                        "catch",
+                        "except",
+                        "error"
+                    ],
+                    "answer": "except"
+                },
+                {
+                    "question": "What exception does `int('hello')` raise?",
+                    "options": [
+                        "TypeError",
+                        "ValueError",
+                        "NameError",
+                        "SyntaxError"
+                    ],
+                    "answer": "ValueError"
+                },
+                {
+                    "question": "What exception does `10 / 0` raise?",
+                    "options": [
+                        "ValueError",
+                        "MathError",
+                        "ZeroDivisionError",
+                        "OverflowError"
+                    ],
+                    "answer": "ZeroDivisionError"
+                },
+                {
+                    "question": "What is `finally` used for?",
+                    "options": [
+                        "Final else clause",
+                        "Code that always runs, even if an exception occurred",
+                        "Finalizing a variable",
+                        "Only runs on success"
+                    ],
+                    "answer": "Code that always runs, even if an exception occurred"
+                },
+                {
+                    "question": "What exception does `my_list[99]` raise (list has 3 items)?",
+                    "options": [
+                        "ValueError",
+                        "KeyError",
+                        "IndexError",
+                        "OverflowError"
+                    ],
+                    "answer": "IndexError"
+                },
+                {
+                    "question": "What exception does `d['missing']` raise (key not in dict)?",
+                    "options": [
+                        "ValueError",
+                        "IndexError",
+                        "KeyError",
+                        "AttributeError"
+                    ],
+                    "answer": "KeyError"
+                },
+                {
+                    "question": "What exception does `'a' + 1` raise?",
+                    "options": [
+                        "ValueError",
+                        "TypeError",
+                        "SyntaxError",
+                        "OperationError"
+                    ],
+                    "answer": "TypeError"
+                },
+                {
+                    "question": "What exception does using an undefined variable raise?",
+                    "options": [
+                        "TypeError",
+                        "AttributeError",
+                        "NameError",
+                        "ValueError"
+                    ],
+                    "answer": "NameError"
+                },
+                {
+                    "question": "Does `finally` run if there is no exception?",
+                    "options": [
+                        "No, only on errors",
+                        "Yes, always",
+                        "Only if explicitly told to",
+                        "Depends on context"
+                    ],
+                    "answer": "Yes, always"
+                },
+                {
+                    "question": "What does `except Exception as e:` give you?",
+                    "options": [
+                        "Only ValueError",
+                        "All built-in exceptions; `e` is the exception object",
+                        "SyntaxError",
+                        "Only runtime errors"
+                    ],
+                    "answer": "All built-in exceptions; `e` is the exception object"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Error Handling — Intermediate Level",
+            "theory": "**Multiple `except` clauses** — catch different exceptions differently:\n```python\ntry:\n    ...\nexcept ValueError:\n    print('Bad value')\nexcept (TypeError, KeyError):\n    print('Type or key error')\nexcept Exception as e:\n    print(f'Unexpected: {e}')\n```\n\n**`else`** — runs only if no exception occurred:\n```python\ntry:\n    result = int(input())\nexcept ValueError:\n    print('Bad input')\nelse:\n    print('Success:', result)  # only if no error\n```\n\n**Raising exceptions:**\n`raise ValueError('Must be positive')`\n\n**Custom exceptions:**\n```python\nclass InsufficientFundsError(Exception): pass\nraise InsufficientFundsError('Balance too low')\n```",
+            "questions": [
+                {
+                    "question": "Where does `else` go in a try/except/else/finally block?",
+                    "options": [
+                        "Before try",
+                        "After try, before except",
+                        "After all except clauses, before finally",
+                        "After finally"
+                    ],
+                    "answer": "After all except clauses, before finally"
+                },
+                {
+                    "question": "When does the `else` block in try/except run?",
+                    "options": [
+                        "Always",
+                        "Only if an exception was caught",
+                        "Only if NO exception occurred",
+                        "Only in finally"
+                    ],
+                    "answer": "Only if NO exception occurred"
+                },
+                {
+                    "question": "How do you raise a ValueError with a message?",
+                    "options": [
+                        "throw ValueError('msg')",
+                        "raise ValueError('msg')",
+                        "raise 'msg'",
+                        "error ValueError('msg')"
+                    ],
+                    "answer": "raise ValueError('msg')"
+                },
+                {
+                    "question": "Which base class should a custom exception inherit from?",
+                    "options": [
+                        "object",
+                        "Error",
+                        "Exception",
+                        "BaseException"
+                    ],
+                    "answer": "Exception"
+                },
+                {
+                    "question": "Can you catch multiple exception types in one except clause?",
+                    "options": [
+                        "No, one per clause",
+                        "Yes: except (TypeError, ValueError):",
+                        "Only with a comma: except TypeError, ValueError:",
+                        "Only in Python 3.10+"
+                    ],
+                    "answer": "Yes: except (TypeError, ValueError):"
+                },
+                {
+                    "question": "What does `except Exception as e:` capture in `e`?",
+                    "options": [
+                        "The exception type",
+                        "The exception message only",
+                        "The exception object itself",
+                        "The line number"
+                    ],
+                    "answer": "The exception object itself"
+                },
+                {
+                    "question": "What is `str(e)` on an exception object?",
+                    "options": [
+                        "The exception type name",
+                        "The error message string",
+                        "The traceback",
+                        "None"
+                    ],
+                    "answer": "The error message string"
+                },
+                {
+                    "question": "What does a bare `raise` inside an except block do?",
+                    "options": [
+                        "Raises a new generic Exception",
+                        "Re-raises the current caught exception",
+                        "Raises SystemExit",
+                        "Clears the exception"
+                    ],
+                    "answer": "Re-raises the current caught exception"
+                },
+                {
+                    "question": "What does `try: pass` followed by `finally: print('done')` print?",
+                    "options": [
+                        "Nothing",
+                        "done",
+                        "Error",
+                        "pass"
+                    ],
+                    "answer": "done"
+                },
+                {
+                    "question": "What is `e.args` on an exception object?",
+                    "options": [
+                        "The exception type",
+                        "A tuple of arguments passed to the exception constructor",
+                        "The traceback",
+                        "The module where the error occurred"
+                    ],
+                    "answer": "A tuple of arguments passed to the exception constructor"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Error Handling — Expert Level",
+            "theory": "**Exception chaining** — linking exceptions for better context:\n`raise RuntimeError('Processing failed') from original_exc`\nThe `from` clause sets `__cause__`; implicit chaining via `__context__` happens automatically.\n\n**`traceback` module** — programmatically access and format stack traces:\n```python\nimport traceback\ntry: ...\nexcept:\n    traceback.print_exc()  # prints full traceback\n    tb_str = traceback.format_exc()\n```\n\n**Context managers as error handlers:**\n```python\nfrom contextlib import suppress\nwith suppress(FileNotFoundError):\n    os.remove('temp.txt')  # silently ignored if not found\n```\n\n**`sys.exc_info()`** — returns `(type, value, traceback)` of the current exception, useful for low-level error logging.",
+            "questions": [
+                {
+                    "question": "What does `raise RuntimeError('fail') from original_exc` do?",
+                    "options": [
+                        "Hides the original exception",
+                        "Chains exceptions: sets RuntimeError.__cause__ = original_exc",
+                        "Creates two exceptions",
+                        "Suppresses original_exc"
+                    ],
+                    "answer": "Chains exceptions: sets RuntimeError.__cause__ = original_exc"
+                },
+                {
+                    "question": "What is `e.__cause__` on an exception?",
+                    "options": [
+                        "The exception that was raised before this one (explicit chaining)",
+                        "The exception message",
+                        "The calling function",
+                        "The traceback object"
+                    ],
+                    "answer": "The exception that was raised before this one (explicit chaining)"
+                },
+                {
+                    "question": "What does `traceback.format_exc()` return?",
+                    "options": [
+                        "The exception type only",
+                        "The full traceback as a string",
+                        "Just the error message",
+                        "The line number"
+                    ],
+                    "answer": "The full traceback as a string"
+                },
+                {
+                    "question": "What does `contextlib.suppress(FileNotFoundError)` do?",
+                    "options": [
+                        "Raises the error louder",
+                        "Silently ignores FileNotFoundError in its with block",
+                        "Suppresses all exceptions",
+                        "Converts FileNotFoundError to a warning"
+                    ],
+                    "answer": "Silently ignores FileNotFoundError in its with block"
+                },
+                {
+                    "question": "What does `sys.exc_info()` return inside an except block?",
+                    "options": [
+                        "Only the exception message",
+                        "(type, value, traceback) triple for the current exception",
+                        "Only the type",
+                        "A formatted string"
+                    ],
+                    "answer": "(type, value, traceback) triple for the current exception"
+                },
+                {
+                    "question": "What is `e.__context__` vs `e.__cause__`?",
+                    "options": [
+                        "They are identical",
+                        "__context__ is set implicitly when raising inside except; __cause__ is set explicitly with 'from'",
+                        "__cause__ is implicit; __context__ is with 'from'",
+                        "Neither is set automatically"
+                    ],
+                    "answer": "__context__ is set implicitly when raising inside except; __cause__ is set explicitly with 'from'"
+                },
+                {
+                    "question": "How do you suppress exception chaining (hide the original exception)?",
+                    "options": [
+                        "raise Ex() from None",
+                        "raise Ex() suppress",
+                        "except ignore:",
+                        "del __context__"
+                    ],
+                    "answer": "raise Ex() from None"
+                },
+                {
+                    "question": "What is `ExceptionGroup` (Python 3.11+)?",
+                    "options": [
+                        "A module for grouping exceptions",
+                        "A built-in exception type that holds multiple exceptions at once",
+                        "An alias for BaseException",
+                        "A custom exception for groups of users"
+                    ],
+                    "answer": "A built-in exception type that holds multiple exceptions at once"
+                },
+                {
+                    "question": "What does `except*` (Python 3.11+) do?",
+                    "options": [
+                        "Catches all exceptions with a wildcard",
+                        "Catches specific exceptions within an ExceptionGroup",
+                        "An alias for except Exception:",
+                        "Catches exceptions in a for loop"
+                    ],
+                    "answer": "Catches specific exceptions within an ExceptionGroup"
+                },
+                {
+                    "question": "What is the difference between `Exception` and `BaseException`?",
+                    "options": [
+                        "They are identical",
+                        "BaseException is the root of all exceptions including SystemExit and KeyboardInterrupt; Exception is for application-level errors only",
+                        "Exception includes SystemExit; BaseException does not",
+                        "BaseException is newer and preferred"
+                    ],
+                    "answer": "BaseException is the root of all exceptions including SystemExit and KeyboardInterrupt; Exception is for application-level errors only"
+                }
+            ]
+        }
+    ]
+}

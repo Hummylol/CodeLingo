@@ -1,0 +1,327 @@
+{
+    "levelno": 6,
+    "topic": "Arrays & Strings",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Arrays & Strings — Beginner Level",
+            "theory": "**Arrays** in Java store a fixed-size sequence of elements of the same type.\n\n```java\nint[] scores = {85, 92, 78, 90};\nString[] names = new String[3];\nnames[0] = \"Alice\";\nSystem.out.println(scores.length); // 4\n```\n\n**Strings** are immutable sequences of characters:\n```java\nString s = \"Hello\";\ns.length()    // 5\ns.charAt(0)   // 'H'\ns.toUpperCase() // \"HELLO\"\ns.substring(1, 3) // \"el\"\ns.contains(\"ell\") // true\nString.valueOf(42) // \"42\"\n```\n\nStrings should be compared with `.equals()`, not `==`.",
+            "questions": [
+                {
+                    "question": "Which correctly declares an int array of size 5?",
+                    "options": [
+                        "`Array<int> a = 5;`",
+                        "`int a[5];`",
+                        "`int[] a = new int[5];`",
+                        "`new int a[5];`"
+                    ],
+                    "answer": "`int[] a = new int[5];`"
+                },
+                {
+                    "question": "What is the index of the first element?",
+                    "options": [
+                        "1",
+                        "0",
+                        "-1",
+                        "Depends on type"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "How do you get the length of an array `arr`?",
+                    "options": [
+                        "`arr.size()`",
+                        "`arr.length()`",
+                        "`arr.length`",
+                        "`arr.count`"
+                    ],
+                    "answer": "`arr.length`"
+                },
+                {
+                    "question": "Are Java Strings mutable?",
+                    "options": [
+                        "Yes",
+                        "No — Strings are immutable",
+                        "Only StringBuilder is immutable",
+                        "Depends on JVM"
+                    ],
+                    "answer": "No — Strings are immutable"
+                },
+                {
+                    "question": "How should you compare two String values for equality?",
+                    "options": [
+                        "`==`",
+                        "`.equals()`",
+                        "`.compareTo()`",
+                        "`===`"
+                    ],
+                    "answer": "`.equals()`"
+                },
+                {
+                    "question": "What does `s.charAt(2)` return for `s = \"Hello\"`?",
+                    "options": [
+                        "`H`",
+                        "`e`",
+                        "`l`",
+                        "`o`"
+                    ],
+                    "answer": "`l`"
+                },
+                {
+                    "question": "What does `s.length()` return for `s = \"Java\"`?",
+                    "options": [
+                        "3",
+                        "4",
+                        "5",
+                        "0"
+                    ],
+                    "answer": "4"
+                },
+                {
+                    "question": "What is the default value for an `int[]` array?",
+                    "options": [
+                        "null",
+                        "garbage",
+                        "0",
+                        "-1"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "What does `s.toUpperCase()` return for `s=\"hello\"`?",
+                    "options": [
+                        "`hello`",
+                        "`HELLO`",
+                        "`Hello`",
+                        "`hELLO`"
+                    ],
+                    "answer": "`HELLO`"
+                },
+                {
+                    "question": "What is a 2D array declaration?",
+                    "options": [
+                        "`int a[3][3];`",
+                        "`int a = new[3,3]`",
+                        "`int[][] a = new int[3][3];`",
+                        "`int[]a = new int[3][3];`"
+                    ],
+                    "answer": "`int[][] a = new int[3][3];`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Arrays & Strings — Intermediate Level",
+            "theory": "**`Arrays` utility class:**\n```java\nimport java.util.Arrays;\nint[] arr = {3, 1, 4, 1, 5};\nArrays.sort(arr);\nArrays.binarySearch(arr, 4);\nArrays.fill(arr, 0);\nSystem.out.println(Arrays.toString(arr));\n```\n\n**`StringBuilder`** — mutable string builder:\n```java\nStringBuilder sb = new StringBuilder();\nsb.append(\"Hello\").append(\" \").append(\"World\");\nString result = sb.toString(); // \"Hello World\"\n```\n\n**String methods:**\n- `split(regex)` — returns `String[]`\n- `trim()` / `strip()` — remove whitespace\n- `String.join(delim, parts)` — join strings\n- `formatted(args)` (Java 15+)",
+            "questions": [
+                {
+                    "question": "What does `Arrays.sort(arr)` do?",
+                    "options": [
+                        "Returns a sorted copy",
+                        "Sorts arr in-place in ascending order",
+                        "Creates a TreeSet",
+                        "Sorts descending only"
+                    ],
+                    "answer": "Sorts arr in-place in ascending order"
+                },
+                {
+                    "question": "Why use `StringBuilder` instead of `String + String`?",
+                    "options": [
+                        "StringBuilder is immutable",
+                        "StringBuilder avoids creating many intermediate String objects — more efficient for many concatenations",
+                        "Strings can't be concatenated",
+                        "No difference"
+                    ],
+                    "answer": "StringBuilder avoids creating many intermediate String objects — more efficient for many concatenations"
+                },
+                {
+                    "question": "What does `str.split(\",\")` return?",
+                    "options": [
+                        "A List<String>",
+                        "A String[]",
+                        "An array of chars",
+                        "An int"
+                    ],
+                    "answer": "A String[]"
+                },
+                {
+                    "question": "What does `Arrays.binarySearch(arr, x)` require?",
+                    "options": [
+                        "Sorted array",
+                        "Unsorted array",
+                        "Any array",
+                        "A HashMap"
+                    ],
+                    "answer": "Sorted array"
+                },
+                {
+                    "question": "What is `String.join(\"-\", \"a\", \"b\", \"c\")`?",
+                    "options": [
+                        "`abc`",
+                        "`a-b-c`",
+                        "`a,b,c`",
+                        "`a b c`"
+                    ],
+                    "answer": "`a-b-c`"
+                },
+                {
+                    "question": "What is `str.strip()` vs `str.trim()`?",
+                    "options": [
+                        "Same",
+                        "`strip()` is Unicode-aware and handles more whitespace types (Java 11+)",
+                        "`trim()` is Unicode-aware",
+                        "Both deprecated"
+                    ],
+                    "answer": "`strip()` is Unicode-aware and handles more whitespace types (Java 11+)"
+                },
+                {
+                    "question": "What does `sb.reverse()` do on a StringBuilder?",
+                    "options": [
+                        "Returns reverse of sb",
+                        "Reverses the character sequence in place",
+                        "Returns a new StringBuilder",
+                        "Has no effect"
+                    ],
+                    "answer": "Reverses the character sequence in place"
+                },
+                {
+                    "question": "What does `Arrays.copyOfRange(arr, 1, 4)` return?",
+                    "options": [
+                        "Elements at index 1, 2, 3",
+                        "Elements at index 1, 2, 3, 4",
+                        "A view of arr",
+                        "Elements from 4 to 1"
+                    ],
+                    "answer": "Elements at index 1, 2, 3"
+                },
+                {
+                    "question": "What is the time complexity of `Arrays.sort(int[])`?",
+                    "options": [
+                        "O(n)",
+                        "O(n log n) — uses DualPivot Quicksort",
+                        "O(n^2)",
+                        "O(log n)"
+                    ],
+                    "answer": "O(n log n) — uses DualPivot Quicksort"
+                },
+                {
+                    "question": "What does `String.chars()` return?",
+                    "options": [
+                        "A char[]",
+                        "An IntStream of char values",
+                        "A char iterator",
+                        "A byte stream"
+                    ],
+                    "answer": "An IntStream of char values"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Arrays & Strings — Expert Level",
+            "theory": "**String interning and the string pool:** string literals are interned. `String.intern()` manually interns a string.\n\n**`StringJoiner` (Java 8+):** for prefix/suffix/delimiter joining:\n```java\nStringJoiner sj = new StringJoiner(\", \", \"[\", \"]\");\nsj.add(\"a\"); sj.add(\"b\");\nsj.toString(); // \"[a, b]\"\n```\n\n**`CharBuffer` / `ByteBuffer` (NIO):** for high-performance array processing.\n\n**`Arrays.parallelSort(arr)`:** parallel merge sort for large arrays using Fork/Join.\n\n**Pattern (regex) with String:**\n```java\nboolean matches = str.matches(\"\\\\d+\"); // entire string is digits\nString replaced = str.replaceAll(\"[^a-z]\", \"\");\n```",
+            "questions": [
+                {
+                    "question": "What is the Java string pool?",
+                    "options": [
+                        "A thread pool for Strings",
+                        "A special memory area where string literals are cached — enables reuse and == comparison for literals",
+                        "A string encryption mechanism",
+                        "A cache for formatted strings"
+                    ],
+                    "answer": "A special memory area where string literals are cached — enables reuse and == comparison for literals"
+                },
+                {
+                    "question": "What does `Arrays.parallelSort(arr)` use internally?",
+                    "options": [
+                        "Sequential merge sort",
+                        "Fork/Join parallel merge sort — efficient for large arrays",
+                        "Quicksort in parallel",
+                        "TimSort with threads"
+                    ],
+                    "answer": "Fork/Join parallel merge sort — efficient for large arrays"
+                },
+                {
+                    "question": "What does `str.matches(\"\\\\d+\")` check?",
+                    "options": [
+                        "If any substring is digits",
+                        "If the ENTIRE string consists of one or more digits",
+                        "If str contains a digit",
+                        "If str starts with a digit"
+                    ],
+                    "answer": "If the ENTIRE string consists of one or more digits"
+                },
+                {
+                    "question": "What is `StringJoiner` used for?",
+                    "options": [
+                        "Building regex",
+                        "Joining strings with delimiter, optional prefix and suffix (Java 8+)",
+                        "Converting to JSON",
+                        "Parsing strings"
+                    ],
+                    "answer": "Joining strings with delimiter, optional prefix and suffix (Java 8+)"
+                },
+                {
+                    "question": "What is `CharBuffer` from `java.nio`?",
+                    "options": [
+                        "A StringBuilder alternative",
+                        "A NIO buffer for chars — direct memory, useful in I/O-intensive applications",
+                        "A thread-safe string",
+                        "A compile-time constant pool"
+                    ],
+                    "answer": "A NIO buffer for chars — direct memory, useful in I/O-intensive applications"
+                },
+                {
+                    "question": "What is the time complexity of `String.indexOf(char)`?",
+                    "options": [
+                        "O(1)",
+                        "O(log n)",
+                        "O(n) in the worst case",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(n) in the worst case"
+                },
+                {
+                    "question": "What is the `Knuth-Morris-Pratt` algorithm related to?",
+                    "options": [
+                        "Sorting arrays",
+                        "Efficient O(n+m) substring search — avoids redundant comparisons in naive String.indexOf",
+                        "Sorting strings alphabetically",
+                        "Compressing strings"
+                    ],
+                    "answer": "Efficient O(n+m) substring search — avoids redundant comparisons in naive String.indexOf"
+                },
+                {
+                    "question": "What does `str.intern()` do?",
+                    "options": [
+                        "Encrypts str",
+                        "Returns canonical string from pool — allows == comparison, reduces memory for repeated strings",
+                        "Creates a StringBuilder",
+                        "Converts str to char[]"
+                    ],
+                    "answer": "Returns canonical string from pool — allows == comparison, reduces memory for repeated strings"
+                },
+                {
+                    "question": "What is `String::compareTo` used for in sorting?",
+                    "options": [
+                        "Equality check",
+                        "Lexicographic comparison — returns negative, 0, positive — used with `Comparator`",
+                        "Case-insensitive compare",
+                        "Length comparison"
+                    ],
+                    "answer": "Lexicographic comparison — returns negative, 0, positive — used with `Comparator`"
+                },
+                {
+                    "question": "What does `Arrays.stream(arr)` produce?",
+                    "options": [
+                        "A List",
+                        "An IntStream (for int[]) or Stream<T> for object arrays",
+                        "An Iterator",
+                        "A sorted stream always"
+                    ],
+                    "answer": "An IntStream (for int[]) or Stream<T> for object arrays"
+                }
+            ]
+        }
+    ]
+}

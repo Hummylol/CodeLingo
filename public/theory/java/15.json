@@ -1,0 +1,327 @@
+{
+    "levelno": 15,
+    "topic": "Design Patterns",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Design Patterns — Beginner Level",
+            "theory": "Design patterns are reusable solutions to common programming problems.\n\n**Singleton:** only one instance:\n```java\nclass Database {\n    private static Database instance;\n    private Database() {}\n    public static Database getInstance() {\n        if (instance == null) instance = new Database();\n        return instance;\n    }\n}\n```\n\n**Factory:** create objects without specifying exact class:\n```java\ninterface Shape { void draw(); }\nclass ShapeFactory {\n    public static Shape create(String type) {\n        return switch (type) {\n            case \"circle\" -> new Circle();\n            default -> throw new IllegalArgumentException(type);\n        };\n    }\n}\n```\n\n**Observer:** notify subscribers of state changes.",
+            "questions": [
+                {
+                    "question": "What problem does the Singleton pattern solve?",
+                    "options": [
+                        "Creates many instances",
+                        "Ensures exactly one instance of a class exists throughout application",
+                        "Provides multiple factories",
+                        "Factory for singletons"
+                    ],
+                    "answer": "Ensures exactly one instance of a class exists throughout the application"
+                },
+                {
+                    "question": "Why is the constructor private in Singleton?",
+                    "options": [
+                        "To prevent inheritance",
+                        "To prevent external creation of instances — only getInstance() creates it",
+                        "To make it thread-safe",
+                        "Required by pattern"
+                    ],
+                    "answer": "To prevent external creation of instances — only getInstance() creates it"
+                },
+                {
+                    "question": "What is the Factory pattern?",
+                    "options": [
+                        "Creating singleton objects",
+                        "Creates objects without exposing instantiation logic — returns an interface/abstract type",
+                        "A pattern for file I/O",
+                        "A thread factory"
+                    ],
+                    "answer": "Creates objects without exposing instantiation logic — returns an interface/abstract type"
+                },
+                {
+                    "question": "What is the Observer pattern?",
+                    "options": [
+                        "A sorting technique",
+                        "Subject notifies a list of observers when its state changes",
+                        "A file watcher",
+                        "A type checking pattern"
+                    ],
+                    "answer": "Subject notifies a list of observers when its state changes"
+                },
+                {
+                    "question": "What category is the Singleton pattern in?",
+                    "options": [
+                        "Structural",
+                        "Behavioral",
+                        "Creational",
+                        "Functional"
+                    ],
+                    "answer": "Creational"
+                },
+                {
+                    "question": "What is the Strategy pattern?",
+                    "options": [
+                        "Strategies for caching",
+                        "Defines a family of algorithms and makes them interchangeable at runtime",
+                        "A test pattern",
+                        "A factory for strategies"
+                    ],
+                    "answer": "Defines a family of algorithms and makes them interchangeable at runtime"
+                },
+                {
+                    "question": "What is the Decorator pattern?",
+                    "options": [
+                        "UI decoration only",
+                        "Adds responsibilities to objects dynamically by wrapping them — extends behavior without subclassing",
+                        "An inheritance pattern",
+                        "A factory enhancement"
+                    ],
+                    "answer": "Adds responsibilities to objects dynamically by wrapping them — extends behavior without subclassing"
+                },
+                {
+                    "question": "What is the Adapter pattern?",
+                    "options": [
+                        "Converts data formats",
+                        "Converts incompatible interfaces — makes classes work together that otherwise couldn't",
+                        "A thread adapter",
+                        "Wraps lambda functions"
+                    ],
+                    "answer": "Converts incompatible interfaces — makes classes work together that otherwise couldn't"
+                },
+                {
+                    "question": "What is the Template Method pattern?",
+                    "options": [
+                        "A code template",
+                        "Base class defines algorithm skeleton; subclasses implement specific steps",
+                        "A lambda template",
+                        "A test framework"
+                    ],
+                    "answer": "Base class defines algorithm skeleton; subclasses implement specific steps"
+                },
+                {
+                    "question": "What is the Builder pattern used for?",
+                    "options": [
+                        "Constructing UI",
+                        "Building complex objects step by step — separates construction from representation",
+                        "Creating singleton",
+                        "Factory method"
+                    ],
+                    "answer": "Building complex objects step by step — separates construction from representation"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Design Patterns — Intermediate Level",
+            "theory": "**Enum Singleton (thread-safe):**\n```java\nenum Singleton { INSTANCE; ... }\n```\n\n**Abstract Factory:** create families of related objects.\n\n**Proxy pattern:** controls access to an object.\n\n**Command pattern:**\n```java\ninterface Command { void execute(); }\nclass LightOn implements Command {\n    Light light;\n    public void execute() { light.on(); }\n}\n```\n\n**Iterator pattern:** `java.util.Iterator` — sequential access without exposing underlying structure.\n\n**Composite pattern:** tree of objects treated uniformly (e.g., UI component hierarchy).",
+            "questions": [
+                {
+                    "question": "Why is an Enum-based Singleton thread-safe?",
+                    "options": [
+                        "Uses synchronized",
+                        "JVM instantiates enum once — guaranteed by class loading mechanism",
+                        "Uses volatile",
+                        "Manual lock"
+                    ],
+                    "answer": "JVM instantiates enum once — guaranteed by class loading mechanism"
+                },
+                {
+                    "question": "What is an Abstract Factory?",
+                    "options": [
+                        "Factory without abstraction",
+                        "Creates families of related objects without specifying concrete classes — factory of factories",
+                        "A class factory",
+                        "Thread factory"
+                    ],
+                    "answer": "Creates families of related objects without specifying concrete classes — factory of factories"
+                },
+                {
+                    "question": "What is the Proxy pattern used for?",
+                    "options": [
+                        "Creating proxies for networks",
+                        "Controlling access to an object — lazy loading, caching, access control, logging",
+                        "Implementing remote calls only",
+                        "A null-object replacement"
+                    ],
+                    "answer": "Controlling access to an object — lazy loading, caching, access control, logging"
+                },
+                {
+                    "question": "What is the Command pattern used for?",
+                    "options": [
+                        "Commanding threads",
+                        "Encapsulate a request as an object — enables undo/redo, queuing, logging of operations",
+                        "A data command",
+                        "A factory pattern"
+                    ],
+                    "answer": "Encapsulate a request as an object — enables undo/redo, queuing, logging of operations"
+                },
+                {
+                    "question": "What is the Composite pattern?",
+                    "options": [
+                        "A mix of patterns",
+                        "Treats individual objects and compositions uniformly — tree structures like file systems or UI",
+                        "A tree data structure",
+                        "Composing functions"
+                    ],
+                    "answer": "Treats individual objects and compositions uniformly — tree structures like file systems or UI"
+                },
+                {
+                    "question": "What is the State pattern?",
+                    "options": [
+                        "Thread states",
+                        "Object changes behavior based on its internal state — state as strategy with transitions",
+                        "A flag variable",
+                        "An enum pattern"
+                    ],
+                    "answer": "Object changes behavior based on its internal state — state as strategy with transitions"
+                },
+                {
+                    "question": "What is the Flyweight pattern?",
+                    "options": [
+                        "Lightweight patterns",
+                        "Share common state across many small objects to save memory — e.g., character objects in text editor",
+                        "A fast singleton",
+                        "Pool of threads"
+                    ],
+                    "answer": "Share common state across many small objects to save memory — e.g., character objects in text editor"
+                },
+                {
+                    "question": "What is the Chain of Responsibility pattern?",
+                    "options": [
+                        "Method chaining",
+                        "Pass request along a chain of handlers — each handler decides to process or pass it on",
+                        "A catch chain",
+                        "An observer list"
+                    ],
+                    "answer": "Pass request along a chain of handlers — each handler decides to process or pass it on"
+                },
+                {
+                    "question": "What is the Mediator pattern?",
+                    "options": [
+                        "A Java class",
+                        "Central object that handles communication between components — reduces direct dependencies",
+                        "An observer variant",
+                        "A proxy for many objects"
+                    ],
+                    "answer": "Central object that handles communication between components — reduces direct dependencies"
+                },
+                {
+                    "question": "What is the Facade pattern?",
+                    "options": [
+                        "A UI library",
+                        "Provides a simplified interface to a complex subsystem",
+                        "A class that extends many",
+                        "An adapter for external APIs"
+                    ],
+                    "answer": "Provides a simplified interface to a complex subsystem"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Design Patterns — Expert Level",
+            "theory": "**`java.util.concurrent.locks.Lock` vs Strategy pattern:** run-time swappable lock strategies.\n\n**`@Inject` and dependency injection:** DI frameworks (Spring, Guice) implement IoC — classes declare what they need, framework wires dependencies (proxy + factory at scale).\n\n**Event sourcing + Observer:** domain events notify subscribers to update projections.\n\n**`CompletableFuture` as monad:** chain of `thenApply`, `thenCompose` is the Monad pattern — compose async computations.\n\n**Null Object pattern:** instead of null, return an object that does nothing — avoids null checks.",
+            "questions": [
+                {
+                    "question": "What is the Null Object pattern?",
+                    "options": [
+                        "Return null safely",
+                        "Return a no-op object instead of null — avoids null checks throughout code",
+                        "A null-safe collection",
+                        "Optional alternative"
+                    ],
+                    "answer": "Return a no-op object instead of null — avoids null checks throughout code"
+                },
+                {
+                    "question": "What is Dependency Injection (DI)?",
+                    "options": [
+                        "Calling constructors manually",
+                        "Injecting required dependencies from outside rather than creating them inside — reduces coupling",
+                        "A factory pattern",
+                        "A proxy pattern"
+                    ],
+                    "answer": "Injecting required dependencies from outside rather than creating them inside — reduces coupling"
+                },
+                {
+                    "question": "What is Inversion of Control (IoC)?",
+                    "options": [
+                        "The same as DI",
+                        "Framework controls flow and calls your code — DI is one mechanism; IoC is the broader principle",
+                        "A design anti-pattern",
+                        "Method overriding"
+                    ],
+                    "answer": "Framework controls flow and calls your code — DI is one mechanism; IoC is the broader principle"
+                },
+                {
+                    "question": "What is the Monad pattern in Java?",
+                    "options": [
+                        "A math concept only",
+                        "A structure for chaining computations: `Optional.flatMap`, `CompletableFuture.thenCompose` are Java monads",
+                        "A design anti-pattern",
+                        "A functional keyword"
+                    ],
+                    "answer": "A structure for chaining computations: `Optional.flatMap`, `CompletableFuture.thenCompose` are Java monads"
+                },
+                {
+                    "question": "What is event sourcing?",
+                    "options": [
+                        "Event listeners",
+                        "Storing all changes as a sequence of immutable events — current state derived by replaying events",
+                        "A publish-subscribe system",
+                        "A logging pattern"
+                    ],
+                    "answer": "Storing all changes as a sequence of immutable events — current state derived by replaying events"
+                },
+                {
+                    "question": "What is the Repository pattern?",
+                    "options": [
+                        "A data store",
+                        "Abstracts data access — provides collection-like interface to domain objects",
+                        "A DAO clone",
+                        "A CRUD wrapper"
+                    ],
+                    "answer": "Abstracts data access — provides collection-like interface to domain objects"
+                },
+                {
+                    "question": "What is CQRS?",
+                    "options": [
+                        "A caching strategy",
+                        "Command Query Responsibility Segregation — separate read and write models for scalability",
+                        "A security pattern",
+                        "A sorting algorithm"
+                    ],
+                    "answer": "Command Query Responsibility Segregation — separate read and write models for scalability"
+                },
+                {
+                    "question": "What is the Specification pattern?",
+                    "options": [
+                        "API specification",
+                        "Encapsulate business rules as objects that can be combined with AND/OR/NOT",
+                        "A test assertion",
+                        "A factory for validators"
+                    ],
+                    "answer": "Encapsulate business rules as objects that can be combined with AND/OR/NOT"
+                },
+                {
+                    "question": "What does Service Locator anti-pattern do?",
+                    "options": [
+                        "Locates microservices",
+                        "Provides dependencies via global registry — hides dependencies, makes testing hard (unlike proper DI)",
+                        "A proxy for services",
+                        "Loads services lazily"
+                    ],
+                    "answer": "Provides dependencies via global registry — hides dependencies, makes testing hard (unlike proper DI)"
+                },
+                {
+                    "question": "What is the Unit of Work pattern?",
+                    "options": [
+                        "A task unit",
+                        "Tracks all changes in a business transaction, then commits or rolls back atomically",
+                        "A database connection",
+                        "An observer batch"
+                    ],
+                    "answer": "Tracks all changes in a business transaction, then commits or rolls back atomically"
+                }
+            ]
+        }
+    ]
+}

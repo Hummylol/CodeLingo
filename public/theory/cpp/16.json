@@ -1,0 +1,327 @@
+{
+    "levelno": 16,
+    "topic": "Inheritance",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Inheritance — Beginner Level",
+            "theory": "Inheritance lets a class (derived/child) acquire members of another class (base/parent).\n\n```cpp\nclass Animal {\npublic:\n    void eat() { std::cout << \"Eating...\\n\"; }\n};\n\nclass Dog : public Animal {\npublic:\n    void bark() { std::cout << \"Woof!\\n\"; }\n};\n\nDog d;\nd.eat();  // inherited from Animal\nd.bark(); // defined in Dog\n```\n\n- `public` inheritance: public members of base remain public in derived\n- Use `super` → in C++,  `super` does not exist; use the base class name directly\n- `super::method()` equivalent: `Animal::eat()` or `Base::method()`\n- Promotes code reusability\n- Represents an **is-a** relationship",
+            "questions": [
+                {
+                    "question": "Which keyword is used for inheritance?",
+                    "options": [
+                        "`implements`",
+                        "`inherits`",
+                        "`extends`",
+                        "`: public`"
+                    ],
+                    "answer": "`: public`"
+                },
+                {
+                    "question": "The class being inherited from is called:",
+                    "options": [
+                        "Subclass",
+                        "Child class",
+                        "Derived class",
+                        "Base/superclass"
+                    ],
+                    "answer": "Base/superclass"
+                },
+                {
+                    "question": "The class that inherits is called:",
+                    "options": [
+                        "Parent class",
+                        "Base class",
+                        "Derived/subclass",
+                        "Root class"
+                    ],
+                    "answer": "Derived/subclass"
+                },
+                {
+                    "question": "Main benefit of inheritance?",
+                    "options": [
+                        "Code reusability",
+                        "Faster execution",
+                        "Reduced memory",
+                        "Improved security"
+                    ],
+                    "answer": "Code reusability"
+                },
+                {
+                    "question": "Inheritance represents:",
+                    "options": [
+                        "Has-a relationship",
+                        "Is-a relationship",
+                        "Uses-a relationship",
+                        "Part-of relationship"
+                    ],
+                    "answer": "Is-a relationship"
+                },
+                {
+                    "question": "Can a C++ class inherit from multiple classes?",
+                    "options": [
+                        "No",
+                        "Yes — C++ supports multiple inheritance",
+                        "Only abstract classes",
+                        "Yes but not recommended"
+                    ],
+                    "answer": "Yes — C++ supports multiple inheritance"
+                },
+                {
+                    "question": "In C++, how do you call the base class method from a derived class?",
+                    "options": [
+                        "`super.method()`",
+                        "`parent.method()`",
+                        "`Base::method()`",
+                        "`base->method()`"
+                    ],
+                    "answer": "`Base::method()`"
+                },
+                {
+                    "question": "If a method in a derived class has the same signature as in the base, it:",
+                    "options": [
+                        "Causes compile error",
+                        "Hides or overrides the base method",
+                        "Is not allowed",
+                        "Calls both automatically"
+                    ],
+                    "answer": "Hides or overrides the base method"
+                },
+                {
+                    "question": "Can a derived class access `private` base members?",
+                    "options": [
+                        "Yes always",
+                        "Only in same package",
+                        "No — private members are not accessible to derived",
+                        "Yes via `super`"
+                    ],
+                    "answer": "No — private members are not accessible to derived"
+                },
+                {
+                    "question": "What does `virtual` on a base class method enable?",
+                    "options": [
+                        "Static dispatch",
+                        "Compile-time polymorphism",
+                        "Runtime polymorphism — overrides in derived classes are called via base pointer",
+                        "Method hiding only"
+                    ],
+                    "answer": "Runtime polymorphism — overrides in derived classes are called via base pointer"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Inheritance — Intermediate Level",
+            "theory": "**`virtual` functions and `override`:**\n```cpp\nclass Shape {\npublic:\n    virtual double area() const { return 0; }\n    virtual ~Shape() = default;\n};\nclass Circle : public Shape {\n    double r;\npublic:\n    Circle(double r) : r(r) {}\n    double area() const override { return 3.14*r*r; }\n};\n```\n\n**Virtual dispatch** — base pointer/reference calls the most-derived override:\n```cpp\nShape* s = new Circle(5);\ns->area(); // calls Circle::area — runtime polymorphism\n```\n\n**Diamond problem** and **virtual base classes:** `class B : virtual public A {..}`\n\n**`final`:** prevents further inheritance or override.",
+            "questions": [
+                {
+                    "question": "What does `virtual` on a base class method enable?",
+                    "options": [
+                        "Inlining",
+                        "Runtime polymorphism via dynamic dispatch",
+                        "Compile-time selection",
+                        "Static linking"
+                    ],
+                    "answer": "Runtime polymorphism via dynamic dispatch"
+                },
+                {
+                    "question": "What does `override` do on a derived method?",
+                    "options": [
+                        "Makes it virtual",
+                        "Marks intent to override; compiler errors if it doesn't match a base virtual",
+                        "Prevents further override",
+                        "Makes it pure"
+                    ],
+                    "answer": "Marks intent to override; compiler errors if it doesn't match a base virtual"
+                },
+                {
+                    "question": "What is the diamond problem?",
+                    "options": [
+                        "A sorting algorithm",
+                        "Ambiguity when two base classes share a common ancestor in multiple inheritance",
+                        "A memory layout issue",
+                        "A template issue"
+                    ],
+                    "answer": "Ambiguity when two base classes share a common ancestor in multiple inheritance"
+                },
+                {
+                    "question": "How does `virtual public` base class solve the diamond problem?",
+                    "options": [
+                        "Prevents multiple inheritance",
+                        "Ensures only one copy of the shared base class exists in the hierarchy",
+                        "Makes base class abstract",
+                        "Prohibits the diamond shape"
+                    ],
+                    "answer": "Ensures only one copy of the shared base class exists in the hierarchy"
+                },
+                {
+                    "question": "What is a vtable?",
+                    "options": [
+                        "A hash table",
+                        "A compiler-generated table of pointers to virtual functions for a class",
+                        "A list of variables",
+                        "A template variable"
+                    ],
+                    "answer": "A compiler-generated table of pointers to virtual functions for a class"
+                },
+                {
+                    "question": "What does `final` on a class do?",
+                    "options": [
+                        "Prevents instantiation",
+                        "Prevents further inheritance",
+                        "Makes all members const",
+                        "Makes class static"
+                    ],
+                    "answer": "Prevents further inheritance"
+                },
+                {
+                    "question": "What does `final` on a virtual method do?",
+                    "options": [
+                        "Deletes it",
+                        "Prevents further overriding in derived classes",
+                        "Makes it pure",
+                        "Makes it static"
+                    ],
+                    "answer": "Prevents further overriding in derived classes"
+                },
+                {
+                    "question": "Why should a base class destructor be `virtual`?",
+                    "options": [
+                        "Performance",
+                        "Ensures the correct derived destructor runs when deleting via base pointer",
+                        "Required for templates",
+                        "Makes destructor public"
+                    ],
+                    "answer": "Ensures the correct derived destructor runs when deleting via base pointer"
+                },
+                {
+                    "question": "Can constructors be virtual?",
+                    "options": [
+                        "Yes",
+                        "No — constructors cannot be virtual in C++",
+                        "Only default constructors",
+                        "In C++20 yes"
+                    ],
+                    "answer": "No — constructors cannot be virtual in C++"
+                },
+                {
+                    "question": "What is a pure virtual function?",
+                    "options": [
+                        "`virtual void f() {}`",
+                        "`virtual void f() = 0;` — makes the class abstract",
+                        "`static virtual void f()`",
+                        "`const virtual void f()`"
+                    ],
+                    "answer": "`virtual void f() = 0;` — makes the class abstract"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Inheritance — Expert Level",
+            "theory": "**vptr overhead:** each object with virtual functions carries a hidden pointer to its vtable (~8 bytes). This makes `virtual` dispatch slightly slower than direct calls and may break trivial types.\n\n**Non-virtual interface (NVI) pattern:** non-virtual public functions call private virtual functions — controlling how subclasses can customize behavior.\n\n**Type erasure:** using virtual dispatch or `std::any`/function objects to hide concrete types behind an interface.\n\n**EBO (Empty Base Optimization):** a base class with no data members takes 0 extra size in the derived class — useful for policy/mixin classes.",
+            "questions": [
+                {
+                    "question": "What is vptr overhead?",
+                    "options": [
+                        "A 4-byte overhead per method",
+                        "A hidden pointer per object to its vtable, typically 8 bytes on 64-bit",
+                        "Compilation overhead",
+                        "An external pointer"
+                    ],
+                    "answer": "A hidden pointer per object to its vtable, typically 8 bytes on 64-bit"
+                },
+                {
+                    "question": "What is the Non-Virtual Interface (NVI) pattern?",
+                    "options": [
+                        "Making all functions non-virtual",
+                        "Public non-virtual wrapper calls private virtual hook — separates interface from customization point",
+                        "Using `final` everywhere",
+                        "Disabling polymorphism"
+                    ],
+                    "answer": "Public non-virtual wrapper calls private virtual hook — separates interface from customization point"
+                },
+                {
+                    "question": "What is type erasure?",
+                    "options": [
+                        "Deleting type info at compile time",
+                        "Hiding concrete type behind a uniform interface (virtual, std::function, std::any)",
+                        "Casting between unrelated types",
+                        "A garbage collection technique"
+                    ],
+                    "answer": "Hiding concrete type behind a uniform interface (virtual, std::function, std::any)"
+                },
+                {
+                    "question": "What is EBO (Empty Base Optimization)?",
+                    "options": [
+                        "Optimizing empty functions",
+                        "Empty base classes take 0 additional size in the derived object — compiler optimization",
+                        "Eliminating base classes",
+                        "An acronym for Efficient Binary Objects"
+                    ],
+                    "answer": "Empty base classes take 0 additional size in the derived object — compiler optimization"
+                },
+                {
+                    "question": "When might you prefer composition over inheritance?",
+                    "options": [
+                        "Never — inheritance is always better",
+                        "When an is-a relationship doesn't hold and you want flexible behavior without tight coupling",
+                        "Only for data members",
+                        "When the base is abstract"
+                    ],
+                    "answer": "When an is-a relationship doesn't hold and you want flexible behavior without tight coupling"
+                },
+                {
+                    "question": "What is CRTP-based static polymorphism vs virtual dispatch?",
+                    "options": [
+                        "Same performance",
+                        "CRTP resolves at compile time (no vtable), virtual resolves at runtime — CRTP is faster but less flexible",
+                        "CRTP is always slower",
+                        "Virtual is compile-time"
+                    ],
+                    "answer": "CRTP resolves at compile time (no vtable), virtual resolves at runtime — CRTP is faster but less flexible"
+                },
+                {
+                    "question": "What is covariant return type in C++?",
+                    "options": [
+                        "A return type that changes between overloads",
+                        "An override can return a derived type pointer/ref when base returns base pointer/ref",
+                        "A template return type",
+                        "A compile-time return"
+                    ],
+                    "answer": "An override can return a derived type pointer/ref when base returns base pointer/ref"
+                },
+                {
+                    "question": "What does `dynamic_cast<Derived*>(base_ptr)` do?",
+                    "options": [
+                        "Compiles to nothing",
+                        "Performs a runtime-checked downcast — returns nullptr if incorrect type",
+                        "Always succeeds",
+                        "Same as static_cast"
+                    ],
+                    "answer": "Performs a runtime-checked downcast — returns nullptr if incorrect type"
+                },
+                {
+                    "question": "What does `static_cast<Derived*>(base_ptr)` assume?",
+                    "options": [
+                        "Runtime type check",
+                        "Assumes the programmer knows the actual type — no runtime check, UB if wrong",
+                        "Same as dynamic_cast",
+                        "Always safe"
+                    ],
+                    "answer": "Assumes the programmer knows the actual type — no runtime check, UB if wrong"
+                },
+                {
+                    "question": "What is RTTI (Run-Time Type Information)?",
+                    "options": [
+                        "A memory profiler",
+                        "Runtime mechanism supporting `dynamic_cast` and `typeid` — can be disabled with `-fno-rtti`",
+                        "A compiler flag only",
+                        "A debugging library"
+                    ],
+                    "answer": "Runtime mechanism supporting `dynamic_cast` and `typeid` — can be disabled with `-fno-rtti`"
+                }
+            ]
+        }
+    ]
+}

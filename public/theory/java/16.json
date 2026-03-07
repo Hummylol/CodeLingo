@@ -1,0 +1,327 @@
+{
+    "levelno": 16,
+    "topic": "JDBC & Database",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "JDBC & Database — Beginner Level",
+            "theory": "JDBC (Java Database Connectivity) lets you connect Java programs to databases.\n\n```java\nimport java.sql.*;\n// 1. Register driver (auto in Java 6+)\n// 2. Get connection\nConnection conn = DriverManager.getConnection(\n    \"jdbc:mysql://localhost:3306/mydb\", \"user\", \"pass\");\n// 3. Create statement\nStatement stmt = conn.createStatement();\n// 4. Execute query\nResultSet rs = stmt.executeQuery(\"SELECT * FROM students\");\n// 5. Process results\nwhile (rs.next()) {\n    System.out.println(rs.getString(\"name\"));\n}\n// 6. Close resources\nrs.close(); stmt.close(); conn.close();\n```\n\n- `Connection` — represents DB connection\n- `Statement` — executes SQL\n- `ResultSet` — holds query results",
+            "questions": [
+                {
+                    "question": "What does JDBC stand for?",
+                    "options": [
+                        "Java Data Bridge Connector",
+                        "Java Database Connectivity",
+                        "Java Dynamic Base Class",
+                        "Java Driver Bridge Connection"
+                    ],
+                    "answer": "Java Database Connectivity"
+                },
+                {
+                    "question": "Which class creates a database connection?",
+                    "options": [
+                        "`Connection`",
+                        "`DriverManager`",
+                        "`Statement`",
+                        "`DatabaseFactory`"
+                    ],
+                    "answer": "`DriverManager`"
+                },
+                {
+                    "question": "What does `stmt.executeQuery(sql)` return?",
+                    "options": [
+                        "`void`",
+                        "`int`",
+                        "`ResultSet`",
+                        "`boolean`"
+                    ],
+                    "answer": "`ResultSet`"
+                },
+                {
+                    "question": "How do you move to the next row in a ResultSet?",
+                    "options": [
+                        "`rs.get()`",
+                        "`rs.next()`",
+                        "`rs.row()`",
+                        "`rs.advance()`"
+                    ],
+                    "answer": "`rs.next()`"
+                },
+                {
+                    "question": "Why should you always close JDBC resources?",
+                    "options": [
+                        "Performance",
+                        "To release database connections and prevent connection leaks",
+                        "Required by JDBC spec",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What does `executeUpdate(sql)` return?",
+                    "options": [
+                        "`ResultSet`",
+                        "`String`",
+                        "`int` — number of rows affected",
+                        "`boolean`"
+                    ],
+                    "answer": "`int` — number of rows affected"
+                },
+                {
+                    "question": "What is a JDBC URL format for MySQL?",
+                    "options": [
+                        "`mysql://host/db`",
+                        "`jdbc:mysql://host:port/db`",
+                        "`jdbc:host:mysql/db`",
+                        "`connection:mysql://host`"
+                    ],
+                    "answer": "`jdbc:mysql://host:port/db`"
+                },
+                {
+                    "question": "What is `PreparedStatement` vs `Statement`?",
+                    "options": [
+                        "PreparedStatement is slower",
+                        "PreparedStatement takes parameters with `?` — prevents SQL injection, better performance",
+                        "Statement prevents SQL injection",
+                        "Same security"
+                    ],
+                    "answer": "PreparedStatement takes parameters with `?` — prevents SQL injection, better performance"
+                },
+                {
+                    "question": "What is SQL injection?",
+                    "options": [
+                        "Adding SQL to Java code",
+                        "Attacker inserts SQL via user input to manipulate queries — prevented by PreparedStatement",
+                        "A database virus",
+                        "A JDBC exception"
+                    ],
+                    "answer": "Attacker inserts SQL via user input to manipulate queries — prevented by PreparedStatement"
+                },
+                {
+                    "question": "Which package contains JDBC API?",
+                    "options": [
+                        "`java.sql` and `javax.sql`",
+                        "`java.jdbc`",
+                        "`java.database`",
+                        "`javax.db`"
+                    ],
+                    "answer": "`java.sql` and `javax.sql`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "JDBC & Database — Intermediate Level",
+            "theory": "**Transactions:**\n```java\nconn.setAutoCommit(false);\ntry {\n    stmt.executeUpdate(\"INSERT ...\");\n    stmt.executeUpdate(\"UPDATE ...\");\n    conn.commit();\n} catch (SQLException e) {\n    conn.rollback();\n}\n```\n\n**Connection pooling (HikariCP, c3p0):** reuse connections instead of creating new ones.\n\n**`CallableStatement`:** calls stored procedures.\n\n**JPA / Hibernate:** ORM — maps Java objects to database tables:\n```java\n@Entity\nclass Student { @Id int id; String name; }\nStudentRepository.findAll(); // Spring Data JPA\n```",
+            "questions": [
+                {
+                    "question": "What does `conn.setAutoCommit(false)` do?",
+                    "options": [
+                        "Speeds up queries",
+                        "Starts manual transaction management — changes committed only on `conn.commit()`",
+                        "Disables the connection",
+                        "Sets lazy loading"
+                    ],
+                    "answer": "Starts manual transaction management — changes committed only on `conn.commit()`"
+                },
+                {
+                    "question": "What does `conn.rollback()` do?",
+                    "options": [
+                        "Closes the connection",
+                        "Reverts all changes since last commit",
+                        "Commits and re-executes",
+                        "Restores default auto-commit"
+                    ],
+                    "answer": "Reverts all changes since last commit"
+                },
+                {
+                    "question": "What is connection pooling?",
+                    "options": [
+                        "Creating one connection",
+                        "Maintaining a pool of reusable DB connections — avoids costly creation per request",
+                        "Thread-per-connection",
+                        "A caching strategy"
+                    ],
+                    "answer": "Maintaining a pool of reusable DB connections — avoids costly creation per request"
+                },
+                {
+                    "question": "What is an ORM?",
+                    "options": [
+                        "Object Relation Manager",
+                        "Object-Relational Mapping — maps Java objects to database tables automatically",
+                        "A query builder",
+                        "A database driver"
+                    ],
+                    "answer": "Object-Relational Mapping — maps Java objects to database tables automatically"
+                },
+                {
+                    "question": "What does `@Entity` annotation do in JPA?",
+                    "options": [
+                        "Marks a table",
+                        "Marks a Java class as a JPA entity (mapped to a DB table)",
+                        "Creates DB auto",
+                        "Marks serializable"
+                    ],
+                    "answer": "Marks a Java class as a JPA entity (mapped to a DB table)"
+                },
+                {
+                    "question": "What does `@Id` in JPA mark?",
+                    "options": [
+                        "An index",
+                        "The primary key field of the entity",
+                        "An auto-generated field",
+                        "The table name"
+                    ],
+                    "answer": "The primary key field of the entity"
+                },
+                {
+                    "question": "What is JPQL?",
+                    "options": [
+                        "A Java SQL library",
+                        "Java Persistence Query Language — object-oriented query language for JPA (references entities/fields, not tables/columns)",
+                        "A stored procedure",
+                        "A JSON query"
+                    ],
+                    "answer": "Java Persistence Query Language — object-oriented query language for JPA (references entities/fields, not tables/columns)"
+                },
+                {
+                    "question": "What is the N+1 query problem?",
+                    "options": [
+                        "Fetching N tables",
+                        "Loading a collection lazily fires 1 query per parent + 1 initial — solved with JOIN FETCH or eager loading",
+                        "A connection limit",
+                        "Multiple transactions"
+                    ],
+                    "answer": "Loading a collection lazily fires 1 query per parent + 1 initial — solved with JOIN FETCH or eager loading"
+                },
+                {
+                    "question": "What is `CallableStatement` used for?",
+                    "options": [
+                        "Calling static methods",
+                        "Executing stored procedures in JDBC",
+                        "A prepared statement with auto-id",
+                        "Calling REST APIs from JDBC"
+                    ],
+                    "answer": "Executing stored procedures in JDBC"
+                },
+                {
+                    "question": "What does `DatabaseMetaData` provide?",
+                    "options": [
+                        "Column values",
+                        "Information about the database structure, capabilities, and schema",
+                        "Query execution plan",
+                        "Connection state"
+                    ],
+                    "answer": "Information about the database structure, capabilities, and schema"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "JDBC & Database — Expert Level",
+            "theory": "**ACID properties:** Atomicity, Consistency, Isolation, Durability.\n\n**Transaction isolation levels:** READ_UNCOMMITTED, READ_COMMITTED, REPEATABLE_READ, SERIALIZABLE — trade-offs between consistency and concurrency.\n\n**Spring Data JPA:** `JpaRepository<Entity, Id>` — auto-generates CRUD/query methods.\n\n**Liquibase/Flyway:** database migration tools — version-controlled schema changes.\n\n**`DataSource` abstraction:** enables connection pooling and transaction management without changing business code.",
+            "questions": [
+                {
+                    "question": "What is Atomicity in ACID?",
+                    "options": [
+                        "Partial updates allowed",
+                        "All operations in a transaction succeed or none do",
+                        "Auto-commit mode",
+                        "Atomic data types"
+                    ],
+                    "answer": "All operations in a transaction succeed or none do"
+                },
+                {
+                    "question": "What does SERIALIZABLE isolation prevent?",
+                    "options": [
+                        "Concurrent reads",
+                        "All concurrency anomalies (dirty read, non-repeatable read, phantom read) — highest isolation, lowest concurrency",
+                        "Schema changes",
+                        "Lock escalation only"
+                    ],
+                    "answer": "All concurrency anomalies (dirty read, non-repeatable read, phantom read) — highest isolation, lowest concurrency"
+                },
+                {
+                    "question": "What is a dirty read?",
+                    "options": [
+                        "Reading deleted rows",
+                        "Reading uncommitted changes from another transaction that may later be rolled back",
+                        "Reading NULL values",
+                        "A transaction timeout"
+                    ],
+                    "answer": "Reading uncommitted changes from another transaction that may later be rolled back"
+                },
+                {
+                    "question": "What does `@Transactional` (Spring) do?",
+                    "options": [
+                        "Marks a transaction manually",
+                        "Weaves transactional behavior around a method — commit on success, rollback on RuntimeException",
+                        "Disables auto-commit",
+                        "Creates a new database for each call"
+                    ],
+                    "answer": "Weaves transactional behavior around a method — commit on success, rollback on RuntimeException"
+                },
+                {
+                    "question": "What is an optimistic lock in JPA?",
+                    "options": [
+                        "Not locking at all",
+                        "Using `@Version` — detects conflicting updates by comparing version numbers instead of locking DB rows",
+                        "A lock that expires",
+                        "A pessimistic lock variant"
+                    ],
+                    "answer": "Using `@Version` — detects conflicting updates by comparing version numbers instead of locking DB rows"
+                },
+                {
+                    "question": "What is Flyway?",
+                    "options": [
+                        "A Java framework",
+                        "A database migration tool — applies versioned SQL scripts in order, tracks applied migrations",
+                        "A query optimizer",
+                        "A connection pool"
+                    ],
+                    "answer": "A database migration tool — applies versioned SQL scripts in order, tracks applied migrations"
+                },
+                {
+                    "question": "What is the difference between `fetch = LAZY` and `EAGER` in JPA?",
+                    "options": [
+                        "LAZY is faster always",
+                        "LAZY loads related entities on first access; EAGER loads them immediately with parent — N+1 risk",
+                        "EAGER doesn't load relations",
+                        "Same in modern JPA"
+                    ],
+                    "answer": "LAZY loads related entities on first access; EAGER loads them immediately with parent — N+1 risk"
+                },
+                {
+                    "question": "What is a Criteria API in JPA?",
+                    "options": [
+                        "A JPQL alternative",
+                        "Programmatic, type-safe query construction in Java — avoids string SQL, refactoring-friendly",
+                        "A stored procedure API",
+                        "A JDBC wrapper"
+                    ],
+                    "answer": "Programmatic, type-safe query construction in Java — avoids string SQL, refactoring-friendly"
+                },
+                {
+                    "question": "What is `@Query` in Spring Data JPA?",
+                    "options": [
+                        "Entity property query",
+                        "Custom JPQL or native SQL specified on a repository method",
+                        "Auto-generated query",
+                        "Named query shorthand"
+                    ],
+                    "answer": "Custom JPQL or native SQL specified on a repository method"
+                },
+                {
+                    "question": "What is a database index and when to use one?",
+                    "options": [
+                        "A table primary key only",
+                        "A data structure for fast lookup by a column — use on frequently queried/sorted columns; avoid on high-write columns",
+                        "A constraint",
+                        "A foreign key alias"
+                    ],
+                    "answer": "A data structure for fast lookup by a column — use on frequently queried/sorted columns; avoid on high-write columns"
+                }
+            ]
+        }
+    ]
+}

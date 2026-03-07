@@ -1,0 +1,327 @@
+{
+    "levelno": 14,
+    "topic": "Scope",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Scope — Beginner Level",
+            "theory": "**Scope** determines where a variable can be accessed.\n\n**Local scope** — a variable created inside a function only exists within that function:\n```python\ndef my_func():\n    y = 5  # local variable\nprint(y)  # NameError!\n```\n\n**Global scope** — a variable created outside all functions is accessible from anywhere:\n```python\nx = 10  # global\ndef show(): print(x)  # can READ global\n```\n\nTo **modify** a global variable inside a function, use the `global` keyword:\n```python\ndef change():\n    global x\n    x = 20\n```",
+            "questions": [
+                {
+                    "question": "A variable inside a function has:",
+                    "options": [
+                        "Global scope",
+                        "Local scope",
+                        "Permanent scope",
+                        "No scope"
+                    ],
+                    "answer": "Local scope"
+                },
+                {
+                    "question": "Can a function read a global variable?",
+                    "options": [
+                        "No, never",
+                        "Yes, it can read its value",
+                        "Only if the variable is an integer",
+                        "Only in Python 2"
+                    ],
+                    "answer": "Yes, it can read its value"
+                },
+                {
+                    "question": "What keyword modifies a global variable from inside a function?",
+                    "options": [
+                        "var",
+                        "global",
+                        "let",
+                        "modify"
+                    ],
+                    "answer": "global"
+                },
+                {
+                    "question": "Output: `x=5; def f(): x=10; f(); print(x)`",
+                    "options": [
+                        "10",
+                        "5",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "Output: `x=5; def f(): global x; x=10; f(); print(x)`",
+                    "options": [
+                        "10",
+                        "5",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "10"
+                },
+                {
+                    "question": "A variable defined outside all functions is in:",
+                    "options": [
+                        "Local scope",
+                        "No scope",
+                        "Global scope",
+                        "Built-in scope"
+                    ],
+                    "answer": "Global scope"
+                },
+                {
+                    "question": "Using local variables instead of globals is generally:",
+                    "options": [
+                        "Bad practice",
+                        "Good practice — cleaner, more predictable code",
+                        "Identical in effect",
+                        "Slower"
+                    ],
+                    "answer": "Good practice — cleaner, more predictable code"
+                },
+                {
+                    "question": "What happens if you try to use a local variable before it's assigned?",
+                    "options": [
+                        "Returns 0",
+                        "Returns None",
+                        "UnboundLocalError",
+                        "Uses global with same name"
+                    ],
+                    "answer": "UnboundLocalError"
+                },
+                {
+                    "question": "What does `global x; x = 5` inside a function do?",
+                    "options": [
+                        "Creates a new local x",
+                        "Points x to the global scope and assigns 5 to it",
+                        "Raises SyntaxError",
+                        "Creates a constant"
+                    ],
+                    "answer": "Points x to the global scope and assigns 5 to it"
+                },
+                {
+                    "question": "Can two functions have local variables with the same name?",
+                    "options": [
+                        "No, variable names must be unique",
+                        "Yes, they are independent in each scope",
+                        "Only if they are integers",
+                        "Only if they have the same value"
+                    ],
+                    "answer": "Yes, they are independent in each scope"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Scope — Intermediate Level",
+            "theory": "**LEGB Rule** — Python resolves names in this order:\n1. **L**ocal — inside the current function\n2. **E**nclosing — any enclosing function (for nested functions)\n3. **G**lobal — module level\n4. **B**uilt-in — built-in names like `print`, `len`\n\n**`nonlocal`** keyword — used inside a nested function to refer to a variable in the enclosing (but not global) scope:\n```python\ndef outer():\n    count = 0\n    def inner():\n        nonlocal count\n        count += 1\n    inner()\n    print(count)  # 1\n```",
+            "questions": [
+                {
+                    "question": "What does LEGB stand for?",
+                    "options": [
+                        "Local, External, Global, Built-in",
+                        "Local, Enclosing, Global, Built-in",
+                        "Large, Expansive, Grand, Broad",
+                        "Local, Global, External, Built-in"
+                    ],
+                    "answer": "Local, Enclosing, Global, Built-in"
+                },
+                {
+                    "question": "In LEGB order, where does Python look first?",
+                    "options": [
+                        "Global",
+                        "Built-in",
+                        "Local",
+                        "Enclosing"
+                    ],
+                    "answer": "Local"
+                },
+                {
+                    "question": "What does `nonlocal` do?",
+                    "options": [
+                        "References a global variable",
+                        "References a variable in an enclosing (non-global) function scope",
+                        "Creates a new local variable",
+                        "Imports an external variable"
+                    ],
+                    "answer": "References a variable in an enclosing (non-global) function scope"
+                },
+                {
+                    "question": "What are 'built-in' names in LEGB?",
+                    "options": [
+                        "User-defined globals",
+                        "Names like print, len, range that Python provides automatically",
+                        "Variables in imported modules",
+                        "Constants"
+                    ],
+                    "answer": "Names like print, len, range that Python provides automatically"
+                },
+                {
+                    "question": "What happens if a variable isn't found in any LEGB scope?",
+                    "options": [
+                        "Returns None",
+                        "Returns 0",
+                        "NameError is raised",
+                        "Uses the last known value"
+                    ],
+                    "answer": "NameError is raised"
+                },
+                {
+                    "question": "What is variable shadowing?",
+                    "options": [
+                        "A global overwriting a local",
+                        "A local variable with the same name hiding a variable in an outer scope",
+                        "Two files with the same name",
+                        "A variable used twice"
+                    ],
+                    "answer": "A local variable with the same name hiding a variable in an outer scope"
+                },
+                {
+                    "question": "Output: `x=1; def outer(): x=2; def inner(): print(x); inner(); outer()`",
+                    "options": [
+                        "1",
+                        "2",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "2"
+                },
+                {
+                    "question": "Can `nonlocal` reference a global variable?",
+                    "options": [
+                        "Yes",
+                        "No, it only references enclosing function scopes (not global)",
+                        "Only in Python 3.8+",
+                        "Only when global is also declared"
+                    ],
+                    "answer": "No, it only references enclosing function scopes (not global)"
+                },
+                {
+                    "question": "What does `print.__class__` evaluate to?",
+                    "options": [
+                        "<class 'function'>",
+                        "<class 'builtin_function_or_method'>",
+                        "<class 'print'>",
+                        "<class 'str'>"
+                    ],
+                    "answer": "<class 'builtin_function_or_method'>"
+                },
+                {
+                    "question": "What level of LEGB is range()?",
+                    "options": [
+                        "Local",
+                        "Enclosing",
+                        "Global",
+                        "Built-in"
+                    ],
+                    "answer": "Built-in"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Scope — Expert Level",
+            "theory": "**Closures and free variables:** When a nested function refers to a variable from its enclosing scope, that variable becomes a **free variable** — stored in `func.__code__.co_freevars` and `func.__closure__`.\n\n**Class scope** — class body has its own namespace. Variables inside a class body are accessible as class attributes but NOT as local variables inside methods:\n```python\nclass Foo:\n    x = 10\n    def bar(self):\n        print(x)  # NameError! must use self.x or Foo.x\n```\n\n**`globals()` and `locals()`** return dicts of the current global/local namespace.\n**`vars(obj)`** — returns the `__dict__` of an object.\n\n**`exec()` and `eval()`** evaluate code in a given namespace — a security risk with untrusted input.",
+            "questions": [
+                {
+                    "question": "Where are free variables of a closure stored?",
+                    "options": [
+                        "sys.globals",
+                        "func.__closure__",
+                        "func.__locals__",
+                        "In the global namespace"
+                    ],
+                    "answer": "func.__closure__"
+                },
+                {
+                    "question": "What does `globals()` return?",
+                    "options": [
+                        "A dict of local variables",
+                        "A dict of the current module's global variables",
+                        "All Python built-ins",
+                        "The LEGB chain as a list"
+                    ],
+                    "answer": "A dict of the current module's global variables"
+                },
+                {
+                    "question": "What does `locals()` return?",
+                    "options": [
+                        "Global variables",
+                        "A dict of the current local scope's variables",
+                        "All variables ever defined",
+                        "Only function arguments"
+                    ],
+                    "answer": "A dict of the current local scope's variables"
+                },
+                {
+                    "question": "Inside a class method, how do you access a class-level variable `x`?",
+                    "options": [
+                        "Just x",
+                        "self.x or ClassName.x",
+                        "local.x",
+                        "global x then x"
+                    ],
+                    "answer": "self.x or ClassName.x"
+                },
+                {
+                    "question": "What does `func.__code__.co_freevars` contain?",
+                    "options": [
+                        "All local variable names",
+                        "Names of free variables (variables from enclosing scope used in closure)",
+                        "Names of global variables used",
+                        "The function's arguments"
+                    ],
+                    "answer": "Names of free variables (variables from enclosing scope used in closure)"
+                },
+                {
+                    "question": "What is the output? `fns = [lambda: i for i in range(3)]; print([f() for f in fns])`",
+                    "options": [
+                        "[0,1,2]",
+                        "[2,2,2] (closures share the same i variable)",
+                        "[0,0,0]",
+                        "Error"
+                    ],
+                    "answer": "[2,2,2] (closures share the same i variable)"
+                },
+                {
+                    "question": "How do you fix the late-binding closure issue in `lambda: i`?",
+                    "options": [
+                        "Use global i",
+                        "Use default argument: lambda i=i: i",
+                        "Use nonlocal i",
+                        "Use a class instead"
+                    ],
+                    "answer": "Use default argument: lambda i=i: i"
+                },
+                {
+                    "question": "What does `eval('1 + 2')` return?",
+                    "options": [
+                        "'1 + 2'",
+                        "3",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "3"
+                },
+                {
+                    "question": "Why is using `eval()` or `exec()` with user input dangerous?",
+                    "options": [
+                        "It's too slow",
+                        "It can execute arbitrary code, enabling code injection attacks",
+                        "It only works in global scope",
+                        "It doesn't return values"
+                    ],
+                    "answer": "It can execute arbitrary code, enabling code injection attacks"
+                },
+                {
+                    "question": "What does `vars(obj)` return?",
+                    "options": [
+                        "Type of obj",
+                        "The __dict__ of obj (its attribute namespace)",
+                        "All methods of obj",
+                        "All class attributes"
+                    ],
+                    "answer": "The __dict__ of obj (its attribute namespace)"
+                }
+            ]
+        }
+    ]
+}

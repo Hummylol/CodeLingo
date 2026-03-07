@@ -1,0 +1,327 @@
+{
+    "levelno": 20,
+    "topic": "File I/O & Streams",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "File I/O & Streams — Beginner Level",
+            "theory": "C++ uses stream objects from `<fstream>` to read/write files.\n\n```cpp\n#include <fstream>\n\n// Write to file\nstd::ofstream outFile(\"data.txt\");\noutFile << \"Hello, file!\\n\";\noutFile.close();\n\n// Read from file\nstd::ifstream inFile(\"data.txt\");\nstd::string line;\nwhile (std::getline(inFile, line)) {\n    std::cout << line << '\\n';\n}\n```\n\n- `std::ofstream` — output file stream (write)\n- `std::ifstream` — input file stream (read)\n- `std::fstream` — both read and write\n- Always check if file opened successfully: `if (!inFile) { ... }`\n- Always close files (or use RAII — the destructor closes them)",
+            "questions": [
+                {
+                    "question": "Which stream class is used to write to files?",
+                    "options": [
+                        "`std::cin`",
+                        "`std::ifstream`",
+                        "`std::ofstream`",
+                        "`std::fstream` only"
+                    ],
+                    "answer": "`std::ofstream`"
+                },
+                {
+                    "question": "Which stream class is used to read from files?",
+                    "options": [
+                        "`std::ofstream`",
+                        "`std::ifstream`",
+                        "`std::cout`",
+                        "`std::cerr`"
+                    ],
+                    "answer": "`std::ifstream`"
+                },
+                {
+                    "question": "Which header provides file stream classes?",
+                    "options": [
+                        "`<iostream>`",
+                        "`<fstream>`",
+                        "`<fileio>`",
+                        "`<stream>`"
+                    ],
+                    "answer": "`<fstream>`"
+                },
+                {
+                    "question": "How do you check if a file failed to open?",
+                    "options": [
+                        "`if (file == null)`",
+                        "`if (!file)`",
+                        "`file.isClosed()`",
+                        "`file.status() == error`"
+                    ],
+                    "answer": "`if (!file)`"
+                },
+                {
+                    "question": "What does `std::fstream` allow?",
+                    "options": [
+                        "Write only",
+                        "Read only",
+                        "Both read and write",
+                        "Network I/O"
+                    ],
+                    "answer": "Both read and write"
+                },
+                {
+                    "question": "What function reads an entire line from a file into a string?",
+                    "options": [
+                        "`file >> line`",
+                        "`std::getline(file, line)`",
+                        "`file.read(line)`",
+                        "`file.getLine(line)`"
+                    ],
+                    "answer": "`std::getline(file, line)`"
+                },
+                {
+                    "question": "If `std::ofstream` opens an existing file without any flags, what happens?",
+                    "options": [
+                        "Error",
+                        "Appends to file",
+                        "Truncates (overwrites) the file",
+                        "Reads from it"
+                    ],
+                    "answer": "Truncates (overwrites) the file"
+                },
+                {
+                    "question": "To append to an existing file use:",
+                    "options": [
+                        "`std::ofstream f(\"file.txt\", std::ios::app)`",
+                        "`std::ofstream f(\"file.txt\", std::ios::in)`",
+                        "`std::ifstream f(\"file.txt\", std::ios::app)`",
+                        "`std::fstream f(\"file.txt\")`"
+                    ],
+                    "answer": "`std::ofstream f(\"file.txt\", std::ios::app)`"
+                },
+                {
+                    "question": "When is a file object's destructor called?",
+                    "options": [
+                        "On explicit close() only",
+                        "Never automatically",
+                        "When the object goes out of scope — closing the file automatically",
+                        "Only in main()"
+                    ],
+                    "answer": "When the object goes out of scope — closing the file automatically"
+                },
+                {
+                    "question": "What does `outFile.close()` do?",
+                    "options": [
+                        "Deletes the file",
+                        "Flushes and closes the file stream",
+                        "Removes content",
+                        "Opens it for reading"
+                    ],
+                    "answer": "Flushes and closes the file stream"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "File I/O & Streams — Intermediate Level",
+            "theory": "**Binary file I/O:**\n```cpp\nstd::ofstream bin(\"data.bin\", std::ios::binary);\nint x = 12345;\nbin.write(reinterpret_cast<char*>(&x), sizeof(x));\n```\n\n**`std::stringstream`** — in-memory stream:\n```cpp\nstd::stringstream ss;\nss << \"value: \" << 42;\nstd::string result = ss.str();\n```\n\n**Seek/tell:**\n- `file.seekg(pos)` — reposition read position\n- `file.tellg()` — get current read position\n- `file.seekp(pos)` — reposition write position\n- Offset flags: `std::ios::beg`, `std::ios::cur`, `std::ios::end`",
+            "questions": [
+                {
+                    "question": "Which flag opens a file in binary mode?",
+                    "options": [
+                        "`std::ios::text`",
+                        "`std::ios::binary`",
+                        "`std::ios::bin`",
+                        "`std::ios::raw`"
+                    ],
+                    "answer": "`std::ios::binary`"
+                },
+                {
+                    "question": "What does `write(reinterpret_cast<char*>(&x), sizeof(x))` do?",
+                    "options": [
+                        "Writes decimal string of x",
+                        "Writes raw bytes of x to the file",
+                        "Writes x as ASCII",
+                        "Converts x to string first"
+                    ],
+                    "answer": "Writes raw bytes of x to the file"
+                },
+                {
+                    "question": "What is `std::stringstream`?",
+                    "options": [
+                        "Stream for string parsing only",
+                        "An in-memory stream that works like a file but in RAM",
+                        "A string view",
+                        "A std::string alias"
+                    ],
+                    "answer": "An in-memory stream that works like a file but in RAM"
+                },
+                {
+                    "question": "What does `ss.str()` return?",
+                    "options": [
+                        "Stream pointer",
+                        "The string built in the stringstream",
+                        "A char*",
+                        "Stream state"
+                    ],
+                    "answer": "The string built in the stringstream"
+                },
+                {
+                    "question": "What does `file.seekg(0, std::ios::end)` do?",
+                    "options": [
+                        "Seeks to beginning",
+                        "Seeks read position to one past the last byte",
+                        "Closes file",
+                        "Seeks write position to end"
+                    ],
+                    "answer": "Seeks read position to one past the last byte"
+                },
+                {
+                    "question": "What does `file.tellg()` return?",
+                    "options": [
+                        "File size",
+                        "Current read position in bytes",
+                        "Current write position",
+                        "Error code"
+                    ],
+                    "answer": "Current read position in bytes"
+                },
+                {
+                    "question": "To get file size using seekg/tellg:",
+                    "options": [
+                        "`file.size()`",
+                        "Seek to end, call tellg()",
+                        "file.length()",
+                        "Use sizeof(file)"
+                    ],
+                    "answer": "Seek to end, call tellg()"
+                },
+                {
+                    "question": "What does `std::ios::ate` flag do when opening?",
+                    "options": [
+                        "Open in binary",
+                        "Seek to end immediately after opening",
+                        "Append writes",
+                        "Read-only"
+                    ],
+                    "answer": "Seek to end immediately after opening"
+                },
+                {
+                    "question": "What does `file.eof()` return?",
+                    "options": [
+                        "File size",
+                        "true when read past end of file",
+                        "false when file is empty",
+                        "true when file is just opened"
+                    ],
+                    "answer": "true when read past end of file"
+                },
+                {
+                    "question": "What does `file.read(buffer, n)` do?",
+                    "options": [
+                        "Reads one char",
+                        "Reads up to n bytes into buffer",
+                        "Reads formatted text",
+                        "Reads a line"
+                    ],
+                    "answer": "Reads up to n bytes into buffer"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "File I/O & Streams — Expert Level",
+            "theory": "**Memory-mapped files** — map file contents directly to process address space for high-performance I/O (using OS APIs like `mmap` or `CreateFileMapping`).\n\n**C++23 `std::print` to file:** `std::print(outFile, \"val={}\", x);`\n\n**`<filesystem>` (C++17):** portable file system operations:\n```cpp\n#include <filesystem>\nnamespace fs = std::filesystem;\nfs::path p = \"data/output.txt\";\nfs::create_directories(p.parent_path());\nfor (auto& entry : fs::directory_iterator(\".\")) {\n    std::cout << entry.path() << '\\n';\n}\n```\n\n**Buffered vs unbuffered I/O:** `std::ios::sync_with_stdio(false)` decouples C and C++ streams for performance.",
+            "questions": [
+                {
+                    "question": "What is memory-mapped I/O?",
+                    "options": [
+                        "Caching files in RAM",
+                        "Mapping file contents directly to virtual address space — avoids read/write syscalls per access",
+                        "An in-memory stream",
+                        "Binary I/O only"
+                    ],
+                    "answer": "Mapping file contents directly to virtual address space — avoids read/write syscalls per access"
+                },
+                {
+                    "question": "Which C++17 header provides portable file system operations?",
+                    "options": [
+                        "`<fileio>`",
+                        "`<filesystem>`",
+                        "`<fstream>`",
+                        "`<path>`"
+                    ],
+                    "answer": "`<filesystem>`"
+                },
+                {
+                    "question": "What does `std::filesystem::exists(p)` do?",
+                    "options": [
+                        "Creates a file",
+                        "Returns true if path p exists on the filesystem",
+                        "Returns file size",
+                        "Opens a file"
+                    ],
+                    "answer": "Returns true if path p exists on the filesystem"
+                },
+                {
+                    "question": "What does `fs::directory_iterator` iterate over?",
+                    "options": [
+                        "Lines in a file",
+                        "All entries in a directory",
+                        "All files recursively",
+                        "Only subdirectories"
+                    ],
+                    "answer": "All entries in a directory"
+                },
+                {
+                    "question": "What is `std::filesystem::file_size(p)`?",
+                    "options": [
+                        "A constant",
+                        "Returns the size of a file in bytes",
+                        "Number of lines",
+                        "Block device size"
+                    ],
+                    "answer": "Returns the size of a file in bytes"
+                },
+                {
+                    "question": "What is the difference between text and binary mode file I/O?",
+                    "options": [
+                        "No difference on Linux",
+                        "Text mode translates '\\n' on Windows (CRLF); binary mode doesn't — important for portable code",
+                        "Binary is always bigger",
+                        "Text supports seek better"
+                    ],
+                    "answer": "Text mode translates '\\n' on Windows (CRLF); binary mode doesn't — important for portable code"
+                },
+                {
+                    "question": "What is `std::filesystem::recursive_directory_iterator`?",
+                    "options": [
+                        "Iterates only root dir",
+                        "Recursively traverses all files and directories under a given path",
+                        "Sorts by name",
+                        "An error type"
+                    ],
+                    "answer": "Recursively traverses all files and directories under a given path"
+                },
+                {
+                    "question": "What does `fs::path::extension()` return?",
+                    "options": [
+                        "Full path",
+                        "Filename without extension",
+                        "The file extension (e.g., .txt)",
+                        "Parent directory"
+                    ],
+                    "answer": "The file extension (e.g., .txt)"
+                },
+                {
+                    "question": "What is `std::ofstream::flush()` vs `close()`?",
+                    "options": [
+                        "Same",
+                        "flush() writes buffered data without closing; close() flushes and closes",
+                        "close() doesn't flush",
+                        "flush() closes the file"
+                    ],
+                    "answer": "flush() writes buffered data without closing; close() flushes and closes"
+                },
+                {
+                    "question": "What does `std::ios_base::failure` exception indicate?",
+                    "options": [
+                        "File not found always",
+                        "A stream I/O error — thrown when `exceptions()` is enabled on a stream and an error occurs",
+                        "Binary parse error",
+                        "Stream state reset"
+                    ],
+                    "answer": "A stream I/O error — thrown when `exceptions()` is enabled on a stream and an error occurs"
+                }
+            ]
+        }
+    ]
+}

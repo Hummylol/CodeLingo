@@ -1,0 +1,327 @@
+{
+    "levelno": 5,
+    "topic": "Control Flow (Switch)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Control Flow (Switch) — Beginner Level",
+            "theory": "The `switch` statement compares a variable against constant values (`case` labels). `break` exits the switch; without it, execution **falls through** to the next case.\n\n```cpp\nint day = 4;\nswitch (day) {\n  case 1: std::cout << \"Monday\"; break;\n  case 2: std::cout << \"Tuesday\"; break;\n  default: std::cout << \"Other day\"; break;\n}\n```\n\n- The expression must evaluate to an **integral type** (`int`, `char`, `enum`)\n- `default` runs when no case matches — optional but recommended\n- Stack multiple cases for the same code block by listing them consecutively",
+            "questions": [
+                {
+                    "question": "What does `break` do in a `switch`?",
+                    "options": [
+                        "End the program",
+                        "Skip the current case",
+                        "Exit the switch block and prevent fall-through",
+                        "Go to default case"
+                    ],
+                    "answer": "Exit the switch block and prevent fall-through"
+                },
+                {
+                    "question": "What happens if you omit `break` in a case?",
+                    "options": [
+                        "Compile error",
+                        "Execution falls through to the next case",
+                        "Program terminates",
+                        "Switch skipped"
+                    ],
+                    "answer": "Execution falls through to the next case"
+                },
+                {
+                    "question": "When is the `default` case executed?",
+                    "options": [
+                        "Always",
+                        "Never",
+                        "When the variable is 0",
+                        "When no other case matches"
+                    ],
+                    "answer": "When no other case matches"
+                },
+                {
+                    "question": "Which type CANNOT be used in a switch expression?",
+                    "options": [
+                        "`char`",
+                        "`int`",
+                        "`double`",
+                        "`enum`"
+                    ],
+                    "answer": "`double`"
+                },
+                {
+                    "question": "Is `default` required in a switch?",
+                    "options": [
+                        "Yes, always",
+                        "No, optional",
+                        "Only for 2+ cases",
+                        "Yes, for error handling"
+                    ],
+                    "answer": "No, optional"
+                },
+                {
+                    "question": "Can you stack multiple case labels for the same block?",
+                    "options": [
+                        "No, syntax error",
+                        "Yes, by listing them before the code block",
+                        "Only for consecutive numbers",
+                        "No, each needs its own block"
+                    ],
+                    "answer": "Yes, by listing them before the code block"
+                },
+                {
+                    "question": "What must follow the `case` keyword?",
+                    "options": [
+                        "A variable name",
+                        "A constant integral expression",
+                        "A boolean",
+                        "A semicolon"
+                    ],
+                    "answer": "A constant integral expression"
+                },
+                {
+                    "question": "If `x=2` and case 2 has no break, what runs after it?",
+                    "options": [
+                        "Nothing extra",
+                        "default case",
+                        "case 3 code (fall-through)",
+                        "case 1 code"
+                    ],
+                    "answer": "case 3 code (fall-through)"
+                },
+                {
+                    "question": "A `switch` statement is a form of:",
+                    "options": [
+                        "Looping",
+                        "Multi-way branching",
+                        "Variable declaration",
+                        "Function definition"
+                    ],
+                    "answer": "Multi-way branching"
+                },
+                {
+                    "question": "The `switch` statement tests for:",
+                    "options": [
+                        "Range comparisons",
+                        "Equality only",
+                        "Greater than",
+                        "Logical AND"
+                    ],
+                    "answer": "Equality only"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Control Flow (Switch) — Intermediate Level",
+            "theory": "**Switch with `enum`:**\n```cpp\nenum class Color { Red, Green, Blue };\nswitch (color) {\n  case Color::Red:   ...; break;\n  case Color::Green: ...; break;\n  case Color::Blue:  ...; break;\n}\n```\n\n**`[[fallthrough]]` attribute (C++17)** — explicitly marks intentional fall-through to silence compiler warnings:\n```cpp\ncase 2:\n    doPartialWork();\n    [[fallthrough]];\ncase 3:\n    doRest();\n    break;\n```\n\n**Switch-init (C++17):** `switch (int n = compute(); n) { ... }` — like if-init, scopes variable to the switch.",
+            "questions": [
+                {
+                    "question": "What does `[[fallthrough]]` do in C++17?",
+                    "options": [
+                        "Forces fall-through behavior",
+                        "Marks intentional fall-through to suppress compiler warnings",
+                        "Makes a case default",
+                        "Breaks out of the loop"
+                    ],
+                    "answer": "Marks intentional fall-through to suppress compiler warnings"
+                },
+                {
+                    "question": "Which type requires `Color::Red` syntax in switch cases?",
+                    "options": [
+                        "`enum` (unscoped)",
+                        "`enum class` (scoped)",
+                        "`int`",
+                        "`char`"
+                    ],
+                    "answer": "`enum class` (scoped)"
+                },
+                {
+                    "question": "Can `std::string` be used as a switch expression?",
+                    "options": [
+                        "Yes in C++17",
+                        "No, only integral types",
+                        "Yes with a converter",
+                        "Yes with `auto`"
+                    ],
+                    "answer": "No, only integral types"
+                },
+                {
+                    "question": "What does `switch (int n = f(); n)` (C++17 init) do?",
+                    "options": [
+                        "Error",
+                        "Declares n visible only within the switch block, branches on n",
+                        "Calls f twice",
+                        "Declares global n"
+                    ],
+                    "answer": "Declares n visible only within the switch block, branches on n"
+                },
+                {
+                    "question": "If you want exhaustive matching of an enum, what compiler feature helps?",
+                    "options": [
+                        "default: assert(false)",
+                        "Compiler warning `-Wswitch` or equivalent when cases are missing",
+                        "Neither",
+                        "Both A and B"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "Can you declare variables inside a switch case?",
+                    "options": [
+                        "No",
+                        "Yes, but their scope must be bounded with braces `{}`",
+                        "Yes anywhere freely",
+                        "Only constants"
+                    ],
+                    "answer": "Yes, but their scope must be bounded with braces `{}`"
+                },
+                {
+                    "question": "What is a jump table optimization for switch?",
+                    "options": [
+                        "A preprocessor macro",
+                        "Compiler may generate an array of jump targets making switch O(1) instead of O(n) chain",
+                        "A sorted array of cases",
+                        "A hash map"
+                    ],
+                    "answer": "Compiler may generate an array of jump targets making switch O(1) instead of O(n) chain"
+                },
+                {
+                    "question": "With enum class, can you compare without switch? E.g., `color == Color::Red`?",
+                    "options": [
+                        "No",
+                        "Yes, using `==`",
+                        "Only with if-constexpr",
+                        "Only via cast"
+                    ],
+                    "answer": "Yes, using `==`"
+                },
+                {
+                    "question": "What is 'switch fall-through' behavior?",
+                    "options": [
+                        "Skipping all cases",
+                        "Execution continues into the next case when break is absent",
+                        "Jump to default",
+                        "Repeat the switch"
+                    ],
+                    "answer": "Execution continues into the next case when break is absent"
+                },
+                {
+                    "question": "Can you use a `return` statement inside a switch case?",
+                    "options": [
+                        "No",
+                        "Yes — it exits the function",
+                        "Only in void functions",
+                        "Only with break before it"
+                    ],
+                    "answer": "Yes — it exits the function"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Control Flow (Switch) — Expert Level",
+            "theory": "**Pattern matching is NOT (yet) in C++ switch** — unlike Rust/Python `match`, C++ switch only tests equality. Pattern matching proposals are in progress.\n\n**`std::visit` (C++17)** — a functional alternative for variant types:\n```cpp\nstd::visit(overloaded{\n    [](int i) { std::cout << \"int: \" << i; },\n    [](std::string s) { std::cout << \"str: \" << s; }\n}, myVariant);\n```\n\n**Duff's device** — an extreme (unusual) use of intentional fall-through for loop unrolling using switch.\n\n**Performance note:** Switches over dense integral ranges are typically compiled to jump tables (O(1)); sparse ranges may fall back to if-chains.",
+            "questions": [
+                {
+                    "question": "Does C++ switch support pattern matching like Rust `match`?",
+                    "options": [
+                        "Yes in C++20",
+                        "No — switch only tests equality on integral types",
+                        "Yes with concepts",
+                        "Yes via `std::visit`"
+                    ],
+                    "answer": "No — switch only tests equality on integral types"
+                },
+                {
+                    "question": "What does `std::visit` do with a `std::variant`?",
+                    "options": [
+                        "Iterates over vector",
+                        "Calls the appropriate lambda/function for the currently held variant alternative",
+                        "Converts variant to string",
+                        "Checks variant validity"
+                    ],
+                    "answer": "Calls the appropriate lambda/function for the currently held variant alternative"
+                },
+                {
+                    "question": "When is a switch compiled to a jump table vs an if-chain?",
+                    "options": [
+                        "Always jump table",
+                        "Dense integer ranges → jump table; sparse ranges may use if-chain or other strategy",
+                        "Always if-chain",
+                        "Depends on `[[likely]]` attributes"
+                    ],
+                    "answer": "Dense integer ranges → jump table; sparse ranges may use if-chain or other strategy"
+                },
+                {
+                    "question": "What is the `overloaded` pattern used with `std::visit`?",
+                    "options": [
+                        "A std:: class",
+                        "A helper struct that inherits lambdas to enable multi-lambda visitation",
+                        "An enum class",
+                        "A deprecated feature"
+                    ],
+                    "answer": "A helper struct that inherits lambdas to enable multi-lambda visitation"
+                },
+                {
+                    "question": "What is Duff's device?",
+                    "options": [
+                        "A C++ compiler plugin",
+                        "An intentional fall-through loop unrolling trick within a switch statement",
+                        "A memory debugging tool",
+                        "A template metaprogramming pattern"
+                    ],
+                    "answer": "An intentional fall-through loop unrolling trick within a switch statement"
+                },
+                {
+                    "question": "State pattern in OOP vs switch — what is the main difference?",
+                    "options": [
+                        "No difference",
+                        "State pattern uses virtual dispatch to eliminate switches on type/state",
+                        "Switch is always faster",
+                        "State pattern is only for threads"
+                    ],
+                    "answer": "State pattern uses virtual dispatch to eliminate switches on type/state"
+                },
+                {
+                    "question": "What is 'exhaustive matching' and why is it desirable?",
+                    "options": [
+                        "Matching all inputs",
+                        "Ensuring all possible cases are handled so no input falls through unhandled",
+                        "Matching only the most common case",
+                        "Using only enum switches"
+                    ],
+                    "answer": "Ensuring all possible cases are handled so no input falls through unhandled"
+                },
+                {
+                    "question": "Which C++ standard introduced the `[[fallthrough]]` attribute?",
+                    "options": [
+                        "C++11",
+                        "C++14",
+                        "C++17",
+                        "C++20"
+                    ],
+                    "answer": "C++17"
+                },
+                {
+                    "question": "If C++ switch expressions must be integral/enum, how do you branch on strings efficiently?",
+                    "options": [
+                        "Use std::map<string, function>",
+                        "Hash the string and switch on the hash",
+                        "Use if-else chain",
+                        "Both A and C are common approaches"
+                    ],
+                    "answer": "Both A and C are common approaches"
+                },
+                {
+                    "question": "What does `std::get<int>(variant)` do vs `std::visit`?",
+                    "options": [
+                        "Same thing",
+                        "`std::get` extracts the value, throwing `std::bad_variant_access` if wrong type; `std::visit` dispatches automatically",
+                        "`std::visit` throws; `std::get` doesn't",
+                        "They're only for tuples"
+                    ],
+                    "answer": "`std::get` extracts the value, throwing `std::bad_variant_access` if wrong type; `std::visit` dispatches automatically"
+                }
+            ]
+        }
+    ]
+}

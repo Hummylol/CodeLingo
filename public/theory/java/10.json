@@ -1,0 +1,327 @@
+{
+    "levelno": 10,
+    "topic": "Collections Framework",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Collections Framework — Beginner Level",
+            "theory": "Java Collections provide dynamic data structures.\n\n**Common types:**\n- `ArrayList<T>` — dynamic array\n- `LinkedList<T>` — doubly-linked list\n- `HashMap<K,V>` — key-value pairs (hash-based)\n- `HashSet<T>` — unique elements\n- `TreeMap<K,V>` — sorted map\n\n```java\nimport java.util.*;\nArrayList<String> list = new ArrayList<>();\nlist.add(\"Alice\");\nlist.add(\"Bob\");\nlist.get(0);  // \"Alice\"\nlist.size();  // 2\nfor (String s : list) { System.out.println(s); }\n```\n\nAll collections use generics to store typed elements.",
+            "questions": [
+                {
+                    "question": "Which collection is a dynamic array?",
+                    "options": [
+                        "`LinkedList`",
+                        "`ArrayList`",
+                        "`HashMap`",
+                        "`TreeSet`"
+                    ],
+                    "answer": "`ArrayList`"
+                },
+                {
+                    "question": "Which collection stores key-value pairs?",
+                    "options": [
+                        "`HashSet`",
+                        "`ArrayList`",
+                        "`HashMap`",
+                        "`Stack`"
+                    ],
+                    "answer": "`HashMap`"
+                },
+                {
+                    "question": "Which collection stores unique elements?",
+                    "options": [
+                        "`ArrayList`",
+                        "`LinkedList`",
+                        "`HashSet`",
+                        "`Queue`"
+                    ],
+                    "answer": "`HashSet`"
+                },
+                {
+                    "question": "What does `list.add(\"Alice\")` do?",
+                    "options": [
+                        "Inserts at front",
+                        "Replaces first element",
+                        "Appends to end",
+                        "Removes Alice"
+                    ],
+                    "answer": "Appends to end"
+                },
+                {
+                    "question": "How do you get the size of a collection?",
+                    "options": [
+                        "`collection.length`",
+                        "`collection.count()`",
+                        "`collection.size()`",
+                        "`collection.length()`"
+                    ],
+                    "answer": "`collection.size()`"
+                },
+                {
+                    "question": "Value type stored in `ArrayList<String>`?",
+                    "options": [
+                        "Any type",
+                        "Only String",
+                        "String or Integer",
+                        "Primitive only"
+                    ],
+                    "answer": "Only String"
+                },
+                {
+                    "question": "Which keeps elements in sorted order?",
+                    "options": [
+                        "`HashMap`",
+                        "`ArrayList`",
+                        "`HashSet`",
+                        "`TreeMap`"
+                    ],
+                    "answer": "`TreeMap`"
+                },
+                {
+                    "question": "Can `ArrayList` store duplicate elements?",
+                    "options": [
+                        "No",
+                        "Yes",
+                        "Only primitives",
+                        "Only once"
+                    ],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "Can `HashMap` have duplicate keys?",
+                    "options": [
+                        "Yes",
+                        "No — a new put with same key overwrites existing value",
+                        "Only if value is null",
+                        "Yes if values differ"
+                    ],
+                    "answer": "No — a new put with same key overwrites existing value"
+                },
+                {
+                    "question": "What does `map.get(key)` return if key doesn't exist?",
+                    "options": [
+                        "-1",
+                        "Empty string",
+                        "`null`",
+                        "Throws KeyNotFoundException"
+                    ],
+                    "answer": "`null`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Collections Framework — Intermediate Level",
+            "theory": "**`List.of()`, `Set.of()`, `Map.of()` (Java 9+):** create immutable collections:\n```java\nList<String> immutable = List.of(\"a\", \"b\", \"c\");\n```\n\n**`Collections` utility class:**\n```java\nCollections.sort(list);\nCollections.reverse(list);\nCollections.shuffle(list);\nCollections.unmodifiableList(list);\n```\n\n**`Queue` and `Deque`:**\n- `Queue`: offer, poll, peek (FIFO)\n- `Deque`: offerFirst/Last, pollFirst/Last (both ends)\n\n**`PriorityQueue`:** min-heap by default.\n\n**Iteration with `Iterator`:**\n```java\nIterator<String> it = list.iterator();\nwhile (it.hasNext()) { it.next(); }\n```",
+            "questions": [
+                {
+                    "question": "What does `List.of(\"a\",\"b\")` create?",
+                    "options": [
+                        "A mutable ArrayList",
+                        "An immutable list",
+                        "A LinkedList",
+                        "A Set"
+                    ],
+                    "answer": "An immutable list"
+                },
+                {
+                    "question": "What does `Collections.sort(list)` require?",
+                    "options": [
+                        "Nothing",
+                        "Elements must implement Comparable",
+                        "A custom Comparator",
+                        "A sorted list already"
+                    ],
+                    "answer": "Elements must implement Comparable"
+                },
+                {
+                    "question": "What follows FIFO order?",
+                    "options": [
+                        "`Stack`",
+                        "`PriorityQueue`",
+                        "`Queue`",
+                        "`Deque`"
+                    ],
+                    "answer": "`Queue`"
+                },
+                {
+                    "question": "What is `PriorityQueue` by default?",
+                    "options": [
+                        "FIFO queue",
+                        "Max-heap",
+                        "Min-heap",
+                        "Random order"
+                    ],
+                    "answer": "Min-heap"
+                },
+                {
+                    "question": "What does `queue.peek()` do?",
+                    "options": [
+                        "Remove head",
+                        "Add to queue",
+                        "View head without removing",
+                        "Check if empty"
+                    ],
+                    "answer": "View head without removing"
+                },
+                {
+                    "question": "What does `queue.poll()` do?",
+                    "options": [
+                        "View head",
+                        "Remove and return head, returns null if empty",
+                        "Add to queue",
+                        "Size of queue"
+                    ],
+                    "answer": "Remove and return head, returns null if empty"
+                },
+                {
+                    "question": "What does `Collections.unmodifiableList(list)` return?",
+                    "options": [
+                        "A sorted list",
+                        "A read-only view of list — modifications throw UnsupportedOperationException",
+                        "A copy",
+                        "null"
+                    ],
+                    "answer": "A read-only view of list — modifications throw UnsupportedOperationException"
+                },
+                {
+                    "question": "What does `Map.entry(k,v)` (Java 9+) create?",
+                    "options": [
+                        "A mutable map",
+                        "An immutable Map.Entry",
+                        "Only for HashMap",
+                        "A List entry"
+                    ],
+                    "answer": "An immutable Map.Entry"
+                },
+                {
+                    "question": "What does `map.getOrDefault(key, default)` do?",
+                    "options": [
+                        "Same as get(key)",
+                        "Returns mapped value, or `default` if key absent",
+                        "Inserts default if absent",
+                        "Throws if absent"
+                    ],
+                    "answer": "Returns mapped value, or `default` if key absent"
+                },
+                {
+                    "question": "What does `map.computeIfAbsent(key, fn)` do?",
+                    "options": [
+                        "Overwrites existing value",
+                        "If key absent, computes value using fn and inserts it — useful for multi-value maps",
+                        "Removes if absent",
+                        "Gets or returns null"
+                    ],
+                    "answer": "If key absent, computes value using fn and inserts it — useful for multi-value maps"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Collections Framework — Expert Level",
+            "theory": "**`ConcurrentHashMap`:** thread-safe map without full lock — segments or striped locking.\n\n**`CopyOnWriteArrayList`:** thread-safe list — writes copy the underlying array — reads never block.\n\n**`LinkedHashMap`:** maintains insertion order or LRU access order with `accessOrder=true`.\n\n**Spliterator:** enables parallel stream processing of custom collections.\n\n**`WeakHashMap`:** keys held by weak references — entries GC-ed when no other strong reference to key.\n\n**Collection performance summary:** ArrayList O(1) get, O(n) insert; HashMap O(1) avg; TreeMap O(log n); LinkedList O(n) get, O(1) add at iterator.",
+            "questions": [
+                {
+                    "question": "What makes `ConcurrentHashMap` thread-safe?",
+                    "options": [
+                        "Synchronized every method",
+                        "Segment/bucket-level locking — allows concurrent reads and segment-level writes",
+                        "CAS-only operations",
+                        "A global read-write lock"
+                    ],
+                    "answer": "Segment/bucket-level locking — allows concurrent reads and segment-level writes"
+                },
+                {
+                    "question": "When would you use `CopyOnWriteArrayList`?",
+                    "options": [
+                        "High write, low read",
+                        "Rare writes, frequent reads — writes are expensive (copy array), reads never block",
+                        "Large arrays",
+                        "Sorted lists"
+                    ],
+                    "answer": "Rare writes, frequent reads — writes are expensive (copy array), reads never block"
+                },
+                {
+                    "question": "What is `LinkedHashMap` with `accessOrder=true`?",
+                    "options": [
+                        "Sorted by key",
+                        "Maintains LRU order — most recently accessed moves to tail (basis for LRU cache)",
+                        "Maintains insertion order only",
+                        "Hash order"
+                    ],
+                    "answer": "Maintains LRU order — most recently accessed moves to tail (basis for LRU cache)"
+                },
+                {
+                    "question": "What is a `WeakHashMap`?",
+                    "options": [
+                        "A map that clears on GC",
+                        "Map where keys are weakly referenced — entry GC-able when key has no other strong reference",
+                        "A soft-reference cache",
+                        "A null-key map"
+                    ],
+                    "answer": "Map where keys are weakly referenced — entry GC-able when key has no other strong reference"
+                },
+                {
+                    "question": "What is a `Spliterator`?",
+                    "options": [
+                        "A Iterator for sorted lists",
+                        "A source for Stream — provides splitting for parallel processing and traversal characteristics",
+                        "A thread-safe iterator",
+                        "A string splitter"
+                    ],
+                    "answer": "A source for Stream — provides splitting for parallel processing and traversal characteristics"
+                },
+                {
+                    "question": "What is the time complexity of `HashMap.containsKey(k)` on average?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1) average",
+                        "O(n log n)"
+                    ],
+                    "answer": "O(1) average"
+                },
+                {
+                    "question": "What does `EnumMap` offer over `HashMap` for enum keys?",
+                    "options": [
+                        "More memory",
+                        "Compact, array-based representation — much faster and less memory for enum keys",
+                        "Thread-safety",
+                        "Sorted order"
+                    ],
+                    "answer": "Compact, array-based representation — much faster and less memory for enum keys"
+                },
+                {
+                    "question": "What does `Collections.synchronizedList(list)` do?",
+                    "options": [
+                        "Makes it immutable",
+                        "Wraps list in a synchronized wrapper — all methods are synchronized",
+                        "Creates CopyOnWriteArrayList",
+                        "Creates a concurrent list with better performance"
+                    ],
+                    "answer": "Wraps list in a synchronized wrapper — all methods are synchronized"
+                },
+                {
+                    "question": "What does `map.merge(key, val, remappingFn)` do?",
+                    "options": [
+                        "Inserts only if absent",
+                        "If key absent, inserts val; if present, applies remappingFn(oldVal, val) — perfect for frequency maps",
+                        "Removes key",
+                        "Overwrites always"
+                    ],
+                    "answer": "If key absent, inserts val; if present, applies remappingFn(oldVal, val) — perfect for frequency maps"
+                },
+                {
+                    "question": "What is the load factor in HashMap?",
+                    "options": [
+                        "Number of buckets",
+                        "Ratio of elements to buckets — at 0.75 (default) HashMap doubles capacity to maintain O(1) performance",
+                        "A thread safety parameter",
+                        "Max elements allowed"
+                    ],
+                    "answer": "Ratio of elements to buckets — at 0.75 (default) HashMap doubles capacity to maintain O(1) performance"
+                }
+            ]
+        }
+    ]
+}

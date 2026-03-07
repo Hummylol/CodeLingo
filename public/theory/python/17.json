@@ -1,0 +1,327 @@
+{
+    "levelno": 17,
+    "topic": "Inheritance",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Inheritance — Beginner Level",
+            "theory": "**Inheritance** lets a class (child/subclass) acquire behavior from another class (parent/base class):\n\n```python\nclass Animal:\n    def __init__(self, name): self.name = name\n    def speak(self): return 'Some sound'\n\nclass Dog(Animal):\n    def speak(self): return 'Woof!'\n\ndog = Dog('Rex')\nprint(dog.name)    # Rex (inherited)\nprint(dog.speak()) # Woof! (overridden)\n```\n\n- **Parent class** — the class being inherited from\n- **Child class** — the class inheriting (`class Dog(Animal):`)\n- **Method overriding** — child provides its own implementation\n- `isinstance(dog, Animal)` → `True` (a Dog IS-A Animal)",
+            "questions": [
+                {
+                    "question": "What is inheritance?",
+                    "options": [
+                        "Creating multiple objects",
+                        "A class acquiring properties and methods of another class",
+                        "Hiding class attributes",
+                        "Creating class hierarchies without sharing code"
+                    ],
+                    "answer": "A class acquiring properties and methods of another class"
+                },
+                {
+                    "question": "In `class Dog(Animal):`, which is the child class?",
+                    "options": [
+                        "Animal",
+                        "Dog",
+                        "Neither",
+                        "Both"
+                    ],
+                    "answer": "Dog"
+                },
+                {
+                    "question": "The class being inherited from is called:",
+                    "options": [
+                        "Child class",
+                        "Derived class",
+                        "Subclass",
+                        "Parent/Base class"
+                    ],
+                    "answer": "Parent/Base class"
+                },
+                {
+                    "question": "When a child class redefines a parent method, it is called:",
+                    "options": [
+                        "Overloading",
+                        "Overriding",
+                        "Inheriting",
+                        "Constructing"
+                    ],
+                    "answer": "Overriding"
+                },
+                {
+                    "question": "What does `super()` do?",
+                    "options": [
+                        "Creates a super-powered object",
+                        "Returns a proxy to call parent class methods",
+                        "Ends the class definition",
+                        "Replaces self"
+                    ],
+                    "answer": "Returns a proxy to call parent class methods"
+                },
+                {
+                    "question": "Does a child class inherit __init__ from its parent?",
+                    "options": [
+                        "No",
+                        "Yes, like any other method",
+                        "Only if explicitly called",
+                        "Only if parent has no other methods"
+                    ],
+                    "answer": "Yes, like any other method"
+                },
+                {
+                    "question": "What is the main benefit of inheritance?",
+                    "options": [
+                        "Faster code",
+                        "Code reuse and logical class hierarchy",
+                        "Smaller file sizes",
+                        "Easier debugging"
+                    ],
+                    "answer": "Code reuse and logical class hierarchy"
+                },
+                {
+                    "question": "Does Python support multiple inheritance?",
+                    "options": [
+                        "No",
+                        "Yes",
+                        "Only for built-in classes",
+                        "Only via libraries"
+                    ],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "What does `isinstance(dog, Animal)` return if Dog inherits from Animal?",
+                    "options": [
+                        "False",
+                        "True",
+                        "None",
+                        "Depends on the dog object"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "How do you call the parent class __init__ from the child class?",
+                    "options": [
+                        "parent.__init__(self)",
+                        "super().__init__(args)",
+                        "Animal.__init__()",
+                        "self.super(args)"
+                    ],
+                    "answer": "super().__init__(args)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Inheritance — Intermediate Level",
+            "theory": "**`super()`** calls the next class in the MRO chain. In single inheritance it's simply the parent:\n```python\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)  # calls Animal.__init__\n        self.breed = breed\n```\n\n**Multiple inheritance:**\n`class C(A, B):` — C inherits from both A and B.\n\n**Method Resolution Order (MRO)** — the order Python searches classes for methods. Use `.mro()` or `__mro__` to inspect it.\n\n**`issubclass(Dog, Animal)`** — checks if Dog is a subclass of Animal.\n\n**Mixin pattern** — a class providing a specific behavior to be mixed in without creating a full inheritance hierarchy.",
+            "questions": [
+                {
+                    "question": "What is MRO (Method Resolution Order)?",
+                    "options": [
+                        "The order methods are defined in a class",
+                        "The order Python searches classes for an attribute/method",
+                        "The order arguments are resolved",
+                        "The order methods run"
+                    ],
+                    "answer": "The order Python searches classes for an attribute/method"
+                },
+                {
+                    "question": "How do you view the MRO of class `Dog`?",
+                    "options": [
+                        "Dog.mro()",
+                        "Dog.__mro__",
+                        "print(Dog.parents)",
+                        "Both A and B"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "What is `issubclass(Dog, Animal)` used for?",
+                    "options": [
+                        "Checking if Dog is an instance of Animal",
+                        "Checking if Dog is a subclass of Animal",
+                        "Comparing two dogs",
+                        "Checking method resolution"
+                    ],
+                    "answer": "Checking if Dog is a subclass of Animal"
+                },
+                {
+                    "question": "In `class C(A, B):`, which class is searched first?",
+                    "options": [
+                        "B",
+                        "A",
+                        "C itself first, then A, then B",
+                        "B then A"
+                    ],
+                    "answer": "C itself first, then A, then B"
+                },
+                {
+                    "question": "What is a mixin?",
+                    "options": [
+                        "A base class with all methods",
+                        "A class providing specific reusable behavior without a full class hierarchy",
+                        "An abstract class",
+                        "A metaclass"
+                    ],
+                    "answer": "A class providing specific reusable behavior without a full class hierarchy"
+                },
+                {
+                    "question": "What does `super()` return in Python 3?",
+                    "options": [
+                        "The parent class directly",
+                        "A proxy object that delegates method calls following the MRO",
+                        "A copy of the parent class",
+                        "The root object class"
+                    ],
+                    "answer": "A proxy object that delegates method calls following the MRO"
+                },
+                {
+                    "question": "Can a child class add new methods not in the parent?",
+                    "options": [
+                        "No",
+                        "Yes",
+                        "Only if overriding an existing one",
+                        "Only with @override decorator"
+                    ],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "What does `@override` (PEP 698, Python 3.12) indicate?",
+                    "options": [
+                        "Required syntax for method overriding",
+                        "A type-checker hint that this method intentionally overrides a parent method",
+                        "Prevents calling super()",
+                        "Makes the method final"
+                    ],
+                    "answer": "A type-checker hint that this method intentionally overrides a parent method"
+                },
+                {
+                    "question": "Which is true about multiple inheritance in Python?",
+                    "options": [
+                        "Not supported",
+                        "Supported; MRO follows C3 linearization",
+                        "Supported but only two parents max",
+                        "Supported but parent order doesn't matter"
+                    ],
+                    "answer": "Supported; MRO follows C3 linearization"
+                },
+                {
+                    "question": "What does `object` as an implicit base class mean?",
+                    "options": [
+                        "Every class in Python implicitly inherits from object",
+                        "object is a module",
+                        "You must explicitly inherit from object",
+                        "Only in Python 2"
+                    ],
+                    "answer": "Every class in Python implicitly inherits from object"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Inheritance — Expert Level",
+            "theory": "**Diamond problem** — when class D inherits from B and C, both of which inherit from A. Python solves this with **C3 linearization** (MRO).\n\n**Abstract Base Classes (ABC)** — enforce that subclasses implement certain methods:\n```python\nfrom abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self): pass\n\nclass Circle(Shape):\n    def area(self): return 3.14 * self.r**2\n# Instantiating Shape directly raises TypeError\n```\n\n**`__init_subclass__`** — hook on parent when any subclass is created.\n\n**Protocol** (Python 3.8+, `typing.Protocol`) — structural subtyping (duck typing with type checking), without explicit inheritance.",
+            "questions": [
+                {
+                    "question": "What is the diamond problem in multiple inheritance?",
+                    "options": [
+                        "A class inheriting from 4 parents",
+                        "Ambiguity when two parents share a common ancestor",
+                        "A performance issue with 2 parent classes",
+                        "A syntax error"
+                    ],
+                    "answer": "Ambiguity when two parents share a common ancestor"
+                },
+                {
+                    "question": "How does Python resolve the diamond problem?",
+                    "options": [
+                        "Random choice",
+                        "C3 linearization to determine a consistent MRO",
+                        "Always uses the leftmost parent",
+                        "Always uses the rightmost parent"
+                    ],
+                    "answer": "C3 linearization to determine a consistent MRO"
+                },
+                {
+                    "question": "What does `@abstractmethod` enforce?",
+                    "options": [
+                        "The method runs automatically",
+                        "Subclasses must implement this method or cannot be instantiated",
+                        "The method cannot be overridden",
+                        "The method is private"
+                    ],
+                    "answer": "Subclasses must implement this method or cannot be instantiated"
+                },
+                {
+                    "question": "What happens if you try to instantiate an ABC directly?",
+                    "options": [
+                        "It creates an instance without abstract methods",
+                        "TypeError is raised",
+                        "AttributeError is raised",
+                        "RuntimeError is raised"
+                    ],
+                    "answer": "TypeError is raised"
+                },
+                {
+                    "question": "Which module provides ABC?",
+                    "options": [
+                        "typing",
+                        "abc",
+                        "abstract",
+                        "collections"
+                    ],
+                    "answer": "abc"
+                },
+                {
+                    "question": "What is `typing.Protocol` used for?",
+                    "options": [
+                        "Creating abstract base classes",
+                        "Structural subtyping — checking that a class has required methods without explicit inheritance",
+                        "Making classes serializable",
+                        "Defining type aliases"
+                    ],
+                    "answer": "Structural subtyping — checking that a class has required methods without explicit inheritance"
+                },
+                {
+                    "question": "What is the difference between ABC and Protocol?",
+                    "options": [
+                        "They are identical",
+                        "ABC: nominative typing (must explicitly inherit); Protocol: structural typing (duck typing with type hints)",
+                        "Protocol requires explicit inheritance; ABC doesn't",
+                        "ABCs are for data classes"
+                    ],
+                    "answer": "ABC: nominative typing (must explicitly inherit); Protocol: structural typing (duck typing with type hints)"
+                },
+                {
+                    "question": "What does `__init_subclass__` allow the parent class to do?",
+                    "options": [
+                        "Override child __init__",
+                        "React when a subclass is defined (e.g., register it)",
+                        "Prevent further subclassing",
+                        "Execute parent code in child"
+                    ],
+                    "answer": "React when a subclass is defined (e.g., register it)"
+                },
+                {
+                    "question": "What does `class Foo(metaclass=Meta):` do?",
+                    "options": [
+                        "Makes Meta an instance of Foo",
+                        "Uses Meta as the metaclass that controls how Foo is created",
+                        "Inherits from Meta",
+                        "Registers Foo in Meta"
+                    ],
+                    "answer": "Uses Meta as the metaclass that controls how Foo is created"
+                },
+                {
+                    "question": "Which method can make a class 'register' with an ABC without inheriting?",
+                    "options": [
+                        "abc.register(cls)",
+                        "ABC.register(cls)",
+                        "ABC.virtual_subclass(cls)",
+                        "abc.ABC.virtual(cls)"
+                    ],
+                    "answer": "ABC.register(cls)"
+                }
+            ]
+        }
+    ]
+}

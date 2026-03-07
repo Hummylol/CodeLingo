@@ -1,0 +1,327 @@
+{
+    "levelno": 11,
+    "topic": "Tuples & Sets",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Tuples & Sets — Beginner Level",
+            "theory": "**Tuple** — ordered, **immutable** sequence created with parentheses `()`:\n`point = (3, 5)`\n`point[0]` → `3`\nYou cannot change, add, or remove items after creation.\n\n**Set** — **unordered** collection of **unique** items created with `{}`:\n`colors = {'red', 'green', 'blue', 'red'}  # {'red','green','blue'}`\nDuplicates are automatically removed. Sets are great for membership testing.\n\n**Creating an empty set:** `set()` (NOT `{}` — that creates an empty dict!)\n\nFor a single-element tuple you need a trailing comma: `(5,)` — without it `(5)` is just an integer in parentheses.",
+            "questions": [
+                {
+                    "question": "What are the main characteristics of a tuple?",
+                    "options": [
+                        "Ordered and mutable",
+                        "Unordered and mutable",
+                        "Ordered and immutable",
+                        "Unordered and immutable"
+                    ],
+                    "answer": "Ordered and immutable"
+                },
+                {
+                    "question": "Which syntax creates a tuple?",
+                    "options": [
+                        "[]",
+                        "()",
+                        "{}",
+                        "<>"
+                    ],
+                    "answer": "()"
+                },
+                {
+                    "question": "What is the key property of a set?",
+                    "options": [
+                        "Maintains insertion order",
+                        "Allows duplicates",
+                        "Contains only unique items",
+                        "Is immutable"
+                    ],
+                    "answer": "Contains only unique items"
+                },
+                {
+                    "question": "What does `{1,2,2,3,3}` evaluate to?",
+                    "options": [
+                        "{1,2,2,3,3}",
+                        "{1,2,3}",
+                        "[1,2,3]",
+                        "Error"
+                    ],
+                    "answer": "{1,2,3}"
+                },
+                {
+                    "question": "Can you change a tuple element after creation?",
+                    "options": [
+                        "Yes",
+                        "No, it raises TypeError",
+                        "Only for integers",
+                        "Yes using .set() method"
+                    ],
+                    "answer": "No, it raises TypeError"
+                },
+                {
+                    "question": "How do you add an item to a set `s`?",
+                    "options": [
+                        "s.append(item)",
+                        "s.add(item)",
+                        "s[0] = item",
+                        "s.insert(item)"
+                    ],
+                    "answer": "s.add(item)"
+                },
+                {
+                    "question": "How do you create an empty set?",
+                    "options": [
+                        "{}",
+                        "[]",
+                        "()",
+                        "set()"
+                    ],
+                    "answer": "set()"
+                },
+                {
+                    "question": "What is `(5)` (an integer in parentheses)?",
+                    "options": [
+                        "A tuple with one element",
+                        "Just the integer 5",
+                        "A set",
+                        "Error"
+                    ],
+                    "answer": "Just the integer 5"
+                },
+                {
+                    "question": "How do you create a tuple with a single element?",
+                    "options": [
+                        "(5)",
+                        "(5,)",
+                        "[5]",
+                        "{5}"
+                    ],
+                    "answer": "(5,)"
+                },
+                {
+                    "question": "Which data type can be used as a dict key: list or tuple?",
+                    "options": [
+                        "List",
+                        "Tuple",
+                        "Both",
+                        "Neither"
+                    ],
+                    "answer": "Tuple"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Tuples & Sets — Intermediate Level",
+            "theory": "**Tuple unpacking** lets you assign values from a tuple:\n`x, y = (3, 5)  # x=3, y=5`\n`a, *rest = (1, 2, 3, 4)  # a=1, rest=[2,3,4]`\n\n**Named tuples** (from `collections`) give field names:\n`from collections import namedtuple`\n`Point = namedtuple('Point', ['x', 'y'])`\n`p = Point(3, 5); p.x  # 3`\n\n**Set operations:**\n- Union: `A | B` or `A.union(B)`\n- Intersection: `A & B` or `A.intersection(B)`\n- Difference: `A - B`\n- Symmetric difference: `A ^ B` (in one but not both)\n- `A.issubset(B)`, `A.issuperset(B)`",
+            "questions": [
+                {
+                    "question": "What does `x, y = (3, 5)` do?",
+                    "options": [
+                        "Raises error",
+                        "Assigns 3 to x and 5 to y",
+                        "Creates a new tuple",
+                        "Assigns (3,5) to both"
+                    ],
+                    "answer": "Assigns 3 to x and 5 to y"
+                },
+                {
+                    "question": "What does `{1,2,3} | {3,4,5}` return?",
+                    "options": [
+                        "{3}",
+                        "{1,2,3,4,5}",
+                        "{1,2,4,5}",
+                        "Error"
+                    ],
+                    "answer": "{1,2,3,4,5}"
+                },
+                {
+                    "question": "What does `{1,2,3} & {2,3,4}` return?",
+                    "options": [
+                        "{2,3}",
+                        "{1,2,3,4}",
+                        "{1,4}",
+                        "Error"
+                    ],
+                    "answer": "{2,3}"
+                },
+                {
+                    "question": "What does `{1,2,3} - {2,3}` return?",
+                    "options": [
+                        "{1}",
+                        "{2,3}",
+                        "{}",
+                        "Error"
+                    ],
+                    "answer": "{1}"
+                },
+                {
+                    "question": "What does `a, *rest = (1,2,3,4)` assign to `rest`?",
+                    "options": [
+                        "(2,3,4)",
+                        "[2,3,4]",
+                        "2",
+                        "Error"
+                    ],
+                    "answer": "[2,3,4]"
+                },
+                {
+                    "question": "What does a namedtuple provide over a regular tuple?",
+                    "options": [
+                        "Mutability",
+                        "Named field access (e.g. p.x instead of p[0])",
+                        "Dynamic size",
+                        "Dict-like syntax"
+                    ],
+                    "answer": "Named field access (e.g. p.x instead of p[0])"
+                },
+                {
+                    "question": "What does `{1,2} ^ {2,3}` return?",
+                    "options": [
+                        "{2}",
+                        "{1,3}",
+                        "{1,2,3}",
+                        "Error"
+                    ],
+                    "answer": "{1,3}"
+                },
+                {
+                    "question": "Does a set maintain insertion order?",
+                    "options": [
+                        "Yes, always",
+                        "No, sets are unordered",
+                        "Only in Python 3.7+",
+                        "Only for integers"
+                    ],
+                    "answer": "No, sets are unordered"
+                },
+                {
+                    "question": "What does `{1,2}.issubset({1,2,3})` return?",
+                    "options": [
+                        "False",
+                        "True",
+                        "Error",
+                        "{1,2}"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What does `frozenset({1,2,3})` create?",
+                    "options": [
+                        "An empty set",
+                        "An immutable set that can be used as a dict key",
+                        "A tuple",
+                        "Error"
+                    ],
+                    "answer": "An immutable set that can be used as a dict key"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Tuples & Sets — Expert Level",
+            "theory": "**`frozenset`** is an immutable set — it can be used as a dictionary key or as a set element.\n\n**Performance:** Checking membership in a set is O(1) average (hash-based), vs O(n) for a list. For large collections with frequent membership tests, always prefer sets.\n\n**Set comprehension:**\n`{x**2 for x in range(5)}` → `{0,1,4,9,16}`\n\n**Tuples as lightweight records:** Tuples are more memory-efficient than lists or dicts for fixed-structure data. `sys.getsizeof((1,2,3))` < `sys.getsizeof([1,2,3])`.\n\n**`typing.NamedTuple`** provides typed named tuples with default values (Python 3.6+):\n```python\nfrom typing import NamedTuple\nclass Point(NamedTuple):\n    x: float\n    y: float = 0.0\n```",
+            "questions": [
+                {
+                    "question": "What is the time complexity of `x in my_set`?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1) average",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1) average"
+                },
+                {
+                    "question": "Can a `frozenset` be used as a dictionary key?",
+                    "options": [
+                        "No, sets are not hashable",
+                        "Yes, frozensets are hashable",
+                        "Only if it contains < 10 elements",
+                        "Only in Python 3.10+"
+                    ],
+                    "answer": "Yes, frozensets are hashable"
+                },
+                {
+                    "question": "What does `{x for x in range(5) if x % 2 == 0}` produce?",
+                    "options": [
+                        "{1,3}",
+                        "{0,2,4}",
+                        "{0,1,2,3,4}",
+                        "Error"
+                    ],
+                    "answer": "{0,2,4}"
+                },
+                {
+                    "question": "Why are tuples more memory-efficient than lists?",
+                    "options": [
+                        "Tuples compress data",
+                        "Tuples are immutable so Python can allocate a fixed block without over-allocation",
+                        "Lists use linked nodes",
+                        "Tuples store references while lists store copies"
+                    ],
+                    "answer": "Tuples are immutable so Python can allocate a fixed block without over-allocation"
+                },
+                {
+                    "question": "What does `typing.NamedTuple` add over `collections.namedtuple`?",
+                    "options": [
+                        "Mutability",
+                        "Type annotations and default values in class-based syntax",
+                        "Faster access",
+                        "Dict-like behavior"
+                    ],
+                    "answer": "Type annotations and default values in class-based syntax"
+                },
+                {
+                    "question": "What does `set.discard(x)` do vs `set.remove(x)` when x is not in the set?",
+                    "options": [
+                        "Both raise KeyError",
+                        "discard() does nothing; remove() raises KeyError",
+                        "remove() does nothing; discard() raises KeyError",
+                        "Both do nothing"
+                    ],
+                    "answer": "discard() does nothing; remove() raises KeyError"
+                },
+                {
+                    "question": "What is the output of `len({1,1,2,2,3})`?",
+                    "options": [
+                        "5",
+                        "3",
+                        "2",
+                        "Error"
+                    ],
+                    "answer": "3"
+                },
+                {
+                    "question": "What is the union of the empty set with `{1,2,3}`?",
+                    "options": [
+                        "{}",
+                        "{1,2,3}",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "{1,2,3}"
+                },
+                {
+                    "question": "What does `({1,2},{3,4})` create?",
+                    "options": [
+                        "A set of sets",
+                        "A tuple containing two sets",
+                        "Error — sets can't be in tuples",
+                        "A frozenset"
+                    ],
+                    "answer": "A tuple containing two sets"
+                },
+                {
+                    "question": "What does `set.update([1,2,3])` do?",
+                    "options": [
+                        "Replaces the set with [1,2,3]",
+                        "Adds all elements from [1,2,3] to the set in place",
+                        "Returns a new set",
+                        "Raises TypeError"
+                    ],
+                    "answer": "Adds all elements from [1,2,3] to the set in place"
+                }
+            ]
+        }
+    ]
+}

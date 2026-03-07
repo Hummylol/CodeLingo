@@ -1,0 +1,327 @@
+{
+    "levelno": 8,
+    "topic": "Inheritance & Polymorphism",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Inheritance & Polymorphism — Beginner Level",
+            "theory": "**Inheritance** lets a class extend another's behavior:\n\n```java\npublic class Animal {\n    public void speak() { System.out.println(\"...\"); }\n}\npublic class Dog extends Animal {\n    @Override\n    public void speak() { System.out.println(\"Woof!\"); }\n}\n```\n\n- `extends` — inherits from a class\n- `@Override` — marks overriding a parent method\n- `super.method()` — calls the parent's version\n- `super(args)` — calls the parent's constructor\n- Java supports **single inheritance** (one parent class)\n- All classes implicitly extend `Object`\n- **Polymorphism:** the same variable type can hold different object types:\n  `Animal a = new Dog();`",
+            "questions": [
+                {
+                    "question": "Which keyword is used to inherit in Java?",
+                    "options": [
+                        "`inherits`",
+                        "`implements`",
+                        "`extends`",
+                        "`derives`"
+                    ],
+                    "answer": "`extends`"
+                },
+                {
+                    "question": "How many classes can a Java class extend directly?",
+                    "options": [
+                        "Multiple",
+                        "One (single inheritance)",
+                        "Two",
+                        "No limit"
+                    ],
+                    "answer": "One (single inheritance)"
+                },
+                {
+                    "question": "What is method overriding?",
+                    "options": [
+                        "Creating two methods with same name",
+                        "Subclass provides its own implementation of a parent method",
+                        "Method with same name different params",
+                        "Static method hiding"
+                    ],
+                    "answer": "Subclass provides its own implementation of a parent method"
+                },
+                {
+                    "question": "What does `super.speak()` do?",
+                    "options": [
+                        "Creates a parent object",
+                        "Calls the parent class's `speak` method",
+                        "Overrides speak",
+                        "Deletes parent method"
+                    ],
+                    "answer": "Calls the parent class's `speak` method"
+                },
+                {
+                    "question": "What does `@Override` do?",
+                    "options": [
+                        "Required to override",
+                        "Compiler check — error if not actually overriding",
+                        "Makes method final",
+                        "Makes method private"
+                    ],
+                    "answer": "Compiler check — error if not actually overriding"
+                },
+                {
+                    "question": "All Java classes implicitly extend:",
+                    "options": [
+                        "`java.lang.Class`",
+                        "`java.lang.Object`",
+                        "`java.io.Serializable`",
+                        "`java.lang.Runnable`"
+                    ],
+                    "answer": "`java.lang.Object`"
+                },
+                {
+                    "question": "What is polymorphism?",
+                    "options": [
+                        "Multiple constructors",
+                        "One interface, many forms — same variable holds different subtype objects",
+                        "Multiple inheritance",
+                        "Method overloading only"
+                    ],
+                    "answer": "One interface, many forms — same variable holds different subtype objects"
+                },
+                {
+                    "question": "What is an abstract class?",
+                    "options": [
+                        "Class with no fields",
+                        "Class that cannot be instantiated and may have abstract methods",
+                        "A final class",
+                        "An interface alias"
+                    ],
+                    "answer": "Class that cannot be instantiated and may have abstract methods"
+                },
+                {
+                    "question": "What is an abstract method?",
+                    "options": [
+                        "A method with no parameters",
+                        "A method without a body — subclasses must implement it",
+                        "A private method",
+                        "A static method"
+                    ],
+                    "answer": "A method without a body — subclasses must implement it"
+                },
+                {
+                    "question": "Does the parent constructor automatically get called in Java?",
+                    "options": [
+                        "No",
+                        "Yes — if not specified, `super()` is called implicitly as the first statement",
+                        "Only if extends Object",
+                        "Only for abstract classes"
+                    ],
+                    "answer": "Yes — if not specified, `super()` is called implicitly as the first statement"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Inheritance & Polymorphism — Intermediate Level",
+            "theory": "**Interfaces** define contracts; a class can implement multiple interfaces:\n```java\ninterface Flyable { void fly(); }\ninterface Swimmable { void swim(); }\nclass Duck extends Animal implements Flyable, Swimmable {\n    public void fly() { System.out.println(\"Flying!\"); }\n    public void swim() { System.out.println(\"Swimming!\"); }\n}\n```\n\n**`instanceof` check:** `obj instanceof Duck d` (Java 16+ pattern matching)\n\n**Type casting:** `Animal a = new Dog(); Dog d = (Dog) a;`\n\n**Dynamic dispatch:** the JVM calls the actual object's method at runtime.\n\n**`final` class** — cannot be extended (e.g., `String`).",
+            "questions": [
+                {
+                    "question": "Can a Java class implement multiple interfaces?",
+                    "options": [
+                        "No",
+                        "Yes",
+                        "Only if abstract",
+                        "Only two at a time"
+                    ],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "What is an interface vs abstract class?",
+                    "options": [
+                        "Same",
+                        "Interface has no instance fields and supports multiple inheritance; abstract class can have fields and one parent",
+                        "Interfaces can have constructors",
+                        "Abstract classes have no methods"
+                    ],
+                    "answer": "Interface has no instance fields and supports multiple inheritance; abstract class can have fields and one parent"
+                },
+                {
+                    "question": "What does dynamic dispatch mean?",
+                    "options": [
+                        "Method resolved at compile time",
+                        "JVM selects the correct overridden method at runtime based on actual object type",
+                        "Static binding",
+                        "Method references"
+                    ],
+                    "answer": "JVM selects the correct overridden method at runtime based on actual object type"
+                },
+                {
+                    "question": "What is a `ClassCastException`?",
+                    "options": [
+                        "Wrong type used in switch",
+                        "Runtime exception when an invalid cast is attempted on a reference type",
+                        "NPE on a cast",
+                        "Wrong generic type"
+                    ],
+                    "answer": "Runtime exception when an invalid cast is attempted on a reference type"
+                },
+                {
+                    "question": "What is `final` on a class?",
+                    "options": [
+                        "Cannot be instantiated",
+                        "Cannot be subclassed",
+                        "Cannot be imported",
+                        "Cannot have methods"
+                    ],
+                    "answer": "Cannot be subclassed"
+                },
+                {
+                    "question": "What does a `default` method in an interface do?",
+                    "options": [
+                        "Acts as a constructor",
+                        "Provides a default implementation — implementing classes optionally override",
+                        "Makes method private",
+                        "Marks method abstract"
+                    ],
+                    "answer": "Provides a default implementation — implementing classes optionally override"
+                },
+                {
+                    "question": "What is the Liskov Substitution Principle?",
+                    "options": [
+                        "Subclass objects should be usable wherever parent objects are expected without breaking behavior",
+                        "Interfaces extend classes",
+                        "Only interfaces support substitution",
+                        "Substitution requires casting"
+                    ],
+                    "answer": "Subclass objects should be usable wherever parent objects are expected without breaking behavior"
+                },
+                {
+                    "question": "What does `sealed` on an abstract class do (Java 17+)?",
+                    "options": [
+                        "Prevents instantiation",
+                        "Restricts which classes can extend it — permits list must be specified",
+                        "Makes all methods final",
+                        "Disables polymorphism"
+                    ],
+                    "answer": "Restricts which classes can extend it — permits list must be specified"
+                },
+                {
+                    "question": "What is covariant return type in Java?",
+                    "options": [
+                        "Returning a different type each call",
+                        "Override can return a subtype of the parent method's return type",
+                        "Returning an array",
+                        "Returning null"
+                    ],
+                    "answer": "Override can return a subtype of the parent method's return type"
+                },
+                {
+                    "question": "Can interfaces have private methods (Java 9+)?",
+                    "options": [
+                        "No",
+                        "Yes — private methods in interfaces for shared helper logic among default methods",
+                        "Only static ones",
+                        "No, only abstract"
+                    ],
+                    "answer": "Yes — private methods in interfaces for shared helper logic among default methods"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Inheritance & Polymorphism — Expert Level",
+            "theory": "**Diamond problem in Java:** solved via interfaces (only one class parent). If two interfaces have the same `default` method, the implementing class must override it.\n\n**Visitor pattern:** double dispatch workaround for type-based operations without `instanceof`:\n```java\ninterface Visitor { void visit(Circle c); void visit(Rect r); }\ninterface Shape { void accept(Visitor v); }\n```\n\n**`MethodHandles.Lookup`:** reflective access at record/class level — more performant than `Method.invoke()`.\n\n**Marker interfaces:** interfaces with no methods (e.g., `Serializable`, `Cloneable`) used to signal capability.",
+            "questions": [
+                {
+                    "question": "How does Java resolve diamond problem with interfaces?",
+                    "options": [
+                        "Compile error",
+                        "If two interfaces have same default method, implementing class must override to resolve ambiguity",
+                        "Uses the first interface's method",
+                        "Runtime selection"
+                    ],
+                    "answer": "If two interfaces have same default method, implementing class must override to resolve ambiguity"
+                },
+                {
+                    "question": "What is the Visitor pattern?",
+                    "options": [
+                        "Visiting webservices",
+                        "Double dispatch pattern for type-specific operations without instanceof chains",
+                        "An adapter pattern",
+                        "An iterator pattern"
+                    ],
+                    "answer": "Double dispatch pattern for type-specific operations without instanceof chains"
+                },
+                {
+                    "question": "What is a marker interface?",
+                    "options": [
+                        "An interface with one method",
+                        "An interface with no methods used to tag a class with a capability (e.g., Serializable)",
+                        "A deprecated interface",
+                        "An abstract interface"
+                    ],
+                    "answer": "An interface with no methods used to tag a class with a capability (e.g., Serializable)"
+                },
+                {
+                    "question": "What is double dispatch?",
+                    "options": [
+                        "Two virtual calls",
+                        "Choosing a method based on the runtime type of TWO objects — used in Visitor pattern",
+                        "Calling super twice",
+                        "Two polymorphic casts"
+                    ],
+                    "answer": "Choosing a method based on the runtime type of TWO objects — used in Visitor pattern"
+                },
+                {
+                    "question": "What happens if you call a non-abstract parent method that's overridden, via a `super` reference in the wrong context?",
+                    "options": [
+                        "Always calls parent",
+                        "You can call `super.method()` only from direct child — you can't 'skip' grandparent in Java",
+                        "Calls grandparent",
+                        "Compile error always"
+                    ],
+                    "answer": "You can call `super.method()` only from direct child — you can't 'skip' grandparent in Java"
+                },
+                {
+                    "question": "What is `java.lang.reflect.Method.invoke()` overhead?",
+                    "options": [
+                        "Faster than direct call",
+                        "10-100x slower than direct call due to security checks and boxing — avoid in hot paths",
+                        "Same performance",
+                        "Only for interfaces"
+                    ],
+                    "answer": "10-100x slower than direct call due to security checks and boxing — avoid in hot paths"
+                },
+                {
+                    "question": "What is the Template Method pattern?",
+                    "options": [
+                        "Using Java templates",
+                        "Base class defines algorithm skeleton; subclasses override specific steps without changing structure",
+                        "A generic class",
+                        "A factory pattern"
+                    ],
+                    "answer": "Base class defines algorithm skeleton; subclasses override specific steps without changing structure"
+                },
+                {
+                    "question": "What is `Class.getInterfaces()` useful for?",
+                    "options": [
+                        "Getting all superclasses",
+                        "Retrieving the interfaces a class directly implements — used in proxy/DI frameworks",
+                        "Getting methods",
+                        "Getting annotations"
+                    ],
+                    "answer": "Retrieving the interfaces a class directly implements — used in proxy/DI frameworks"
+                },
+                {
+                    "question": "How does JVM handle method dispatch table?",
+                    "options": [
+                        "Using hashmap",
+                        "Using a virtual method table (vtable) per class — method calls resolved via pointer lookup",
+                        "Linear search through hierarchy",
+                        "Compile-time only"
+                    ],
+                    "answer": "Using a virtual method table (vtable) per class — method calls resolved via pointer lookup"
+                },
+                {
+                    "question": "What is `non-sealed` in Java sealed class hierarchy?",
+                    "options": [
+                        "Opens the class for any extension again",
+                        "Marks a permitted subclass that itself can be freely extended",
+                        "Removes the sealed restriction from hierarchy",
+                        "Both A and B"
+                    ],
+                    "answer": "Both A and B"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 20,
+    "topic": "Randomized & Approximation Algorithms",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Randomized & Approximation Algorithms — Beginner Level",
+            "theory": "**Randomized algorithms** use random numbers to make decisions. Two types:\n- **Las Vegas:** always correct, random running time (e.g., randomized QuickSort)\n- **Monte Carlo:** runs in fixed time, may give incorrect answers with small probability (e.g., Miller-Rabin)\n\n**Approximation algorithms:** for NP-hard problems — find near-optimal solution in polynomial time.\n\n```python\nimport random\n\n# Randomized QuickSort — avoids worst-case inputs\ndef quicksort(arr):\n    if len(arr) <= 1: return arr\n    pivot = random.choice(arr)  # random pivot\n    left   = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right  = [x for x in arr if x > pivot]\n    return quicksort(left) + middle + quicksort(right)\n```\n\n**Approximation ratio:** algorithm gives solution within factor α of optimal.",
+            "questions": [
+                {
+                    "question": "Las Vegas algorithm:",
+                    "options": [
+                        "Always incorrect",
+                        "Always gives correct result — runtime may vary due to randomness",
+                        "Runs in fixed time, may be wrong",
+                        "Never terminates"
+                    ],
+                    "answer": "Always gives correct result — runtime may vary due to randomness"
+                },
+                {
+                    "question": "Monte Carlo algorithm:",
+                    "options": [
+                        "Always correct, fast",
+                        "Fixed time, may give wrong answer with small probability",
+                        "Only for simulations",
+                        "Guaranteed O(n) always"
+                    ],
+                    "answer": "Fixed time, may give wrong answer with small probability"
+                },
+                {
+                    "question": "Randomized QuickSort avoids worst case by:",
+                    "options": [
+                        "Sorting first",
+                        "Randomly selecting pivot — adversarial inputs can't force O(n^2)",
+                        "Using merge sort as backup",
+                        "Counting comparisons"
+                    ],
+                    "answer": "Randomly selecting pivot — adversarial inputs can't force O(n^2)"
+                },
+                {
+                    "question": "Approximation ratio α means:",
+                    "options": [
+                        "Algorithm is α% correct",
+                        "Algorithm solution is within factor α of optimal — e.g., 2-approximation gives ≤ 2*OPT",
+                        "Runs in α time",
+                        "Uses α random choices"
+                    ],
+                    "answer": "Algorithm solution is within factor α of optimal — e.g., 2-approximation gives ≤ 2*OPT"
+                },
+                {
+                    "question": "Vertex cover 2-approximation: take both endpoints of any uncovered edge, repeat. This achieves:",
+                    "options": [
+                        "Optimal always",
+                        "At most 2× the optimal vertex cover (matching bound)",
+                        "1.5× optimal",
+                        "Exact optimal for bipartite"
+                    ],
+                    "answer": "At most 2× the optimal vertex cover (matching bound)"
+                },
+                {
+                    "question": "Greedy set cover approximation ratio:",
+                    "options": [
+                        "O(1)",
+                        "O(log n) — approximation ratio is H(max set size), where H is harmonic number",
+                        "2-approximation",
+                        "Exact for k ≤ 3"
+                    ],
+                    "answer": "O(log n) — approximation ratio is H(max set size), where H is harmonic number"
+                },
+                {
+                    "question": "Monte Carlo integration estimates integrals by:",
+                    "options": [
+                        "Numerical methods",
+                        "Sampling random points in bounding box, checking fraction under curve — O(1/sqrt(n)) error",
+                        "Polynomial approximation",
+                        "Grid-based summation"
+                    ],
+                    "answer": "Sampling random points in bounding box, checking fraction under curve — O(1/sqrt(n)) error"
+                },
+                {
+                    "question": "Reservoir sampling solves:",
+                    "options": [
+                        "Batch sampling",
+                        "Uniformly sampling k items from a stream of unknown size n — O(n) time O(k) space",
+                        "Hash sampling",
+                        "Priority-based sampling"
+                    ],
+                    "answer": "Uniformly sampling k items from a stream of unknown size n — O(n) time O(k) space"
+                },
+                {
+                    "question": "Fisher-Yates shuffle produces:",
+                    "options": [
+                        "Sorted array",
+                        "Uniform random permutation in O(n)",
+                        "Random subset",
+                        "Weighted shuffle"
+                    ],
+                    "answer": "Uniform random permutation in O(n)"
+                },
+                {
+                    "question": "Karger's algorithm finds minimum graph cut in:",
+                    "options": [
+                        "O(V+E)",
+                        "O(V^2) per run, repeated O(V^2 log V) times for high probability correctness",
+                        "O(V^2 E)",
+                        "O(VE) per run"
+                    ],
+                    "answer": "O(V^2) per run, repeated O(V^2 log V) times for high probability correctness"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Randomized & Approximation Algorithms — Intermediate Level",
+            "theory": "**Randomized algorithms concepts:**\n- **Expected value analysis:** E[X] = sum over outcomes × probability\n- **Markov/Chebyshev inequalities:** bound tail probabilities\n- **Chernoff bounds:** exponential concentration for sums of independent r.v.\n\n**PTAS (Polynomial Time Approximation Scheme):** for any ε > 0, gives (1+ε)-approximation in poly(n) time.\n**FPTAS (Fully PTAS):** also poly in 1/ε.\n\n**Randomized rounding:** solve LP relaxation, round fractional solution probabilistically — preserves feasibility in expectation.",
+            "questions": [
+                {
+                    "question": "Chernoff bound provides:",
+                    "options": [
+                        "Exact distribution",
+                        "Exponential concentration — P(X ≥ (1+δ)μ) ≤ exp(-μδ^2/3) — much tighter than Chebyshev",
+                        "A linear bound",
+                        "Markov upper bound"
+                    ],
+                    "answer": "Exponential concentration — P(X ≥ (1+δ)μ) ≤ exp(-μδ^2/3) — much tighter than Chebyshev"
+                },
+                {
+                    "question": "Markov's inequality states:",
+                    "options": [
+                        "Normal distribution always",
+                        "For X ≥ 0, P(X ≥ a) ≤ E[X]/a — simple but weak",
+                        "Exponential tail bound",
+                        "Applies only to sums"
+                    ],
+                    "answer": "For X ≥ 0, P(X ≥ a) ≤ E[X]/a — simple but weak"
+                },
+                {
+                    "question": "PTAS gives:",
+                    "options": [
+                        "Optimal solution",
+                        "(1+ε)-approximation in polynomial time (may be exponential in 1/ε)",
+                        "Exact polynomial-time algorithm",
+                        "O(log n) approximation"
+                    ],
+                    "answer": "(1+ε)-approximation in polynomial time (may be exponential in 1/ε)"
+                },
+                {
+                    "question": "FPTAS additionally requires:",
+                    "options": [
+                        "No extra requirement beyond PTAS",
+                        "Running time polynomial in both n and 1/ε — enables arbitrarily close to optimal efficiently",
+                        "ε to be fixed",
+                        "O(1/ε) space"
+                    ],
+                    "answer": "Running time polynomial in both n and 1/ε — enables arbitrarily close to optimal efficiently"
+                },
+                {
+                    "question": "Randomized rounding procedure:",
+                    "options": [
+                        "Round greedily by value",
+                        "Solve LP relaxation, round each fractional variable to 1 with probability equal to its LP value",
+                        "Round to nearest integer",
+                        "Binary search for best rounding"
+                    ],
+                    "answer": "Solve LP relaxation, round each fractional variable to 1 with probability equal to its LP value"
+                },
+                {
+                    "question": "TSP (Traveling Salesman) — no approximation with ratio α unless P=NP for:",
+                    "options": [
+                        "Metric TSP",
+                        "General asymmetric TSP — hardness of approximation result",
+                        "Euclidean TSP",
+                        "All TSP variants"
+                    ],
+                    "answer": "General asymmetric TSP — hardness of approximation result"
+                },
+                {
+                    "question": "Christofides algorithm for metric TSP achieves:",
+                    "options": [
+                        "2-approximation",
+                        "1.5-approximation — MST + min weight perfect matching on odd-degree vertices",
+                        "Exact solution in polynomial time",
+                        "O(log n)-approximation"
+                    ],
+                    "answer": "1.5-approximation — MST + min weight perfect matching on odd-degree vertices"
+                },
+                {
+                    "question": "Hashing with expected O(1) operations works because:",
+                    "options": [
+                        "Hash function is collision-free",
+                        "By birthday paradox analysis, expected collisions are small for good load factor",
+                        "All keys are unique",
+                        "No resizing needed"
+                    ],
+                    "answer": "By birthday paradox analysis, expected collisions are small for good load factor"
+                },
+                {
+                    "question": "Skip list expected height with n elements:",
+                    "options": [
+                        "O(n)",
+                        "O(log n) expected",
+                        "O(sqrt(n))",
+                        "O(n log n)"
+                    ],
+                    "answer": "O(log n) expected"
+                },
+                {
+                    "question": "Treap (BST + random priorities) height:",
+                    "options": [
+                        "O(n) always",
+                        "O(log n) expected — random priorities make tree balanced in expectation",
+                        "O(log^2 n)",
+                        "O(n / log n)"
+                    ],
+                    "answer": "O(log n) expected — random priorities make tree balanced in expectation"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Randomized & Approximation Algorithms — Expert Level",
+            "theory": "**Complexity classes:**\n- **BPP:** problems solvable in polynomial time with bounded error by Monte Carlo\n- **RP:** one-sided error — yes instances always accepted, no sometimes missed\n- **ZPP = RP ∩ coRP:** always correct Las Vegas\n- **APX:** problems admitting constant-factor approximation\n- **INAPX:** inapproximable beyond certain ratio unless P=NP\n\n**PCP theorem:** every NP problem has probabilistically checkable proofs checking O(1) bits.\n\n**Derandomization:** remove randomness using pseudo-random generators, method of conditional expectations.",
+            "questions": [
+                {
+                    "question": "BPP class contains problems solvable in poly time with:",
+                    "options": [
+                        "One-sided error only",
+                        "Two-sided bounded error — wrong answer probability ≤ 1/3",
+                        "Zero error",
+                        "Exponential error"
+                    ],
+                    "answer": "Two-sided bounded error — wrong answer probability ≤ 1/3"
+                },
+                {
+                    "question": "RP class (Randomized Polynomial time):",
+                    "options": [
+                        "Two-sided error",
+                        "One-sided error: no instances always rejected, yes instances accepted with prob ≥ 1/2",
+                        "Always correct",
+                        "No polynomial bound"
+                    ],
+                    "answer": "One-sided error: no instances always rejected, yes instances accepted with prob ≥ 1/2"
+                },
+                {
+                    "question": "PCP theorem (Probabilistically Checkable Proofs) foundation:",
+                    "options": [
+                        "All NP ⊆ P",
+                        "Any NP problem has a proof verifiable in O(1) random bits and O(1) query bits — basis of hardness of approximation",
+                        "Randomization adds no power",
+                        "Cook-Levin theorem extension"
+                    ],
+                    "answer": "Any NP problem has a proof verifiable in O(1) random bits and O(1) query bits — basis of hardness of approximation"
+                },
+                {
+                    "question": "Håstad's inapproximability result for MAX-3SAT:",
+                    "options": [
+                        "No approx beyond 1.0",
+                        "7/8-approximation is optimal unless P=NP — matches greedy algorithm performance",
+                        "4/3-approximation hard",
+                        "2-approximation hard"
+                    ],
+                    "answer": "7/8-approximation is optimal unless P=NP — matches greedy algorithm performance"
+                },
+                {
+                    "question": "Method of conditional expectations for derandomization:",
+                    "options": [
+                        "Replaces random choices with adaptive deterministic ones, conditioning on extending partial solution",
+                        "Computes expected value only",
+                        "Uses polynomial identity testing",
+                        "Requires linear programming"
+                    ],
+                    "answer": "Replaces random choices with adaptive deterministic ones, conditioning on extending partial solution"
+                },
+                {
+                    "question": "Pseudo-random number generators in algorithms are used to:",
+                    "options": [
+                        "Generate truly random bits",
+                        "Derandomize algorithms — replace true randomness with pseudo-random sequences passing certain tests",
+                        "Simulate hash functions",
+                        "Create secure encryption"
+                    ],
+                    "answer": "Derandomize algorithms — replace true randomness with pseudo-random sequences passing certain tests"
+                },
+                {
+                    "question": "Karger-Stein algorithm achieves min cut in:",
+                    "options": [
+                        "O(V^2) as Karger's",
+                        "O(V^2 log^3 V) — recursive contraction with O(log^2 n) amplification instead of V^2 trials",
+                        "O(VE)",
+                        "O(E log V)"
+                    ],
+                    "answer": "O(V^2 log^3 V) — recursive contraction with O(log^2 n) amplification instead of V^2 trials"
+                },
+                {
+                    "question": "APX-hardness means:",
+                    "options": [
+                        "Algorithm runs in APX time",
+                        "Problem cannot be approximated to within 1+ε for some fixed ε > 0 unless P=NP",
+                        "Problem is in APX class (has constant approx)",
+                        "Allows PTAS but not FPTAS"
+                    ],
+                    "answer": "Problem cannot be approximated to within 1+ε for some fixed ε > 0 unless P=NP"
+                },
+                {
+                    "question": "Simulated annealing is a randomized heuristic that:",
+                    "options": [
+                        "Guarantees optimal solution",
+                        "Escapes local optima by accepting worse solutions with decreasing probability — no guarantee",
+                        "Is a PTAS",
+                        "Has O(n log n) complexity"
+                    ],
+                    "answer": "Escapes local optima by accepting worse solutions with decreasing probability — no guarantee"
+                },
+                {
+                    "question": "Linear programming relaxation + rounding often achieves approximation ratio equal to:",
+                    "options": [
+                        "1.0 always",
+                        "The integrality gap of the LP — ratio between LP and integer optimum",
+                        "O(log n)",
+                        "2 always"
+                    ],
+                    "answer": "The integrality gap of the LP — ratio between LP and integer optimum"
+                }
+            ]
+        }
+    ]
+}

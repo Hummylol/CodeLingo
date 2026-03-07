@@ -1,0 +1,327 @@
+{
+    "levelno": 7,
+    "topic": "Sorting Algorithms",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Sorting Algorithms — Beginner Level",
+            "theory": "Sorting arranges elements in order. Key sorting algorithms:\n\n**Bubble Sort:** compare adjacent, swap if out of order. O(n^2) time, O(1) space.\n**Selection Sort:** find min and place at front. O(n^2) time, O(1) space.\n**Insertion Sort:** build sorted array one element at a time. O(n^2) worst, O(n) best (nearly sorted).\n\n```python\ndef insertion_sort(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and arr[j] > key:\n            arr[j+1] = arr[j]\n            j -= 1\n        arr[j+1] = key\n```\n\n**Stable sort:** preserves relative order of equal elements.",
+            "questions": [
+                {
+                    "question": "Bubble Sort time complexity worst case:",
+                    "options": [
+                        "O(n)",
+                        "O(n log n)",
+                        "O(n^2)",
+                        "O(n^3)"
+                    ],
+                    "answer": "O(n^2)"
+                },
+                {
+                    "question": "Insertion Sort best case (sorted input):",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n)",
+                        "O(n)",
+                        "O(1)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Selection Sort makes how many swaps maximum?",
+                    "options": [
+                        "O(n^2)",
+                        "O(n) — one swap per pass",
+                        "O(n log n)",
+                        "O(1)"
+                    ],
+                    "answer": "O(n) — one swap per pass"
+                },
+                {
+                    "question": "Which is a stable sort?",
+                    "options": [
+                        "Selection Sort",
+                        "Insertion Sort, Bubble Sort, Merge Sort",
+                        "Quick Sort",
+                        "Heap Sort"
+                    ],
+                    "answer": "Insertion Sort, Bubble Sort, Merge Sort"
+                },
+                {
+                    "question": "What does 'stable sort' mean?",
+                    "options": [
+                        "Sorts in O(n)",
+                        "Equal elements maintain their original relative order",
+                        "Never makes wrong swaps",
+                        "In-place sorting only"
+                    ],
+                    "answer": "Equal elements maintain their original relative order"
+                },
+                {
+                    "question": "Insertion Sort is efficient for:",
+                    "options": [
+                        "Large unsorted arrays",
+                        "Nearly sorted small arrays",
+                        "Random large data",
+                        "Only strings"
+                    ],
+                    "answer": "Nearly sorted small arrays"
+                },
+                {
+                    "question": "Bubble Sort's optimization (early exit) helps when:",
+                    "options": [
+                        "Array is reverse sorted",
+                        "Array is already sorted — O(n) best case",
+                        "Array has duplicates",
+                        "Array is very large"
+                    ],
+                    "answer": "Array is already sorted — O(n) best case"
+                },
+                {
+                    "question": "Which sort is in-place and stability doesn't matter?",
+                    "options": [
+                        "Merge Sort",
+                        "Selection Sort — always O(n^2), in-place, simple",
+                        "Heap Sort",
+                        "Counting Sort"
+                    ],
+                    "answer": "Selection Sort — always O(n^2), in-place, simple"
+                },
+                {
+                    "question": "Python's built-in `sort()` uses:",
+                    "options": [
+                        "Quicksort",
+                        "Merge Sort",
+                        "TimSort (hybrid of merge sort + insertion sort)",
+                        "Heapsort"
+                    ],
+                    "answer": "TimSort (hybrid of merge sort + insertion sort)"
+                },
+                {
+                    "question": "Sorting lower bound for comparison-based sorts?",
+                    "options": [
+                        "O(n)",
+                        "O(n log n)",
+                        "O(n^2)",
+                        "O(1)"
+                    ],
+                    "answer": "O(n log n)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Sorting Algorithms — Intermediate Level",
+            "theory": "**Merge Sort:** divide and conquer, O(n log n) always, O(n) space, stable.\n**QuickSort:** O(n log n) average, O(n^2) worst (bad pivot), O(log n) space, in-place.\n**Heap Sort:** O(n log n) always, O(1) space, not stable.\n\n```python\ndef merge_sort(arr):\n    if len(arr) <= 1: return arr\n    mid = len(arr) // 2\n    L = merge_sort(arr[:mid])\n    R = merge_sort(arr[mid:])\n    return merge(L, R)\n```\n\n**Counting Sort:** O(n+k) for limited range integers.\n**Radix Sort:** O(d(n+k)) — sort digits.\n**Bucket Sort:** O(n) average for uniform distribution.",
+            "questions": [
+                {
+                    "question": "Merge Sort time complexity:",
+                    "options": [
+                        "O(n^2) always",
+                        "O(n log n) always",
+                        "O(n log n) average, O(n^2) worst",
+                        "O(n)"
+                    ],
+                    "answer": "O(n log n) always"
+                },
+                {
+                    "question": "QuickSort worst case occurs when:",
+                    "options": [
+                        "Array is nearly sorted",
+                        "Always smallest or largest pivot chosen (unbalanced partitions) — O(n^2)",
+                        "Array has duplicates",
+                        "Median pivot chosen"
+                    ],
+                    "answer": "Always smallest or largest pivot chosen (unbalanced partitions) — O(n^2)"
+                },
+                {
+                    "question": "Heap Sort space complexity:",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "When to use Counting Sort?",
+                    "options": [
+                        "Large range integers",
+                        "Small range integers [0..k] — O(n+k) time and space",
+                        "Floating point numbers",
+                        "Strings"
+                    ],
+                    "answer": "Small range integers [0..k] — O(n+k) time and space"
+                },
+                {
+                    "question": "Radix Sort is non-comparison based. Its complexity:",
+                    "options": [
+                        "O(n log n)",
+                        "O(d*(n+k)) where d=digits, k=base",
+                        "O(n^2)",
+                        "O(n)"
+                    ],
+                    "answer": "O(d*(n+k)) where d=digits, k=base"
+                },
+                {
+                    "question": "QuickSort average case time complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n)",
+                        "O(n)",
+                        "O(n log^2 n)"
+                    ],
+                    "answer": "O(n log n)"
+                },
+                {
+                    "question": "3-way QuickSort handles duplicates better because:",
+                    "options": [
+                        "Avoids duplicate comparison",
+                        "Partitions into <, =, > sections — equal elements grouped, no recurse on them",
+                        "Sorts duplicate groups first",
+                        "Uses counting on duplicates"
+                    ],
+                    "answer": "Partitions into <, =, > sections — equal elements grouped, no recurse on them"
+                },
+                {
+                    "question": "Which sort is preferred for linked lists?",
+                    "options": [
+                        "QuickSort",
+                        "Heap Sort",
+                        "Merge Sort — no random access needed, O(1) extra space",
+                        "Counting Sort"
+                    ],
+                    "answer": "Merge Sort — no random access needed, O(1) extra space"
+                },
+                {
+                    "question": "Introspective Sort (IntroSort) combines:",
+                    "options": [
+                        "QuickSort + Counting Sort",
+                        "QuickSort + HeapSort + InsertionSort — O(n log n) worst case, in-place",
+                        "MergeSort + QuickSort",
+                        "HeapSort + CountingSort"
+                    ],
+                    "answer": "QuickSort + HeapSort + InsertionSort — O(n log n) worst case, in-place"
+                },
+                {
+                    "question": "What is the recurrence relation for Merge Sort?",
+                    "options": [
+                        "T(n) = T(n-1) + O(n)",
+                        "T(n) = 2T(n/2) + O(n)",
+                        "T(n) = T(n/2) + O(n)",
+                        "T(n) = 2T(n-1) + O(1)"
+                    ],
+                    "answer": "T(n) = 2T(n/2) + O(n)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Sorting Algorithms — Expert Level",
+            "theory": "**TimSort details:** merge sort for large runs, insertion sort for small runs (run threshold ~64). Natural runs detected. Used in Java, Python.\n\n**PDQ Sort (Pattern-Defeating Quicksort):** used in Rust/C++ — detects patterns (sorted, reversed, duplicates) and switches strategy.\n\n**Cache-oblivious sorting:** Funnel Sort — optimal cache performance at all levels of memory hierarchy.\n\n**External merge sort:** for data larger than RAM — merge sorted chunks from disk.\n\n**Parallel sorting:** PRAM model, bitonic sort for GPU (O(log^2 n) parallel steps).",
+            "questions": [
+                {
+                    "question": "TimSort run threshold is approximately:",
+                    "options": [
+                        "1",
+                        "64",
+                        "256",
+                        "1024"
+                    ],
+                    "answer": "64"
+                },
+                {
+                    "question": "PDQ Sort detects and handles:",
+                    "options": [
+                        "Random arrays only",
+                        "Sorted, reversed, and duplicate-heavy patterns — avoids O(n^2) degenerate cases",
+                        "Hash collisions",
+                        "Large integers"
+                    ],
+                    "answer": "Sorted, reversed, and duplicate-heavy patterns — avoids O(n^2) degenerate cases"
+                },
+                {
+                    "question": "External merge sort handles data when:",
+                    "options": [
+                        "Data fits in RAM",
+                        "Data is larger than RAM — merge sorted disk chunks",
+                        "Data needs hashing",
+                        "Only floating point"
+                    ],
+                    "answer": "Data is larger than RAM — merge sorted disk chunks"
+                },
+                {
+                    "question": "Bitonic sort time complexity with p processors:",
+                    "options": [
+                        "O(n log n / p)",
+                        "O(log^2 n) parallel steps",
+                        "O(n) parallel",
+                        "O(n/p + log n)"
+                    ],
+                    "answer": "O(log^2 n) parallel steps"
+                },
+                {
+                    "question": "Why is QuickSort faster than MergeSort in practice despite same O(n log n)?",
+                    "options": [
+                        "Fewer comparisons",
+                        "Better cache behavior (in-place, spatial locality), smaller constant factors",
+                        "Never O(n^2)",
+                        "Less memory allocation"
+                    ],
+                    "answer": "Better cache behavior (in-place, spatial locality), smaller constant factors"
+                },
+                {
+                    "question": "Counting sort stability requirement:",
+                    "options": [
+                        "Always stable",
+                        "Iterate input in reverse when building output — ensures stability",
+                        "Never stable",
+                        "Stable only when no duplicates"
+                    ],
+                    "answer": "Iterate input in reverse when building output — ensures stability"
+                },
+                {
+                    "question": "Median-of-three for QuickSort pivot selection:",
+                    "options": [
+                        "Always chooses median element",
+                        "Picks median of first, middle, last elements — avoids sorted/reverse-sorted worst cases",
+                        "Random pivot variant",
+                        "Recurs to find exact median"
+                    ],
+                    "answer": "Picks median of first, middle, last elements — avoids sorted/reverse-sorted worst cases"
+                },
+                {
+                    "question": "American Flag Sort is:",
+                    "options": [
+                        "A patriotic algorithm",
+                        "An in-place variant of radix sort — partitions on most significant digit repeatedly",
+                        "A bucket sort variant",
+                        "An LSD radix sort"
+                    ],
+                    "answer": "An in-place variant of radix sort — partitions on most significant digit repeatedly"
+                },
+                {
+                    "question": "What is shellsort?",
+                    "options": [
+                        "A graph sorting",
+                        "Generalization of insertion sort with gap sequences — O(n log^2 n) with Ciura gap",
+                        "A string sort",
+                        "A counting sort variant"
+                    ],
+                    "answer": "Generalization of insertion sort with gap sequences — O(n log^2 n) with Ciura gap"
+                },
+                {
+                    "question": "Cache-oblivious algorithm is optimal because:",
+                    "options": [
+                        "Uses no cache",
+                        "Works optimally at all levels of memory hierarchy without knowing cache sizes explicitly",
+                        "Uses only registers",
+                        "Minimizes comparisons only"
+                    ],
+                    "answer": "Works optimally at all levels of memory hierarchy without knowing cache sizes explicitly"
+                }
+            ]
+        }
+    ]
+}

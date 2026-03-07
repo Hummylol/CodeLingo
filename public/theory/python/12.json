@@ -1,0 +1,327 @@
+{
+    "levelno": 12,
+    "topic": "Functions",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Functions — Beginner Level",
+            "theory": "A **function** is a reusable block of code. Define with `def`:\n\n```python\ndef greet(name):\n    return f'Hello, {name}!'\n\nresult = greet('Alice')  # 'Hello, Alice!'\n```\n\nKey points:\n- `def` keyword, followed by the function name & parentheses\n- The code block must be indented\n- `return` sends a value back to the caller\n- If no `return`, the function returns `None`\n- Variables inside the function are **local** — they don't exist outside\n\nCall a function with its name followed by `()` e.g., `greet('Bob')`",
+            "questions": [
+                {
+                    "question": "Which keyword defines a function?",
+                    "options": [
+                        "function",
+                        "def",
+                        "fun",
+                        "define"
+                    ],
+                    "answer": "def"
+                },
+                {
+                    "question": "What does `return` do?",
+                    "options": [
+                        "Prints output",
+                        "Stops the script",
+                        "Sends a value back to the caller",
+                        "Declares a variable"
+                    ],
+                    "answer": "Sends a value back to the caller"
+                },
+                {
+                    "question": "What does a function return if it has no `return` statement?",
+                    "options": [
+                        "0",
+                        "False",
+                        "None",
+                        "Error"
+                    ],
+                    "answer": "None"
+                },
+                {
+                    "question": "How are variables defined inside a function?",
+                    "options": [
+                        "Global and accessible anywhere",
+                        "Local to that function",
+                        "Permanent",
+                        "Always integers"
+                    ],
+                    "answer": "Local to that function"
+                },
+                {
+                    "question": "How do you call `my_function`?",
+                    "options": [
+                        "call my_function()",
+                        "my_function",
+                        "my_function()",
+                        "def my_function()"
+                    ],
+                    "answer": "my_function()"
+                },
+                {
+                    "question": "What is a docstring?",
+                    "options": [
+                        "A comment with #",
+                        "A string literal as first statement in a function, used for documentation",
+                        "A built-in function",
+                        "A print statement"
+                    ],
+                    "answer": "A string literal as first statement in a function, used for documentation"
+                },
+                {
+                    "question": "What is the main benefit of functions?",
+                    "options": [
+                        "Faster execution",
+                        "Code reuse and better organization",
+                        "Smaller file size",
+                        "Only way to use loops"
+                    ],
+                    "answer": "Code reuse and better organization"
+                },
+                {
+                    "question": "Can a function call another function?",
+                    "options": [
+                        "No",
+                        "Yes",
+                        "Only if defined in the same file",
+                        "Only without parameters"
+                    ],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "What is recursion?",
+                    "options": [
+                        "An infinite loop",
+                        "A function calling another function",
+                        "A function calling itself",
+                        "A data type"
+                    ],
+                    "answer": "A function calling itself"
+                },
+                {
+                    "question": "A variable passed into a function is called:",
+                    "options": [
+                        "Parameter",
+                        "Argument",
+                        "Parameter when defining; Argument when calling",
+                        "Return value"
+                    ],
+                    "answer": "Parameter when defining; Argument when calling"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Functions — Intermediate Level",
+            "theory": "**Multiple return values** — Python functions can return multiple values as a tuple:\n`def min_max(lst): return min(lst), max(lst)`\n`lo, hi = min_max([3,1,4,1,5])`\n\n**Lambda functions** — anonymous single-expression functions:\n`add = lambda a, b: a + b`\n`sorted(people, key=lambda p: p['age'])`\n\n**`*args` and `**kwargs`** for variable number of arguments:\n`def f(*args, **kwargs): ...`\n`args` is a tuple of positional args; `kwargs` is a dict of keyword args.\n\n**First-class functions** — in Python, functions are objects. You can pass them as arguments, return them, and store them in variables.",
+            "questions": [
+                {
+                    "question": "What does `def f(): return 1, 2` return?",
+                    "options": [
+                        "1",
+                        "(1, 2) as a tuple",
+                        "Error",
+                        "[1, 2]"
+                    ],
+                    "answer": "(1, 2) as a tuple"
+                },
+                {
+                    "question": "What is a lambda function?",
+                    "options": [
+                        "A slow function",
+                        "An anonymous single-expression function",
+                        "A recursive function",
+                        "A function with no arguments"
+                    ],
+                    "answer": "An anonymous single-expression function"
+                },
+                {
+                    "question": "What does `lambda x: x * 2` do when called with 5?",
+                    "options": [
+                        "Returns 5",
+                        "Returns 10",
+                        "Returns '5 * 2'",
+                        "Error"
+                    ],
+                    "answer": "Returns 10"
+                },
+                {
+                    "question": "What type is `args` inside `def f(*args)`?",
+                    "options": [
+                        "List",
+                        "Dict",
+                        "Tuple",
+                        "Set"
+                    ],
+                    "answer": "Tuple"
+                },
+                {
+                    "question": "What type is `kwargs` inside `def f(**kwargs)`?",
+                    "options": [
+                        "List",
+                        "Dict",
+                        "Tuple",
+                        "Set"
+                    ],
+                    "answer": "Dict"
+                },
+                {
+                    "question": "What does 'first-class functions' mean?",
+                    "options": [
+                        "Functions run faster",
+                        "Functions are objects that can be passed around and returned like any other value",
+                        "Only the first function in a file matters",
+                        "Functions can only take first-class types"
+                    ],
+                    "answer": "Functions are objects that can be passed around and returned like any other value"
+                },
+                {
+                    "question": "What does `sorted(['b','a','c'], key=lambda s: s)` return?",
+                    "options": [
+                        "['c','b','a']",
+                        "['a','b','c']",
+                        "Error",
+                        "['b','a','c']"
+                    ],
+                    "answer": "['a','b','c']"
+                },
+                {
+                    "question": "Output of `def f(a, *args): return args` called as `f(1,2,3)`?",
+                    "options": [
+                        "(2,3)",
+                        "[2,3]",
+                        "2 3",
+                        "Error"
+                    ],
+                    "answer": "(2,3)"
+                },
+                {
+                    "question": "How do you access docstring of function `f`?",
+                    "options": [
+                        "f.docstring",
+                        "f.__doc__",
+                        "print(f)",
+                        "help.__doc__(f)"
+                    ],
+                    "answer": "f.__doc__"
+                },
+                {
+                    "question": "What is the output of `f = lambda: 42; print(f())`?",
+                    "options": [
+                        "lambda",
+                        "f",
+                        "42",
+                        "Error"
+                    ],
+                    "answer": "42"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Functions — Expert Level",
+            "theory": "**Closures** — a nested function that captures variables from its enclosing scope:\n```python\ndef make_counter():\n    count = 0\n    def counter():\n        nonlocal count\n        count += 1\n        return count\n    return counter\nc = make_counter(); c()  # 1, c()  # 2\n```\n\n**Decorators** — functions that wrap another function to extend its behavior:\n```python\ndef log(func):\n    def wrapper(*args, **kwargs):\n        print(f'Calling {func.__name__}')\n        return func(*args, **kwargs)\n    return wrapper\n\n@log\ndef add(a, b): return a + b\n```\n\n**`functools.lru_cache`** — memoization decorator for caching expensive function results.\n**`functools.partial`** — creates a new function with some arguments pre-filled.",
+            "questions": [
+                {
+                    "question": "What is a closure?",
+                    "options": [
+                        "A function that closes the program",
+                        "A nested function that captures variables from its enclosing scope",
+                        "A function with no return value",
+                        "A function that accepts no arguments"
+                    ],
+                    "answer": "A nested function that captures variables from its enclosing scope"
+                },
+                {
+                    "question": "What is a decorator?",
+                    "options": [
+                        "A function that returns a value",
+                        "A function that wraps another function to extend its behavior",
+                        "A string literal above a function",
+                        "A method of a class"
+                    ],
+                    "answer": "A function that wraps another function to extend its behavior"
+                },
+                {
+                    "question": "What does `@functools.lru_cache` do?",
+                    "options": [
+                        "Makes a function run in a thread",
+                        "Caches return values of a function for previously seen arguments (memoization)",
+                        "Limits function calls per second",
+                        "Converts function to a coroutine"
+                    ],
+                    "answer": "Caches return values of a function for previously seen arguments (memoization)"
+                },
+                {
+                    "question": "What does `functools.partial(pow, 2)` create?",
+                    "options": [
+                        "Error",
+                        "A new function that computes 2**n for any n",
+                        "The result of pow(2)",
+                        "A partial class"
+                    ],
+                    "answer": "A new function that computes 2**n for any n"
+                },
+                {
+                    "question": "What does `nonlocal` do inside a nested function?",
+                    "options": [
+                        "References a global variable",
+                        "References a variable in the immediately enclosing scope",
+                        "Creates a new local variable",
+                        "Imports the variable"
+                    ],
+                    "answer": "References a variable in the immediately enclosing scope"
+                },
+                {
+                    "question": "What happens to a function's local variables when it returns?",
+                    "options": [
+                        "They persist as globals",
+                        "They are destroyed (garbage collected)",
+                        "They become class attributes",
+                        "They are stored in sys.locals"
+                    ],
+                    "answer": "They are destroyed (garbage collected)"
+                },
+                {
+                    "question": "What is memoization?",
+                    "options": [
+                        "Memorizing code",
+                        "Caching the results of function calls with the same arguments to avoid recomputation",
+                        "Converting functions to memory-efficient versions",
+                        "A way to document functions"
+                    ],
+                    "answer": "Caching the results of function calls with the same arguments to avoid recomputation"
+                },
+                {
+                    "question": "What does `__name__` attribute on a function hold?",
+                    "options": [
+                        "Module name",
+                        "The function's own name as a string",
+                        "Class name",
+                        "File name"
+                    ],
+                    "answer": "The function's own name as a string"
+                },
+                {
+                    "question": "What does `functools.wraps(func)` do in a decorator?",
+                    "options": [
+                        "Makes the decorator faster",
+                        "Copies the original function's metadata (name, docstring) to the wrapper",
+                        "Prevents the original from being called",
+                        "Makes the function thread-safe"
+                    ],
+                    "answer": "Copies the original function's metadata (name, docstring) to the wrapper"
+                },
+                {
+                    "question": "What is a generator function (using `yield`)?",
+                    "options": [
+                        "A function that generates random numbers",
+                        "A function that returns an iterator, producing values lazily one at a time",
+                        "A function that generates classes",
+                        "A recursive function"
+                    ],
+                    "answer": "A function that returns an iterator, producing values lazily one at a time"
+                }
+            ]
+        }
+    ]
+}

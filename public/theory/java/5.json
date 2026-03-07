@@ -1,0 +1,327 @@
+{
+    "levelno": 5,
+    "topic": "Methods",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Methods — Beginner Level",
+            "theory": "Methods are reusable blocks of code defined inside a class.\n\n```java\npublic class Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n    // void method - no return value\n    public void printResult(int result) {\n        System.out.println(\"Result: \" + result);\n    }\n    public static void main(String[] args) {\n        Calculator c = new Calculator();\n        int sum = c.add(5, 3);\n        c.printResult(sum);\n    }\n}\n```\n\n- **Return type** — type of returned value (`void` if none)\n- **Parameters** — input variables\n- **Arguments** — values passed when calling\n- `return` statement exits the method and optionally returns a value",
+            "questions": [
+                {
+                    "question": "What does `void` as return type mean?",
+                    "options": [
+                        "Returns 0",
+                        "Returns null",
+                        "Method returns nothing",
+                        "Returns void type"
+                    ],
+                    "answer": "Method returns nothing"
+                },
+                {
+                    "question": "Method parameters vs arguments:",
+                    "options": [
+                        "Same thing",
+                        "Parameters in definition; arguments in call",
+                        "Arguments in definition; parameters in call",
+                        "Parameters are types only"
+                    ],
+                    "answer": "Parameters in definition; arguments in call"
+                },
+                {
+                    "question": "What does `return` do?",
+                    "options": [
+                        "Starts the method",
+                        "Exits the method and optionally returns a value",
+                        "Prints a value",
+                        "Calls another method"
+                    ],
+                    "answer": "Exits the method and optionally returns a value"
+                },
+                {
+                    "question": "Local variables declared in a method:",
+                    "options": [
+                        "Exist for the program lifetime",
+                        "Are only accessible within that method",
+                        "Are static by default",
+                        "Can be accessed by other classes"
+                    ],
+                    "answer": "Are only accessible within that method"
+                },
+                {
+                    "question": "Can Java methods have the same name?",
+                    "options": [
+                        "No, unique names required",
+                        "Yes through method overloading (different parameters)",
+                        "Yes, always",
+                        "Only in different classes"
+                    ],
+                    "answer": "Yes through method overloading (different parameters)"
+                },
+                {
+                    "question": "What is method overloading?",
+                    "options": [
+                        "Override in subclass",
+                        "Multiple methods with same name but different parameter lists",
+                        "Method with no return",
+                        "Recursive methods"
+                    ],
+                    "answer": "Multiple methods with same name but different parameter lists"
+                },
+                {
+                    "question": "To call a non-static method, you need:",
+                    "options": [
+                        "Class name",
+                        "An instance of the class",
+                        "The `static` keyword",
+                        "Nothing extra"
+                    ],
+                    "answer": "An instance of the class"
+                },
+                {
+                    "question": "A `static` method belongs to:",
+                    "options": [
+                        "An instance",
+                        "The class itself — called without an object",
+                        "Only main class",
+                        "A subclass"
+                    ],
+                    "answer": "The class itself — called without an object"
+                },
+                {
+                    "question": "What is recursion?",
+                    "options": [
+                        "A loop inside a method",
+                        "A method calling itself",
+                        "A method calling another class",
+                        "A static method"
+                    ],
+                    "answer": "A method calling itself"
+                },
+                {
+                    "question": "What is a method signature?",
+                    "options": [
+                        "Method name and return type",
+                        "Method name and parameter types (not return type)",
+                        "Method body",
+                        "Access modifier and name"
+                    ],
+                    "answer": "Method name and parameter types (not return type)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Methods — Intermediate Level",
+            "theory": "**Varargs (variable-length arguments):**\n```java\npublic int sum(int... numbers) {\n    int total = 0;\n    for (int n : numbers) total += n;\n    return total;\n}\nsum(1, 2, 3, 4); // works with any count\n```\n\n**Pass by value** — Java always passes by value. For objects, the reference is passed by value.\n\n**Method references (Java 8+):**\n```java\nlist.forEach(System.out::println);\nList<String> sorted = list.stream().sorted(String::compareTo).collect(...);\n```\n\n**`@Override`** — annotation marking an inherited method being overridden.\n\n**`default` methods in interfaces (Java 8+):** provide a default implementation.",
+            "questions": [
+                {
+                    "question": "What is a varargs parameter?",
+                    "options": [
+                        "A fixed array parameter",
+                        "Allows a method to accept any number of arguments of the same type",
+                        "A required array",
+                        "A generic type"
+                    ],
+                    "answer": "Allows a method to accept any number of arguments of the same type"
+                },
+                {
+                    "question": "How are objects passed in Java?",
+                    "options": [
+                        "By reference",
+                        "By value — the reference itself is a copy, but points to same object",
+                        "By deep copy",
+                        "By pointer"
+                    ],
+                    "answer": "By value — the reference itself is a copy, but points to same object"
+                },
+                {
+                    "question": "What is a method reference `System.out::println`?",
+                    "options": [
+                        "A field access",
+                        "A shorthand for a lambda — equivalent to `x -> System.out.println(x)`",
+                        "A static import",
+                        "A constructor reference"
+                    ],
+                    "answer": "A shorthand for a lambda — equivalent to `x -> System.out.println(x)`"
+                },
+                {
+                    "question": "What does `@Override` do?",
+                    "options": [
+                        "Required to override a method",
+                        "Tells compiler to verify this overrides a superclass method — compile error if mistaken",
+                        "Makes method final",
+                        "Prevents overriding"
+                    ],
+                    "answer": "Tells compiler to verify this overrides a superclass method — compile error if mistaken"
+                },
+                {
+                    "question": "Can `default` interface methods have a body?",
+                    "options": [
+                        "No",
+                        "Yes — Java 8+ allows default method implementations in interfaces",
+                        "Only abstract methods are allowed",
+                        "Only in Java 11+"
+                    ],
+                    "answer": "Yes — Java 8+ allows default method implementations in interfaces"
+                },
+                {
+                    "question": "What is a constructor reference `ClassName::new` used for?",
+                    "options": [
+                        "Calling a constructor explicitly",
+                        "A method reference for creating new instances — used in functional APIs",
+                        "Declaring a class",
+                        "Accessing static fields"
+                    ],
+                    "answer": "A method reference for creating new instances — used in functional APIs"
+                },
+                {
+                    "question": "What can a `static` method NOT do?",
+                    "options": [
+                        "Call other static methods",
+                        "Access static fields",
+                        "Access instance fields/methods directly (no `this`)",
+                        "Return a value"
+                    ],
+                    "answer": "Access instance fields/methods directly (no `this`)"
+                },
+                {
+                    "question": "What does `final` on a method prevent?",
+                    "options": [
+                        "Calling the method",
+                        "Overriding the method in subclasses",
+                        "Compiling the method",
+                        "Making it static"
+                    ],
+                    "answer": "Overriding the method in subclasses"
+                },
+                {
+                    "question": "What is a functional interface?",
+                    "options": [
+                        "An interface with no methods",
+                        "An interface with exactly one abstract method — target of lambda expressions",
+                        "An interface with only static methods",
+                        "An interface extending Runnable"
+                    ],
+                    "answer": "An interface with exactly one abstract method — target of lambda expressions"
+                },
+                {
+                    "question": "What is `java.util.function.Function<T,R>`?",
+                    "options": [
+                        "A generic function class",
+                        "A functional interface with `R apply(T t)` — represents a function from T to R",
+                        "A math function",
+                        "An abstract class"
+                    ],
+                    "answer": "A functional interface with `R apply(T t)` — represents a function from T to R"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Methods — Expert Level",
+            "theory": "**Lambdas and closures in Java:** lambdas can capture effectively `final` local variables from enclosing scope.\n\n**`MethodHandle` (Java 7+):** low-overhead method invocation alternative to reflection:\n```java\nMethodHandle mh = MethodHandles.lookup().findVirtual(String.class, \"length\", MethodType.methodType(int.class));\nint len = (int) mh.invoke(\"Hello\");\n```\n\n**Higher-order functions via functional interfaces:** `Function.compose()`, `Function.andThen()` for function composition.\n\n**`invokedynamic`:** JVM instruction used by lambdas, method references, and string concatenation for deferred linkage.",
+            "questions": [
+                {
+                    "question": "What does 'effectively final' mean for lambda captures?",
+                    "options": [
+                        "Declared with `final`",
+                        "Not reassigned after first assignment — can be captured by a lambda",
+                        "A JVM optimization",
+                        "A method return constraint"
+                    ],
+                    "answer": "Not reassigned after first assignment — can be captured by a lambda"
+                },
+                {
+                    "question": "What is a `MethodHandle`?",
+                    "options": [
+                        "A thread handle",
+                        "A low-overhead, type-safe mechanism for invoking methods — faster than reflection",
+                        "A lambda alias",
+                        "A class file constant"
+                    ],
+                    "answer": "A low-overhead, type-safe mechanism for invoking methods — faster than reflection"
+                },
+                {
+                    "question": "What does `Function.andThen(g)` do?",
+                    "options": [
+                        "Applies g first, then f",
+                        "Composes: applies f first, then g to the result",
+                        "Returns g applied to f's input",
+                        "Caches the result"
+                    ],
+                    "answer": "Composes: applies f first, then g to the result"
+                },
+                {
+                    "question": "What is `invokedynamic` used for in Java?",
+                    "options": [
+                        "Dynamic class loading",
+                        "Deferred linkage for lambdas, method refs, and string concat — chosen at runtime",
+                        "Garbage collection",
+                        "Native method invocation"
+                    ],
+                    "answer": "Deferred linkage for lambdas, method refs, and string concat — chosen at runtime"
+                },
+                {
+                    "question": "What is the difference between `Predicate.and()` and `&&` in a lambda?",
+                    "options": [
+                        "No difference",
+                        "`Predicate.and()` composes two Predicate objects; `&&` is an operator in a boolean expression",
+                        "and() is slower",
+                        "and() doesn't short-circuit"
+                    ],
+                    "answer": "`Predicate.and()` composes two Predicate objects; `&&` is an operator in a boolean expression"
+                },
+                {
+                    "question": "What is `@FunctionalInterface`?",
+                    "options": [
+                        "Marks that the class is standalone",
+                        "An annotation that verifies the interface has exactly one abstract method — compile error otherwise",
+                        "Required for lambdas",
+                        "Makes all methods default"
+                    ],
+                    "answer": "An annotation that verifies the interface has exactly one abstract method — compile error otherwise"
+                },
+                {
+                    "question": "What does `BiFunction<T,U,R>` represent?",
+                    "options": [
+                        "Two return values",
+                        "A function taking two arguments T, U and returning R",
+                        "Two functions composed",
+                        "A pair of functions"
+                    ],
+                    "answer": "A function taking two arguments T, U and returning R"
+                },
+                {
+                    "question": "What is partial application vs currying in functional Java?",
+                    "options": [
+                        "Same thing",
+                        "Currying: transform f(a,b) → f(a)(b). Partial: fix some args. Java simulates both via lambdas",
+                        "Only currying works in Java",
+                        "Neither possible in Java"
+                    ],
+                    "answer": "Currying: transform f(a,b) → f(a)(b). Partial: fix some args. Java simulates both via lambdas"
+                },
+                {
+                    "question": "What does `Supplier<T>` provide?",
+                    "options": [
+                        "Consumes a T",
+                        "Produces a T with no arguments: `T get()`",
+                        "Maps T to T",
+                        "A lazy evaluation container"
+                    ],
+                    "answer": "Produces a T with no arguments: `T get()`"
+                },
+                {
+                    "question": "What does `Consumer<T>` do?",
+                    "options": [
+                        "Returns a T",
+                        "Accepts a T, returns void: `void accept(T t)`",
+                        "Filters a T",
+                        "Converts T to String"
+                    ],
+                    "answer": "Accepts a T, returns void: `void accept(T t)`"
+                }
+            ]
+        }
+    ]
+}

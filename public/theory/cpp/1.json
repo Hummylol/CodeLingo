@@ -1,0 +1,327 @@
+{
+    "levelno": 1,
+    "topic": "Basic Structure & I/O",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Basic Structure & I/O — Beginner Level",
+            "theory": "Every C++ program starts with `int main()`. Output uses `std::cout` and input uses `std::cin`, both from `#include <iostream>`.\n\n```cpp\n#include <iostream>\nint main() {\n    std::cout << \"Hello, World!\\n\";\n    return 0;\n}\n```\n\n- `std::` — the standard namespace prefix\n- `<<` — insertion operator (sends data to `cout`)\n- `>>` — extraction operator (reads data from `cin`)\n- `return 0;` — signals successful execution\n- `//` — single-line comment\n- `/* ... */` — multi-line comment",
+            "questions": [
+                {
+                    "question": "What is the entry point for every C++ program?",
+                    "options": [
+                        "`start()`",
+                        "`main()`",
+                        "`begin()`",
+                        "`program()`"
+                    ],
+                    "answer": "`main()`"
+                },
+                {
+                    "question": "Which header must be included to use `std::cout`?",
+                    "options": [
+                        "`<stdio>`",
+                        "`<string>`",
+                        "`<iostream>`",
+                        "`<output>`"
+                    ],
+                    "answer": "`<iostream>`"
+                },
+                {
+                    "question": "Which object prints output to the console?",
+                    "options": [
+                        "`std::cin`",
+                        "`std::cout`",
+                        "`std::print`",
+                        "`std::log`"
+                    ],
+                    "answer": "`std::cout`"
+                },
+                {
+                    "question": "What does `<<` do with `std::cout`?",
+                    "options": [
+                        "Reads input",
+                        "Compares values",
+                        "Inserts data into the output stream",
+                        "Performs bitwise shift only"
+                    ],
+                    "answer": "Inserts data into the output stream"
+                },
+                {
+                    "question": "What does `return 0;` at the end of `main()` signal?",
+                    "options": [
+                        "Error",
+                        "Successful execution",
+                        "Restart",
+                        "Memory free"
+                    ],
+                    "answer": "Successful execution"
+                },
+                {
+                    "question": "Which object reads input from the user?",
+                    "options": [
+                        "`std::cout`",
+                        "`std::read`",
+                        "`std::cin`",
+                        "`std::get`"
+                    ],
+                    "answer": "`std::cin`"
+                },
+                {
+                    "question": "What does `std::` before `cout` mean?",
+                    "options": [
+                        "Required keyword",
+                        "`cout` is in the standard namespace",
+                        "Security feature",
+                        "Old syntax"
+                    ],
+                    "answer": "`cout` is in the standard namespace"
+                },
+                {
+                    "question": "What is the purpose of `;` in C++?",
+                    "options": [
+                        "Separate variables",
+                        "Mark end of statement",
+                        "Create comment",
+                        "Optional marker"
+                    ],
+                    "answer": "Mark end of statement"
+                },
+                {
+                    "question": "Which operator is used with `std::cin` to read input?",
+                    "options": [
+                        "`<<`",
+                        "`>>`",
+                        "`<-`",
+                        "`->`"
+                    ],
+                    "answer": "`>>`"
+                },
+                {
+                    "question": "How do you write a single-line comment in C++?",
+                    "options": [
+                        "`// comment`",
+                        "`/* comment */`",
+                        "`# comment`",
+                        "`-- comment`"
+                    ],
+                    "answer": "`// comment`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Basic Structure & I/O — Intermediate Level",
+            "theory": "**`using namespace std;`** — eliminates the need to prefix standard library names with `std::`. Use with care in large projects (name collisions).\n\n**`std::endl` vs `\\n`** — both insert a newline, but `std::endl` also flushes the output buffer (slower).\n\n**`std::cerr`** — standard error stream (unbuffered).\n**`std::clog`** — standard log stream (buffered).\n\n**Formatted output** with `<iomanip>`:\n```cpp\n#include <iomanip>\nstd::cout << std::setw(10) << std::left << \"Name\" << std::setw(5) << 42 << '\\n';\n```\n\n**`std::getline(std::cin, str)`** — reads an entire line (including spaces) into a string.",
+            "questions": [
+                {
+                    "question": "What does `using namespace std;` allow?",
+                    "options": [
+                        "Creates a new namespace",
+                        "Omits the `std::` prefix for standard library names",
+                        "Makes all functions public",
+                        "Declares all variables globally"
+                    ],
+                    "answer": "Omits the `std::` prefix for standard library names"
+                },
+                {
+                    "question": "What is the difference between `std::endl` and `'\\n'`?",
+                    "options": [
+                        "No difference",
+                        "`std::endl` also flushes the output buffer; `'\\n'` does not",
+                        "`'\\n'` flushes; `std::endl` does not",
+                        "`std::endl` only works on Windows"
+                    ],
+                    "answer": "`std::endl` also flushes the output buffer; `'\\n'` does not"
+                },
+                {
+                    "question": "What is `std::cerr` used for?",
+                    "options": [
+                        "Standard user input",
+                        "Standard error output (unbuffered)",
+                        "Standard file output",
+                        "Formatted output"
+                    ],
+                    "answer": "Standard error output (unbuffered)"
+                },
+                {
+                    "question": "Which function reads an entire line including spaces?",
+                    "options": [
+                        "`std::cin >> str`",
+                        "`std::getline(std::cin, str)`",
+                        "`std::cin.read(str)`",
+                        "`std::cin.getline(str)`"
+                    ],
+                    "answer": "`std::getline(std::cin, str)`"
+                },
+                {
+                    "question": "Which header provides `std::setw` for formatted output?",
+                    "options": [
+                        "`<iostream>`",
+                        "`<format>`",
+                        "`<iomanip>`",
+                        "`<cstdio>`"
+                    ],
+                    "answer": "`<iomanip>`"
+                },
+                {
+                    "question": "What does `std::setw(10)` do?",
+                    "options": [
+                        "Sets number of decimal places",
+                        "Sets the field width for the next output item",
+                        "Sets font size",
+                        "Increases output speed"
+                    ],
+                    "answer": "Sets the field width for the next output item"
+                },
+                {
+                    "question": "What does `std::cin.ignore()` do?",
+                    "options": [
+                        "Ignores all input",
+                        "Discards a character from the input buffer (useful after >>)",
+                        "Clears the input stream permanently",
+                        "Terminates input"
+                    ],
+                    "answer": "Discards a character from the input buffer (useful after >>)"
+                },
+                {
+                    "question": "What does `std::cin.fail()` return?",
+                    "options": [
+                        "Number of input bytes",
+                        "`true` if the last extraction failed (e.g., type mismatch)",
+                        "`true` when cin is empty",
+                        "Always false"
+                    ],
+                    "answer": "`true` if the last extraction failed (e.g., type mismatch)"
+                },
+                {
+                    "question": "What is the output of `std::cout << std::boolalpha << true;`?",
+                    "options": [
+                        "1",
+                        "true",
+                        "T",
+                        "Compile error"
+                    ],
+                    "answer": "true"
+                },
+                {
+                    "question": "Which stream is guaranteed to show output immediately without buffering?",
+                    "options": [
+                        "`std::cout`",
+                        "`std::clog`",
+                        "`std::cerr`",
+                        "`std::cin`"
+                    ],
+                    "answer": "`std::cerr`"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Basic Structure & I/O — Expert Level",
+            "theory": "**`std::format` (C++20)** — type-safe, Pythonic formatting:\n```cpp\n#include <format>\nstd::cout << std::format(\"Hello, {}! Age: {}\\n\", name, age);\n```\n\n**`std::print` (C++23)** — even simpler: `std::print(\"val={}\", x);`\n\n**Stream buffers (`std::streambuf`)** — the underlying mechanism behind all streams. You can redirect `std::cout` to a file by swapping its buffer.\n\n**`std::ios::sync_with_stdio(false)`** — disables C/C++ stream synchronization for faster I/O (common in competitive programming):\n```cpp\nstd::ios::sync_with_stdio(false);\nstd::cin.tie(nullptr);\n```\n\n**`std::ostringstream`** — in-memory string formatting (build strings with `<<`).",
+            "questions": [
+                {
+                    "question": "What does `std::ios::sync_with_stdio(false)` accomplish?",
+                    "options": [
+                        "Syncs C++ streams with OS",
+                        "Disables sync between C stdio and C++ streams for faster I/O",
+                        "Enables multithreaded output",
+                        "Forces flushing after every write"
+                    ],
+                    "answer": "Disables sync between C stdio and C++ streams for faster I/O"
+                },
+                {
+                    "question": "What is `std::cin.tie(nullptr)` commonly used for?",
+                    "options": [
+                        "Tie cin to cerr",
+                        "Disconnect cin from cout so cout isn't flushed before every cin read (faster I/O)",
+                        "Make cin thread-safe",
+                        "Reset cin state"
+                    ],
+                    "answer": "Disconnect cin from cout so cout isn't flushed before every cin read (faster I/O)"
+                },
+                {
+                    "question": "Which C++20 feature provides type-safe, Pythonic string formatting?",
+                    "options": [
+                        "`std::sprintf`",
+                        "`std::format`",
+                        "`std::printf`",
+                        "`std::stringstream`"
+                    ],
+                    "answer": "`std::format`"
+                },
+                {
+                    "question": "What does `std::ostringstream` allow you to do?",
+                    "options": [
+                        "Read from a string as if it were a stream",
+                        "Build a string using `<<` operators in memory",
+                        "Open files",
+                        "Parse formatted input"
+                    ],
+                    "answer": "Build a string using `<<` operators in memory"
+                },
+                {
+                    "question": "How can you redirect `std::cout` output to a file at runtime?",
+                    "options": [
+                        "Replace `cout` with `ofstream`",
+                        "Swap `cout`'s internal `rdbuf` with an `ofstream`'s buffer",
+                        "Use `#define cout myfile`",
+                        "Cannot be done at runtime"
+                    ],
+                    "answer": "Swap `cout`'s internal `rdbuf` with an `ofstream`'s buffer"
+                },
+                {
+                    "question": "What is `std::streambuf`?",
+                    "options": [
+                        "A buffer for file reads only",
+                        "The abstract base class for all I/O stream buffers",
+                        "A compile-time constant",
+                        "A deprecated feature from C++03"
+                    ],
+                    "answer": "The abstract base class for all I/O stream buffers"
+                },
+                {
+                    "question": "What does `std::cout << std::hex << 255;` output?",
+                    "options": [
+                        "255",
+                        "ff",
+                        "0xff",
+                        "0xFF"
+                    ],
+                    "answer": "ff"
+                },
+                {
+                    "question": "What is a potential danger of `using namespace std;` in header files?",
+                    "options": [
+                        "Reduces performance",
+                        "Forces std:: prefix everywhere",
+                        "Pollutes the namespace of every file that includes that header",
+                        "Headers can't use namespaces"
+                    ],
+                    "answer": "Pollutes the namespace of every file that includes that header"
+                },
+                {
+                    "question": "What does `std::cin >> std::ws` do before `getline`?",
+                    "options": [
+                        "Reads whitespace as data",
+                        "Skips leading whitespace (including leftover newlines in the buffer)",
+                        "Stops reading at whitespace",
+                        "Flushes cin"
+                    ],
+                    "answer": "Skips leading whitespace (including leftover newlines in the buffer)"
+                },
+                {
+                    "question": "Which C++23 function is a simpler replacement for `std::cout << std::format(...)`?",
+                    "options": [
+                        "`std::write`",
+                        "`std::out`",
+                        "`std::print`",
+                        "`std::println`"
+                    ],
+                    "answer": "`std::print`"
+                }
+            ]
+        }
+    ]
+}

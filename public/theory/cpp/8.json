@@ -1,0 +1,327 @@
+{
+    "levelno": 8,
+    "topic": "Functions",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Functions — Beginner Level",
+            "theory": "Functions are reusable blocks of code. Declare before use (prototype), then define.\n\n```cpp\n// Prototype\nint add(int a, int b);\n\nint main() {\n    int result = add(5, 3); // Call\n    std::cout << result;    // 8\n}\n\n// Definition\nint add(int a, int b) {\n    return a + b;\n}\n```\n\n- **Return type** — the type of value returned (`void` if nothing)\n- **Parameters** — variables in the function signature\n- **Arguments** — values passed when calling\n- **`return`** — exits the function and optionally returns a value\n- **Function signature** = name + parameter list",
+            "questions": [
+                {
+                    "question": "What is the return type when a function returns nothing?",
+                    "options": [
+                        "`int`",
+                        "`null`",
+                        "`void`",
+                        "`none`"
+                    ],
+                    "answer": "`void`"
+                },
+                {
+                    "question": "Variables in a function signature are called:",
+                    "options": [
+                        "Arguments",
+                        "Parameters",
+                        "Global variables",
+                        "Return values"
+                    ],
+                    "answer": "Parameters"
+                },
+                {
+                    "question": "Values passed when calling a function are called:",
+                    "options": [
+                        "Arguments",
+                        "Parameters",
+                        "Local variables",
+                        "Constants"
+                    ],
+                    "answer": "Arguments"
+                },
+                {
+                    "question": "What is a function prototype?",
+                    "options": [
+                        "The function body",
+                        "Declaration telling compiler about name, return type, and params",
+                        "Another name for a function call",
+                        "A comment explaining the function"
+                    ],
+                    "answer": "Declaration telling compiler about name, return type, and params"
+                },
+                {
+                    "question": "What does `return` do?",
+                    "options": [
+                        "Stops the program",
+                        "Prints a value",
+                        "Exits the function and optionally passes a value back",
+                        "Calls another function"
+                    ],
+                    "answer": "Exits the function and optionally passes a value back"
+                },
+                {
+                    "question": "Where does C++ program execution begin?",
+                    "options": [
+                        "First function defined",
+                        "`start()`",
+                        "`main()`",
+                        "Top of the file"
+                    ],
+                    "answer": "`main()`"
+                },
+                {
+                    "question": "Variables declared inside a function are:",
+                    "options": [
+                        "Global and accessible everywhere",
+                        "Static by default",
+                        "Local to that function",
+                        "Automatically initialized to zero"
+                    ],
+                    "answer": "Local to that function"
+                },
+                {
+                    "question": "What is recursion?",
+                    "options": [
+                        "A function calling another function",
+                        "A function that calls itself",
+                        "A function with no return type",
+                        "A function inside a loop"
+                    ],
+                    "answer": "A function that calls itself"
+                },
+                {
+                    "question": "A function signature consists of:",
+                    "options": [
+                        "Name and return type",
+                        "Name and parameter list",
+                        "Return type and body",
+                        "Access specifier and name"
+                    ],
+                    "answer": "Name and parameter list"
+                },
+                {
+                    "question": "If a function has return type `int`, what must it include?",
+                    "options": [
+                        "A `void` statement",
+                        "A `return` statement with an int value",
+                        "At least two parameters",
+                        "A prototype"
+                    ],
+                    "answer": "A `return` statement with an int value"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Functions — Intermediate Level",
+            "theory": "**Default parameters:**\n```cpp\nvoid greet(std::string name = \"World\") {\n    std::cout << \"Hello, \" << name;\n}\ngreet();         // Hello, World\ngreet(\"Alice\");  // Hello, Alice\n```\n\n**Pass by value vs. by reference:**\n- Pass by value: a copy is made (`void f(int x)`)\n- Pass by reference: original is modified (`void f(int& x)`)\n- Pass by const reference: efficient read-only (`void f(const std::string& s)`)\n\n**Inline functions** — hint to compiler to expand the function at the call site to avoid call overhead: `inline int square(int x) { return x*x; }`\n\n**`std::function<ReturnType(Args...)>`** — stores any callable.",
+            "questions": [
+                {
+                    "question": "What happens when you pass by value?",
+                    "options": [
+                        "Original is modified",
+                        "A copy is made; original unchanged",
+                        "A reference is passed",
+                        "Compiler decides"
+                    ],
+                    "answer": "A copy is made; original unchanged"
+                },
+                {
+                    "question": "What does `void swap(int& a, int& b)` do differently from `void swap(int a, int b)`?",
+                    "options": [
+                        "No difference",
+                        "The & version actually swaps the originals; the non-& version swaps copies",
+                        "The non-& is faster",
+                        "The & version copies more data"
+                    ],
+                    "answer": "The & version actually swaps the originals; the non-& version swaps copies"
+                },
+                {
+                    "question": "When should you use `const T&` as a parameter?",
+                    "options": [
+                        "When you want to modify the argument",
+                        "When passing large objects for read-only access — avoids copying",
+                        "Always",
+                        "Only for strings"
+                    ],
+                    "answer": "When passing large objects for read-only access — avoids copying"
+                },
+                {
+                    "question": "What is a default parameter?",
+                    "options": [
+                        "A required parameter",
+                        "A parameter with a pre-set value used when the caller doesn't provide one",
+                        "The first parameter always",
+                        "A parameter of type `auto`"
+                    ],
+                    "answer": "A parameter with a pre-set value used when the caller doesn't provide one"
+                },
+                {
+                    "question": "Where must default parameters appear in a parameter list?",
+                    "options": [
+                        "At the beginning",
+                        "Anywhere",
+                        "At the end (rightmost)",
+                        "Only one default is allowed"
+                    ],
+                    "answer": "At the end (rightmost)"
+                },
+                {
+                    "question": "What does the `inline` keyword suggest?",
+                    "options": [
+                        "Multiple definitions allowed",
+                        "Compiler should expand the function at each call site",
+                        "The function is private",
+                        "The function returns void"
+                    ],
+                    "answer": "Compiler should expand the function at each call site"
+                },
+                {
+                    "question": "What is `std::function<int(int,int)>`?",
+                    "options": [
+                        "A built-in type for ints",
+                        "A generic callable wrapper for any function, lambda, or functor returning int and taking two ints",
+                        "A function template",
+                        "A compile-time function"
+                    ],
+                    "answer": "A generic callable wrapper for any function, lambda, or functor returning int and taking two ints"
+                },
+                {
+                    "question": "What is function call overhead?",
+                    "options": [
+                        "Time to write the function",
+                        "Runtime cost of pushing args/return address on the stack for each call",
+                        "Compilation time",
+                        "Memory for parameters"
+                    ],
+                    "answer": "Runtime cost of pushing args/return address on the stack for each call"
+                },
+                {
+                    "question": "Can a function in C++ return multiple values directly?",
+                    "options": [
+                        "No",
+                        "Yes via std::pair, std::tuple, or struct",
+                        "Yes via multiple return statements",
+                        "Only with pointers"
+                    ],
+                    "answer": "Yes via std::pair, std::tuple, or struct"
+                },
+                {
+                    "question": "What is the stack frame?",
+                    "options": [
+                        "A data structure for collections",
+                        "Memory allocated on the call stack for a single function call's local variables and return address",
+                        "The CPU register set",
+                        "A memory pool"
+                    ],
+                    "answer": "Memory allocated on the call stack for a single function call's local variables and return address"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Functions — Expert Level",
+            "theory": "**Lambdas (C++11+):**\n```cpp\nauto add = [](int a, int b) -> int { return a + b; };\nauto capture = [x, &y](int z) { return x + y + z; }; // capture by value/ref\n```\n\n**`std::invoke` (C++17)** — uniform call syntax for any callable.\n\n**Variadic function templates (C++11):**\n```cpp\ntemplate<typename... Args>\nvoid log(Args&&... args) { (std::cout << ... << args); }\n```\n\n**Move semantics with functions:** prefer `T&&` (rvalue reference) parameters or `T` with `std::move` to avoid unnecessary copies.\n\n**NRVO (Named Return Value Optimization)** — compiler elides the copy/move of local objects being returned.",
+            "questions": [
+                {
+                    "question": "What does `[x, &y]` in a lambda capture mean?",
+                    "options": [
+                        "Capture x and y by reference",
+                        "Capture x by value, y by reference",
+                        "Capture only x",
+                        "Capture all local variables"
+                    ],
+                    "answer": "Capture x by value, y by reference"
+                },
+                {
+                    "question": "What is a variadic template?",
+                    "options": [
+                        "A template with unlimited heap allocation",
+                        "A template that accepts any number and types of template arguments",
+                        "A function with default parameters",
+                        "A function with a vector argument"
+                    ],
+                    "answer": "A template that accepts any number and types of template arguments"
+                },
+                {
+                    "question": "What is NRVO?",
+                    "options": [
+                        "A sorting optimization",
+                        "Named Return Value Optimization — compiler avoids copying/moving a named local variable being returned",
+                        "Always applied with -O3",
+                        "An acronym for NaN return value"
+                    ],
+                    "answer": "Named Return Value Optimization — compiler avoids copying/moving a named local variable being returned"
+                },
+                {
+                    "question": "What does `std::invoke(f, args...)` do?",
+                    "options": [
+                        "Invokes f if it's a function; fails for member functions",
+                        "Uniformly calls any callable (function, lambda, member function pointer, functor) with args",
+                        "Invokes f asynchronously",
+                        "Logs the call"
+                    ],
+                    "answer": "Uniformly calls any callable (function, lambda, member function pointer, functor) with args"
+                },
+                {
+                    "question": "What is perfect forwarding and `std::forward`?",
+                    "options": [
+                        "Forwarding exceptions",
+                        "Preserving value category (lvalue/rvalue) when passing arguments through template functions",
+                        "Copying arguments twice",
+                        "Forward-declaring all functions"
+                    ],
+                    "answer": "Preserving value category (lvalue/rvalue) when passing arguments through template functions"
+                },
+                {
+                    "question": "What is the signature of a generic lambda (C++14)?",
+                    "options": [
+                        "`[](T a)` where T is declared",
+                        "`[](auto a)`",
+                        "`[](void* a)`",
+                        "`[](typename T a)`"
+                    ],
+                    "answer": "`[](auto a)`"
+                },
+                {
+                    "question": "What is `[[nodiscard]]` on a function?",
+                    "options": [
+                        "Marks function as deprecated",
+                        "Compiler warns if the return value is ignored",
+                        "Makes return non-const",
+                        "Forbids calling from loops"
+                    ],
+                    "answer": "Compiler warns if the return value is ignored"
+                },
+                {
+                    "question": "What does `noexcept` on a function guarantee?",
+                    "options": [
+                        "The function can't be called",
+                        "The function will not throw exceptions (and the compiler can optimize accordingly)",
+                        "The function runs at compile time",
+                        "The function returns void"
+                    ],
+                    "answer": "The function will not throw exceptions (and the compiler can optimize accordingly)"
+                },
+                {
+                    "question": "What is a fold expression `(args + ...)` in a variadic template?",
+                    "options": [
+                        "A recursive function call",
+                        "Expands and applies `+` to all arguments in the parameter pack",
+                        "Folds a list into a scalar with reduce",
+                        "Creates a tuple of args"
+                    ],
+                    "answer": "Expands and applies `+` to all arguments in the parameter pack"
+                },
+                {
+                    "question": "What does `consteval` on a function enforce?",
+                    "options": [
+                        "The function is evaluated at runtime",
+                        "The function MUST be evaluated at compile time (stronger than constexpr)",
+                        "The function is const",
+                        "The function is thread-safe"
+                    ],
+                    "answer": "The function MUST be evaluated at compile time (stronger than constexpr)"
+                }
+            ]
+        }
+    ]
+}
