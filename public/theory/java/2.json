@@ -1,0 +1,327 @@
+{
+    "levelno": 2,
+    "topic": "Variables & Data Types",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Variables & Data Types — Beginner Level",
+            "theory": "Java has 8 primitive types and reference types.\n\n**Primitive types:**\n- `byte` (8-bit), `short` (16-bit), `int` (32-bit), `long` (64-bit)\n- `float` (32-bit), `double` (64-bit)\n- `char` (16-bit Unicode), `boolean` (`true`/`false`)\n\n```java\nint age = 25;\ndouble pi = 3.14159;\nchar grade = 'A';\nboolean isActive = true;\nlong population = 8_000_000_000L; // L suffix for long\nfloat price = 9.99f;              // f suffix for float\n```\n\n`String` is a class (reference type), not a primitive.\n`final` makes a variable constant: `final double PI = 3.14159;`",
+            "questions": [
+                {
+                    "question": "How many primitive data types does Java have?",
+                    "options": [
+                        "6",
+                        "7",
+                        "8",
+                        "10"
+                    ],
+                    "answer": "8"
+                },
+                {
+                    "question": "What suffix marks a `long` literal?",
+                    "options": [
+                        "l",
+                        "L (or l)",
+                        "i",
+                        "n"
+                    ],
+                    "answer": "L (or l)"
+                },
+                {
+                    "question": "What suffix marks a `float` literal?",
+                    "options": [
+                        "d",
+                        "f or F",
+                        "fl",
+                        "fp"
+                    ],
+                    "answer": "f or F"
+                },
+                {
+                    "question": "Is `String` a primitive type in Java?",
+                    "options": [
+                        "Yes",
+                        "No — it's a class (reference type)",
+                        "Yes in Java 11+",
+                        "Depends on JVM"
+                    ],
+                    "answer": "No — it's a class (reference type)"
+                },
+                {
+                    "question": "What is the range of `int` in Java?",
+                    "options": [
+                        "-128 to 127",
+                        "-32768 to 32767",
+                        "-2^31 to 2^31-1",
+                        "-2^15 to 2^15-1"
+                    ],
+                    "answer": "-2^31 to 2^31-1"
+                },
+                {
+                    "question": "Which type stores a single character?",
+                    "options": [
+                        "`String`",
+                        "`int`",
+                        "`char`",
+                        "`byte`"
+                    ],
+                    "answer": "`char`"
+                },
+                {
+                    "question": "What does `final` do to a variable?",
+                    "options": [
+                        "Makes it static",
+                        "Makes it constant — cannot be reassigned",
+                        "Makes it private",
+                        "Makes it global"
+                    ],
+                    "answer": "Makes it constant — cannot be reassigned"
+                },
+                {
+                    "question": "What is the default value of an uninitialized instance `int` field?",
+                    "options": [
+                        "null",
+                        "garbage",
+                        "0",
+                        "-1"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "What is the default value of an uninitialized `boolean` field?",
+                    "options": [
+                        "`true`",
+                        "`false`",
+                        "`null`",
+                        "0"
+                    ],
+                    "answer": "`false`"
+                },
+                {
+                    "question": "Which primitive type holds 64-bit IEEE 754 floating point?",
+                    "options": [
+                        "`float`",
+                        "`double`",
+                        "`long`",
+                        "`decimal`"
+                    ],
+                    "answer": "`double`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Variables & Data Types — Intermediate Level",
+            "theory": "**Wrapper classes** — object representations of primitives:\n`Integer`, `Double`, `Boolean`, `Character`, `Long`, `Float`, `Short`, `Byte`\n\n**Autoboxing/unboxing (Java 5+):** automatic conversion between primitives and wrappers:\n```java\nInteger boxed = 42;  // autoboxing\nint raw = boxed;     // unboxing\n```\n\n**`Integer.parseInt(str)`** — parse string to int.\n**`Double.parseDouble(str)`** — parse string to double.\n\n**`var` (Java 10+):** local type inference:\n`var map = new HashMap<String, Integer>();`\n\n**`BigDecimal`** — for exact decimal arithmetic (financial calculations).",
+            "questions": [
+                {
+                    "question": "What is autoboxing in Java?",
+                    "options": [
+                        "Automatic type casting",
+                        "Automatic conversion from primitive to wrapper object",
+                        "Converting string to primitive",
+                        "A JVM optimization"
+                    ],
+                    "answer": "Automatic conversion from primitive to wrapper object"
+                },
+                {
+                    "question": "What is the wrapper class for `int`?",
+                    "options": [
+                        "`IntWrapper`",
+                        "`Int`",
+                        "`Integer`",
+                        "`Number`"
+                    ],
+                    "answer": "`Integer`"
+                },
+                {
+                    "question": "What does `Integer.parseInt(\"42\")` return?",
+                    "options": [
+                        "\"42\"",
+                        "42 (int)",
+                        "Integer(42)",
+                        "42L"
+                    ],
+                    "answer": "42 (int)"
+                },
+                {
+                    "question": "What is `var` in Java 10+?",
+                    "options": [
+                        "Dynamic typing",
+                        "Local variable type inference",
+                        "A null type",
+                        "A wildcard type"
+                    ],
+                    "answer": "Local variable type inference"
+                },
+                {
+                    "question": "Why use `BigDecimal` for financial calculations?",
+                    "options": [
+                        "Faster than double",
+                        "Exact decimal arithmetic — avoids floating-point rounding errors",
+                        "Larger range than double",
+                        "Supports formatting only"
+                    ],
+                    "answer": "Exact decimal arithmetic — avoids floating-point rounding errors"
+                },
+                {
+                    "question": "What is `Integer.MAX_VALUE`?",
+                    "options": [
+                        "The max Java int: 2^31 - 1 = 2,147,483,647",
+                        "Long.MAX_VALUE",
+                        "A constant for BigInteger",
+                        "The largest float"
+                    ],
+                    "answer": "The max Java int: 2^31 - 1 = 2,147,483,647"
+                },
+                {
+                    "question": "What can cause a NullPointerException with wrapper types?",
+                    "options": [
+                        "Calling wrapper methods",
+                        "Unboxing a null wrapper variable",
+                        "Comparing with ==",
+                        "Autoboxing failure"
+                    ],
+                    "answer": "Unboxing a null wrapper variable"
+                },
+                {
+                    "question": "Are `Integer.valueOf(127)` and `Integer.valueOf(127)` the same object?",
+                    "options": [
+                        "No, always new objects",
+                        "Yes — Integer caches values -128 to 127",
+                        "No, depends on JVM",
+                        "Yes, all Integers are cached"
+                    ],
+                    "answer": "Yes — Integer caches values -128 to 127"
+                },
+                {
+                    "question": "What does `String.valueOf(42)` return?",
+                    "options": [
+                        "42 (int)",
+                        "\"42\" (String)",
+                        "42.0",
+                        "null"
+                    ],
+                    "answer": "\"42\" (String)"
+                },
+                {
+                    "question": "What is integer overflow in Java?",
+                    "options": [
+                        "Exception thrown",
+                        "Value wraps around silently (no exception) when exceeding int range",
+                        "Returns Integer.MAX_VALUE",
+                        "Compiler error"
+                    ],
+                    "answer": "Value wraps around silently (no exception) when exceeding int range"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Variables & Data Types — Expert Level",
+            "theory": "**`strictfp` (pre-Java 17):** ensures floating-point calculations are IEEE 754 compliant across platforms.\n\n**`Math.ulp(x)`** — Unit in the Last Place of a floating-point number — useful for floating-point error analysis.\n\n**`BitSet`** — memory-efficient bit array for boolean flags.\n\n**`VarHandle` (Java 9+):** type-safe, efficient field access with atomics and memory ordering — replacement for `sun.misc.Unsafe`.\n\n**Primitive collections:** standard Java has no `IntList` — use streams, array, or libraries like Eclipse Collections to avoid boxing overhead.",
+            "questions": [
+                {
+                    "question": "What does `Math.ulp(x)` compute?",
+                    "options": [
+                        "Unit in the last place — the smallest difference representable near x",
+                        "Upper limit of x",
+                        "Unsigned long precision",
+                        "X rounded up"
+                    ],
+                    "answer": "Unit in the last place — the smallest difference representable near x"
+                },
+                {
+                    "question": "What is `VarHandle` (Java 9+)?",
+                    "options": [
+                        "A handle to a variable name",
+                        "Type-safe, high-performance field access with atomics and memory ordering — replaces Unsafe",
+                        "A weak reference holder",
+                        "A lambda handle"
+                    ],
+                    "answer": "Type-safe, high-performance field access with atomics and memory ordering — replaces Unsafe"
+                },
+                {
+                    "question": "What is the risk of comparing boxed Integers with `==`?",
+                    "options": [
+                        "Always true",
+                        "Compares object references, not values — only correct for cached range (-128 to 127)",
+                        "Throws exception",
+                        "Slower than equals"
+                    ],
+                    "answer": "Compares object references, not values — only correct for cached range (-128 to 127)"
+                },
+                {
+                    "question": "What does `Double.isNaN(x)` do?",
+                    "options": [
+                        "Checks if x is null",
+                        "Checks if x is NaN (Not a Number)",
+                        "Checks if x is negative",
+                        "Checks if x is infinity"
+                    ],
+                    "answer": "Checks if x is NaN (Not a Number)"
+                },
+                {
+                    "question": "What is the result of `0.1 + 0.2 == 0.3` in Java?",
+                    "options": [
+                        "true",
+                        "false — floating-point imprecision",
+                        "Depends on platform",
+                        "Compile error"
+                    ],
+                    "answer": "false — floating-point imprecision"
+                },
+                {
+                    "question": "What is `BitSet` used for?",
+                    "options": [
+                        "Bit-level arithmetic",
+                        "Memory-efficient storage of boolean flags as bits",
+                        "Cryptography only",
+                        "Network packets"
+                    ],
+                    "answer": "Memory-efficient storage of boolean flags as bits"
+                },
+                {
+                    "question": "What does `Math.addExact(a, b)` do?",
+                    "options": [
+                        "Same as a+b",
+                        "Adds a+b and throws ArithmeticException on overflow instead of wrapping",
+                        "Returns a BigInteger",
+                        "Adds and returns double"
+                    ],
+                    "answer": "Adds a+b and throws ArithmeticException on overflow instead of wrapping"
+                },
+                {
+                    "question": "What is `char` internally in Java?",
+                    "options": [
+                        "ASCII byte",
+                        "16-bit unsigned integer representing a UTF-16 code unit",
+                        "A 32-bit Unicode code point",
+                        "An equivalent of C char"
+                    ],
+                    "answer": "16-bit unsigned integer representing a UTF-16 code unit"
+                },
+                {
+                    "question": "What is `String.intern()`?",
+                    "options": [
+                        "Converts String to int",
+                        "Returns a canonical String from the JVM's string pool — enables == comparison",
+                        "Encrypts the string",
+                        "Deprecated method"
+                    ],
+                    "answer": "Returns a canonical String from the JVM's string pool — enables == comparison"
+                },
+                {
+                    "question": "What does `java.lang.StrictMath` guarantee?",
+                    "options": [
+                        "Faster math than Math",
+                        "Platform-independent bit-identical results for all operations",
+                        "BigDecimal precision",
+                        "IEEE 754 only for doubles"
+                    ],
+                    "answer": "Platform-independent bit-identical results for all operations"
+                }
+            ]
+        }
+    ]
+}

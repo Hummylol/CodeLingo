@@ -1,0 +1,327 @@
+{
+    "levelno": 17,
+    "topic": "Templates",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Templates — Beginner Level",
+            "theory": "Templates allow writing type-independent (generic) code.\n\n**Function template:**\n```cpp\ntemplate<typename T>\nT add(T a, T b) { return a + b; }\n\nadd(5, 10);    // T=int\nadd(3.5, 2.2); // T=double\n```\n\n**Class template:**\n```cpp\ntemplate<typename T>\nclass Box {\n    T value;\npublic:\n    Box(T v) : value(v) {}\n    T get() const { return value; }\n};\nBox<int> iBox(42);\nBox<std::string> sBox(\"hi\");\n```\n\nThe compiler generates a separate instantiation for each type used.",
+            "questions": [
+                {
+                    "question": "What is a template in C++?",
+                    "options": [
+                        "A design pattern",
+                        "A mechanism to write type-independent, generic code",
+                        "A base class",
+                        "A preprocessor macro"
+                    ],
+                    "answer": "A mechanism to write type-independent, generic code"
+                },
+                {
+                    "question": "Which keyword introduces a template?",
+                    "options": [
+                        "`generic`",
+                        "`template`",
+                        "`auto`",
+                        "`class` only"
+                    ],
+                    "answer": "`template`"
+                },
+                {
+                    "question": "What does `template<typename T>` mean?",
+                    "options": [
+                        "T is a type name macro",
+                        "T is a placeholder for any type to be specified at instantiation",
+                        "T must be an integer",
+                        "T is a template variable"
+                    ],
+                    "answer": "T is a placeholder for any type to be specified at instantiation"
+                },
+                {
+                    "question": "What is a template instantiation?",
+                    "options": [
+                        "Calling the template",
+                        "Compiler generating code for a specific type (e.g., `add<int>`)",
+                        "A runtime evaluation",
+                        "A virtual dispatch"
+                    ],
+                    "answer": "Compiler generating code for a specific type (e.g., `add<int>`)"
+                },
+                {
+                    "question": "How do you use a class template `Box` with `double`?",
+                    "options": [
+                        "`Box b;`",
+                        "`Box(double) b;`",
+                        "`Box<double> b;`",
+                        "`template Box b;`"
+                    ],
+                    "answer": "`Box<double> b;`"
+                },
+                {
+                    "question": "What is template type deduction?",
+                    "options": [
+                        "Programmer specifies type explicitly",
+                        "Compiler deduces T from function arguments automatically",
+                        "Using `auto`",
+                        "Runtime deduction"
+                    ],
+                    "answer": "Compiler deduces T from function arguments automatically"
+                },
+                {
+                    "question": "Where should template definitions (bodies) be placed?",
+                    "options": [
+                        "In a `.cpp` file only",
+                        "In the header file (or same translation unit where used)",
+                        "In a separate template file",
+                        "In `main.cpp`"
+                    ],
+                    "answer": "In the header file (or same translation unit where used)"
+                },
+                {
+                    "question": "What is a non-type template parameter?",
+                    "options": [
+                        "A template with no type",
+                        "A compile-time constant value (like `int N`) as a template argument",
+                        "A void template",
+                        "An auto parameter"
+                    ],
+                    "answer": "A compile-time constant value (like `int N`) as a template argument"
+                },
+                {
+                    "question": "Example of non-type template: `template<int N> std::array<int,N>`. What does N represent?",
+                    "options": [
+                        "Runtime size",
+                        "Compile-time fixed size of the array",
+                        "A type alias",
+                        "A pointer"
+                    ],
+                    "answer": "Compile-time fixed size of the array"
+                },
+                {
+                    "question": "The STL containers like `std::vector<int>` are:",
+                    "options": [
+                        "Regular classes",
+                        "Class template instantiations",
+                        "Preprocessor macros",
+                        "Runtime generic types"
+                    ],
+                    "answer": "Class template instantiations"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Templates — Intermediate Level",
+            "theory": "**Template specialization** — provide a custom implementation for a specific type:\n```cpp\ntemplate<> std::string add<std::string>(std::string a, std::string b) { return a + \" \" + b; }\n```\n\n**Partial specialization** (classes only):\n```cpp\ntemplate<typename T> class Box<T*> { /* specialization for pointers */ };\n```\n\n**Variadic templates (C++11):**\n```cpp\ntemplate<typename... Args> void print(Args... args) { (std::cout << ... << args); }\n```\n\n**Template aliases (C++11):**\n```cpp\ntemplate<typename T> using Vec = std::vector<T>;\nVec<int> v;\n```",
+            "questions": [
+                {
+                    "question": "What is full template specialization?",
+                    "options": [
+                        "Using all type parameters",
+                        "Providing a specific implementation for a specific type(s)",
+                        "Making a template constexpr",
+                        "Removing a type parameter"
+                    ],
+                    "answer": "Providing a specific implementation for a specific type(s)"
+                },
+                {
+                    "question": "What is partial template specialization?",
+                    "options": [
+                        "Only specializing some types",
+                        "Specializing a class template for some but not all template arguments (e.g., pointer types)",
+                        "A runtime partial binding",
+                        "Specializing function templates"
+                    ],
+                    "answer": "Specializing a class template for some but not all template arguments (e.g., pointer types)"
+                },
+                {
+                    "question": "Can function templates be partially specialized?",
+                    "options": [
+                        "Yes",
+                        "No — only class templates support partial specialization; use overloading for functions",
+                        "In C++20 yes",
+                        "With `requires` clause yes"
+                    ],
+                    "answer": "No — only class templates support partial specialization; use overloading for functions"
+                },
+                {
+                    "question": "What does `typename...` declare?",
+                    "options": [
+                        "A type list",
+                        "A variadic parameter pack — accepts zero or more types",
+                        "A pointer to typename",
+                        "A multi-template"
+                    ],
+                    "answer": "A variadic parameter pack — accepts zero or more types"
+                },
+                {
+                    "question": "What is a template alias?",
+                    "options": [
+                        "A renamed template class",
+                        "`using` declaration creating a shorthand for a template instantiation or template itself",
+                        "A `typedef` of a template",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What is SFINAE?",
+                    "options": [
+                        "A C++ header",
+                        "Substitution Failure Is Not An Error — invalid template substitutions are silently discarded from overload set",
+                        "A sorting algorithm",
+                        "Static Function Name Association Error"
+                    ],
+                    "answer": "Substitution Failure Is Not An Error — invalid template substitutions are silently discarded from overload set"
+                },
+                {
+                    "question": "What is `std::enable_if<condition, T>::type`?",
+                    "options": [
+                        "A runtime check",
+                        "Provides T when condition is true; causes substitution failure when false — enabling conditional overloads",
+                        "A type alias for T always",
+                        "A boolean trait"
+                    ],
+                    "answer": "Provides T when condition is true; causes substitution failure when false — enabling conditional overloads"
+                },
+                {
+                    "question": "What is `std::is_same_v<T, U>`?",
+                    "options": [
+                        "Runtime type check",
+                        "Compile-time boolean: true if T and U are the same type",
+                        "A comparison operator",
+                        "An assertion"
+                    ],
+                    "answer": "Compile-time boolean: true if T and U are the same type"
+                },
+                {
+                    "question": "What is template template parameter?",
+                    "options": [
+                        "A template that generates templates",
+                        "A template parameter that itself is a template (e.g., `template<template<typename> class Cont>`)",
+                        "A doubly nested type",
+                        "A variadic type"
+                    ],
+                    "answer": "A template parameter that itself is a template (e.g., `template<template<typename> class Cont>`)"
+                },
+                {
+                    "question": "What is explicit template instantiation?",
+                    "options": [
+                        "Calling a template function",
+                        "Forcing the compiler to generate a specific instantiation (e.g., `template class Box<int>;`) — for controlling compilation units",
+                        "Using explicit on a constructor",
+                        "Removing implicit deduction"
+                    ],
+                    "answer": "Forcing the compiler to generate a specific instantiation (e.g., `template class Box<int>;`) — for controlling compilation units"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Templates — Expert Level",
+            "theory": "**Concepts (C++20):** named constraints on template parameters:\n```cpp\ntemplate<std::integral T>\nT gcd(T a, T b) { return b == 0 ? a : gcd(b, a%b); }\n```\n\n**Template metaprogramming (TMP):** computation at compile time using recursive template specializations.\n\n**`if constexpr` in templates:** discard branches at compile time based on type properties.\n\n**`auto` template parameters (C++17):** `template<auto N>` — deduces both type and value.\n\n**CTAD (Class Template Argument Deduction, C++17):** `std::pair p{1, 2.5};` — compiler deduces `pair<int, double>`.",
+            "questions": [
+                {
+                    "question": "What are C++20 concepts?",
+                    "options": [
+                        "Runtime constraints",
+                        "Named, compile-time constraints on template type parameters for readable generic programming",
+                        "A new OOP feature",
+                        "Runtime type traits"
+                    ],
+                    "answer": "Named, compile-time constraints on template type parameters for readable generic programming"
+                },
+                {
+                    "question": "What does `std::integral auto x` in a function parameter mean (C++20)?",
+                    "options": [
+                        "x must be int",
+                        "x is any integral type (deduced) — concept-constrained auto",
+                        "x is a constant",
+                        "x is an integer literal"
+                    ],
+                    "answer": "x is any integral type (deduced) — concept-constrained auto"
+                },
+                {
+                    "question": "What is CTAD (C++17)?",
+                    "options": [
+                        "Class Template Argument Deduction — compiler deduces template arguments from constructor arguments",
+                        "A type deduction failure",
+                        "Computed Template Argument Declaration",
+                        "A diagnostic tool"
+                    ],
+                    "answer": "Class Template Argument Deduction — compiler deduces template arguments from constructor arguments"
+                },
+                {
+                    "question": "What is Template Metaprogramming (TMP)?",
+                    "options": [
+                        "Using templates in production",
+                        "Performing computation at compile time via template recursion and specialization",
+                        "A debugging technique",
+                        "A code generation tool"
+                    ],
+                    "answer": "Performing computation at compile time via template recursion and specialization"
+                },
+                {
+                    "question": "What is a `requires` expression?",
+                    "options": [
+                        "A runtime assertion",
+                        "Compile-time check that an expression or type usage is valid — used to define or check concepts",
+                        "An exception specification",
+                        "A `static_assert` wrapper"
+                    ],
+                    "answer": "Compile-time check that an expression or type usage is valid — used to define or check concepts"
+                },
+                {
+                    "question": "What is `template<auto N>` (C++17)?",
+                    "options": [
+                        "N is always int",
+                        "N is a non-type template parameter of automatically deduced type",
+                        "N is a generic type",
+                        "N is a pointer"
+                    ],
+                    "answer": "N is a non-type template parameter of automatically deduced type"
+                },
+                {
+                    "question": "What is Curiously Recurring Template Pattern (CRTP)?",
+                    "options": [
+                        "A recursive loop",
+                        "Derived class passes itself as template argument to base, enabling static polymorphism",
+                        "A inheritance limitation",
+                        "A TMP trait"
+                    ],
+                    "answer": "Derived class passes itself as template argument to base, enabling static polymorphism"
+                },
+                {
+                    "question": "What does `static_assert(sizeof(T)==4, \"T must be 4 bytes\")` do inside a template?",
+                    "options": [
+                        "Runtime assertion",
+                        "Compile-time assertion — fails to compile with a message if condition is false",
+                        "A performance guard",
+                        "A debug-only check"
+                    ],
+                    "answer": "Compile-time assertion — fails to compile with a message if condition is false"
+                },
+                {
+                    "question": "What is `std::conjunction_v<A, B, C>`?",
+                    "options": [
+                        "AND of multiple boolean traits (short-circuits)",
+                        "OR of traits",
+                        "A runtime check",
+                        "A variadic enable_if"
+                    ],
+                    "answer": "AND of multiple boolean traits (short-circuits)"
+                },
+                {
+                    "question": "What is an extern template declaration?",
+                    "options": [
+                        "Declares a template in another file",
+                        "Prevents implicit instantiation in the current TU — use explicit instantiation in exactly one TU to reduce compile/link time",
+                        "Makes template virtual",
+                        "Exports template to DLL"
+                    ],
+                    "answer": "Prevents implicit instantiation in the current TU — use explicit instantiation in exactly one TU to reduce compile/link time"
+                }
+            ]
+        }
+    ]
+}

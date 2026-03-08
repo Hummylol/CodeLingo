@@ -1,0 +1,327 @@
+{
+    "levelno": 1,
+    "topic": "Hello, World & Basic Syntax",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Hello, World & Basic Syntax — Beginner Level",
+            "theory": "Python is a high-level, interpreted programming language known for its clean, readable syntax. Every Python program starts executing from the first line of your script.\n\nThe most fundamental function you will use is `print()`, which displays output to the console:\n`print('Hello, World!')`\n\nComments in Python start with a `#` symbol and are ignored by the interpreter — they are purely for the human reader:\n`# This is a comment`\n\nUnlike many languages, Python does NOT use curly braces `{}` to group code blocks. Instead it uses **indentation** (spaces or tabs). Python files have the extension `.py` and the interpreter reads them line by line.",
+            "questions": [
+                {
+                    "question": "Which function displays output to the console in Python?",
+                    "options": [
+                        "display()",
+                        "console.log()",
+                        "print()",
+                        "echo()"
+                    ],
+                    "answer": "print()"
+                },
+                {
+                    "question": "How do you start a single-line comment in Python?",
+                    "options": [
+                        "//",
+                        "/*",
+                        "#",
+                        "<!--"
+                    ],
+                    "answer": "#"
+                },
+                {
+                    "question": "What is the correct file extension for a Python script?",
+                    "options": [
+                        ".pyt",
+                        ".python",
+                        ".py",
+                        ".p"
+                    ],
+                    "answer": ".py"
+                },
+                {
+                    "question": "What does Python use to define code blocks instead of curly braces?",
+                    "options": [
+                        "Parentheses",
+                        "Square brackets",
+                        "Indentation",
+                        "Keywords begin/end"
+                    ],
+                    "answer": "Indentation"
+                },
+                {
+                    "question": "Which of the following is a valid Python 3 print statement?",
+                    "options": [
+                        "print 'Hello'",
+                        "Print('Hello')",
+                        "PRINT('Hello')",
+                        "print('Hello')"
+                    ],
+                    "answer": "print('Hello')"
+                },
+                {
+                    "question": "Is Python case-sensitive?",
+                    "options": [
+                        "No, it ignores case",
+                        "Yes — Print and print are different",
+                        "Only for variable names",
+                        "Only for keywords"
+                    ],
+                    "answer": "Yes — Print and print are different"
+                },
+                {
+                    "question": "What does the Python interpreter do with your source code?",
+                    "options": [
+                        "Compiles it to machine code permanently",
+                        "Reads and executes it line by line",
+                        "Converts it to Java bytecode",
+                        "Only checks for syntax errors"
+                    ],
+                    "answer": "Reads and executes it line by line"
+                },
+                {
+                    "question": "What will `print('Hello, World!')` output?",
+                    "options": [
+                        "'Hello, World!' including the quotes",
+                        "Hello, World!",
+                        "An error",
+                        "Nothing"
+                    ],
+                    "answer": "Hello, World!"
+                },
+                {
+                    "question": "Which keyword does NOT exist in Python?",
+                    "options": [
+                        "if",
+                        "while",
+                        "begin",
+                        "for"
+                    ],
+                    "answer": "begin"
+                },
+                {
+                    "question": "What is the purpose of a comment in code?",
+                    "options": [
+                        "To make the program faster",
+                        "To be executed when needed",
+                        "To explain code to human readers; ignored by the interpreter",
+                        "To store temporary data"
+                    ],
+                    "answer": "To explain code to human readers; ignored by the interpreter"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Hello, World & Basic Syntax — Intermediate Level",
+            "theory": "Beyond the basics, `print()` has powerful optional parameters:\n- `sep`: specifies the string inserted between multiple values (default is a space `' '`)\n- `end`: specifies what to print at the end (default is a newline `'\\n'`)\n\nExamples:\n`print('a', 'b', 'c', sep='-')   # Outputs: a-b-c`\n`print('Hello', end=' '); print('World')  # Outputs: Hello World`\n\nEscape sequences let you embed special characters in strings:\n- `\\n` — newline\n- `\\t` — tab\n- `\\\\` — literal backslash\n\nTriple quotes `\"\"\"...\"\"\"` or `'''...'''` create multi-line strings. The `*` operator repeated a string:\n`print('py' * 3)  # pypypy`",
+            "questions": [
+                {
+                    "question": "What does `print('a', 'b', 'c', sep='-')` output?",
+                    "options": [
+                        "a b c",
+                        "a-b-c",
+                        "abc",
+                        "a, b, c"
+                    ],
+                    "answer": "a-b-c"
+                },
+                {
+                    "question": "What is the default value of the `end` parameter in `print()`?",
+                    "options": [
+                        "A space ' '",
+                        "Nothing",
+                        "A newline '\\n'",
+                        "A comma ','"
+                    ],
+                    "answer": "A newline '\\n'"
+                },
+                {
+                    "question": "What does `print('Hello', end='')` do differently from `print('Hello')`?",
+                    "options": [
+                        "Nothing",
+                        "Prints Hello without a trailing newline",
+                        "Raises a SyntaxError",
+                        "Prints 'end' after Hello"
+                    ],
+                    "answer": "Prints Hello without a trailing newline"
+                },
+                {
+                    "question": "What does `'py' * 3` evaluate to?",
+                    "options": [
+                        "'py py py'",
+                        "'py3'",
+                        "'pypypy'",
+                        "Error"
+                    ],
+                    "answer": "'pypypy'"
+                },
+                {
+                    "question": "What escape sequence represents a tab character?",
+                    "options": [
+                        "\\n",
+                        "\\t",
+                        "\\b",
+                        "\\s"
+                    ],
+                    "answer": "\\t"
+                },
+                {
+                    "question": "How do you create a multi-line string in Python?",
+                    "options": [
+                        "Using double quotes \"...\"",
+                        "Using triple quotes \"\"\"...\"\"\"",
+                        "Using a backslash at line end",
+                        "It is not possible"
+                    ],
+                    "answer": "Using triple quotes \"\"\"...\"\"\""
+                },
+                {
+                    "question": "What does `print('Line1\\nLine2')` output?",
+                    "options": [
+                        "Line1\\nLine2 on one line",
+                        "Line1 and Line2 on separate lines",
+                        "An error",
+                        "Literal \\n printed"
+                    ],
+                    "answer": "Line1 and Line2 on separate lines"
+                },
+                {
+                    "question": "What will `print(type(print))` output?",
+                    "options": [
+                        "<class 'str'>",
+                        "<class 'function'>",
+                        "<class 'builtin_function_or_method'>",
+                        "<class 'print'>"
+                    ],
+                    "answer": "<class 'builtin_function_or_method'>"
+                },
+                {
+                    "question": "Which escape sequence represents a literal backslash?",
+                    "options": [
+                        "\\/",
+                        "\\b",
+                        "\\\\",
+                        "\\s"
+                    ],
+                    "answer": "\\\\"
+                },
+                {
+                    "question": "What is the output of `print('Hello', 'World')`?",
+                    "options": [
+                        "HelloWorld",
+                        "Hello,World",
+                        "Hello World",
+                        "Error"
+                    ],
+                    "answer": "Hello World"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Hello, World & Basic Syntax — Expert Level",
+            "theory": "At the expert level, understanding Python's execution model matters:\n\n**`if __name__ == '__main__':`** — This guard ensures a block of code runs only when the file is executed directly, not when it is imported as a module. This is essential for writing reusable scripts.\n\n**Shebang line** — On Unix/Linux, `#!/usr/bin/env python3` as the first line lets the OS know which interpreter to use when the file is run directly.\n\n**`sys.stdout.write()`** vs `print()`: `sys.stdout.write()` does not append a newline and returns the number of characters written. `print()` is a higher-level wrapper with `sep` and `end` support.\n\n**Source encoding** — Python 3 files default to **UTF-8**. You can declare a different encoding with `# -*- coding: utf-8 -*-` at the top.\n\n**CPython** is the reference (most used) implementation of Python, written in C. The REPL (Read-Eval-Print Loop) is Python's interactive shell.",
+            "questions": [
+                {
+                    "question": "What does `if __name__ == '__main__':` ensure?",
+                    "options": [
+                        "The file defines a main class",
+                        "The code block only runs when the file is executed directly, not imported",
+                        "It is required syntax in every Python file",
+                        "It prevents all imports"
+                    ],
+                    "answer": "The code block only runs when the file is executed directly, not imported"
+                },
+                {
+                    "question": "What is a shebang line (e.g., `#!/usr/bin/env python3`)?",
+                    "options": [
+                        "A Python comment describing the file",
+                        "A directive telling the OS which interpreter to use when running the file directly",
+                        "A Python 2 syntax ignored in Python 3",
+                        "A way to auto-import sys"
+                    ],
+                    "answer": "A directive telling the OS which interpreter to use when running the file directly"
+                },
+                {
+                    "question": "Key difference between `print()` and `sys.stdout.write()`?",
+                    "options": [
+                        "They are identical",
+                        "sys.stdout.write() does not add a newline and returns character count; print() adds newline and supports sep/end",
+                        "sys.stdout.write() is always faster",
+                        "print() only works interactively"
+                    ],
+                    "answer": "sys.stdout.write() does not add a newline and returns character count; print() adds newline and supports sep/end"
+                },
+                {
+                    "question": "What encoding does Python 3 use for source files by default?",
+                    "options": [
+                        "ASCII",
+                        "Latin-1",
+                        "UTF-16",
+                        "UTF-8"
+                    ],
+                    "answer": "UTF-8"
+                },
+                {
+                    "question": "What is a REPL?",
+                    "options": [
+                        "A Python loop type",
+                        "Read-Eval-Print Loop — an interactive shell",
+                        "A package manager",
+                        "A syntax error recovery tool"
+                    ],
+                    "answer": "Read-Eval-Print Loop — an interactive shell"
+                },
+                {
+                    "question": "What is CPython?",
+                    "options": [
+                        "Python compiled to C",
+                        "The reference implementation of Python, written in C",
+                        "A C library for Python interop",
+                        "A faster Python without some features"
+                    ],
+                    "answer": "The reference implementation of Python, written in C"
+                },
+                {
+                    "question": "What does `pass` do in Python?",
+                    "options": [
+                        "Exits the function",
+                        "Skips to the next loop iteration",
+                        "Acts as a no-operation placeholder",
+                        "Passes a value to the caller"
+                    ],
+                    "answer": "Acts as a no-operation placeholder"
+                },
+                {
+                    "question": "What will `print(None)` output?",
+                    "options": [
+                        "A blank line",
+                        "None",
+                        "null",
+                        "TypeError"
+                    ],
+                    "answer": "None"
+                },
+                {
+                    "question": "What is the difference between a syntax error and a runtime error?",
+                    "options": [
+                        "They are the same",
+                        "Syntax errors are caught before execution; runtime errors occur during execution",
+                        "Runtime errors are caught before execution; syntax errors occur during execution",
+                        "Syntax errors only exist in Python 2"
+                    ],
+                    "answer": "Syntax errors are caught before execution; runtime errors occur during execution"
+                },
+                {
+                    "question": "What does `print('Hi', file=sys.stderr)` do?",
+                    "options": [
+                        "Prints to a file named sys.stderr",
+                        "Writes 'Hi' to the standard error stream",
+                        "Raises TypeError",
+                        "Behaves identically to print('Hi')"
+                    ],
+                    "answer": "Writes 'Hi' to the standard error stream"
+                }
+            ]
+        }
+    ]
+}

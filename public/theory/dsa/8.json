@@ -1,0 +1,327 @@
+{
+    "levelno": 8,
+    "topic": "Binary Search",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Binary Search — Beginner Level",
+            "theory": "**Binary search** finds an element in a sorted array in O(log n) time by halving the search space.\n\n```python\ndef binary_search(arr, target):\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n```\n\n- Requires **sorted** array\n- O(log n) time, O(1) space\n- Each iteration halves the search space\n- **Condition:** `lo <= hi` for standard search\n- Use `mid = lo + (hi - lo) // 2` to avoid overflow in other languages",
+            "questions": [
+                {
+                    "question": "Binary search requires the array to be:",
+                    "options": [
+                        "Of even length",
+                        "Sorted",
+                        "Without duplicates",
+                        "Integers only"
+                    ],
+                    "answer": "Sorted"
+                },
+                {
+                    "question": "Time complexity of binary search:",
+                    "options": [
+                        "O(n)",
+                        "O(n log n)",
+                        "O(log n)",
+                        "O(1)"
+                    ],
+                    "answer": "O(log n)"
+                },
+                {
+                    "question": "After each iteration, binary search:",
+                    "options": [
+                        "Scans half the array",
+                        "Eliminates half the remaining search space",
+                        "Doubles the target",
+                        "Sorts a subarray"
+                    ],
+                    "answer": "Eliminates half the remaining search space"
+                },
+                {
+                    "question": "How many iterations to search 1000 elements with binary search?",
+                    "options": [
+                        "1000",
+                        "500",
+                        "~10",
+                        "~30"
+                    ],
+                    "answer": "~10"
+                },
+                {
+                    "question": "Binary search loop condition:",
+                    "options": [
+                        "`lo < hi`",
+                        "`lo <= hi`",
+                        "`lo != hi`",
+                        "`lo + 1 < hi`"
+                    ],
+                    "answer": "`lo <= hi`"
+                },
+                {
+                    "question": "`mid = (lo + hi) // 2` vs `mid = lo + (hi - lo) // 2` difference:",
+                    "options": [
+                        "Exact same result",
+                        "Second avoids integer overflow in languages with fixed-width integers",
+                        "First is faster",
+                        "No practical difference in Python"
+                    ],
+                    "answer": "Second avoids integer overflow in languages with fixed-width integers"
+                },
+                {
+                    "question": "Binary search returns -1 when:",
+                    "options": [
+                        "Array is empty",
+                        "Target not found",
+                        "Both A and B",
+                        "Loop runs too many times"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "Binary search on a rotated sorted array requires:",
+                    "options": [
+                        "Finding rotation point first",
+                        "Modified binary search determining which half is sorted",
+                        "Both A and B are valid approaches",
+                        "Sorting first"
+                    ],
+                    "answer": "Both A and B are valid approaches"
+                },
+                {
+                    "question": "Find first occurrence of target in sorted array with duplicates:",
+                    "options": [
+                        "Standard binary search",
+                        "Modified: when found, continue searching left",
+                        "Linear scan from found position left",
+                        "Count then halve"
+                    ],
+                    "answer": "Modified: when found, continue searching left"
+                },
+                {
+                    "question": "How do you binary search for the leftmost insertion position?",
+                    "options": [
+                        "Standard search only",
+                        "`bisect_left`: find leftmost position where target can be inserted and maintain sort",
+                        "Scan from right",
+                        "Use `bisect_right`"
+                    ],
+                    "answer": "`bisect_left`: find leftmost position where target can be inserted and maintain sort"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Binary Search — Intermediate Level",
+            "theory": "**Binary search on answer:** instead of searching in array, search in the answer space.\n\n```python\n# Minimum pages in book allocation\ndef can_allocate(pages, k, max_pages):\n    students = 1; curr = 0\n    for p in pages:\n        if curr + p > max_pages:\n            students += 1; curr = 0\n        curr += p\n    return students <= k\n\ndef min_pages(pages, k):\n    lo, hi = max(pages), sum(pages)\n    while lo < hi:\n        mid = (lo + hi) // 2\n        if can_allocate(pages, k, mid): hi = mid\n        else: lo = mid + 1\n    return lo\n```\n\n**Key insight:** binary search on monotone predicates — find first True or last False.",
+            "questions": [
+                {
+                    "question": "Binary search on answer works when:",
+                    "options": [
+                        "Answer is in an array",
+                        "There's a monotone predicate — feasibility changes from False→True at an answer boundary",
+                        "Any search problem",
+                        "Only integer answers"
+                    ],
+                    "answer": "There's a monotone predicate — feasibility changes from False→True at an answer boundary"
+                },
+                {
+                    "question": "Find minimum in rotated sorted array — binary search insight:",
+                    "options": [
+                        "Find pivot and return next element",
+                        "When mid > right, min is in right half; else in left half",
+                        "Always check left half",
+                        "Scan both halves"
+                    ],
+                    "answer": "When mid > right, min is in right half; else in left half"
+                },
+                {
+                    "question": "Koko eating bananas — binary search on:",
+                    "options": [
+                        "Array index",
+                        "Eating speed (answer space) with feasibility check",
+                        "Pile sizes directly",
+                        "Hour count"
+                    ],
+                    "answer": "Eating speed (answer space) with feasibility check"
+                },
+                {
+                    "question": "Find peak element in array — binary search approach:",
+                    "options": [
+                        "Linear scan O(n)",
+                        "Binary search: if arr[mid]<arr[mid+1], peak is right; else left — O(log n)",
+                        "Sorting then finding max",
+                        "Comparing adjacent pairs"
+                    ],
+                    "answer": "Binary search: if arr[mid]<arr[mid+1], peak is right; else left — O(log n)"
+                },
+                {
+                    "question": "Search in 2D matrix (sorted rows and columns):",
+                    "options": [
+                        "Binary search on each row",
+                        "Staircase search from top-right: O(m+n), or binary search mapping 2D to 1D: O(log mn)",
+                        "DFS from top-left",
+                        "Linear scan each row"
+                    ],
+                    "answer": "Staircase search from top-right: O(m+n), or binary search mapping 2D to 1D: O(log mn)"
+                },
+                {
+                    "question": "Capacity to ship packages (min capacity) uses binary search on:",
+                    "options": [
+                        "Package indices",
+                        "Capacity (answer space): binary search between max and sum of weights",
+                        "Ship count",
+                        "Package order"
+                    ],
+                    "answer": "Capacity (answer space): binary search between max and sum of weights"
+                },
+                {
+                    "question": "Template for 'find first True' binary search:",
+                    "options": [
+                        "`lo <= hi`",
+                        "`lo < hi` with `if pred(mid): hi=mid; else lo=mid+1` — answer is lo",
+                        "`lo < hi` with `if pred(mid): lo=mid; else hi=mid-1`",
+                        "No template — always ad hoc"
+                    ],
+                    "answer": "`lo < hi` with `if pred(mid): hi=mid; else lo=mid+1` — answer is lo"
+                },
+                {
+                    "question": "Sqrt(x) — binary search approach:",
+                    "options": [
+                        "Newton's method only",
+                        "Search integer square root in [1, x] — largest n where n^2 <= x",
+                        "Logarithm based",
+                        "Iterate n=1 to x"
+                    ],
+                    "answer": "Search integer square root in [1, x] — largest n where n^2 <= x"
+                },
+                {
+                    "question": "Find smallest divisor given threshold — binary search on:",
+                    "options": [
+                        "The array's sorted values",
+                        "Divisor value: binary search from 1 to max element",
+                        "Sum of array",
+                        "The threshold directly"
+                    ],
+                    "answer": "Divisor value: binary search from 1 to max element"
+                },
+                {
+                    "question": "`bisect_left` vs `bisect_right` in Python:",
+                    "options": [
+                        "Same",
+                        "`bisect_left` — insert before duplicates; `bisect_right` — insert after duplicates",
+                        "`bisect_right` is for descending",
+                        "Both insert at same position for unique elements — but differ for duplicates"
+                    ],
+                    "answer": "Both insert at same position for unique elements — but differ for duplicates"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Binary Search — Expert Level",
+            "theory": "**Exponential search:** useful for unbounded arrays — double index until bound found, then binary search.\n\n**Fractional cascading:** binary search across multiple sorted lists in O(log n + k) instead of O(k log n).\n\n**Bitset binary search:** use popcount for rank queries on bitsets.\n\n**Binary search over floating point:** real-valued binary search for optimization problems (minimize/maximize continuous function).\n\n**Parallel binary search:** process multiple independent binary searches simultaneously — useful for offline query batching.",
+            "questions": [
+                {
+                    "question": "Exponential search is useful for:",
+                    "options": [
+                        "Sorted and bounded arrays",
+                        "Unbounded/streaming sorted arrays — find range then binary search",
+                        "Unsorted arrays",
+                        "Circular arrays"
+                    ],
+                    "answer": "Unbounded/streaming sorted arrays — find range then binary search"
+                },
+                {
+                    "question": "Fractional cascading reduces binary search across k lists from:",
+                    "options": [
+                        "O(k) to O(log k)",
+                        "O(k log n) to O(log n + k) by augmenting lists with pointers to next list",
+                        "O(n) to O(log n)",
+                        "O(k^2) to O(k log k)"
+                    ],
+                    "answer": "O(k log n) to O(log n + k) by augmenting lists with pointers to next list"
+                },
+                {
+                    "question": "Real-valued binary search stops when:",
+                    "options": [
+                        "lo == hi",
+                        "hi - lo < epsilon (tolerance threshold)",
+                        "Exactly 100 iterations",
+                        "Never terminates"
+                    ],
+                    "answer": "hi - lo < epsilon (tolerance threshold)"
+                },
+                {
+                    "question": "Parallel binary search processes Q queries in:",
+                    "options": [
+                        "O(Q log n) each query independently",
+                        "O((Q + f) log n) — all queries progress together, f = check cost per mid",
+                        "O(log n) total",
+                        "O(Q^2)"
+                    ],
+                    "answer": "O((Q + f) log n) — all queries progress together, f = check cost per mid"
+                },
+                {
+                    "question": "Binary search lower bound proof (loop invariant):",
+                    "options": [
+                        "lo starts at 0",
+                        "Invariant: answer is in [lo, hi] — maintained by how lo/hi update",
+                        "mid is always correct",
+                        "hi never changes"
+                    ],
+                    "answer": "Invariant: answer is in [lo, hi] — maintained by how lo/hi update"
+                },
+                {
+                    "question": "Why is `lo < hi` preferred over `lo <= hi` in some templates?",
+                    "options": [
+                        "Avoids off-by-one in certain templates where lo=hi is the answer position",
+                        "lo <= hi causes infinite loop",
+                        "Both equivalent unconditionally",
+                        "Performance difference"
+                    ],
+                    "answer": "Avoids off-by-one in certain templates where lo=hi is the answer position"
+                },
+                {
+                    "question": "Predicate sharpening in binary search means:",
+                    "options": [
+                        "Speeding up the predicate",
+                        "Tightening the boundary condition to halve search space more effectively",
+                        "Sorting the answer space",
+                        "Binary search on predicate cost"
+                    ],
+                    "answer": "Tightening the boundary condition to halve search space more effectively"
+                },
+                {
+                    "question": "Problem: given matrix row-wise sorted, find count of 1s. Optimal:",
+                    "options": [
+                        "Linear scan all rows O(nm)",
+                        "Binary search per row for first 1 — O(m log n) or O(m+n) staircase",
+                        "Sort all elements",
+                        "BFS"
+                    ],
+                    "answer": "Binary search per row for first 1 — O(m log n) or O(m+n) staircase"
+                },
+                {
+                    "question": "Finding k-th smallest in two sorted arrays — O(log k):",
+                    "options": [
+                        "Merge then index",
+                        "Binary search: compare k/2-th elements, eliminate k/2 elements from smaller",
+                        "Linear scan O(k)",
+                        "Heap approach O(k log 2)"
+                    ],
+                    "answer": "Binary search: compare k/2-th elements, eliminate k/2 elements from smaller"
+                },
+                {
+                    "question": "Aggressive cows problem (maximize minimum distance) uses:",
+                    "options": [
+                        "Sorting only",
+                        "Sort + binary search on minimum distance with greedy feasibility check",
+                        "DP",
+                        "Greedy without binary search"
+                    ],
+                    "answer": "Sort + binary search on minimum distance with greedy feasibility check"
+                }
+            ]
+        }
+    ]
+}

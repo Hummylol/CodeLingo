@@ -1,0 +1,327 @@
+{
+    "levelno": 14,
+    "topic": "Multithreading",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Multithreading — Beginner Level",
+            "theory": "Multithreading allows multiple tasks to run concurrently.\n\n**Creating threads:**\n```java\n// Extend Thread\nclass MyThread extends Thread {\n    public void run() { System.out.println(\"Running!\"); }\n}\nnew MyThread().start();\n\n// Implement Runnable (preferred)\nThread t = new Thread(() -> System.out.println(\"Running!\"));\nt.start();\n```\n\n- `start()` — starts the thread\n- `run()` — the code the thread executes\n- Call `start()`, never `run()` directly (run() is not a new thread)\n- `sleep(ms)` — pause the current thread: `Thread.sleep(1000);`\n- `join()` — wait for a thread to finish",
+            "questions": [
+                {
+                    "question": "How do you start a thread?",
+                    "options": [
+                        "`thread.run()`",
+                        "`thread.start()`",
+                        "`thread.execute()`",
+                        "`Thread.begin()`"
+                    ],
+                    "answer": "`thread.start()`"
+                },
+                {
+                    "question": "What does `thread.join()` do?",
+                    "options": [
+                        "Merges two threads",
+                        "Waits for the thread to finish before continuing",
+                        "Starts the thread",
+                        "Pauses current thread for 1s"
+                    ],
+                    "answer": "Waits for the thread to finish before continuing"
+                },
+                {
+                    "question": "What is a Runnable?",
+                    "options": [
+                        "Any class with run()",
+                        "A functional interface with `void run()` — defines thread task",
+                        "A thread group",
+                        "A callable"
+                    ],
+                    "answer": "A functional interface with `void run()` — defines thread task"
+                },
+                {
+                    "question": "What does calling `run()` directly (not `start()`) do?",
+                    "options": [
+                        "Starts a new thread",
+                        "Executes run() in the current thread — not in a new thread",
+                        "Throws exception",
+                        "Is the preferred way"
+                    ],
+                    "answer": "Executes run() in the current thread — not in a new thread"
+                },
+                {
+                    "question": "What is `Thread.sleep(1000)` used for?",
+                    "options": [
+                        "Stop the thread",
+                        "Pause current thread for 1000 milliseconds",
+                        "Slow down I/O",
+                        "Sleep a variable ms"
+                    ],
+                    "answer": "Pause current thread for 1000 milliseconds"
+                },
+                {
+                    "question": "What exception does `Thread.sleep()` throw?",
+                    "options": [
+                        "`IOException`",
+                        "`ThreadException`",
+                        "`InterruptedException`",
+                        "`TimeoutException`"
+                    ],
+                    "answer": "`InterruptedException`"
+                },
+                {
+                    "question": "Preferred way to create a thread?",
+                    "options": [
+                        "Extend Thread",
+                        "Implement Runnable (or use lambda)",
+                        "Anonymous class only",
+                        "Always use Thread subclass"
+                    ],
+                    "answer": "Implement Runnable (or use lambda)"
+                },
+                {
+                    "question": "What is a daemon thread?",
+                    "options": [
+                        "A high-priority thread",
+                        "A background thread — JVM exits when only daemon threads remain",
+                        "A thread with no run()",
+                        "A thread locked in sleep()"
+                    ],
+                    "answer": "A background thread — JVM exits when only daemon threads remain"
+                },
+                {
+                    "question": "What is a race condition?",
+                    "options": [
+                        "Two threads racing for CPU",
+                        "Multiple threads accessing shared mutable state without synchronization — unpredictable results",
+                        "A thread timeout",
+                        "A deadlock"
+                    ],
+                    "answer": "Multiple threads accessing shared mutable state without synchronization — unpredictable results"
+                },
+                {
+                    "question": "What is a deadlock?",
+                    "options": [
+                        "A dead thread",
+                        "Two or more threads waiting for each other to release locks — stuck forever",
+                        "An infinite loop",
+                        "A too-slow thread"
+                    ],
+                    "answer": "Two or more threads waiting for each other to release locks — stuck forever"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Multithreading — Intermediate Level",
+            "theory": "**`synchronized`:** ensures only one thread executes a block at a time:\n```java\npublic synchronized void increment() { count++; }\n// or block:\nsynchronized(this) { count++; }\n```\n\n**`volatile`:** ensures visibility of changes across threads (not atomicity).\n\n**`java.util.concurrent` package:**\n- `ExecutorService` — thread pool\n- `Callable<T>` — thread task that returns a value\n- `Future<T>` — handle to async computation\n\n```java\nExecutorService pool = Executors.newFixedThreadPool(4);\nFuture<Integer> future = pool.submit(() -> 42);\nint result = future.get(); // blocks until done\npool.shutdown();\n```",
+            "questions": [
+                {
+                    "question": "What does `synchronized` ensure?",
+                    "options": [
+                        "Threads run in order",
+                        "Only one thread executes synchronized block at a time",
+                        "Threads are faster",
+                        "Thread-local storage"
+                    ],
+                    "answer": "Only one thread executes synchronized block at a time"
+                },
+                {
+                    "question": "What does `volatile` guarantee?",
+                    "options": [
+                        "Atomicity of operations",
+                        "Visibility — all threads see the latest write, but no atomicity for compound ops",
+                        "Thread-local variable",
+                        "Synchronized access"
+                    ],
+                    "answer": "Visibility — all threads see the latest write, but no atomicity for compound ops"
+                },
+                {
+                    "question": "What is an `ExecutorService`?",
+                    "options": [
+                        "A service that starts applications",
+                        "A thread pool manager — submit tasks and reuse threads",
+                        "A `Callable` implementation",
+                        "A daemon thread"
+                    ],
+                    "answer": "A thread pool manager — submit tasks and reuse threads"
+                },
+                {
+                    "question": "What does `Callable<T>` differ from `Runnable`?",
+                    "options": [
+                        "Same",
+                        "Callable can return a value and throw checked exceptions; Runnable cannot",
+                        "Callable is for async only",
+                        "Runnable is newer"
+                    ],
+                    "answer": "Callable can return a value and throw checked exceptions; Runnable cannot"
+                },
+                {
+                    "question": "What does `future.get()` do?",
+                    "options": [
+                        "Gets a cached value",
+                        "Blocking wait — returns result when computation finishes, or throws if exception occurred",
+                        "Returns null if pending",
+                        "Cancels the task"
+                    ],
+                    "answer": "Blocking wait — returns result when computation finishes, or throws if exception occurred"
+                },
+                {
+                    "question": "What is `Executors.newCachedThreadPool()`?",
+                    "options": [
+                        "A pool with fixed size",
+                        "An elastic pool — creates new threads as needed, reuses idle ones",
+                        "A pool with 0 threads",
+                        "A single-thread pool"
+                    ],
+                    "answer": "An elastic pool — creates new threads as needed, reuses idle ones"
+                },
+                {
+                    "question": "What is `AtomicInteger` used for?",
+                    "options": [
+                        "String to int",
+                        "Thread-safe integer with atomic operations (getAndIncrement, compareAndSet) — no synchronized needed",
+                        "An immutable int",
+                        "A wrapper for int[]"
+                    ],
+                    "answer": "Thread-safe integer with atomic operations (getAndIncrement, compareAndSet) — no synchronized needed"
+                },
+                {
+                    "question": "What is `compareAndSet(expected, update)`?",
+                    "options": [
+                        "Compares two ints",
+                        "Atomically: sets value to update only if current value equals expected (CAS operation)",
+                        "Synchronized setter",
+                        "An equality check"
+                    ],
+                    "answer": "Atomically: sets value to update only if current value equals expected (CAS operation)"
+                },
+                {
+                    "question": "What does `pool.shutdown()` do?",
+                    "options": [
+                        "Kills threads immediately",
+                        "Stops accepting new tasks; waits for submitted tasks to complete",
+                        "Cancels pending tasks",
+                        "Waits 5 seconds"
+                    ],
+                    "answer": "Stops accepting new tasks; waits for submitted tasks to complete"
+                },
+                {
+                    "question": "What is `CountDownLatch` used for?",
+                    "options": [
+                        "Counting threads",
+                        "Allow one or more threads to wait until a set of operations completes",
+                        "Decrementing a counter atomically",
+                        "A semaphore replacement"
+                    ],
+                    "answer": "Allow one or more threads to wait until a set of operations completes"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Multithreading — Expert Level",
+            "theory": "**`CompletableFuture` (Java 8+):** composable async chains:\n```java\nCompletableFuture.supplyAsync(() -> fetchData())\n    .thenApply(data -> process(data))\n    .thenAccept(System.out::println)\n    .exceptionally(e -> { log(e); return null; });\n```\n\n**`ReentrantLock`:** explicit lock with tryLock, fairness option, condition variables.\n\n**`StampedLock` (Java 8+):** optimistic reads — less overhead for read-heavy workloads.\n\n**Virtual threads (Java 21):** `Thread.ofVirtual().start(runnable)` — millions of lightweight threads.\n\n**Memory model (JMM):** `happens-before` relationship guarantees visibility of writes.",
+            "questions": [
+                {
+                    "question": "What is `CompletableFuture.supplyAsync()` used for?",
+                    "options": [
+                        "Blocking computation",
+                        "Running a task asynchronously and returning a CompletableFuture for chaining",
+                        "A thread pool replacement",
+                        "Creating callbacks"
+                    ],
+                    "answer": "Running a task asynchronously and returning a CompletableFuture for chaining"
+                },
+                {
+                    "question": "What does `thenCompose` do in CompletableFuture?",
+                    "options": [
+                        "Same as thenApply",
+                        "Chains a function returning another CF — avoids CF<CF<T>> nesting (flatMap equivalent)",
+                        "Combines two CFs",
+                        "Applies sync function"
+                    ],
+                    "answer": "Chains a function returning another CF — avoids CF<CF<T>> nesting (flatMap equivalent)"
+                },
+                {
+                    "question": "What is `ReentrantLock` vs `synchronized`?",
+                    "options": [
+                        "Same",
+                        "ReentrantLock has `tryLock`, interrupt support, fairness option, condition variables — more flexible",
+                        "synchronized is always better",
+                        "ReentrantLock avoids deadlocks"
+                    ],
+                    "answer": "ReentrantLock has `tryLock`, interrupt support, fairness option, condition variables — more flexible"
+                },
+                {
+                    "question": "What is `StampedLock.tryOptimisticRead()`?",
+                    "options": [
+                        "A non-blocking write lock",
+                        "Read without lock — check stamp afterward to see if write occurred meanwhile",
+                        "A semaphore",
+                        "A read-write lock"
+                    ],
+                    "answer": "Read without lock — check stamp afterward to see if write occurred meanwhile"
+                },
+                {
+                    "question": "What are virtual threads (Java 21)?",
+                    "options": [
+                        "GPU threads",
+                        "Lightweight JVM-managed threads — millions possible, parked on I/O without blocking OS thread",
+                        "OS thread aliases",
+                        "Thread-local variables"
+                    ],
+                    "answer": "Lightweight JVM-managed threads — millions possible, parked on I/O without blocking OS thread"
+                },
+                {
+                    "question": "What is the Java Memory Model (JMM)?",
+                    "options": [
+                        "How Java allocates heap",
+                        "Rules for happens-before guarantees — what one thread's writes are visible to another",
+                        "Garbage collection model",
+                        "Thread lifecycle model"
+                    ],
+                    "answer": "Rules for happens-before guarantees — what one thread's writes are visible to another"
+                },
+                {
+                    "question": "What is `Phaser` used for?",
+                    "options": [
+                        "Phase-based task runner",
+                        "A reusable synchronization barrier for multiple phases with dynamic party registration",
+                        "A countdown only",
+                        "Thread scheduler"
+                    ],
+                    "answer": "A reusable synchronization barrier for multiple phases with dynamic party registration"
+                },
+                {
+                    "question": "What does `ForkJoinPool` specialize in?",
+                    "options": [
+                        "Network I/O",
+                        "Work-stealing divide-and-conquer parallelism — used by parallel streams",
+                        "Thread-per-task model",
+                        "Single-thread sequential tasks"
+                    ],
+                    "answer": "Work-stealing divide-and-conquer parallelism — used by parallel streams"
+                },
+                {
+                    "question": "What is `ThreadLocal<T>` used for?",
+                    "options": [
+                        "A shared global variable",
+                        "Per-thread storage — each thread has its own independent copy of the variable",
+                        "A fixed thread ID",
+                        "A synchronized variable"
+                    ],
+                    "answer": "Per-thread storage — each thread has its own independent copy of the variable"
+                },
+                {
+                    "question": "What is structured concurrency (Java 21 preview)?",
+                    "options": [
+                        "synchronized blocks",
+                        "A model where sub-tasks are scoped to a structured scope — failure cancels all sub-tasks",
+                        "Executor pools",
+                        "Fork/Join pattern"
+                    ],
+                    "answer": "A model where sub-tasks are scoped to a structured scope — failure cancels all sub-tasks"
+                }
+            ]
+        }
+    ]
+}

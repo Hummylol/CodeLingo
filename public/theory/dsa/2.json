@@ -1,0 +1,327 @@
+{
+    "levelno": 2,
+    "topic": "Linked Lists",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Linked Lists — Beginner Level",
+            "theory": "A **linked list** is a sequence of nodes, each containing data and a pointer to the next node.\n\n```python\nclass Node:\n    def __init__(self, val):\n        self.val = val\n        self.next = None\n\n# 1 -> 2 -> 3 -> None\nhead = Node(1)\nhead.next = Node(2)\nhead.next.next = Node(3)\n```\n\n**Types:**\n- **Singly linked list** — one pointer (next)\n- **Doubly linked list** — two pointers (prev, next)\n- **Circular linked list** — last node points to head\n\n**vs Array:**\n- O(1) insert/delete at beginning\n- O(n) access by index\n- No fixed size; non-contiguous memory",
+            "questions": [
+                {
+                    "question": "What is the time complexity of insertion at the head of a linked list?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "What is the time complexity of accessing the k-th element?",
+                    "options": [
+                        "O(1)",
+                        "O(k) or O(n)",
+                        "O(log n)",
+                        "O(k log k)"
+                    ],
+                    "answer": "O(k) or O(n)"
+                },
+                {
+                    "question": "A doubly linked list node has:",
+                    "options": [
+                        "One pointer only",
+                        "Two pointers: prev and next",
+                        "Three pointers",
+                        "No pointers"
+                    ],
+                    "answer": "Two pointers: prev and next"
+                },
+                {
+                    "question": "In a circular linked list, the last node points to:",
+                    "options": [
+                        "null",
+                        "The second node",
+                        "The head node",
+                        "Itself"
+                    ],
+                    "answer": "The head node"
+                },
+                {
+                    "question": "Linked lists use more memory than arrays because:",
+                    "options": [
+                        "They are larger",
+                        "Each node stores data + pointer overhead",
+                        "They allocate contiguously",
+                        "No reason"
+                    ],
+                    "answer": "Each node stores data + pointer overhead"
+                },
+                {
+                    "question": "Reversing a linked list requires:",
+                    "options": [
+                        "Extra array",
+                        "O(n) time and O(1) space — iterate and reverse links",
+                        "Sorting",
+                        "Stack always"
+                    ],
+                    "answer": "O(n) time and O(1) space — iterate and reverse links"
+                },
+                {
+                    "question": "Detecting a cycle in a linked list: best approach?",
+                    "options": [
+                        "Extra set/visited array",
+                        "Floyd's cycle detection (slow/fast pointers) O(n) O(1)",
+                        "Both are equally good",
+                        "Count nodes"
+                    ],
+                    "answer": "Floyd's cycle detection (slow/fast pointers) O(n) O(1)"
+                },
+                {
+                    "question": "Finding middle of linked list: best approach?",
+                    "options": [
+                        "Count then traverse",
+                        "Fast/slow pointer — when fast reaches end, slow is at middle",
+                        "Only with doubly linked list",
+                        "Always O(n^2)"
+                    ],
+                    "answer": "Fast/slow pointer — when fast reaches end, slow is at middle"
+                },
+                {
+                    "question": "When should you prefer a linked list over an array?",
+                    "options": [
+                        "Random access needed",
+                        "Frequent insert/delete at head/tail, no random access required",
+                        "Cache performance critical",
+                        "Fixed size data"
+                    ],
+                    "answer": "Frequent insert/delete at head/tail, no random access required"
+                },
+                {
+                    "question": "What is a sentinel/dummy head node?",
+                    "options": [
+                        "The actual head",
+                        "A dummy node at head that simplifies edge cases (empty list, head deletion)",
+                        "A node with null value",
+                        "The tail node"
+                    ],
+                    "answer": "A dummy node at head that simplifies edge cases (empty list, head deletion)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Linked Lists — Intermediate Level",
+            "theory": "**Key algorithms:**\n\n**Merge two sorted lists:**\n```python\ndef merge(l1, l2):\n    dummy = Node(0); cur = dummy\n    while l1 and l2:\n        if l1.val <= l2.val: cur.next = l1; l1 = l1.next\n        else:                cur.next = l2; l2 = l2.next\n        cur = cur.next\n    cur.next = l1 or l2\n    return dummy.next\n```\n\n**LRU Cache:** hash map + doubly linked list.\n\n**Remove Nth from end:** two-pointer gap of N.\n\n**Add two numbers:** simulate digit-by-digit with carry.\n\n**Flatten multilevel linked list:** DFS or iterative.",
+            "questions": [
+                {
+                    "question": "Merge two sorted linked lists time complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n+m)",
+                        "O(n log n)",
+                        "O(max(n,m))"
+                    ],
+                    "answer": "O(n+m)"
+                },
+                {
+                    "question": "LRU Cache uses linked list for:",
+                    "options": [
+                        "Ordering by value",
+                        "O(1) removal from any position — maintains recency order",
+                        "Sorting keys",
+                        "Hashing values"
+                    ],
+                    "answer": "O(1) removal from any position — maintains recency order"
+                },
+                {
+                    "question": "Remove Nth node from end — two-pointer gap approach makes it:",
+                    "options": [
+                        "Two passes O(2n)",
+                        "One pass O(n) by advancing pointer N steps first",
+                        "O(n log n)",
+                        "O(1)"
+                    ],
+                    "answer": "One pass O(n) by advancing pointer N steps first"
+                },
+                {
+                    "question": "Palindrome linked list check — O(1) space approach:",
+                    "options": [
+                        "Convert to array",
+                        "Find middle, reverse second half, compare, then restore",
+                        "Stack-based O(n) space",
+                        "Hash-based"
+                    ],
+                    "answer": "Find middle, reverse second half, compare, then restore"
+                },
+                {
+                    "question": "What is Floyd's algorithm used for?",
+                    "options": [
+                        "Sorting linked lists",
+                        "Cycle detection AND finding cycle start — slow/fast pointers",
+                        "Merging lists",
+                        "Reversing lists"
+                    ],
+                    "answer": "Cycle detection AND finding cycle start — slow/fast pointers"
+                },
+                {
+                    "question": "Intersection of two linked lists — O(1) space approach:",
+                    "options": [
+                        "Hash all nodes",
+                        "Navigate both: when one ends, switch to other head; they meet at intersection",
+                        "Sort by address",
+                        "Compare values"
+                    ],
+                    "answer": "Navigate both: when one ends, switch to other head; they meet at intersection"
+                },
+                {
+                    "question": "Reorder list (L0→Ln→L1→Ln-1...): approach?",
+                    "options": [
+                        "Brute sort",
+                        "Find middle, reverse second half, interleave",
+                        "Hash indices",
+                        "Stack-based"
+                    ],
+                    "answer": "Find middle, reverse second half, interleave"
+                },
+                {
+                    "question": "Doubly linked list advantage over singly?",
+                    "options": [
+                        "Less memory",
+                        "O(1) deletion of a node given its reference (no need to find previous)",
+                        "Faster search",
+                        "Simpler implementation"
+                    ],
+                    "answer": "O(1) deletion of a node given its reference (no need to find previous)"
+                },
+                {
+                    "question": "XOR linked list uses:",
+                    "options": [
+                        "Bitwise OR of addresses",
+                        "XOR of prev and next addresses to store both in one field (memory optimization)",
+                        "A doubly linked list variant",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "Skip list provides:",
+                    "options": [
+                        "O(1) search",
+                        "O(log n) average search with multiple levels — probabilistic alternative to balanced BST",
+                        "O(n) search always",
+                        "A sorted array"
+                    ],
+                    "answer": "O(log n) average search with multiple levels — probabilistic alternative to balanced BST"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Linked Lists — Expert Level",
+            "theory": "**Skip list operations:** search, insert, delete all O(log n) expected — used in Redis.\n\n**Merge K sorted lists:** min-heap (priority queue), O(n log k).\n\n**Copy list with random pointer:** hash map or O(1) space interleaving trick.\n\n**Reverse in groups of K:** recursive or iterative.\n\n**Memory-efficient linked list implementation:** use memory pools to reduce allocation overhead.",
+            "questions": [
+                {
+                    "question": "Merge K sorted linked lists optimal complexity:",
+                    "options": [
+                        "O(nk)",
+                        "O(n log k) using min-heap",
+                        "O(n^2)",
+                        "O(n log n)"
+                    ],
+                    "answer": "O(n log k) using min-heap"
+                },
+                {
+                    "question": "Copy list with random pointer — O(1) space approach?",
+                    "options": [
+                        "Hash map O(n) space",
+                        "Interleave cloned nodes in original list, set random, then extract",
+                        "Two pass always O(n)",
+                        "Stack approach"
+                    ],
+                    "answer": "Interleave cloned nodes in original list, set random, then extract"
+                },
+                {
+                    "question": "Reverse linked list in groups of K — time complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n)",
+                        "O(n log n)",
+                        "O(n/k)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Skip list probability parameter p: typical value?",
+                    "options": [
+                        "0.1",
+                        "0.5",
+                        "0.9",
+                        "0.25"
+                    ],
+                    "answer": "0.5"
+                },
+                {
+                    "question": "What is a self-organizing list?",
+                    "options": [
+                        "A sorted linked list",
+                        "A list that reorders nodes based on access frequency (move-to-front heuristic) — improves average access",
+                        "A cache list",
+                        "A skip list variant"
+                    ],
+                    "answer": "A list that reorders nodes based on access frequency (move-to-front heuristic) — improves average access"
+                },
+                {
+                    "question": "What is the 'tortoise and hare' algorithm?",
+                    "options": [
+                        "Graph traversal",
+                        "Floyd's cycle detection — slow pointer moves 1, fast 2; they meet if cycle exists",
+                        "Sorting technique",
+                        "Two-pointer for arrays"
+                    ],
+                    "answer": "Floyd's cycle detection — slow pointer moves 1, fast 2; they meet if cycle exists"
+                },
+                {
+                    "question": "Given a linked list, sort it. Best complexity?",
+                    "options": [
+                        "O(n^2) insertion sort",
+                        "O(n log n) merge sort — stable and O(1) extra space for linked lists",
+                        "O(n log n) quicksort",
+                        "O(n) counting sort"
+                    ],
+                    "answer": "O(n log n) merge sort — stable and O(1) extra space for linked lists"
+                },
+                {
+                    "question": "Why is quicksort not ideal for linked lists vs merge sort?",
+                    "options": [
+                        "Quicksort can't be implemented",
+                        "Random access needed for pivot selection/partition; merge sort works naturally in O(n log n) O(1) for lists",
+                        "Quicksort is always slower",
+                        "Mergesort is simpler"
+                    ],
+                    "answer": "Random access needed for pivot selection/partition; merge sort works naturally in O(n log n) O(1) for lists"
+                },
+                {
+                    "question": "What is a 'unrolled linked list'?",
+                    "options": [
+                        "A doubly linked list",
+                        "Each node stores an array of elements — better cache performance than standard linked list",
+                        "A circular list",
+                        "A flattened list"
+                    ],
+                    "answer": "Each node stores an array of elements — better cache performance than standard linked list"
+                },
+                {
+                    "question": "Memory pool for linked list nodes helps with:",
+                    "options": [
+                        "Reducing time complexity",
+                        "Reducing malloc overhead and fragmentation — allocate a pool of nodes upfront",
+                        "Cache coherency only",
+                        "Thread safety"
+                    ],
+                    "answer": "Reducing malloc overhead and fragmentation — allocate a pool of nodes upfront"
+                }
+            ]
+        }
+    ]
+}

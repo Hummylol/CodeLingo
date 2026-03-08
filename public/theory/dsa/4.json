@@ -1,0 +1,327 @@
+{
+    "levelno": 4,
+    "topic": "Hash Tables",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Hash Tables — Beginner Level",
+            "theory": "A **hash table** (dictionary/map) stores key-value pairs with O(1) average-case operations.\n\n```python\n# Python dictionary = hash table\nd = {}\nd['alice'] = 90\nd['bob'] = 85\nprint(d['alice'])     # 90\nprint('bob' in d)     # True\ndel d['bob']\nd.get('charlie', 0)   # 0 (default if missing)\n\n# Counter (hash map for frequencies)\nfrom collections import Counter, defaultdict\nfreq = Counter('hello')\n# {'l': 2, 'h': 1, 'e': 1, 'o': 1}\n```\n\n- `dict[key]` — O(1) average\n- `key in dict` — O(1) average\n- `del dict[key]` — O(1) average\n- Use for: frequency count, two-sum, grouping, caching",
+            "questions": [
+                {
+                    "question": "Average time complexity of hash table lookup?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "What is a hash collision?",
+                    "options": [
+                        "A hash function error",
+                        "Two different keys produce the same hash value",
+                        "Overflow in hash table",
+                        "Duplicate keys"
+                    ],
+                    "answer": "Two different keys produce the same hash value"
+                },
+                {
+                    "question": "Dictionary/HashMap worst-case time complexity?",
+                    "options": [
+                        "O(1)",
+                        "O(log n)",
+                        "O(n) — all keys hash to same bucket",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(n) — all keys hash to same bucket"
+                },
+                {
+                    "question": "Two Sum problem: find two indices summing to target. Best approach?",
+                    "options": [
+                        "Brute force O(n^2)",
+                        "Hash map: store complements O(n) O(n)",
+                        "Sort + two pointers O(n log n)",
+                        "Both B and C work O(n)"
+                    ],
+                    "answer": "Hash map: store complements O(n) O(n)"
+                },
+                {
+                    "question": "What does `Counter` (Python) do?",
+                    "options": [
+                        "Counts program iterations",
+                        "Creates a hash map of element frequencies",
+                        "A sorted dictionary",
+                        "Counts keys by value"
+                    ],
+                    "answer": "Creates a hash map of element frequencies"
+                },
+                {
+                    "question": "What is `defaultdict(list)` used for?",
+                    "options": [
+                        "A list of dictionaries",
+                        "Dictionary where missing keys auto-initialize to a list (avoids KeyError)",
+                        "A sorted map",
+                        "A set of lists"
+                    ],
+                    "answer": "Dictionary where missing keys auto-initialize to a list (avoids KeyError)"
+                },
+                {
+                    "question": "What is `dict.get(key, default)`?",
+                    "options": [
+                        "Raises KeyError",
+                        "Returns value for key, or default if key absent",
+                        "Removes key",
+                        "Checks if key exists"
+                    ],
+                    "answer": "Returns value for key, or default if key absent"
+                },
+                {
+                    "question": "HashSet/set is used when:",
+                    "options": [
+                        "Key-value pairs needed",
+                        "Only unique membership test needed — O(1) add/contains",
+                        "Ordering needed",
+                        "Sorted elements needed"
+                    ],
+                    "answer": "Only unique membership test needed — O(1) add/contains"
+                },
+                {
+                    "question": "Finding duplicates in array — optimal approach?",
+                    "options": [
+                        "Sort O(n log n)",
+                        "Hash set: add each element, check if already seen O(n)",
+                        "Brute force O(n^2)",
+                        "Two pointers O(n log n)"
+                    ],
+                    "answer": "Hash set: add each element, check if already seen O(n)"
+                },
+                {
+                    "question": "Anagram check — optimal approach?",
+                    "options": [
+                        "Sort both O(n log n)",
+                        "Counter/freq map comparison O(n)",
+                        "Both valid",
+                        "Only sorting is correct"
+                    ],
+                    "answer": "Both valid"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Hash Tables — Intermediate Level",
+            "theory": "**Chaining vs Open Addressing:**\n- Chaining: each bucket is a linked list — handles collisions by adding to list\n- Open addressing: find next empty slot (linear probing, quadratic probing, double hashing)\n\n**Load factor:** `n/m` (elements/buckets). Rehash when too high (typically 0.75).\n\n**Rolling hash (Rabin-Karp):** sliding window hash for substring search O(n+m).\n\n**Consistent hashing:** used in distributed systems — minimizes remapping on node add/remove.\n\n**Hash function qualities:** deterministic, uniform distribution, avalanche effect.",
+            "questions": [
+                {
+                    "question": "What is chaining in hash tables?",
+                    "options": [
+                        "Chaining multiple hash tables",
+                        "Each bucket is a list — collisions stored in the same bucket's list",
+                        "A linked hash map",
+                        "Sequential hash lookup"
+                    ],
+                    "answer": "Each bucket is a list — collisions stored in the same bucket's list"
+                },
+                {
+                    "question": "Load factor of 0.75 means:",
+                    "options": [
+                        "75% of keys are duplicates",
+                        "75% of buckets are occupied — rehash triggered to maintain performance",
+                        "75% collision rate",
+                        "75% wasted space"
+                    ],
+                    "answer": "75% of buckets are occupied — rehash triggered to maintain performance"
+                },
+                {
+                    "question": "What is open addressing?",
+                    "options": [
+                        "Opening buckets to other tables",
+                        "Find next available slot in the same table on collision (linear/quadratic probing, double hashing)",
+                        "A chaining alternative",
+                        "Both B and C — open addressing includes probing strategies"
+                    ],
+                    "answer": "Both B and C — open addressing includes probing strategies"
+                },
+                {
+                    "question": "What is the Rabin-Karp algorithm?",
+                    "options": [
+                        "A sorting algorithm",
+                        "Rolling hash for O(n+m) average string pattern matching",
+                        "A binary search variant",
+                        "A compression algorithm"
+                    ],
+                    "answer": "Rolling hash for O(n+m) average string pattern matching"
+                },
+                {
+                    "question": "Longest consecutive sequence in array — O(n) approach?",
+                    "options": [
+                        "Sort then scan",
+                        "Hash set: for each n, only start chain if n-1 not in set",
+                        "Two pointers",
+                        "Brute force"
+                    ],
+                    "answer": "Hash set: for each n, only start chain if n-1 not in set"
+                },
+                {
+                    "question": "Group anagrams — optimal grouping key?",
+                    "options": [
+                        "Sort each string",
+                        "Sorted string or character frequency tuple as hash key",
+                        "Length of string",
+                        "Both A and B"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "What is consistent hashing?",
+                    "options": [
+                        "A deterministic hash",
+                        "Distributed system hashing where only K/n keys remap when a node added/removed",
+                        "Hash with constant output",
+                        "A fixed-size hash table"
+                    ],
+                    "answer": "Distributed system hashing where only K/n keys remap when a node added/removed"
+                },
+                {
+                    "question": "Python dict iteration order since Python 3.7?",
+                    "options": [
+                        "Random",
+                        "Sorted by key",
+                        "Insertion order — guaranteed since Python 3.7",
+                        "Hash order"
+                    ],
+                    "answer": "Insertion order — guaranteed since Python 3.7"
+                },
+                {
+                    "question": "What property must dict keys have in Python?",
+                    "options": [
+                        "Be strings",
+                        "Be hashable (immutable) — lists can't be keys, tuples can",
+                        "Be numbers",
+                        "Be unique only"
+                    ],
+                    "answer": "Be hashable (immutable) — lists can't be keys, tuples can"
+                },
+                {
+                    "question": "LFU Cache vs LRU Cache difference:",
+                    "options": [
+                        "Same",
+                        "LFU evicts least frequently used; LRU evicts least recently used",
+                        "LFU is simpler",
+                        "LRU evicts most recently used"
+                    ],
+                    "answer": "LFU evicts least frequently used; LRU evicts least recently used"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Hash Tables — Expert Level",
+            "theory": "**Dynamic perfect hashing:** O(1) worst-case lookup using two-level hashing.\n\n**Cuckoo hashing:** O(1) worst-case lookup using two hash functions — displace existing on collision.\n\n**Swiss table (Google's abseil):** SIMD-accelerated hash map — 16 slots per group probed in one instruction.\n\n**Hash-based set operations:** union, intersection, difference all O(n+m).\n\n**Bloom filter:** space-efficient probabilistic set — false positives possible, no false negatives. Used in databases to avoid disk lookups.",
+            "questions": [
+                {
+                    "question": "Cuckoo hashing achieves:",
+                    "options": [
+                        "O(1) amortized",
+                        "O(1) worst-case lookup using two hash functions and displacement",
+                        "O(log n) worst-case",
+                        "O(1) with chaining"
+                    ],
+                    "answer": "O(1) worst-case lookup using two hash functions and displacement"
+                },
+                {
+                    "question": "Bloom filter can have:",
+                    "options": [
+                        "False negatives",
+                        "False positives only — if filter says 'no', element definitely absent; 'yes' may be wrong",
+                        "No errors",
+                        "Both false positives and negatives"
+                    ],
+                    "answer": "False positives only — if filter says 'no', element definitely absent; 'yes' may be wrong"
+                },
+                {
+                    "question": "Swiss table (abseil) uses SIMD for:",
+                    "options": [
+                        "Parallel hash computation",
+                        "Probing 16 slots simultaneously with SSE2/AVX to find candidates in one instruction",
+                        "Parallel inserts",
+                        "Multiple hash functions"
+                    ],
+                    "answer": "Probing 16 slots simultaneously with SSE2/AVX to find candidates in one instruction"
+                },
+                {
+                    "question": "What is a perfect hash function?",
+                    "options": [
+                        "A function with no collisions for a specific known set of keys",
+                        "A universal hash",
+                        "A random hash",
+                        "A hash with O(1) always"
+                    ],
+                    "answer": "A function with no collisions for a specific known set of keys"
+                },
+                {
+                    "question": "Universal hashing helps:",
+                    "options": [
+                        "Eliminating collisions entirely",
+                        "Guaranteeing O(1) amortized for any input by randomizing hash function choice",
+                        "Improving hash function speed",
+                        "Making hash function deterministic"
+                    ],
+                    "answer": "Guaranteeing O(1) amortized for any input by randomizing hash function choice"
+                },
+                {
+                    "question": "Subarray sum equals k — O(n) approach?",
+                    "options": [
+                        "Prefix sum + brute O(n^2)",
+                        "Prefix sum + hash map: count how many previous prefix sums equal prefixSum−k",
+                        "Two pointers",
+                        "Sliding window"
+                    ],
+                    "answer": "Prefix sum + hash map: count how many previous prefix sums equal prefixSum−k"
+                },
+                {
+                    "question": "Count distinct elements in all windows of size k — O(n) approach?",
+                    "options": [
+                        "Hash map per window O(nk)",
+                        "Sliding window hash map — add incoming, remove outgoing element O(n)",
+                        "Sort each window",
+                        "Binary search"
+                    ],
+                    "answer": "Sliding window hash map — add incoming, remove outgoing element O(n)"
+                },
+                {
+                    "question": "What makes xxHash/MurmurHash better for hash tables than MD5/SHA?",
+                    "options": [
+                        "More secure",
+                        "Faster throughput, better distribution, not designed for cryptographic security",
+                        "Fewer collisions",
+                        "Smaller output"
+                    ],
+                    "answer": "Faster throughput, better distribution, not designed for cryptographic security"
+                },
+                {
+                    "question": "What is the hash-flooding vulnerability?",
+                    "options": [
+                        "Collisions in bloom filter",
+                        "Attacker crafts keys that all hash to same bucket — degrading to O(n) — mitigated by random seed (SipHash)",
+                        "A GC issue",
+                        "A timing attack"
+                    ],
+                    "answer": "Attacker crafts keys that all hash to same bucket — degrading to O(n) — mitigated by random seed (SipHash)"
+                },
+                {
+                    "question": "What is 'Robin Hood hashing'?",
+                    "options": [
+                        "Open addressing where elements with higher displacement displace lower-displacement entries — reduces variance",
+                        "A chaining variant",
+                        "A cuckoo hashing type",
+                        "A concurrent hash map"
+                    ],
+                    "answer": "Open addressing where elements with higher displacement displace lower-displacement entries — reduces variance"
+                }
+            ]
+        }
+    ]
+}

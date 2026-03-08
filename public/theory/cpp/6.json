@@ -1,0 +1,327 @@
+{
+    "levelno": 6,
+    "topic": "Loops (for)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Loops (for) — Beginner Level",
+            "theory": "The `for` loop repeats code a known number of times.\n\n```cpp\nfor (int i = 0; i < 5; i++) {\n    std::cout << i << '\\n';\n}\n```\n\nThree parts separated by semicolons:\n1. **Initialization** — runs once (`int i = 0`)\n2. **Condition** — checked before each iteration (`i < 5`)\n3. **Increment** — runs after each iteration (`i++`)\n\n**Range-based for loop (C++11):**\n```cpp\nstd::vector<int> v = {1, 2, 3};\nfor (int x : v) { std::cout << x; }\n```\n\nA `for` loop is entry-controlled — if the condition starts false, the body never runs.",
+            "questions": [
+                {
+                    "question": "How many times does `for (int i = 1; i <= 5; i++)` run?",
+                    "options": [
+                        "4",
+                        "5",
+                        "6",
+                        "Infinitely"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "In `for(A; B; C)`, which part is the condition?",
+                    "options": [
+                        "A",
+                        "B",
+                        "C",
+                        "None"
+                    ],
+                    "answer": "B"
+                },
+                {
+                    "question": "What is the purpose of `i++` in a standard for loop?",
+                    "options": [
+                        "Initialize counter",
+                        "Test condition",
+                        "Update counter",
+                        "End loop"
+                    ],
+                    "answer": "Update counter"
+                },
+                {
+                    "question": "Which loop prints `5 4 3 2 1`?",
+                    "options": [
+                        "`for (int i=5; i>=1; i--)`",
+                        "`for (int i=1; i<=5; i++)`",
+                        "`for (int i=5; i>1; i--)`",
+                        "`for (int i=1; i<5; i++)`"
+                    ],
+                    "answer": "`for (int i=5; i>=1; i--)`"
+                },
+                {
+                    "question": "What is an infinite loop?",
+                    "options": [
+                        "Runs 1000x",
+                        "Condition always true",
+                        "Condition always false",
+                        "Contains an error"
+                    ],
+                    "answer": "Condition always true"
+                },
+                {
+                    "question": "What is the scope of `int i` declared in a for loop init?",
+                    "options": [
+                        "Entire program",
+                        "Entire function",
+                        "Only within the for loop",
+                        "Not a variable"
+                    ],
+                    "answer": "Only within the for loop"
+                },
+                {
+                    "question": "Can you use comma to have multiple statements in the init part?",
+                    "options": [
+                        "No",
+                        "Yes, separated by commas",
+                        "Yes, separated by semicolons",
+                        "Only in init"
+                    ],
+                    "answer": "Yes, separated by commas"
+                },
+                {
+                    "question": "The three expressions in a `for` header are separated by:",
+                    "options": [
+                        "Commas",
+                        "Colons",
+                        "Semicolons",
+                        "Spaces"
+                    ],
+                    "answer": "Semicolons"
+                },
+                {
+                    "question": "Output of `for (int i=0; i<3; i++) cout << i;`?",
+                    "options": [
+                        "012",
+                        "123",
+                        "0123",
+                        "Error"
+                    ],
+                    "answer": "012"
+                },
+                {
+                    "question": "A for loop is considered:",
+                    "options": [
+                        "Exit-controlled",
+                        "Entry-controlled",
+                        "Uncontrolled",
+                        "Branching statement"
+                    ],
+                    "answer": "Entry-controlled"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Loops (for) — Intermediate Level",
+            "theory": "**Range-based for with references:** use `const auto&` to avoid copies:\n```cpp\nfor (const auto& item : container) { /* read only */ }\nfor (auto& item : container)       { item *= 2; }   // mutate\n```\n\n**Index + range-based hybrid (`std::enumerate` C++23 / views::enumerate):**\n```cpp\nfor (auto [i, v] : std::views::enumerate(vec)) { ... }\n```\n\n**`break`** — exits the loop immediately.\n**`continue`** — skips the rest of the current iteration and moves to the next.\n\n**Nested loops:** the inner loop completes fully for each outer iteration.\n\n**`std::ranges::for_each` (C++20):** algorithm alternative to range-for.",
+            "questions": [
+                {
+                    "question": "Why use `const auto&` in a range-based for loop?",
+                    "options": [
+                        "Required syntax",
+                        "Avoids copying each element while allowing read-only access",
+                        "Makes elements modifiable",
+                        "Required for string vectors"
+                    ],
+                    "answer": "Avoids copying each element while allowing read-only access"
+                },
+                {
+                    "question": "What does `continue` do in a loop?",
+                    "options": [
+                        "Exits the loop",
+                        "Skips remaining code in current iteration and goes to next iteration",
+                        "Restarts the loop from beginning",
+                        "Raises an exception"
+                    ],
+                    "answer": "Skips remaining code in current iteration and goes to next iteration"
+                },
+                {
+                    "question": "What does `break` do in a loop?",
+                    "options": [
+                        "Exits only inner loop",
+                        "Exits the loop entirely",
+                        "Goes to next iteration",
+                        "Restarts the loop"
+                    ],
+                    "answer": "Exits the loop entirely"
+                },
+                {
+                    "question": "In nested loops, `break` exits:",
+                    "options": [
+                        "All loops",
+                        "Only the innermost loop containing it",
+                        "Only the outermost loop",
+                        "Both loops"
+                    ],
+                    "answer": "Only the innermost loop containing it"
+                },
+                {
+                    "question": "How many total iterations in: `for(i=0;i<3;i++) for(j=0;j<4;j++)`?",
+                    "options": [
+                        "7",
+                        "12",
+                        "3",
+                        "4"
+                    ],
+                    "answer": "12"
+                },
+                {
+                    "question": "What is `std::ranges::for_each(v, f)` equivalent to?",
+                    "options": [
+                        "std::for_each with ranges support",
+                        "Applies f to each element of v",
+                        "Filters v",
+                        "Both A and B"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "Range-based for on an array `int arr[5]` works because:",
+                    "options": [
+                        "Arrays have begin() and end()",
+                        "Compiler knows the size at compile time and provides begin/end",
+                        "Arrays are converted to vectors",
+                        "You must use a pointer"
+                    ],
+                    "answer": "Compiler knows the size at compile time and provides begin/end"
+                },
+                {
+                    "question": "What does `for (auto& [key, val] : myMap)` do?",
+                    "options": [
+                        "Iterates over keys only",
+                        "Iterates over map elements using structured bindings for key and value",
+                        "Copies entire map",
+                        "Error"
+                    ],
+                    "answer": "Iterates over map elements using structured bindings for key and value"
+                },
+                {
+                    "question": "Can you use `return` inside a for loop?",
+                    "options": [
+                        "No",
+                        "Yes — exits the entire function immediately",
+                        "Only if it's the last statement",
+                        "Only in void functions"
+                    ],
+                    "answer": "Yes — exits the entire function immediately"
+                },
+                {
+                    "question": "What does `for (;;)` create?",
+                    "options": [
+                        "Empty loop that never runs",
+                        "Infinite loop",
+                        "Syntax error",
+                        "Loop that runs once"
+                    ],
+                    "answer": "Infinite loop"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Loops (for) — Expert Level",
+            "theory": "**`std::ranges` (C++20)** — lazy, composable views:\n```cpp\nauto result = v | std::views::filter([](int x){ return x%2==0; })\n                | std::views::transform([](int x){ return x*x; });\n```\n\n**Loop unrolling** — manually or via `pragma unroll`/compiler flags to reduce loop overhead in hot paths.\n\n**SIMD and vectorization** — modern compilers auto-vectorize simple for loops over contiguous memory when possible.\n\n**`goto`-based loop exit** — using `goto` to break out of nested loops (use labeled loops or flags instead in modern C++).\n\n**Coroutines (C++20) + range adaptors** — generator-based sequences compatible with range-for.",
+            "questions": [
+                {
+                    "question": "What does `std::views::filter` do with a range?",
+                    "options": [
+                        "Modifies elements in place",
+                        "Lazily filters elements satisfying the predicate — doesn't allocate new container",
+                        "Removes elements from the original container",
+                        "Sorts the range"
+                    ],
+                    "answer": "Lazily filters elements satisfying the predicate — doesn't allocate new container"
+                },
+                {
+                    "question": "What is loop unrolling?",
+                    "options": [
+                        "Removing loops entirely",
+                        "Replicating loop body multiple times to reduce loop control overhead",
+                        "Making loops infinite",
+                        "Inlining functions inside loops"
+                    ],
+                    "answer": "Replicating loop body multiple times to reduce loop control overhead"
+                },
+                {
+                    "question": "What enables auto-vectorization of a simple for loop?",
+                    "options": [
+                        "Range-based for only",
+                        "Contiguous memory, independent iterations, simple operations — compiler can emit SIMD instructions",
+                        "Only with `#pragma simd`",
+                        "Using `std::vector` always"
+                    ],
+                    "answer": "Contiguous memory, independent iterations, simple operations — compiler can emit SIMD instructions"
+                },
+                {
+                    "question": "How do `std::ranges` views differ from algorithms?",
+                    "options": [
+                        "Views are lazy (no computation until iterated); algorithms are eager (compute immediately)",
+                        "Views are slower",
+                        "Algorithms are lazy",
+                        "No difference"
+                    ],
+                    "answer": "Views are lazy (no computation until iterated); algorithms are eager (compute immediately)"
+                },
+                {
+                    "question": "What is `std::views::iota(1, 6)` equivalent to?",
+                    "options": [
+                        "Empty range",
+                        "A lazy range [1, 2, 3, 4, 5]",
+                        "A file range",
+                        "An infinite range starting at 1"
+                    ],
+                    "answer": "A lazy range [1, 2, 3, 4, 5]"
+                },
+                {
+                    "question": "Why might a coroutine-based generator work well with range-for?",
+                    "options": [
+                        "Coroutines have built-in iterator support",
+                        "A coroutine that uses `co_yield` can generate values lazily compatible with range-for via a generator type",
+                        "Coroutines are faster than regular functions",
+                        "They eliminate the need for a loop body"
+                    ],
+                    "answer": "A coroutine that uses `co_yield` can generate values lazily compatible with range-for via a generator type"
+                },
+                {
+                    "question": "What is cache locality and why does it matter in loops?",
+                    "options": [
+                        "Unrelated to loops",
+                        "Accessing memory in sequential patterns (like arrays) hits CPU cache efficiently, making loops faster",
+                        "It's about CPU core count",
+                        "It reduces compilation time"
+                    ],
+                    "answer": "Accessing memory in sequential patterns (like arrays) hits CPU cache efficiently, making loops faster"
+                },
+                {
+                    "question": "What does `std::views::zip` (C++23) do?",
+                    "options": [
+                        "Compresses data",
+                        "Combines multiple ranges element-by-element into tuples",
+                        "Sorts two ranges together",
+                        "Filters based on index"
+                    ],
+                    "answer": "Combines multiple ranges element-by-element into tuples"
+                },
+                {
+                    "question": "What is `std::accumulate` vs `std::reduce`?",
+                    "options": [
+                        "Identical",
+                        "`std::accumulate` is sequential and order-dependent; `std::reduce` allows parallel, order-independent execution",
+                        "`std::reduce` is sequential",
+                        "`std::accumulate` is parallel"
+                    ],
+                    "answer": "`std::accumulate` is sequential and order-dependent; `std::reduce` allows parallel, order-independent execution"
+                },
+                {
+                    "question": "What is an `O(n^2)` nested loop problem and how might you reduce it?",
+                    "options": [
+                        "Use a faster machine",
+                        "Look for algorithmic improvements (sorting + binary search, hash sets, sliding windows) to reduce to O(n log n) or O(n)",
+                        "Unroll inner loop",
+                        "Add `-O3` flag"
+                    ],
+                    "answer": "Look for algorithmic improvements (sorting + binary search, hash sets, sliding windows) to reduce to O(n log n) or O(n)"
+                }
+            ]
+        }
+    ]
+}

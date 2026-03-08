@@ -1,0 +1,327 @@
+{
+    "levelno": 1,
+    "topic": "Hello World & Basic Syntax",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Hello World & Basic Syntax — Beginner Level",
+            "theory": "Every Java program needs a class and a `main` method:\n\n```java\npublic class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n```\n\n- `public class HelloWorld` — class name must match the filename\n- `public static void main(String[] args)` — program entry point\n- `System.out.println()` — prints with newline\n- `System.out.print()` — prints without newline\n- Every statement ends with `;`\n- Java is **case-sensitive**\n- Comments: `//` single-line, `/* */` multi-line, `/** */` Javadoc",
+            "questions": [
+                {
+                    "question": "What is the entry point of a Java program?",
+                    "options": [
+                        "`start()` method",
+                        "`main()` method",
+                        "`run()` method",
+                        "`execute()` method"
+                    ],
+                    "answer": "`main()` method"
+                },
+                {
+                    "question": "What is the correct signature for the main method?",
+                    "options": [
+                        "`public void main()`",
+                        "`static void main(String args)`",
+                        "`public static void main(String[] args)`",
+                        "`main(String[] args)`"
+                    ],
+                    "answer": "`public static void main(String[] args)`"
+                },
+                {
+                    "question": "Which prints output with a newline?",
+                    "options": [
+                        "`System.out.print()`",
+                        "`System.out.println()`",
+                        "`System.println()`",
+                        "`Console.print()`"
+                    ],
+                    "answer": "`System.out.println()`"
+                },
+                {
+                    "question": "Java is:",
+                    "options": [
+                        "Case-insensitive",
+                        "Case-sensitive",
+                        "Only uppercase",
+                        "Only lowercase"
+                    ],
+                    "answer": "Case-sensitive"
+                },
+                {
+                    "question": "Class name rule: class `HelloWorld` must be in file:",
+                    "options": [
+                        "`hello.java`",
+                        "`world.java`",
+                        "`HelloWorld.java`",
+                        "`helloworld.java`"
+                    ],
+                    "answer": "`HelloWorld.java`"
+                },
+                {
+                    "question": "What does `System.out.print(\"A\")` do differently from `println`?",
+                    "options": [
+                        "Prints to stderr",
+                        "Prints without a newline",
+                        "Prints to file",
+                        "Prints nothing"
+                    ],
+                    "answer": "Prints without a newline"
+                },
+                {
+                    "question": "End of a Java statement is marked by:",
+                    "options": [
+                        "Newline",
+                        "`::`",
+                        "`;`",
+                        "`:`"
+                    ],
+                    "answer": "`;`"
+                },
+                {
+                    "question": "Correct single-line comment in Java:",
+                    "options": [
+                        "`# comment`",
+                        "`// comment`",
+                        "`-- comment`",
+                        "`/* comment`"
+                    ],
+                    "answer": "`// comment`"
+                },
+                {
+                    "question": "What is a Javadoc comment?",
+                    "options": [
+                        "`//`",
+                        "`/* */`",
+                        "`/** */`",
+                        "`<!-- -->`"
+                    ],
+                    "answer": "`/** */`"
+                },
+                {
+                    "question": "What does `void` in `public static void main` mean?",
+                    "options": [
+                        "Returns nothing",
+                        "Returns void type",
+                        "Both A and B",
+                        "Main returns an int"
+                    ],
+                    "answer": "Both A and B"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Hello World & Basic Syntax — Intermediate Level",
+            "theory": "**Java Compilation & Execution:**\n1. Source code `.java` → compiled to bytecode `.class` by `javac`\n2. JVM executes the `.class` bytecode\n\n**`printf` for formatted output:**\n```java\nSystem.out.printf(\"Name: %s, Age: %d, GPA: %.2f%n\", name, age, gpa);\n```\n\n**`System.err`** — standard error stream, always visible even when stdout is redirected.\n\n**`String.format()`** — creates a formatted string:\n```java\nString s = String.format(\"Score: %d%%\", 95);\n```\n\n**Text blocks (Java 15+):**\n```java\nString json = \"\"\"\n    { \"key\": \"value\" }\n    \"\"\";\n```",
+            "questions": [
+                {
+                    "question": "What does `javac HelloWorld.java` produce?",
+                    "options": [
+                        "`HelloWorld.exe`",
+                        "`HelloWorld.class`",
+                        "`HelloWorld.jar`",
+                        "`HelloWorld.bin`"
+                    ],
+                    "answer": "`HelloWorld.class`"
+                },
+                {
+                    "question": "What executes Java bytecode?",
+                    "options": [
+                        "javac",
+                        "JVM",
+                        "JRE only",
+                        "OS directly"
+                    ],
+                    "answer": "JVM"
+                },
+                {
+                    "question": "What format specifier is used for an integer in `printf`?",
+                    "options": [
+                        "`%s`",
+                        "`%f`",
+                        "`%c`",
+                        "`%d`"
+                    ],
+                    "answer": "`%d`"
+                },
+                {
+                    "question": "What does `%n` in `printf` format string insert?",
+                    "options": [
+                        "A number",
+                        "A null",
+                        "Platform-specific line separator",
+                        "A newline only on Unix"
+                    ],
+                    "answer": "Platform-specific line separator"
+                },
+                {
+                    "question": "What does `String.format(\"%.2f\", 3.14159)` produce?",
+                    "options": [
+                        "`3.14159`",
+                        "`3.14`",
+                        "`3.1`",
+                        "`3.00`"
+                    ],
+                    "answer": "`3.14`"
+                },
+                {
+                    "question": "What are text blocks in Java 15+?",
+                    "options": [
+                        "Another name for StringBuffer",
+                        "Multi-line string literals using triple quotes",
+                        "Character arrays",
+                        "StringBuilder content"
+                    ],
+                    "answer": "Multi-line string literals using triple quotes"
+                },
+                {
+                    "question": "What is JIT compilation?",
+                    "options": [
+                        "javac compiling source",
+                        "JVM compiling bytecode to native machine code at runtime for performance",
+                        "An IDE feature",
+                        "Ahead-of-time compilation only"
+                    ],
+                    "answer": "JVM compiling bytecode to native machine code at runtime for performance"
+                },
+                {
+                    "question": "What is `System.err` used for?",
+                    "options": [
+                        "Standard output",
+                        "Standard error stream — always visible even when stdout redirected",
+                        "File output",
+                        "Debug only"
+                    ],
+                    "answer": "Standard error stream — always visible even when stdout redirected"
+                },
+                {
+                    "question": "What does `%s` format specifier do in printf?",
+                    "options": [
+                        "Formats a string",
+                        "Formats a short",
+                        "Formats a static value",
+                        "Formats a system property"
+                    ],
+                    "answer": "Formats a string"
+                },
+                {
+                    "question": "How do you escape `%` in a printf format string?",
+                    "options": [
+                        "`\\%`",
+                        "`%%`",
+                        "`%pct`",
+                        "Cannot escape"
+                    ],
+                    "answer": "`%%`"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Hello World & Basic Syntax — Expert Level",
+            "theory": "**Java Platform Architecture:**\n- **JDK** — Java Development Kit (compiler + JRE)\n- **JRE** — Java Runtime Environment (JVM + libraries)\n- **JVM** — Java Virtual Machine (executes bytecode)\n\n**`record` (Java 16+):** concise immutable data class:\n```java\nrecord Point(int x, int y) {}\nPoint p = new Point(3, 4);\nSystem.out.println(p.x()); // accessor auto-generated\n```\n\n**Sealed classes (Java 17+):** restrict which classes can extend:\n```java\nsealed interface Shape permits Circle, Square {}\n```\n\n**`var` (Java 10+):** local variable type inference:\n`var list = new ArrayList<String>();`",
+            "questions": [
+                {
+                    "question": "What does JDK stand for?",
+                    "options": [
+                        "Java Deployment Kit",
+                        "Java Development Kit",
+                        "Java Debug Kit",
+                        "Java Data Kit"
+                    ],
+                    "answer": "Java Development Kit"
+                },
+                {
+                    "question": "What is a Java record (Java 16+)?",
+                    "options": [
+                        "A logging utility",
+                        "Concise immutable data class with auto-generated constructor, accessors, equals, hashCode, toString",
+                        "A deprecated class type",
+                        "An annotation"
+                    ],
+                    "answer": "Concise immutable data class with auto-generated constructor, accessors, equals, hashCode, toString"
+                },
+                {
+                    "question": "What does `var` do in Java 10+?",
+                    "options": [
+                        "Declares a variable without a type",
+                        "Local variable type inference — compiler infers the type",
+                        "Dynamic typing",
+                        "Makes variable mutable"
+                    ],
+                    "answer": "Local variable type inference — compiler infers the type"
+                },
+                {
+                    "question": "What are sealed classes (Java 17+) used for?",
+                    "options": [
+                        "Preventing instantiation",
+                        "Restricting which classes can extend/implement them — enables exhaustive pattern matching",
+                        "Making classes immutable",
+                        "A replacement for abstract classes"
+                    ],
+                    "answer": "Restricting which classes can extend/implement them — enables exhaustive pattern matching"
+                },
+                {
+                    "question": "What is `System.out.println` backed by internally?",
+                    "options": [
+                        "A direct syscall",
+                        "A `PrintStream` wrapping a `BufferedOutputStream` wrapping `FileOutputStream` for stdout",
+                        "A Logger",
+                        "A StringBuffer"
+                    ],
+                    "answer": "A `PrintStream` wrapping a `BufferedOutputStream` wrapping `FileOutputStream` for stdout"
+                },
+                {
+                    "question": "What is `--enable-preview` flag used for?",
+                    "options": [
+                        "Debugging",
+                        "Enables preview features not yet final in the current Java release",
+                        "Performance profiling",
+                        "Module system"
+                    ],
+                    "answer": "Enables preview features not yet final in the current Java release"
+                },
+                {
+                    "question": "What is GraalVM native image?",
+                    "options": [
+                        "A JVM variant",
+                        "Ahead-of-time compile Java to a native executable — faster startup, less memory",
+                        "A Java IDE",
+                        "A cloud platform"
+                    ],
+                    "answer": "Ahead-of-time compile Java to a native executable — faster startup, less memory"
+                },
+                {
+                    "question": "What is Project Loom (Java 21)?",
+                    "options": [
+                        "A GUI library",
+                        "Virtual threads — lightweight threads managed by JVM for high-concurrency I/O",
+                        "A logging framework",
+                        "A module system"
+                    ],
+                    "answer": "Virtual threads — lightweight threads managed by JVM for high-concurrency I/O"
+                },
+                {
+                    "question": "What is the `module-info.java` file for (Java 9+)?",
+                    "options": [
+                        "Maven config",
+                        "Defines a module — specifies which packages are exported and which modules are required",
+                        "A test file",
+                        "JVM options"
+                    ],
+                    "answer": "Defines a module — specifies which packages are exported and which modules are required"
+                },
+                {
+                    "question": "What does `Pattern matching for instanceof` (Java 16+) let you do?",
+                    "options": [
+                        "Call regex on objects",
+                        "Combine instanceof check and cast: `if (obj instanceof String s) { use s; }`",
+                        "Match design patterns",
+                        "A switch improvement only"
+                    ],
+                    "answer": "Combine instanceof check and cast: `if (obj instanceof String s) { use s; }`"
+                }
+            ]
+        }
+    ]
+}

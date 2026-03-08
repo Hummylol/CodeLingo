@@ -1,0 +1,327 @@
+{
+    "levelno": 11,
+    "topic": "Backtracking",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Backtracking — Beginner Level",
+            "theory": "**Backtracking** explores all possible solutions by building candidates incrementally and abandoning paths that can't lead to valid solutions.\n\n```python\n# Generate all subsets\ndef subsets(nums):\n    result = []\n    def backtrack(start, path):\n        result.append(path[:])         # add current state\n        for i in range(start, len(nums)):\n            path.append(nums[i])       # choose\n            backtrack(i+1, path)       # explore\n            path.pop()                 # unchoose (backtrack)\n    backtrack(0, [])\n    return result\n```\n\n**Pattern:** choose → explore → unchoose\n\n**Classic problems:** N-Queens, Sudoku, subsets, permutations, combinations, word search.",
+            "questions": [
+                {
+                    "question": "Backtracking is often built on:",
+                    "options": [
+                        "Greedy choices",
+                        "Recursion with undo of choices",
+                        "DP table",
+                        "BFS"
+                    ],
+                    "answer": "Recursion with undo of choices"
+                },
+                {
+                    "question": "The choose → explore → unchoose pattern:",
+                    "options": [
+                        "BFS loop",
+                        "Core of backtracking — select, recurse, then undo selection",
+                        "Greedy selection",
+                        "DP recurrence"
+                    ],
+                    "answer": "Core of backtracking — select, recurse, then undo selection"
+                },
+                {
+                    "question": "N-Queens backtracking places queens such that:",
+                    "options": [
+                        "Each row has one",
+                        "No two queens attack each other (row, col, diagonal)",
+                        "All diagonals filled",
+                        "Columns sorted"
+                    ],
+                    "answer": "No two queens attack each other (row, col, diagonal)"
+                },
+                {
+                    "question": "Subsets of n elements: total number?",
+                    "options": [
+                        "n!",
+                        "n^2",
+                        "2^n",
+                        "n*log n"
+                    ],
+                    "answer": "2^n"
+                },
+                {
+                    "question": "Permutations of n distinct elements: total number?",
+                    "options": [
+                        "n^2",
+                        "2^n",
+                        "n!",
+                        "n*(n-1)"
+                    ],
+                    "answer": "n!"
+                },
+                {
+                    "question": "Pruning in backtracking:",
+                    "options": [
+                        "Removing branches",
+                        "Cutting off search branches when current state can't lead to valid solution",
+                        "Sorting candidates",
+                        "Greedy shortcut"
+                    ],
+                    "answer": "Cutting off search branches when current state can't lead to valid solution"
+                },
+                {
+                    "question": "Word search on grid backtracking marks visited cells to:",
+                    "options": [
+                        "Optimize speed",
+                        "Avoid revisiting the same cell in the current path",
+                        "Sort paths",
+                        "Enable BFS fallback"
+                    ],
+                    "answer": "Avoid revisiting the same cell in the current path"
+                },
+                {
+                    "question": "Combination sum — backtracking base cases:",
+                    "options": [
+                        "When path is long enough",
+                        "When remaining target = 0 (add to result) or target < 0 (prune)",
+                        "When array exhausted only",
+                        "When path has enough elements"
+                    ],
+                    "answer": "When remaining target = 0 (add to result) or target < 0 (prune)"
+                },
+                {
+                    "question": "Backtracking time complexity is typically:",
+                    "options": [
+                        "O(n log n)",
+                        "Exponential — O(2^n) or O(n!) depending on problem",
+                        "O(n^2)",
+                        "O(n)"
+                    ],
+                    "answer": "Exponential — O(2^n) or O(n!) depending on problem"
+                },
+                {
+                    "question": "Generate parentheses: closing paren allowed when:",
+                    "options": [
+                        "Always",
+                        "Number of closing < number of opening parens in current path",
+                        "When count > n",
+                        "Always after opening"
+                    ],
+                    "answer": "Number of closing < number of opening parens in current path"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Backtracking — Intermediate Level",
+            "theory": "**Advanced pruning techniques:**\n- **Constraint propagation:** deduce consequences of choices (Sudoku)\n- **Forward checking:** check if future is still feasible after current choice\n- **MRV heuristic (Minimum Remaining Values):** choose variable with fewest legal values\n\n**Palindrome partitioning:** precompute palindrome table, then backtrack.\n\n**Restore IP addresses:** backtrack with segment count and value constraints.\n\n**Expression add operators:** backtrack all +, -, * combinations between digits.",
+            "questions": [
+                {
+                    "question": "Constraint propagation in backtracking:",
+                    "options": [
+                        "Adding constraints manually",
+                        "Propagate consequences of assignment to reduce future choices — e.g., Sudoku row/col/box elimination",
+                        "Relaxing constraints",
+                        "Greedy constraint satisfaction"
+                    ],
+                    "answer": "Propagate consequences of assignment to reduce future choices — e.g., Sudoku row/col/box elimination"
+                },
+                {
+                    "question": "MRV heuristic selects:",
+                    "options": [
+                        "Variable with most values",
+                        "Variable with fewest remaining legal values — fails fast",
+                        "Random unassigned variable",
+                        "Most constrained value"
+                    ],
+                    "answer": "Variable with fewest remaining legal values — fails fast"
+                },
+                {
+                    "question": "Palindrome partitioning — precomputing palindrome table:",
+                    "options": [
+                        "Makes DP faster",
+                        "O(n^2) preprocessing with expand-around-center or DP reduces palindrome check in backtracking to O(1)",
+                        "Required for correctness",
+                        "Reduces space to O(n)"
+                    ],
+                    "answer": "O(n^2) preprocessing with expand-around-center or DP reduces palindrome check in backtracking to O(1)"
+                },
+                {
+                    "question": "Expression with add operators — why track `prev` multiplicand separately?",
+                    "options": [
+                        "For better pruning",
+                        "Multiplication has higher precedence — need to undo previous addition and redo with multiplication",
+                        "For memoization",
+                        "To count operators"
+                    ],
+                    "answer": "Multiplication has higher precedence — need to undo previous addition and redo with multiplication"
+                },
+                {
+                    "question": "Restore IP addresses — constraints to check:",
+                    "options": [
+                        "Always 4 parts",
+                        "4 segments, each 0-255, no leading zeros unless segment is '0'",
+                        "Digits only",
+                        "Both B and answer must have correct total length"
+                    ],
+                    "answer": "4 segments, each 0-255, no leading zeros unless segment is '0'"
+                },
+                {
+                    "question": "Remove duplicates in subset/permutation backtracking:",
+                    "options": [
+                        "Use a set for results only",
+                        "Sort array, skip duplicate elements at same recursion level",
+                        "Hash all generated results",
+                        "Both B or C — B is cleaner"
+                    ],
+                    "answer": "Sort array, skip duplicate elements at same recursion level"
+                },
+                {
+                    "question": "Backtracking vs BFS for maze solving:",
+                    "options": [
+                        "BFS finds shortest; backtracking doesn't guarantee it",
+                        "BFS guaranteed shortest path in unweighted maze; backtracking finds any path (may not be shortest)",
+                        "Both identical",
+                        "Backtracking is always faster"
+                    ],
+                    "answer": "BFS guaranteed shortest path in unweighted maze; backtracking finds any path (may not be shortest)"
+                },
+                {
+                    "question": "Forward checking in CSP (Constraint Satisfaction Problem):",
+                    "options": [
+                        "After assignment, check if all unassigned variables still have legal values",
+                        "Random value sampling",
+                        "Backtrack immediately on failure",
+                        "Only used with MRV"
+                    ],
+                    "answer": "After assignment, check if all unassigned variables still have legal values"
+                },
+                {
+                    "question": "Sudoku backtracking time complexity (9x9):",
+                    "options": [
+                        "O(9^81)",
+                        "O(9^m) where m = empty cells — pruning makes it much faster in practice",
+                        "O(81!) brute",
+                        "O(729)"
+                    ],
+                    "answer": "O(9^m) where m = empty cells — pruning makes it much faster in practice"
+                },
+                {
+                    "question": "Rat in a maze (multiple paths): backtracking marks cells and:",
+                    "options": [
+                        "Never un-marks",
+                        "Un-marks when backtracking (undo move) to allow other valid paths to use the cell",
+                        "Marks all reachable cells at start",
+                        "Uses BFS instead"
+                    ],
+                    "answer": "Un-marks when backtracking (undo move) to allow other valid paths to use the cell"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Backtracking — Expert Level",
+            "theory": "**Dancing Links (DLX):** Donald Knuth's Algorithm X implementation using doubly linked circular lists for exact cover problems — very fast for Sudoku, pentomino, Sudoku.\n\n**Arc consistency (AC-3):** binary constraint propagation algorithm — prune domains before and during search.\n\n**DPLL algorithm:** backtracking for SAT (Boolean satisfiability) with unit propagation and pure literal elimination.\n\n**Bitmask backtracking:** use bitmasks to represent states/visited in permutation/assignment problems for speed.\n\n**Iterative deepening DFS (IDDFS):** DFS with depth limit, incrementally increased — O(b^d) time, O(d) space.",
+            "questions": [
+                {
+                    "question": "Dancing Links (DLX) Algorithm X solves:",
+                    "options": [
+                        "Shortest path problems",
+                        "Exact cover problems (e.g., Sudoku, pentomino tiling) efficiently",
+                        "Sorting problems",
+                        "SAT problems"
+                    ],
+                    "answer": "Exact cover problems (e.g., Sudoku, pentomino tiling) efficiently"
+                },
+                {
+                    "question": "AC-3 (Arc Consistency) algorithm:",
+                    "options": [
+                        "Checks all assignments",
+                        "Propagates binary constraints, removing inconsistent values from domains before/during search",
+                        "A shortest path variant",
+                        "Greedy constraint selection"
+                    ],
+                    "answer": "Propagates binary constraints, removing inconsistent values from domains before/during search"
+                },
+                {
+                    "question": "DPLL algorithm is for:",
+                    "options": [
+                        "Database queries",
+                        "Boolean SAT — uses backtracking with unit propagation and pure literal elimination",
+                        "Dynamic programming",
+                        "Polynomial-time sorting"
+                    ],
+                    "answer": "Boolean SAT — uses backtracking with unit propagation and pure literal elimination"
+                },
+                {
+                    "question": "IDDFS (Iterative Deepening DFS) combines:",
+                    "options": [
+                        "DFS and BFS",
+                        "DFS space efficiency (O(d)) and BFS completeness/optimality — increases depth limit incrementally",
+                        "BFS and Dijkstra",
+                        "Greedy and backtracking"
+                    ],
+                    "answer": "DFS space efficiency (O(d)) and BFS completeness/optimality — increases depth limit incrementally"
+                },
+                {
+                    "question": "Bitmask backtracking for N-Queens — check column/diagonal in O(1):",
+                    "options": [
+                        "Not possible",
+                        "Use 3 bitmasks: cols, diag1, diag2 — shift diagonals each row, set/unset bits",
+                        "One bitmask only",
+                        "Requires O(n) check"
+                    ],
+                    "answer": "Use 3 bitmasks: cols, diag1, diag2 — shift diagonals each row, set/unset bits"
+                },
+                {
+                    "question": "Branch and bound relates to backtracking by:",
+                    "options": [
+                        "Adding a greedy step",
+                        "Adding a bounding function to prune branches where the bound can't beat current best",
+                        "Replacing recursion with iteration",
+                        "Replacing backtracking entirely"
+                    ],
+                    "answer": "Adding a bounding function to prune branches where the bound can't beat current best"
+                },
+                {
+                    "question": "Minimum Vertex Cover via backtracking:",
+                    "options": [
+                        "Always NP-hard to optimize",
+                        "Fixed-parameter tractable: O(2^k * n) — take or not take edge endpoint, k = cover size",
+                        "Greedy always optimal",
+                        "O(n log n) with sorting"
+                    ],
+                    "answer": "Fixed-parameter tractable: O(2^k * n) — take or not take edge endpoint, k = cover size"
+                },
+                {
+                    "question": "Why does N-Queens backtracking with bitmask run much faster?",
+                    "options": [
+                        "Fewer queens placed",
+                        "O(1) conflict check with bitwise ops — no loops over placed queens",
+                        "Smaller search space",
+                        "Better pivot selection"
+                    ],
+                    "answer": "O(1) conflict check with bitwise ops — no loops over placed queens"
+                },
+                {
+                    "question": "Conflict-directed backjumping (CBJ) improves on chronological backtracking by:",
+                    "options": [
+                        "Always random",
+                        "Jumping back to the most recently assigned variable that caused the conflict",
+                        "Jumping forward",
+                        "Greedy skip"
+                    ],
+                    "answer": "Jumping back to the most recently assigned variable that caused the conflict"
+                },
+                {
+                    "question": "What is symmetry breaking in backtracking?",
+                    "options": [
+                        "Removing duplicate results after search",
+                        "Pruning symmetric branches that will produce equivalent solutions — e.g., N-Queens half-board optimization",
+                        "Breaking cycles in DFS",
+                        "Always divide by symmetry group size"
+                    ],
+                    "answer": "Pruning symmetric branches that will produce equivalent solutions — e.g., N-Queens half-board optimization"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 18,
+    "topic": "Spring Framework Basics",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Spring Framework Basics — Beginner Level",
+            "theory": "Spring is the most popular Java framework for building enterprise applications.\n\n**Core concepts:**\n- **IoC Container** — manages object lifecycle and wiring\n- **Beans** — objects managed by Spring\n- **Dependency Injection** — Spring injects dependencies automatically\n\n```java\n@Component\npublic class GreetService {\n    public String greet(String name) { return \"Hello, \" + name; }\n}\n\n@RestController\npublic class GreetController {\n    @Autowired\n    private GreetService greetService;\n\n    @GetMapping(\"/greet/{name}\")\n    public String greet(@PathVariable String name) {\n        return greetService.greet(name);\n    }\n}\n```",
+            "questions": [
+                {
+                    "question": "What does the Spring IoC container do?",
+                    "options": [
+                        "Runs Java code",
+                        "Manages object lifecycle and wires dependencies automatically",
+                        "Handles database connections only",
+                        "Replaces the JVM"
+                    ],
+                    "answer": "Manages object lifecycle and wires dependencies automatically"
+                },
+                {
+                    "question": "What is a Spring Bean?",
+                    "options": [
+                        "A Java primitive",
+                        "An object managed by the Spring container",
+                        "An EJB",
+                        "A static method"
+                    ],
+                    "answer": "An object managed by the Spring container"
+                },
+                {
+                    "question": "What annotation marks a class as a Spring component?",
+                    "options": [
+                        "`@Bean`",
+                        "`@Inject`",
+                        "`@Component`",
+                        "`@Service`"
+                    ],
+                    "answer": "`@Component`"
+                },
+                {
+                    "question": "What does `@Autowired` do?",
+                    "options": [
+                        "Auto-creates a thread",
+                        "Injects a Spring-managed dependency automatically",
+                        "Starts the application",
+                        "Wires database"
+                    ],
+                    "answer": "Injects a Spring-managed dependency automatically"
+                },
+                {
+                    "question": "What does `@RestController` do?",
+                    "options": [
+                        "Marks a service class",
+                        "Marks a class as a web controller where methods return directly to HTTP response body",
+                        "Creates REST client",
+                        "Same as @Controller"
+                    ],
+                    "answer": "Marks a class as a web controller where methods return directly to HTTP response body"
+                },
+                {
+                    "question": "What does `@GetMapping(\"/path\")` do?",
+                    "options": [
+                        "Maps GET HTTP request for '/path' to the annotated method",
+                        "Defines a data getter",
+                        "Fetches data from DB",
+                        "Reads HTTP headers"
+                    ],
+                    "answer": "Maps GET HTTP request for '/path' to the annotated method"
+                },
+                {
+                    "question": "What is `@Service` annotation?",
+                    "options": [
+                        "A @Repository alias",
+                        "Specialization of @Component for business logic layer",
+                        "A web service endpoint",
+                        "Marks a remote service"
+                    ],
+                    "answer": "Specialization of @Component for business logic layer"
+                },
+                {
+                    "question": "What is `@Repository` annotation?",
+                    "options": [
+                        "Specialization of @Component for data access layer — also enables exception translation",
+                        "A DAO singleton",
+                        "A database factory",
+                        "A cache store"
+                    ],
+                    "answer": "Specialization of @Component for data access layer — also enables exception translation"
+                },
+                {
+                    "question": "What is Spring Boot?",
+                    "options": [
+                        "Spring with a JVM",
+                        "Opinionated Spring application setup with auto-configuration and embedded server",
+                        "Spring for mobile",
+                        "Spring without DI"
+                    ],
+                    "answer": "Opinionated Spring application setup with auto-configuration and embedded server"
+                },
+                {
+                    "question": "What does `application.properties` configure?",
+                    "options": [
+                        "Java classpath",
+                        "Spring Boot application settings — server port, database URL, etc.",
+                        "Maven dependencies",
+                        "JVM options"
+                    ],
+                    "answer": "Spring Boot application settings — server port, database URL, etc."
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Spring Framework Basics — Intermediate Level",
+            "theory": "**Spring MVC request handling:**\n- `@PathVariable` — from URL path\n- `@RequestParam` — from query string\n- `@RequestBody` — from HTTP body (JSON→object)\n- `@ResponseBody` / `@RestController` — return value → HTTP body\n\n**Spring Data JPA:**\n```java\n@Repository\ninterface UserRepo extends JpaRepository<User, Long> {\n    List<User> findByEmail(String email); // auto-generated\n}\n```\n\n**`@Transactional`:** manages transactions.\n\n**Profiles (`@Profile(\"prod\")`):** different beans per environment.\n\n**`@Value(\"${property}\")`:** injects config values.",
+            "questions": [
+                {
+                    "question": "What does `@PathVariable` extract?",
+                    "options": [
+                        "Query param",
+                        "A value from the URL path (e.g., `/users/{id}`)",
+                        "HTTP header",
+                        "Request body"
+                    ],
+                    "answer": "A value from the URL path (e.g., `/users/{id}`)"
+                },
+                {
+                    "question": "What does `@RequestBody` do?",
+                    "options": [
+                        "Reads HTTP headers",
+                        "Deserializes JSON request body into a Java object",
+                        "Reads query params",
+                        "Reads URL path"
+                    ],
+                    "answer": "Deserializes JSON request body into a Java object"
+                },
+                {
+                    "question": "What does `@RequestParam` extract?",
+                    "options": [
+                        "URL path segment",
+                        "Query string parameter (e.g., `?name=Alice`)",
+                        "HTTP body",
+                        "Session attribute"
+                    ],
+                    "answer": "Query string parameter (e.g., `?name=Alice`)"
+                },
+                {
+                    "question": "What does Spring Data JPA's `findByEmail(String email)` method do?",
+                    "options": [
+                        "Requires manual SQL",
+                        "Auto-generates a query from the method name — finds entities by email",
+                        "Calls a stored procedure",
+                        "Returns Optional always"
+                    ],
+                    "answer": "Auto-generates a query from the method name — finds entities by email"
+                },
+                {
+                    "question": "What does `@Transactional` on a service method do?",
+                    "options": [
+                        "Opens a new thread",
+                        "Wraps the method in a transaction — commits on success, rolls back on RuntimeException",
+                        "Creates DB connection",
+                        "Marks readonly"
+                    ],
+                    "answer": "Wraps the method in a transaction — commits on success, rolls back on RuntimeException"
+                },
+                {
+                    "question": "What is `@Profile(\"dev\")` used for?",
+                    "options": [
+                        "Debugging code",
+                        "Activates a bean only when the specified Spring profile is active",
+                        "A test annotation",
+                        "Marks dev environment env vars"
+                    ],
+                    "answer": "Activates a bean only when the specified Spring profile is active"
+                },
+                {
+                    "question": "What does `@Value(\"${server.port}\")` do?",
+                    "options": [
+                        "Sets the port",
+                        "Injects the `server.port` config value from properties into the annotated field",
+                        "Creates a port variable",
+                        "A validation annotation"
+                    ],
+                    "answer": "Injects the `server.port` config value from properties into the annotated field"
+                },
+                {
+                    "question": "What is `ResponseEntity<T>` used for?",
+                    "options": [
+                        "A response template",
+                        "A wrapper that lets you control HTTP status code, headers, and body in Spring MVC",
+                        "A generic return type",
+                        "A DTO class"
+                    ],
+                    "answer": "A wrapper that lets you control HTTP status code, headers, and body in Spring MVC"
+                },
+                {
+                    "question": "What is Spring Security?",
+                    "options": [
+                        "A web firewall",
+                        "A framework for authentication and authorization in Spring applications",
+                        "An SSL tool",
+                        "A network filter"
+                    ],
+                    "answer": "A framework for authentication and authorization in Spring applications"
+                },
+                {
+                    "question": "What is `@ExceptionHandler` used for?",
+                    "options": [
+                        "Logging exceptions",
+                        "Handles specific exception types in a controller — returns custom response for errors",
+                        "Rethrowing exceptions",
+                        "A global error log"
+                    ],
+                    "answer": "Handles specific exception types in a controller — returns custom response for errors"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Spring Framework Basics — Expert Level",
+            "theory": "**Spring AOP (Aspect-Oriented Programming):**\n- `@Aspect` — marks an aspect\n- `@Before`, `@After`, `@Around` — advice types\n- `@Pointcut` — expression matching join points\n- Used for cross-cutting concerns: logging, caching, transactions\n\n**Spring WebFlux:** reactive programming model using Project Reactor (`Mono<T>`, `Flux<T>`).\n\n**`ApplicationContext` vs `BeanFactory`:** ApplicationContext is the full-featured IoC container; BeanFactory is lower-level.\n\n**`@ConditionalOnProperty`:** conditional bean creation based on config properties.",
+            "questions": [
+                {
+                    "question": "What is AOP (Aspect-Oriented Programming)?",
+                    "options": [
+                        "OOP extension",
+                        "Modularizing cross-cutting concerns (logging, security, caching) that span multiple classes",
+                        "A design pattern",
+                        "A Spring-specific concept"
+                    ],
+                    "answer": "Modularizing cross-cutting concerns (logging, security, caching) that span multiple classes"
+                },
+                {
+                    "question": "What is an `@Around` advice in Spring AOP?",
+                    "options": [
+                        "Runs after method only",
+                        "Wraps the method call — can control if/when the method runs and modify return value",
+                        "Logs exceptions",
+                        "A return type interceptor"
+                    ],
+                    "answer": "Wraps the method call — can control if/when the method runs and modify return value"
+                },
+                {
+                    "question": "What is `ProceedingJoinPoint.proceed()`?",
+                    "options": [
+                        "Starts the AOP proxy",
+                        "Continues execution of the intercepted method from within an @Around advice",
+                        "Aborts the method",
+                        "A reflection call"
+                    ],
+                    "answer": "Continues execution of the intercepted method from within an @Around advice"
+                },
+                {
+                    "question": "What is Spring WebFlux?",
+                    "options": [
+                        "A REST framework",
+                        "Reactive web framework using non-blocking I/O with Mono/Flux — handles more concurrent requests per thread",
+                        "A web socket library",
+                        "A deprecated Spring module"
+                    ],
+                    "answer": "Reactive web framework using non-blocking I/O with Mono/Flux — handles more concurrent requests per thread"
+                },
+                {
+                    "question": "What is `Mono<T>` in Project Reactor?",
+                    "options": [
+                        "A single-element stream",
+                        "A reactive type representing 0 or 1 element — equivalent to Optional in reactive",
+                        "A thread monad",
+                        "A blocking computation"
+                    ],
+                    "answer": "A reactive type representing 0 or 1 element — equivalent to Optional in reactive"
+                },
+                {
+                    "question": "What is `@ConditionalOnProperty` used for?",
+                    "options": [
+                        "Validates properties",
+                        "Creates a bean only if a specific property exists/has expected value — conditional bean activation",
+                        "Injects env vars",
+                        "Route configuration"
+                    ],
+                    "answer": "Creates a bean only if a specific property exists/has expected value — conditional bean activation"
+                },
+                {
+                    "question": "What is Spring's `@Cacheable`?",
+                    "options": [
+                        "Caches a class",
+                        "Caches method result on first call — returns cached value on subsequent calls with same args",
+                        "In-memory storage",
+                        "Redis connection"
+                    ],
+                    "answer": "Caches method result on first call — returns cached value on subsequent calls with same args"
+                },
+                {
+                    "question": "What is `@EnableAsync` and `@Async`?",
+                    "options": [
+                        "@EnableAsync activates async support; @Async runs a method in a separate thread from the pool",
+                        "Both for thread safety",
+                        "@Async enables async globally",
+                        "Only for Spring MVC"
+                    ],
+                    "answer": "@EnableAsync activates async support; @Async runs a method in a separate thread from the pool"
+                },
+                {
+                    "question": "What is the Spring Bean scope `prototype`?",
+                    "options": [
+                        "One bean ever",
+                        "A new bean instance created for every injection/request (unlike default singleton)",
+                        "A thread-scoped bean",
+                        "A session bean"
+                    ],
+                    "answer": "A new bean instance created for every injection/request (unlike default singleton)"
+                },
+                {
+                    "question": "What is `BeanPostProcessor`?",
+                    "options": [
+                        "A logging utility",
+                        "An extension point to process/modify beans after creation — used by Spring itself for proxies and AOP",
+                        "A bean validator",
+                        "A startup hook"
+                    ],
+                    "answer": "An extension point to process/modify beans after creation — used by Spring itself for proxies and AOP"
+                }
+            ]
+        }
+    ]
+}

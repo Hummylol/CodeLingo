@@ -1,0 +1,327 @@
+{
+    "levelno": 20,
+    "topic": "Advanced Java & JVM",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Advanced Java & JVM — Beginner Level",
+            "theory": "The **JVM (Java Virtual Machine)** is the runtime that executes Java bytecode.\n\nKey JVM concepts:\n- **Heap** — where objects live\n- **Stack** — where method calls and local variables live\n- **Garbage Collector (GC)** — automatically frees unused objects\n- **Class loader** — loads .class files into JVM\n- **JIT Compiler** — compiles frequently-used bytecode to native machine code\n\n```bash\n# Java compilation and execution\njavac MyProgram.java   # compiles to MyProgram.class\njava MyProgram         # runs on JVM\n```\n\nCommon JVM arguments:\n- `-Xmx512m` — max heap 512MB\n- `-Xms256m` — initial heap 256MB\n- `-verbose:gc` — print GC info",
+            "questions": [
+                {
+                    "question": "What is the JVM?",
+                    "options": [
+                        "Java's IDE",
+                        "The runtime environment that executes Java bytecode",
+                        "A Java compiler",
+                        "A database engine"
+                    ],
+                    "answer": "The runtime environment that executes Java bytecode"
+                },
+                {
+                    "question": "Where are Java objects stored?",
+                    "options": [
+                        "Stack",
+                        "Heap",
+                        "Code segment",
+                        "Register"
+                    ],
+                    "answer": "Heap"
+                },
+                {
+                    "question": "What is JIT compilation?",
+                    "options": [
+                        "Compiling Java source",
+                        "Compiling bytecode to native machine code at runtime for performance",
+                        "Running tests just-in-time",
+                        "A batch compiler"
+                    ],
+                    "answer": "Compiling bytecode to native machine code at runtime for performance"
+                },
+                {
+                    "question": "What does the Garbage Collector do?",
+                    "options": [
+                        "Deletes class files",
+                        "Removes unused objects from heap memory automatically",
+                        "Clears stale threads",
+                        "A memory monitor"
+                    ],
+                    "answer": "Removes unused objects from heap memory automatically"
+                },
+                {
+                    "question": "What does `-Xmx512m` JVM flag do?",
+                    "options": [
+                        "Sets max stack",
+                        "Sets maximum heap size to 512MB",
+                        "Sets min heap",
+                        "Enables 512MB cache"
+                    ],
+                    "answer": "Sets maximum heap size to 512MB"
+                },
+                {
+                    "question": "What is a stack overflow?",
+                    "options": [
+                        "Heap is full",
+                        "Too many nested method calls exhaust the call stack — usually infinite recursion",
+                        "A queue overflow",
+                        "A GC error"
+                    ],
+                    "answer": "Too many nested method calls exhaust the call stack — usually infinite recursion"
+                },
+                {
+                    "question": "What exception is thrown on stack overflow?",
+                    "options": [
+                        "`OutOfMemoryError`",
+                        "`StackOverflowError`",
+                        "`StackException`",
+                        "`RecursionError`"
+                    ],
+                    "answer": "`StackOverflowError`"
+                },
+                {
+                    "question": "What exception is thrown when heap is exhausted?",
+                    "options": [
+                        "`StackOverflowError`",
+                        "`HeapException`",
+                        "`OutOfMemoryError`",
+                        "`MemoryFull`"
+                    ],
+                    "answer": "`OutOfMemoryError`"
+                },
+                {
+                    "question": "What is a class loader?",
+                    "options": [
+                        "A debugger tool",
+                        "The JVM component that loads .class files from the classpath at runtime",
+                        "A Maven plugin",
+                        "A compile-time step"
+                    ],
+                    "answer": "The JVM component that loads .class files from the classpath at runtime"
+                },
+                {
+                    "question": "What is the class loader hierarchy?",
+                    "options": [
+                        "Only one class loader",
+                        "Bootstrap → Extension → Application — parent-first delegation model",
+                        "JVM → App → Module",
+                        "Maven → JDK → JVM"
+                    ],
+                    "answer": "Bootstrap → Extension → Application — parent-first delegation model"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Advanced Java & JVM — Intermediate Level",
+            "theory": "**Reflection API:** inspect and manipulate classes, methods, and fields at runtime:\n```java\nClass<?> c = Class.forName(\"com.example.MyClass\");\nMethod m = c.getMethod(\"sayHello\");\nObject obj = c.getDeclaredConstructor().newInstance();\nm.invoke(obj);\n```\n\n**GC algorithms:**\n- Serial GC (single thread)\n- Parallel GC (throughput)\n- G1 GC (default since Java 9)\n- ZGC / Shenandoah (low-latency)\n\n**Java modules (Java 9+):** `module-info.java` — encapsulate packages.\n\n**`jmap`, `jstack`, `jconsole`** — JVM diagnostic tools.",
+            "questions": [
+                {
+                    "question": "What is the Java Reflection API?",
+                    "options": [
+                        "A mirroring library",
+                        "Allows inspection and manipulation of classes, methods, fields at runtime",
+                        "A design pattern",
+                        "A compiler feature"
+                    ],
+                    "answer": "Allows inspection and manipulation of classes, methods, fields at runtime"
+                },
+                {
+                    "question": "What does `Class.forName(\"com.MyClass\")` do?",
+                    "options": [
+                        "Creates MyClass",
+                        "Loads and returns the Class object for MyClass at runtime",
+                        "Compiles MyClass",
+                        "Validates the class path"
+                    ],
+                    "answer": "Loads and returns the Class object for MyClass at runtime"
+                },
+                {
+                    "question": "What is G1 GC?",
+                    "options": [
+                        "An old JVM GC",
+                        "Garbage First — default GC since Java 9, balancing throughput and low pause times",
+                        "A serial collector",
+                        "A C++ GC ported to Java"
+                    ],
+                    "answer": "Garbage First — default GC since Java 9, balancing throughput and low pause times"
+                },
+                {
+                    "question": "What is ZGC designed for?",
+                    "options": [
+                        "Throughput only",
+                        "Ultra-low pause times (sub-millisecond) for large heaps",
+                        "Small heap applications",
+                        "Replacing G1 in all cases"
+                    ],
+                    "answer": "Ultra-low pause times (sub-millisecond) for large heaps"
+                },
+                {
+                    "question": "What does `jstack` tool do?",
+                    "options": [
+                        "Shows heap stats",
+                        "Shows thread stack traces — useful for diagnosing deadlocks and hangs",
+                        "Dumps class files",
+                        "Shows GC logs"
+                    ],
+                    "answer": "Shows thread stack traces — useful for diagnosing deadlocks and hangs"
+                },
+                {
+                    "question": "What is the Java Module System (Java 9+)?",
+                    "options": [
+                        "A Maven plugin",
+                        "Defines modules encapsulating packages — `requires`/`exports` in `module-info.java`",
+                        "An OSGi replacement",
+                        "A classloader change"
+                    ],
+                    "answer": "Defines modules encapsulating packages — `requires`/`exports` in `module-info.java`"
+                },
+                {
+                    "question": "What does `setAccessible(true)` on a Method do?",
+                    "options": [
+                        "Makes it public permanently",
+                        "Bypasses access checks for reflection — allows calling private methods (use carefully)",
+                        "Marks it final",
+                        "Thread-safe access"
+                    ],
+                    "answer": "Bypasses access checks for reflection — allows calling private methods (use carefully)"
+                },
+                {
+                    "question": "What is metaspace (Java 8+)?",
+                    "options": [
+                        "Class metadata storage — moved out of PermGen to native memory, no fixed size limit by default",
+                        "A heap region",
+                        "A string pool",
+                        "A code cache"
+                    ],
+                    "answer": "Class metadata storage — moved out of PermGen to native memory, no fixed size limit by default"
+                },
+                {
+                    "question": "What is `jmap -heap <pid>` used for?",
+                    "options": [
+                        "Kill a process",
+                        "Show heap memory stats for a running JVM process",
+                        "Dump objects",
+                        "Only for GC tuning"
+                    ],
+                    "answer": "Show heap memory stats for a running JVM process"
+                },
+                {
+                    "question": "What is a memory leak in Java?",
+                    "options": [
+                        "GC bug",
+                        "Objects that are still referenced but no longer needed — GC can't collect them, heap grows over time",
+                        "An OutOfMemoryError always",
+                        "A thread deadlock"
+                    ],
+                    "answer": "Objects that are still referenced but no longer needed — GC can't collect them, heap grows over time"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Advanced Java & JVM — Expert Level",
+            "theory": "**`java.lang.instrument` + Java Agents:** run code before class loading — used for profilers, APMs (like New Relic, Datadog).\n\n**Unsafe operations (`sun.misc.Unsafe` / `java.lang.foreign`):** direct memory allocation, CAS operations — used by performance-critical libraries.\n\n**JVM flags for GC tuning:** `-XX:+UseG1GC`, `-XX:MaxGCPauseMillis=200`, `-XX:+PrintGCDetails`.\n\n**JFR (Java Flight Recorder):** low-overhead, profiling events built into the JVM.\n\n**GraalVM polyglot:** run Python, JS, Ruby on GraalVM JVM via Truffle framework.",
+            "questions": [
+                {
+                    "question": "What is a Java Agent?",
+                    "options": [
+                        "An AI agent in Java",
+                        "Code that runs at JVM startup before classes load — used for bytecode instrumentation, profiling",
+                        "A proxy object",
+                        "A thread manager"
+                    ],
+                    "answer": "Code that runs at JVM startup before classes load — used for bytecode instrumentation, profiling"
+                },
+                {
+                    "question": "What is `sun.misc.Unsafe` (or `java.lang.foreign`) used for?",
+                    "options": [
+                        "Unsafe casting only",
+                        "Direct memory access, off-heap allocation, CAS — used by JVM internals and performance-critical frameworks",
+                        "A security vulnerability",
+                        "A testing tool"
+                    ],
+                    "answer": "Direct memory access, off-heap allocation, CAS — used by JVM internals and performance-critical frameworks"
+                },
+                {
+                    "question": "What is JFR (Java Flight Recorder)?",
+                    "options": [
+                        "A logging framework",
+                        "Built-in, low-overhead JVM profiling tool — records JVM events for analysis with JMC",
+                        "A flight simulation",
+                        "An async framework"
+                    ],
+                    "answer": "Built-in, low-overhead JVM profiling tool — records JVM events for analysis with JMC"
+                },
+                {
+                    "question": "What does `-XX:MaxGCPauseMillis=200` do?",
+                    "options": [
+                        "Sets max GC frequency",
+                        "Sets target max GC pause time to 200ms — hint to G1 GC for scheduling",
+                        "Limits GC threads",
+                        "Delays GC until 200ms idle"
+                    ],
+                    "answer": "Sets target max GC pause time to 200ms — hint to G1 GC for scheduling"
+                },
+                {
+                    "question": "What is GraalVM's Truffle framework?",
+                    "options": [
+                        "A template engine",
+                        "An AST interpreter framework for implementing language runtimes on GraalVM — enables polyglot",
+                        "A build tool",
+                        "A Spring alternative"
+                    ],
+                    "answer": "An AST interpreter framework for implementing language runtimes on GraalVM — enables polyglot"
+                },
+                {
+                    "question": "What is bytecode instrumentation?",
+                    "options": [
+                        "Editing source code",
+                        "Modifying compiled bytecode to inject behavior (e.g., profiling, tracing) without changing source",
+                        "A JIT technique",
+                        "A security scan"
+                    ],
+                    "answer": "Modifying compiled bytecode to inject behavior (e.g., profiling, tracing) without changing source"
+                },
+                {
+                    "question": "What is `CompressedOops` in JVM?",
+                    "options": [
+                        "A memory compression",
+                        "Compressed object pointer encoding — reduces heap pointer size from 64-bit to 32-bit for smaller heaps",
+                        "A JIT optimization",
+                        "A GC technique"
+                    ],
+                    "answer": "Compressed object pointer encoding — reduces heap pointer size from 64-bit to 32-bit for smaller heaps"
+                },
+                {
+                    "question": "What is `Epsilon GC`?",
+                    "options": [
+                        "A low-latency GC",
+                        "A no-op GC — for testing, short-lived tasks; OOM when heap exhausted",
+                        "The fastest GC",
+                        "A GC for ZGC replacement"
+                    ],
+                    "answer": "A no-op GC — for testing, short-lived tasks; OOM when heap exhausted"
+                },
+                {
+                    "question": "What is TLAB (Thread-Local Allocation Buffer)?",
+                    "options": [
+                        "A thread-local cache",
+                        "Per-thread region in heap for fast short-circuit object allocation without locking",
+                        "A thread buffer for I/O",
+                        "A stack region"
+                    ],
+                    "answer": "Per-thread region in heap for fast short-circuit object allocation without locking"
+                },
+                {
+                    "question": "What is `safepoint` in JVM?",
+                    "options": [
+                        "A breakpoint",
+                        "A point where all threads are paused so JVM can perform operations (GC, thread dumps)",
+                        "A memory checkpoint",
+                        "A thread barrier"
+                    ],
+                    "answer": "A point where all threads are paused so JVM can perform operations (GC, thread dumps)"
+                }
+            ]
+        }
+    ]
+}

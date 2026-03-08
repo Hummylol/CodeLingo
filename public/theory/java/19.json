@@ -1,0 +1,327 @@
+{
+    "levelno": 19,
+    "topic": "Testing in Java",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Testing in Java — Beginner Level",
+            "theory": "Java testing uses frameworks like **JUnit 5** and **Mockito**.\n\n```java\nimport org.junit.jupiter.api.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass CalculatorTest {\n    Calculator calc = new Calculator();\n\n    @Test\n    void testAdd() {\n        assertEquals(5, calc.add(2, 3));\n    }\n\n    @Test\n    void testDivideByZero() {\n        assertThrows(ArithmeticException.class, () -> calc.divide(10, 0));\n    }\n}\n```\n\n- `@Test` — marks a test method\n- `assertEquals(expected, actual)` — checks equality\n- `assertTrue`, `assertFalse`, `assertNull`, `assertNotNull`\n- `assertThrows` — verifies an exception is thrown\n- Tests should be independent, deterministic, fast",
+            "questions": [
+                {
+                    "question": "Which annotation marks a test method in JUnit 5?",
+                    "options": [
+                        "`@TestMethod`",
+                        "`@Test`",
+                        "`@JUnit`",
+                        "`@Verify`"
+                    ],
+                    "answer": "`@Test`"
+                },
+                {
+                    "question": "What does `assertEquals(5, calc.add(2,3))` do?",
+                    "options": [
+                        "Returns 5",
+                        "Asserts that 5 equals the result of add(2,3) — fails if not equal",
+                        "Sets the result",
+                        "Logs the result"
+                    ],
+                    "answer": "Asserts that 5 equals the result of add(2,3) — fails if not equal"
+                },
+                {
+                    "question": "What does `assertThrows(Ex.class, () -> {...})` do?",
+                    "options": [
+                        "Runs and ignores exceptions",
+                        "Asserts that the lambda throws the specified exception type",
+                        "Catches and logs",
+                        "Checks exception message only"
+                    ],
+                    "answer": "Asserts that the lambda throws the specified exception type"
+                },
+                {
+                    "question": "What is a unit test?",
+                    "options": [
+                        "Testing the whole app",
+                        "Testing a single unit (class/method) in isolation",
+                        "An integration test",
+                        "A UI test"
+                    ],
+                    "answer": "Testing a single unit (class/method) in isolation"
+                },
+                {
+                    "question": "What is a good unit test property?",
+                    "options": [
+                        "Slow but thorough",
+                        "Fast, independent, repeatable, self-validating",
+                        "Requires database",
+                        "Tests many classes together"
+                    ],
+                    "answer": "Fast, independent, repeatable, self-validating"
+                },
+                {
+                    "question": "What is `@BeforeEach` in JUnit 5?",
+                    "options": [
+                        "Runs once before all tests",
+                        "Runs before each test method — used for setup",
+                        "Runs after each test",
+                        "A test condition"
+                    ],
+                    "answer": "Runs before each test method — used for setup"
+                },
+                {
+                    "question": "What is `@AfterEach` used for?",
+                    "options": [
+                        "Runs after all tests",
+                        "Cleanup code that runs after each test method",
+                        "A test teardown annotation",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What is test coverage?",
+                    "options": [
+                        "Number of tests",
+                        "Percentage of code executed by tests — high coverage is desirable but not sufficient alone",
+                        "Number of passed tests",
+                        "A code metric only"
+                    ],
+                    "answer": "Percentage of code executed by tests — high coverage is desirable but not sufficient alone"
+                },
+                {
+                    "question": "What is a test double?",
+                    "options": [
+                        "Two test classes",
+                        "A generic term for replacements used in tests: stubs, mocks, fakes, spies",
+                        "JUnit's paired assertions",
+                        "A parametrized test"
+                    ],
+                    "answer": "A generic term for replacements used in tests: stubs, mocks, fakes, spies"
+                },
+                {
+                    "question": "What is Mockito used for?",
+                    "options": [
+                        "Performance testing",
+                        "Creating mock objects for unit testing — avoids real dependencies (DB, network)",
+                        "Integration tests",
+                        "A test runner"
+                    ],
+                    "answer": "Creating mock objects for unit testing — avoids real dependencies (DB, network)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Testing in Java — Intermediate Level",
+            "theory": "**Mockito:**\n```java\n@Mock UserRepository repo;\n@InjectMocks UserService service;\n\n@Test void testFind() {\n    when(repo.findById(1L)).thenReturn(Optional.of(new User(\"Alice\")));\n    User u = service.findUser(1L);\n    assertEquals(\"Alice\", u.getName());\n    verify(repo).findById(1L);\n}\n```\n\n**Parameterized tests (JUnit 5):**\n```java\n@ParameterizedTest\n@ValueSource(ints = {1,2,3})\nvoid testPositive(int n) { assertTrue(n > 0); }\n```\n\n**Integration tests:** test multiple components together — usually slower, may use embedded DB.\n\n**`@SpringBootTest`:** loads the full Spring application context for integration tests.",
+            "questions": [
+                {
+                    "question": "What does `when(repo.findById(1L)).thenReturn(opt)` do in Mockito?",
+                    "options": [
+                        "Calls real findById",
+                        "Stubs the method — when called with 1L, returns opt instead of real implementation",
+                        "Verifies call count",
+                        "Throws exception"
+                    ],
+                    "answer": "Stubs the method — when called with 1L, returns opt instead of real implementation"
+                },
+                {
+                    "question": "What does `verify(mock).method()` do?",
+                    "options": [
+                        "Calls the method",
+                        "Verifies the method was called exactly once on the mock",
+                        "Returns the method result",
+                        "Stubs the method"
+                    ],
+                    "answer": "Verifies the method was called exactly once on the mock"
+                },
+                {
+                    "question": "What is `@InjectMocks` in Mockito?",
+                    "options": [
+                        "Creates the mock",
+                        "Creates the class under test and injects `@Mock` fields into it",
+                        "Spy on the class",
+                        "Required for all tests"
+                    ],
+                    "answer": "Creates the class under test and injects `@Mock` fields into it"
+                },
+                {
+                    "question": "What is a parameterized test?",
+                    "options": [
+                        "Test with many mocks",
+                        "A test that runs multiple times with different arguments",
+                        "A parallel test",
+                        "A test with parameters in name"
+                    ],
+                    "answer": "A test that runs multiple times with different arguments"
+                },
+                {
+                    "question": "What is `@ValueSource` in JUnit 5?",
+                    "options": [
+                        "A source for values to configure the test runner",
+                        "Provides literal values to parameterized tests",
+                        "A CSV source",
+                        "A method source"
+                    ],
+                    "answer": "Provides literal values to parameterized tests"
+                },
+                {
+                    "question": "What is `@SpringBootTest`?",
+                    "options": [
+                        "Marks Spring unit tests",
+                        "Loads full Spring application context for integration tests",
+                        "A mock annotation",
+                        "A SpringMVC test"
+                    ],
+                    "answer": "Loads full Spring application context for integration tests"
+                },
+                {
+                    "question": "What is TDD (Test-Driven Development)?",
+                    "options": [
+                        "Writing tests alongside code",
+                        "Write failing test first, then implement code to make it pass, then refactor (Red-Green-Refactor)",
+                        "A CI/CD approach",
+                        "Writing tests after code"
+                    ],
+                    "answer": "Write failing test first, then implement code to make it pass, then refactor (Red-Green-Refactor)"
+                },
+                {
+                    "question": "What is `doThrow(Ex).when(mock).method()` in Mockito?",
+                    "options": [
+                        "Verifies exception is thrown",
+                        "Configures mock to throw exception when method is called — used for void methods",
+                        "Ignores exceptions",
+                        "Wraps in Optional"
+                    ],
+                    "answer": "Configures mock to throw exception when method is called — used for void methods"
+                },
+                {
+                    "question": "What does `@ExtendWith(MockitoExtension.class)` do?",
+                    "options": [
+                        "Enables Spring context",
+                        "Registers Mockito annotations (@Mock, @InjectMocks) for JUnit 5 tests",
+                        "Enables parallel tests",
+                        "Imports Mockito jars"
+                    ],
+                    "answer": "Registers Mockito annotations (@Mock, @InjectMocks) for JUnit 5 tests"
+                },
+                {
+                    "question": "What is `Mockito.spy(obj)` vs `Mockito.mock(class)`?",
+                    "options": [
+                        "Same",
+                        "spy wraps real object (calls real methods unless stubbed); mock creates a fake object with no real behavior",
+                        "spy is faster",
+                        "mock wraps real object"
+                    ],
+                    "answer": "spy wraps real object (calls real methods unless stubbed); mock creates a fake object with no real behavior"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Testing in Java — Expert Level",
+            "theory": "**Test containers:** use real Docker containers for integration tests (Postgres, Redis).\n\n**Architecture tests (ArchUnit):** assert architectural rules in code:\n```java\nnoClasses().that().resideInPackage(\"..controller..\").should().accessClassesThat().resideInPackage(\"..repository..\");\n```\n\n**Property-based testing (jqwik):** auto-generate test inputs and test properties.\n\n**Mutation testing (PIT):** inject code mutations and check if tests catch them — measures test quality.\n\n**WireMock:** mock HTTP servers for testing external API clients.",
+            "questions": [
+                {
+                    "question": "What are Testcontainers?",
+                    "options": [
+                        "Docker containers packaged as JARs",
+                        "JUnit integration that provides throwaway Docker containers for integration testing (DB, Redis, etc.)",
+                        "A container for test data",
+                        "A mock framework"
+                    ],
+                    "answer": "JUnit integration that provides throwaway Docker containers for integration testing (DB, Redis, etc.)"
+                },
+                {
+                    "question": "What is ArchUnit used for?",
+                    "options": [
+                        "Architecture diagrams",
+                        "Enforcing architectural rules as unit tests (e.g., no controllers accessing repositories directly)",
+                        "System tests",
+                        "UML generation"
+                    ],
+                    "answer": "Enforcing architectural rules as unit tests (e.g., no controllers accessing repositories directly)"
+                },
+                {
+                    "question": "What is property-based testing?",
+                    "options": [
+                        "Testing method properties",
+                        "Generating random inputs and testing that properties (invariants) always hold — finds edge cases",
+                        "Testing SQL properties",
+                        "Meta-test framework"
+                    ],
+                    "answer": "Generating random inputs and testing that properties (invariants) always hold — finds edge cases"
+                },
+                {
+                    "question": "What is mutation testing (PIT)?",
+                    "options": [
+                        "Testing mutations in code",
+                        "Injecting code mutations (kill a +, flip a condition) and verifying tests catch them — measures test quality",
+                        "A fuzzing technique",
+                        "API mutation testing"
+                    ],
+                    "answer": "Injecting code mutations (kill a +, flip a condition) and verifying tests catch them — measures test quality"
+                },
+                {
+                    "question": "What is WireMock?",
+                    "options": [
+                        "A Mockito extension",
+                        "A library that mocks HTTP servers — lets you test API clients without real external services",
+                        "A WebClient mock",
+                        "A Spring Mock tool"
+                    ],
+                    "answer": "A library that mocks HTTP servers — lets you test API clients without real external services"
+                },
+                {
+                    "question": "What is `@DirtiesContext` in Spring tests?",
+                    "options": [
+                        "Marks dirty code",
+                        "Signals that the test modifies the Spring context — forces context reload for subsequent tests",
+                        "A debug annotation",
+                        "Makes context shared"
+                    ],
+                    "answer": "Signals that the test modifies the Spring context — forces context reload for subsequent tests"
+                },
+                {
+                    "question": "What is a contract test?",
+                    "options": [
+                        "Legal test requirements",
+                        "Test verifying both producer and consumer of an API agree on the contract (e.g., Pact)",
+                        "A JDBC test",
+                        "API documentation test"
+                    ],
+                    "answer": "Test verifying both producer and consumer of an API agree on the contract (e.g., Pact)"
+                },
+                {
+                    "question": "What is `@MockBean` in Spring Boot tests?",
+                    "options": [
+                        "Mockito mock",
+                        "Replaces a Spring bean with a Mockito mock in the application context for testing",
+                        "A fake repository",
+                        "An @Autowired mock"
+                    ],
+                    "answer": "Replaces a Spring bean with a Mockito mock in the application context for testing"
+                },
+                {
+                    "question": "What is the given-when-then (GWT) test structure?",
+                    "options": [
+                        "A testing paradigm",
+                        "Arrange (given) test state, Act (when) call the code, Assert (then) verify results — BDD style",
+                        "A JUnit setup",
+                        "A mock protocol"
+                    ],
+                    "answer": "Arrange (given) test state, Act (when) call the code, Assert (then) verify results — BDD style"
+                },
+                {
+                    "question": "What is flaky test?",
+                    "options": [
+                        "A failed test",
+                        "A test that sometimes passes, sometimes fails without code changes — due to timing, random, or external dependency",
+                        "A slow test",
+                        "A mutation-killed test"
+                    ],
+                    "answer": "A test that sometimes passes, sometimes fails without code changes — due to timing, random, or external dependency"
+                }
+            ]
+        }
+    ]
+}

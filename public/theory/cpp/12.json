@@ -1,0 +1,327 @@
+{
+    "levelno": 12,
+    "topic": "References",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "References — Beginner Level",
+            "theory": "A reference is an **alias** for an existing variable. Once bound, it cannot be rebound.\n\n```cpp\nint original = 100;\nint& ref = original;  // ref is an alias for original\n\nref = 200;            // changes original to 200\nstd::cout << original; // prints 200\n```\n\n**Key rules:**\n- Must be **initialized** when declared\n- Cannot be null\n- Cannot be rebound to another variable\n- Automatically dereferenced (no `*` needed)\n\n**Pass by reference in functions:**\n```cpp\nvoid doubleIt(int& n) { n *= 2; }\nint x = 5;\ndoubleIt(x); // x is now 10\n```",
+            "questions": [
+                {
+                    "question": "What is a reference in C++?",
+                    "options": [
+                        "Stores a memory address",
+                        "An alias for an existing variable",
+                        "A copy of a variable",
+                        "A special pointer"
+                    ],
+                    "answer": "An alias for an existing variable"
+                },
+                {
+                    "question": "Which symbol declares a reference?",
+                    "options": [
+                        "`*`",
+                        "`&`",
+                        "`@`",
+                        "`%`"
+                    ],
+                    "answer": "`&`"
+                },
+                {
+                    "question": "Which statement about references is TRUE?",
+                    "options": [
+                        "A reference can be null",
+                        "Must be initialized when declared",
+                        "Can be rebound later",
+                        "Stores the address"
+                    ],
+                    "answer": "Must be initialized when declared"
+                },
+                {
+                    "question": "If `int x=10; int& r=x; r=20;`, what is `x`?",
+                    "options": [
+                        "10",
+                        "20",
+                        "Address of r",
+                        "Error"
+                    ],
+                    "answer": "20"
+                },
+                {
+                    "question": "Primary use case for references?",
+                    "options": [
+                        "Dynamic allocation",
+                        "Creating arrays of aliases",
+                        "Pass-by-reference to avoid copying",
+                        "Storing null values"
+                    ],
+                    "answer": "Pass-by-reference to avoid copying"
+                },
+                {
+                    "question": "How is a reference different from a pointer?",
+                    "options": [
+                        "Reference is auto-dereferenced and cannot be null",
+                        "Pointer is an alias",
+                        "No difference",
+                        "References are less safe"
+                    ],
+                    "answer": "Reference is auto-dereferenced and cannot be null"
+                },
+                {
+                    "question": "Which declaration is invalid?",
+                    "options": [
+                        "`int x=5; int& r=x;`",
+                        "`int &r;`",
+                        "`const int x=5; const int& r=x;`",
+                        "`int x=5,y=10; int& r=x;`"
+                    ],
+                    "answer": "`int &r;`"
+                },
+                {
+                    "question": "When passing by reference, the function works with:",
+                    "options": [
+                        "A copy",
+                        "The original variable",
+                        "A pointer",
+                        "A const version"
+                    ],
+                    "answer": "The original variable"
+                },
+                {
+                    "question": "To prevent modification through a reference, declare the parameter as:",
+                    "options": [
+                        "`static`",
+                        "`void`",
+                        "`const`",
+                        "`private`"
+                    ],
+                    "answer": "`const`"
+                },
+                {
+                    "question": "Do references need dereferencing like pointers?",
+                    "options": [
+                        "Yes, using `*`",
+                        "Yes, using `&`",
+                        "No — used like the original variable",
+                        "Only inside functions"
+                    ],
+                    "answer": "No — used like the original variable"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "References — Intermediate Level",
+            "theory": "**Rvalue references (C++11):** bind to temporaries and enable move semantics.\n```cpp\nint&& rref = 42;    // rvalue reference\nstd::string&& s = std::string(\"temp\");\n```\n\n**`std::move`:** casts to rvalue reference — enables move constructor/assignment:\n```cpp\nstd::vector<int> a = {1,2,3};\nstd::vector<int> b = std::move(a); // a is now empty\n```\n\n**Forwarding references (universal references):**\n```cpp\ntemplate<typename T>\nvoid f(T&& arg) { ... } // T&& is a forwarding ref if T is deduced\n```\nUse `std::forward<T>(arg)` to preserve lvalue/rvalue category.",
+            "questions": [
+                {
+                    "question": "What is an rvalue reference?",
+                    "options": [
+                        "A reference to a const value",
+                        "A reference that can bind to temporaries (rvalues)",
+                        "Same as std::ref",
+                        "A reference to a global"
+                    ],
+                    "answer": "A reference that can bind to temporaries (rvalues)"
+                },
+                {
+                    "question": "What does `std::move(x)` do?",
+                    "options": [
+                        "Moves x to a new memory location",
+                        "Casts x to an rvalue reference, enabling move semantics",
+                        "Copies x",
+                        "Deletes x"
+                    ],
+                    "answer": "Casts x to an rvalue reference, enabling move semantics"
+                },
+                {
+                    "question": "After `auto b = std::move(a)` (vector), what is the state of `a`?",
+                    "options": [
+                        "Unchanged",
+                        "Deleted",
+                        "In a valid but unspecified state (typically empty)",
+                        "Null"
+                    ],
+                    "answer": "In a valid but unspecified state (typically empty)"
+                },
+                {
+                    "question": "What is a forwarding reference?",
+                    "options": [
+                        "Always an lvalue ref",
+                        "An rvalue ref to a specific type",
+                        "`T&&` in a template where T is deduced — can bind to both lvalues and rvalues",
+                        "A ref to a forward declaration"
+                    ],
+                    "answer": "`T&&` in a template where T is deduced — can bind to both lvalues and rvalues"
+                },
+                {
+                    "question": "What does `std::forward<T>(arg)` do?",
+                    "options": [
+                        "Always casts to rvalue",
+                        "Preserves the original value category of arg",
+                        "Always casts to lvalue",
+                        "Copies arg"
+                    ],
+                    "answer": "Preserves the original value category of arg"
+                },
+                {
+                    "question": "What is the move constructor?",
+                    "options": [
+                        "Copies resources from another object",
+                        "Transfers resources from a (temporary) object avoiding expensive copies",
+                        "Constructs from nullptr",
+                        "A deleted constructor"
+                    ],
+                    "answer": "Transfers resources from a (temporary) object avoiding expensive copies"
+                },
+                {
+                    "question": "A const lvalue reference can bind to:",
+                    "options": [
+                        "Only lvalues",
+                        "Only rvalues",
+                        "Both lvalues and rvalues (temporaries)",
+                        "Only pointers"
+                    ],
+                    "answer": "Both lvalues and rvalues (temporaries)"
+                },
+                {
+                    "question": "What is a 'move-only' type?",
+                    "options": [
+                        "A type that cannot be copied, only moved (like `unique_ptr`)",
+                        "A type that can only be moved to a global",
+                        "A type with no constructor",
+                        "A type requiring GPU"
+                    ],
+                    "answer": "A type that cannot be copied, only moved (like `unique_ptr`)"
+                },
+                {
+                    "question": "What lifetime issue do rvalue references NOT solve?",
+                    "options": [
+                        "Performance",
+                        "Dangling references — extending lifetime of temporaries requires `const T&` or explicit variable",
+                        "Move efficiency",
+                        "None"
+                    ],
+                    "answer": "Dangling references — extending lifetime of temporaries requires `const T&` or explicit variable"
+                },
+                {
+                    "question": "What is the Rule of Five in C++11?",
+                    "options": [
+                        "5 access specifiers",
+                        "If you define any of destructor/copy ctor/copy assign/move ctor/move assign, define all five",
+                        "5 smart pointer types",
+                        "5 operator overloads required"
+                    ],
+                    "answer": "If you define any of destructor/copy ctor/copy assign/move ctor/move assign, define all five"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "References — Expert Level",
+            "theory": "**Reference collapsing rules (deduction):**\n- `T& &` → `T&`\n- `T& &&` → `T&`\n- `T&& &` → `T&`\n- `T&& &&` → `T&&`\n\n**Structured bindings with references (C++17):**\n```cpp\nauto& [key, val] = *myMap.find(k); // binds by reference to map entry\n```\n\n**`std::reference_wrapper<T>` (`std::ref`, `std::cref`)** — stores a reference in a copyable, assignable object (useful for passing refs into containers or algorithms).\n\n**Lifetime extension:** binding a `const T&` or `T&&` to a temporary extends the temporary's lifetime to that of the reference.",
+            "questions": [
+                {
+                    "question": "What do reference collapsing rules determine?",
+                    "options": [
+                        "How many refs are allowed",
+                        "The resulting reference type when composing reference types in template deduction",
+                        "Whether a ref can be null",
+                        "How refs are stored in memory"
+                    ],
+                    "answer": "The resulting reference type when composing reference types in template deduction"
+                },
+                {
+                    "question": "What does `T& &&` collapse to?",
+                    "options": [
+                        "`T&&`",
+                        "`T&`",
+                        "`T`",
+                        "Error"
+                    ],
+                    "answer": "`T&`"
+                },
+                {
+                    "question": "What does `std::ref(x)` return?",
+                    "options": [
+                        "A copy of x",
+                        "A `std::reference_wrapper<T>` that wraps a reference to x",
+                        "A pointer to x",
+                        "A const reference"
+                    ],
+                    "answer": "A `std::reference_wrapper<T>` that wraps a reference to x"
+                },
+                {
+                    "question": "Why is `std::reference_wrapper` useful for containers?",
+                    "options": [
+                        "Containers can't hold references directly; reference_wrapper is copyable and holds a reference",
+                        "It makes elements smaller",
+                        "It avoids the STL overhead",
+                        "It's always faster"
+                    ],
+                    "answer": "Containers can't hold references directly; reference_wrapper is copyable and holds a reference"
+                },
+                {
+                    "question": "What is lifetime extension for references?",
+                    "options": [
+                        "Extending a function's lifetime",
+                        "Binding a const T& or T&& to a temporary extends that temporary's lifetime to the reference's scope",
+                        "Moving an object to heap",
+                        "Not possible in C++"
+                    ],
+                    "answer": "Binding a const T& or T&& to a temporary extends that temporary's lifetime to the reference's scope"
+                },
+                {
+                    "question": "What is the difference between `auto x = foo()` and `auto& x = foo()` when foo returns by value?",
+                    "options": [
+                        "Identical",
+                        "`auto x` makes a copy; `auto& x` extends the temporary's lifetime via reference",
+                        "`auto&` always fails for rvalues",
+                        "`auto x` is faster"
+                    ],
+                    "answer": "`auto x` makes a copy; `auto& x` extends the temporary's lifetime via reference"
+                },
+                {
+                    "question": "What is return value optimization (RVO) vs move semantics?",
+                    "options": [
+                        "Same",
+                        "RVO elides the copy/move entirely; move semantics transfers ownership when elision is impossible",
+                        "Move is always used",
+                        "RVO is not standard"
+                    ],
+                    "answer": "RVO elides the copy/move entirely; move semantics transfers ownership when elision is impossible"
+                },
+                {
+                    "question": "What is `std::as_const(x)`?",
+                    "options": [
+                        "Removes const from x",
+                        "Returns a const reference to x — useful to call const-qualified overloads",
+                        "Creates a const copy",
+                        "Same as const_cast"
+                    ],
+                    "answer": "Returns a const reference to x — useful to call const-qualified overloads"
+                },
+                {
+                    "question": "What is a dangling reference?",
+                    "options": [
+                        "A null reference",
+                        "A reference that outlives the object it was bound to — a source of undefined behavior",
+                        "A reference to a global",
+                        "A const reference"
+                    ],
+                    "answer": "A reference that outlives the object it was bound to — a source of undefined behavior"
+                },
+                {
+                    "question": "What C++23 feature makes it even easier to avoid dangling refs?",
+                    "options": [
+                        "`std::no_dangling`",
+                        "`std::reference_wrapper` improvements",
+                        "`[[lifetimebound]]` attribute helping static analysis detect dangling references",
+                        "`std::safe_ref`"
+                    ],
+                    "answer": "`[[lifetimebound]]` attribute helping static analysis detect dangling references"
+                }
+            ]
+        }
+    ]
+}

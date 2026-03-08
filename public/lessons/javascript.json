@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "languageId": "javascript",
+  "languageName": "JavaScript",
+  "lessons": [
+    {
+      "id": "js-basics-1",
+      "title": "ES6 Basics",
+      "description": "Variables and common types in JS.",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "true_false",
+          "prompt": "`const` variables cannot be reassigned.",
+          "options": [
+            { "id": "o1", "text": "True", "correct": true },
+            { "id": "o2", "text": "False", "correct": false }
+          ],
+          "explanation": "const prevents reassignment of the binding."
+        },
+        {
+          "id": "q2",
+          "type": "single_choice",
+          "prompt": "Which declares a block-scoped variable?",
+          "options": [
+            { "id": "o1", "text": "var", "correct": false },
+            { "id": "o2", "text": "let", "correct": true },
+            { "id": "o3", "text": "function", "correct": false }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

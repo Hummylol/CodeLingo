@@ -1,0 +1,327 @@
+{
+    "levelno": 4,
+    "topic": "Strings",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Strings — Beginner Level",
+            "theory": "A **string** (`str`) is an ordered, immutable sequence of characters. You create strings using single `'...'`, double `\"...\"`, or triple quotes `'''...'''`.\n\n**Key operations:**\n- Concatenation with `+`: `'Hello' + ' World'` → `'Hello World'`\n- Repetition with `*`: `'ha' * 3` → `'hahaha'`\n- `len('Python')` → `6`\n\n**Indexing** starts at 0. Negative indexes count from the end:\n`s = 'Python'`\n`s[0]` → `'P'`, `s[-1]` → `'n'`\n\nCommon string methods: `.upper()`, `.lower()`, `.strip()`, `.replace(old, new)`",
+            "questions": [
+                {
+                    "question": "What does `'Hello' + 'World'` produce?",
+                    "options": [
+                        "'Hello World'",
+                        "'HelloWorld'",
+                        "'Hello'",
+                        "Error"
+                    ],
+                    "answer": "'HelloWorld'"
+                },
+                {
+                    "question": "If `s = 'Python'`, what is `s[0]`?",
+                    "options": [
+                        "'P'",
+                        "'y'",
+                        "'Python'",
+                        "Error"
+                    ],
+                    "answer": "'P'"
+                },
+                {
+                    "question": "If `s = 'Python'`, what is `s[-1]`?",
+                    "options": [
+                        "'P'",
+                        "'n'",
+                        "Error",
+                        "'o'"
+                    ],
+                    "answer": "'n'"
+                },
+                {
+                    "question": "What does `len('Hello')` return?",
+                    "options": [
+                        "4",
+                        "5",
+                        "6",
+                        "Error"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "What does `'abc'.upper()` return?",
+                    "options": [
+                        "'Abc'",
+                        "'ABC'",
+                        "'abc'",
+                        "Error"
+                    ],
+                    "answer": "'ABC'"
+                },
+                {
+                    "question": "Are strings in Python mutable or immutable?",
+                    "options": [
+                        "Mutable",
+                        "Immutable",
+                        "Both",
+                        "Depends on the value"
+                    ],
+                    "answer": "Immutable"
+                },
+                {
+                    "question": "What does `'  hello  '.strip()` return?",
+                    "options": [
+                        "'  hello  '",
+                        "'hello'",
+                        "'hello  '",
+                        "Error"
+                    ],
+                    "answer": "'hello'"
+                },
+                {
+                    "question": "What does `'ha' * 3` produce?",
+                    "options": [
+                        "'ha ha ha'",
+                        "'hahaha'",
+                        "'ha3'",
+                        "Error"
+                    ],
+                    "answer": "'hahaha'"
+                },
+                {
+                    "question": "Which of these creates a string?",
+                    "options": [
+                        "x = 42",
+                        "x = True",
+                        "x = 'hello'",
+                        "x = [1,2]"
+                    ],
+                    "answer": "x = 'hello'"
+                },
+                {
+                    "question": "What does `'hello'.replace('l', 'r')` return?",
+                    "options": [
+                        "'herro'",
+                        "'hello'",
+                        "'herlo'",
+                        "Error"
+                    ],
+                    "answer": "'herro'"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Strings — Intermediate Level",
+            "theory": "**String slicing** extracts a substring with `[start:stop:step]`:\n`s = 'Python'`\n`s[1:4]` → `'yth'`, `s[::2]` → `'Pto'`, `s[::-1]` → `'nohtyP'`\n\n**f-strings** (f-string literals, Python 3.6+) embed expressions directly:\n`name = 'Alice'; age = 30`\n`f'My name is {name} and I am {age} years old.'`\n\nCommon methods:\n- `.split(sep)` — splits into a list: `'a,b,c'.split(',')` → `['a','b','c']`\n- `','.join(lst)` — joins a list: `','.join(['a','b'])` → `'a,b'`\n- `.find(sub)` — returns index or -1\n- `.startswith(prefix)`, `.endswith(suffix)`\n- `.count(sub)` — counts occurrences",
+            "questions": [
+                {
+                    "question": "If `s = 'Python'`, what does `s[1:4]` return?",
+                    "options": [
+                        "'yth'",
+                        "'Pyt'",
+                        "'ytho'",
+                        "'ython'"
+                    ],
+                    "answer": "'yth'"
+                },
+                {
+                    "question": "What does `s[::-1]` do to a string `s = 'hello'`?",
+                    "options": [
+                        "Reverses it to 'olleh'",
+                        "Returns an empty string",
+                        "Raises an Error",
+                        "Returns 'hello'"
+                    ],
+                    "answer": "Reverses it to 'olleh'"
+                },
+                {
+                    "question": "What does `'a,b,c'.split(',')` return?",
+                    "options": [
+                        "'abc'",
+                        "['a', 'b', 'c']",
+                        "('a','b','c')",
+                        "Error"
+                    ],
+                    "answer": "['a', 'b', 'c']"
+                },
+                {
+                    "question": "What does `'-'.join(['a','b','c'])` return?",
+                    "options": [
+                        "'abc'",
+                        "'a-b-c'",
+                        "['a-b-c']",
+                        "Error"
+                    ],
+                    "answer": "'a-b-c'"
+                },
+                {
+                    "question": "What does `'hello'.find('e')` return?",
+                    "options": [
+                        "0",
+                        "1",
+                        "True",
+                        "Error"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "What will `f'Value is {2 + 3}'` produce?",
+                    "options": [
+                        "'Value is 2 + 3'",
+                        "'Value is 5'",
+                        "Error",
+                        "'Value is {2+3}'"
+                    ],
+                    "answer": "'Value is 5'"
+                },
+                {
+                    "question": "What does `'hello'.count('l')` return?",
+                    "options": [
+                        "1",
+                        "2",
+                        "3",
+                        "Error"
+                    ],
+                    "answer": "2"
+                },
+                {
+                    "question": "What does `'Python'.startswith('Py')` return?",
+                    "options": [
+                        "False",
+                        "True",
+                        "1",
+                        "Error"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What is the result of `'hello'[::2]`?",
+                    "options": [
+                        "'hlo'",
+                        "'ell'",
+                        "'hel'",
+                        "'elo'"
+                    ],
+                    "answer": "'hlo'"
+                },
+                {
+                    "question": "What does `'  hi  '.lstrip()` return?",
+                    "options": [
+                        "'hi'",
+                        "'hi  '",
+                        "'  hi'",
+                        "Error"
+                    ],
+                    "answer": "'hi  '"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Strings — Expert Level",
+            "theory": "**String formatting styles:**\n- Old-style: `'%s is %d' % ('Alice', 30)`\n- `.format()`: `'{} is {}'.format('Alice', 30)`\n- f-strings (modern, fastest): `f'{name} is {age}'`\n\n**Raw strings** prefix with `r` — backslashes are treated literally:\n`r'C:\\Users\\file'` (no need to double the backslash)\n\n**String interning**: Python may intern commonly used strings (short, identifier-like strings) so they share the same object in memory. This is an implementation detail of CPython.\n\n**`str.encode()` / `bytes.decode()`** convert between `str` and `bytes`:\n`'hello'.encode('utf-8')` → `b'hello'`\n\n**`textwrap`, `re`, and `string` modules** provide advanced string handling including regular expressions.",
+            "questions": [
+                {
+                    "question": "What does a raw string `r'C:\\Users\\file'` do with backslashes?",
+                    "options": [
+                        "Doubles them automatically",
+                        "Treats them as literal characters, not escape sequences",
+                        "Raises a SyntaxError",
+                        "Converts them to forward slashes"
+                    ],
+                    "answer": "Treats them as literal characters, not escape sequences"
+                },
+                {
+                    "question": "What does `'hello'.encode('utf-8')` return?",
+                    "options": [
+                        "'hello'",
+                        "b'hello' (bytes)",
+                        "Error",
+                        "65 (ASCII code)"
+                    ],
+                    "answer": "b'hello' (bytes)"
+                },
+                {
+                    "question": "What is the output of `'%s has %d apples' % ('Alice', 5)`?",
+                    "options": [
+                        "'Alice has 5 apples'",
+                        "Error",
+                        "'%s has %d apples'",
+                        "'Alice has %d apples'"
+                    ],
+                    "answer": "'Alice has 5 apples'"
+                },
+                {
+                    "question": "What does `'{name}'.format(name='Bob')` produce?",
+                    "options": [
+                        "'{name}'",
+                        "'Bob'",
+                        "Error",
+                        "'name'"
+                    ],
+                    "answer": "'Bob'"
+                },
+                {
+                    "question": "What is string interning?",
+                    "options": [
+                        "Converting a string to bytes",
+                        "Sharing the same object in memory for identical strings (CPython optimization)",
+                        "Encrypting strings",
+                        "Compressing strings"
+                    ],
+                    "answer": "Sharing the same object in memory for identical strings (CPython optimization)"
+                },
+                {
+                    "question": "What does `b'hello'.decode('utf-8')` return?",
+                    "options": [
+                        "b'hello'",
+                        "'hello'",
+                        "Error",
+                        "104 (ASCII)"
+                    ],
+                    "answer": "'hello'"
+                },
+                {
+                    "question": "Which f-string expression is valid?",
+                    "options": [
+                        "f'{2 ** 10}'",
+                        "f{1024}",
+                        "f'{'hello'}'",
+                        "f(1 + 2)"
+                    ],
+                    "answer": "f'{2 ** 10}'"
+                },
+                {
+                    "question": "What does `'str'.zfill(5)` produce?",
+                    "options": [
+                        "'  str'",
+                        "'00str'",
+                        "'str00'",
+                        "Error"
+                    ],
+                    "answer": "'00str'"
+                },
+                {
+                    "question": "What is the module for regular expressions in Python?",
+                    "options": [
+                        "string",
+                        "regex",
+                        "re",
+                        "regexp"
+                    ],
+                    "answer": "re"
+                },
+                {
+                    "question": "What does `'hello world'.title()` return?",
+                    "options": [
+                        "'HELLO WORLD'",
+                        "'Hello World'",
+                        "'hello world'",
+                        "Error"
+                    ],
+                    "answer": "'Hello World'"
+                }
+            ]
+        }
+    ]
+}

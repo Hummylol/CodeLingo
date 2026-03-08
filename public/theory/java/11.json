@@ -1,0 +1,327 @@
+{
+    "levelno": 11,
+    "topic": "Generics",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Generics — Beginner Level",
+            "theory": "Generics allow you to write type-safe code that works with any type.\n\n```java\n// Generic method\npublic <T> T getFirst(List<T> list) {\n    return list.get(0);\n}\n\n// Generic class\npublic class Box<T> {\n    private T value;\n    public Box(T v) { value = v; }\n    public T get() { return value; }\n}\n\nBox<Integer> intBox = new Box<>(42);\nBox<String>  strBox = new Box<>(\"hello\");\n```\n\n- `<T>` — type parameter placeholder\n- Checked at compile time — no `ClassCastException` at runtime\n- The diamond operator `<>` infers the type (Java 7+)\n- Generics are erased at runtime (type erasure)",
+            "questions": [
+                {
+                    "question": "What is the purpose of generics in Java?",
+                    "options": [
+                        "Code reuse only",
+                        "Type-safe code that works with different types without casting",
+                        "Dynamic typing",
+                        "Inheritance only"
+                    ],
+                    "answer": "Type-safe code that works with different types without casting"
+                },
+                {
+                    "question": "What does `<T>` represent in generics?",
+                    "options": [
+                        "A concrete type",
+                        "A placeholder for a type specified at use",
+                        "The type `T`",
+                        "A template keyword"
+                    ],
+                    "answer": "A placeholder for a type specified at use"
+                },
+                {
+                    "question": "What is the diamond operator `<>`?",
+                    "options": [
+                        "A bitwise operator",
+                        "Type inference — compiler deduces the generic type from context (Java 7+)",
+                        "An empty generic",
+                        "A comparison"
+                    ],
+                    "answer": "Type inference — compiler deduces the generic type from context (Java 7+)"
+                },
+                {
+                    "question": "When are generic type parameters checked?",
+                    "options": [
+                        "At runtime",
+                        "At compile time",
+                        "When casting",
+                        "Never"
+                    ],
+                    "answer": "At compile time"
+                },
+                {
+                    "question": "What is type erasure?",
+                    "options": [
+                        "Removing types from code",
+                        "Generic type parameters are removed at compile time — not available at runtime",
+                        "Erasing classes",
+                        "Removing generics from Java"
+                    ],
+                    "answer": "Generic type parameters are removed at compile time — not available at runtime"
+                },
+                {
+                    "question": "Can you create `new T()` inside a generic class?",
+                    "options": [
+                        "Yes, always",
+                        "No — type parameters can't be instantiated directly due to erasure",
+                        "Only if T extends Object",
+                        "Only with factory method"
+                    ],
+                    "answer": "No — type parameters can't be instantiated directly due to erasure"
+                },
+                {
+                    "question": "Can generics use primitive types like `Box<int>`?",
+                    "options": [
+                        "Yes",
+                        "No — use wrapper types like Box<Integer>",
+                        "Only in Java 11+",
+                        "Yes with `<int>`"
+                    ],
+                    "answer": "No — use wrapper types like Box<Integer>"
+                },
+                {
+                    "question": "What is a raw type (e.g., `List list`)?",
+                    "options": [
+                        "A list of raw data",
+                        "Using a generic type without specifying the type parameter — loses type safety",
+                        "A primitive list",
+                        "A native array"
+                    ],
+                    "answer": "Using a generic type without specifying the type parameter — loses type safety"
+                },
+                {
+                    "question": "What warning does using a raw type produce?",
+                    "options": [
+                        "Runtime exception",
+                        "Unchecked or rawtypes warning",
+                        "Compile error",
+                        "No warning"
+                    ],
+                    "answer": "Unchecked or rawtypes warning"
+                },
+                {
+                    "question": "What does `List<Object>` vs `List<String>` mean?",
+                    "options": [
+                        "Same — String IS-A Object",
+                        "Not the same — generics are not covariant",
+                        "List<Object> can hold List<String>",
+                        "Same in Java 17+"
+                    ],
+                    "answer": "Not the same — generics are not covariant"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Generics — Intermediate Level",
+            "theory": "**Bounded type parameters:**\n```java\n<T extends Comparable<T>>  // upper bound — T must be Comparable\n<T extends Number>         // T must be Number or subtype\n```\n\n**Wildcards:**\n```java\nList<? extends Number> // covariant — read-only (produce)\nList<? super Integer>  // contravariant — write-only (consume)\nList<?>                // unbounded — read Object only\n```\n\n**PECS mnemonic:** Producer Extends, Consumer Super.\n\n**Generic methods:** type params declared before return type:\n```java\npublic <T extends Comparable<T>> T max(T a, T b) {\n    return a.compareTo(b) > 0 ? a : b;\n}\n```",
+            "questions": [
+                {
+                    "question": "What does `<T extends Comparable<T>>` mean?",
+                    "options": [
+                        "T is exactly Comparable",
+                        "T must implement Comparable",
+                        "T is a subclass of Object only",
+                        "T is an interface"
+                    ],
+                    "answer": "T must implement Comparable"
+                },
+                {
+                    "question": "What is `List<? extends Number>` used for?",
+                    "options": [
+                        "Write any Number subtype",
+                        "Read: accepts List<Integer>, List<Double>, etc. — read-only (upper bounded wildcard)",
+                        "Any list",
+                        "Sorting only"
+                    ],
+                    "answer": "Read: accepts List<Integer>, List<Double>, etc. — read-only (upper bounded wildcard)"
+                },
+                {
+                    "question": "What is the PECS principle?",
+                    "options": [
+                        "Performance Enhancement for Collection Sizes",
+                        "Producer Extends, Consumer Super — guide for wildcard choice",
+                        "Primitive Extension for Casting System",
+                        "A sorting algorithm"
+                    ],
+                    "answer": "Producer Extends, Consumer Super — guide for wildcard choice"
+                },
+                {
+                    "question": "Can you `add` elements to `List<? extends Number>`?",
+                    "options": [
+                        "Yes any Number",
+                        "No — upper bounded wildcards are effectively read-only for additions",
+                        "Yes with casting",
+                        "Only null"
+                    ],
+                    "answer": "No — upper bounded wildcards are effectively read-only for additions"
+                },
+                {
+                    "question": "What does `List<? super Integer>` allow?",
+                    "options": [
+                        "Reading as Integer only",
+                        "Adding Integer (or subtype) to the list; reading gives Object",
+                        "Both read and write freely",
+                        "Only for Long type"
+                    ],
+                    "answer": "Adding Integer (or subtype) to the list; reading gives Object"
+                },
+                {
+                    "question": "Where do generic method type parameters go?",
+                    "options": [
+                        "After the method name",
+                        "Before the return type: `public <T> T method(...)`",
+                        "In the parameter list",
+                        "At end of signature"
+                    ],
+                    "answer": "Before the return type: `public <T> T method(...)`"
+                },
+                {
+                    "question": "What is `Collections.sort(List<T extends Comparable<T>>)` an example of?",
+                    "options": [
+                        "A raw type method",
+                        "A generic method with bounded type parameter",
+                        "An overloaded sort",
+                        "An unchecked sort"
+                    ],
+                    "answer": "A generic method with bounded type parameter"
+                },
+                {
+                    "question": "What is `Class<T>` used for?",
+                    "options": [
+                        "Class metadata of type T — enables type-safe reflection operations",
+                        "A class with one method",
+                        "A generic array",
+                        "Type-safe casting"
+                    ],
+                    "answer": "Class metadata of type T — enables type-safe reflection operations"
+                },
+                {
+                    "question": "What is an intersection type `<T extends A & B>`?",
+                    "options": [
+                        "T must be equal to A and B",
+                        "T must implement both A and B",
+                        "T is either A or B",
+                        "T extends the intersection set"
+                    ],
+                    "answer": "T must implement both A and B"
+                },
+                {
+                    "question": "Can a generic class extend a concrete class?",
+                    "options": [
+                        "No",
+                        "Yes, e.g., `class MyList<T> extends ArrayList<T>`",
+                        "Only interfaces",
+                        "Only for primitive types"
+                    ],
+                    "answer": "Yes, e.g., `class MyList<T> extends ArrayList<T>`"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Generics — Expert Level",
+            "theory": "**Heap pollution:** mixing raw and generic types can cause `ClassCastException` at a surprising location.\n\n**Generic arrays:** `new T[]` is illegal — use `(T[]) new Object[n]` with unchecked warning, or `ArrayList<T>`.\n\n**Reifiable vs non-reifiable types:** `List<String>` is non-reifiable (erased at runtime). `List` and `String` are reifiable.\n\n**`TypeToken` pattern (Guava/Jackson):** capture generic type info at runtime via anonymous subclass:\n```java\nType type = new TypeToken<List<String>>(){}.getType();\n```\n\n**`@SuppressWarnings(\"unchecked\")`:** suppress unchecked cast warnings — use only when you know it's safe.",
+            "questions": [
+                {
+                    "question": "What is heap pollution?",
+                    "options": [
+                        "Memory leak in heap",
+                        "When a variable of parameterized type refers to an object of a different type — leads to ClassCastException",
+                        "GC collecting generics",
+                        "An IllegalArgumentException"
+                    ],
+                    "answer": "When a variable of parameterized type refers to an object of a different type — leads to ClassCastException"
+                },
+                {
+                    "question": "Why can't you do `new T[n]` in Java?",
+                    "options": [
+                        "T not available at runtime due to erasure",
+                        "Arrays need exact type at runtime; T is erased",
+                        "Both A and B — same reason",
+                        "Only in Java < 9"
+                    ],
+                    "answer": "Both A and B — same reason"
+                },
+                {
+                    "question": "What is a reifiable type?",
+                    "options": [
+                        "A type with a generic parameter",
+                        "A type whose full type info is available at runtime (not erased) — e.g., String, int[], List",
+                        "A sealed interface",
+                        "A record type"
+                    ],
+                    "answer": "A type whose full type info is available at runtime (not erased) — e.g., String, int[], List"
+                },
+                {
+                    "question": "What does `@SafeVarargs` do?",
+                    "options": [
+                        "Makes varargs final",
+                        "Suppresses heap pollution warning for varargs generic methods that are type-safe",
+                        "Makes method varargs-only",
+                        "Deprecated in Java 17"
+                    ],
+                    "answer": "Suppresses heap pollution warning for varargs generic methods that are type-safe"
+                },
+                {
+                    "question": "What is the `TypeToken` pattern?",
+                    "options": [
+                        "A design pattern for abstract factories",
+                        "Capturing parameterized type info at runtime using anonymous subclass of generic type",
+                        "A reflection helper",
+                        "A type-safe enum"
+                    ],
+                    "answer": "Capturing parameterized type info at runtime using anonymous subclass of generic type"
+                },
+                {
+                    "question": "What does `isAssignableFrom` vs `instanceof` do?",
+                    "options": [
+                        "Same",
+                        "`Class.isAssignableFrom(Class)` checks type hierarchy at reflective level; `instanceof` checks a concrete object at runtime",
+                        "`instanceof` is for class objects",
+                        "No difference in behavior"
+                    ],
+                    "answer": "`Class.isAssignableFrom(Class)` checks type hierarchy at reflective level; `instanceof` checks a concrete object at runtime"
+                },
+                {
+                    "question": "What is generic type capture?",
+                    "options": [
+                        "Capturing a screenshot of types",
+                        "When compiler captures the type of a wildcard in internal context to reason about it — 'capture#1 of ?'",
+                        "Storing generic types in a map",
+                        "A Java pattern"
+                    ],
+                    "answer": "When compiler captures the type of a wildcard in internal context to reason about it — 'capture#1 of ?'"
+                },
+                {
+                    "question": "What does introducing sealed types help with in generic context?",
+                    "options": [
+                        "Removes erasure",
+                        "Enables exhaustive pattern matching on sealed generic types — compiler knows all subtypes",
+                        "Adds reification",
+                        "Enables generic arrays"
+                    ],
+                    "answer": "Enables exhaustive pattern matching on sealed generic types — compiler knows all subtypes"
+                },
+                {
+                    "question": "What is `Collections.checkedList(list, String.class)` for?",
+                    "options": [
+                        "Sorting only strings",
+                        "A dynamically type-checked list — throws ClassCastException at insertion if wrong type (useful with external raw-type code)",
+                        "Making list immutable",
+                        "String-specific sort"
+                    ],
+                    "answer": "A dynamically type-checked list — throws ClassCastException at insertion if wrong type (useful with external raw-type code)"
+                },
+                {
+                    "question": "What is Valhalla (Project Valhalla)?",
+                    "options": [
+                        "A Java IDE",
+                        "JVM project to bring specialized generics over primitive types (int, etc.) — eliminating boxing overhead",
+                        "A concurrent GC",
+                        "A new Java syntax"
+                    ],
+                    "answer": "JVM project to bring specialized generics over primitive types (int, etc.) — eliminating boxing overhead"
+                }
+            ]
+        }
+    ]
+}

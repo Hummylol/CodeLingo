@@ -1,0 +1,327 @@
+{
+    "levelno": 17,
+    "topic": "Advanced Graph Algorithms",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Advanced Graph Algorithms — Beginner Level",
+            "theory": "**Minimum Spanning Tree (MST):** subgraph connecting all vertices with minimum total edge weight.\n\n**Kruskal's Algorithm:**\n```python\ndef kruskal(vertices, edges):\n    edges.sort(key=lambda e: e[2])  # sort by weight\n    parent = list(range(vertices))\n    def find(x):\n        while parent[x] != x: parent[x] = parent[parent[x]]; x = parent[x]\n        return x\n    def union(a, b):\n        a, b = find(a), find(b)\n        if a == b: return False\n        parent[a] = b; return True\n    return [(u,v,w) for u,v,w in edges if union(u,v)]\n```\n\n**Prim's Algorithm:** greedily add nearest unvisited vertex to MST.",
+            "questions": [
+                {
+                    "question": "What is a Minimum Spanning Tree?",
+                    "options": [
+                        "Shortest path tree",
+                        "Subgraph connecting all vertices with minimum total edge weight — no cycles",
+                        "Complete graph subset",
+                        "A directed spanning tree"
+                    ],
+                    "answer": "Subgraph connecting all vertices with minimum total edge weight — no cycles"
+                },
+                {
+                    "question": "Kruskal's sorts edges by:",
+                    "options": [
+                        "Vertex degree",
+                        "Edge weight ascending — add edges that don't form cycles",
+                        "Random order",
+                        "Vertex index"
+                    ],
+                    "answer": "Edge weight ascending — add edges that don't form cycles"
+                },
+                {
+                    "question": "MST has how many edges for n vertices?",
+                    "options": [
+                        "n",
+                        "n-1",
+                        "n+1",
+                        "2n"
+                    ],
+                    "answer": "n-1"
+                },
+                {
+                    "question": "Prim's algorithm grows MST from:",
+                    "options": [
+                        "Any random edge",
+                        "A starting vertex — always add nearest unvisited vertex",
+                        "All vertices simultaneously",
+                        "Heaviest edge first"
+                    ],
+                    "answer": "A starting vertex — always add nearest unvisited vertex"
+                },
+                {
+                    "question": "When to prefer Kruskal's over Prim's?",
+                    "options": [
+                        "Dense graphs",
+                        "Sparse graphs — sorting edges is efficient when E is small relative to V^2",
+                        "Any graph",
+                        "Only for directed graphs"
+                    ],
+                    "answer": "Sparse graphs — sorting edges is efficient when E is small relative to V^2"
+                },
+                {
+                    "question": "Graph coloring minimum colors needed is called:",
+                    "options": [
+                        "Chromatic index",
+                        "Chromatic number χ(G)",
+                        "Clique number",
+                        "Independence number"
+                    ],
+                    "answer": "Chromatic number χ(G)"
+                },
+                {
+                    "question": "A bipartite graph can be colored with:",
+                    "options": [
+                        "1 color",
+                        "2 colors",
+                        "Minimum 3 colors",
+                        "Unlimited colors"
+                    ],
+                    "answer": "2 colors"
+                },
+                {
+                    "question": "A graph is bipartite if and only if it:",
+                    "options": [
+                        "Has even number of edges",
+                        "Has no odd-length cycles",
+                        "Is fully connected",
+                        "Has loop-free vertices"
+                    ],
+                    "answer": "Has no odd-length cycles"
+                },
+                {
+                    "question": "Hamiltonian path visits:",
+                    "options": [
+                        "Each edge once",
+                        "Each vertex exactly once",
+                        "All shortest paths",
+                        "All edges and vertices"
+                    ],
+                    "answer": "Each vertex exactly once"
+                },
+                {
+                    "question": "Euler circuit visits:",
+                    "options": [
+                        "Each vertex once",
+                        "Each edge exactly once and returns to start",
+                        "Only even-degree vertices",
+                        "All vertices and edges in any order"
+                    ],
+                    "answer": "Each edge exactly once and returns to start"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Advanced Graph Algorithms — Intermediate Level",
+            "theory": "**Network flow:** maximum flow from source to sink.\n\n**Ford-Fulkerson:** augmenting path approach — O(E * max_flow).\n**Edmonds-Karp:** BFS for shortest augmenting path — O(V*E^2).\n\n**Bipartite matching:** maximum matching in bipartite graph — equivalent to max flow.\n\n**Strongly Connected Components (SCC):** maximal subgraph where every vertex is reachable from every other.\n- Kosaraju's: two DFS (original + reversed graph) — O(V+E)\n- Tarjan's: one DFS with low-link values — O(V+E)",
+            "questions": [
+                {
+                    "question": "Edmonds-Karp vs Ford-Fulkerson:",
+                    "options": [
+                        "Same",
+                        "Edmonds-Karp uses BFS for augmenting path — O(VE^2) guaranteed vs Ford-Fulkerson O(E*f) unbounded",
+                        "Ford-Fulkerson uses BFS",
+                        "Edmonds-Karp is slower"
+                    ],
+                    "answer": "Edmonds-Karp uses BFS for augmenting path — O(VE^2) guaranteed vs Ford-Fulkerson O(E*f) unbounded"
+                },
+                {
+                    "question": "Max-flow min-cut theorem:",
+                    "options": [
+                        "Max flow = total capacity",
+                        "Value of max flow = capacity of minimum cut separating source from sink",
+                        "Min cut = min edge",
+                        "Flow = edges count"
+                    ],
+                    "answer": "Value of max flow = capacity of minimum cut separating source from sink"
+                },
+                {
+                    "question": "Maximum bipartite matching equals:",
+                    "options": [
+                        "Sum of all edges",
+                        "Max matching solvable by max flow — O(V*E) via augmenting paths",
+                        "Number of vertices",
+                        "Number of components"
+                    ],
+                    "answer": "Max matching solvable by max flow — O(V*E) via augmenting paths"
+                },
+                {
+                    "question": "SCC (Strongly Connected Component):",
+                    "options": [
+                        "All vertices connected by undirected paths",
+                        "Maximal subunit where every vertex can reach every other via directed paths",
+                        "A clique in directed graph",
+                        "A cycle"
+                    ],
+                    "answer": "Maximal subunit where every vertex can reach every other via directed paths"
+                },
+                {
+                    "question": "Kosaraju's algorithm uses:",
+                    "options": [
+                        "One DFS pass",
+                        "Two DFS: original graph for finish order, then reversed graph by decreasing finish order",
+                        "Topological sort only",
+                        "BFS on both graphs"
+                    ],
+                    "answer": "Two DFS: original graph for finish order, then reversed graph by decreasing finish order"
+                },
+                {
+                    "question": "Condensation graph of SCCs is always:",
+                    "options": [
+                        "Strongly connected",
+                        "A DAG — SCCs collapsed to single nodes, inter-SCC edges remain",
+                        "A tree",
+                        "Bipartite"
+                    ],
+                    "answer": "A DAG — SCCs collapsed to single nodes, inter-SCC edges remain"
+                },
+                {
+                    "question": "Dinic's algorithm for max flow complexity:",
+                    "options": [
+                        "O(V*E^2)",
+                        "O(V^2*E) for general graphs",
+                        "O(E sqrt(V)) for unit graphs (bipartite matching)",
+                        "Both B and C — Dinic's is O(V^2*E) general, O(E sqrt(V)) for unit"
+                    ],
+                    "answer": "Both B and C — Dinic's is O(V^2*E) general, O(E sqrt(V)) for unit"
+                },
+                {
+                    "question": "Bridges (cut edges) in graph — detected by:",
+                    "options": [
+                        "Two-color DFS",
+                        "Tarjan's: if low[v] > discovery[u] for edge (u,v), then (u,v) is a bridge",
+                        "BFS",
+                        "Topological sort"
+                    ],
+                    "answer": "Tarjan's: if low[v] > discovery[u] for edge (u,v), then (u,v) is a bridge"
+                },
+                {
+                    "question": "2-SAT is solvable in:",
+                    "options": [
+                        "NP-hard",
+                        "O(V+E) — build implication graph, find SCCs, check consistency",
+                        "O(2^n)",
+                        "O(V^2)"
+                    ],
+                    "answer": "O(V+E) — build implication graph, find SCCs, check consistency"
+                },
+                {
+                    "question": "Minimum cost maximum flow (MCMF) adds:",
+                    "options": [
+                        "Edge weights as secondary criteria",
+                        "Cost per unit flow — find min cost augmenting paths (Bellman-Ford or SPFA)",
+                        "Capacity limits only",
+                        "Vertex costs"
+                    ],
+                    "answer": "Cost per unit flow — find min cost augmenting paths (Bellman-Ford or SPFA)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Advanced Graph Algorithms — Expert Level",
+            "theory": "**Hopcroft-Karp:** maximum bipartite matching in O(E sqrt(V)) — BFS layers + DFS augmentation.\n\n**Blossom algorithm:** general non-bipartite maximum matching O(E sqrt(V)) — handles odd cycles.\n\n**Planarity testing:** O(V) — graph is planar iff it has no K5 or K3,3 subdivision (Kuratowski's theorem).\n\n**Robertson-Seymour:** graph minor theorem — every minor-closed family has a finite forbidden set.\n\n**Push-relabel algorithm:** max flow in O(V^2 E) or O(V^3).",
+            "questions": [
+                {
+                    "question": "Hopcroft-Karp complexity for bipartite matching:",
+                    "options": [
+                        "O(V*E)",
+                        "O(E sqrt(V))",
+                        "O(V^2)",
+                        "O(E log V)"
+                    ],
+                    "answer": "O(E sqrt(V))"
+                },
+                {
+                    "question": "Blossom algorithm extends bipartite matching to:",
+                    "options": [
+                        "Planar graphs",
+                        "General (non-bipartite) graphs — correct treatment of odd cycles (blossoms)",
+                        "Directed graphs",
+                        "Weighted matching"
+                    ],
+                    "answer": "General (non-bipartite) graphs — correct treatment of odd cycles (blossoms)"
+                },
+                {
+                    "question": "Push-relabel algorithm for max flow:",
+                    "options": [
+                        "Same as Edmonds-Karp",
+                        "O(V^2 sqrt(E)) with FIFO selection — highest-label variant; better than Ford-Fulkerson in practice",
+                        "O(VE^2)",
+                        "O(E log V)"
+                    ],
+                    "answer": "O(V^2 sqrt(E)) with FIFO selection — highest-label variant; better than Ford-Fulkerson in practice"
+                },
+                {
+                    "question": "A planar graph satisfies Euler's formula:",
+                    "options": [
+                        "`V - E + F = 0`",
+                        "`V - E + F = 2` (V vertices, E edges, F faces)",
+                        "`E < V^2`",
+                        "`F = E - V`"
+                    ],
+                    "answer": "`V - E + F = 2` (V vertices, E edges, F faces)"
+                },
+                {
+                    "question": "Graph treewidth is important because:",
+                    "options": [
+                        "All algorithms are polynomial on any graph",
+                        "Many NP-hard problems are solvable in polynomial time on graphs with small treewidth",
+                        "Only relevant for trees",
+                        "Determines graph planarity"
+                    ],
+                    "answer": "Many NP-hard problems are solvable in polynomial time on graphs with small treewidth"
+                },
+                {
+                    "question": "Virtual node technique in max flow is used for:",
+                    "options": [
+                        "Adding capacity to vertices",
+                        "Converting vertex capacity to edge capacity — split each vertex into in/out nodes with capacity edge",
+                        "Reducing edges",
+                        "Handling negative capacities"
+                    ],
+                    "answer": "Converting vertex capacity to edge capacity — split each vertex into in/out nodes with capacity edge"
+                },
+                {
+                    "question": "Hungarian algorithm for assignment problem:",
+                    "options": [
+                        "Greedy matching",
+                        "O(n^3) minimum cost perfect matching in complete bipartite graph",
+                        "O(n^2) always",
+                        "Max flow based only"
+                    ],
+                    "answer": "O(n^3) minimum cost perfect matching in complete bipartite graph"
+                },
+                {
+                    "question": "What is a 2-edge-connected component?",
+                    "options": [
+                        "A graph with 2 edges",
+                        "Maximal subgraph where any edge removal leaves it connected — no bridges inside",
+                        "Biconnected component",
+                        "A path with 2 edges"
+                    ],
+                    "answer": "Maximal subgraph where any edge removal leaves it connected — no bridges inside"
+                },
+                {
+                    "question": "Gomory-Hu tree compactly stores:",
+                    "options": [
+                        "All minimum cuts",
+                        "All pairwise max-flow values in a tree of n-1 edges — O(n) max-flow computations",
+                        "MST",
+                        "All SCCs"
+                    ],
+                    "answer": "All pairwise max-flow values in a tree of n-1 edges — O(n) max-flow computations"
+                },
+                {
+                    "question": "Cactus graph (graph where every edge belongs to at most one cycle) properties:",
+                    "options": [
+                        "Planar always",
+                        "Min-cut structure of a graph is a cactus — used in minimum cut algorithms",
+                        "A subtype of tree",
+                        "Always bipartite"
+                    ],
+                    "answer": "Min-cut structure of a graph is a cactus — used in minimum cut algorithms"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 17,
+    "topic": "Java 8+ Features",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Java 8+ Features — Beginner Level",
+            "theory": "Java 8 was a major release introducing functional programming features.\n\n**Lambda expressions:**\n```java\nList<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);\nnums.forEach(n -> System.out.println(n));\nnums.sort((a, b) -> a - b);\n```\n\n**Optional:**\n```java\nOptional<String> name = Optional.of(\"Alice\");\nname.ifPresent(System.out::println);\nString n = name.orElse(\"Unknown\");\n```\n\n**Default & static interface methods:**\n```java\ninterface Greeter {\n    default String greet(String name) { return \"Hello, \" + name; }\n    static Greeter simple() { return name -> \"Hi \" + name; }\n}\n```\n\n**`LocalDate`, `LocalTime`, `LocalDateTime`** in `java.time`.",
+            "questions": [
+                {
+                    "question": "Which Java version introduced lambdas and streams?",
+                    "options": [
+                        "Java 6",
+                        "Java 7",
+                        "Java 8",
+                        "Java 11"
+                    ],
+                    "answer": "Java 8"
+                },
+                {
+                    "question": "What does `Optional.of(value)` do?",
+                    "options": [
+                        "Returns null if value null",
+                        "Creates an Optional containing value (throws NPE if null)",
+                        "Creates empty Optional",
+                        "Wraps any object"
+                    ],
+                    "answer": "Creates an Optional containing value (throws NPE if null)"
+                },
+                {
+                    "question": "What does `Optional.ofNullable(value)` do?",
+                    "options": [
+                        "Throws if null",
+                        "Creates an Optional with value, or empty Optional if value is null",
+                        "Same as Optional.of",
+                        "Returns the value directly"
+                    ],
+                    "answer": "Creates an Optional with value, or empty Optional if value is null"
+                },
+                {
+                    "question": "What does `name.orElse(\"Unknown\")` return?",
+                    "options": [
+                        "null",
+                        "\"Unknown\" always",
+                        "value if present, else \"Unknown\"",
+                        "Throws if empty"
+                    ],
+                    "answer": "value if present, else \"Unknown\""
+                },
+                {
+                    "question": "What is `LocalDate.now()`?",
+                    "options": [
+                        "Current Date with timezone",
+                        "Current date without time (immutable)",
+                        "Deprecated since Java 11",
+                        "A mutable date"
+                    ],
+                    "answer": "Current date without time (immutable)"
+                },
+                {
+                    "question": "What is `LocalDateTime`?",
+                    "options": [
+                        "A timezone-aware datetime",
+                        "A date and time without timezone — immutable",
+                        "A JDBC timestamp",
+                        "A deprecated class"
+                    ],
+                    "answer": "A date and time without timezone — immutable"
+                },
+                {
+                    "question": "What does `date.plusDays(7)` return?",
+                    "options": [
+                        "Modifies and returns date",
+                        "Returns a new LocalDate 7 days later (immutable)",
+                        "Returns long timestamp",
+                        "Modifies in place"
+                    ],
+                    "answer": "Returns a new LocalDate 7 days later (immutable)"
+                },
+                {
+                    "question": "What is `@FunctionalInterface` used for?",
+                    "options": [
+                        "Required for lambdas",
+                        "Marks interface as single-abstract-method — compile error if it isn't",
+                        "Makes interface final",
+                        "Optional annotation"
+                    ],
+                    "answer": "Marks interface as single-abstract-method — compile error if it isn't"
+                },
+                {
+                    "question": "What does `Instant.now()` return?",
+                    "options": [
+                        "LocalDateTime",
+                        "A machine timestamp (Unix epoch with nanoseconds) in UTC",
+                        "A zoned datetime",
+                        "A Date object"
+                    ],
+                    "answer": "A machine timestamp (Unix epoch with nanoseconds) in UTC"
+                },
+                {
+                    "question": "What is `Duration` vs `Period`?",
+                    "options": [
+                        "Same",
+                        "Duration: time-based (hours, minutes, seconds); Period: date-based (years, months, days)",
+                        "Period is always larger",
+                        "Duration is for dates"
+                    ],
+                    "answer": "Duration: time-based (hours, minutes, seconds); Period: date-based (years, months, days)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Java 8+ Features — Intermediate Level",
+            "theory": "**Java 9+ features:**\n- `List.of()`, `Map.of()` — immutable collections\n- `Stream.takeWhile`, `Stream.dropWhile`, `Stream.ofNullable`\n- `Optional.ifPresentOrElse`, `Optional.stream()`\n- `var` (Java 10) — local type inference\n- `String.isBlank()`, `lines()`, `strip()`, `repeat()` (Java 11)\n- `switch` expressions (Java 14)\n- `instanceof` pattern matching (Java 16)\n- `record` (Java 16)\n- `sealed` classes (Java 17)\n- `sequenced collections`, virtual threads (Java 21)",
+            "questions": [
+                {
+                    "question": "What does `String.isBlank()` do (Java 11)?",
+                    "options": [
+                        "Checks if empty only",
+                        "Returns true if string is empty or contains only whitespace",
+                        "Same as isEmpty()",
+                        "Checks null"
+                    ],
+                    "answer": "Returns true if string is empty or contains only whitespace"
+                },
+                {
+                    "question": "What does `String.repeat(n)` do (Java 11)?",
+                    "options": [
+                        "Repeats last char",
+                        "Returns a string repeated n times",
+                        "A regex repeat",
+                        "Same as n+n"
+                    ],
+                    "answer": "Returns a string repeated n times"
+                },
+                {
+                    "question": "What does `Stream.takeWhile(pred)` do (Java 9)?",
+                    "options": [
+                        "Filters matching elements",
+                        "Takes elements while pred is true, stops at first false",
+                        "Same as filter",
+                        "Returns first n matching"
+                    ],
+                    "answer": "Takes elements while pred is true, stops at first false"
+                },
+                {
+                    "question": "What is `var` in Java 10+?",
+                    "options": [
+                        "A dynamic type",
+                        "Local variable type inference — compiler infers type from initializer",
+                        "A var-arg shorthand",
+                        "A nullable type"
+                    ],
+                    "answer": "Local variable type inference — compiler infers type from initializer"
+                },
+                {
+                    "question": "What is a `record` in Java 16+?",
+                    "options": [
+                        "A database record",
+                        "Immutable data class with auto-generated constructor, accessors, equals, hashCode, toString",
+                        "A class with only getters",
+                        "An interface"
+                    ],
+                    "answer": "Immutable data class with auto-generated constructor, accessors, equals, hashCode, toString"
+                },
+                {
+                    "question": "What does `Optional.ifPresentOrElse(action, emptyAction)` do?",
+                    "options": [
+                        "Only runs action if present",
+                        "Runs action with value if present, else runs emptyAction",
+                        "Returns Optional",
+                        "Replaces orElse"
+                    ],
+                    "answer": "Runs action with value if present, else runs emptyAction"
+                },
+                {
+                    "question": "What does pattern matching `instanceof` (Java 16) enable?",
+                    "options": [
+                        "Regex matching",
+                        "Combine type check and binding: `if (obj instanceof String s) { use s; }`",
+                        "Switch pattern only",
+                        "Match against values"
+                    ],
+                    "answer": "Combine type check and binding: `if (obj instanceof String s) { use s; }`"
+                },
+                {
+                    "question": "What are Sequenced Collections (Java 21)?",
+                    "options": [
+                        "Sorted collections",
+                        "Collections with defined encounter order — SequencedCollection, SequencedSet, SequencedMap with first/last access",
+                        "Priority queues",
+                        "Indexed lists"
+                    ],
+                    "answer": "Collections with defined encounter order — SequencedCollection, SequencedSet, SequencedMap with first/last access"
+                },
+                {
+                    "question": "What are virtual threads (Java 21)?",
+                    "options": [
+                        "GPU threads",
+                        "Lightweight JVM-managed threads — ideal for blocking I/O with millions of concurrent tasks",
+                        "Native OS threads",
+                        "Thread-local copies"
+                    ],
+                    "answer": "Lightweight JVM-managed threads — ideal for blocking I/O with millions of concurrent tasks"
+                },
+                {
+                    "question": "What is `String.lines()` (Java 11)?",
+                    "options": [
+                        "Splits by comma",
+                        "Returns a `Stream<String>` of lines from the string (splits by line terminators)",
+                        "Returns an array",
+                        "Counts lines"
+                    ],
+                    "answer": "Returns a `Stream<String>` of lines from the string (splits by line terminators)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Java 8+ Features — Expert Level",
+            "theory": "**`invokedynamic` and StringConcatFactory (Java 9+):** string `+` is now compiled to `invokedynamic` calling `StringConcatFactory` for better JIT optimization.\n\n**`Platform.exit()` vs `System.exit()`:** Platform.exit() is JavaFX-specific shutdown.\n\n**GraalVM native image:** compile Java to native binary — faster startup, no JVM.\n\n**Foreign Function & Memory API (Java 22):** call native code without JNI using `MemorySegment` and `Linker`.\n\n**Unnamed classes and instance main (Java 21 preview):** `void main() { println(\"hi\"); }` without class boilerplate.",
+            "questions": [
+                {
+                    "question": "What is the Foreign Function & Memory API (Java 22)?",
+                    "options": [
+                        "A REST client",
+                        "A standard API to call native libraries and access off-heap memory without JNI safety issues",
+                        "A foreign key API",
+                        "Remote method invocation"
+                    ],
+                    "answer": "A standard API to call native libraries and access off-heap memory without JNI safety issues"
+                },
+                {
+                    "question": "What is GraalVM native image?",
+                    "options": [
+                        "A JVM image",
+                        "Compile Java ahead-of-time to a native binary — faster startup, less memory, no JVM needed at runtime",
+                        "A JVM plugin",
+                        "A Docker image"
+                    ],
+                    "answer": "Compile Java ahead-of-time to a native binary — faster startup, less memory, no JVM needed at runtime"
+                },
+                {
+                    "question": "What does `invokedynamic` enable for lambdas?",
+                    "options": [
+                        "Compile-time binding",
+                        "Deferred method linkage at runtime — allows JVM to optimize lambda implementations",
+                        "Dynamic class loading",
+                        "Reflection optimization"
+                    ],
+                    "answer": "Deferred method linkage at runtime — allows JVM to optimize lambda implementations"
+                },
+                {
+                    "question": "What is `StringConcatFactory` (Java 9+)?",
+                    "options": [
+                        "StringBuilder replacement",
+                        "Factory used by `invokedynamic` for string concatenation — enables JIT-friendly specialized strategies",
+                        "A string pool manager",
+                        "Format string parser"
+                    ],
+                    "answer": "Factory used by `invokedynamic` for string concatenation — enables JIT-friendly specialized strategies"
+                },
+                {
+                    "question": "What is unnamed classes (Java 21 preview)?",
+                    "options": [
+                        "Anonymous classes",
+                        "Top-level classes without an explicit class declaration — entry-point `void main()` directly",
+                        "Inner classes without names",
+                        "Records without name"
+                    ],
+                    "answer": "Top-level classes without an explicit class declaration — entry-point `void main()` directly"
+                },
+                {
+                    "question": "What is `MemorySegment` in the Foreign Memory API?",
+                    "options": [
+                        "A file segment",
+                        "A bounded region of off-heap or on-heap memory with explicit lifetime — safer than raw Unsafe",
+                        "An off-heap cache",
+                        "A byte buffer"
+                    ],
+                    "answer": "A bounded region of off-heap or on-heap memory with explicit lifetime — safer than raw Unsafe"
+                },
+                {
+                    "question": "What improvement do preview features provide?",
+                    "options": [
+                        "Stability before GA",
+                        "A way to use language features before they are finalized — may change or be retracted",
+                        "Features shipped in JDK only",
+                        "A test-only feature"
+                    ],
+                    "answer": "A way to use language features before they are finalized — may change or be retracted"
+                },
+                {
+                    "question": "What is `Linker` in the Foreign Function API?",
+                    "options": [
+                        "A build tool",
+                        "Provides methods to create downcalls (Java→native) and upcalls (native→Java) without JNI",
+                        "A class loader",
+                        "A linker script wrapper"
+                    ],
+                    "answer": "Provides methods to create downcalls (Java→native) and upcalls (native→Java) without JNI"
+                },
+                {
+                    "question": "What is JEP (JDK Enhancement Proposal)?",
+                    "options": [
+                        "A code review tool",
+                        "The process for proposing, reviewing, and delivering new Java features to the JDK",
+                        "A performance benchmark",
+                        "A Java EE specification"
+                    ],
+                    "answer": "The process for proposing, reviewing, and delivering new Java features to the JDK"
+                },
+                {
+                    "question": "What is Project Amber in Java?",
+                    "options": [
+                        "A graphics engine",
+                        "JVM project delivering productivity-oriented language features: records, patterns, text blocks, etc.",
+                        "A garbage collector",
+                        "A module system"
+                    ],
+                    "answer": "JVM project delivering productivity-oriented language features: records, patterns, text blocks, etc."
+                }
+            ]
+        }
+    ]
+}

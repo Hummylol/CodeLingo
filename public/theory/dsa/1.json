@@ -1,0 +1,327 @@
+{
+    "levelno": 1,
+    "topic": "Arrays",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Arrays — Beginner Level",
+            "theory": "An **array** is a fixed-size, contiguous block of memory storing elements of the same type.\n\n```python\n# Python\narr = [10, 20, 30, 40, 50]\nprint(arr[0])   # 10\nprint(arr[-1])  # 50 (last)\narr.append(60)  # [10,20,30,40,50,60]\narr.pop()       # removes last\nlen(arr)        # 5\n```\n\n**Key properties:**\n- O(1) random access by index\n- O(n) insertion/deletion in middle (shift required)\n- O(1) append at end (amortized for dynamic arrays)\n- Elements stored contiguously in memory (cache-friendly)\n\n**Common patterns:** two pointers, sliding window, prefix sum.",
+            "questions": [
+                {
+                    "question": "What is the time complexity of accessing an element by index?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "What is the time complexity of inserting at the beginning of an array?",
+                    "options": [
+                        "O(1)",
+                        "O(log n)",
+                        "O(n)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "What does `arr[-1]` return in Python?",
+                    "options": [
+                        "Error",
+                        "First element",
+                        "Last element",
+                        "Element at len-1"
+                    ],
+                    "answer": "Last element"
+                },
+                {
+                    "question": "Which is true about arrays?",
+                    "options": [
+                        "Dynamic size always",
+                        "O(n) random access",
+                        "Elements in contiguous memory",
+                        "O(1) insertion anywhere"
+                    ],
+                    "answer": "Elements in contiguous memory"
+                },
+                {
+                    "question": "What is `arr.append(x)` time complexity?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1) amortized",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1) amortized"
+                },
+                {
+                    "question": "What is a prefix sum array used for?",
+                    "options": [
+                        "Sorting",
+                        "Quick range sum queries in O(1) after O(n) preprocessing",
+                        "Binary search",
+                        "Reversing arrays"
+                    ],
+                    "answer": "Quick range sum queries in O(1) after O(n) preprocessing"
+                },
+                {
+                    "question": "Two-pointer technique is useful for:",
+                    "options": [
+                        "Sorting arrays",
+                        "Searching in sorted arrays or problems with two ends meeting",
+                        "Counting elements",
+                        "Finding median"
+                    ],
+                    "answer": "Searching in sorted arrays or problems with two ends meeting"
+                },
+                {
+                    "question": "Sliding window technique is useful for:",
+                    "options": [
+                        "Tree traversal",
+                        "Finding subarrays with specific properties (sum, max, etc.) in O(n)",
+                        "Hashing",
+                        "Graph problems"
+                    ],
+                    "answer": "Finding subarrays with specific properties (sum, max, etc.) in O(n)"
+                },
+                {
+                    "question": "What is the space complexity of an array of n elements?",
+                    "options": [
+                        "O(1)",
+                        "O(log n)",
+                        "O(n)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "What is a 2D array best used for?",
+                    "options": [
+                        "Linked data",
+                        "Matrix representation, grid problems",
+                        "Binary search trees",
+                        "Queue operations"
+                    ],
+                    "answer": "Matrix representation, grid problems"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Arrays — Intermediate Level",
+            "theory": "**Common array algorithms:**\n\n**Kadane's Algorithm** — maximum subarray sum in O(n):\n```python\ndef max_subarray(arr):\n    max_sum = curr = arr[0]\n    for x in arr[1:]:\n        curr = max(x, curr + x)\n        max_sum = max(max_sum, curr)\n    return max_sum\n```\n\n**Dutch National Flag (3-way partition):** sort 0s, 1s, 2s in one pass.\n\n**Merge intervals:** sort by start, merge overlapping.\n\n**Prefix XOR:** for range XOR queries.\n\n**Trapping rain water:** two pointers or DP, O(n).",
+            "questions": [
+                {
+                    "question": "Kadane's algorithm solves:",
+                    "options": [
+                        "Sorting problem",
+                        "Maximum subarray sum in O(n)",
+                        "Binary search",
+                        "Longest substring"
+                    ],
+                    "answer": "Maximum subarray sum in O(n)"
+                },
+                {
+                    "question": "Dutch National Flag algorithm can sort arrays with:",
+                    "options": [
+                        "Any values",
+                        "3 distinct values (0,1,2) in O(n) one pass",
+                        "Duplicate values only",
+                        "Negative values only"
+                    ],
+                    "answer": "3 distinct values (0,1,2) in O(n) one pass"
+                },
+                {
+                    "question": "Trapping Rain Water problem best time complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n)",
+                        "O(n)",
+                        "O(1)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Merge intervals algorithm first step?",
+                    "options": [
+                        "Sort by end time",
+                        "Sort by start time",
+                        "Sort by duration",
+                        "Hash the starts"
+                    ],
+                    "answer": "Sort by start time"
+                },
+                {
+                    "question": "Prefix sum `pre[i] = arr[0]+...+arr[i]`. Range sum [l,r] is:",
+                    "options": [
+                        "`pre[r]`",
+                        "`pre[r] - pre[l]`",
+                        "`pre[r] - pre[l-1]`",
+                        "`pre[r] + pre[l]`"
+                    ],
+                    "answer": "`pre[r] - pre[l-1]`"
+                },
+                {
+                    "question": "What is the space complexity of Kadane's algorithm?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "Find if any sum equals target in unsorted array. Best approach:",
+                    "options": [
+                        "Two pointers",
+                        "Sort + binary search",
+                        "Hash set: store complements",
+                        "Brute O(n^2)"
+                    ],
+                    "answer": "Hash set: store complements"
+                },
+                {
+                    "question": "Next permutation algorithm runs in:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n)",
+                        "O(n log n)",
+                        "O(1)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Rotate array by k positions: most space-efficient approach?",
+                    "options": [
+                        "Extra array O(n)",
+                        "Reversal algorithm: 3 reverses in O(n) O(1) space",
+                        "Cycle replace O(n) O(1)",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "Product of array except self — no division, O(n) O(1) extra?",
+                    "options": [
+                        "Prefix product only",
+                        "Suffix product only",
+                        "Prefix then suffix product in-place",
+                        "Divide total by each"
+                    ],
+                    "answer": "Prefix then suffix product in-place"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Arrays — Expert Level",
+            "theory": "**Jump Game (Greedy):** track max reachable index.\n\n**Longest Increasing Subsequence (LIS):** O(n log n) with binary search + patience sorting.\n\n**Count inversions:** merge sort based, O(n log n).\n\n**Sparse Table:** O(n log n) preprocessing, O(1) range minimum queries.\n\n**Segment Tree:** O(log n) range queries and updates — powerful for range sum/min/max with point or range updates.\n\n**BIT (Fenwick Tree):** O(log n) prefix sum with updates, simpler than segment tree.",
+            "questions": [
+                {
+                    "question": "Longest Increasing Subsequence (LIS) optimal complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n)",
+                        "O(n)",
+                        "O(2^n)"
+                    ],
+                    "answer": "O(n log n)"
+                },
+                {
+                    "question": "Counting inversions in an array — best approach?",
+                    "options": [
+                        "Brute force O(n^2)",
+                        "O(n log n) using modified merge sort",
+                        "O(n) with hashing",
+                        "Binary search O(n log n)"
+                    ],
+                    "answer": "O(n log n) using modified merge sort"
+                },
+                {
+                    "question": "Sparse Table preprocessing time and query time:",
+                    "options": [
+                        "O(n), O(log n)",
+                        "O(n log n), O(1)",
+                        "O(n), O(1)",
+                        "O(n^2), O(1)"
+                    ],
+                    "answer": "O(n log n), O(1)"
+                },
+                {
+                    "question": "Segment Tree: time for range query and point update?",
+                    "options": [
+                        "O(1), O(n)",
+                        "O(log n), O(log n)",
+                        "O(n), O(1)",
+                        "O(log n), O(1)"
+                    ],
+                    "answer": "O(log n), O(log n)"
+                },
+                {
+                    "question": "Fenwick Tree (BIT) supports:",
+                    "options": [
+                        "O(1) range queries",
+                        "O(log n) prefix sum + point update",
+                        "O(1) range minimum",
+                        "O(n) updates"
+                    ],
+                    "answer": "O(log n) prefix sum + point update"
+                },
+                {
+                    "question": "Max sum rectangle in a 2D matrix — optimal approach?",
+                    "options": [
+                        "O(n^4) brute",
+                        "O(n^3) — fix top/bottom rows, apply Kadane on column sums",
+                        "O(n^2) always",
+                        "O(n log n)"
+                    ],
+                    "answer": "O(n^3) — fix top/bottom rows, apply Kadane on column sums"
+                },
+                {
+                    "question": "Jump Game II (minimum jumps) — optimal approach?",
+                    "options": [
+                        "BFS O(n^2)",
+                        "Greedy O(n): track current and next max reach",
+                        "DP O(n^2)",
+                        "DFS with memoization"
+                    ],
+                    "answer": "Greedy O(n): track current and next max reach"
+                },
+                {
+                    "question": "Median of two sorted arrays — best complexity:",
+                    "options": [
+                        "O(n)",
+                        "O(log n) using binary search on smaller array",
+                        "O(n log n) merge and find",
+                        "O(1) with preprocessing"
+                    ],
+                    "answer": "O(log n) using binary search on smaller array"
+                },
+                {
+                    "question": "Sliding window maximum (deque approach) complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n)",
+                        "O(n)",
+                        "O(n k)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "What is 'lazy propagation' in Segment Tree?",
+                    "options": [
+                        "Delaying deletions",
+                        "Deferring range updates — mark nodes as pending and push down when needed for O(log n) range updates",
+                        "A space optimization",
+                        "A sorted segment tree"
+                    ],
+                    "answer": "Deferring range updates — mark nodes as pending and push down when needed for O(log n) range updates"
+                }
+            ]
+        }
+    ]
+}

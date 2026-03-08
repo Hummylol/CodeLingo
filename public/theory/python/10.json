@@ -1,0 +1,327 @@
+{
+    "levelno": 10,
+    "topic": "Dictionaries",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Dictionaries — Beginner Level",
+            "theory": "A **dictionary** stores data as **key-value pairs**. Create one with curly braces:\n`person = {'name': 'Alice', 'age': 30}`\n\nAccess values by key: `person['name']` → `'Alice'`\nAdd/update: `person['city'] = 'Paris'`\nDelete: `del person['age']`\n\n**Keys must be unique and immutable** (strings, numbers, tuples).\n\nUseful methods:\n- `.keys()` — all keys\n- `.values()` — all values\n- `.items()` — all (key, value) pairs\n\nIn Python 3.7+, dictionaries maintain **insertion order**.",
+            "questions": [
+                {
+                    "question": "How are items stored in a dictionary?",
+                    "options": [
+                        "As an ordered list",
+                        "As key-value pairs",
+                        "As an indexed sequence",
+                        "As unique items only"
+                    ],
+                    "answer": "As key-value pairs"
+                },
+                {
+                    "question": "Which syntax creates an empty dictionary?",
+                    "options": [
+                        "[]",
+                        "()",
+                        "{}",
+                        "<>"
+                    ],
+                    "answer": "{}"
+                },
+                {
+                    "question": "Given `d = {'a':1}`, how do you get the value for key 'a'?",
+                    "options": [
+                        "d[0]",
+                        "d.get('a')",
+                        "d['a']",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What happens when you access a missing key with `d['missing']`?",
+                    "options": [
+                        "Returns None",
+                        "Returns 0",
+                        "Raises KeyError",
+                        "Returns False"
+                    ],
+                    "answer": "Raises KeyError"
+                },
+                {
+                    "question": "How do you add `'city': 'Paris'` to dictionary `d`?",
+                    "options": [
+                        "d.append('city','Paris')",
+                        "d['city'] = 'Paris'",
+                        "d.add('city','Paris')",
+                        "d.insert('city','Paris')"
+                    ],
+                    "answer": "d['city'] = 'Paris'"
+                },
+                {
+                    "question": "Can a dictionary have duplicate keys?",
+                    "options": [
+                        "Yes",
+                        "No, keys must be unique",
+                        "Only for string keys",
+                        "Only for integer keys"
+                    ],
+                    "answer": "No, keys must be unique"
+                },
+                {
+                    "question": "How do you get all keys from dictionary `d`?",
+                    "options": [
+                        "d.keys()",
+                        "keys(d)",
+                        "d.get_keys()",
+                        "d.values()"
+                    ],
+                    "answer": "d.keys()"
+                },
+                {
+                    "question": "How do you remove key 'a' from dictionary `d`?",
+                    "options": [
+                        "d.remove('a')",
+                        "del d['a']",
+                        "d.pop('a')",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "Are dictionaries ordered in Python 3.7+?",
+                    "options": [
+                        "No, always unordered",
+                        "Yes, they maintain insertion order",
+                        "Ordered alphabetically by key",
+                        "Only for integer keys"
+                    ],
+                    "answer": "Yes, they maintain insertion order"
+                },
+                {
+                    "question": "Which data type can be used as a dictionary key?",
+                    "options": [
+                        "A list",
+                        "A string",
+                        "Another dictionary",
+                        "A set"
+                    ],
+                    "answer": "A string"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Dictionaries — Intermediate Level",
+            "theory": "**`dict.get(key, default)`** — returns `default` instead of raising `KeyError` if the key is missing:\n`d.get('missing', 0)` → `0`\n\n**Iterating a dictionary:**\n`for k, v in d.items():  # iterate key-value pairs`\n`for k in d:  # iterate keys`\n\n**Dict comprehension:**\n`squares = {x: x**2 for x in range(5)}`\n\n**Merging dicts (Python 3.9+):**\n`merged = d1 | d2`\nor `d1.update(d2)` to update in-place\n\n**Nested dictionaries** — dicts inside dicts:\n`users = {'alice': {'age': 30, 'city': 'Paris'}}`\n`users['alice']['age']` → `30`",
+            "questions": [
+                {
+                    "question": "What does `d.get('key', 'default')` return if 'key' is missing?",
+                    "options": [
+                        "KeyError",
+                        "None",
+                        "'default'",
+                        "0"
+                    ],
+                    "answer": "'default'"
+                },
+                {
+                    "question": "What does `{x: x**2 for x in range(4)}` produce?",
+                    "options": [
+                        "{0:0, 1:1, 2:4, 3:9}",
+                        "{1:1, 2:4, 3:9}",
+                        "[0,1,4,9]",
+                        "Error"
+                    ],
+                    "answer": "{0:0, 1:1, 2:4, 3:9}"
+                },
+                {
+                    "question": "How do you iterate over key-value pairs of `d`?",
+                    "options": [
+                        "for k in d",
+                        "for k,v in d.items()",
+                        "for v in d.values()",
+                        "for k,v in d"
+                    ],
+                    "answer": "for k,v in d.items()"
+                },
+                {
+                    "question": "What does `d1 | d2` do in Python 3.9+?",
+                    "options": [
+                        "Merges d1 and d2 into a new dict",
+                        "Raises SyntaxError",
+                        "Updates d1 in place with d2",
+                        "Computes OR of keys"
+                    ],
+                    "answer": "Merges d1 and d2 into a new dict"
+                },
+                {
+                    "question": "What does `d.update({'b': 2})` do?",
+                    "options": [
+                        "Returns a new dict",
+                        "Adds/overwrites key 'b' with value 2 in d in place",
+                        "Raises TypeError",
+                        "Only works if 'b' already exists"
+                    ],
+                    "answer": "Adds/overwrites key 'b' with value 2 in d in place"
+                },
+                {
+                    "question": "What does `d.pop('key', None)` do?",
+                    "options": [
+                        "Raises KeyError",
+                        "Removes and returns value for 'key', or None if missing",
+                        "Returns None without removing",
+                        "Raises TypeError"
+                    ],
+                    "answer": "Removes and returns value for 'key', or None if missing"
+                },
+                {
+                    "question": "How do you check if a key exists in a dict `d`?",
+                    "options": [
+                        "d.has_key('k')",
+                        "'k' in d",
+                        "'k' in d.keys()",
+                        "d.contains('k')"
+                    ],
+                    "answer": "'k' in d"
+                },
+                {
+                    "question": "What does `dict.fromkeys(['a','b'], 0)` create?",
+                    "options": [
+                        "{'a': 'b'}",
+                        "{'a': 0, 'b': 0}",
+                        "{'a': None, 'b': None}",
+                        "Error"
+                    ],
+                    "answer": "{'a': 0, 'b': 0}"
+                },
+                {
+                    "question": "What does `d.setdefault('k', []).append(1)` do?",
+                    "options": [
+                        "Raises KeyError if 'k' missing",
+                        "Sets 'k' to [] if missing, then appends 1 to the list",
+                        "Always returns None",
+                        "Replaces any existing value"
+                    ],
+                    "answer": "Sets 'k' to [] if missing, then appends 1 to the list"
+                },
+                {
+                    "question": "How do you safely access a nested key `d['a']['b']` when 'a' might not exist?",
+                    "options": [
+                        "d['a']['b']",
+                        "d.get('a', {}).get('b')",
+                        "d['a'].get('b')",
+                        "try: d['a']['b'] except: None"
+                    ],
+                    "answer": "d.get('a', {}).get('b')"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Dictionaries — Expert Level",
+            "theory": "**Under the hood**, Python dicts are **hash tables**. Keys are hashed to find their slot. Average O(1) lookup, worst-case O(n) with many hash collisions.\n\n**`collections.defaultdict`** automatically creates a default value for missing keys:\n`from collections import defaultdict`\n`d = defaultdict(list)`\n`d['key'].append(1)  # no KeyError even if 'key' didn't exist`\n\n**`collections.OrderedDict`** — before 3.7 this was needed for ordered dicts; now mostly used for its `move_to_end()` method.\n\n**`collections.Counter`** counts hashable objects:\n`Counter('abracadabra')` → `{'a':5, 'b':2, 'r':2, 'c':1, 'd':1}`\n\nDicts are not hashable themselves — they cannot be used as dictionary keys.",
+            "questions": [
+                {
+                    "question": "What data structure underlies Python's dict?",
+                    "options": [
+                        "Binary search tree",
+                        "Linked list",
+                        "Hash table",
+                        "Array"
+                    ],
+                    "answer": "Hash table"
+                },
+                {
+                    "question": "What is the average time complexity of dict key lookup?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "What does `defaultdict(list)` do for missing keys?",
+                    "options": [
+                        "Raises KeyError",
+                        "Creates an empty list for any missing key automatically",
+                        "Returns None",
+                        "Creates an empty dict"
+                    ],
+                    "answer": "Creates an empty list for any missing key automatically"
+                },
+                {
+                    "question": "What does `Counter('hello')` produce?",
+                    "options": [
+                        "{'h':1,'e':1,'l':2,'o':1}",
+                        "['h','e','l','l','o']",
+                        "5",
+                        "Error"
+                    ],
+                    "answer": "{'h':1,'e':1,'l':2,'o':1}"
+                },
+                {
+                    "question": "Can a dict be used as a key in another dict?",
+                    "options": [
+                        "Yes, always",
+                        "No, dicts are not hashable",
+                        "Only if it has <= 10 keys",
+                        "Only if values are all strings"
+                    ],
+                    "answer": "No, dicts are not hashable"
+                },
+                {
+                    "question": "What does `Counter.most_common(2)` return?",
+                    "options": [
+                        "All items",
+                        "The two most frequent elements as a list of (elem, count) tuples",
+                        "The sum of the two highest counts",
+                        "Error"
+                    ],
+                    "answer": "The two most frequent elements as a list of (elem, count) tuples"
+                },
+                {
+                    "question": "What is the worst-case time complexity of dict lookup?",
+                    "options": [
+                        "O(1)",
+                        "O(log n)",
+                        "O(n) — due to hash collisions",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(n) — due to hash collisions"
+                },
+                {
+                    "question": "What is `ChainMap` from the `collections` module used for?",
+                    "options": [
+                        "Chaining method calls on dicts",
+                        "Combining multiple dicts into a logical view without copying",
+                        "Sorting multiple dicts",
+                        "Merging Counter objects"
+                    ],
+                    "answer": "Combining multiple dicts into a logical view without copying"
+                },
+                {
+                    "question": "In Python 3.7+, what change was made to regular `dict`?",
+                    "options": [
+                        "Keys are now sorted",
+                        "Dicts now guarantee insertion order as part of the language spec",
+                        "Dicts became immutable",
+                        "Keys are now stored as a set"
+                    ],
+                    "answer": "Dicts now guarantee insertion order as part of the language spec"
+                },
+                {
+                    "question": "What does `{**d1, **d2}` do?",
+                    "options": [
+                        "Raises SyntaxError",
+                        "Merges d1 and d2 into a new dict (d2 values win on conflicts)",
+                        "Computes the difference",
+                        "Creates a set of keys"
+                    ],
+                    "answer": "Merges d1 and d2 into a new dict (d2 values win on conflicts)"
+                }
+            ]
+        }
+    ]
+}

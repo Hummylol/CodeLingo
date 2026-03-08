@@ -1,0 +1,327 @@
+{
+    "levelno": 18,
+    "topic": "STL Containers",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "STL Containers — Beginner Level",
+            "theory": "The **Standard Template Library (STL)** provides ready-made containers:\n\n| Container | Description | Access |\n|-----------|-------------|--------|\n| `std::vector<T>` | Dynamic array | O(1) random |\n| `std::list<T>` | Doubly-linked list | O(n) random |\n| `std::map<K,V>` | Sorted key-value (BST) | O(log n) |\n| `std::unordered_map<K,V>` | Hash map | O(1) avg |\n| `std::set<T>` | Sorted unique values | O(log n) |\n| `std::stack<T>` | LIFO adapter | — |\n| `std::queue<T>` | FIFO adapter | — |\n\n```cpp\n#include <vector>\nstd::vector<int> v = {1,2,3};\nv.push_back(4);\nfor (int x : v) std::cout << x << ' ';\n```",
+            "questions": [
+                {
+                    "question": "Which STL container is a dynamic array?",
+                    "options": [
+                        "`std::list`",
+                        "`std::vector`",
+                        "`std::map`",
+                        "`std::set`"
+                    ],
+                    "answer": "`std::vector`"
+                },
+                {
+                    "question": "What is `std::map<K,V>`?",
+                    "options": [
+                        "Hash map",
+                        "Sorted key-value store backed by a balanced BST",
+                        "Array of pairs",
+                        "Unordered key-value store"
+                    ],
+                    "answer": "Sorted key-value store backed by a balanced BST"
+                },
+                {
+                    "question": "What is the average time complexity for lookup in `std::unordered_map`?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n log n)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "What follows LIFO order?",
+                    "options": [
+                        "`std::queue`",
+                        "`std::priority_queue`",
+                        "`std::stack`",
+                        "`std::deque`"
+                    ],
+                    "answer": "`std::stack`"
+                },
+                {
+                    "question": "What follows FIFO order?",
+                    "options": [
+                        "`std::stack`",
+                        "`std::queue`",
+                        "`std::set`",
+                        "`std::map`"
+                    ],
+                    "answer": "`std::queue`"
+                },
+                {
+                    "question": "What does `std::vector::push_back(x)` do?",
+                    "options": [
+                        "Inserts at front",
+                        "Appends x to end",
+                        "Inserts at sorted position",
+                        "Removes x"
+                    ],
+                    "answer": "Appends x to end"
+                },
+                {
+                    "question": "What does `std::set` guarantee about elements?",
+                    "options": [
+                        "Sorted and may have duplicates",
+                        "Sorted and unique",
+                        "Unsorted unique",
+                        "Unsorted and may have duplicates"
+                    ],
+                    "answer": "Sorted and unique"
+                },
+                {
+                    "question": "How do you access a `std::map` value by key?",
+                    "options": [
+                        "`m.get(key)`",
+                        "`m[key]`",
+                        "`m.at(key)`",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What does `std::list` offer over `std::vector`?",
+                    "options": [
+                        "Faster random access",
+                        "O(1) insertion/deletion anywhere given an iterator",
+                        "Less memory",
+                        "Better cache usage"
+                    ],
+                    "answer": "O(1) insertion/deletion anywhere given an iterator"
+                },
+                {
+                    "question": "Which header is needed for `std::map`?",
+                    "options": [
+                        "`<vector>`",
+                        "`<map>`",
+                        "`<unordered_map>`",
+                        "`<containers>`"
+                    ],
+                    "answer": "`<map>`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "STL Containers — Intermediate Level",
+            "theory": "**Iterators** provide a uniform way to traverse containers:\n```cpp\nstd::vector<int> v = {1,2,3,4,5};\nfor (auto it = v.begin(); it != v.end(); ++it) {\n    std::cout << *it;\n}\n```\n\n**STL algorithms** work with iterators:\n```cpp\n#include <algorithm>\nstd::sort(v.begin(), v.end());\nauto it = std::find(v.begin(), v.end(), 3);\nstd::count_if(v.begin(), v.end(), [](int x){ return x > 2; });\n```\n\n**`std::deque`** — double-ended queue, O(1) push/pop at both ends.\n**`std::priority_queue`** — max-heap by default.",
+            "questions": [
+                {
+                    "question": "What does `v.begin()` return?",
+                    "options": [
+                        "First element",
+                        "An iterator to the first element",
+                        "Index 0",
+                        "Pointer to v"
+                    ],
+                    "answer": "An iterator to the first element"
+                },
+                {
+                    "question": "What does `v.end()` point to?",
+                    "options": [
+                        "Last element",
+                        "One past the last element (sentinel)",
+                        "nullptr",
+                        "size of v"
+                    ],
+                    "answer": "One past the last element (sentinel)"
+                },
+                {
+                    "question": "What does `std::sort(v.begin(), v.end())` do?",
+                    "options": [
+                        "Removes duplicates",
+                        "Sorts v in ascending order in-place",
+                        "Returns a sorted copy",
+                        "Filters elements"
+                    ],
+                    "answer": "Sorts v in ascending order in-place"
+                },
+                {
+                    "question": "What does `std::find(begin, end, val)` return?",
+                    "options": [
+                        "Index of val",
+                        "Iterator to first occurrence of val, or end if not found",
+                        "bool",
+                        "Count of val"
+                    ],
+                    "answer": "Iterator to first occurrence of val, or end if not found"
+                },
+                {
+                    "question": "What is `std::priority_queue` by default?",
+                    "options": [
+                        "Min-heap",
+                        "Max-heap",
+                        "Sorted queue",
+                        "Stack"
+                    ],
+                    "answer": "Max-heap"
+                },
+                {
+                    "question": "What is `std::deque` optimized for?",
+                    "options": [
+                        "Random access only",
+                        "Push/pop at both front and back in O(1)",
+                        "Sorted storage",
+                        "Cache performance"
+                    ],
+                    "answer": "Push/pop at both front and back in O(1)"
+                },
+                {
+                    "question": "What does `std::remove(begin, end, val)` do?",
+                    "options": [
+                        "Deletes elements",
+                        "Moves non-val elements to front, returns new end iterator (erase-remove idiom needs erase() call)",
+                        "Filters in-place and shrinks",
+                        "Returns count removed"
+                    ],
+                    "answer": "Moves non-val elements to front, returns new end iterator (erase-remove idiom needs erase() call)"
+                },
+                {
+                    "question": "What does `std::accumulate(begin, end, init)` compute?",
+                    "options": [
+                        "Sorted sum",
+                        "Cumulative sum (or fold) of elements starting from init",
+                        "Product always",
+                        "Average"
+                    ],
+                    "answer": "Cumulative sum (or fold) of elements starting from init"
+                },
+                {
+                    "question": "What additional guarantee does `std::multimap` provide over `std::map`?",
+                    "options": [
+                        "Faster lookup",
+                        "Allows multiple values for the same key",
+                        "Stable ordering of inserts",
+                        "Hash-based storage"
+                    ],
+                    "answer": "Allows multiple values for the same key"
+                },
+                {
+                    "question": "What is the erase-remove idiom?",
+                    "options": [
+                        "Sorting then erasing",
+                        "`v.erase(std::remove(begin,end,val), end)` — remove+erase pair for in-place deletion",
+                        "Manual loop with erase",
+                        "Using std::filter"
+                    ],
+                    "answer": "`v.erase(std::remove(begin,end,val), end)` — remove+erase pair for in-place deletion"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "STL Containers — Expert Level",
+            "theory": "**`std::ranges` (C++20):** range-adapted algorithms that avoid iterator pairs:\n```cpp\nstd::ranges::sort(v);\nauto sq = v | std::views::transform([](int x){ return x*x; });\n```\n\n**`std::flat_map` (C++23):** sorted-array-backed map, better cache performance than tree-based `std::map`.\n\n**`std::span<T>` (C++20):** non-owning view — pass to functions without copying.\n\n**Custom allocators:** STL containers accept an allocator type parameter for fine-grained memory control (e.g., pool allocation).\n\n**`std::pmr::*` (C++17 Polymorphic Memory Resources):** runtime-swappable allocators.",
+            "questions": [
+                {
+                    "question": "What is `std::ranges::sort(v)` compared to `std::sort(v.begin(), v.end())`?",
+                    "options": [
+                        "Always faster",
+                        "Takes the whole range instead of iterator pairs — cleaner, same algorithmic complexity",
+                        "Different sort algorithm",
+                        "Only for arrays"
+                    ],
+                    "answer": "Takes the whole range instead of iterator pairs — cleaner, same algorithmic complexity"
+                },
+                {
+                    "question": "What is `std::flat_map` (C++23) and its advantage?",
+                    "options": [
+                        "An unordered map",
+                        "A sorted flat (array-based) map with better cache locality than tree-based map",
+                        "A map with flat keys",
+                        "A priority queue alternative"
+                    ],
+                    "answer": "A sorted flat (array-based) map with better cache locality than tree-based map"
+                },
+                {
+                    "question": "What does a custom allocator in an STL container allow?",
+                    "options": [
+                        "Sorting behavior",
+                        "Fine-grained memory control — e.g., arena/pool allocation, reducing heap fragmentation",
+                        "Custom comparison",
+                        "Non-default hashing"
+                    ],
+                    "answer": "Fine-grained memory control — e.g., arena/pool allocation, reducing heap fragmentation"
+                },
+                {
+                    "question": "What is `std::pmr::vector`?",
+                    "options": [
+                        "A parallel vector",
+                        "A vector using Polymorphic Memory Resources — allocator selected at runtime",
+                        "A persistent vector",
+                        "A const vector"
+                    ],
+                    "answer": "A vector using Polymorphic Memory Resources — allocator selected at runtime"
+                },
+                {
+                    "question": "What is `std::views::filter | std::views::transform` pipeline?",
+                    "options": [
+                        "Eager allocation",
+                        "Lazy composition of views that works on demand without creating intermediate containers",
+                        "A sorting pipeline",
+                        "Always slower"
+                    ],
+                    "answer": "Lazy composition of views that works on demand without creating intermediate containers"
+                },
+                {
+                    "question": "What is the invalidation rule for vector iterators after `push_back`?",
+                    "options": [
+                        "Never invalidated",
+                        "Invalidated if reallocation occurs (capacity exceeded)",
+                        "Invalidated always",
+                        "Invalidated only for end()"
+                    ],
+                    "answer": "Invalidated if reallocation occurs (capacity exceeded)"
+                },
+                {
+                    "question": "What does `std::unordered_map::reserve(n)` do?",
+                    "options": [
+                        "Sets max size",
+                        "Pre-allocates bucket count to avoid rehashing up to n elements",
+                        "Sorts the map",
+                        "Limits capacity"
+                    ],
+                    "answer": "Pre-allocates bucket count to avoid rehashing up to n elements"
+                },
+                {
+                    "question": "What is node-based vs contiguous container performance trade-off?",
+                    "options": [
+                        "Node (list/map) has better cache locality; vector has worse",
+                        "Contiguous (vector/array) has better cache locality; node-based has O(1) stable insert",
+                        "Both are equal",
+                        "Depends on platform only"
+                    ],
+                    "answer": "Contiguous (vector/array) has better cache locality; node-based has O(1) stable insert"
+                },
+                {
+                    "question": "What is `std::span<T,N>` vs `std::span<T>`?",
+                    "options": [
+                        "Same",
+                        "Fixed extent (N known at compile time) vs dynamic extent (runtime size)",
+                        "N is the max size in both",
+                        "No difference for N>1"
+                    ],
+                    "answer": "Fixed extent (N known at compile time) vs dynamic extent (runtime size)"
+                },
+                {
+                    "question": "What is `std::ranges::views::zip` (C++23)?",
+                    "options": [
+                        "Compresses containers",
+                        "Creates a lazy view of tuples from multiple ranges, iterating them in lock-step",
+                        "Sorts multiple ranges",
+                        "Merges containers"
+                    ],
+                    "answer": "Creates a lazy view of tuples from multiple ranges, iterating them in lock-step"
+                }
+            ]
+        }
+    ]
+}

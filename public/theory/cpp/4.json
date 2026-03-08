@@ -1,0 +1,327 @@
+{
+    "levelno": 4,
+    "topic": "Control Flow (If-Else)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Control Flow (If-Else) — Beginner Level",
+            "theory": "Control flow lets you alter the execution path of your program. The `if-else` statement runs different code based on a condition.\n\n```cpp\nint score = 85;\nif (score >= 90) {\n    std::cout << \"Grade A\";\n} else if (score >= 80) {\n    std::cout << \"Grade B\";\n} else {\n    std::cout << \"Grade C\";\n}\n```\n\n- The `if` block runs when its condition is `true`\n- The `else if` block is tested when previous conditions are `false`\n- The `else` block runs when all previous conditions are `false`\n- Curly braces `{}` group multiple statements (always recommended)\n- A non-zero integer evaluates to `true`; zero evaluates to `false`",
+            "questions": [
+                {
+                    "question": "Which block runs if the `if` condition is true?",
+                    "options": [
+                        "The `else` block",
+                        "The `if` block",
+                        "All blocks",
+                        "None"
+                    ],
+                    "answer": "The `if` block"
+                },
+                {
+                    "question": "Is the `else` block mandatory for an `if`?",
+                    "options": [
+                        "Yes, always",
+                        "No, it is optional",
+                        "Only if there is else-if",
+                        "Yes, to avoid errors"
+                    ],
+                    "answer": "No, it is optional"
+                },
+                {
+                    "question": "What does a non-zero value evaluate to in a boolean context?",
+                    "options": [
+                        "`false`",
+                        "`true`",
+                        "An error",
+                        "0"
+                    ],
+                    "answer": "`true`"
+                },
+                {
+                    "question": "What is a nested `if` statement?",
+                    "options": [
+                        "An `if` with multiple else-if blocks",
+                        "An `if` inside another `if` or `else` block",
+                        "An `if` with logical operators",
+                        "An `if` that never runs"
+                    ],
+                    "answer": "An `if` inside another `if` or `else` block"
+                },
+                {
+                    "question": "What is the output? `int x = 5; if (x > 10) cout << \"A\"; else cout << \"B\";`",
+                    "options": [
+                        "A",
+                        "B",
+                        "AB",
+                        "No output"
+                    ],
+                    "answer": "B"
+                },
+                {
+                    "question": "Can you have an `else` without a preceding `if`?",
+                    "options": [
+                        "Yes, at end of function",
+                        "Yes with parentheses",
+                        "No, compile-time error",
+                        "Only in main"
+                    ],
+                    "answer": "No, compile-time error"
+                },
+                {
+                    "question": "What is the output? `if (0) cout << \"T\"; else cout << \"F\";`",
+                    "options": [
+                        "T",
+                        "F",
+                        "No output",
+                        "Error"
+                    ],
+                    "answer": "F"
+                },
+                {
+                    "question": "What is the purpose of `{}` after an `if`?",
+                    "options": [
+                        "Optional style only",
+                        "Groups multiple statements into single block",
+                        "Required only for nested ifs",
+                        "Required only with else"
+                    ],
+                    "answer": "Groups multiple statements into single block"
+                },
+                {
+                    "question": "If chain of conditions should check a single variable, an alternative to `if-else if` chains is:",
+                    "options": [
+                        "A `for` loop",
+                        "A `while` loop",
+                        "A `switch` statement",
+                        "A function"
+                    ],
+                    "answer": "A `switch` statement"
+                },
+                {
+                    "question": "At most how many `else if` blocks can follow an `if`?",
+                    "options": [
+                        "1",
+                        "2",
+                        "No limit",
+                        "Depends on compiler"
+                    ],
+                    "answer": "No limit"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Control Flow (If-Else) — Intermediate Level",
+            "theory": "**Short-circuit evaluation** — in `&&` and `||`, C++ stops evaluating as soon as the result is determined:\n- `false && ...` → immediately `false` (right side not evaluated)\n- `true || ...` → immediately `true` (right side not evaluated)\n\n**If-init statement (C++17):**\n```cpp\nif (int n = compute(); n > 0) {\n    use(n); // n only lives inside this if\n}\n```\n\n**Constexpr if (C++17):** branching resolved at compile time:\n```cpp\nif constexpr (sizeof(T) > 4) { /* compile-time branch */ }\n```\n\n**Dangling else** — the `else` always pairs with the nearest `if`. Use braces to be explicit.",
+            "questions": [
+                {
+                    "question": "What does short-circuit evaluation mean for `false && expr`?",
+                    "options": [
+                        "`expr` is always evaluated",
+                        "`expr` is NOT evaluated — result is already `false`",
+                        "Causes undefined behavior",
+                        "Throws an exception"
+                    ],
+                    "answer": "`expr` is NOT evaluated — result is already `false`"
+                },
+                {
+                    "question": "What does `if (int n = f(); n > 0)` (C++17 if-init) do?",
+                    "options": [
+                        "Syntax error",
+                        "Declares n inside the if scope and branches on n>0",
+                        "Assigns n globally",
+                        "Calls f twice"
+                    ],
+                    "answer": "Declares n inside the if scope and branches on n>0"
+                },
+                {
+                    "question": "What is `if constexpr` used for?",
+                    "options": [
+                        "Runtime branching",
+                        "Compile-time branching in templates, eliminating branches that don't apply",
+                        "Declaring constant conditionals",
+                        "Replacing switch statements"
+                    ],
+                    "answer": "Compile-time branching in templates, eliminating branches that don't apply"
+                },
+                {
+                    "question": "What is the 'dangling else' problem?",
+                    "options": [
+                        "An else with no if",
+                        "Ambiguity about which if an else belongs to when braces are missing",
+                        "An else that never executes",
+                        "An else after a switch"
+                    ],
+                    "answer": "Ambiguity about which if an else belongs to when braces are missing"
+                },
+                {
+                    "question": "What is the result of `true || side_effect()`?",
+                    "options": [
+                        "side_effect() is called then true",
+                        "true is returned without calling side_effect()",
+                        "false",
+                        "Depends on compiler"
+                    ],
+                    "answer": "true is returned without calling side_effect()"
+                },
+                {
+                    "question": "What does `[[unlikely]]` attribute on an `if` branch hint to the compiler?",
+                    "options": [
+                        "Remove the branch entirely",
+                        "The branch is rarely taken — optimize accordingly",
+                        "Make it constexpr",
+                        "Force inlining"
+                    ],
+                    "answer": "The branch is rarely taken — optimize accordingly"
+                },
+                {
+                    "question": "Can `if constexpr` branches bypass compilation errors in the non-selected branch?",
+                    "options": [
+                        "No, all branches must compile",
+                        "Yes — the discarded branch only needs to be syntactically valid, not semantically",
+                        "Yes, completely ignored by compiler",
+                        "Only with enable_if"
+                    ],
+                    "answer": "Yes — the discarded branch only needs to be syntactically valid, not semantically"
+                },
+                {
+                    "question": "What is the scope of a variable declared in an if-init (C++17)?",
+                    "options": [
+                        "Global",
+                        "Function scope",
+                        "The entire if-else block (both branches)",
+                        "Only the if block"
+                    ],
+                    "answer": "The entire if-else block (both branches)"
+                },
+                {
+                    "question": "`if (auto p = dynamic_cast<Derived*>(base))` — what does the if test?",
+                    "options": [
+                        "If p is not nullptr (cast succeeded)",
+                        "If base is a Derived",
+                        "Always true",
+                        "Never used"
+                    ],
+                    "answer": "If p is not nullptr (cast succeeded)"
+                },
+                {
+                    "question": "Which is the preferred modern C++ way to check a nullable value returned from a function?",
+                    "options": [
+                        "Compare return to nullptr",
+                        "Use if-init with the returned optional/pointer",
+                        "Never return nullable",
+                        "Use a try-catch"
+                    ],
+                    "answer": "Use if-init with the returned optional/pointer"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Control Flow (If-Else) — Expert Level",
+            "theory": "**Branch prediction** — modern CPUs speculatively execute branches. Poorly predicted branches cause pipeline stalls. The `[[likely]]/[[unlikely]]` attributes (C++20) communicate hint to the compiler and hardware.\n\n**Branchless programming** — replacing `if`-statements with arithmetic or bitwise operations to avoid branch mispredictions:\n```cpp\n// Instead of: if (a < b) min = a; else min = b;\nint min_val = a + ((b - a) & ((b - a) >> 31)); // branchless min\n```\n\n**`std::conditional<Condition, T, F>::type`** — compile-time conditional type selection.\n\n**`requires` clause** + concept-based if-constexpr in templates is the primary approach for type-dependent branching in modern C++.",
+            "questions": [
+                {
+                    "question": "What is branch misprediction?",
+                    "options": [
+                        "Incorrect syntax in if",
+                        "CPU predicted the wrong path and must undo speculative work (pipeline flush)",
+                        "A compile-time error",
+                        "Incorrect operator precedence"
+                    ],
+                    "answer": "CPU predicted the wrong path and must undo speculative work (pipeline flush)"
+                },
+                {
+                    "question": "What do `[[likely]]`/`[[unlikely]]` attributes hint to the compiler?",
+                    "options": [
+                        "Disable branch",
+                        "Expected probability of a branch being taken — guides code layout and CPU hint",
+                        "Force compile-time evaluation",
+                        "Suppress warnings"
+                    ],
+                    "answer": "Expected probability of a branch being taken — guides code layout and CPU hint"
+                },
+                {
+                    "question": "What is branchless programming aimed at?",
+                    "options": [
+                        "Removing all conditionals from a program",
+                        "Optimizing hot code by replacing branches with arithmetic/bitwise ops to avoid misprediction stalls",
+                        "Using only `switch`",
+                        "Replacing loops with recursion"
+                    ],
+                    "answer": "Optimizing hot code by replacing branches with arithmetic/bitwise ops to avoid misprediction stalls"
+                },
+                {
+                    "question": "What does `std::conditional<true, int, double>::type` resolve to?",
+                    "options": [
+                        "`double`",
+                        "`int`",
+                        "A condition type",
+                        "A bool"
+                    ],
+                    "answer": "`int`"
+                },
+                {
+                    "question": "In `if constexpr`, does the discarded branch need to be semantically valid?",
+                    "options": [
+                        "Yes, fully",
+                        "No — only syntactically",
+                        "Yes, in classes",
+                        "It depends on SFINAE"
+                    ],
+                    "answer": "No — only syntactically"
+                },
+                {
+                    "question": "What is SFINAE?",
+                    "options": [
+                        "Standard Feature Insertion And Namespace Edition",
+                        "Substitution Failure Is Not An Error — enables compile-time branching via template specialization",
+                        "A sorting algorithm",
+                        "A memory allocation strategy"
+                    ],
+                    "answer": "Substitution Failure Is Not An Error — enables compile-time branching via template specialization"
+                },
+                {
+                    "question": "What replaces SFINAE in modern C++20 concepts?",
+                    "options": [
+                        "`enable_if`",
+                        "`requires` clauses and concepts",
+                        "`constexpr if`",
+                        "`std::conditional`"
+                    ],
+                    "answer": "`requires` clauses and concepts"
+                },
+                {
+                    "question": "What does `std::bit_cast<float>(int_val)` do?",
+                    "options": [
+                        "Converts int to float numerically",
+                        "Reinterprets the bit pattern of int_val as a float — no conversion",
+                        "Causes UB like reinterpret_cast",
+                        "Rounds int to float"
+                    ],
+                    "answer": "Reinterprets the bit pattern of int_val as a float — no conversion"
+                },
+                {
+                    "question": "In a hot loop with a predictable branch (always true), what might the CPU do?",
+                    "options": [
+                        "Remove the branch at runtime",
+                        "Speculatively execute the true path and rarely flush",
+                        "Evaluate both paths",
+                        "Refuse to predict"
+                    ],
+                    "answer": "Speculatively execute the true path and rarely flush"
+                },
+                {
+                    "question": "What is the primary advantage of `if constexpr` over `std::enable_if`?",
+                    "options": [
+                        "Better runtime performance",
+                        "Readable, direct code without error-prone SFINAE template metaprogramming",
+                        "More type safety",
+                        "Supports runtime values"
+                    ],
+                    "answer": "Readable, direct code without error-prone SFINAE template metaprogramming"
+                }
+            ]
+        }
+    ]
+}

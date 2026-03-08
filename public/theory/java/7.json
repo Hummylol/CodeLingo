@@ -1,0 +1,327 @@
+{
+    "levelno": 7,
+    "topic": "OOP – Classes & Objects",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "OOP – Classes & Objects — Beginner Level",
+            "theory": "A **class** is a blueprint; an **object** is an instance.\n\n```java\npublic class Dog {\n    String name;\n    int age;\n\n    public void bark() {\n        System.out.println(name + \" says: Woof!\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog d = new Dog();\n        d.name = \"Rex\";\n        d.age = 3;\n        d.bark();\n    }\n}\n```\n\n- `new ClassName()` — creates an object\n- `.` — accesses members\n- Instance variables are separate for each object\n- Methods define behavior",
+            "questions": [
+                {
+                    "question": "What is a class in Java?",
+                    "options": [
+                        "An object",
+                        "A blueprint for creating objects",
+                        "A primitive type",
+                        "A module"
+                    ],
+                    "answer": "A blueprint for creating objects"
+                },
+                {
+                    "question": "What is an object?",
+                    "options": [
+                        "A method",
+                        "An instance of a class",
+                        "A package",
+                        "A type alias"
+                    ],
+                    "answer": "An instance of a class"
+                },
+                {
+                    "question": "How do you create an object of class `Car`?",
+                    "options": [
+                        "`Car c;`",
+                        "`Car c = Car()`",
+                        "`Car c = new Car();`",
+                        "`new c = Car()`"
+                    ],
+                    "answer": "`Car c = new Car();`"
+                },
+                {
+                    "question": "What accesses members of an object?",
+                    "options": [
+                        "`::`",
+                        "`.`",
+                        "`->`",
+                        "`@`"
+                    ],
+                    "answer": "`.`"
+                },
+                {
+                    "question": "Instance variables are:",
+                    "options": [
+                        "Shared across all objects",
+                        "Unique to each object",
+                        "Always static",
+                        "Always final"
+                    ],
+                    "answer": "Unique to each object"
+                },
+                {
+                    "question": "Default access modifier in Java class members?",
+                    "options": [
+                        "`private`",
+                        "`public`",
+                        "package-private (no modifier)",
+                        "`protected`"
+                    ],
+                    "answer": "package-private (no modifier)"
+                },
+                {
+                    "question": "What is encapsulation?",
+                    "options": [
+                        "Inheriting from a class",
+                        "Bundling data with methods and controlling access",
+                        "Creating multiple objects",
+                        "Using generics"
+                    ],
+                    "answer": "Bundling data with methods and controlling access"
+                },
+                {
+                    "question": "What keyword creates a new object?",
+                    "options": [
+                        "`create`",
+                        "`object`",
+                        "`new`",
+                        "`make`"
+                    ],
+                    "answer": "`new`"
+                },
+                {
+                    "question": "Method defined in a class that can be called on each instance is:",
+                    "options": [
+                        "A static method",
+                        "An instance method",
+                        "A constructor",
+                        "A lambda"
+                    ],
+                    "answer": "An instance method"
+                },
+                {
+                    "question": "In Java, the garbage collector:",
+                    "options": [
+                        "Must be called manually",
+                        "Automatically frees unreferenced objects",
+                        "Runs only on `delete`",
+                        "Runs at shutdown only"
+                    ],
+                    "answer": "Automatically frees unreferenced objects"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "OOP – Classes & Objects — Intermediate Level",
+            "theory": "**Access modifiers:**\n- `public` — accessible everywhere\n- `private` — accessible only within the class\n- `protected` — class and subclasses\n- (no modifier) — package-private\n\n**Getters & Setters:**\n```java\nprivate String name;\npublic String getName() { return name; }\npublic void setName(String n) { this.name = n; }\n```\n\n**`this`** — refers to the current object.\n\n**`static` members** — shared by all instances.\n\n**`final` field** — must be initialized in declaration or constructor; cannot be changed after.\n\n**Inner classes:** a class defined inside another class.",
+            "questions": [
+                {
+                    "question": "Which access modifier restricts access to the class only?",
+                    "options": [
+                        "`public`",
+                        "`protected`",
+                        "`private`",
+                        "package-private"
+                    ],
+                    "answer": "`private`"
+                },
+                {
+                    "question": "Which access modifier allows access from subclasses?",
+                    "options": [
+                        "`public`",
+                        "`protected`",
+                        "`private`",
+                        "No modifier"
+                    ],
+                    "answer": "`protected`"
+                },
+                {
+                    "question": "What does `this` refer to inside a method?",
+                    "options": [
+                        "The class itself",
+                        "Current object instance",
+                        "Super class",
+                        "Static context"
+                    ],
+                    "answer": "Current object instance"
+                },
+                {
+                    "question": "`static` field in a class is:",
+                    "options": [
+                        "Per-instance",
+                        "Shared among all instances",
+                        "Constant",
+                        "Thread-safe automatically"
+                    ],
+                    "answer": "Shared among all instances"
+                },
+                {
+                    "question": "A `final` instance field must be initialized:",
+                    "options": [
+                        "Anywhere in the class",
+                        "At declaration or in a constructor",
+                        "At any time before first use",
+                        "In a static block only"
+                    ],
+                    "answer": "At declaration or in a constructor"
+                },
+                {
+                    "question": "What is an inner class?",
+                    "options": [
+                        "A subclass",
+                        "A class defined within another class",
+                        "A class in another package",
+                        "An interface inside a class"
+                    ],
+                    "answer": "A class defined within another class"
+                },
+                {
+                    "question": "What is a static nested class?",
+                    "options": [
+                        "A class that has only static members",
+                        "An inner class without access to outer instance members — declared `static`",
+                        "A final class",
+                        "A top-level class"
+                    ],
+                    "answer": "An inner class without access to outer instance members — declared `static`"
+                },
+                {
+                    "question": "What is an anonymous class?",
+                    "options": [
+                        "A class with no name defined inline, usually implementing an interface or extending a class",
+                        "A private class",
+                        "A class in a lambda",
+                        "A class without methods"
+                    ],
+                    "answer": "A class with no name defined inline, usually implementing an interface or extending a class"
+                },
+                {
+                    "question": "The Singleton pattern ensures:",
+                    "options": [
+                        "Multiple instances",
+                        "Only one instance of the class exists",
+                        "Thread-safe access",
+                        "A factory method"
+                    ],
+                    "answer": "Only one instance of the class exists"
+                },
+                {
+                    "question": "What does `Objects.requireNonNull(obj, msg)` do?",
+                    "options": [
+                        "Checks if obj implements Comparable",
+                        "Throws NullPointerException with msg if obj is null — defensive programming",
+                        "Converts obj to non-null",
+                        "Creates obj if null"
+                    ],
+                    "answer": "Throws NullPointerException with msg if obj is null — defensive programming"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "OOP – Classes & Objects — Expert Level",
+            "theory": "**Records (Java 16+):** immutable data classes:\n```java\nrecord Person(String name, int age) {}\nPerson p = new Person(\"Alice\", 30);\np.name(); // \"Alice\"\n```\n\n**Sealed classes (Java 17+):** control hierarchy:\n```java\nsealed interface Shape permits Circle, Rectangle {}\nfinal class Circle implements Shape { double r; }\n```\n\n**Builder pattern:** construct complex objects step by step.\n\n**`java.lang.reflect.Proxy`:** create dynamic proxy classes implementing interfaces at runtime.\n\n**`Class.forName(\"com.app.Foo\")`:** runtime class loading — foundation of DI frameworks.",
+            "questions": [
+                {
+                    "question": "What does a Java record auto-generate?",
+                    "options": [
+                        "Setters, getters, hashCode",
+                        "Compact constructor, accessors, equals, hashCode, toString — all immutable",
+                        "Only equals and hashCode",
+                        "A serializable interface implementation"
+                    ],
+                    "answer": "Compact constructor, accessors, equals, hashCode, toString — all immutable"
+                },
+                {
+                    "question": "What does `sealed interface Shape permits Circle, Rect` do?",
+                    "options": [
+                        "Makes Shape abstract",
+                        "Only Circle and Rect can implement Shape — compiler-enforced",
+                        "Makes Circle and Rect final",
+                        "Prevents interface extension"
+                    ],
+                    "answer": "Only Circle and Rect can implement Shape — compiler-enforced"
+                },
+                {
+                    "question": "What is the Builder pattern?",
+                    "options": [
+                        "Creating builders at runtime",
+                        "A creational pattern for constructing complex objects step-by-step with a fluent API",
+                        "A factory shortcut",
+                        "An inner class always"
+                    ],
+                    "answer": "A creational pattern for constructing complex objects step-by-step with a fluent API"
+                },
+                {
+                    "question": "What does `java.lang.reflect.Proxy.newProxyInstance(...)` do?",
+                    "options": [
+                        "Creates a copy of an object",
+                        "Creates a dynamic proxy implementing one or more interfaces, intercepting method calls",
+                        "Loads a class dynamically",
+                        "Creates an anonymous class"
+                    ],
+                    "answer": "Creates a dynamic proxy implementing one or more interfaces, intercepting method calls"
+                },
+                {
+                    "question": "What is `Class.forName(\"com.Foo\")`?",
+                    "options": [
+                        "Compiles Foo at runtime",
+                        "Loads and returns the Class object for Foo at runtime — used in reflection and DI frameworks",
+                        "Creates a Foo instance",
+                        "Returns Foo's package"
+                    ],
+                    "answer": "Loads and returns the Class object for Foo at runtime — used in reflection and DI frameworks"
+                },
+                {
+                    "question": "What is object identity vs equality in Java?",
+                    "options": [
+                        "Same thing",
+                        "`==` checks identity (same object in memory); `.equals()` checks logical equality of content",
+                        "`equals` checks identity",
+                        "No concept of identity in Java"
+                    ],
+                    "answer": "`==` checks identity (same object in memory); `.equals()` checks logical equality of content"
+                },
+                {
+                    "question": "What is the contract between `equals()` and `hashCode()`?",
+                    "options": [
+                        "None",
+                        "If a.equals(b) then a.hashCode() == b.hashCode() — essential for correct HashMap behavior",
+                        "hashCode is only for performance",
+                        "equals doesn't affect hashCode"
+                    ],
+                    "answer": "If a.equals(b) then a.hashCode() == b.hashCode() — essential for correct HashMap behavior"
+                },
+                {
+                    "question": "What is `Object.clone()` and when should you avoid it?",
+                    "options": [
+                        "Always safe to use",
+                        "Shallow copy — override carefully. Avoid due to brittleness; prefer copy constructors or factories",
+                        "Deep copy always",
+                        "Not available in Java"
+                    ],
+                    "answer": "Shallow copy — override carefully. Avoid due to brittleness; prefer copy constructors or factories"
+                },
+                {
+                    "question": "What is the `Comparable<T>` interface for?",
+                    "options": [
+                        "Comparing class names",
+                        "Defines natural ordering with `compareTo` — used by sort/TreeSet/TreeMap",
+                        "A functional interface for sorting",
+                        "JSON comparison"
+                    ],
+                    "answer": "Defines natural ordering with `compareTo` — used by sort/TreeSet/TreeMap"
+                },
+                {
+                    "question": "What is the `Comparator<T>` interface for?",
+                    "options": [
+                        "Natural ordering only",
+                        "External/custom ordering — used when you need multiple sort orders or can't modify the class",
+                        "Replacing equals",
+                        "Thread-safe comparison"
+                    ],
+                    "answer": "External/custom ordering — used when you need multiple sort orders or can't modify the class"
+                }
+            ]
+        }
+    ]
+}

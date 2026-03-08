@@ -1,0 +1,327 @@
+{
+    "levelno": 13,
+    "topic": "Intro to OOP (Classes & Objects)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "OOP Intro — Beginner Level",
+            "theory": "OOP bundles data and behavior together in **classes**. An **object** is an instance of a class.\n\n```cpp\nclass Dog {\npublic:\n    std::string breed;\n    int age;\n\n    void bark() {\n        std::cout << \"Woof!\\n\";\n    }\n};\n\nint main() {\n    Dog myDog;\n    myDog.breed = \"Beagle\";\n    myDog.age   = 5;\n    myDog.bark();\n}\n```\n\n- `class` keyword defines the blueprint\n- `public` — members accessible from outside\n- By default, class members are `private`\n- Use `.` to access members of an object",
+            "questions": [
+                {
+                    "question": "In OOP, what is a class?",
+                    "options": [
+                        "An instance of an object",
+                        "A blueprint for creating objects",
+                        "A return value type",
+                        "A built-in data type"
+                    ],
+                    "answer": "A blueprint for creating objects"
+                },
+                {
+                    "question": "What is an object?",
+                    "options": [
+                        "A data type",
+                        "A keyword",
+                        "An instance of a class",
+                        "A function"
+                    ],
+                    "answer": "An instance of a class"
+                },
+                {
+                    "question": "Which keyword defines a class?",
+                    "options": [
+                        "`object`",
+                        "`struct`",
+                        "`class`",
+                        "`type`"
+                    ],
+                    "answer": "`class`"
+                },
+                {
+                    "question": "Data members of a class are also known as:",
+                    "options": [
+                        "Member functions",
+                        "Methods",
+                        "Attributes or member variables",
+                        "Constructors"
+                    ],
+                    "answer": "Attributes or member variables"
+                },
+                {
+                    "question": "Functions defined inside a class are known as:",
+                    "options": [
+                        "Member functions or methods",
+                        "Attributes",
+                        "Global functions",
+                        "Friend functions"
+                    ],
+                    "answer": "Member functions or methods"
+                },
+                {
+                    "question": "How do you create an object `c1` of class `Car`?",
+                    "options": [
+                        "`Car c1 = new Car();`",
+                        "`Car c1;`",
+                        "`new Car c1;`",
+                        "`object c1 = Car;`"
+                    ],
+                    "answer": "`Car c1;`"
+                },
+                {
+                    "question": "How do you access public member `speed` of object `c1`?",
+                    "options": [
+                        "`c1->speed`",
+                        "`c1::speed`",
+                        "`c1.speed`",
+                        "`speed(c1)`"
+                    ],
+                    "answer": "`c1.speed`"
+                },
+                {
+                    "question": "What is `public` in a class definition?",
+                    "options": [
+                        "A data type",
+                        "A return type",
+                        "An access specifier",
+                        "A function name"
+                    ],
+                    "answer": "An access specifier"
+                },
+                {
+                    "question": "By default, class members in C++ are:",
+                    "options": [
+                        "`public`",
+                        "`private`",
+                        "`protected`",
+                        "`global`"
+                    ],
+                    "answer": "`private`"
+                },
+                {
+                    "question": "By default, members of a `struct` in C++ are:",
+                    "options": [
+                        "`public`",
+                        "`private`",
+                        "`protected`",
+                        "`global`"
+                    ],
+                    "answer": "`public`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "OOP Intro — Intermediate Level",
+            "theory": "**Four pillars of OOP:**\n1. **Encapsulation** — bundling data with methods, restricting direct access\n2. **Abstraction** — exposing only essential details\n3. **Inheritance** — class acquiring properties of another\n4. **Polymorphism** — many forms; same interface, different behavior\n\n**`this` pointer:** inside any non-static member function, `this` points to the current object.\n\n**Static members:** shared across all instances.\n```cpp\nclass Counter {\n    static int count;\npublic:\n    Counter() { count++; }\n    static int getCount() { return count; }\n};\nint Counter::count = 0;\n```",
+            "questions": [
+                {
+                    "question": "Which OOP pillar bundles data with methods and restricts direct access?",
+                    "options": [
+                        "Inheritance",
+                        "Abstraction",
+                        "Encapsulation",
+                        "Polymorphism"
+                    ],
+                    "answer": "Encapsulation"
+                },
+                {
+                    "question": "What does the `this` pointer refer to?",
+                    "options": [
+                        "The first parameter of main",
+                        "The current object inside a member function",
+                        "The class itself",
+                        "The parent class"
+                    ],
+                    "answer": "The current object inside a member function"
+                },
+                {
+                    "question": "A `static` member of a class:",
+                    "options": [
+                        "Is private by default",
+                        "Belongs to the class, not to any specific instance",
+                        "Cannot have a value",
+                        "Is thread-safe automatically"
+                    ],
+                    "answer": "Belongs to the class, not to any specific instance"
+                },
+                {
+                    "question": "Can `this` be used in a static member function?",
+                    "options": [
+                        "Yes",
+                        "No — no object associated with static functions",
+                        "Only if class is const",
+                        "Only in derived classes"
+                    ],
+                    "answer": "No — no object associated with static functions"
+                },
+                {
+                    "question": "Where is a static data member defined?",
+                    "options": [
+                        "Inside every constructor",
+                        "Outside the class definition at file scope",
+                        "In the header only",
+                        "Automatically by the compiler"
+                    ],
+                    "answer": "Outside the class definition at file scope"
+                },
+                {
+                    "question": "What is abstraction in OOP?",
+                    "options": [
+                        "Hiding implementation details and exposing only essential interface",
+                        "Copying data between objects",
+                        "Making all members public",
+                        "Creating abstract art"
+                    ],
+                    "answer": "Hiding implementation details and exposing only essential interface"
+                },
+                {
+                    "question": "What relationship does inheritance represent?",
+                    "options": [
+                        "Has-a",
+                        "Is-a",
+                        "Uses-a",
+                        "Copies-a"
+                    ],
+                    "answer": "Is-a"
+                },
+                {
+                    "question": "What is polymorphism?",
+                    "options": [
+                        "Multiple classes with the same data",
+                        "Same interface with different behavior, resolved at compile or runtime",
+                        "Multiple constructors",
+                        "Global functions in a class"
+                    ],
+                    "answer": "Same interface with different behavior, resolved at compile or runtime"
+                },
+                {
+                    "question": "What does a class member function automatically get access to?",
+                    "options": [
+                        "All global variables",
+                        "All private members of its class",
+                        "Only public members",
+                        "Static members only"
+                    ],
+                    "answer": "All private members of its class"
+                },
+                {
+                    "question": "What is an inline member function?",
+                    "options": [
+                        "A function defined outside the class",
+                        "A member function defined inside the class body — compiler may inline it",
+                        "A virtual function",
+                        "A static function"
+                    ],
+                    "answer": "A member function defined inside the class body — compiler may inline it"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "OOP Intro — Expert Level",
+            "theory": "**SOLID principles:**\n- **S** — Single Responsibility\n- **O** — Open/Closed (open for extension, closed for modification)\n- **L** — Liskov Substitution\n- **I** — Interface Segregation\n- **D** — Dependency Inversion\n\n**Aggregate initialization (C++20 Designated):**\n```cpp\nstruct Point { int x; int y; };\nPoint p{.x = 1, .y = 2}; // C++20\n```\n\n**`[[nodiscard]]` on methods:** warn when return value is ignored.\n\n**Mixin pattern:** combining behavior through multiple inheritance or CRTP (Curiously Recurring Template Pattern) to add reusable capabilities without deep hierarchies.",
+            "questions": [
+                {
+                    "question": "What does the Single Responsibility Principle state?",
+                    "options": [
+                        "A class should do one thing and have only one reason to change",
+                        "A single function handles all responsibilities",
+                        "Only one class per file",
+                        "A class has one constructor"
+                    ],
+                    "answer": "A class should do one thing and have only one reason to change"
+                },
+                {
+                    "question": "What is the Open/Closed Principle?",
+                    "options": [
+                        "Code should be open to bugs and closed to fixes",
+                        "Classes open for extension without modifying existing code",
+                        "All functions should be open to override",
+                        "Classes cannot be inherited"
+                    ],
+                    "answer": "Classes open for extension without modifying existing code"
+                },
+                {
+                    "question": "What is the Liskov Substitution Principle?",
+                    "options": [
+                        "Subclass objects must behave correctly when used in place of parent class objects",
+                        "All subclasses must override every method",
+                        "Base classes can't call virtual methods",
+                        "Only public inheritance is allowed"
+                    ],
+                    "answer": "Subclass objects must behave correctly when used in place of parent class objects"
+                },
+                {
+                    "question": "What is CRTP (Curiously Recurring Template Pattern)?",
+                    "options": [
+                        "A recursive constructor",
+                        "A class template that inherits from a template parameterized by itself — enables static polymorphism",
+                        "A circular reference",
+                        "A C++03 anti-pattern"
+                    ],
+                    "answer": "A class template that inherits from a template parameterized by itself — enables static polymorphism"
+                },
+                {
+                    "question": "What is designated initialization in C++20?",
+                    "options": [
+                        "Initializer lists for vectors",
+                        "Initializing struct/aggregate members by name: `.x = 1, .y = 2`",
+                        "Constructor delegation",
+                        "Template specialization"
+                    ],
+                    "answer": "Initializing struct/aggregate members by name: `.x = 1, .y = 2`"
+                },
+                {
+                    "question": "What is the Dependency Inversion Principle?",
+                    "options": [
+                        "Depend on concrete classes directly",
+                        "High-level modules should depend on abstractions, not concrete implementations",
+                        "Invert the call order",
+                        "Make all dependencies private"
+                    ],
+                    "answer": "High-level modules should depend on abstractions, not concrete implementations"
+                },
+                {
+                    "question": "What is a 'god class' anti-pattern?",
+                    "options": [
+                        "A class with only virtual methods",
+                        "A class that does too much — violates single responsibility",
+                        "A top-level base class",
+                        "A class in a namespace called God"
+                    ],
+                    "answer": "A class that does too much — violates single responsibility"
+                },
+                {
+                    "question": "What is object slicing?",
+                    "options": [
+                        "Splitting a class hierarchy",
+                        "Assigning a derived class object to a base class value — derived data is 'sliced off'",
+                        "A performance optimization",
+                        "Removing methods from a class"
+                    ],
+                    "answer": "Assigning a derived class object to a base class value — derived data is 'sliced off'"
+                },
+                {
+                    "question": "What does `= default` force on a special member function?",
+                    "options": [
+                        "Deletes the function",
+                        "Requests the compiler generate the default implementation explicitly",
+                        "Makes function inline",
+                        "Makes constructor private"
+                    ],
+                    "answer": "Requests the compiler generate the default implementation explicitly"
+                },
+                {
+                    "question": "What is the mixin pattern?",
+                    "options": [
+                        "Multiple constructors",
+                        "Using template inheritance or composition to add reusable behavior without deep hierarchy",
+                        "A design pattern for logging",
+                        "C++ modules feature"
+                    ],
+                    "answer": "Using template inheritance or composition to add reusable behavior without deep hierarchy"
+                }
+            ]
+        }
+    ]
+}

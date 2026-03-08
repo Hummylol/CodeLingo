@@ -1,0 +1,327 @@
+{
+    "levelno": 19,
+    "topic": "Computational Geometry",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Computational Geometry — Beginner Level",
+            "theory": "**Computational geometry** solves geometric problems algorithmically.\n\n**Point on line segment check:** cross product of vectors.\n\n```python\ndef cross(o, a, b):\n    return (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0])\n\n# >0: b is to the left of OA\n# <0: b is to the right of OA\n# =0: collinear\n```\n\n**Distance between points:**\n```python\nimport math\ndef dist(p, q):\n    return math.sqrt((p[0]-q[0])**2 + (p[1]-q[1])**2)\n```\n\n**Common problems:** convex hull, line intersection, closest pair, area of polygon.",
+            "questions": [
+                {
+                    "question": "Cross product of vectors OA and OB is:",
+                    "options": [
+                        "Dot product",
+                        "(ax-ox)*(by-oy) - (ay-oy)*(bx-ox) — determines orientation",
+                        "Magnitude product",
+                        "Sum of coordinates"
+                    ],
+                    "answer": "(ax-ox)*(by-oy) - (ay-oy)*(bx-ox) — determines orientation"
+                },
+                {
+                    "question": "Cross product > 0 means:",
+                    "options": [
+                        "Clockwise turn",
+                        "B is to the left of OA (counterclockwise turn)",
+                        "Collinear",
+                        "Perpendicular"
+                    ],
+                    "answer": "B is to the left of OA (counterclockwise turn)"
+                },
+                {
+                    "question": "Dot product of two vectors is used to find:",
+                    "options": [
+                        "Orientation",
+                        "Angle between vectors — dot(a,b) = |a||b|cos(θ)",
+                        "Cross product",
+                        "Perpendicular vector"
+                    ],
+                    "answer": "Angle between vectors — dot(a,b) = |a||b|cos(θ)"
+                },
+                {
+                    "question": "Area of polygon given vertices using Shoelace formula:",
+                    "options": [
+                        "Length * Width",
+                        "0.5 * |Σ(xi*y(i+1) - x(i+1)*yi)|",
+                        "Sum of diagonals",
+                        "Product of sides"
+                    ],
+                    "answer": "0.5 * |Σ(xi*y(i+1) - x(i+1)*yi)|"
+                },
+                {
+                    "question": "Convex hull of n points contains:",
+                    "options": [
+                        "All n points always",
+                        "The smallest convex polygon enclosing all points",
+                        "n/2 points always",
+                        "Only boundary points"
+                    ],
+                    "answer": "The smallest convex polygon enclosing all points"
+                },
+                {
+                    "question": "Graham scan for convex hull runs in:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n) — sort by polar angle, then linear scan",
+                        "O(n)",
+                        "O(n^3)"
+                    ],
+                    "answer": "O(n log n) — sort by polar angle, then linear scan"
+                },
+                {
+                    "question": "How to check if point P is inside triangle ABC?",
+                    "options": [
+                        "Distance check",
+                        "Check if P is on the same side of all three edges using cross products",
+                        "Bounding box only",
+                        "Sort vertices"
+                    ],
+                    "answer": "Check if P is on the same side of all three edges using cross products"
+                },
+                {
+                    "question": "Line segment intersection: two lines intersect if:",
+                    "options": [
+                        "They have same slope",
+                        "Cross products of (segment endpoints vs other segment) have opposite signs",
+                        "They are parallel",
+                        "Slopes are different"
+                    ],
+                    "answer": "Cross products of (segment endpoints vs other segment) have opposite signs"
+                },
+                {
+                    "question": "Euclidean distance between (x1,y1) and (x2,y2):",
+                    "options": [
+                        "|x1-x2| + |y1-y2|",
+                        "sqrt((x1-x2)^2 + (y1-y2)^2)",
+                        "max(|x1-x2|, |y1-y2|)",
+                        "(x2-x1)*(y2-y1)"
+                    ],
+                    "answer": "sqrt((x1-x2)^2 + (y1-y2)^2)"
+                },
+                {
+                    "question": "Manhattan distance between (x1,y1) and (x2,y2):",
+                    "options": [
+                        "sqrt((x1-x2)^2 + (y1-y2)^2)",
+                        "|x1-x2| + |y1-y2|",
+                        "max(|x1-x2|, |y1-y2|)",
+                        "(x1-x2)^2 + (y1-y2)^2"
+                    ],
+                    "answer": "|x1-x2| + |y1-y2|"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Computational Geometry — Intermediate Level",
+            "theory": "**Convex hull algorithms:**\n- Graham Scan: O(n log n), sort by polar angle, maintain CCW turn order\n- Jarvis March (Gift wrapping): O(nh), n=points, h=hull points\n- Chan's Algorithm: O(n log h) — optimal\n\n**Line sweep:** solve interval/geometric problems by sweeping a line across events.\n\n**Closest pair of points:** O(n log n) divide and conquer.\n\n**Point in polygon (Ray casting):** cast a ray, count intersections.",
+            "questions": [
+                {
+                    "question": "Jarvis March (gift wrapping) complexity:",
+                    "options": [
+                        "O(n log n)",
+                        "O(nh) — n points, h hull points (optimal for small h)",
+                        "O(n^2)",
+                        "O(h log n)"
+                    ],
+                    "answer": "O(nh) — n points, h hull points (optimal for small h)"
+                },
+                {
+                    "question": "Chan's algorithm convex hull complexity:",
+                    "options": [
+                        "O(n log n)",
+                        "O(n log h) — optimal, combines Jarvis + Graham",
+                        "O(n)",
+                        "O(n^2 / h)"
+                    ],
+                    "answer": "O(n log h) — optimal, combines Jarvis + Graham"
+                },
+                {
+                    "question": "Ray casting for point-in-polygon: point P is inside if:",
+                    "options": [
+                        "Ray intersects any edge",
+                        "Ray from P in any direction intersects odd number of polygon edges",
+                        "P is equidistant from all vertices",
+                        "Sum cross products > 0"
+                    ],
+                    "answer": "Ray from P in any direction intersects odd number of polygon edges"
+                },
+                {
+                    "question": "Line sweep algorithm processes events:",
+                    "options": [
+                        "Randomly",
+                        "In sorted order (typically by x-coordinate) — handles geometric events efficiently",
+                        "By area",
+                        "By vertex count"
+                    ],
+                    "answer": "In sorted order (typically by x-coordinate) — handles geometric events efficiently"
+                },
+                {
+                    "question": "Bentley-Ottmann sweep line finds all line segment intersections in:",
+                    "options": [
+                        "O(n^2)",
+                        "O((n + k) log n) — n segments, k intersections",
+                        "O(n log n)",
+                        "O(n log^2 n)"
+                    ],
+                    "answer": "O((n + k) log n) — n segments, k intersections"
+                },
+                {
+                    "question": "Area of convex hull — after constructing hull:",
+                    "options": [
+                        "Sum of edge lengths",
+                        "Shoelace formula on hull vertices — O(h) after hull construction",
+                        "Sum of triangles from origin",
+                        "Both B and C are equivalent"
+                    ],
+                    "answer": "Both B and C are equivalent"
+                },
+                {
+                    "question": "Voronoi diagram of n points: complexity with Fortune's algorithm:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n) — sweep line",
+                        "O(n)",
+                        "O(n log^2 n)"
+                    ],
+                    "answer": "O(n log n) — sweep line"
+                },
+                {
+                    "question": "Delaunay triangulation is dual to:",
+                    "options": [
+                        "Convex hull",
+                        "Voronoi diagram — circumcircles of triangles contain no other points",
+                        "MST",
+                        "Nearest neighbor graph"
+                    ],
+                    "answer": "Voronoi diagram — circumcircles of triangles contain no other points"
+                },
+                {
+                    "question": "Rotating calipers technique finds in O(n):",
+                    "options": [
+                        "Convex hull",
+                        "Diameter, max width, closest pair of hull points — rotate line pair around hull",
+                        "Point in polygon",
+                        "Voronoi diagram"
+                    ],
+                    "answer": "Diameter, max width, closest pair of hull points — rotate line pair around hull"
+                },
+                {
+                    "question": "Minkowski sum of two convex polygons P and Q:",
+                    "options": [
+                        "Intersection of P and Q",
+                        "The set of all points p+q — also convex, computed in O(|P|+|Q|) by merging edge vectors",
+                        "Union of P and Q",
+                        "Product of vertices"
+                    ],
+                    "answer": "The set of all points p+q — also convex, computed in O(|P|+|Q|) by merging edge vectors"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Computational Geometry — Expert Level",
+            "theory": "**Randomized incremental algorithms:** random insertion order gives expected O(n log n) for convex hull, Delaunay.\n\n**Range trees:** multi-dimensional searching in O(log^d n + k).\n\n**Well-separated pair decomposition (WSPD):** O(n) pairs capturing all geometric proximity relationships.\n\n**Ham sandwich theorem:** any d point sets can be bisected simultaneously with a hyperplane.\n\n**Algebraic geometry algorithms:** exact arithmetic, robust geometric predicates using symbolic or interval arithmetic.",
+            "questions": [
+                {
+                    "question": "Randomized incremental convex hull has expected complexity:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n) expected — each point added in O(log n) expected time",
+                        "O(n) always",
+                        "O(n log^2 n)"
+                    ],
+                    "answer": "O(n log n) expected — each point added in O(log n) expected time"
+                },
+                {
+                    "question": "Range tree supports orthogonal range search (d=2) in:",
+                    "options": [
+                        "O(n)",
+                        "O(log^2 n + k) where k = output points",
+                        "O(n log n)",
+                        "O(sqrt(n)+k)"
+                    ],
+                    "answer": "O(log^2 n + k) where k = output points"
+                },
+                {
+                    "question": "WSPD (Well-Separated Pair Decomposition) of n points:",
+                    "options": [
+                        "O(n^2) pairs minimum",
+                        "O(n) pairs for separation constant s — fundamental tool for approximate geometric problems",
+                        "O(n log n) pairs always",
+                        "O(nk)"
+                    ],
+                    "answer": "O(n) pairs for separation constant s — fundamental tool for approximate geometric problems"
+                },
+                {
+                    "question": "Robust geometric predicates handle:",
+                    "options": [
+                        "Large coordinates",
+                        "Floating-point errors in sign tests (orient, inCircle) — use exact arithmetic or interval arithmetic",
+                        "Degenerate cases only",
+                        "Only integer coordinates"
+                    ],
+                    "answer": "Floating-point errors in sign tests (orient, inCircle) — use exact arithmetic or interval arithmetic"
+                },
+                {
+                    "question": "Ham-Sandwich theorem (2D) guarantees:",
+                    "options": [
+                        "Any convex hull exists",
+                        "A single line bisecting both point sets simultaneously",
+                        "A bounding box",
+                        "MST of both sets"
+                    ],
+                    "answer": "A single line bisecting both point sets simultaneously"
+                },
+                {
+                    "question": "Fractional cascading in range trees reduces:",
+                    "options": [
+                        "Space from O(n log n) to O(n)",
+                        "Query time from O(log^2 n) to O(log n + k) for 2D orthogonal search",
+                        "Build time",
+                        "Number of leaf nodes"
+                    ],
+                    "answer": "Query time from O(log^2 n) to O(log n + k) for 2D orthogonal search"
+                },
+                {
+                    "question": "Kinetic convex hull maintains:",
+                    "options": [
+                        "Static hull efficiently",
+                        "Convex hull of moving points — handles O(n^2) events, O(1) amortized per event",
+                        "Voronoi of moving points",
+                        "KD-tree of points"
+                    ],
+                    "answer": "Convex hull of moving points — handles O(n^2) events, O(1) amortized per event"
+                },
+                {
+                    "question": "Alpha shapes are:",
+                    "options": [
+                        "A type of polygon",
+                        "Generalization of convex hull parameterized by α — captures shape at different scales via Delaunay",
+                        "Approximate convex hull",
+                        "Non-convex MST-based shapes"
+                    ],
+                    "answer": "Generalization of convex hull parameterized by α — captures shape at different scales via Delaunay"
+                },
+                {
+                    "question": "Polygon triangulation of a simple polygon with n vertices in O(n):",
+                    "options": [
+                        "Requires O(n log n) always",
+                        "O(n) — Chazelle's algorithm (1991), though complex; ear clipping is O(n^2)",
+                        "O(n log n) Seidel's algorithm — practical O(n log*n)",
+                        "Both B is too complex, C is standard"
+                    ],
+                    "answer": "Both B is too complex, C is standard"
+                },
+                {
+                    "question": "Computational geometry 3D convex hull — optimal algorithm:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n) — randomized incremental or beneath-beyond method",
+                        "O(n)",
+                        "O(n^1.5)"
+                    ],
+                    "answer": "O(n log n) — randomized incremental or beneath-beyond method"
+                }
+            ]
+        }
+    ]
+}

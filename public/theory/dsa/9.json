@@ -1,0 +1,327 @@
+{
+    "levelno": 9,
+    "topic": "Dynamic Programming",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Dynamic Programming — Beginner Level",
+            "theory": "**Dynamic Programming (DP)** solves problems by breaking them into overlapping subproblems and storing results.\n\n**Two approaches:**\n1. **Top-down (Memoization):** recursive + cache\n2. **Bottom-up (Tabulation):** iterative table\n\n```python\n# Fibonacci — top-down with memoization\nfrom functools import lru_cache\n@lru_cache(None)\ndef fib(n):\n    if n <= 1: return n\n    return fib(n-1) + fib(n-2)\n\n# Bottom-up tabulation\ndef fib_dp(n):\n    dp = [0, 1]\n    for i in range(2, n+1):\n        dp.append(dp[-1] + dp[-2])\n    return dp[n]\n```\n\n**Prerequisites for DP:** overlapping subproblems + optimal substructure.",
+            "questions": [
+                {
+                    "question": "What makes a problem suitable for DP?",
+                    "options": [
+                        "Any recursive problem",
+                        "Overlapping subproblems + optimal substructure",
+                        "Greedy choice property",
+                        "Graph structure"
+                    ],
+                    "answer": "Overlapping subproblems + optimal substructure"
+                },
+                {
+                    "question": "Memoization is:",
+                    "options": [
+                        "Bottom-up DP",
+                        "Top-down DP with caching — store results of subproblems as computed",
+                        "Greedy caching",
+                        "Precomputed lookup tables"
+                    ],
+                    "answer": "Top-down DP with caching — store results of subproblems as computed"
+                },
+                {
+                    "question": "Naive recursive Fibonacci is O(2^n). With memoization it becomes:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n)",
+                        "O(n)",
+                        "O(2^n) still"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Tabulation (bottom-up) builds the solution:",
+                    "options": [
+                        "From top recursively",
+                        "From smallest subproblems up to the full problem iteratively",
+                        "Randomly",
+                        "With memoization"
+                    ],
+                    "answer": "From smallest subproblems up to the full problem iteratively"
+                },
+                {
+                    "question": "Coin change — minimum coins for amount n. DP recurrence:",
+                    "options": [
+                        "`dp[i] = dp[i-1]+1`",
+                        "`dp[i] = min(dp[i-c]+1) for each coin c`",
+                        "`dp[i] = dp[i//coin]`",
+                        "`dp[i] = max subproblem`"
+                    ],
+                    "answer": "`dp[i] = min(dp[i-c]+1) for each coin c`"
+                },
+                {
+                    "question": "0/1 Knapsack DP state is (item, weight) because:",
+                    "options": [
+                        "Items are repeated",
+                        "Each item used at most once — need to track both item index and remaining capacity",
+                        "Weight is unlimited",
+                        "Items are sorted"
+                    ],
+                    "answer": "Each item used at most once — need to track both item index and remaining capacity"
+                },
+                {
+                    "question": "Climbing stairs (n steps, 1 or 2 at a time). dp[n] =",
+                    "options": [
+                        "`dp[n-1] * 2`",
+                        "`dp[n-1] + dp[n-2]`",
+                        "`max(dp[n-1], dp[n-2])`",
+                        "`dp[n-3] + dp[n-2]`"
+                    ],
+                    "answer": "`dp[n-1] + dp[n-2]`"
+                },
+                {
+                    "question": "House Robber problem DP recurrence:",
+                    "options": [
+                        "`dp[i] = dp[i-1]+nums[i]`",
+                        "`dp[i] = max(dp[i-1], dp[i-2]+nums[i])`",
+                        "`dp[i] = nums[i]+nums[i-2]`",
+                        "`dp[i] = min(dp[i-2]+nums[i])`"
+                    ],
+                    "answer": "`dp[i] = max(dp[i-1], dp[i-2]+nums[i])`"
+                },
+                {
+                    "question": "Overlapping subproblems means:",
+                    "options": [
+                        "Same problem repeated",
+                        "Same subproblems solved multiple times in naive recursion — DP avoids re-solving",
+                        "Problems overlap in time",
+                        "Two problems with same solution"
+                    ],
+                    "answer": "Same subproblems solved multiple times in naive recursion — DP avoids re-solving"
+                },
+                {
+                    "question": "Converting top-down to bottom-up DP generally:",
+                    "options": [
+                        "Impossible",
+                        "Reverse the recursion order — iterate from base case to full problem",
+                        "Always requires more space",
+                        "Only works for linear DPs"
+                    ],
+                    "answer": "Reverse the recursion order — iterate from base case to full problem"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Dynamic Programming — Intermediate Level",
+            "theory": "**Classic DP problems:**\n\n**Longest Common Subsequence (LCS):**\n```python\ndef lcs(s, t):\n    m, n = len(s), len(t)\n    dp = [[0]*(n+1) for _ in range(m+1)]\n    for i in range(1, m+1):\n        for j in range(1, n+1):\n            if s[i-1] == t[j-1]: dp[i][j] = dp[i-1][j-1]+1\n            else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[m][n]\n```\n\n**Edit distance, Palindrome DP, Matrix chain multiplication, Egg drop, Wildcard matching.**\n\n**DP table optimization:** often reduce 2D → 1D by observing only previous row is needed.",
+            "questions": [
+                {
+                    "question": "LCS time complexity:",
+                    "options": [
+                        "O(n)",
+                        "O(n log n)",
+                        "O(m*n)",
+                        "O(2^n)"
+                    ],
+                    "answer": "O(m*n)"
+                },
+                {
+                    "question": "Longest Palindromic Subsequence length:",
+                    "options": [
+                        "`lcs(s, s)` where second s is reversed",
+                        "Only for odd length strings",
+                        "dp[i][j] = dp[i+1][j-1]+2 if match else max of sides",
+                        "Both A and C"
+                    ],
+                    "answer": "Both A and C"
+                },
+                {
+                    "question": "Edit distance (Levenshtein) uses DP with operations:",
+                    "options": [
+                        "Insert, delete",
+                        "Insert, delete, replace",
+                        "Swap, delete",
+                        "Only replace"
+                    ],
+                    "answer": "Insert, delete, replace"
+                },
+                {
+                    "question": "Matrix chain multiplication minimizes:",
+                    "options": [
+                        "Memory used",
+                        "Total scalar multiplications — optimal order of matrix multiplications",
+                        "Number of matrices",
+                        "Time to transpose"
+                    ],
+                    "answer": "Total scalar multiplications — optimal order of matrix multiplications"
+                },
+                {
+                    "question": "Egg drop problem: k eggs, n floors. Goal:",
+                    "options": [
+                        "Minimum eggs needed",
+                        "Minimum number of trials in worst case to determine critical floor",
+                        "Find the critical floor quickly",
+                        "Maximum floors per egg"
+                    ],
+                    "answer": "Minimum number of trials in worst case to determine critical floor"
+                },
+                {
+                    "question": "DP space optimization for LCS (2D → 1D):",
+                    "options": [
+                        "Not possible",
+                        "Possible: only previous row needed — O(n) space instead of O(m*n)",
+                        "Requires 2 rows minimum",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "Wildcard matching `*` matches any sequence, `?` matches one char. Approach:",
+                    "options": [
+                        "Backtracking only",
+                        "DP: dp[i][j] = s[i] matches p[j] or p[j]='*' and dp[i-1][j] or dp[i][j-1]",
+                        "Regex directly",
+                        "BFS expansion"
+                    ],
+                    "answer": "DP: dp[i][j] = s[i] matches p[j] or p[j]='*' and dp[i-1][j] or dp[i][j-1]"
+                },
+                {
+                    "question": "Burst balloons (interval DP): complexity?",
+                    "options": [
+                        "O(n^2)",
+                        "O(n^3) — try each balloon as last to burst in interval",
+                        "O(n log n)",
+                        "O(2^n)"
+                    ],
+                    "answer": "O(n^3) — try each balloon as last to burst in interval"
+                },
+                {
+                    "question": "Word break problem approach:",
+                    "options": [
+                        "Brute force",
+                        "DP: dp[i] = True if any dp[j] is True and word[j:i] in dict",
+                        "Trie only",
+                        "BFS on all words"
+                    ],
+                    "answer": "DP: dp[i] = True if any dp[j] is True and word[j:i] in dict"
+                },
+                {
+                    "question": "Partition equal subset sum uses:",
+                    "options": [
+                        "2D knapsack variant",
+                        "Boolean DP: can we achieve sum/2 from subset — dp[i][s] = can subset of first i achieve sum s",
+                        "Sorting + two pointers",
+                        "Count approach"
+                    ],
+                    "answer": "Boolean DP: can we achieve sum/2 from subset — dp[i][s] = can subset of first i achieve sum s"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Dynamic Programming — Expert Level",
+            "theory": "**DP on tree (tree DP):** dp[node] computed from children.\n\n**Bitmask DP:** state includes a bitmask for subset of elements. O(2^n * n).\n\n**Convex hull trick (CHT):** optimize DP from O(n^2) to O(n) when transitions fit `dp[i] = min(m[j]*i + b[j])`.\n\n**Divide and conquer DP optimization:** when optimal split point is monotone — O(n log n).\n\n**Aliens trick (lambda optimization/WQS binary search):** solve constrained DP by binary searching on penalty parameter.",
+            "questions": [
+                {
+                    "question": "Bitmask DP is used when:",
+                    "options": [
+                        "Large input sets",
+                        "Number of elements n is small (n≤20) — state includes subset as bitmask",
+                        "Sorting is needed",
+                        "Graph problems only"
+                    ],
+                    "answer": "Number of elements n is small (n≤20) — state includes subset as bitmask"
+                },
+                {
+                    "question": "Travelling Salesman Problem (TSP) exact solution complexity:",
+                    "options": [
+                        "O(n!)",
+                        "O(2^n * n^2) with bitmask DP",
+                        "O(n^3)",
+                        "O(n^2 log n)"
+                    ],
+                    "answer": "O(2^n * n^2) with bitmask DP"
+                },
+                {
+                    "question": "Convex Hull Trick (CHT) optimizes DP transitions of the form:",
+                    "options": [
+                        "Any DP",
+                        "dp[i] = min over j of (m[j]*x[i]+b[j]) — linear function optimization",
+                        "Tree DP",
+                        "2D DP only"
+                    ],
+                    "answer": "dp[i] = min over j of (m[j]*x[i]+b[j]) — linear function optimization"
+                },
+                {
+                    "question": "Divide and conquer DP optimization applies when:",
+                    "options": [
+                        "Answer space is sorted",
+                        "Optimal split point opt(i) is monotone — opt(i) <= opt(i+1) — reduces O(n^2) to O(n log n)",
+                        "Cost function is convex",
+                        "Both B and C (related conditions)"
+                    ],
+                    "answer": "Both B and C (related conditions)"
+                },
+                {
+                    "question": "WQS binary search (Aliens trick) solves:",
+                    "options": [
+                        "Array search problems",
+                        "Constrained optimization: 'minimize cost using exactly k groups' by binary searching on penalty",
+                        "BST problems",
+                        "Graph DP only"
+                    ],
+                    "answer": "Constrained optimization: 'minimize cost using exactly k groups' by binary searching on penalty"
+                },
+                {
+                    "question": "Tree DP for 'max independent set': dp[v][0] and dp[v][1] represent:",
+                    "options": [
+                        "Left/right subtree",
+                        "Max sum when v is not included (0) / included (1)",
+                        "Min/max subtree",
+                        "Depth variants"
+                    ],
+                    "answer": "Max sum when v is not included (0) / included (1)"
+                },
+                {
+                    "question": "What is the 'Knuth-Yao speedup'?",
+                    "options": [
+                        "Binary search on DP",
+                        "Optimization when opt(i,j) is monotone in both i and j — reduces matrix-chain-like DPs from O(n^3) to O(n^2)",
+                        "Convex hull trick",
+                        "Divide and conquer variant"
+                    ],
+                    "answer": "Optimization when opt(i,j) is monotone in both i and j — reduces matrix-chain-like DPs from O(n^3) to O(n^2)"
+                },
+                {
+                    "question": "Digit DP is used for:",
+                    "options": [
+                        "Sorting digits",
+                        "Counting numbers in [L,R] satisfying digit constraints — state: (position, tight, leading_zero, ...)",
+                        "Binary search on digits",
+                        "Array of digits problems"
+                    ],
+                    "answer": "Counting numbers in [L,R] satisfying digit constraints — state: (position, tight, leading_zero, ...)"
+                },
+                {
+                    "question": "DP with profile (broken profile DP) is used for:",
+                    "options": [
+                        "1D string problems",
+                        "Grid tiling problems — state is the boundary between processed and unprocessed cells",
+                        "Tree problems",
+                        "Bitset optimization"
+                    ],
+                    "answer": "Grid tiling problems — state is the boundary between processed and unprocessed cells"
+                },
+                {
+                    "question": "What is the SMAWK algorithm?",
+                    "options": [
+                        "A pattern matching algorithm",
+                        "O(n) algorithm for totally monotone matrix row minima — generalizes Knuth optimization beyond DP",
+                        "A binary search variant",
+                        "A heap optimization"
+                    ],
+                    "answer": "O(n) algorithm for totally monotone matrix row minima — generalizes Knuth optimization beyond DP"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 18,
+    "topic": "Advanced Data Structures",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Advanced Data Structures — Beginner Level",
+            "theory": "**Segment Tree:** supports range queries and point/range updates in O(log n).\n\n```python\nclass SegTree:\n    def __init__(self, n):\n        self.n = n\n        self.tree = [0] * (4*n)     # 4*n space\n    \n    def update(self, node, l, r, idx, val):\n        if l == r:\n            self.tree[node] = val\n            return\n        mid = (l+r)//2\n        if idx <= mid: self.update(2*node, l, mid, idx, val)\n        else:          self.update(2*node+1, mid+1, r, idx, val)\n        self.tree[node] = self.tree[2*node] + self.tree[2*node+1]\n    \n    def query(self, node, l, r, ql, qr):\n        if qr < l or r < ql: return 0\n        if ql <= l and r <= qr: return self.tree[node]\n        mid = (l+r)//2\n        return self.query(2*node, l, mid, ql, qr) + \\\n               self.query(2*node+1, mid+1, r, ql, qr)\n```",
+            "questions": [
+                {
+                    "question": "Segment tree supports:",
+                    "options": [
+                        "O(1) range queries only",
+                        "O(log n) range queries and O(log n) point updates",
+                        "O(n) range queries",
+                        "O(1) all operations"
+                    ],
+                    "answer": "O(log n) range queries and O(log n) point updates"
+                },
+                {
+                    "question": "Segment tree space requirement:",
+                    "options": [
+                        "O(n)",
+                        "O(n log n)",
+                        "O(4n) — typically 4*n array",
+                        "O(2n)"
+                    ],
+                    "answer": "O(4n) — typically 4*n array"
+                },
+                {
+                    "question": "Fenwick Tree (BIT) supports:",
+                    "options": [
+                        "Range queries O(1)",
+                        "Prefix sum queries and point updates in O(log n), simpler than segment tree",
+                        "Range updates only",
+                        "O(n) queries"
+                    ],
+                    "answer": "Prefix sum queries and point updates in O(log n), simpler than segment tree"
+                },
+                {
+                    "question": "Trie is best for:",
+                    "options": [
+                        "Integer queries",
+                        "Prefix search — O(m) insert/query by key length m",
+                        "Range queries",
+                        "Sorted access"
+                    ],
+                    "answer": "Prefix search — O(m) insert/query by key length m"
+                },
+                {
+                    "question": "Union-Find (DSU) with path compression + rank:",
+                    "options": [
+                        "O(log n) per operation",
+                        "O(α(n)) amortized — near O(1) — inverse Ackermann",
+                        "O(n) per operation",
+                        "O(1) strictly"
+                    ],
+                    "answer": "O(α(n)) amortized — near O(1) — inverse Ackermann"
+                },
+                {
+                    "question": "Sparse Table for Range Minimum Query (RMQ):",
+                    "options": [
+                        "O(n) build, O(n) query",
+                        "O(n log n) build, O(1) query — overlapping intervals trick",
+                        "O(n^2) build",
+                        "O(n) build, O(log n) query"
+                    ],
+                    "answer": "O(n log n) build, O(1) query — overlapping intervals trick"
+                },
+                {
+                    "question": "When is a Fenwick Tree preferred over Segment Tree?",
+                    "options": [
+                        "Range updates needed",
+                        "Simple prefix sums with point updates — smaller constant, simpler code",
+                        "Range minimum queries",
+                        "2D queries always"
+                    ],
+                    "answer": "Simple prefix sums with point updates — smaller constant, simpler code"
+                },
+                {
+                    "question": "Square root decomposition solves range queries in:",
+                    "options": [
+                        "O(1) always",
+                        "O(sqrt(n)) per query — simpler to implement than segment tree",
+                        "O(n)",
+                        "O(log n)"
+                    ],
+                    "answer": "O(sqrt(n)) per query — simpler to implement than segment tree"
+                },
+                {
+                    "question": "A balanced BST (e.g., AVL) provides:",
+                    "options": [
+                        "O(1) all operations",
+                        "O(log n) insert, delete, search — height guaranteed O(log n)",
+                        "O(n) worst case always",
+                        "O(1) amortized"
+                    ],
+                    "answer": "O(log n) insert, delete, search — height guaranteed O(log n)"
+                },
+                {
+                    "question": "LRU Cache is implemented using:",
+                    "options": [
+                        "Two arrays",
+                        "Hash map + doubly linked list — O(1) get/put",
+                        "Priority queue",
+                        "Stack + hash map"
+                    ],
+                    "answer": "Hash map + doubly linked list — O(1) get/put"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Advanced Data Structures — Intermediate Level",
+            "theory": "**Lazy propagation in Segment Tree:** defer range updates — O(log n) range updates.\n\n**2D Segment Tree / BIT:** for 2D range queries — O(log^2 n) per operation.\n\n**Persistent Segment Tree:** keeps all historical versions — O(log n) update creates new path only.\n\n**Order Statistics Tree (OST):** augmented BST — O(log n) rank/select operations.\n\n**k-d tree:** space-partitioning for k-dimensional points — O(log n) average nearest neighbor.",
+            "questions": [
+                {
+                    "question": "Lazy propagation in segment tree enables:",
+                    "options": [
+                        "O(1) queries",
+                        "O(log n) range updates (e.g., add value to range) — defers work until needed",
+                        "O(n) for all operations",
+                        "Only point updates"
+                    ],
+                    "answer": "O(log n) range updates (e.g., add value to range) — defers work until needed"
+                },
+                {
+                    "question": "Persistent segment tree allows:",
+                    "options": [
+                        "Faster queries",
+                        "Access to historical versions — each update creates O(log n) new nodes, previous versions preserved",
+                        "O(1) update",
+                        "In-place history"
+                    ],
+                    "answer": "Access to historical versions — each update creates O(log n) new nodes, previous versions preserved"
+                },
+                {
+                    "question": "2D BIT (Fenwick Tree) for 2D prefix sums — complexity per operation:",
+                    "options": [
+                        "O(log n)",
+                        "O(log n * log m) for an n×m grid",
+                        "O(n + m)",
+                        "O(log(nm))"
+                    ],
+                    "answer": "O(log n * log m) for an n×m grid"
+                },
+                {
+                    "question": "Order Statistics Tree (OST) supports:",
+                    "options": [
+                        "Only search",
+                        "O(log n) rank (position of element) and select (k-th element)",
+                        "O(1) rank",
+                        "Array-backed only"
+                    ],
+                    "answer": "O(log n) rank (position of element) and select (k-th element)"
+                },
+                {
+                    "question": "k-d tree is used for:",
+                    "options": [
+                        "Sorting k-dimensional data",
+                        "Nearest neighbor search in k-dimensional space",
+                        "k-th smallest element",
+                        "Dimensional reduction"
+                    ],
+                    "answer": "Nearest neighbor search in k-dimensional space"
+                },
+                {
+                    "question": "Merge sort tree enables:",
+                    "options": [
+                        "O(n) sorted queries",
+                        "Count elements in range [l,r] with value in [a,b] — O(log^2 n) per query",
+                        "O(log n) merge",
+                        "Range minimum"
+                    ],
+                    "answer": "Count elements in range [l,r] with value in [a,b] — O(log^2 n) per query"
+                },
+                {
+                    "question": "Wavelet tree enables:",
+                    "options": [
+                        "Pattern matching",
+                        "O(log maxV) range kth minimum, quantile, and element count queries",
+                        "String operations",
+                        "Graph traversal"
+                    ],
+                    "answer": "O(log maxV) range kth minimum, quantile, and element count queries"
+                },
+                {
+                    "question": "Link-Cut Tree supports:",
+                    "options": [
+                        "Static tree queries only",
+                        "Dynamic tree operations — link, cut, path aggregate queries in O(log n) amortized",
+                        "BST operations",
+                        "MST construction"
+                    ],
+                    "answer": "Dynamic tree operations — link, cut, path aggregate queries in O(log n) amortized"
+                },
+                {
+                    "question": "Fenwick Tree range update (add to range [l,r]):",
+                    "options": [
+                        "O(n) per update",
+                        "Use two BITs or difference array technique — O(log n) update and query",
+                        "Not possible",
+                        "O(r-l) per update"
+                    ],
+                    "answer": "Use two BITs or difference array technique — O(log n) update and query"
+                },
+                {
+                    "question": "Offline query processing with segment tree (Mo's algorithm):",
+                    "options": [
+                        "O(n^2) always",
+                        "Order queries to minimize transitions — O((n+q)sqrt(n)) amortized",
+                        "O(n log n)",
+                        "O(q log n)"
+                    ],
+                    "answer": "Order queries to minimize transitions — O((n+q)sqrt(n)) amortized"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Advanced Data Structures — Expert Level",
+            "theory": "**Splay tree:** self-adjusting BST — amortized O(log n), excellent cache behavior for non-uniform access.\n\n**B+Tree:** leaf nodes linked in a doubly linked list for efficient range scans — used in databases.\n\n**Fractal Cascading:** enables binary search across multiple sorted lists in O(log n + k).\n\n**Cache-oblivious data structures:** optimal at all cache hierarchy levels without knowing cache parameters.\n\n**Succinct data structures:** represent data in near-optimal bits — e.g., wavelet tree, FM-index for text.",
+            "questions": [
+                {
+                    "question": "Splay tree's access lemma gives:",
+                    "options": [
+                        "O(1) amortized for all ops",
+                        "O(log n) amortized for all ops — recently accessed items near root",
+                        "O(log^2 n) worst",
+                        "O(n) amortized for random access"
+                    ],
+                    "answer": "O(log n) amortized for all ops — recently accessed items near root"
+                },
+                {
+                    "question": "B+ tree leaf nodes are linked because:",
+                    "options": [
+                        "For balance",
+                        "Range scans traverse leaves sequentially without climbing tree — O(range) for range queries",
+                        "Database sorting",
+                        "Reduces height"
+                    ],
+                    "answer": "Range scans traverse leaves sequentially without climbing tree — O(range) for range queries"
+                },
+                {
+                    "question": "Succinct data structure uses:",
+                    "options": [
+                        "O(n log n) bits",
+                        "Near-optimal bits (within lower bound + o(n) — ops still O(1) or O(log n)",
+                        "Compressed encoding with slow queries",
+                        "O(1) bit representation"
+                    ],
+                    "answer": "Near-optimal bits (within lower bound + o(n) — ops still O(1) or O(log n)"
+                },
+                {
+                    "question": "FM-index enables:",
+                    "options": [
+                        "Full-text search in O(n log n)",
+                        "Compressed suffix array with O(m) pattern search and O(nH0) space (entropy-compressed)",
+                        "A B-tree variant",
+                        "Wavelet tree search"
+                    ],
+                    "answer": "Compressed suffix array with O(m) pattern search and O(nH0) space (entropy-compressed)"
+                },
+                {
+                    "question": "van Emde Boas tree provides:",
+                    "options": [
+                        "O(log n) operations",
+                        "O(log log U) for insert, delete, successor — U = universe size",
+                        "O(1) amortized",
+                        "O(log^2 n)"
+                    ],
+                    "answer": "O(log log U) for insert, delete, successor — U = universe size"
+                },
+                {
+                    "question": "X-fast trie vs Y-fast trie:",
+                    "options": [
+                        "Identical",
+                        "X-fast: O(log log U) query, O(U) space; Y-fast: O(log log U) query, O(n) space using hash tables",
+                        "Both O(log n)",
+                        "Y-fast is slower always"
+                    ],
+                    "answer": "X-fast: O(log log U) query, O(U) space; Y-fast: O(log log U) query, O(n) space using hash tables"
+                },
+                {
+                    "question": "Cache-oblivious algorithm benefit:",
+                    "options": [
+                        "No cache needed",
+                        "Optimal performance at all memory hierarchy levels without knowing cache parameters",
+                        "Only for disk I/O",
+                        "Requires SIMD"
+                    ],
+                    "answer": "Optimal performance at all memory hierarchy levels without knowing cache parameters"
+                },
+                {
+                    "question": "Leftist tree enables:",
+                    "options": [
+                        "O(1) minimum",
+                        "O(log n) merge — leftist property: null-path length of left ≥ right",
+                        "O(n) insert",
+                        "O(log log n) queries"
+                    ],
+                    "answer": "O(log n) merge — leftist property: null-path length of left ≥ right"
+                },
+                {
+                    "question": "Kinetic data structure maintains:",
+                    "options": [
+                        "Static data efficiently",
+                        "Properties of moving points — handles events when ordering changes",
+                        "Fast static range queries",
+                        "1D data only"
+                    ],
+                    "answer": "Properties of moving points — handles events when ordering changes"
+                },
+                {
+                    "question": "Half-open interval tree enables:",
+                    "options": [
+                        "O(n) stabbing queries",
+                        "O(log n + k) stabbing and range queries for intervals",
+                        "O(1) for all interval ops",
+                        "O(n log n) construction, O(1) query"
+                    ],
+                    "answer": "O(log n + k) stabbing and range queries for intervals"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 16,
+    "topic": "Number Theory & Math",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Number Theory & Math — Beginner Level",
+            "theory": "**Key mathematical concepts:**\n\n**GCD (Greatest Common Divisor):**\n```python\nimport math\nmath.gcd(48, 18)  # 6\n# Euclidean algorithm: gcd(a,b) = gcd(b, a%b)\ndef gcd(a, b): return a if b==0 else gcd(b, a%b)\n```\n\n**LCM (Least Common Multiple):**\n`lcm(a,b) = a*b // gcd(a,b)`\n\n**Prime check:**\n```python\ndef is_prime(n):\n    if n < 2: return False\n    for i in range(2, int(n**0.5)+1):\n        if n%i == 0: return False\n    return True\n```\n\n**Sieve of Eratosthenes:** find all primes up to n in O(n log log n).",
+            "questions": [
+                {
+                    "question": "Euclidean GCD algorithm complexity:",
+                    "options": [
+                        "O(n)",
+                        "O(log(min(a,b)))",
+                        "O(a+b)",
+                        "O(a*b)"
+                    ],
+                    "answer": "O(log(min(a,b)))"
+                },
+                {
+                    "question": "LCM(a,b) formula:",
+                    "options": [
+                        "`a + b`",
+                        "`a * b // gcd(a,b)`",
+                        "`gcd(a,b) * (a+b)`",
+                        "`a * b`"
+                    ],
+                    "answer": "`a * b // gcd(a,b)`"
+                },
+                {
+                    "question": "Trial division prime check: why test only up to sqrt(n)?",
+                    "options": [
+                        "Arbitrary optimization",
+                        "If n has a factor > sqrt(n), it must also have one < sqrt(n)",
+                        "Odd numbers only",
+                        "Primes cluster near sqrt"
+                    ],
+                    "answer": "If n has a factor > sqrt(n), it must also have one < sqrt(n)"
+                },
+                {
+                    "question": "Sieve of Eratosthenes time complexity:",
+                    "options": [
+                        "O(n log n)",
+                        "O(n log log n)",
+                        "O(n)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(n log log n)"
+                },
+                {
+                    "question": "Fibonacci(n) mod p — why take modulo?",
+                    "options": [
+                        "Required by algorithm",
+                        "Fibonacci grows exponentially — modulo keeps numbers manageable",
+                        "For correctness",
+                        "Primes only"
+                    ],
+                    "answer": "Fibonacci grows exponentially — modulo keeps numbers manageable"
+                },
+                {
+                    "question": "Check if n is a perfect square:",
+                    "options": [
+                        "`n**0.5 == int(n**0.5)`",
+                        "`int(n**0.5)**2 == n` — avoid float errors",
+                        "`n % 2 == 0`",
+                        "`sqrt(n) is prime`"
+                    ],
+                    "answer": "`int(n**0.5)**2 == n` — avoid float errors"
+                },
+                {
+                    "question": "Modular arithmetic: `(a + b) % m` equals:",
+                    "options": [
+                        "`(a%m) + (b%m)`",
+                        "`((a%m) + (b%m)) % m`",
+                        "`a + b`",
+                        "`(a+b)/m`"
+                    ],
+                    "answer": "`((a%m) + (b%m)) % m`"
+                },
+                {
+                    "question": "Pascal's triangle entry C(n,r) equals:",
+                    "options": [
+                        "n! / r!",
+                        "n! / (r! * (n-r)!)",
+                        "(n-1)! / r!",
+                        "C(n-1,r) + C(n,r-1)"
+                    ],
+                    "answer": "n! / (r! * (n-r)!)"
+                },
+                {
+                    "question": "Sum of digits of a number — iterative approach:",
+                    "options": [
+                        "Sort digits then sum",
+                        "Repeatedly take `n%10` and `n//10` until n=0",
+                        "Convert to string",
+                        "Both B and C are correct"
+                    ],
+                    "answer": "Both B and C are correct"
+                },
+                {
+                    "question": "Number of trailing zeros in n! sources from:",
+                    "options": [
+                        "Powers of 2",
+                        "Powers of 5 — count = sum(n//5^k) for k=1,2,...",
+                        "Pairs of 2 and 5",
+                        "Both B and C — C gives correct count since 2s are more abundant"
+                    ],
+                    "answer": "Both B and C — C gives correct count since 2s are more abundant"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Number Theory & Math — Intermediate Level",
+            "theory": "**Modular exponentiation (fast power):**\n```python\ndef pow_mod(base, exp, mod):\n    result = 1\n    base %= mod\n    while exp > 0:\n        if exp & 1: result = result * base % mod\n        base = base * base % mod\n        exp >>= 1\n    return result\n```\n\n**Modular inverse:** `a^(p-2) mod p` (Fermat's little theorem, p prime). Or extended Euclidean.\n\n**Extended Euclidean:** finds x, y such that `ax + by = gcd(a,b)`.\n\n**Chinese Remainder Theorem (CRT):** solve system of modular equations.\n\n**Euler's totient ϕ(n):** count of coprime integers < n.",
+            "questions": [
+                {
+                    "question": "Modular exponentiation complexity:",
+                    "options": [
+                        "O(exp)",
+                        "O(log exp)",
+                        "O(exp * log exp)",
+                        "O(1)"
+                    ],
+                    "answer": "O(log exp)"
+                },
+                {
+                    "question": "Modular inverse of a mod p (p prime) using Fermat:",
+                    "options": [
+                        "`a^(p-1) mod p`",
+                        "`a^(p-2) mod p` — by Fermat's little theorem: a^(p-1) ≡ 1 mod p",
+                        "`p/a mod p`",
+                        "`p - a mod p`"
+                    ],
+                    "answer": "`a^(p-2) mod p` — by Fermat's little theorem: a^(p-1) ≡ 1 mod p"
+                },
+                {
+                    "question": "Euler's totient ϕ(n) counts:",
+                    "options": [
+                        "Prime factors of n",
+                        "Integers in [1,n] coprime to n",
+                        "Divisors of n",
+                        "Multiples of n below n^2"
+                    ],
+                    "answer": "Integers in [1,n] coprime to n"
+                },
+                {
+                    "question": "CRT (Chinese Remainder Theorem) solves:",
+                    "options": [
+                        "A single modular equation",
+                        "System of equations x≡a1(mod m1), x≡a2(mod m2)... — unique solution mod M=m1*m2...",
+                        "Modular inverse",
+                        "Extended Euclidean"
+                    ],
+                    "answer": "System of equations x≡a1(mod m1), x≡a2(mod m2)... — unique solution mod M=m1*m2..."
+                },
+                {
+                    "question": "Extended Euclidean: if gcd(a,b)=1, finds:",
+                    "options": [
+                        "GCD only",
+                        "Integers x,y such that ax+by=1 — used to find modular inverse when modulus not prime",
+                        "LCM",
+                        "Prime factorization"
+                    ],
+                    "answer": "Integers x,y such that ax+by=1 — used to find modular inverse when modulus not prime"
+                },
+                {
+                    "question": "Number of divisors of n from prime factorization n=p1^a1 * p2^a2:",
+                    "options": [
+                        "a1+a2+...",
+                        "(a1+1)*(a2+1)*...",
+                        "p1*p2*...",
+                        "Sum of prime powers"
+                    ],
+                    "answer": "(a1+1)*(a2+1)*..."
+                },
+                {
+                    "question": "Segmented sieve finds primes in [L, R] using:",
+                    "options": [
+                        "Sieve from 0 to R",
+                        "Precompute primes up to sqrt(R), sieve only the [L,R] range — memory efficient",
+                        "Miller-Rabin for each n",
+                        "Trial division on each"
+                    ],
+                    "answer": "Precompute primes up to sqrt(R), sieve only the [L,R] range — memory efficient"
+                },
+                {
+                    "question": "Catalan numbers C(n) count many structures. Formula:",
+                    "options": [
+                        "`2^n`",
+                        "`C(2n,n) / (n+1)` — Binomial coefficient divided by n+1",
+                        "`n!`",
+                        "`n*(n+1)/2`"
+                    ],
+                    "answer": "`C(2n,n) / (n+1)` — Binomial coefficient divided by n+1"
+                },
+                {
+                    "question": "Euler's theorem: a^ϕ(m) ≡ 1 (mod m) holds when:",
+                    "options": [
+                        "Always",
+                        "gcd(a,m) = 1 (a and m are coprime)",
+                        "m is prime only",
+                        "a < m"
+                    ],
+                    "answer": "gcd(a,m) = 1 (a and m are coprime)"
+                },
+                {
+                    "question": "Matrix exponentiation is used in DP to compute:",
+                    "options": [
+                        "Any DP in O(n)",
+                        "Linear recurrence in O(k^3 log n) — e.g., Fibonacci in O(log n)",
+                        "NTT-based DP",
+                        "Modular inverse"
+                    ],
+                    "answer": "Linear recurrence in O(k^3 log n) — e.g., Fibonacci in O(log n)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Number Theory & Math — Expert Level",
+            "theory": "**Miller-Rabin primality test:** probabilistic O(k log^2 n), deterministic for n < 3.3×10^24 with specific bases.\n\n**Pollard's rho:** factorize n in O(n^(1/4)) expected — used in competitive programming.\n\n**Baby-step Giant-step (BSGS):** solve a^x ≡ b (mod p) in O(sqrt(p)) — discrete logarithm.\n\n**Möbius function μ(n):** used in inclusion-exclusion over divisors.\n\n**Dirichlet series & convolution:** multiplicative functions composable via Dirichlet convolution — sieve-based.",
+            "questions": [
+                {
+                    "question": "Miller-Rabin test is:",
+                    "options": [
+                        "Always deterministic",
+                        "Probabilistic primality test — deterministic for n < 3.3×10^24 with fixed set of bases",
+                        "O(n) per test",
+                        "Only for Mersenne primes"
+                    ],
+                    "answer": "Probabilistic primality test — deterministic for n < 3.3×10^24 with fixed set of bases"
+                },
+                {
+                    "question": "Pollard's rho algorithm factorizes n in:",
+                    "options": [
+                        "O(n^(1/2))",
+                        "O(n^(1/4)) expected — Floyd's cycle detection on pseudo-random sequence",
+                        "O(log n)",
+                        "O(n)"
+                    ],
+                    "answer": "O(n^(1/4)) expected — Floyd's cycle detection on pseudo-random sequence"
+                },
+                {
+                    "question": "Baby-step Giant-step solves:",
+                    "options": [
+                        "Discrete log a^x ≡ b (mod p) in O(sqrt(p))",
+                        "Modular inverse",
+                        "Linear recurrences",
+                        "GCD equations"
+                    ],
+                    "answer": "Discrete log a^x ≡ b (mod p) in O(sqrt(p))"
+                },
+                {
+                    "question": "Möbius function μ(n): value when n has a squared prime factor?",
+                    "options": [
+                        "1",
+                        "-1",
+                        "0",
+                        "μ(prime count)"
+                    ],
+                    "answer": "0"
+                },
+                {
+                    "question": "Dirichlet convolution of f and g:",
+                    "options": [
+                        "`(f*g)(n) = sum(f(d)*g(n/d)) for d|n`",
+                        "`f(n) + g(n)`",
+                        "`f(n) * g(n)`",
+                        "`sum(f(d)) for d|n`"
+                    ],
+                    "answer": "`(f*g)(n) = sum(f(d)*g(n/d)) for d|n`"
+                },
+                {
+                    "question": "Berlekamp-Massey algorithm finds:",
+                    "options": [
+                        "GCD of polynomials",
+                        "Shortest linear recurrence that generates a given sequence — O(n^2)",
+                        "Polynomial interpolation",
+                        "Minimal polynomial over GF(2)"
+                    ],
+                    "answer": "Shortest linear recurrence that generates a given sequence — O(n^2)"
+                },
+                {
+                    "question": "Linear sieve computes smallest prime factor for all n ≤ N in:",
+                    "options": [
+                        "O(N log log N)",
+                        "O(N) — each composite is marked exactly once by its smallest prime factor",
+                        "O(N log N)",
+                        "O(N sqrt(N))"
+                    ],
+                    "answer": "O(N) — each composite is marked exactly once by its smallest prime factor"
+                },
+                {
+                    "question": "What is the inclusion-exclusion principle used for?",
+                    "options": [
+                        "Subset enumeration",
+                        "Count union of sets: |A∪B∪C|=|A|+|B|+|C|-|A∩B|-...|A∩B∩C| — avoids double-counting",
+                        "Tree DP",
+                        "Modular equivalence"
+                    ],
+                    "answer": "Count union of sets: |A∪B∪C|=|A|+|B|+|C|-|A∩B|-...|A∩B∩C| — avoids double-counting"
+                },
+                {
+                    "question": "P-adic valuation v_p(n) is:",
+                    "options": [
+                        "n mod p",
+                        "Exponent of prime p in factorization of n — v_p(n!) = sum(n//p^k)",
+                        "n / p",
+                        "n * p"
+                    ],
+                    "answer": "Exponent of prime p in factorization of n — v_p(n!) = sum(n//p^k)"
+                },
+                {
+                    "question": "Primorial p# is:",
+                    "options": [
+                        "p! (p factorial)",
+                        "Product of all primes ≤ p",
+                        "p^p",
+                        "p*(p-1)/2"
+                    ],
+                    "answer": "Product of all primes ≤ p"
+                }
+            ]
+        }
+    ]
+}

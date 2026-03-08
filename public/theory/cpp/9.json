@@ -1,0 +1,327 @@
+{
+    "levelno": 9,
+    "topic": "Function Overloading",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Function Overloading — Beginner Level",
+            "theory": "Function overloading allows multiple functions with the **same name** but **different parameter lists**. The compiler picks the correct one based on the arguments.\n\n```cpp\nint add(int a, int b)    { return a + b; }\ndouble add(double a, double b) { return a + b; }\nstd::string add(std::string a, std::string b) { return a + b; }\n\nadd(5, 10);       // int version\nadd(3.5, 2.2);    // double version\nadd(\"Hi\", \" there\"); // string version\n```\n\n- Overloads differ in **number**, **type**, or **order** of parameters\n- You **cannot** overload based only on return type\n- This is an example of **compile-time polymorphism** (static binding)",
+            "questions": [
+                {
+                    "question": "What is function overloading?",
+                    "options": [
+                        "Creating a function that does too much",
+                        "Defining multiple functions with same name but different parameter lists",
+                        "Defining a function with same name and params in different files",
+                        "None of the above"
+                    ],
+                    "answer": "Defining multiple functions with same name but different parameter lists"
+                },
+                {
+                    "question": "How does the compiler differentiate overloaded functions?",
+                    "options": [
+                        "By return types",
+                        "By function names",
+                        "By parameter lists (number, type, order)",
+                        "By access specifiers"
+                    ],
+                    "answer": "By parameter lists (number, type, order)"
+                },
+                {
+                    "question": "Can you overload based only on return type?",
+                    "options": [
+                        "Yes, common practice",
+                        "No, compile error",
+                        "Only if one is static",
+                        "Only if return types are compatible"
+                    ],
+                    "answer": "No, compile error"
+                },
+                {
+                    "question": "Function overloading is an example of:",
+                    "options": [
+                        "Runtime polymorphism",
+                        "Compile-time polymorphism",
+                        "Inheritance",
+                        "Data hiding"
+                    ],
+                    "answer": "Compile-time polymorphism"
+                },
+                {
+                    "question": "Which is a valid overload of `void print(int x)`?",
+                    "options": [
+                        "`int print(int y)`",
+                        "`void print(int x, int y)`",
+                        "`void Print(int x)`",
+                        "`void print(const int x)`"
+                    ],
+                    "answer": "`void print(int x, int y)`"
+                },
+                {
+                    "question": "What is the main advantage of overloading?",
+                    "options": [
+                        "Reduces compile time",
+                        "Improves code readability and allows intuitive function calls",
+                        "Reduces memory usage",
+                        "Required for OOP"
+                    ],
+                    "answer": "Improves code readability and allows intuitive function calls"
+                },
+                {
+                    "question": "Can constructors be overloaded?",
+                    "options": [
+                        "No, only one constructor",
+                        "Yes, very common",
+                        "Only in derived classes",
+                        "No, no return type"
+                    ],
+                    "answer": "Yes, very common"
+                },
+                {
+                    "question": "The process of the compiler selecting among overloaded functions is called:",
+                    "options": [
+                        "Overload resolution",
+                        "Function selection",
+                        "Dynamic binding",
+                        "Late binding"
+                    ],
+                    "answer": "Overload resolution"
+                },
+                {
+                    "question": "Calling `func(5, 10.0)` selects which of `void func(int,double)` or `void func(double,int)`?",
+                    "options": [
+                        "`void func(int,double)`",
+                        "`void func(double,int)`",
+                        "Ambiguous call error",
+                        "First one defined"
+                    ],
+                    "answer": "`void func(int,double)`"
+                },
+                {
+                    "question": "Can operator overloading be considered a form of function overloading?",
+                    "options": [
+                        "No",
+                        "Yes — operators are just special functions",
+                        "Only for arithmetic operators",
+                        "Only in C++20"
+                    ],
+                    "answer": "Yes — operators are just special functions"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Function Overloading — Intermediate Level",
+            "theory": "**Overload resolution rules (simplified):**\n1. Exact match\n2. Promotion (e.g., `short` → `int`)\n3. Standard conversion (e.g., `int` → `double`)\n4. User-defined conversion\n5. Variadic ellipsis match\n\n**Ambiguous overloads** cause a compile error:\n```cpp\nvoid f(int, double); void f(double, int);\nf(10, 20); // ERROR: ambiguous\n```\n\n**`= delete`** — explicitly removes an overload:\n```cpp\nvoid print(bool) = delete;  // prevent bool->int conversion accidentally\n```\n\n**Name mangling** — compiler encodes parameter types into the function symbol name to support overloading in object files.",
+            "questions": [
+                {
+                    "question": "What happens when two overloads are equally good matches?",
+                    "options": [
+                        "Compiler picks the first",
+                        "Ambiguous call — compile error",
+                        "Runtime picks one",
+                        "The shorter one is chosen"
+                    ],
+                    "answer": "Ambiguous call — compile error"
+                },
+                {
+                    "question": "What does `void f(int) = delete;` do?",
+                    "options": [
+                        "Makes f virtual",
+                        "Removes f from overload set — calling with int will error",
+                        "Marks f as deprecated",
+                        "Prevents inlining"
+                    ],
+                    "answer": "Removes f from overload set — calling with int will error"
+                },
+                {
+                    "question": "What is name mangling?",
+                    "options": [
+                        "Shortening function names",
+                        "Compiler encoding parameter types into symbol name to distinguish overloads at linker level",
+                        "Obfuscating source code",
+                        "A debugger feature"
+                    ],
+                    "answer": "Compiler encoding parameter types into symbol name to distinguish overloads at linker level"
+                },
+                {
+                    "question": "If `void f(int)` and `void f(double)` both exist, which does `f(3.14f)` call?",
+                    "options": [
+                        "`f(int)` after truncation",
+                        "`f(double)` after promotion of float",
+                        "Ambiguous",
+                        "Neither — error"
+                    ],
+                    "answer": "`f(double)` after promotion of float"
+                },
+                {
+                    "question": "Can overloads differ only in `const`-ness of parameters passed by value?",
+                    "options": [
+                        "Yes",
+                        "No — top-level const on value params is ignored in overload resolution",
+                        "Only for primitive types",
+                        "Only in C++17"
+                    ],
+                    "answer": "No — top-level const on value params is ignored in overload resolution"
+                },
+                {
+                    "question": "Why would you `= delete` a conversion overload?",
+                    "options": [
+                        "To force callers to be explicit about types, preventing unintended implicit conversions",
+                        "To improve performance",
+                        "To make a function private",
+                        "Required for templates"
+                    ],
+                    "answer": "To force callers to be explicit about types, preventing unintended implicit conversions"
+                },
+                {
+                    "question": "What is the overload resolution priority for a user-defined conversion constructor?",
+                    "options": [
+                        "Highest priority",
+                        "Same as built-in conversion",
+                        "Lower than built-in conversions (standard conversions rank higher)",
+                        "Never used in overload resolution"
+                    ],
+                    "answer": "Lower than built-in conversions (standard conversions rank higher)"
+                },
+                {
+                    "question": "Can overloaded functions be members and free functions simultaneously resolved?",
+                    "options": [
+                        "No, only members",
+                        "Yes — ADL (argument-dependent lookup) can find both",
+                        "Only free functions are searched",
+                        "Only member functions are searched"
+                    ],
+                    "answer": "Yes — ADL (argument-dependent lookup) can find both"
+                },
+                {
+                    "question": "What is ADL (Koenig lookup)?",
+                    "options": [
+                        "A debugging technique",
+                        "Compiler also searches namespaces of argument types when resolving function calls",
+                        "A sorting algorithm",
+                        "A template keyword"
+                    ],
+                    "answer": "Compiler also searches namespaces of argument types when resolving function calls"
+                },
+                {
+                    "question": "Can `static` and non-static member overloads coexist in the same class?",
+                    "options": [
+                        "No",
+                        "Yes, but calling the static version requires no object",
+                        "Only if signatures differ",
+                        "Both A and C"
+                    ],
+                    "answer": "Yes, but calling the static version requires no object"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Function Overloading — Expert Level",
+            "theory": "**SFINAE for conditional overloads (pre-C++20):**\n```cpp\ntemplate<typename T>\nstd::enable_if_t<std::is_integral_v<T>, void> process(T v) { ... }\n```\n\n**Concepts (C++20) clean replacement:**\n```cpp\nvoid process(std::integral auto v) { ... }\nvoid process(std::floating_point auto v) { ... }\n```\n\n**Hidden friend idiom** — defining operator overloads as hidden friends inside a class body for better overload hygiene.\n\n**Overload sets and higher-order functions:** passing an overload set to `std::transform` doesn't work directly — you need a lambda wrapper.",
+            "questions": [
+                {
+                    "question": "What does `std::enable_if_t<condition, ReturnType>` do in a function overload?",
+                    "options": [
+                        "Always enables the function",
+                        "Removes the function from overload set if condition is false (SFINAE)",
+                        "Makes the function constexpr",
+                        "Enables runtime type checking"
+                    ],
+                    "answer": "Removes the function from overload set if condition is false (SFINAE)"
+                },
+                {
+                    "question": "How do C++20 concepts simplify conditional overloads?",
+                    "options": [
+                        "They're slower but simpler",
+                        "They replace SFINAE with readable constraint syntax like `std::integral auto`",
+                        "They only work for arithmetic types",
+                        "They require more boilerplate than SFINAE"
+                    ],
+                    "answer": "They replace SFINAE with readable constraint syntax like `std::integral auto`"
+                },
+                {
+                    "question": "What is the 'hidden friend' idiom?",
+                    "options": [
+                        "A private helper function",
+                        "Defining friend functions inside the class body — found only via ADL, not by unqualified lookup",
+                        "A lambda hidden in a function",
+                        "A friendship with derived classes"
+                    ],
+                    "answer": "Defining friend functions inside the class body — found only via ADL, not by unqualified lookup"
+                },
+                {
+                    "question": "Why can't you pass an overloaded function name directly to `std::transform`?",
+                    "options": [
+                        "Overloaded functions are forbidden in STL",
+                        "The compiler can't deduce which overload to take the address of without context",
+                        "STL doesn't accept function pointers",
+                        "Function names are reserved"
+                    ],
+                    "answer": "The compiler can't deduce which overload to take the address of without context"
+                },
+                {
+                    "question": "What is `std::is_integral_v<T>`?",
+                    "options": [
+                        "A runtime check",
+                        "A compile-time boolean trait true if T is an integral type (bool, char, int, etc.)",
+                        "A user-defined trait",
+                        "An STL algorithm"
+                    ],
+                    "answer": "A compile-time boolean trait true if T is an integral type (bool, char, int, etc.)"
+                },
+                {
+                    "question": "What does `requires std::integral<T>` on a function template do?",
+                    "options": [
+                        "Runtime check of T",
+                        "Constrains the template — instantiation fails cleanly if T doesn't satisfy std::integral",
+                        "Makes T always int",
+                        "Converts T to int"
+                    ],
+                    "answer": "Constrains the template — instantiation fails cleanly if T doesn't satisfy std::integral"
+                },
+                {
+                    "question": "What is an overload set?",
+                    "options": [
+                        "A class with multiple constructors",
+                        "The complete set of functions with the same name visible at a given call site",
+                        "A std::set of function pointers",
+                        "Only the overloads in the current namespace"
+                    ],
+                    "answer": "The complete set of functions with the same name visible at a given call site"
+                },
+                {
+                    "question": "When is a function template preferred over a non-template overload?",
+                    "options": [
+                        "Never",
+                        "When the template is a better match (exact match with no conversions)",
+                        "Always",
+                        "When there are no non-template overloads"
+                    ],
+                    "answer": "When the template is a better match (exact match with no conversions)"
+                },
+                {
+                    "question": "What does `__PRETTY_FUNCTION__` or `std::source_location` show about overloads at runtime?",
+                    "options": [
+                        "Only the function name",
+                        "The full mangled name including template arguments",
+                        "The full signature including parameter types",
+                        "Only the return type"
+                    ],
+                    "answer": "The full signature including parameter types"
+                },
+                {
+                    "question": "How does `std::overload` pattern (custom helper) solve the variant visitation overload set problem?",
+                    "options": [
+                        "It doesn't solve it",
+                        "Inherits from multiple lambdas so all their `operator()` overloads participate in a single set",
+                        "Uses virtual dispatch",
+                        "It's a standard C++23 utility"
+                    ],
+                    "answer": "Inherits from multiple lambdas so all their `operator()` overloads participate in a single set"
+                }
+            ]
+        }
+    ]
+}

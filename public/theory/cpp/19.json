@@ -1,0 +1,327 @@
+{
+    "levelno": 19,
+    "topic": "Exception Handling",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Exception Handling — Beginner Level",
+            "theory": "Exception handling lets programs respond to runtime errors gracefully.\n\n```cpp\ntry {\n    int x = -1;\n    if (x < 0) throw std::invalid_argument(\"x must be non-negative\");\n} catch (const std::invalid_argument& e) {\n    std::cout << \"Error: \" << e.what();\n} catch (...) {\n    std::cout << \"Unknown error\";\n}\n```\n\n- `throw` — raises an exception\n- `try` — block that may throw\n- `catch` — handles exceptions of specified type\n- `catch(...)` — catches any exception\n- `e.what()` — returns the error message string\n- Standard exceptions: `std::runtime_error`, `std::logic_error`, `std::out_of_range`, `std::bad_alloc`",
+            "questions": [
+                {
+                    "question": "What keyword throws an exception?",
+                    "options": [
+                        "`catch`",
+                        "`try`",
+                        "`throw`",
+                        "`error`"
+                    ],
+                    "answer": "`throw`"
+                },
+                {
+                    "question": "What keyword wraps code that might throw?",
+                    "options": [
+                        "`catch`",
+                        "`try`",
+                        "`throw`",
+                        "`guard`"
+                    ],
+                    "answer": "`try`"
+                },
+                {
+                    "question": "What does `catch(...)` catch?",
+                    "options": [
+                        "Only std::exception",
+                        "Only runtime_error",
+                        "Any exception type",
+                        "Only user-defined exceptions"
+                    ],
+                    "answer": "Any exception type"
+                },
+                {
+                    "question": "What does `e.what()` return?",
+                    "options": [
+                        "Exception type name",
+                        "Error message string",
+                        "Line number",
+                        "Stack trace"
+                    ],
+                    "answer": "Error message string"
+                },
+                {
+                    "question": "When is `std::bad_alloc` thrown?",
+                    "options": [
+                        "On type mismatch",
+                        "When dynamic memory allocation fails",
+                        "On null pointer dereference",
+                        "When a cast fails"
+                    ],
+                    "answer": "When dynamic memory allocation fails"
+                },
+                {
+                    "question": "If no matching catch is found for an exception:",
+                    "options": [
+                        "Exception is ignored",
+                        "`std::terminate()` is called",
+                        "Another try is searched",
+                        "Exception is stored"
+                    ],
+                    "answer": "`std::terminate()` is called"
+                },
+                {
+                    "question": "Which class should most user exceptions inherit from?",
+                    "options": [
+                        "`std::error`",
+                        "`std::exception`",
+                        "`std::runtime`",
+                        "`std::fault`"
+                    ],
+                    "answer": "`std::exception`"
+                },
+                {
+                    "question": "What is `std::out_of_range` used for?",
+                    "options": [
+                        "Math overflow",
+                        "Access beyond valid index range (e.g., vector::at)",
+                        "File not found",
+                        "Null pointer"
+                    ],
+                    "answer": "Access beyond valid index range (e.g., vector::at)"
+                },
+                {
+                    "question": "Best way to catch standard exceptions?",
+                    "options": [
+                        "`catch(std::exception e)`",
+                        "`catch(const std::exception& e)`",
+                        "`catch(std::exception* e)`",
+                        "`catch(auto e)`"
+                    ],
+                    "answer": "`catch(const std::exception& e)`"
+                },
+                {
+                    "question": "What is `std::logic_error` for?",
+                    "options": [
+                        "Hardware errors",
+                        "Compile-time detectable errors",
+                        "Violations of logical preconditions detected at runtime",
+                        "I/O errors"
+                    ],
+                    "answer": "Violations of logical preconditions detected at runtime"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Exception Handling — Intermediate Level",
+            "theory": "**Stack unwinding:** when an exception is thrown, destructors of all local objects are called as the call stack unwinds — RAII makes this safe.\n\n**`noexcept`:** marks functions that won't throw:\n```cpp\nint square(int x) noexcept { return x*x; }\n```\n\n**Rethrowing:** `throw;` inside a catch rethrows the current exception.\n\n**Custom exceptions:**\n```cpp\nclass MyError : public std::runtime_error {\npublic:\n    MyError(const std::string& msg) : std::runtime_error(msg) {}\n};\n```\n\n**Exception safety levels:** no-throw, strong, basic, none.",
+            "questions": [
+                {
+                    "question": "What is stack unwinding?",
+                    "options": [
+                        "Stack overflow detection",
+                        "Destructors called as call stack unwinds during exception propagation",
+                        "A memory optimization",
+                        "A compiler pass"
+                    ],
+                    "answer": "Destructors called as call stack unwinds during exception propagation"
+                },
+                {
+                    "question": "What does `noexcept` on a function promise?",
+                    "options": [
+                        "Function never returns",
+                        "Function will not throw — allows compiler optimizations",
+                        "Function catches all exceptions",
+                        "Function is constexpr"
+                    ],
+                    "answer": "Function will not throw — allows compiler optimizations"
+                },
+                {
+                    "question": "What happens if a `noexcept` function throws?",
+                    "options": [
+                        "Exception is silently ignored",
+                        "`std::terminate()` is called immediately",
+                        "Exception propagates normally",
+                        "Function is retried"
+                    ],
+                    "answer": "`std::terminate()` is called immediately"
+                },
+                {
+                    "question": "What does `throw;` (bare rethrow) inside a catch block do?",
+                    "options": [
+                        "Creates a new exception",
+                        "Rethrows current exception preserving original type",
+                        "Clears the exception",
+                        "Calls terminate()"
+                    ],
+                    "answer": "Rethrows current exception preserving original type"
+                },
+                {
+                    "question": "What is the 'strong exception safety guarantee'?",
+                    "options": [
+                        "Function never throws",
+                        "If function throws, program state is unchanged",
+                        "Function only throws std::exception",
+                        "Exceptions are logged"
+                    ],
+                    "answer": "If function throws, program state is unchanged"
+                },
+                {
+                    "question": "What is the 'basic exception safety guarantee'?",
+                    "options": [
+                        "No exception ever",
+                        "If exception occurs, no resources leak — state may differ",
+                        "State is always rolled back",
+                        "Only trivial exceptions"
+                    ],
+                    "answer": "If exception occurs, no resources leak — state may differ"
+                },
+                {
+                    "question": "Why does RAII help with exception safety?",
+                    "options": [
+                        "Prevents exceptions",
+                        "Resources in objects with destructors released automatically during stack unwinding",
+                        "Catches all exceptions",
+                        "Makes code noexcept"
+                    ],
+                    "answer": "Resources in objects with destructors released automatically during stack unwinding"
+                },
+                {
+                    "question": "What is `std::exception_ptr`?",
+                    "options": [
+                        "A raw pointer to exception",
+                        "A type-erased smart pointer to exception — can be stored, transferred, rethrown",
+                        "An iterator",
+                        "A catch-all alias"
+                    ],
+                    "answer": "A type-erased smart pointer to exception — can be stored, transferred, rethrown"
+                },
+                {
+                    "question": "What does `std::current_exception()` return?",
+                    "options": [
+                        "nullptr always",
+                        "An `std::exception_ptr` to the current exception inside a catch block",
+                        "The exception type name",
+                        "A copy of the exception"
+                    ],
+                    "answer": "An `std::exception_ptr` to the current exception inside a catch block"
+                },
+                {
+                    "question": "What does `std::rethrow_exception(ptr)` do?",
+                    "options": [
+                        "Prints the exception",
+                        "Rethrows the exception stored in ptr",
+                        "Clears the exception",
+                        "Converts to std::error"
+                    ],
+                    "answer": "Rethrows the exception stored in ptr"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Exception Handling — Expert Level",
+            "theory": "**Error handling alternatives to exceptions:**\n- `std::expected<T, E>` (C++23) — return type holding value OR error\n- `std::error_code` — lightweight error without throw overhead\n- Return codes + `std::optional<T>`\n\n**Exceptions in destructors:** destructors should be `noexcept` — throwing in a destructor during stack unwinding calls `std::terminate`.\n\n**`std::uncaught_exceptions()`:** test inside a destructor whether stack unwinding is in progress.",
+            "questions": [
+                {
+                    "question": "What is `std::expected<T,E>` (C++23)?",
+                    "options": [
+                        "A promise/future type",
+                        "Return type holding either value T or error E — exception-free error handling",
+                        "An optional with two values",
+                        "A variant type"
+                    ],
+                    "answer": "Return type holding either value T or error E — exception-free error handling"
+                },
+                {
+                    "question": "What is `std::error_code`?",
+                    "options": [
+                        "An exception type",
+                        "Lightweight value-semantic error not using exceptions — compatible with system error codes",
+                        "A string-based error",
+                        "A deprecated feature"
+                    ],
+                    "answer": "Lightweight value-semantic error not using exceptions — compatible with system error codes"
+                },
+                {
+                    "question": "Why should destructors be `noexcept`?",
+                    "options": [
+                        "Performance only",
+                        "Throwing in a destructor during stack unwinding causes `std::terminate`",
+                        "Required by the standard",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What is `std::uncaught_exceptions()` useful for?",
+                    "options": [
+                        "Counting pending throws",
+                        "Detecting in a destructor whether stack unwinding is active — prevents double-exception terminate",
+                        "Terminating early",
+                        "Checking exception safety level"
+                    ],
+                    "answer": "Detecting in a destructor whether stack unwinding is active — prevents double-exception terminate"
+                },
+                {
+                    "question": "What is `std::set_terminate(handler)` used for?",
+                    "options": [
+                        "Setting a logging function",
+                        "Replacing the default `std::terminate` handler — e.g., log before crashing",
+                        "Preventing termination",
+                        "Installing an exception filter"
+                    ],
+                    "answer": "Replacing the default `std::terminate` handler — e.g., log before crashing"
+                },
+                {
+                    "question": "Preferred approach in performance-critical code instead of exceptions?",
+                    "options": [
+                        "Lots of try-catch",
+                        "Return `std::expected`, `std::optional`, or error codes — avoid exception overhead in hot paths",
+                        "Only `noexcept`",
+                        "Abort on error"
+                    ],
+                    "answer": "Return `std::expected`, `std::optional`, or error codes — avoid exception overhead in hot paths"
+                },
+                {
+                    "question": "What guarantee does `std::vector::push_back` provide when element copy throws?",
+                    "options": [
+                        "None",
+                        "Strong — original vector unchanged if copy constructor throws",
+                        "Basic only",
+                        "Depends on allocator"
+                    ],
+                    "answer": "Strong — original vector unchanged if copy constructor throws"
+                },
+                {
+                    "question": "What is the cost of zero-cost exception handling models?",
+                    "options": [
+                        "Overhead on every call",
+                        "No overhead on the happy path — overhead only when exception is thrown (table-based)",
+                        "Large binary only",
+                        "No cost at all"
+                    ],
+                    "answer": "No overhead on the happy path — overhead only when exception is thrown (table-based)"
+                },
+                {
+                    "question": "What does `std::nested_exception` allow?",
+                    "options": [
+                        "Multiple exceptions in one catch",
+                        "Nesting one exception inside another — useful for chaining context",
+                        "A vector of exceptions",
+                        "Catching exceptions recursively"
+                    ],
+                    "answer": "Nesting one exception inside another — useful for chaining context"
+                },
+                {
+                    "question": "What does `-fno-exceptions` compiler flag do?",
+                    "options": [
+                        "Makes code slower",
+                        "Disables C++ exception support — reduces binary size; `throw` becomes `terminate`",
+                        "Enables fast exceptions",
+                        "Logging-only mode"
+                    ],
+                    "answer": "Disables C++ exception support — reduces binary size; `throw` becomes `terminate`"
+                }
+            ]
+        }
+    ]
+}

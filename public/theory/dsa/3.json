@@ -1,0 +1,327 @@
+{
+    "levelno": 3,
+    "topic": "Stacks & Queues",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Stacks & Queues — Beginner Level",
+            "theory": "**Stack (LIFO — Last In, First Out):**\n```python\nstack = []\nstack.append(10)  # push\nstack.append(20)\ntop = stack.pop()  # pop → 20\nstack[-1]          # peek → 10\n```\n\n**Queue (FIFO — First In, First Out):**\n```python\nfrom collections import deque\nq = deque()\nq.append(10)       # enqueue\nq.append(20)\nfront = q.popleft() # dequeue → 10\n```\n\n- Stack: `push`, `pop`, `peek` — all O(1)\n- Queue: `enqueue`, `dequeue`, `front` — all O(1)\n- `Deque` (double-ended queue): O(1) at both ends\n- Use stack for: function calls, undo, DFS\n- Use queue for: BFS, scheduling",
+            "questions": [
+                {
+                    "question": "Stack follows which order?",
+                    "options": [
+                        "FIFO",
+                        "LIFO",
+                        "Priority",
+                        "Random"
+                    ],
+                    "answer": "LIFO"
+                },
+                {
+                    "question": "Queue follows which order?",
+                    "options": [
+                        "LIFO",
+                        "FIFO",
+                        "Priority",
+                        "Sorted"
+                    ],
+                    "answer": "FIFO"
+                },
+                {
+                    "question": "Time complexity of stack push and pop?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "Which data structure is used for DFS?",
+                    "options": [
+                        "Queue",
+                        "Hash map",
+                        "Stack",
+                        "Priority queue"
+                    ],
+                    "answer": "Stack"
+                },
+                {
+                    "question": "Which data structure is used for BFS?",
+                    "options": [
+                        "Stack",
+                        "Array",
+                        "Queue",
+                        "Set"
+                    ],
+                    "answer": "Queue"
+                },
+                {
+                    "question": "What is a deque?",
+                    "options": [
+                        "A double queue",
+                        "Double-ended queue — O(1) insert/remove from both ends",
+                        "A sorted queue",
+                        "A priority queue"
+                    ],
+                    "answer": "Double-ended queue — O(1) insert/remove from both ends"
+                },
+                {
+                    "question": "Valid parentheses check uses:",
+                    "options": [
+                        "Queue",
+                        "Array",
+                        "Stack",
+                        "Hash map"
+                    ],
+                    "answer": "Stack"
+                },
+                {
+                    "question": "Function call stack is a real-world use of:",
+                    "options": [
+                        "Queue",
+                        "Stack",
+                        "Priority queue",
+                        "Deque"
+                    ],
+                    "answer": "Stack"
+                },
+                {
+                    "question": "How to implement a queue using two stacks?",
+                    "options": [
+                        "Not possible",
+                        "Use two stacks: push to one, pop reverses to other",
+                        "Direct array",
+                        "Circular buffer"
+                    ],
+                    "answer": "Use two stacks: push to one, pop reverses to other"
+                },
+                {
+                    "question": "What is `collections.deque` in Python better than a list for?",
+                    "options": [
+                        "Random access",
+                        "O(1) popleft() — list.pop(0) is O(n)",
+                        "Sorting",
+                        "Memory efficiency"
+                    ],
+                    "answer": "O(1) popleft() — list.pop(0) is O(n)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Stacks & Queues — Intermediate Level",
+            "theory": "**Monotonic Stack:** maintains elements in monotonically increasing or decreasing order — used for nearest greater/smaller element problems.\n\n```python\n# Next greater element\ndef next_greater(arr):\n    stack, res = [], [-1]*len(arr)\n    for i, x in enumerate(arr):\n        while stack and arr[stack[-1]] < x:\n            res[stack.pop()] = x\n        stack.append(i)\n    return res\n```\n\n**Min Stack:** stack supporting O(1) getMin.\n\n**Circular Queue:** fixed-size, pointer-based.\n\n**Priority Queue (Heap):** dequeue gives max/min in O(log n).",
+            "questions": [
+                {
+                    "question": "Monotonic stack is used for:",
+                    "options": [
+                        "Sorting",
+                        "Finding nearest greater or smaller element in O(n)",
+                        "BFS",
+                        "Hash collision"
+                    ],
+                    "answer": "Finding nearest greater or smaller element in O(n)"
+                },
+                {
+                    "question": "Min Stack supports O(1) getMin by:",
+                    "options": [
+                        "Sorting on push",
+                        "Storing current minimum with each element, or a separate min-tracking stack",
+                        "Linear scan on getMin",
+                        "Hash map"
+                    ],
+                    "answer": "Storing current minimum with each element, or a separate min-tracking stack"
+                },
+                {
+                    "question": "Histogram largest rectangle — optimal approach?",
+                    "options": [
+                        "Brute O(n^2)",
+                        "O(n) using monotonic stack",
+                        "O(n log n) divide & conquer",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What is a priority queue?",
+                    "options": [
+                        "FIFO queue",
+                        "Queue where dequeue returns the highest-priority element — implemented with heap",
+                        "A sorted array",
+                        "A double stack"
+                    ],
+                    "answer": "Queue where dequeue returns the highest-priority element — implemented with heap"
+                },
+                {
+                    "question": "Circular queue uses pointer arithmetic to:",
+                    "options": [
+                        "Always resize",
+                        "Reuse empty positions without shifting — uses front/rear pointers modulo capacity",
+                        "Sort elements",
+                        "Hash positions"
+                    ],
+                    "answer": "Reuse empty positions without shifting — uses front/rear pointers modulo capacity"
+                },
+                {
+                    "question": "Daily temperatures problem (next warmer day) uses:",
+                    "options": [
+                        "Two pointers",
+                        "Monotonic stack",
+                        "Sorting",
+                        "Hashing"
+                    ],
+                    "answer": "Monotonic stack"
+                },
+                {
+                    "question": "Car fleet problem approach:",
+                    "options": [
+                        "BFS",
+                        "Stack OR greedy from right — count distinct groups of cars",
+                        "DFS",
+                        "Priority queue"
+                    ],
+                    "answer": "Stack OR greedy from right — count distinct groups of cars"
+                },
+                {
+                    "question": "Evaluate Reverse Polish Notation (postfix) uses:",
+                    "options": [
+                        "Queue",
+                        "Stack",
+                        "Hash map",
+                        "Sorting"
+                    ],
+                    "answer": "Stack"
+                },
+                {
+                    "question": "Maximum of sliding window of size k — optimal complexity:",
+                    "options": [
+                        "O(nk)",
+                        "O(n log n)",
+                        "O(n) using monotonic deque",
+                        "O(k log n)"
+                    ],
+                    "answer": "O(n) using monotonic deque"
+                },
+                {
+                    "question": "Expression evaluation (infix) uses:",
+                    "options": [
+                        "One stack for operators",
+                        "Two stacks (operators and operands) or Shunting-yard algorithm",
+                        "Queue only",
+                        "Recursion only"
+                    ],
+                    "answer": "Two stacks (operators and operands) or Shunting-yard algorithm"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Stacks & Queues — Expert Level",
+            "theory": "**Lock-free stack (CAS):** compare-and-swap for thread-safe push/pop without locks.\n\n**Persistent stack:** immutable stack sharing structure (functional programming).\n\n**Fibonacci Heap:** advanced priority queue with O(1) amortized insert, decrease-key — used in Dijkstra.\n\n**Monotone priority queue for DP optimization:** optimize DP transitions from O(n^2) to O(n).\n\n**Deque-based DP:** `dp[i] = min(dp[j] + cost) for j in window` — maintained with monotone deque.",
+            "questions": [
+                {
+                    "question": "Fibonacci Heap advantage over binary heap:",
+                    "options": [
+                        "O(1) delete-min",
+                        "O(1) amortized decrease-key (vs O(log n)) — key for Dijkstra optimization",
+                        "O(log n) insert",
+                        "Simpler implementation"
+                    ],
+                    "answer": "O(1) amortized decrease-key (vs O(log n)) — key for Dijkstra optimization"
+                },
+                {
+                    "question": "Lock-free stack uses which primitive?",
+                    "options": [
+                        "Mutex",
+                        "Semaphore",
+                        "Compare-And-Swap (CAS)",
+                        "Spinlock"
+                    ],
+                    "answer": "Compare-And-Swap (CAS)"
+                },
+                {
+                    "question": "Monotone deque DP optimization changes complexity from:",
+                    "options": [
+                        "O(n) to O(1)",
+                        "O(n^2) to O(n) — sliding window minimum/maximum for DP transitions",
+                        "O(n log n) to O(n)",
+                        "O(n) to O(log n)"
+                    ],
+                    "answer": "O(n^2) to O(n) — sliding window minimum/maximum for DP transitions"
+                },
+                {
+                    "question": "A persistent data structure:",
+                    "options": [
+                        "Persists to disk",
+                        "Is immutable — every operation returns a new version while old version is preserved",
+                        "A database structure",
+                        "Thread-safe by default"
+                    ],
+                    "answer": "Is immutable — every operation returns a new version while old version is preserved"
+                },
+                {
+                    "question": "What problem does 'Largest Rectangle in Histogram' generalize to?",
+                    "options": [
+                        "Binary tree max path",
+                        "Maximal rectangle in binary matrix (2D skyline)",
+                        "Jump game",
+                        "Coin change"
+                    ],
+                    "answer": "Maximal rectangle in binary matrix (2D skyline)"
+                },
+                {
+                    "question": "ABA problem in lock-free stacks:",
+                    "options": [
+                        "Deadlock between threads A and B",
+                        "Value changes A→B→A misleads CAS to think nothing changed — fixed with versioned pointers",
+                        "A race condition type",
+                        "Stack corruption"
+                    ],
+                    "answer": "Value changes A→B→A misleads CAS to think nothing changed — fixed with versioned pointers"
+                },
+                {
+                    "question": "Pairing Heap vs Fibonacci Heap:",
+                    "options": [
+                        "Same complexity",
+                        "Pairing heap simpler to implement, similar amortized bounds, better in practice",
+                        "Fibonacci better always",
+                        "Pairing heap is O(n^2)"
+                    ],
+                    "answer": "Pairing heap simpler to implement, similar amortized bounds, better in practice"
+                },
+                {
+                    "question": "MPSC (Multi-Producer Single-Consumer) queue design:",
+                    "options": [
+                        "Requires global lock",
+                        "Lock-free: producers CAS to tail, consumer reads from head atomically",
+                        "Needs semaphore",
+                        "Requires FIFO enforced by OS"
+                    ],
+                    "answer": "Lock-free: producers CAS to tail, consumer reads from head atomically"
+                },
+                {
+                    "question": "What is a 'work-stealing deque' used for?",
+                    "options": [
+                        "Thread-local deque where owner pushes/pops top, other threads steal from bottom — used in Fork/Join",
+                        "A concurrent queue",
+                        "A sorted deque",
+                        "A backup queue"
+                    ],
+                    "answer": "Thread-local deque where owner pushes/pops top, other threads steal from bottom — used in Fork/Join"
+                },
+                {
+                    "question": "Sum of subarray minimums — O(n) approach:",
+                    "options": [
+                        "Brute O(n^2)",
+                        "Monotonic stack — find contribution of each element as minimum using next/prev smaller",
+                        "Sorting based",
+                        "Segment tree O(n log n)"
+                    ],
+                    "answer": "Monotonic stack — find contribution of each element as minimum using next/prev smaller"
+                }
+            ]
+        }
+    ]
+}

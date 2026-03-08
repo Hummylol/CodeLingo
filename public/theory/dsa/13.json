@@ -1,0 +1,327 @@
+{
+    "levelno": 13,
+    "topic": "String Algorithms",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "String Algorithms — Beginner Level",
+            "theory": "Strings are sequences of characters. Key operations and algorithms:\n\n**Palindrome check:**\n```python\ndef is_palindrome(s): return s == s[::-1]\n```\n\n**Anagram check:**\n```python\nfrom collections import Counter\ndef is_anagram(s, t): return Counter(s) == Counter(t)\n```\n\n**Two-pointer palindrome check:**\n```python\ndef is_palindrome(s):\n    l, r = 0, len(s)\n-1\n    while l < r:\n        if s[l] != s[r]: return False\n        l += 1; r -= 1\n    return True\n```\n\n**String common methods:** `split`, `join`, `find`, `replace`, `upper/lower`, `strip`.",
+            "questions": [
+                {
+                    "question": "Fastest way to reverse a string in Python?",
+                    "options": [
+                        "`reversed(s)`",
+                        "`s[::-1]`",
+                        "Loop from end",
+                        "All are O(n) — `s[::-1]` is most idiomatic"
+                    ],
+                    "answer": "All are O(n) — `s[::-1]` is most idiomatic"
+                },
+                {
+                    "question": "Anagram check — optimal time complexity?",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n) sorting",
+                        "O(n) using frequency array/Counter",
+                        "O(26) constant"
+                    ],
+                    "answer": "O(n) using frequency array/Counter"
+                },
+                {
+                    "question": "Valid palindrome — two-pointer space complexity:",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(1)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "Longest common prefix of array of strings:",
+                    "options": [
+                        "Sort and compare first/last only",
+                        "Horizontal scanning: compare prefix across strings O(n*m)",
+                        "Both A and B are O(S) where S = total chars",
+                        "Binary search on prefix length"
+                    ],
+                    "answer": "Both A and B are O(S) where S = total chars"
+                },
+                {
+                    "question": "Count occurrences of character c in string s:",
+                    "options": [
+                        "`s.find(c)`",
+                        "`s.count(c)` — O(n)",
+                        "`Counter(s)[c]`",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "String `split().join()` pattern used for:",
+                    "options": [
+                        "Encrypting",
+                        "Normalize whitespace: `' '.join(s.split())` removes extra spaces",
+                        "Reversing",
+                        "Sorting chars"
+                    ],
+                    "answer": "Normalize whitespace: `' '.join(s.split())` removes extra spaces"
+                },
+                {
+                    "question": "First non-repeating character — O(n) approach:",
+                    "options": [
+                        "Sort then scan",
+                        "Two passes: freq map, then scan for first with freq 1",
+                        "One pass with order dict",
+                        "Both B and C work"
+                    ],
+                    "answer": "Both B and C work"
+                },
+                {
+                    "question": "String in Python is:",
+                    "options": [
+                        "Mutable",
+                        "Immutable — s[i] = 'x' raises TypeError; use list(s) to modify",
+                        "Mutable in Python 3 only",
+                        "Mutable with bytearray"
+                    ],
+                    "answer": "Immutable — s[i] = 'x' raises TypeError; use list(s) to modify"
+                },
+                {
+                    "question": "Longest palindromic substring — brute force complexity:",
+                    "options": [
+                        "O(n)",
+                        "O(n log n)",
+                        "O(n^2) or O(n^3) naive",
+                        "O(n^2) minimum always"
+                    ],
+                    "answer": "O(n^2) or O(n^3) naive"
+                },
+                {
+                    "question": "Is 'abc' a subsequence of 'axbycz'?",
+                    "options": [
+                        "Yes — elements appear in order (not necessarily contiguous)",
+                        "No — elements must be contiguous",
+                        "Only if same length",
+                        "Only for sorted strings"
+                    ],
+                    "answer": "Yes — elements appear in order (not necessarily contiguous)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "String Algorithms — Intermediate Level",
+            "theory": "**KMP (Knuth-Morris-Pratt):** efficient O(n+m) pattern matching using failure function.\n\n```python\ndef compute_lps(pattern):\n    lps = [0]*len(pattern)\n    l, i = 0, 1\n    while i < len(pattern):\n        if pattern[i] == pattern[l]:\n            l += 1; lps[i] = l; i += 1\n        elif l:\n            l = lps[l-1]\n        else:\n            lps[i] = 0; i += 1\n    return lps\n```\n\n**Rabin-Karp:** rolling hash for O(n+m) average pattern matching.\n\n**Z-algorithm:** Z[i] = length of longest substring starting from i matching a prefix.\n\n**Manacher's algorithm:** O(n) longest palindromic substring.",
+            "questions": [
+                {
+                    "question": "KMP preprocessing (failure function) time complexity:",
+                    "options": [
+                        "O(m^2)",
+                        "O(m)",
+                        "O(m log m)",
+                        "O(n)"
+                    ],
+                    "answer": "O(m)"
+                },
+                {
+                    "question": "KMP total time complexity for pattern search:",
+                    "options": [
+                        "O(n*m)",
+                        "O(n*m) worst",
+                        "O(n+m)",
+                        "O(n log n)"
+                    ],
+                    "answer": "O(n+m)"
+                },
+                {
+                    "question": "Rabin-Karp uses rolling hash because:",
+                    "options": [
+                        "More secure",
+                        "Recompute hash in O(1) by removing first, adding last char — enables sliding window O(n)",
+                        "Fewer collisions",
+                        "Smaller hash values"
+                    ],
+                    "answer": "Recompute hash in O(1) by removing first, adding last char — enables sliding window O(n)"
+                },
+                {
+                    "question": "Manacher's algorithm finds longest palindromic substring in:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n log n)",
+                        "O(n)",
+                        "O(n^2) amortized O(n)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Z-algorithm Z[i] gives:",
+                    "options": [
+                        "Length of longest common extension from index 0 and i",
+                        "Number of occurrences of prefix starting at i",
+                        "Edit distance from prefix to s[i:]",
+                        "Hash value at position i"
+                    ],
+                    "answer": "Length of longest common extension from index 0 and i"
+                },
+                {
+                    "question": "Minimum window substring (contains all chars of t) — approach:",
+                    "options": [
+                        "Two pointers with frequency count — sliding window O(n)",
+                        "Sort t then match O(n log n)",
+                        "Hash map + brute O(n*m)",
+                        "DP on substrings"
+                    ],
+                    "answer": "Two pointers with frequency count — sliding window O(n)"
+                },
+                {
+                    "question": "Longest substring without repeating characters:",
+                    "options": [
+                        "Sorted sliding window",
+                        "Sliding window + hash set: move right, shrink left on repeat — O(n)",
+                        "Two pointers on sorted",
+                        "Brute O(n^2)"
+                    ],
+                    "answer": "Sliding window + hash set: move right, shrink left on repeat — O(n)"
+                },
+                {
+                    "question": "Group anagrams efficiently:",
+                    "options": [
+                        "Compare all pairs O(n^2 m log m)",
+                        "Sort each string as key, group by sorted key — O(n * m log m)",
+                        "Frequency tuple as key — O(n*m)",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "Repeated string match — minimum repeats to contain pattern?",
+                    "options": [
+                        "Binary search on repeat count",
+                        "Check ceiling(len(pattern)/len(A)) and +1 repeatitions — use string contains check",
+                        "KMP on repeated string",
+                        "Both B and C are efficient"
+                    ],
+                    "answer": "Both B and C are efficient"
+                },
+                {
+                    "question": "Encode and decode string — design API to avoid ambiguity:",
+                    "options": [
+                        "Use a separator char",
+                        "Length-prefix encoding: prepend length+delimiter — avoids ambiguity with any char in string",
+                        "Always use '#'",
+                        "URL encoding"
+                    ],
+                    "answer": "Length-prefix encoding: prepend length+delimiter — avoids ambiguity with any char in string"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "String Algorithms — Expert Level",
+            "theory": "**Suffix Array:** sorted array of all suffixes — O(n log n) construction, enables O(m log n) pattern matching.\n\n**Suffix Automaton (SAM):** minimal DFA recognizing all substrings — O(n) construction, enables O(n) substring queries.\n\n**Trie (Prefix Tree):** O(m) insert/search (m = key length). Supports prefix queries and word search.\n\n**Aho-Corasick:** multi-pattern matching in O(n + m + z) — builds failure links on trie (like KMP for multiple patterns).\n\n**Suffix Tree:** compressed suffix trie — O(n) with Ukkonen's algorithm, powerful for all suffix/substring queries.",
+            "questions": [
+                {
+                    "question": "Suffix Array enables pattern matching in:",
+                    "options": [
+                        "O(m*n)",
+                        "O(m log n) after O(n log n) construction — binary search on sorted suffixes",
+                        "O(n+m)",
+                        "O(m log m)"
+                    ],
+                    "answer": "O(m log n) after O(n log n) construction — binary search on sorted suffixes"
+                },
+                {
+                    "question": "Suffix Automaton represents:",
+                    "options": [
+                        "All prefixes",
+                        "All substrings of a string as a minimal DFA with O(n) states",
+                        "All suffixes sorted",
+                        "A compressed trie"
+                    ],
+                    "answer": "All substrings of a string as a minimal DFA with O(n) states"
+                },
+                {
+                    "question": "Trie time complexity for insert/search:",
+                    "options": [
+                        "O(log n)",
+                        "O(m) where m = key length",
+                        "O(n)",
+                        "O(1)"
+                    ],
+                    "answer": "O(m) where m = key length"
+                },
+                {
+                    "question": "Aho-Corasick is KMP generalized to:",
+                    "options": [
+                        "Multiple patterns searched in one pass O(n + m + z)",
+                        "Multiple sources",
+                        "All suffixes",
+                        "Palindromic patterns"
+                    ],
+                    "answer": "Multiple patterns searched in one pass O(n + m + z)"
+                },
+                {
+                    "question": "Ukkonen's algorithm builds a suffix tree in:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n)",
+                        "O(n log n)",
+                        "O(n log^2 n)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Longest Common Substring (not subsequence) using suffix array:",
+                    "options": [
+                        "O(n^2) DP",
+                        "O(n log n) — build suffix array of s+#t, compute LCP array, filter cross-string LCP",
+                        "O(n) always",
+                        "O(n*m)"
+                    ],
+                    "answer": "O(n log n) — build suffix array of s+#t, compute LCP array, filter cross-string LCP"
+                },
+                {
+                    "question": "SAM (Suffix Automaton) can count distinct substrings in:",
+                    "options": [
+                        "O(n^2)",
+                        "O(n) — number of distinct substrings = sum of (len(v) - len(link(v))) for each state",
+                        "O(n log n)",
+                        "O(n^2) as theory requires"
+                    ],
+                    "answer": "O(n) — number of distinct substrings = sum of (len(v) - len(link(v))) for each state"
+                },
+                {
+                    "question": "What does the LCP (Longest Common Prefix) array augment?",
+                    "options": [
+                        "Trie insertion",
+                        "Suffix array — gives LCP between consecutive suffixes in sorted order; enables linear string queries",
+                        "Aho-Corasick",
+                        "Z-array"
+                    ],
+                    "answer": "Suffix array — gives LCP between consecutive suffixes in sorted order; enables linear string queries"
+                },
+                {
+                    "question": "Palindrome Automaton (Eertree) efficiently handles:",
+                    "options": [
+                        "Pattern matching",
+                        "All distinct palindromic substrings — O(n) construction, each new char adds ≤1 new palindrome state",
+                        "Suffix queries",
+                        "Sorting palindromes"
+                    ],
+                    "answer": "All distinct palindromic substrings — O(n) construction, each new char adds ≤1 new palindrome state"
+                },
+                {
+                    "question": "What is a compressed suffix trie called?",
+                    "options": [
+                        "Aho-Corasick",
+                        "Suffix Tree — edges represent substrings (not single chars) — O(n) nodes",
+                        "Suffix Array",
+                        "Patricia Trie"
+                    ],
+                    "answer": "Suffix Tree — edges represent substrings (not single chars) — O(n) nodes"
+                }
+            ]
+        }
+    ]
+}

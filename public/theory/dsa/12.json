@@ -1,0 +1,327 @@
+{
+    "levelno": 12,
+    "topic": "Heaps & Priority Queues",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Heaps & Priority Queues — Beginner Level",
+            "theory": "A **heap** is a complete binary tree satisfying the heap property.\n\n- **Min-heap:** parent ≤ children (root = min element)\n- **Max-heap:** parent ≥ children (root = max element)\n\n```python\nimport heapq\n\n# Python heapq is a min-heap\nheap = []\nheapq.heappush(heap, 5)\nheapq.heappush(heap, 2)\nheapq.heappush(heap, 8)\nprint(heapq.heappop(heap))  # 2 (min)\n\n# Max-heap: negate values\nheapq.heappush(heap, -10)\nmax_val = -heapq.heappop(heap)  # 10\n\n# Heapify existing list O(n)\narr = [3, 1, 4, 1, 5]\nheapq.heapify(arr)  # in-place O(n)\n```\n\nInsert: O(log n), Extract min/max: O(log n), Peek: O(1), Heapify: O(n).",
+            "questions": [
+                {
+                    "question": "Min-heap guarantees:",
+                    "options": [
+                        "Sorted array",
+                        "Root is the minimum element",
+                        "Root is the maximum",
+                        "Sorted by insertion order"
+                    ],
+                    "answer": "Root is the minimum element"
+                },
+                {
+                    "question": "Time complexity of heap insertion:",
+                    "options": [
+                        "O(1)",
+                        "O(log n)",
+                        "O(n)",
+                        "O(n log n)"
+                    ],
+                    "answer": "O(log n)"
+                },
+                {
+                    "question": "Time complexity of heapify (building heap from array):",
+                    "options": [
+                        "O(n log n)",
+                        "O(n)",
+                        "O(log n)",
+                        "O(n^2)"
+                    ],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Python's `heapq` is a:",
+                    "options": [
+                        "Max-heap",
+                        "Min-heap",
+                        "Neither — depends on values",
+                        "A sorted container"
+                    ],
+                    "answer": "Min-heap"
+                },
+                {
+                    "question": "How to implement max-heap with Python's `heapq`?",
+                    "options": [
+                        "Use `heapq.heapmax`",
+                        "Negate all values before pushing",
+                        "Pass `reverse=True`",
+                        "Use a different import"
+                    ],
+                    "answer": "Negate all values before pushing"
+                },
+                {
+                    "question": "Priority queue and heap are:",
+                    "options": [
+                        "Always different",
+                        "Same — heap is the implementation; priority queue is the abstract data type",
+                        "Priority queue is a sorted list",
+                        "Heap is a queue"
+                    ],
+                    "answer": "Same — heap is the implementation; priority queue is the abstract data type"
+                },
+                {
+                    "question": "K largest elements — most efficient approach?",
+                    "options": [
+                        "Full sort O(n log n)",
+                        "Min-heap of size k: maintain k largest elements — O(n log k)",
+                        "Max-heap all elements O(n)",
+                        "Array scan O(n*k)"
+                    ],
+                    "answer": "Min-heap of size k: maintain k largest elements — O(n log k)"
+                },
+                {
+                    "question": "Heap is stored as:",
+                    "options": [
+                        "Linked list",
+                        "Array — parent at index i has children at 2i+1 and 2i+2",
+                        "Binary search tree",
+                        "Hash map"
+                    ],
+                    "answer": "Array — parent at index i has children at 2i+1 and 2i+2"
+                },
+                {
+                    "question": "Heap sort time complexity:",
+                    "options": [
+                        "O(n^2) always",
+                        "O(n log n) always, O(1) space",
+                        "O(n log n) average, O(n^2) worst",
+                        "O(n)"
+                    ],
+                    "answer": "O(n log n) always, O(1) space"
+                },
+                {
+                    "question": "Top k frequent elements — efficient approach?",
+                    "options": [
+                        "Full sort by frequency",
+                        "Hash map for frequencies + min-heap of size k — O(n log k)",
+                        "Bucket sort: O(n)",
+                        "Both B and C are valid"
+                    ],
+                    "answer": "Both B and C are valid"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Heaps & Priority Queues — Intermediate Level",
+            "theory": "**`heapq.nlargest` / `nsmallest`:** get k largest/smallest without full sort — O(n log k).\n\n**Median of data stream:** two heaps — max-heap for lower half, min-heap for upper half. Maintain balance.\n\n```python\nclass MedianFinder:\n    def __init__(self): self.lo, self.hi = [], []\n    def addNum(self, num):\n        heapq.heappush(self.lo, -num)        # max-heap for lower half\n        heapq.heappush(self.hi, -heapq.heappop(self.lo))  # balance\n        if len(self.lo) < len(self.hi):      # keep lo >= hi in size\n            heapq.heappush(self.lo, -heapq.heappop(self.hi))\n    def findMedian(self):\n        if len(self.lo) > len(self.hi): return -self.lo[0]\n        return (-self.lo[0] + self.hi[0]) / 2\n```\n\n**Merge k sorted lists:** use heap of (value, list_index, elem_index).",
+            "questions": [
+                {
+                    "question": "Median of data stream uses two heaps to achieve:",
+                    "options": [
+                        "O(1) median always",
+                        "O(log n) add, O(1) median — max-heap for lower half, min-heap for upper half",
+                        "O(n) median",
+                        "O(n log n) total"
+                    ],
+                    "answer": "O(log n) add, O(1) median — max-heap for lower half, min-heap for upper half"
+                },
+                {
+                    "question": "Why max-heap for lower half and min-heap for upper in median problem?",
+                    "options": [
+                        "Arbitrary choice",
+                        "Easy access to max of lower (root of max-heap) and min of upper (root of min-heap) — both medians",
+                        "Reduces memory",
+                        "Required by Python heapq"
+                    ],
+                    "answer": "Easy access to max of lower (root of max-heap) and min of upper (root of min-heap) — both medians"
+                },
+                {
+                    "question": "Merge k sorted lists using heap: complexity?",
+                    "options": [
+                        "O(n*k)",
+                        "O(n log k) — n total elements, k-way heap comparison",
+                        "O(n log n)",
+                        "O(k^2)"
+                    ],
+                    "answer": "O(n log k) — n total elements, k-way heap comparison"
+                },
+                {
+                    "question": "Find smallest range covering all k lists:",
+                    "options": [
+                        "Sort all then two pointers",
+                        "Heap: maintain one element per list, track max — advance min, update range if max-min < current best",
+                        "BFS",
+                        "Binary search on range"
+                    ],
+                    "answer": "Heap: maintain one element per list, track max — advance min, update range if max-min < current best"
+                },
+                {
+                    "question": "Lazy deletion in heap means:",
+                    "options": [
+                        "Deleting without cleanup",
+                        "Marking elements as deleted without removing — skip stale entries on pop",
+                        "Delaying inserts",
+                        "A priority change"
+                    ],
+                    "answer": "Marking elements as deleted without removing — skip stale entries on pop"
+                },
+                {
+                    "question": "Dijkstra uses a heap for:",
+                    "options": [
+                        "Storing all paths",
+                        "Efficiently picking the vertex with minimum tentative distance — O((V+E) log V)",
+                        "Sorting vertices",
+                        "Cycle detection"
+                    ],
+                    "answer": "Efficiently picking the vertex with minimum tentative distance — O((V+E) log V)"
+                },
+                {
+                    "question": "Sliding window median uses:",
+                    "options": [
+                        "One heap only",
+                        "Two heaps with lazy deletion — maintain sorted halves as window slides",
+                        "Segment tree",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "Task scheduling (min time) — greedy with heap:",
+                    "options": [
+                        "DFS on task graph",
+                        "Always pick highest-priority (frequency) task, use heap to track counts and cooldown",
+                        "BFS on tasks",
+                        "Sort by task name"
+                    ],
+                    "answer": "Always pick highest-priority (frequency) task, use heap to track counts and cooldown"
+                },
+                {
+                    "question": "Reorganize string (no adjacent same chars) — valid or not:",
+                    "options": [
+                        "DFS to find arrangement",
+                        "Greedy with max-heap: if max frequency > (n+1)/2, impossible; else always place most frequent",
+                        "DP on positions",
+                        "Backtracking"
+                    ],
+                    "answer": "Greedy with max-heap: if max frequency > (n+1)/2, impossible; else always place most frequent"
+                },
+                {
+                    "question": "`heapq.heappushpop(heap, item)` is more efficient than separate push+pop because:",
+                    "options": [
+                        "It's only available in Python 3.9+",
+                        "It completes in O(log n) vs O(2 log n) — single sift operation after conditional comparison at root",
+                        "Less memory used",
+                        "No difference"
+                    ],
+                    "answer": "It completes in O(log n) vs O(2 log n) — single sift operation after conditional comparison at root"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Heaps & Priority Queues — Expert Level",
+            "theory": "**Fibonacci Heap:** O(1) amortized insert, decrease-key; O(log n) extract-min — used in Dijkstra/Prim for theoretical optimality.\n\n**d-ary heap:** generalization with d children per node — better cache performance for d=4 in practice.\n\n**Soft heap:** approximate priority queue with a controlled fraction of corrupted priorities — used in optimal MST algorithm.\n\n**Brodal queue:** worst-case O(1) insert, O(log n) extract-min — theoretically optimal but complex.\n\n**Persistent heaps:** mergeable heaps (leftist, skew, randomized meldable) — support merge in O(log n).",
+            "questions": [
+                {
+                    "question": "Fibonacci Heap decrease-key amortized complexity:",
+                    "options": [
+                        "O(log n)",
+                        "O(1) amortized — key reason for Dijkstra O(V log V + E) optimality",
+                        "O(n)",
+                        "O(log^2 n)"
+                    ],
+                    "answer": "O(1) amortized — key reason for Dijkstra O(V log V + E) optimality"
+                },
+                {
+                    "question": "Leftist heap supports merge in:",
+                    "options": [
+                        "O(n)",
+                        "O(log n) — maintains leftist property (left subtree always at least as heavy as right)",
+                        "O(1)",
+                        "O(n log n)"
+                    ],
+                    "answer": "O(log n) — maintains leftist property (left subtree always at least as heavy as right)"
+                },
+                {
+                    "question": "Skew heap vs leftist heap:",
+                    "options": [
+                        "Same",
+                        "Skew heap: unconditionally swap children on merge path — simpler, O(log n) amortized vs leftist tree",
+                        "Leftist is always faster",
+                        "Skew is O(1) always"
+                    ],
+                    "answer": "Skew heap: unconditionally swap children on merge path — simpler, O(log n) amortized vs leftist tree"
+                },
+                {
+                    "question": "d-ary heap with d=4 outperforms binary heap in practice for:",
+                    "options": [
+                        "Insert-heavy workloads",
+                        "Extract-min-heavy: sift-down fewer levels, better cache — fewer cache misses per operation",
+                        "All cases",
+                        "Decrease-key operations"
+                    ],
+                    "answer": "Extract-min-heavy: sift-down fewer levels, better cache — fewer cache misses per operation"
+                },
+                {
+                    "question": "Soft heap has what property?",
+                    "options": [
+                        "All priorities correct",
+                        "Some element priorities may be corrupted (increased) — controlled error enables O(n α(n)) MST",
+                        "It approximates median",
+                        "It's GPU-accelerated"
+                    ],
+                    "answer": "Some element priorities may be corrupted (increased) — controlled error enables O(n α(n)) MST"
+                },
+                {
+                    "question": "Event-driven simulation uses a heap for:",
+                    "options": [
+                        "Sorting events",
+                        "Processing events in time order — min-heap by event timestamp",
+                        "Finding max events",
+                        "BFS traversal"
+                    ],
+                    "answer": "Processing events in time order — min-heap by event timestamp"
+                },
+                {
+                    "question": "Heap used for streaming k-th largest element:",
+                    "options": [
+                        "Max-heap of all elements",
+                        "Min-heap of size k — root is always k-th largest",
+                        "Sort then pick",
+                        "Count sort"
+                    ],
+                    "answer": "Min-heap of size k — root is always k-th largest"
+                },
+                {
+                    "question": "Why heap sort is not cache-friendly compared to merge/quicksort?",
+                    "options": [
+                        "More comparisons",
+                        "Heap sift-down accesses distant memory addresses — poor cache locality vs sequential array access",
+                        "More swaps",
+                        "Different comparison function needed"
+                    ],
+                    "answer": "Heap sift-down accesses distant memory addresses — poor cache locality vs sequential array access"
+                },
+                {
+                    "question": "Randomized meldable heap (skew/randomized) merge complexity:",
+                    "options": [
+                        "O(1)",
+                        "O(log n) expected",
+                        "O(n)",
+                        "O(log^2 n)"
+                    ],
+                    "answer": "O(log n) expected"
+                },
+                {
+                    "question": "Why prefer Fibonacci Heap theoretically but binary heap practically?",
+                    "options": [
+                        "No difference",
+                        "Fibonacci Heap: better asymptotic bounds but high constant factor; binary heap: simple, cache-friendly, fast in practice",
+                        "Binary heap is theoretically better",
+                        "Fibonacci Heap is always faster for n>1000"
+                    ],
+                    "answer": "Fibonacci Heap: better asymptotic bounds but high constant factor; binary heap: simple, cache-friendly, fast in practice"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 2,
+    "topic": "Variables and Data Types",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Variables and Data Types — Beginner Level",
+            "theory": "Variables are named containers for data. Every variable must be declared with a type:\n\n```cpp\nint age = 25;\ndouble pi = 3.14159;\nchar grade = 'A';\nbool isActive = true;\n#include <string>\nstd::string name = \"Alice\";\n```\n\n**Common types:**\n- `int` — whole numbers (e.g., 42, -7)\n- `double` — high-precision decimal (e.g., 3.14)\n- `float` — lower-precision decimal\n- `char` — single character in single quotes\n- `bool` — `true` or `false`\n- `std::string` — text (needs `<string>` header)\n\n`const` makes a variable read-only: `const double PI = 3.14159;`",
+            "questions": [
+                {
+                    "question": "Which type stores whole numbers?",
+                    "options": [
+                        "`double`",
+                        "`char`",
+                        "`int`",
+                        "`bool`"
+                    ],
+                    "answer": "`int`"
+                },
+                {
+                    "question": "What header is needed for `std::string`?",
+                    "options": [
+                        "`<iostream>`",
+                        "`<string>`",
+                        "`<text>`",
+                        "`<str>`"
+                    ],
+                    "answer": "`<string>`"
+                },
+                {
+                    "question": "A `bool` variable holds:",
+                    "options": [
+                        "0 or 1",
+                        "`'Y'` or `'N'`",
+                        "`true` or `false`",
+                        "Any integer"
+                    ],
+                    "answer": "`true` or `false`"
+                },
+                {
+                    "question": "Which type has higher precision — `float` or `double`?",
+                    "options": [
+                        "`float`",
+                        "`double`",
+                        "They are the same",
+                        "Depends on platform only"
+                    ],
+                    "answer": "`double`"
+                },
+                {
+                    "question": "What is the correct way to declare a char variable for 'J'?",
+                    "options": [
+                        "`char initial = \"J\";`",
+                        "`char initial = 'J';`",
+                        "`character initial = 'J';`",
+                        "`string initial = 'J';`"
+                    ],
+                    "answer": "`char initial = 'J';`"
+                },
+                {
+                    "question": "What happens when you assign 9.99 to an `int` variable?",
+                    "options": [
+                        "Compile error",
+                        "Rounds to 10",
+                        "Truncates to 9",
+                        "Runtime exception"
+                    ],
+                    "answer": "Truncates to 9"
+                },
+                {
+                    "question": "What does the `const` keyword do?",
+                    "options": [
+                        "Makes the variable static",
+                        "Prevents modification of the variable's value",
+                        "Declares a compile-time constant expression",
+                        "Allocates memory dynamically"
+                    ],
+                    "answer": "Prevents modification of the variable's value"
+                },
+                {
+                    "question": "Which is a valid C++ variable name?",
+                    "options": [
+                        "`$amount`",
+                        "`2items`",
+                        "`_total`",
+                        "`int`"
+                    ],
+                    "answer": "`_total`"
+                },
+                {
+                    "question": "What is the default value of an uninitialized local `int` variable?",
+                    "options": [
+                        "0",
+                        "`nullptr`",
+                        "Garbage/undefined",
+                        "-1"
+                    ],
+                    "answer": "Garbage/undefined"
+                },
+                {
+                    "question": "Which type best stores a person's height like 1.75?",
+                    "options": [
+                        "`int`",
+                        "`char`",
+                        "`double`",
+                        "`bool`"
+                    ],
+                    "answer": "`double`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Variables and Data Types — Intermediate Level",
+            "theory": "**`auto`** — compiler deduces the type from the initializer (C++11+):\n`auto x = 42;  // x is int`\n\n**`constexpr`** — evaluated at compile time:\n`constexpr int MAX = 100;`\n\n**Type sizes and limits** (`<cstdint>`, `<climits>`):\n- `int8_t`, `uint16_t`, `int64_t` — fixed-width integers\n- `INT_MAX`, `INT_MIN` — limits\n\n**Type casting:**\n- `static_cast<double>(5) / 2` → 2.5 (explicit)\n- C-style: `(double)5 / 2`\n\n**`sizeof` operator** — returns byte size: `sizeof(int)` → typically 4.",
+            "questions": [
+                {
+                    "question": "What does `auto x = 42;` do?",
+                    "options": [
+                        "Creates a variable of automatic storage",
+                        "Deduces type as `int` from the initializer",
+                        "Declares x as a pointer",
+                        "Creates a global variable"
+                    ],
+                    "answer": "Deduces type as `int` from the initializer"
+                },
+                {
+                    "question": "What is `constexpr` used for?",
+                    "options": [
+                        "Prevent reassignment like const",
+                        "Guarantee evaluation at compile time",
+                        "Mark functions as thread-safe",
+                        "Enable runtime type deduction"
+                    ],
+                    "answer": "Guarantee evaluation at compile time"
+                },
+                {
+                    "question": "What does `static_cast<double>(5) / 2` evaluate to?",
+                    "options": [
+                        "2",
+                        "2.0",
+                        "2.5",
+                        "Compile error"
+                    ],
+                    "answer": "2.5"
+                },
+                {
+                    "question": "What does `sizeof(int)` return on most 64-bit systems?",
+                    "options": [
+                        "2",
+                        "4",
+                        "8",
+                        "Depends on compiler only"
+                    ],
+                    "answer": "4"
+                },
+                {
+                    "question": "Which header provides fixed-width integers like `int64_t`?",
+                    "options": [
+                        "`<limits>`",
+                        "`<cstdint>`",
+                        "`<integral>`",
+                        "`<types>`"
+                    ],
+                    "answer": "`<cstdint>`"
+                },
+                {
+                    "question": "What is the difference between `const` and `constexpr`?",
+                    "options": [
+                        "No difference",
+                        "`constexpr` is evaluated at compile time; `const` may be runtime constant",
+                        "`const` is for integers only",
+                        "`constexpr` requires `auto`"
+                    ],
+                    "answer": "`constexpr` is evaluated at compile time; `const` may be runtime constant"
+                },
+                {
+                    "question": "What does `unsigned int` do compared to `int`?",
+                    "options": [
+                        "Halves memory usage",
+                        "Stores only non-negative values and has a larger positive range",
+                        "Enables floating-point operations",
+                        "Is the same as `int`"
+                    ],
+                    "answer": "Stores only non-negative values and has a larger positive range"
+                },
+                {
+                    "question": "What is a narrowing conversion?",
+                    "options": [
+                        "Widening to a bigger type",
+                        "Converting to a type that may lose information (e.g., double→int)",
+                        "Implicit type promotion",
+                        "Casting a pointer to int"
+                    ],
+                    "answer": "Converting to a type that may lose information (e.g., double→int)"
+                },
+                {
+                    "question": "What is the value of `auto x = 3 / 2;`?",
+                    "options": [
+                        "1.5",
+                        "2",
+                        "1",
+                        "Compile error"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "Which is more appropriate for a compile-time array size?",
+                    "options": [
+                        "`const int N = 10;`",
+                        "`constexpr int N = 10;`",
+                        "`auto N = 10;`",
+                        "`static int N = 10;`"
+                    ],
+                    "answer": "`constexpr int N = 10;`"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Variables and Data Types — Expert Level",
+            "theory": "**Type aliases:**\n```cpp\nusing Byte = uint8_t;\ntypedef unsigned long long ull;\n```\n\n**`decltype`** — deduces type of an expression without evaluating it:\n`decltype(x + y) z;`\n\n**Structured bindings (C++17):**\n```cpp\nauto [x, y] = std::pair{1, 2.5};\n```\n\n**`std::optional<T>`** — holds a value or nothing:\n```cpp\nstd::optional<int> find(...);\nif (auto v = find(key)) { use(*v); }\n```\n\n**`std::variant<A,B,...>`** — type-safe union.\n**`std::any`** — holds a value of any type.",
+            "questions": [
+                {
+                    "question": "What does `decltype(expr)` give you?",
+                    "options": [
+                        "Runtime type of expr",
+                        "The type that `expr` would have, without evaluating it",
+                        "Size of expr",
+                        "The class of expr"
+                    ],
+                    "answer": "The type that `expr` would have, without evaluating it"
+                },
+                {
+                    "question": "What is `std::optional<int>` used for?",
+                    "options": [
+                        "Threading",
+                        "Storing a value that may or may not be present",
+                        "Optional template parameters",
+                        "An integer with no sign"
+                    ],
+                    "answer": "Storing a value that may or may not be present"
+                },
+                {
+                    "question": "What does C++17 structured binding `auto [a, b] = pair;` do?",
+                    "options": [
+                        "Declares two pointers",
+                        "Unpacks the pair into variables a and b",
+                        "Creates two arrays",
+                        "Binds pair to a function"
+                    ],
+                    "answer": "Unpacks the pair into variables a and b"
+                },
+                {
+                    "question": "What does `std::variant<int, std::string>` represent?",
+                    "options": [
+                        "An int that can be cast to string",
+                        "A type-safe union holding either an int or a string",
+                        "A pair of int and string",
+                        "A map from int to string"
+                    ],
+                    "answer": "A type-safe union holding either an int or a string"
+                },
+                {
+                    "question": "What does `using Byte = uint8_t;` create?",
+                    "options": [
+                        "A function named Byte",
+                        "A type alias for `uint8_t` named Byte",
+                        "A variable of type uint8_t",
+                        "A macro"
+                    ],
+                    "answer": "A type alias for `uint8_t` named Byte"
+                },
+                {
+                    "question": "What is the difference between `using` and `typedef` for type aliases?",
+                    "options": [
+                        "typedef is deprecated",
+                        "`using` alias templates are supported; `typedef` is legal but can't do template aliases",
+                        "No practical difference for simple cases",
+                        "Both A and C"
+                    ],
+                    "answer": "Both A and C"
+                },
+                {
+                    "question": "What is `std::any`?",
+                    "options": [
+                        "A C++03 void pointer",
+                        "A C++17 type-safe wrapper that can hold a value of any copy-constructible type",
+                        "A template parameter pack",
+                        "A debug utility"
+                    ],
+                    "answer": "A C++17 type-safe wrapper that can hold a value of any copy-constructible type"
+                },
+                {
+                    "question": "What does `std::optional::value_or(default)` do?",
+                    "options": [
+                        "Sets the optional to default",
+                        "Returns the contained value; if empty, returns default",
+                        "Throws if empty",
+                        "Checks if value equals default"
+                    ],
+                    "answer": "Returns the contained value; if empty, returns default"
+                },
+                {
+                    "question": "What is integer promotion in C++?",
+                    "options": [
+                        "Casting int to double",
+                        "Automatically widening small integer types (e.g., char, short) to int in expressions",
+                        "Promoting a local to global scope",
+                        "Casting pointer to int"
+                    ],
+                    "answer": "Automatically widening small integer types (e.g., char, short) to int in expressions"
+                },
+                {
+                    "question": "What is `std::numeric_limits<int>::max()` from `<limits>`?",
+                    "options": [
+                        "The size of int",
+                        "The maximum value representable by int",
+                        "A runtime check for overflow",
+                        "An iterator limit"
+                    ],
+                    "answer": "The maximum value representable by int"
+                }
+            ]
+        }
+    ]
+}

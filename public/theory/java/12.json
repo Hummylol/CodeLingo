@@ -1,0 +1,327 @@
+{
+    "levelno": 12,
+    "topic": "Streams & Lambdas",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Streams & Lambdas — Beginner Level",
+            "theory": "**Lambda expressions (Java 8+)** are anonymous functions:\n```java\n// Before lambda\nRunnable r = new Runnable() {\n    public void run() { System.out.println(\"Hi\"); }\n};\n// With lambda\nRunnable r = () -> System.out.println(\"Hi\");\n```\n\n**Streams** process collections in a pipeline:\n```java\nList<Integer> nums = List.of(1, 2, 3, 4, 5);\nnums.stream()\n    .filter(n -> n % 2 == 0)  // keep even\n    .map(n -> n * n)           // square them\n    .forEach(System.out::println); // print\n```\n\n- `filter()` — keeps elements matching a predicate\n- `map()` — transforms each element\n- `forEach()` — terminal operation (triggers execution)",
+            "questions": [
+                {
+                    "question": "What is a lambda expression?",
+                    "options": [
+                        "A loop shorthand",
+                        "An anonymous function — concise way to express behavior",
+                        "A generic type",
+                        "A data structure"
+                    ],
+                    "answer": "An anonymous function — concise way to express behavior"
+                },
+                {
+                    "question": "Which Java version introduced lambdas?",
+                    "options": [
+                        "Java 5",
+                        "Java 7",
+                        "Java 8",
+                        "Java 11"
+                    ],
+                    "answer": "Java 8"
+                },
+                {
+                    "question": "What does `stream().filter(pred)` do?",
+                    "options": [
+                        "Removes matching elements",
+                        "Keeps elements that match the predicate",
+                        "Adds elements",
+                        "Sorts elements"
+                    ],
+                    "answer": "Keeps elements that match the predicate"
+                },
+                {
+                    "question": "What does `stream().map(fn)` do?",
+                    "options": [
+                        "Filters elements",
+                        "Transforms each element using fn",
+                        "Counts elements",
+                        "Reverses elements"
+                    ],
+                    "answer": "Transforms each element using fn"
+                },
+                {
+                    "question": "What is a terminal operation in streams?",
+                    "options": [
+                        "An intermediate step",
+                        "Triggers execution of the pipeline and produces a result/side-effect (e.g., forEach, collect)",
+                        "A filter operation",
+                        "A lazy operation"
+                    ],
+                    "answer": "Triggers execution of the pipeline and produces a result/side-effect (e.g., forEach, collect)"
+                },
+                {
+                    "question": "What is `System.out::println` called?",
+                    "options": [
+                        "A lambda",
+                        "A method reference — shorthand for `x -> System.out.println(x)`",
+                        "A static import",
+                        "A stream method"
+                    ],
+                    "answer": "A method reference — shorthand for `x -> System.out.println(x)`"
+                },
+                {
+                    "question": "Are streams lazy?",
+                    "options": [
+                        "No",
+                        "Yes — intermediate operations are only evaluated when a terminal operation is executed",
+                        "Only filter is lazy",
+                        "Only in parallel streams"
+                    ],
+                    "answer": "Yes — intermediate operations are only evaluated when a terminal operation is executed"
+                },
+                {
+                    "question": "What does `stream().collect(Collectors.toList())` do?",
+                    "options": [
+                        "Filters to a list",
+                        "Collects stream elements into a List",
+                        "Creates a stream from list",
+                        "Reduces to a count"
+                    ],
+                    "answer": "Collects stream elements into a List"
+                },
+                {
+                    "question": "Can you reuse a stream after a terminal operation?",
+                    "options": [
+                        "Yes",
+                        "No — streams are consumed; create a new one",
+                        "Only with reset()",
+                        "Only parallel streams"
+                    ],
+                    "answer": "No — streams are consumed; create a new one"
+                },
+                {
+                    "question": "What does `stream().count()` return?",
+                    "options": [
+                        "A Stream of counts",
+                        "The number of elements as a long",
+                        "An int count",
+                        "The index of last element"
+                    ],
+                    "answer": "The number of elements as a long"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Streams & Lambdas — Intermediate Level",
+            "theory": "**More stream operations:**\n```java\nint sum = nums.stream().reduce(0, Integer::sum);\nOptional<Integer> max = nums.stream().max(Comparator.naturalOrder());\nMap<Boolean,List<Integer>> partitioned = nums.stream().collect(Collectors.partitioningBy(n -> n%2==0));\nMap<String,List<Person>> byCity = people.stream().collect(Collectors.groupingBy(Person::getCity));\n```\n\n**`flatMap`:** flattens nested streams:\n```java\nList<List<Integer>> nested = ...;\nnested.stream().flatMap(Collection::stream).collect(...);\n```\n\n**`distinct()`, `sorted()`, `limit(n)`, `skip(n)`** — intermediate ops.\n\n**Parallel streams:** `list.parallelStream()` — splits work across threads.",
+            "questions": [
+                {
+                    "question": "What does `reduce(0, Integer::sum)` do?",
+                    "options": [
+                        "Returns max",
+                        "Accumulates: sums all elements starting from 0",
+                        "Counts 0s",
+                        "Returns Optional"
+                    ],
+                    "answer": "Accumulates: sums all elements starting from 0"
+                },
+                {
+                    "question": "What does `flatMap` do?",
+                    "options": [
+                        "Filters nested nulls",
+                        "Flattens a stream of streams into a single stream",
+                        "Maps then filters",
+                        "Creates a 2D stream"
+                    ],
+                    "answer": "Flattens a stream of streams into a single stream"
+                },
+                {
+                    "question": "What does `Collectors.groupingBy(fn)` produce?",
+                    "options": [
+                        "A sorted list",
+                        "A Map grouping elements by the key function fn",
+                        "A partitioned list",
+                        "A set of groups"
+                    ],
+                    "answer": "A Map grouping elements by the key function fn"
+                },
+                {
+                    "question": "What does `stream().distinct()` do?",
+                    "options": [
+                        "Sorts elements",
+                        "Removes duplicate elements (using equals)",
+                        "Returns unique count",
+                        "Filters nulls"
+                    ],
+                    "answer": "Removes duplicate elements (using equals)"
+                },
+                {
+                    "question": "What does `stream().limit(5)` do?",
+                    "options": [
+                        "Processes 5 at most",
+                        "Returns a stream of at most 5 elements",
+                        "Skips 5 elements",
+                        "Throws after 5"
+                    ],
+                    "answer": "Returns a stream of at most 5 elements"
+                },
+                {
+                    "question": "What is `parallelStream()`?",
+                    "options": [
+                        "A stream that never runs",
+                        "Splits the processing across multiple threads using Fork/Join",
+                        "A stream that's always lazy",
+                        "A synchronised stream"
+                    ],
+                    "answer": "Splits the processing across multiple threads using Fork/Join"
+                },
+                {
+                    "question": "When is `parallelStream` NOT better than sequential?",
+                    "options": [
+                        "Large datasets",
+                        "Small collections, stateful operations, or operations with side effects — overhead outweighs benefit",
+                        "Multi-core machines",
+                        "Always better"
+                    ],
+                    "answer": "Small collections, stateful operations, or operations with side effects — overhead outweighs benefit"
+                },
+                {
+                    "question": "What does `Collectors.partitioningBy(pred)` return?",
+                    "options": [
+                        "`List<List<T>>`",
+                        "`Map<Boolean, List<T>>` — true list and false list",
+                        "`Set<T>` in two groups",
+                        "`Map<T, Boolean>`"
+                    ],
+                    "answer": "`Map<Boolean, List<T>>` — true list and false list"
+                },
+                {
+                    "question": "What does `stream().anyMatch(pred)` return?",
+                    "options": [
+                        "First matching element",
+                        "true if any element matches the predicate",
+                        "Count of matches",
+                        "A filtered stream"
+                    ],
+                    "answer": "true if any element matches the predicate"
+                },
+                {
+                    "question": "What does `stream().findFirst()` return?",
+                    "options": [
+                        "First element or throws",
+                        "An `Optional<T>` with the first element or empty",
+                        "null if empty",
+                        "`T` always"
+                    ],
+                    "answer": "An `Optional<T>` with the first element or empty"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Streams & Lambdas — Expert Level",
+            "theory": "**`Collector` custom implementation:** `Collector.of(supplier, accumulator, combiner, finisher)` — build custom collectors.\n\n**`Stream.generate` and `Stream.iterate`:** create infinite streams:\n```java\nStream.iterate(0, n -> n + 1).limit(10); // 0..9\nStream.generate(Math::random).limit(5);  // 5 randoms\n```\n\n**`Stream.iterate` with predicate (Java 9+):** `Stream.iterate(0, n -> n < 100, n -> n + 1)` — bounded iteration.\n\n**`Collector.teeing` (Java 12+):** apply two collectors and merge results.\n\n**`mapToInt`, `mapToLong`, `mapToDouble`:** produce primitive streams (`IntStream`, etc.) avoiding boxing.",
+            "questions": [
+                {
+                    "question": "What is `Stream.generate(Math::random)` without `limit()`?",
+                    "options": [
+                        "A list of 10 randoms",
+                        "An infinite stream — must be bounded with limit() or findFirst()",
+                        "Returns null",
+                        "Compile error"
+                    ],
+                    "answer": "An infinite stream — must be bounded with limit() or findFirst()"
+                },
+                {
+                    "question": "What does `mapToInt(fn)` return?",
+                    "options": [
+                        "`Stream<Integer>`",
+                        "`IntStream` — avoids boxing overhead",
+                        "`List<Integer>`",
+                        "`Stream<int>`"
+                    ],
+                    "answer": "`IntStream` — avoids boxing overhead"
+                },
+                {
+                    "question": "What is `IntStream.range(0, 10)`?",
+                    "options": [
+                        "Same as List.of(0..9)",
+                        "A primitive IntStream [0,1,...,9] — does not box",
+                        "An array",
+                        "Exclusive of 0"
+                    ],
+                    "answer": "A primitive IntStream [0,1,...,9] — does not box"
+                },
+                {
+                    "question": "What is `Collector.teeing` (Java 12+)?",
+                    "options": [
+                        "A tea-brewing API",
+                        "Applies two separate downstream collectors and merges their results with a merger function",
+                        "A parallel collector",
+                        "A streaming debug tool"
+                    ],
+                    "answer": "Applies two separate downstream collectors and merges their results with a merger function"
+                },
+                {
+                    "question": "What is a `Spliterator`'s role in parallel streams?",
+                    "options": [
+                        "Thread termination",
+                        "Splits data sources for parallel processing — defines parallelsim characteristics (SIZED, ORDERED, etc.)",
+                        "Error recovery",
+                        "Sorting data"
+                    ],
+                    "answer": "Splits data sources for parallel processing — defines parallelsim characteristics (SIZED, ORDERED, etc.)"
+                },
+                {
+                    "question": "What is the risk of stateful lambdas in parallel streams?",
+                    "options": [
+                        "No risk",
+                        "Shared mutable state causes data races — results are non-deterministic",
+                        "Slower execution",
+                        "Deadlock always"
+                    ],
+                    "answer": "Shared mutable state causes data races — results are non-deterministic"
+                },
+                {
+                    "question": "What does `Collectors.toUnmodifiableList()` (Java 10+) do?",
+                    "options": [
+                        "Same as toList()",
+                        "Collects into an unmodifiable list (throws on mutation)",
+                        "Creates an empty list",
+                        "Sorts then collects"
+                    ],
+                    "answer": "Collects into an unmodifiable list (throws on mutation)"
+                },
+                {
+                    "question": "What is `Stream.ofNullable(x)` (Java 9+)?",
+                    "options": [
+                        "Creates Stream of null",
+                        "Creates empty stream if x is null, else Stream of x — avoids NPE",
+                        "Filters nulls",
+                        "Wraps Optional"
+                    ],
+                    "answer": "Creates empty stream if x is null, else Stream of x — avoids NPE"
+                },
+                {
+                    "question": "What is `Collectors.counting()` used for?",
+                    "options": [
+                        "Counting chars",
+                        "Counts elements in a group — typically used with groupingBy",
+                        "Same as stream().count()",
+                        "Counts distinct elements"
+                    ],
+                    "answer": "Counts elements in a group — typically used with groupingBy"
+                },
+                {
+                    "question": "What does `Collectors.joining(\", \", \"[\", \"]\")` do?",
+                    "options": [
+                        "JSON array",
+                        "Joins String elements with delimiter, and wraps with prefix and suffix",
+                        "A CSV writer",
+                        "Joins with commas only"
+                    ],
+                    "answer": "Joins String elements with delimiter, and wraps with prefix and suffix"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 4,
+    "topic": "Control Flow",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Control Flow — Beginner Level",
+            "theory": "Java uses familiar control flow constructs:\n\n**If-else:**\n```java\nif (score >= 90) { System.out.println(\"A\"); }\nelse if (score >= 80) { System.out.println(\"B\"); }\nelse { System.out.println(\"C\"); }\n```\n\n**Switch:**\n```java\nswitch (day) {\n    case 1: System.out.println(\"Mon\"); break;\n    default: System.out.println(\"Other\");\n}\n```\n\n**Loops:**\n- `for (init; condition; update)`\n- `while (condition)`\n- `do { ... } while (condition);`\n- Enhanced for (for-each): `for (int x : array)`\n\n`break` exits a loop, `continue` skips to next iteration.",
+            "questions": [
+                {
+                    "question": "What does `break` do in a loop?",
+                    "options": [
+                        "Skips to next iteration",
+                        "Exits the loop entirely",
+                        "Exits the program",
+                        "Goes to default case"
+                    ],
+                    "answer": "Exits the loop entirely"
+                },
+                {
+                    "question": "What does `continue` do?",
+                    "options": [
+                        "Exits the loop",
+                        "Restarts the program",
+                        "Skips the rest of current iteration",
+                        "Breaks to outer loop"
+                    ],
+                    "answer": "Skips the rest of current iteration"
+                },
+                {
+                    "question": "How many times does a `do-while` body execute at minimum?",
+                    "options": [
+                        "0",
+                        "1",
+                        "2",
+                        "Depends on condition"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "Which loop is entry-controlled?",
+                    "options": [
+                        "`do-while`",
+                        "`while`",
+                        "Both",
+                        "Neither"
+                    ],
+                    "answer": "`while`"
+                },
+                {
+                    "question": "Missing `break` in a switch case causes:",
+                    "options": [
+                        "Compile error",
+                        "Fall-through to next case",
+                        "Skip to default",
+                        "Nothing"
+                    ],
+                    "answer": "Fall-through to next case"
+                },
+                {
+                    "question": "What is the enhanced for-each loop used for?",
+                    "options": [
+                        "Indexed arrays only",
+                        "Iterating over arrays and Iterable collections without an index",
+                        "While loop shorthand",
+                        "Nested loops only"
+                    ],
+                    "answer": "Iterating over arrays and Iterable collections without an index"
+                },
+                {
+                    "question": "`for (int i=0; i<5; i++)` runs how many times?",
+                    "options": [
+                        "4",
+                        "5",
+                        "6",
+                        "0"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "What does `while(true)` create?",
+                    "options": [
+                        "Compile error",
+                        "An infinite loop",
+                        "A loop that runs once",
+                        "A boolean set"
+                    ],
+                    "answer": "An infinite loop"
+                },
+                {
+                    "question": "What type can a Java `switch` expression use?",
+                    "options": [
+                        "Any type",
+                        "int, String, char, enum (and wrappers)",
+                        "Only int",
+                        "Only String"
+                    ],
+                    "answer": "int, String, char, enum (and wrappers)"
+                },
+                {
+                    "question": "Can Java `switch` use `String`?",
+                    "options": [
+                        "No",
+                        "Yes, since Java 7",
+                        "Yes, since Java 11",
+                        "Only in enhanced switch"
+                    ],
+                    "answer": "Yes, since Java 7"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Control Flow — Intermediate Level",
+            "theory": "**Labeled break/continue** — break/continue an outer loop:\n```java\nouterLoop:\nfor (int i=0; i<3; i++) {\n    for (int j=0; j<3; j++) {\n        if (j==1) break outerLoop; // exits outer loop\n    }\n}\n```\n\n**Switch expression (Java 14+):**\n```java\nString season = switch (month) {\n    case 12, 1, 2 -> \"Winter\";\n    case 3, 4, 5  -> \"Spring\";\n    default        -> \"Other\";\n};\n```\n\n**Pattern matching switch (Java 21+):**\n```java\nswitch (obj) {\n    case Integer i -> \"int: \" + i;\n    case String s  -> \"str: \" + s;\n    default        -> \"other\";\n}\n```",
+            "questions": [
+                {
+                    "question": "What does a labeled `break outerLoop;` do?",
+                    "options": [
+                        "Breaks all loops",
+                        "Breaks only inner loop",
+                        "Breaks to the label (outer loop)",
+                        "Compile error"
+                    ],
+                    "answer": "Breaks to the label (outer loop)"
+                },
+                {
+                    "question": "What is a switch expression (Java 14+)?",
+                    "options": [
+                        "A switch statement that returns null",
+                        "A switch that produces a value, usable in expressions",
+                        "A switch with fall-through only",
+                        "A replacement for if-else only"
+                    ],
+                    "answer": "A switch that produces a value, usable in expressions"
+                },
+                {
+                    "question": "What does `->` in a switch expression do?",
+                    "options": [
+                        "Lambda syntax",
+                        "Arrow case — no fall-through and produces the right-hand value",
+                        "Pointer dereference",
+                        "It's a comment"
+                    ],
+                    "answer": "Arrow case — no fall-through and produces the right-hand value"
+                },
+                {
+                    "question": "What is pattern matching switch (Java 21)?",
+                    "options": [
+                        "Regex matching",
+                        "Switch on the type/value of an object using type patterns",
+                        "Only for enums",
+                        "An experimental feature not in 21"
+                    ],
+                    "answer": "Switch on the type/value of an object using type patterns"
+                },
+                {
+                    "question": "Can you have multiple values in a single switch case?",
+                    "options": [
+                        "No",
+                        "Yes: `case 1, 2, 3 ->`",
+                        "Yes with fall-through only",
+                        "Only in switch expressions"
+                    ],
+                    "answer": "Yes: `case 1, 2, 3 ->`"
+                },
+                {
+                    "question": "What does `yield value;` do inside a switch expression block?",
+                    "options": [
+                        "Returns from method",
+                        "Exits the switch expression with value as its result",
+                        "Suspends the thread",
+                        "Breaks the switch"
+                    ],
+                    "answer": "Exits the switch expression with value as its result"
+                },
+                {
+                    "question": "What happens if pattern matching switch doesn't cover all cases?",
+                    "options": [
+                        "Returns null",
+                        "Throws MatchException at runtime if no case matches",
+                        "Compile error always",
+                        "Returns 0"
+                    ],
+                    "answer": "Throws MatchException at runtime if no case matches"
+                },
+                {
+                    "question": "What is a `guarded pattern` in switch (Java 21)?",
+                    "options": [
+                        "An encrypted case",
+                        "A pattern with a `when` condition: `case Integer i when i > 0`",
+                        "A default with label",
+                        "A try-catch in switch"
+                    ],
+                    "answer": "A pattern with a `when` condition: `case Integer i when i > 0`"
+                },
+                {
+                    "question": "`for (String s : list)` modifies elements if you reassign s?",
+                    "options": [
+                        "Yes",
+                        "No — reassigning s inside the loop doesn't change the collection element",
+                        "Only for arrays",
+                        "Only for primitives"
+                    ],
+                    "answer": "No — reassigning s inside the loop doesn't change the collection element"
+                },
+                {
+                    "question": "What is an infinite loop with condition `while(list.size() > 0)` risk?",
+                    "options": [
+                        "Memory error",
+                        "Infinite loop if the loop body doesn't remove elements from list",
+                        "Compile error",
+                        "Nothing"
+                    ],
+                    "answer": "Infinite loop if the loop body doesn't remove elements from list"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Control Flow — Expert Level",
+            "theory": "**Exhaustiveness in pattern matching:** Java's sealed types + switch let the compiler verify all cases are handled.\n\n**`Streams` as control flow alternative:**\n```java\nlist.stream()\n    .filter(x -> x > 0)\n    .forEach(System.out::println);\n```\n\n**Short-circuit evaluation:** `&&` and `||` don't evaluate the right operand if the result is determined from the left side — critical for null safety:\n```java\nif (obj != null && obj.isValid()) { ... }\n```\n\n**Reactive programming (Project Reactor / RxJava):** event-driven control flow replacing imperative loops for async data.",
+            "questions": [
+                {
+                    "question": "What makes pattern matching switch exhaustive?",
+                    "options": [
+                        "Having a default case",
+                        "Covering all possible types of a sealed hierarchy — compiler verifies completeness",
+                        "Having many cases",
+                        "Using `null` case"
+                    ],
+                    "answer": "Covering all possible types of a sealed hierarchy — compiler verifies completeness"
+                },
+                {
+                    "question": "What is short-circuit evaluation in `obj != null && obj.isValid()`?",
+                    "options": [
+                        "Always evaluates both",
+                        "If `obj != null` is false, `obj.isValid()` is NOT evaluated — prevents NPE",
+                        "Both sides run in parallel",
+                        "A compiler optimization only"
+                    ],
+                    "answer": "If `obj != null` is false, `obj.isValid()` is NOT evaluated — prevents NPE"
+                },
+                {
+                    "question": "What does `Stream.filter().map().reduce()` replace conceptually?",
+                    "options": [
+                        "switch statements",
+                        "Explicit loops with intermediate collections",
+                        "Recursion only",
+                        "Exception handling"
+                    ],
+                    "answer": "Explicit loops with intermediate collections"
+                },
+                {
+                    "question": "What is the `null` case in pattern matching switch?",
+                    "options": [
+                        "Not supported",
+                        "Java 21+ supports `case null` — handles null without NPE",
+                        "Always hits default",
+                        "Generates a NullPointerException"
+                    ],
+                    "answer": "Java 21+ supports `case null` — handles null without NPE"
+                },
+                {
+                    "question": "What is tail call optimization (TCO) in Java?",
+                    "options": [
+                        "JVM always applies it",
+                        "JVM does NOT optimize tail recursion — deep recursion causes StackOverflowError",
+                        "Applied with `TailCall` annotation",
+                        "Available since Java 17"
+                    ],
+                    "answer": "JVM does NOT optimize tail recursion — deep recursion causes StackOverflowError"
+                },
+                {
+                    "question": "What is a trampoline pattern?",
+                    "options": [
+                        "A jump statement",
+                        "Technique to simulate tail call optimization in Java using iteration + function objects",
+                        "A loop unrolling trick",
+                        "A debugging technique"
+                    ],
+                    "answer": "Technique to simulate tail call optimization in Java using iteration + function objects"
+                },
+                {
+                    "question": "What does `CompletableFuture.thenApply()` represent?",
+                    "options": [
+                        "Blocking wait",
+                        "Asynchronous continuation — control flow after an async operation completes",
+                        "A loop",
+                        "A try-catch alternative"
+                    ],
+                    "answer": "Asynchronous continuation — control flow after an async operation completes"
+                },
+                {
+                    "question": "What is 'structured concurrency' (Java 21 preview)?",
+                    "options": [
+                        "Synchronized blocks",
+                        "A programming model where concurrent sub-tasks are structured within a clear scope and lifetime",
+                        "Thread pools only",
+                        "A lock-free algorithm"
+                    ],
+                    "answer": "A programming model where concurrent sub-tasks are structured within a clear scope and lifetime"
+                },
+                {
+                    "question": "What is `SequencedCollection` (Java 21)?",
+                    "options": [
+                        "An ordered queue",
+                        "A collection with defined encounter order and access to first/last elements",
+                        "A concurrent list",
+                        "A sorted set interface"
+                    ],
+                    "answer": "A collection with defined encounter order and access to first/last elements"
+                },
+                {
+                    "question": "What does `Stream.takeWhile(predicate)` do?",
+                    "options": [
+                        "Filters all matching",
+                        "Takes elements while predicate is true, stops at first false — short-circuits",
+                        "Takes last elements",
+                        "Equivalent to filter"
+                    ],
+                    "answer": "Takes elements while predicate is true, stops at first false — short-circuits"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,327 @@
+{
+    "levelno": 11,
+    "topic": "Pointers",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Pointers — Beginner Level",
+            "theory": "A pointer stores the **memory address** of another variable.\n\n```cpp\nint var = 20;\nint* ptr = &var;    // ptr holds the address of var\n\nstd::cout << ptr;   // prints the address\nstd::cout << *ptr;  // prints 20 (dereferencing)\n*ptr = 100;         // changes var through the pointer\n```\n\n- `&` — address-of operator\n- `*` when declaring — indicates a pointer type (`int*`)\n- `*` when using — dereference (get value at address)\n- `nullptr` — a null pointer (points to nothing)\n- `new` — allocates memory on the heap\n- `delete` — frees heap memory (must match every `new`)",
+            "questions": [
+                {
+                    "question": "What does a pointer store?",
+                    "options": [
+                        "Value of another variable",
+                        "Data type of another variable",
+                        "Memory address of another variable",
+                        "Name of another variable"
+                    ],
+                    "answer": "Memory address of another variable"
+                },
+                {
+                    "question": "Which operator gets the memory address of a variable?",
+                    "options": [
+                        "`*`",
+                        "`&`",
+                        "`@`",
+                        "`->`"
+                    ],
+                    "answer": "`&`"
+                },
+                {
+                    "question": "Which operator accesses the value at a pointer's address?",
+                    "options": [
+                        "`*` (dereference)",
+                        "`&` (address-of)",
+                        "`%`",
+                        "`#`"
+                    ],
+                    "answer": "`*` (dereference)"
+                },
+                {
+                    "question": "How do you declare a pointer `p` to an integer?",
+                    "options": [
+                        "`int p;`",
+                        "`pointer p;`",
+                        "`int *p;`",
+                        "`int &p;`"
+                    ],
+                    "answer": "`int *p;`"
+                },
+                {
+                    "question": "What is a null pointer?",
+                    "options": [
+                        "Pointer to address 0",
+                        "Uninitialized pointer",
+                        "Pointer to nothing, represented by `nullptr`",
+                        "Dangling pointer"
+                    ],
+                    "answer": "Pointer to nothing, represented by `nullptr`"
+                },
+                {
+                    "question": "If `int x=10; int *p=&x;`, what is `*p`?",
+                    "options": [
+                        "Address of x",
+                        "10",
+                        "Address of p",
+                        "Error"
+                    ],
+                    "answer": "10"
+                },
+                {
+                    "question": "What is `new` used for?",
+                    "options": [
+                        "Create a new file",
+                        "Allocate memory dynamically on the heap",
+                        "Declare a pointer",
+                        "Assign a value to a pointer"
+                    ],
+                    "answer": "Allocate memory dynamically on the heap"
+                },
+                {
+                    "question": "What must you do with memory allocated using `new`?",
+                    "options": [
+                        "Automatically freed",
+                        "Free it using `delete` to avoid memory leaks",
+                        "Lasts until program ends",
+                        "Must assign it to nullptr"
+                    ],
+                    "answer": "Free it using `delete` to avoid memory leaks"
+                },
+                {
+                    "question": "An array name can be used as a pointer to its:",
+                    "options": [
+                        "Last element",
+                        "Size",
+                        "First element",
+                        "Data type"
+                    ],
+                    "answer": "First element"
+                },
+                {
+                    "question": "What is a dangling pointer?",
+                    "options": [
+                        "A null pointer",
+                        "Pointer pointing to freed memory",
+                        "Uninitialized pointer",
+                        "Pointer to a pointer"
+                    ],
+                    "answer": "Pointer pointing to freed memory"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Pointers — Intermediate Level",
+            "theory": "**Pointer arithmetic:**\n```cpp\nint arr[5] = {10,20,30,40,50};\nint* p = arr;\np++;         // now points to arr[1]\n*(p + 2);    // value of arr[3]\n```\n\n**Pointer to pointer:** `int** pp = &p;`\n\n**`const` and pointers:**\n- `const int* p` — pointer to const int (can't change the value)\n- `int* const p` — const pointer (can't change the address)\n- `const int* const p` — both immutable\n\n**Smart pointers (`<memory>`):**\n- `std::unique_ptr<T>` — exclusive ownership\n- `std::shared_ptr<T>` — shared ownership with reference counting\n- `std::weak_ptr<T>` — non-owning observer",
+            "questions": [
+                {
+                    "question": "If `int* p = arr` and you do `p++`, where does p point?",
+                    "options": [
+                        "arr[-1]",
+                        "arr[0]",
+                        "arr[1]",
+                        "arr[2]"
+                    ],
+                    "answer": "arr[1]"
+                },
+                {
+                    "question": "What does `const int* p` mean?",
+                    "options": [
+                        "Pointer itself is const",
+                        "Pointer to a const int — can't modify the value through p",
+                        "Both pointer and value are const",
+                        "Pointer to any type"
+                    ],
+                    "answer": "Pointer to a const int — can't modify the value through p"
+                },
+                {
+                    "question": "What does `int* const p` mean?",
+                    "options": [
+                        "Can change what p points to",
+                        "p is a const pointer — address stored in p cannot be changed",
+                        "Value is const",
+                        "Same as const int*"
+                    ],
+                    "answer": "p is a const pointer — address stored in p cannot be changed"
+                },
+                {
+                    "question": "What is `std::unique_ptr`?",
+                    "options": [
+                        "Shared ownership pointer",
+                        "Exclusive ownership smart pointer — automatically deletes memory when out of scope",
+                        "Weak reference",
+                        "Raw pointer alias"
+                    ],
+                    "answer": "Exclusive ownership smart pointer — automatically deletes memory when out of scope"
+                },
+                {
+                    "question": "What is the advantage of `std::unique_ptr` over raw `new/delete`?",
+                    "options": [
+                        "Faster allocation",
+                        "Automatic memory management — no need for explicit delete",
+                        "Thread safety",
+                        "Zero overhead always"
+                    ],
+                    "answer": "Automatic memory management — no need for explicit delete"
+                },
+                {
+                    "question": "What does `std::shared_ptr` use to track ownership?",
+                    "options": [
+                        "A lock",
+                        "Reference counting — last owner destroys the object",
+                        "A linked list",
+                        "The stack"
+                    ],
+                    "answer": "Reference counting — last owner destroys the object"
+                },
+                {
+                    "question": "What is `std::weak_ptr` used for?",
+                    "options": [
+                        "Manages exclusive ownership",
+                        "Breaks circular references in shared_ptr graphs — non-owning observer",
+                        "Makes pointers thread-safe",
+                        "Points to stack objects"
+                    ],
+                    "answer": "Breaks circular references in shared_ptr graphs — non-owning observer"
+                },
+                {
+                    "question": "What is pointer arithmetic `p + n` equivalent to?",
+                    "options": [
+                        "`p + n` bytes",
+                        "`p + n * sizeof(*p)` bytes",
+                        "`p * n`",
+                        "No relationship to sizeof"
+                    ],
+                    "answer": "`p + n * sizeof(*p)` bytes"
+                },
+                {
+                    "question": "What is a memory leak?",
+                    "options": [
+                        "Pointer goes null",
+                        "Heap-allocated memory that is never freed — accumulates and wastes RAM",
+                        "Stack overflow",
+                        "Reading freed memory"
+                    ],
+                    "answer": "Heap-allocated memory that is never freed — accumulates and wastes RAM"
+                },
+                {
+                    "question": "What does `std::make_unique<T>(args...)` do?",
+                    "options": [
+                        "Creates a raw pointer",
+                        "Creates a unique_ptr, forwarding args to T's constructor — preferred over `new`",
+                        "Makes shared_ptr",
+                        "Casts a pointer to T"
+                    ],
+                    "answer": "Creates a unique_ptr, forwarding args to T's constructor — preferred over `new`"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Pointers — Expert Level",
+            "theory": "**`void*`** — a generic pointer that can hold any address but must be cast before dereferencing.\n\n**Function pointers:**\n```cpp\nint (*fp)(int, int) = add;  // pointer to function\nfp(3, 4);  // calls add(3,4)\n```\n\n**`std::launder`** — used when pointer location hasn't changed but the object it points to has been replaced (e.g., placement new).\n\n**Aliasing (`-fstrict-aliasing`):** accessing an object through a pointer of a different type is undefined behavior. Use `std::bit_cast` or `memcpy` for safe type punning.\n\n**Placement new:** construct an object at a given memory location without allocating: `new(buffer) MyClass(args);`",
+            "questions": [
+                {
+                    "question": "What is `void*` used for?",
+                    "options": [
+                        "Pointer to void functions",
+                        "Generic pointer that can hold any address — but needs cast before dereference",
+                        "Null pointer type",
+                        "A pointer to a null object"
+                    ],
+                    "answer": "Generic pointer that can hold any address — but needs cast before dereference"
+                },
+                {
+                    "question": "What is a function pointer?",
+                    "options": [
+                        "A pointer in a function",
+                        "A variable holding the address of a function, allowing indirect calls",
+                        "A nullptr function",
+                        "A const function parameter"
+                    ],
+                    "answer": "A variable holding the address of a function, allowing indirect calls"
+                },
+                {
+                    "question": "What is placement new?",
+                    "options": [
+                        "Always slower than regular new",
+                        "Constructs an object at a pre-allocated memory location without new allocation",
+                        "Allocates on the stack",
+                        "A C++20 feature"
+                    ],
+                    "answer": "Constructs an object at a pre-allocated memory location without new allocation"
+                },
+                {
+                    "question": "What is strict aliasing and why does it matter?",
+                    "options": [
+                        "A compiler optimization assuming two differently-typed pointers don't alias — violations cause UB",
+                        "A memory allocation rule",
+                        "A thread safety feature",
+                        "Always enforced at runtime"
+                    ],
+                    "answer": "A compiler optimization assuming two differently-typed pointers don't alias — violations cause UB"
+                },
+                {
+                    "question": "What is `std::bit_cast<T>(x)` used for?",
+                    "options": [
+                        "Casts pointer to T",
+                        "Reinterprets bit pattern of x as type T safely (no UB, unlike reinterpret_cast in aliasing contexts)",
+                        "Same as static_cast",
+                        "Copies memory"
+                    ],
+                    "answer": "Reinterprets bit pattern of x as type T safely (no UB, unlike reinterpret_cast in aliasing contexts)"
+                },
+                {
+                    "question": "What is `std::launder` used for?",
+                    "options": [
+                        "Cleaning pointers",
+                        "Informing the compiler that the pointer now points to a new object at that location (after placement new)",
+                        "Removing const",
+                        "Resetting smart pointers"
+                    ],
+                    "answer": "Informing the compiler that the pointer now points to a new object at that location (after placement new)"
+                },
+                {
+                    "question": "What is RAII?",
+                    "options": [
+                        "A memory leak pattern",
+                        "Resource Acquisition Is Initialization — resources acquired in constructor, released in destructor",
+                        "A pointer safety tool",
+                        "A threading model"
+                    ],
+                    "answer": "Resource Acquisition Is Initialization — resources acquired in constructor, released in destructor"
+                },
+                {
+                    "question": "What happens if you `delete` a pointer twice?",
+                    "options": [
+                        "No effect",
+                        "Undefined behavior — double free may corrupt the heap",
+                        "The allocator simply ignores it",
+                        "Sets it to nullptr"
+                    ],
+                    "answer": "Undefined behavior — double free may corrupt the heap"
+                },
+                {
+                    "question": "What is `std::enable_shared_from_this`?",
+                    "options": [
+                        "Enables shared_ptr for primitives",
+                        "Allows an object managed by shared_ptr to safely create a shared_ptr to itself",
+                        "Makes unique_ptr shared",
+                        "Enables weak_ptr from raw pointer"
+                    ],
+                    "answer": "Allows an object managed by shared_ptr to safely create a shared_ptr to itself"
+                },
+                {
+                    "question": "What is a memory arena (linear allocator)?",
+                    "options": [
+                        "A max-heap for memory",
+                        "A pre-allocated block of memory where objects are bumped in sequentially — very fast, freed all at once",
+                        "A garbage collector",
+                        "A smart pointer strategy"
+                    ],
+                    "answer": "A pre-allocated block of memory where objects are bumped in sequentially — very fast, freed all at once"
+                }
+            ]
+        }
+    ]
+}

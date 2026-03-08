@@ -1,0 +1,10 @@
+                {
+                    "question": "What is the copy assignment operator?",
+                    "options": [
+                        "`Car(const Car&)`",
+                        "`Car& operator=(const Car&)`",
+                        "`void copy(Car)`",
+                        "`Car= operator(Car)`"
+                    ],
+                    "answer": "`Car& operator=(const Car&)`"
+                }
