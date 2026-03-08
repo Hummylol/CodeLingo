@@ -10,7 +10,7 @@ export default function MobileNav() {
 
   const navItems = [
     { href: "/", icon: Network, label: "DSA" },
-    { href: "/lesson-home-page", icon: BookOpen, label: "Lesson Home" },
+    { href: "/lesson-home-page", icon: BookOpen, label: "Lessons" },
     { href: "/leaderboard", icon: Trophy, label: "Leaderboard" },
     { href: "/profile", icon: User, label: "Profile" },
   ]

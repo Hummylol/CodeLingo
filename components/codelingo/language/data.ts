@@ -31,4 +31,11 @@ export const LANGUAGES: Language[] = [
     description: "Strongly-typed OOP for enterprise and Android.",
     sampleTopics: ["Basics", "Classes & Objects", "Collections", "Streams"],
   },
+  {
+    id: "dsa",
+    name: "DSA",
+    icon: Network,
+    description: "Core Data Structures & Algorithms for interviews and problem solving.",
+    sampleTopics: ["Arrays", "Linked Lists", "Stacks & Queues", "Trees", "Graphs & Traversals"],
+  },
 ]
