@@ -27,7 +27,7 @@ export default function LanguagePicker() {
           <DialogTitle className="text-pretty">Choose a programming language</DialogTitle>
         </DialogHeader>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {LANGUAGES.map((lang) => {
+          {LANGUAGES.filter((lang) => lang.id !== "dsa").map((lang) => {
             const active = isSelected(lang.id)
             return (
               <div key={lang.id} className="text-left">

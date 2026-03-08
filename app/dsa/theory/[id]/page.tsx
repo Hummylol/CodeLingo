@@ -10,6 +10,7 @@ import Confetti from "react-confetti"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import ReactMarkdown from "react-markdown"
+import ChatDrawer from "@/components/codelingo/ChatDrawer"
 
 type Question = {
   question: string
@@ -185,7 +186,13 @@ export default function DSATheoryPage() {
         {/* Submission and Results (Outside the map) pt-8 pb-12 */}
         
         {/* We keep the inner padding so content isn't hidden under floats */}
-        <div className="h-24"></div> 
+        <div className="h-24 flex items-center justify-center text-center">
+          {!submitted && (
+            <p className="text-muted-foreground text-sm font-medium">
+              Answer all the questions to reach the next level
+            </p>
+          )}
+        </div> 
 
       </main>
 
@@ -258,12 +265,8 @@ export default function DSATheoryPage() {
         )}
       </div>
 
-      {/* Floating Chatbot Widget (Bottom Right) */}
-      <div className="fixed bottom-24 right-6 z-50">
-        <button className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-2xl transition-transform hover:scale-110">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </button>
-      </div>
+      {/* Chat Drawer */}
+      <ChatDrawer topic={topicData.topic} languageId="dsa" />
 
     </div>
   )

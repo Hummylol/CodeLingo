@@ -13,7 +13,7 @@ export default function LanguageDropdown() {
         <SelectValue placeholder="Select language to continue" />
       </SelectTrigger>
       <SelectContent>
-        {LANGUAGES.map((lang) => (
+        {LANGUAGES.filter((lang) => lang.id !== "dsa").map((lang) => (
           <SelectItem key={lang.id} value={lang.id}>
             <div className="flex items-center gap-2">
               <lang.icon className="h-4 w-4 text-emerald-600" />

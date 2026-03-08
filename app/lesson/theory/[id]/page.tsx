@@ -372,7 +372,11 @@ export default function TheoryPage() {
               {/* Quiz actions */}
               <div className="mt-6 flex flex-col items-center gap-3">
                 {!currentChecked ? (
-                  <Button onClick={handleDifficultyCheckAnswers} size="lg">
+                  <Button 
+                    onClick={handleDifficultyCheckAnswers} 
+                    size="lg"
+                    disabled={Object.keys(currentAnswers).length < totalQ}
+                  >
                     Check Answers
                   </Button>
                 ) : (
