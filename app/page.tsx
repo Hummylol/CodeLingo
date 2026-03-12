@@ -5,6 +5,9 @@ import { Network, CheckCircle2, Lock, ArrowDown, Binary } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
+import AuthSection from "@/components/codelingo/profile/auth-section"
+
+import StreakBadge from "@/components/codelingo/streak-badge"
 
 const TOTAL_LEVELS = 8
 
@@ -35,7 +38,10 @@ export default function DSAHomePage() {
 
   useEffect(() => {
     async function fetchProgress() {
-      if (!user) return;
+      if (!user) {
+        setIsLoading(false);
+        return;
+      }
       setIsLoading(true);
       try {
         const res = await fetch(`/api/progress?lang=dsa`);
@@ -101,7 +107,20 @@ export default function DSAHomePage() {
 
   return (
     <main className="mx-auto max-w-4xl p-6 pb-24 space-y-8">
-      {/* Header */}
+      <StreakBadge />
+      {!user && !isLoading ? (
+        <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-6">
+          <div className="text-center space-y-2 mb-4">
+            <h1 className="text-3xl font-bold text-foreground">Welcome to CodeLingo</h1>
+            <p className="text-muted-foreground">Sign in to track your DSA mastery progress</p>
+          </div>
+          <div className="w-full max-w-md">
+            <AuthSection />
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b pb-6">
         <div>
           <h1 className="text-3xl font-bold text-foreground mb-2 flex items-center gap-2">
@@ -153,6 +172,8 @@ export default function DSAHomePage() {
         </div>
 
       </div>
+        </>
+      )}
     </main>
   )
 }

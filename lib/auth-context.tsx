@@ -87,10 +87,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           alert('Login failed: ' + error.message)
         }
       } else if (provider === 'google') {
+        // Use NEXT_PUBLIC_SITE_URL if defined (for prod), otherwise use window.location.origin
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
         const { error } = await supabase.auth.signInWithOAuth({
           provider: 'google',
           options: {
-            redirectTo: `${window.location.origin}/api/auth/callback?next=/profile`
+            redirectTo: `${siteUrl}/api/auth/callback?next=/profile`
           }
         })
         if (error) {

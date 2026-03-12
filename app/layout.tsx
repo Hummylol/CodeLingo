@@ -17,13 +17,7 @@ export const metadata: Metadata = {
     title: "CodeLingo",
   },
   icons: {
-    icon: [
-      { url: "/next.svg", type: "image/svg+xml" },
-      { url: "/window.svg", type: "image/svg+xml" },
-    ],
-    apple: [
-      { url: "/next.svg", type: "image/svg+xml" },
-    ],
+    icon: "/favicon.ico",
   },
 }
 

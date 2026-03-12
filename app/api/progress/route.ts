@@ -65,6 +65,22 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
         }
 
+        let shouldIncrementStreak = false
+        // Determine current level before updating, to check if we leveled up
+        const { data: currentProgress } = await supabase
+            .from('user_progress')
+            .select('unlocked_level')
+            .eq('user_id', user.id)
+            .eq('language', lang)
+            .single()
+        
+        if (currentProgress && new_level > currentProgress.unlocked_level) {
+            shouldIncrementStreak = true
+        } else if (!currentProgress) {
+            // First time progress
+            shouldIncrementStreak = true
+        }
+
         const { data, error } = await supabase
             .from('user_progress')
             .update({
@@ -78,6 +94,19 @@ export async function POST(request: Request) {
             .single()
 
         if (error) throw error
+
+        if (shouldIncrementStreak) {
+            // Self-call the streak increment endpoint we just made with the cookies
+            try {
+                const cookieStore = request.headers.get('cookie') || ''
+                await fetch(new URL('/api/user/streak/increment', request.url), {
+                    method: 'POST',
+                    headers: { 'cookie': cookieStore }
+                })
+            } catch (e) {
+                console.error("Failed to increment streak inside progress:", e)
+            }
+        }
 
         return NextResponse.json(data)
     } catch (error: any) {

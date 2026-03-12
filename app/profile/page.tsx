@@ -27,12 +27,29 @@ function ProfileContent() {
     setMounted(true)
   }, [])
 
-  const displayInitials = mounted && user?.name ? user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'JD'
-  const displayName = mounted && user?.name ? user.name : 'John Doe'
-  const displayEmail = mounted && user?.email ? user.email : 'john@example.com'
-  const displayLevel = mounted && user?.level ? user.level : 7
-  const displayXp = mounted && user?.xp ? user.xp : 2150
-  const displayAvatar = mounted && user?.avatar ? user.avatar : "/placeholder.svg?height=64&width=64"
+  if (!mounted) return null;
+
+  if (!user) {
+    return (
+      <main className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col items-center justify-center p-4">
+        <div className="w-full max-w-md space-y-4">
+          <div className="text-center space-y-2 mb-6">
+            <h1 className="text-2xl font-bold">Your Profile</h1>
+            <p className="text-muted-foreground">Sign in to view your progress and achievements</p>
+          </div>
+          <AuthSection />
+        </div>
+      </main>
+    );
+  }
+
+
+  const displayInitials = user?.name ? user.name.split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase() : 'JD'
+  const displayName = user?.name ? user.name : 'John Doe'
+  const displayEmail = user?.email ? user.email : 'john@example.com'
+  const displayLevel = user?.level ? user.level : 7
+  const displayXp = user?.xp ? user.xp : 2150
+  const displayAvatar = user?.avatar ? user.avatar : "/placeholder.svg?height=64&width=64"
 
 
   const achievements = [
