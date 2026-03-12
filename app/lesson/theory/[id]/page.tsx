@@ -5,13 +5,11 @@ import { useSelectedLanguage } from "@/components/codelingo/language/use-selecte
 import { LANGUAGES } from "@/components/codelingo/language/data"
 import { useEffect, useState } from "react"
 import { ArrowLeft, Lock, CheckCircle, XCircle, Eye } from "lucide-react"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useAuth } from "@/lib/auth-context"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import ChatDrawer from "@/components/codelingo/ChatDrawer";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-
-
-// --- INTERFACES ---
 interface PracticeQuestion {
   question: string;
   options: string[];
@@ -63,6 +61,7 @@ function renderFormattedTheory(text: string) {
 export default function TheoryPage() {
   const params = useParams()
   const router = useRouter()
+  const { user } = useAuth()
   const { selected } = useSelectedLanguage()
   const { id } = params
 
@@ -70,6 +69,7 @@ export default function TheoryPage() {
   const [totalLevels, setTotalLevels] = useState(0);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [userProgress, setUserProgress] = useState<{ unlocked_level: number; unlocked_difficulty: string } | null>(null)
 
   // --- Difficulty tab state ---
   const [activeDifficulty, setActiveDifficulty] = useState<Difficulty>("beginner");
@@ -130,6 +130,28 @@ export default function TheoryPage() {
         const levelFile: LevelFile = await response.json()
         setLevelData(levelFile)
         setTotalLevels(20) // Python has 20 levels
+
+        // Fetch user progress
+        if (user) {
+          const progRes = await fetch(`/api/progress?lang=${selected}`)
+          if (progRes.ok) {
+            const prog = await progRes.json()
+            setUserProgress(prog)
+
+            // Logic to unlock difficulties based on progress
+            if (prog.unlocked_level > currentLevelId) {
+              // User has already passed this level, unlock all difficulties
+              setUnlockedLevels({ beginner: true, intermediate: true, expert: true })
+            } else if (prog.unlocked_level === currentLevelId) {
+              // User is on this level, unlock difficulties based on their progress state
+              if (prog.unlocked_difficulty === 'intermediate') {
+                setUnlockedLevels({ beginner: true, intermediate: true, expert: false })
+              } else if (prog.unlocked_difficulty === 'expert') {
+                setUnlockedLevels({ beginner: true, intermediate: true, expert: true })
+              }
+            }
+          }
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load theory data")
       } finally {
@@ -137,7 +159,7 @@ export default function TheoryPage() {
       }
     }
     loadTheoryData()
-  }, [selected, currentLevelId])
+  }, [selected, currentLevelId, user])
 
   // --- Difficulty quiz handlers ---
   const handleDifficultyOptionSelect = (questionIndex: number, option: string) => {
@@ -151,7 +173,7 @@ export default function TheoryPage() {
     }));
   };
 
-  const handleDifficultyCheckAnswers = () => {
+  const handleDifficultyCheckAnswers = async () => {
     const questions = levelData?.sublevels.find(s => s.sublevel === activeDifficulty)?.questions ?? [];
     let correct = 0;
     questions.forEach((q, i) => {
@@ -168,10 +190,46 @@ export default function TheoryPage() {
 
     // Unlock next tier if >= 70%
     if (pct >= UNLOCK_THRESHOLD) {
+      let newlyUnlockedDifficulty: string | null = null;
+      let newLevel = userProgress?.unlocked_level || currentLevelId;
+
       if (activeDifficulty === "beginner") {
-        setUnlockedLevels(prev => ({ ...prev, intermediate: true }));
+        if (!unlockedLevels.intermediate) {
+          setUnlockedLevels(prev => ({ ...prev, intermediate: true }));
+          newlyUnlockedDifficulty = 'intermediate';
+        }
       } else if (activeDifficulty === "intermediate") {
-        setUnlockedLevels(prev => ({ ...prev, expert: true }));
+        if (!unlockedLevels.expert) {
+          setUnlockedLevels(prev => ({ ...prev, expert: true }));
+          newlyUnlockedDifficulty = 'expert';
+        }
+      } else if (activeDifficulty === "expert") {
+        // Finished expert
+        newlyUnlockedDifficulty = 'beginner';
+        if (newLevel === currentLevelId) {
+          newLevel = currentLevelId + 1;
+        }
+      }
+
+      // If progress changed, update backend
+      if (user && newlyUnlockedDifficulty && userProgress && (newLevel > userProgress.unlocked_level || newlyUnlockedDifficulty !== userProgress.unlocked_difficulty)) {
+        try {
+          const res = await fetch('/api/progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              lang: selected,
+              new_level: newLevel,
+              new_difficulty: newlyUnlockedDifficulty
+            })
+          })
+          if (res.ok) {
+            const updatedProg = await res.json()
+            setUserProgress(updatedProg)
+          }
+        } catch (e) {
+          console.error("Failed to update user progress", e)
+        }
       }
     }
   };
@@ -372,8 +430,8 @@ export default function TheoryPage() {
               {/* Quiz actions */}
               <div className="mt-6 flex flex-col items-center gap-3">
                 {!currentChecked ? (
-                  <Button 
-                    onClick={handleDifficultyCheckAnswers} 
+                  <Button
+                    onClick={handleDifficultyCheckAnswers}
                     size="lg"
                     disabled={Object.keys(currentAnswers).length < totalQ}
                   >

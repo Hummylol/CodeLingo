@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Trophy, User, BookOpen, Network } from "lucide-react"
+import { Home, Swords, User, BookOpen, Network } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export default function MobileNav() {
@@ -11,7 +11,7 @@ export default function MobileNav() {
   const navItems = [
     { href: "/", icon: Network, label: "DSA" },
     { href: "/lesson-home-page", icon: BookOpen, label: "Lessons" },
-    { href: "/leaderboard", icon: Trophy, label: "Leaderboard" },
+    { href: "/1v1", icon: Swords, label: "1v1" },
     { href: "/profile", icon: User, label: "Profile" },
   ]
 

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { useSelectedLanguage } from "@/components/codelingo/language/use-selected-language"
 import { LANGUAGES } from "@/components/codelingo/language/data"
 import { useState, useEffect } from "react"
+import { useAuth } from "@/lib/auth-context"
 
 
 const TOTAL_LEVELS = 20
@@ -16,6 +17,7 @@ type Topic = {
 }
 
 export default function LessonPage() {
+  const { user } = useAuth();
   const { selected } = useSelectedLanguage()
   const selectedLanguage = LANGUAGES.find(lang => lang.id === selected)
 
@@ -24,18 +26,44 @@ export default function LessonPage() {
     Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
       id: index + 1,
       title: `Level ${index + 1}`,
-      unlocked: index < 5,
+      unlocked: false, // Default to locked while loading
     }))
   );
+  const [loadingProgress, setLoadingProgress] = useState(true);
 
   useEffect(() => {
-    // Standard language levels
-    setTopics(Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
-      id: index + 1,
-      title: `Level ${index + 1}`,
-      unlocked: index < 5,
-    })));
-  }, [selected]);
+    async function fetchProgress() {
+      if (!selected || !user) return;
+
+      setLoadingProgress(true);
+      try {
+        const res = await fetch(`/api/progress?lang=${selected}`);
+        if (res.ok) {
+          const progress = await res.json();
+          const unlockedLevel = progress?.unlocked_level || 1;
+
+          setTopics(Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
+            id: index + 1,
+            title: `Level ${index + 1}`,
+            unlocked: (index + 1) <= unlockedLevel,
+          })));
+        } else {
+          // Fallback if not logged in or error
+          setTopics(Array.from({ length: TOTAL_LEVELS }, (_, index) => ({
+            id: index + 1,
+            title: `Level ${index + 1}`,
+            unlocked: index === 0,
+          })));
+        }
+      } catch (e) {
+        console.error("Failed to fetch progress", e);
+      } finally {
+        setLoadingProgress(false);
+      }
+    }
+
+    fetchProgress();
+  }, [selected, user]);
 
   const laneLeftPercent = 18
   const laneRightPercent = 82
@@ -79,76 +107,82 @@ export default function LessonPage() {
       </div>
 
 
-      <div className="relative rounded-xl border bg-background/50 p-4">
-        <div style={{ height: svgHeight }} className="relative">
-          <svg
-            className="absolute inset-0 w-full h-full "
-            viewBox={`0 0 100 ${svgHeight}`}
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <linearGradient id="candyPath" x1="0" x2="1" y1="0" y2="0">
-                <stop offset="0%" stopColor="hsl(var(--primary))" />
-                <stop offset="100%" stopColor="hsl(var(--primary))" />
-              </linearGradient>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-            <path
-              d={pathD}
-              fill="none"
-              stroke="white"
-              opacity={0.5}
-              strokeWidth={3}
-              strokeLinecap="round"
-            />
-          </svg>
+      <div className="relative rounded-xl border bg-background/50 p-4 min-h-[400px]">
+        {loadingProgress ? (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-muted-foreground animate-pulse">Loading path...</div>
+          </div>
+        ) : (
+          <div style={{ height: svgHeight }} className="relative">
+            <svg
+              className="absolute inset-0 w-full h-full "
+              viewBox={`0 0 100 ${svgHeight}`}
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="candyPath" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" />
+                </linearGradient>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                  <feMerge>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              <path
+                d={pathD}
+                fill="none"
+                stroke="white"
+                opacity={0.5}
+                strokeWidth={3}
+                strokeLinecap="round"
+              />
+            </svg>
 
-          {topics.map((topic, index) => {
-            const point = points[index]
-            const leftPercent = `${point.x}%`
-            const topPx = point.y
-            const isUnlocked = topic.unlocked
-            return (
-              <div
-                key={topic.id}
-                className="absolute"
-                style={{ left: leftPercent, top: topPx, transform: "translate(-50%, -50%)" }}
-              >
-                <button
-                  className={
-                    "group relative flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold transition-transform active:scale-95 " +
-                    (isUnlocked
-                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                      : "bg-muted text-muted-foreground")
-                  }
-                  onClick={() => {
-                    router.push(`/lesson/theory/${topic.id}`)
-                  }}
-                  aria-label={topic.title}
-                  disabled={!isUnlocked}
+            {topics.map((topic, index) => {
+              const point = points[index]
+              const leftPercent = `${point.x}%`
+              const topPx = point.y
+              const isUnlocked = topic.unlocked
+              return (
+                <div
+                  key={topic.id}
+                  className="absolute"
+                  style={{ left: leftPercent, top: topPx, transform: "translate(-50%, -50%)" }}
                 >
-                  {isUnlocked ? topic.id : <Lock className="h-4 w-4" />}
-                  <span
+                  <button
                     className={
-                      "pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-xs " +
+                      "group relative flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold transition-transform active:scale-95 " +
                       (isUnlocked
-                        ? "bg-primary/10 text-foreground"
+                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
                         : "bg-muted text-muted-foreground")
                     }
+                    onClick={() => {
+                      router.push(`/lesson/theory/${topic.id}`)
+                    }}
+                    aria-label={topic.title}
+                    disabled={!isUnlocked}
                   >
-                    {topic.title}
-                  </span>
-                </button>
-              </div>
-            )
-          })}
-        </div>
+                    {isUnlocked ? topic.id : <Lock className="h-4 w-4" />}
+                    <span
+                      className={
+                        "pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-xs " +
+                        (isUnlocked
+                          ? "bg-primary/10 text-foreground"
+                          : "bg-muted text-muted-foreground")
+                      }
+                    >
+                      {topic.title}
+                    </span>
+                  </button>
+                </div>
+              )
+            })}
+          </div>
+        )}
 
         <div className="mt-12 flex items-center justify-center gap-3 text-muted-foreground">
           <div className="h-10 w-10 rounded-full bg-muted inline-flex items-center justify-center">
