@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import StreakBadge from "@/components/codelingo/streak-badge"
+import ProfileBadge from "@/components/codelingo/profile-badge"
 
 export default function OneVsOnePage() {
     const router = useRouter()
@@ -10,6 +11,7 @@ export default function OneVsOnePage() {
     return (
         <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
             <StreakBadge />
+            <ProfileBadge />
             {/* Header */}
             <motion.div
                 initial={{ opacity: 0, y: -20 }}

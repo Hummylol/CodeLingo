@@ -1,0 +1,1004 @@
+{
+  "questions": [
+    {
+      "id": 101,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What is the output of `print(type(None))` in Python?",
+      "options": ["<class 'null'>", "<class 'NoneType'>", "<class 'void'>", "<class 'undefined'>"],
+      "answer": "<class 'NoneType'>"
+    },
+    {
+      "id": 102,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "Which of the following is used to handle exceptions in Python?",
+      "options": ["try/catch", "try/except", "try/handle", "try/error"],
+      "answer": "try/except"
+    },
+    {
+      "id": 103,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What is the output of `'abc' * 3` in Python?",
+      "options": ["abc3", "abcabcabc", "aabbcc", "Error"],
+      "answer": "abcabcabc"
+    },
+    {
+      "id": 104,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "Which method removes and returns the last item in a Python list?",
+      "options": ["remove()", "delete()", "pop()", "discard()"],
+      "answer": "pop()"
+    },
+    {
+      "id": 105,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What does `dict.get('key', 0)` return if 'key' is not in the dictionary?",
+      "options": ["None", "Error", "0", "False"],
+      "answer": "0"
+    },
+    {
+      "id": 106,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What does the `pass` statement do in Python?",
+      "options": ["Exits the loop", "Skips to the next iteration", "Does nothing; acts as a placeholder", "Returns None"],
+      "answer": "Does nothing; acts as a placeholder"
+    },
+    {
+      "id": 107,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What is the result of `max([3, 1, 4, 1, 5, 9])`?",
+      "options": ["3", "5", "9", "1"],
+      "answer": "9"
+    },
+    {
+      "id": 108,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "How do you create an empty set in Python?",
+      "options": ["{}", "set()", "[]", "()"],
+      "answer": "set()"
+    },
+    {
+      "id": 109,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What does `enumerate([10, 20, 30])` yield as its first element?",
+      "options": ["10", "(0, 10)", "(1, 10)", "[0, 10]"],
+      "answer": "(0, 10)"
+    },
+    {
+      "id": 110,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What is the output of `list(map(str, [1, 2, 3]))`?",
+      "options": ["[1, 2, 3]", "['1', '2', '3']", "['str', 'str', 'str']", "Error"],
+      "answer": "['1', '2', '3']"
+    },
+    {
+      "id": 111,
+      "difficulty": "easy",
+      "topic": "Arrays",
+      "question": "What is the time complexity of deleting the last element of an array (with known size)?",
+      "options": ["O(n)", "O(log n)", "O(1)", "O(n^2)"],
+      "answer": "O(1)"
+    },
+    {
+      "id": 112,
+      "difficulty": "easy",
+      "topic": "Arrays",
+      "question": "What is a 2D array also commonly referred to as?",
+      "options": ["Linked list", "Matrix", "Heap", "Graph"],
+      "answer": "Matrix"
+    },
+    {
+      "id": 113,
+      "difficulty": "easy",
+      "topic": "Arrays",
+      "question": "In Python, what does `[0] * 5` create?",
+      "options": ["[5]", "[0, 0, 0, 0, 0]", "[0, 5]", "Error"],
+      "answer": "[0, 0, 0, 0, 0]"
+    },
+    {
+      "id": 114,
+      "difficulty": "easy",
+      "topic": "Big-O",
+      "question": "Which of the following complexities is the slowest for large n?",
+      "options": ["O(n log n)", "O(n^2)", "O(2^n)", "O(n^3)"],
+      "answer": "O(2^n)"
+    },
+    {
+      "id": 115,
+      "difficulty": "easy",
+      "topic": "Big-O",
+      "question": "What does O(1) space complexity mean?",
+      "options": [
+        "The algorithm uses no memory",
+        "Memory usage grows linearly",
+        "Memory usage is constant regardless of input size",
+        "Memory usage grows logarithmically"
+      ],
+      "answer": "Memory usage is constant regardless of input size"
+    },
+    {
+      "id": 116,
+      "difficulty": "easy",
+      "topic": "Strings",
+      "question": "What does `'hello world'.split()` return?",
+      "options": ["['hello', 'world']", "'hello''world'", "['h','e','l','l','o',' ','w','o','r','l','d']", "Error"],
+      "answer": "['hello', 'world']"
+    },
+    {
+      "id": 117,
+      "difficulty": "easy",
+      "topic": "Strings",
+      "question": "What does `'  hello  '.strip()` return?",
+      "options": ["'  hello  '", "'hello'", "'hello  '", "'  hello'"],
+      "answer": "'hello'"
+    },
+    {
+      "id": 118,
+      "difficulty": "easy",
+      "topic": "Strings",
+      "question": "What does `'hello'.startswith('he')` return?",
+      "options": ["False", "None", "True", "Error"],
+      "answer": "True"
+    },
+    {
+      "id": 119,
+      "difficulty": "easy",
+      "topic": "Stacks",
+      "question": "What does the `peek` operation do on a stack?",
+      "options": [
+        "Removes the top element",
+        "Adds an element to the top",
+        "Returns the top element without removing it",
+        "Clears the stack"
+      ],
+      "answer": "Returns the top element without removing it"
+    },
+    {
+      "id": 120,
+      "difficulty": "easy",
+      "topic": "Queues",
+      "question": "What is a deque?",
+      "options": [
+        "A queue with only one end",
+        "A double-ended queue allowing insertion/removal from both ends",
+        "A priority queue",
+        "A queue backed by a linked list"
+      ],
+      "answer": "A double-ended queue allowing insertion/removal from both ends"
+    },
+    {
+      "id": 121,
+      "difficulty": "easy",
+      "topic": "Linked Lists",
+      "question": "What is the time complexity of accessing the nth element in a singly linked list?",
+      "options": ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+      "answer": "O(n)"
+    },
+    {
+      "id": 122,
+      "difficulty": "easy",
+      "topic": "Linked Lists",
+      "question": "What is a doubly linked list?",
+      "options": [
+        "A list with two heads",
+        "A list where each node has pointers to both next and previous nodes",
+        "A list stored in two arrays",
+        "A circular singly linked list"
+      ],
+      "answer": "A list where each node has pointers to both next and previous nodes"
+    },
+    {
+      "id": 123,
+      "difficulty": "easy",
+      "topic": "Trees",
+      "question": "What is a leaf node in a binary tree?",
+      "options": [
+        "A node with two children",
+        "The root node",
+        "A node with no children",
+        "A node with one child"
+      ],
+      "answer": "A node with no children"
+    },
+    {
+      "id": 124,
+      "difficulty": "easy",
+      "topic": "Trees",
+      "question": "Which traversal visits the left subtree, root, then right subtree?",
+      "options": ["Preorder", "Postorder", "Inorder", "Level-order"],
+      "answer": "Inorder"
+    },
+    {
+      "id": 125,
+      "difficulty": "easy",
+      "topic": "Sorting",
+      "question": "Which sorting algorithm repeatedly finds the minimum element and places it at the front?",
+      "options": ["Bubble Sort", "Merge Sort", "Insertion Sort", "Selection Sort"],
+      "answer": "Selection Sort"
+    },
+    {
+      "id": 126,
+      "difficulty": "easy",
+      "topic": "Sorting",
+      "question": "Is Merge Sort a stable sorting algorithm?",
+      "options": ["No", "Yes", "Only for integers", "Depends on implementation"],
+      "answer": "Yes"
+    },
+    {
+      "id": 127,
+      "difficulty": "easy",
+      "topic": "Hashing",
+      "question": "What Python structure guarantees O(1) average-case insertion and lookup?",
+      "options": ["list", "tuple", "set", "deque"],
+      "answer": "set"
+    },
+    {
+      "id": 128,
+      "difficulty": "easy",
+      "topic": "Recursion",
+      "question": "What happens if a recursive function has no base case?",
+      "options": [
+        "It runs once",
+        "It returns None",
+        "It causes infinite recursion / stack overflow",
+        "It compiles but doesn't run"
+      ],
+      "answer": "It causes infinite recursion / stack overflow"
+    },
+    {
+      "id": 129,
+      "difficulty": "easy",
+      "topic": "Graphs",
+      "question": "What is an undirected graph?",
+      "options": [
+        "A graph where edges go one way",
+        "A graph where edges have no direction",
+        "A graph with no cycles",
+        "A graph with weighted edges"
+      ],
+      "answer": "A graph where edges have no direction"
+    },
+    {
+      "id": 130,
+      "difficulty": "easy",
+      "topic": "Graphs",
+      "question": "What is a directed acyclic graph (DAG)?",
+      "options": [
+        "An undirected graph with no loops",
+        "A directed graph that contains no cycles",
+        "A graph where all nodes are connected",
+        "A weighted undirected graph"
+      ],
+      "answer": "A directed graph that contains no cycles"
+    },
+    {
+      "id": 131,
+      "difficulty": "easy",
+      "topic": "Bit Manipulation",
+      "question": "What is the result of `1 | 0` in binary (OR operation)?",
+      "options": ["0", "1", "2", "Error"],
+      "answer": "1"
+    },
+    {
+      "id": 132,
+      "difficulty": "easy",
+      "topic": "Bit Manipulation",
+      "question": "What is the result of `1 & 0` in binary (AND operation)?",
+      "options": ["1", "0", "2", "Error"],
+      "answer": "0"
+    },
+    {
+      "id": 133,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What does `abs(-7)` return in Python?",
+      "options": ["-7", "0", "7", "Error"],
+      "answer": "7"
+    },
+    {
+      "id": 134,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What is the output of `''.join(['a', 'b', 'c'])`?",
+      "options": ["['a','b','c']", "a b c", "abc", "Error"],
+      "answer": "abc"
+    },
+    {
+      "id": 135,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "Which Python keyword is used to exit a loop early?",
+      "options": ["exit", "stop", "break", "continue"],
+      "answer": "break"
+    },
+    {
+      "id": 136,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "Which keyword skips the current loop iteration in Python?",
+      "options": ["break", "pass", "skip", "continue"],
+      "answer": "continue"
+    },
+    {
+      "id": 137,
+      "difficulty": "easy",
+      "topic": "Big-O",
+      "question": "What is the time complexity of accessing the minimum element in a sorted array?",
+      "options": ["O(n)", "O(log n)", "O(n^2)", "O(1)"],
+      "answer": "O(1)"
+    },
+    {
+      "id": 138,
+      "difficulty": "easy",
+      "topic": "Hashing",
+      "question": "Can Python dictionary keys be of type list?",
+      "options": ["Yes", "No, lists are unhashable", "Only in Python 3", "Only for small lists"],
+      "answer": "No, lists are unhashable"
+    },
+    {
+      "id": 139,
+      "difficulty": "easy",
+      "topic": "Trees",
+      "question": "What is the root of a tree?",
+      "options": [
+        "The node with the most children",
+        "The topmost node with no parent",
+        "The node with the greatest value",
+        "Any leaf node"
+      ],
+      "answer": "The topmost node with no parent"
+    },
+    {
+      "id": 140,
+      "difficulty": "easy",
+      "topic": "Python",
+      "question": "What does `int('42')` return in Python?",
+      "options": ["'42'", "42.0", "42", "Error"],
+      "answer": "42"
+    },
+    {
+      "id": 141,
+      "difficulty": "medium",
+      "topic": "Arrays",
+      "question": "What is the time complexity of the 'trapping rain water' problem using the two-pointer approach?",
+      "options": ["O(n^2)", "O(n log n)", "O(n)", "O(log n)"],
+      "answer": "O(n)"
+    },
+    {
+      "id": 142,
+      "difficulty": "medium",
+      "topic": "Arrays",
+      "question": "What is the time complexity of rotating an array by k positions in-place?",
+      "options": ["O(k)", "O(n * k)", "O(n)", "O(n log n)"],
+      "answer": "O(n)"
+    },
+    {
+      "id": 143,
+      "difficulty": "medium",
+      "topic": "Arrays",
+      "question": "Which algorithm can find the majority element (appearing more than n/2 times) in O(n) time and O(1) space?",
+      "options": ["Kadane's algorithm", "Boyer-Moore Voting algorithm", "Quickselect", "Two-pointer"],
+      "answer": "Boyer-Moore Voting algorithm"
+    },
+    {
+      "id": 144,
+      "difficulty": "medium",
+      "topic": "Strings",
+      "question": "What is the minimum number of edits (insert, delete, replace) to transform one string into another called?",
+      "options": ["Hamming Distance", "Levenshtein Distance", "Manhattan Distance", "Jaccard Distance"],
+      "answer": "Levenshtein Distance"
+    },
+    {
+      "id": 145,
+      "difficulty": "medium",
+      "topic": "Strings",
+      "question": "What is the time complexity of checking if two strings are anagrams using a frequency map?",
+      "options": ["O(n^2)", "O(n log n)", "O(n)", "O(1)"],
+      "answer": "O(n)"
+    },
+    {
+      "id": 146,
+      "difficulty": "medium",
+      "topic": "Strings",
+      "question": "What is a palindrome?",
+      "options": [
+        "A string that starts and ends with the same character",
+        "A string that reads the same forwards and backwards",
+        "A string with no repeated characters",
+        "A string with even length"
+      ],
+      "answer": "A string that reads the same forwards and backwards"
+    },
+    {
+      "id": 147,
+      "difficulty": "medium",
+      "topic": "Linked Lists",
+      "question": "What is the time complexity of finding the middle node of a linked list using the fast/slow pointer technique?",
+      "options": ["O(n^2)", "O(n log n)", "O(n)", "O(1)"],
+      "answer": "O(n)"
+    },
+    {
+      "id": 148,
+      "difficulty": "medium",
+      "topic": "Linked Lists",
+      "question": "What is the time complexity of merging two sorted linked lists?",
+      "options": ["O(n^2)", "O(n log n)", "O(n + m)", "O(n * m)"],
+      "answer": "O(n + m)"
+    },
+    {
+      "id": 149,
+      "difficulty": "medium",
+      "topic": "Linked Lists",
+      "question": "How can you find the kth node from the end of a linked list in one pass?",
+      "options": [
+        "Reverse the list first",
+        "Use two pointers k nodes apart",
+        "Count all nodes then traverse again",
+        "Use a stack"
+      ],
+      "answer": "Use two pointers k nodes apart"
+    },
+    {
+      "id": 150,
+      "difficulty": "medium",
+      "topic": "Stacks",
+      "question": "What is the time complexity of implementing a queue using two stacks?",
+      "options": [
+        "O(n) per operation always",
+        "O(1) amortized per operation",
+        "O(log n) per operation",
+        "O(n^2) per operation"
+      ],
+      "answer": "O(1) amortized per operation"
+    },
+    {
+      "id": 151,
+      "difficulty": "medium",
+      "topic": "Stacks",
+      "question": "Which data structure can be used to evaluate a postfix expression?",
+      "options": ["Queue", "Stack", "Heap", "Tree"],
+      "answer": "Stack"
+    },
+    {
+      "id": 152,
+      "difficulty": "medium",
+      "topic": "Trees",
+      "question": "What is the time complexity of deleting a node from an AVL tree?",
+      "options": ["O(n)", "O(1)", "O(log n)", "O(n log n)"],
+      "answer": "O(log n)"
+    },
+    {
+      "id": 153,
+      "difficulty": "medium",
+      "topic": "Trees",
+      "question": "What is a complete binary tree?",
+      "options": [
+        "A tree where every node has exactly 2 children",
+        "A tree where all levels are fully filled except possibly the last, filled left to right",
+        "A tree with no leaf nodes",
+        "A BST with no duplicates"
+      ],
+      "answer": "A tree where all levels are fully filled except possibly the last, filled left to right"
+    },
+    {
+      "id": 154,
+      "difficulty": "medium",
+      "topic": "Trees",
+      "question": "What is a perfect binary tree?",
+      "options": [
+        "A tree where all leaf nodes are at the same level and every internal node has 2 children",
+        "A BST with no duplicates",
+        "A tree with minimum height",
+        "An AVL tree with balance factor 0"
+      ],
+      "answer": "A tree where all leaf nodes are at the same level and every internal node has 2 children"
+    },
+    {
+      "id": 155,
+      "difficulty": "medium",
+      "topic": "Dynamic Programming",
+      "question": "What is the time complexity of the coin change problem (minimum coins) using DP?",
+      "options": ["O(n * amount)", "O(n^2)", "O(2^n)", "O(n log n)"],
+      "answer": "O(n * amount)"
+    },
+    {
+      "id": 156,
+      "difficulty": "medium",
+      "topic": "Dynamic Programming",
+      "question": "What is the time complexity of solving the Longest Increasing Subsequence (LIS) using binary search?",
+      "options": ["O(n^2)", "O(n log n)", "O(n)", "O(2^n)"],
+      "answer": "O(n log n)"
+    },
+    {
+      "id": 157,
+      "difficulty": "medium",
+      "topic": "Dynamic Programming",
+      "question": "Which DP problem involves finding the fewest insertions/deletions to make a string a palindrome?",
+      "options": ["Coin Change", "Edit Distance", "Minimum Palindrome Partition", "LCS-based palindrome DP"],
+      "answer": "LCS-based palindrome DP"
+    },
+    {
+      "id": 158,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "What is a spanning tree of a graph?",
+      "options": [
+        "A subgraph that is a tree and includes every vertex",
+        "The shortest path tree from source",
+        "A tree with maximum depth",
+        "A tree with no leaves"
+      ],
+      "answer": "A subgraph that is a tree and includes every vertex"
+    },
+    {
+      "id": 159,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "Which algorithm finds the Minimum Spanning Tree using a greedy edge-selection approach?",
+      "options": ["Dijkstra's", "Bellman-Ford", "Kruskal's", "Floyd-Warshall"],
+      "answer": "Kruskal's"
+    },
+    {
+      "id": 160,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "What data structure does Prim's algorithm use to efficiently select the next minimum edge?",
+      "options": ["Stack", "Queue", "Min-Heap", "Hash Map"],
+      "answer": "Min-Heap"
+    },
+    {
+      "id": 161,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "What is the time complexity of Floyd-Warshall algorithm for all-pairs shortest paths?",
+      "options": ["O(V^2)", "O(V^3)", "O(V * E)", "O(E log V)"],
+      "answer": "O(V^3)"
+    },
+    {
+      "id": 162,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "What is a strongly connected component (SCC) in a directed graph?",
+      "options": [
+        "A subgraph where every vertex has at least one edge",
+        "A maximal subgraph where every vertex is reachable from every other vertex",
+        "A subgraph with no back edges",
+        "A subgraph with the minimum number of edges"
+      ],
+      "answer": "A maximal subgraph where every vertex is reachable from every other vertex"
+    },
+    {
+      "id": 163,
+      "difficulty": "medium",
+      "topic": "Sorting",
+      "question": "What pivot strategy in Quick Sort leads to its worst-case O(n^2) performance?",
+      "options": [
+        "Choosing the median",
+        "Random pivot",
+        "Always choosing the first or last element in a sorted array",
+        "Three-way partitioning"
+      ],
+      "answer": "Always choosing the first or last element in a sorted array"
+    },
+    {
+      "id": 164,
+      "difficulty": "medium",
+      "topic": "Sorting",
+      "question": "What is Heap Sort's time complexity in the worst case?",
+      "options": ["O(n^2)", "O(n)", "O(n log n)", "O(log n)"],
+      "answer": "O(n log n)"
+    },
+    {
+      "id": 165,
+      "difficulty": "medium",
+      "topic": "Sorting",
+      "question": "What is the time complexity of Radix Sort on n numbers each with d digits?",
+      "options": ["O(n log n)", "O(d * n)", "O(n^2)", "O(n * d^2)"],
+      "answer": "O(d * n)"
+    },
+    {
+      "id": 166,
+      "difficulty": "medium",
+      "topic": "Hashing",
+      "question": "What is the load factor of a hash table?",
+      "options": [
+        "The number of collisions",
+        "The ratio of stored elements to total bucket count",
+        "The time to insert an element",
+        "The hash function output"
+      ],
+      "answer": "The ratio of stored elements to total bucket count"
+    },
+    {
+      "id": 167,
+      "difficulty": "medium",
+      "topic": "Hashing",
+      "question": "What is open addressing in hash tables?",
+      "options": [
+        "Storing collisions in a linked list",
+        "Resolving collisions by probing for the next open slot in the table",
+        "Using a secondary hash table",
+        "Expanding the table when full"
+      ],
+      "answer": "Resolving collisions by probing for the next open slot in the table"
+    },
+    {
+      "id": 168,
+      "difficulty": "medium",
+      "topic": "Heaps",
+      "question": "What is the time complexity of extracting the maximum element from a max-heap?",
+      "options": ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+      "answer": "O(log n)"
+    },
+    {
+      "id": 169,
+      "difficulty": "medium",
+      "topic": "Heaps",
+      "question": "Which problem can be efficiently solved using two heaps (one max-heap and one min-heap)?",
+      "options": [
+        "Sorting an array",
+        "Finding the median of a data stream",
+        "Cycle detection",
+        "Graph traversal"
+      ],
+      "answer": "Finding the median of a data stream"
+    },
+    {
+      "id": 170,
+      "difficulty": "medium",
+      "topic": "Heaps",
+      "question": "How is a binary heap typically stored in memory for efficiency?",
+      "options": ["Doubly linked list", "Binary tree with explicit pointers", "Array", "Hash map"],
+      "answer": "Array"
+    },
+    {
+      "id": 171,
+      "difficulty": "medium",
+      "topic": "Bit Manipulation",
+      "question": "How do you count the number of set bits (1s) in an integer efficiently?",
+      "options": [
+        "Convert to string and count '1's",
+        "Use n & (n-1) in a loop to clear the lowest set bit",
+        "Right shift until zero and count",
+        "Both 'Use n & (n-1)' and 'right shift' work, but n & (n-1) is faster"
+      ],
+      "answer": "Both 'Use n & (n-1)' and 'right shift' work, but n & (n-1) is faster"
+    },
+    {
+      "id": 172,
+      "difficulty": "medium",
+      "topic": "Bit Manipulation",
+      "question": "What is the result of XOR-ing all numbers from 1 to n when n % 4 == 0?",
+      "options": ["n", "0", "1", "n+1"],
+      "answer": "n"
+    },
+    {
+      "id": 173,
+      "difficulty": "medium",
+      "topic": "Bit Manipulation",
+      "question": "How can you swap two integers without a temporary variable in Python?",
+      "options": ["Using XOR: a ^= b; b ^= a; a ^= b", "Using addition and subtraction", "Using tuple unpacking: a, b = b, a", "All of the above"],
+      "answer": "All of the above"
+    },
+    {
+      "id": 174,
+      "difficulty": "medium",
+      "topic": "Recursion",
+      "question": "What is the space complexity of a recursive DFS on a graph with V vertices?",
+      "options": ["O(1)", "O(V)", "O(E)", "O(V * E)"],
+      "answer": "O(V)"
+    },
+    {
+      "id": 175,
+      "difficulty": "medium",
+      "topic": "Recursion",
+      "question": "How many recursive calls does a standard binary search make before finding an element at worst case in an array of size n?",
+      "options": ["n", "n/2", "log n", "sqrt(n)"],
+      "answer": "log n"
+    },
+    {
+      "id": 176,
+      "difficulty": "medium",
+      "topic": "Python",
+      "question": "What is the difference between `is` and `==` in Python?",
+      "options": [
+        "They are identical",
+        "`is` checks identity (same object), `==` checks equality (same value)",
+        "`==` checks identity, `is` checks equality",
+        "`is` only works with integers"
+      ],
+      "answer": "`is` checks identity (same object), `==` checks equality (same value)"
+    },
+    {
+      "id": 177,
+      "difficulty": "medium",
+      "topic": "Python",
+      "question": "What is a Python generator?",
+      "options": [
+        "A class that extends list",
+        "A function that uses `yield` to lazily produce values one at a time",
+        "A built-in that generates random numbers",
+        "A decorator that caches function results"
+      ],
+      "answer": "A function that uses `yield` to lazily produce values one at a time"
+    },
+    {
+      "id": 178,
+      "difficulty": "medium",
+      "topic": "Python",
+      "question": "What is the time complexity of `collections.Counter(arr)` for an array of n elements?",
+      "options": ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+      "answer": "O(n)"
+    },
+    {
+      "id": 179,
+      "difficulty": "medium",
+      "topic": "Python",
+      "question": "What does `@staticmethod` do in Python?",
+      "options": [
+        "Makes a method only accessible to subclasses",
+        "Defines a method that doesn't receive `self` or `cls` as arguments",
+        "Caches the method result",
+        "Makes the method private"
+      ],
+      "answer": "Defines a method that doesn't receive `self` or `cls` as arguments"
+    },
+    {
+      "id": 180,
+      "difficulty": "medium",
+      "topic": "Python",
+      "question": "What is the output of `sorted({'b': 2, 'a': 1, 'c': 3})`?",
+      "options": ["{'a':1,'b':2,'c':3}", "['a','b','c']", "[1, 2, 3]", "['b','a','c']"],
+      "answer": "['a','b','c']"
+    },
+    {
+      "id": 181,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "What is the Union-Find (Disjoint Set Union) data structure used for?",
+      "options": [
+        "Sorting elements",
+        "Detecting cycles and grouping connected components",
+        "Finding shortest paths",
+        "Balancing binary trees"
+      ],
+      "answer": "Detecting cycles and grouping connected components"
+    },
+    {
+      "id": 182,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "What is path compression in Union-Find?",
+      "options": [
+        "Compressing edge weights",
+        "Flattening the tree by making nodes point directly to the root during find",
+        "Removing redundant edges",
+        "Sorting nodes by rank"
+      ],
+      "answer": "Flattening the tree by making nodes point directly to the root during find"
+    },
+    {
+      "id": 183,
+      "difficulty": "medium",
+      "topic": "Dynamic Programming",
+      "question": "What does the 'overlapping subproblems' property mean in DP?",
+      "options": [
+        "The problem can be divided into independent subproblems",
+        "The same subproblems are solved multiple times during recursion",
+        "The problem has multiple optimal solutions",
+        "The subproblems share the same input"
+      ],
+      "answer": "The same subproblems are solved multiple times during recursion"
+    },
+    {
+      "id": 184,
+      "difficulty": "medium",
+      "topic": "Dynamic Programming",
+      "question": "What is the 'optimal substructure' property in dynamic programming?",
+      "options": [
+        "The problem can be solved in polynomial time",
+        "An optimal solution to the problem contains optimal solutions to its subproblems",
+        "Subproblems are always smaller by exactly half",
+        "The solution can be found greedily"
+      ],
+      "answer": "An optimal solution to the problem contains optimal solutions to its subproblems"
+    },
+    {
+      "id": 185,
+      "difficulty": "medium",
+      "topic": "Sorting",
+      "question": "Tim Sort, used in Python's sort, is a hybrid of which two algorithms?",
+      "options": [
+        "Quick Sort and Heap Sort",
+        "Bubble Sort and Merge Sort",
+        "Insertion Sort and Merge Sort",
+        "Selection Sort and Quick Sort"
+      ],
+      "answer": "Insertion Sort and Merge Sort"
+    },
+    {
+      "id": 186,
+      "difficulty": "medium",
+      "topic": "Trees",
+      "question": "What is a trie (prefix tree) primarily used for?",
+      "options": [
+        "Sorting integers",
+        "Efficient string search, autocomplete, and prefix matching",
+        "Graph traversal",
+        "Finding shortest paths"
+      ],
+      "answer": "Efficient string search, autocomplete, and prefix matching"
+    },
+    {
+      "id": 187,
+      "difficulty": "medium",
+      "topic": "Trees",
+      "question": "What is the time complexity of inserting a word of length L into a trie?",
+      "options": ["O(n)", "O(log n)", "O(L)", "O(L^2)"],
+      "answer": "O(L)"
+    },
+    {
+      "id": 188,
+      "difficulty": "medium",
+      "topic": "Trees",
+      "question": "What is a segment tree used for?",
+      "options": [
+        "Sorting arrays",
+        "Range queries (like range sum or range min) with efficient updates",
+        "String matching",
+        "Graph cycle detection"
+      ],
+      "answer": "Range queries (like range sum or range min) with efficient updates"
+    },
+    {
+      "id": 189,
+      "difficulty": "medium",
+      "topic": "Big-O",
+      "question": "If an algorithm has time complexity O(n log n) and you double the input size, roughly how does the runtime change?",
+      "options": [
+        "Stays the same",
+        "Doubles",
+        "Slightly more than doubles",
+        "Quadruples"
+      ],
+      "answer": "Slightly more than doubles"
+    },
+    {
+      "id": 190,
+      "difficulty": "medium",
+      "topic": "Arrays",
+      "question": "What is a prefix sum array used for?",
+      "options": [
+        "Sorting an array",
+        "Answering range sum queries in O(1) after O(n) preprocessing",
+        "Finding the maximum element",
+        "Searching for an element"
+      ],
+      "answer": "Answering range sum queries in O(1) after O(n) preprocessing"
+    },
+    {
+      "id": 191,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "What is the difference between an adjacency matrix and an adjacency list in terms of space complexity?",
+      "options": [
+        "Both use O(V + E)",
+        "Matrix uses O(V^2), list uses O(V + E)",
+        "List uses O(V^2), matrix uses O(V + E)",
+        "Both use O(V^2)"
+      ],
+      "answer": "Matrix uses O(V^2), list uses O(V + E)"
+    },
+    {
+      "id": 192,
+      "difficulty": "medium",
+      "topic": "Recursion",
+      "question": "In the Tower of Hanoi problem with n disks, how many moves are required?",
+      "options": ["n^2", "n log n", "2^n - 1", "n!"],
+      "answer": "2^n - 1"
+    },
+    {
+      "id": 193,
+      "difficulty": "medium",
+      "topic": "Python",
+      "question": "What does `functools.lru_cache` do in Python?",
+      "options": [
+        "Limits function execution time",
+        "Caches function results to avoid redundant computation (memoization)",
+        "Runs the function in parallel",
+        "Logs function calls"
+      ],
+      "answer": "Caches function results to avoid redundant computation (memoization)"
+    },
+    {
+      "id": 194,
+      "difficulty": "medium",
+      "topic": "Python",
+      "question": "What is the output of `list(filter(lambda x: x % 2 == 0, [1,2,3,4,5]))`?",
+      "options": ["[1, 3, 5]", "[2, 4]", "[False, True, False, True, False]", "Error"],
+      "answer": "[2, 4]"
+    },
+    {
+      "id": 195,
+      "difficulty": "medium",
+      "topic": "Dynamic Programming",
+      "question": "What is the time and space complexity of the standard Edit Distance (Levenshtein) DP solution?",
+      "options": [
+        "O(n + m) time, O(1) space",
+        "O(n * m) time, O(n * m) space",
+        "O(n^2) time, O(n) space",
+        "O(2^n) time, O(n) space"
+      ],
+      "answer": "O(n * m) time, O(n * m) space"
+    },
+    {
+      "id": 196,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "What is a bipartite graph?",
+      "options": [
+        "A graph with two connected components",
+        "A graph whose vertices can be split into two sets with all edges going between sets",
+        "A directed graph with two sources",
+        "A graph with exactly two cycles"
+      ],
+      "answer": "A graph whose vertices can be split into two sets with all edges going between sets"
+    },
+    {
+      "id": 197,
+      "difficulty": "medium",
+      "topic": "Trees",
+      "question": "What is the relationship between a binary heap and a binary tree?",
+      "options": [
+        "A heap is a BST",
+        "A heap is a complete binary tree satisfying the heap property",
+        "A binary tree is always a heap",
+        "They are unrelated structures"
+      ],
+      "answer": "A heap is a complete binary tree satisfying the heap property"
+    },
+    {
+      "id": 198,
+      "difficulty": "medium",
+      "topic": "Strings",
+      "question": "What is the Rabin-Karp algorithm used for?",
+      "options": [
+        "Sorting strings",
+        "String pattern matching using rolling hash",
+        "Finding palindromes",
+        "Computing string edit distance"
+      ],
+      "answer": "String pattern matching using rolling hash"
+    },
+    {
+      "id": 199,
+      "difficulty": "medium",
+      "topic": "Big-O",
+      "question": "What is amortized time complexity?",
+      "options": [
+        "The best-case time complexity",
+        "The average cost per operation over a sequence of operations",
+        "The worst-case time complexity",
+        "The memory cost of an operation"
+      ],
+      "answer": "The average cost per operation over a sequence of operations"
+    },
+    {
+      "id": 200,
+      "difficulty": "medium",
+      "topic": "Graphs",
+      "question": "Which algorithm can determine if a graph is bipartite?",
+      "options": ["Dijkstra's", "BFS/DFS with 2-coloring", "Bellman-Ford", "Topological sort"],
+      "answer": "BFS/DFS with 2-coloring"
+    }
+  ]
+}

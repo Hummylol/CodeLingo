@@ -143,82 +143,70 @@ function ProfileContent() {
           </div>
         </header>
 
-        {/* Leaderboard */}
-        <Card className="mb-6 animate-in slide-in-from-left-50 duration-500 delay-200">
+        {/* Learning Activity (Last 12 Days) */}
+        <Card className="mb-6 animate-in slide-in-from-bottom-50 duration-500 delay-200">
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Trophy className="h-5 w-5 text-yellow-500" />
-              Leaderboard
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-0">
-            <div className="space-y-0">
-              {SAMPLE_LEADERBOARD.map((user, index) => (
-                <div
-                  key={user.rank}
-                  className={`flex items-center gap-3 p-4 ${index !== SAMPLE_LEADERBOARD.length - 1 ? "border-b border-border" : ""
-                    } ${user.name === "You" ? "bg-primary/5" : ""}`}
-                >
-                  <div className="flex items-center gap-2 min-w-8">
-                    {user.icon ? (
-                      <user.icon className={`h-5 w-5 ${user.color}`} />
-                    ) : (
-                      <span className={`text-sm font-medium ${user.color}`}>#{user.rank}</span>
-                    )}
-                  </div>
-                  <Avatar className="h-8 w-8">
-                    <AvatarFallback className="text-xs">
-                      {user.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <p className={`text-sm font-medium ${user.name === "You" ? "text-primary" : ""}`}>{user.name}</p>
-                    <p className="text-xs text-muted-foreground">{user.streak} day streak</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm font-medium">{user.xp.toLocaleString()}</p>
-                    <p className="text-xs text-muted-foreground">XP</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Achievements */}
-        <Card className="mb-6 animate-in slide-in-from-right-50 duration-500 delay-300">
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Award className="h-5 w-5 text-amber-500" />
-              Achievements
+            <CardTitle className="flex items-center justify-between text-lg">
+              <div className="flex items-center gap-2">
+                <Target className="h-5 w-5 text-emerald-500" />
+                Learning Activity
+              </div>
+              <span className="text-sm font-normal text-muted-foreground hidden sm:inline">Daily activity across the last 12 days</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {achievements.map((achievement, index) => (
-                <div
-                  key={achievement.id}
-                  className={`flex items-center gap-3 p-3 rounded-lg border transition-all duration-300 hover:shadow-md ${achievement.earned
-                    ? "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 animate-in fade-in-50 duration-300"
-                    : "bg-slate-50/50 dark:bg-slate-800/50 border-slate-200/50 dark:border-slate-700/50 opacity-60"
-                    }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <achievement.icon className={`h-5 w-5 ${achievement.color}`} />
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-sm truncate">{achievement.name}</p>
-                    <p className="text-xs text-muted-foreground truncate">{achievement.description}</p>
+            <div className="flex flex-col space-y-4 pt-2">
+               <div className="flex gap-2 w-full justify-between items-end">
+                   {Array.from({ length: 12 }).map((_, dayIdx) => {
+                     const isToday = dayIdx === 11;
+                     // 1 quiz and 1-3 lessons each day
+                     const quizzes = 1;
+                     const lessons = Math.floor(Math.random() * 3) + 1; // 1, 2, or 3
+                     let level = quizzes + lessons - 1; // Normalize to 1-3 for coloring (or 2-4)
+                     if (level > 4) level = 4;
+
+                     const colors = [
+                       "bg-slate-100 dark:bg-slate-800", // Level 0 (not used now)
+                       "bg-emerald-200 dark:bg-emerald-900/40", // Level 1
+                       "bg-emerald-400 dark:bg-emerald-700/60", // Level 2
+                       "bg-emerald-500 dark:bg-emerald-500/80", // Level 3
+                       "bg-emerald-600 dark:bg-emerald-400"  // Level 4
+                     ];
+
+                     const dateDate = new Date(Date.now() - (11 - dayIdx) * 24 * 60 * 60 * 1000);
+                     const tooltipText = `${quizzes} quiz, ${lessons} lesson${lessons > 1 ? 's' : ''} completed`;
+
+                     return (
+                       <div key={dayIdx} className="flex flex-col items-center gap-2 flex-1 relative group">
+                          <span className="text-[10px] text-muted-foreground hidden sm:block tracking-tighter sm:tracking-normal text-center">
+                            {dateDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground block sm:hidden">
+                            {dateDate.getDate()}
+                          </span>
+                          <div 
+                            className={`w-full max-w-[36px] aspect-square rounded-md ${colors[level]} transition-colors hover:ring-2 hover:ring-emerald-500/50 cursor-crosshair`}
+                            title={isToday ? `Today: ${tooltipText}` : tooltipText}
+                          />
+                       </div>
+                     )
+                   })}
+               </div>
+               
+               <div className="flex justify-between items-center text-xs text-muted-foreground mt-4 border-t pt-4 border-border/50">
+                  <span className="sm:hidden">Last 12 days</span>
+                  <div className="flex items-center gap-2 ml-auto">
+                    <span>Less</span>
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-[2px] bg-slate-100 dark:bg-slate-800" />
+                      <div className="w-3 h-3 rounded-[2px] bg-emerald-200 dark:bg-emerald-900/40" />
+                      <div className="w-3 h-3 rounded-[2px] bg-emerald-400 dark:bg-emerald-700/60" />
+                      <div className="w-3 h-3 rounded-[2px] bg-emerald-500 dark:bg-emerald-500/80" />
+                      <div className="w-3 h-3 rounded-[2px] bg-emerald-600 dark:bg-emerald-400" />
+                    </div>
+                    <span>More</span>
                   </div>
-                  {achievement.earned && (
-                    <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 text-xs">
-                      ✓
-                    </Badge>
-                  )}
-                </div>
-              ))}
+               </div>
             </div>
           </CardContent>
         </Card>

@@ -12,6 +12,8 @@ export default function StreakBadge() {
   const [streakCount, setStreakCount] = useState(0)
   const badgeRef = useRef<HTMLDivElement>(null)
 
+  const [isDoneToday, setIsDoneToday] = useState(false)
+
   // Fetch actual streak from profiles
   useEffect(() => {
     async function fetchStreak() {
@@ -20,9 +22,18 @@ export default function StreakBadge() {
         const supabase = createClient()
         const { data: { user } } = await supabase.auth.getUser()
         if (user) {
-          const { data } = await supabase.from('profiles').select('streak').eq('id', user.id).single()
-          if (data && typeof data.streak === 'number') {
-            setStreakCount(data.streak)
+          const { data } = await supabase.from('profiles').select('streak, last_streak_update').eq('id', user.id).single()
+          if (data) {
+            if (typeof data.streak === 'number') setStreakCount(data.streak)
+            if (data.last_streak_update) {
+              const lastUpdate = new Date(data.last_streak_update)
+              const today = new Date()
+              setIsDoneToday(
+                 lastUpdate.getFullYear() === today.getFullYear() &&
+                 lastUpdate.getMonth() === today.getMonth() &&
+                 lastUpdate.getDate() === today.getDate()
+              )
+            }
           }
         }
         
@@ -40,8 +51,17 @@ export default function StreakBadge() {
               filter: `id=eq.${user.id}`,
             },
             (payload) => {
-              if (payload.new && typeof payload.new.streak === 'number') {
-                setStreakCount(payload.new.streak)
+              if (payload.new) {
+                if (typeof payload.new.streak === 'number') setStreakCount(payload.new.streak)
+                if (payload.new.last_streak_update) {
+                  const lastUpdate = new Date(payload.new.last_streak_update)
+                  const today = new Date()
+                  setIsDoneToday(
+                     lastUpdate.getFullYear() === today.getFullYear() &&
+                     lastUpdate.getMonth() === today.getMonth() &&
+                     lastUpdate.getDate() === today.getDate()
+                  )
+                }
               }
             }
           )
@@ -60,10 +80,6 @@ export default function StreakBadge() {
       cleanup.then(fn => fn?.())
     }
   }, [])
-
-  // Frontend-only state for checkboxes
-  const [lessonDone, setLessonDone] = useState(false)
-  const [matchesDone, setMatchesDone] = useState(false)
 
   // Close when clicking outside
   useEffect(() => {
@@ -90,15 +106,18 @@ export default function StreakBadge() {
         }}
         transition={{ layout: { type: "spring", bounce: 0.15, duration: 0.4 }, borderRadius: { duration: 0.2 } }}
         className={cn(
-          "overflow-hidden border border-red-500/20 bg-red-500/10 backdrop-blur-xl transition-shadow",
-          isExpanded ? "w-[340px] shadow-xl shadow-red-500/5" : "cursor-pointer hover:bg-red-500/20 hover:shadow-md"
+          "overflow-hidden border backdrop-blur-xl transition-shadow",
+          isExpanded ? "w-[340px] shadow-xl" : "cursor-pointer hover:shadow-md",
+          isDoneToday 
+            ? (isExpanded ? "border-emerald-500/20 bg-emerald-500/10 shadow-emerald-500/5" : "border-emerald-500/20 bg-emerald-500/10 hover:bg-emerald-500/20")
+            : (isExpanded ? "border-red-500/20 bg-red-500/10 shadow-red-500/5" : "border-red-500/20 bg-red-500/10 hover:bg-red-500/20")
         )}
         onClick={() => !isExpanded && setIsExpanded(true)}
       >
         <motion.div layout="position" className="flex items-center justify-between p-2 px-3">
           <div className="flex items-center gap-1.5 cursor-pointer" onClick={() => isExpanded && setIsExpanded(false)}>
-            <Flame className="w-5 h-5 fill-red-500 text-red-500" />
-            <motion.span layout="position" className="font-bold text-red-600 dark:text-red-500">
+            <Flame className={cn("w-5 h-5", isDoneToday ? "fill-emerald-500 text-emerald-500" : "fill-red-500 text-red-500")} />
+            <motion.span layout="position" className={cn("font-bold", isDoneToday ? "text-emerald-600 dark:text-emerald-500" : "text-red-600 dark:text-red-500")}>
               {streakCount}
             </motion.span>
           </div>
@@ -108,7 +127,7 @@ export default function StreakBadge() {
                  initial={{ opacity: 0, scale: 0.8 }}
                  animate={{ opacity: 1, scale: 1 }}
                  exit={{ opacity: 0, scale: 0.8 }}
-                 className="p-1 rounded-full hover:bg-red-500/20 text-red-600/80 hover:text-red-700 transition-colors cursor-pointer"
+                 className={cn("p-1 rounded-full text-foreground/80 hover:text-foreground transition-colors cursor-pointer", isDoneToday ? "hover:bg-emerald-500/20" : "hover:bg-red-500/20")}
                  onClick={(e) => {
                    e.stopPropagation();
                    setIsExpanded(false);
@@ -140,76 +159,33 @@ export default function StreakBadge() {
             >
               <div className="w-[340px] px-5 pb-5 pt-2">
               <h4 className="font-bold text-lg mb-1 flex items-center gap-2 text-foreground">
-                Keep your streak alive!
+                {isDoneToday ? "Streak Secured!" : "Keep your streak alive!"}
               </h4>
-              <p className="text-sm text-red-900/70 dark:text-red-200/70 mb-5">
-                Complete these tasks to extend your streak:
+              <p className={cn("text-sm mb-5", isDoneToday ? "text-emerald-900/70 dark:text-emerald-200/70" : "text-red-900/70 dark:text-red-200/70")}>
+                {isDoneToday ? "You recorded your daily activity for today. Keep up the momentum!" : "Take the Daily Quiz to extend your streak:"}
               </p>
 
-              <div className="space-y-3 hidden-scrollbar relative">
-                {/* Task 1 */}
-                <AnimatePresence>
-                {(!matchesDone) && (
+              <div className="space-y-3 relative">
+                {isDoneToday ? (
                   <motion.div 
-                    key="lesson-task"
-                    initial={{ opacity: 0, height: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, height: 'auto', scale: 1 }}
-                    exit={{ opacity: 0, height: 0, scale: 0.95, marginTop: 0, marginBottom: 0, overflow: 'hidden' }}
-                    className="flex items-start space-x-3 p-3.5 rounded-xl bg-background/60 border border-red-500/10 hover:border-red-500/30 transition-colors shadow-sm"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center space-y-2 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 font-bold transition-colors shadow-sm text-center cursor-default"
                   >
-                     <Checkbox 
-                        id="lesson" 
-                        checked={lessonDone} 
-                        onCheckedChange={(c) => {
-                           setLessonDone(c as boolean)
-                           if (c) setMatchesDone(false)
-                        }} 
-                        className="mt-0.5 border-red-500/50 data-[state=checked]:bg-red-500 data-[state=checked]:text-white shadow-sm"
-                     />
-                     <div className="grid gap-1.5 leading-none">
-                       <label htmlFor="lesson" className="text-sm font-bold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-foreground cursor-pointer">
-                         Finish a lesson
-                       </label>
-                       <p className="text-xs text-muted-foreground mr-2 leading-relaxed">
-                          Complete any active lesson to secure your streak.
-                          <Link href="/lesson-home-page" className="text-red-600 hover:text-red-700 dark:text-red-500 hover:underline block mt-1.5 font-semibold">Go to lessons &rarr;</Link>
-                       </p>
-                     </div>
+                    <span>Done for today!</span>
                   </motion.div>
+                ) : (
+                  <Link href="/daily-quiz" className="block w-full">
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="flex flex-col items-center justify-center space-y-2 p-4 rounded-xl bg-red-500 text-white font-bold hover:bg-red-600 transition-colors shadow-sm text-center"
+                    >
+                      <span>Start Daily Quiz &rarr;</span>
+                      <span className="text-xs font-normal text-white/80">Score 12/15 to secure your streak!</span>
+                    </motion.div>
+                  </Link>
                 )}
-                </AnimatePresence>
-
-                {/* Task 2 */}
-                <AnimatePresence>
-                {(!lessonDone) && (
-                  <motion.div 
-                    key="matches-task"
-                    initial={{ opacity: 0, height: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, height: 'auto', scale: 1 }}
-                    exit={{ opacity: 0, height: 0, scale: 0.95, marginTop: 0, marginBottom: 0, overflow: 'hidden' }}
-                    className="flex items-start space-x-3 p-3.5 rounded-xl bg-background/60 border border-red-500/10 hover:border-red-500/30 transition-colors shadow-sm"
-                  >
-                     <Checkbox 
-                        id="matches" 
-                        checked={matchesDone} 
-                        onCheckedChange={(c) => {
-                           setMatchesDone(c as boolean)
-                           if (c) setLessonDone(false)
-                        }} 
-                        className="mt-0.5 border-red-500/50 data-[state=checked]:bg-red-500 data-[state=checked]:text-white shadow-sm"
-                     />
-                     <div className="grid gap-1.5 leading-none">
-                       <label htmlFor="matches" className="text-sm font-bold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-foreground cursor-pointer">
-                         Play 2 1v1 matches
-                       </label>
-                       <p className="text-xs text-muted-foreground mr-2 leading-relaxed">
-                          Win or lose, just play 2 matches to keep the fire going.
-                          <Link href="/1v1" className="text-red-600 hover:text-red-700 dark:text-red-500 hover:underline block mt-1.5 font-semibold">Find a match &rarr;</Link>
-                       </p>
-                     </div>
-                  </motion.div>
-                )}
-                </AnimatePresence>
               </div>
               </div>
             </motion.div>

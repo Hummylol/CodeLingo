@@ -8,6 +8,7 @@ import { useAuth } from "@/lib/auth-context"
 import AuthSection from "@/components/codelingo/profile/auth-section"
 
 import StreakBadge from "@/components/codelingo/streak-badge"
+import ProfileBadge from "@/components/codelingo/profile-badge"
 
 const TOTAL_LEVELS = 8
 
@@ -108,6 +109,7 @@ export default function DSAHomePage() {
   return (
     <main className="mx-auto max-w-4xl p-6 pb-24 space-y-8">
       <StreakBadge />
+      <ProfileBadge />
       {!user && !isLoading ? (
         <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-6">
           <div className="text-center space-y-2 mb-4">

@@ -24,42 +24,48 @@ export async function POST() {
         }
 
         const now = new Date()
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
         let updatedStreak = profile.streak || 0
         let shouldUpdate = false
 
         if (!profile.last_streak_update) {
             // First time getting a streak
-            updatedStreak = 1
+            updatedStreak = profile.streak ? profile.streak + 1 : 1
             shouldUpdate = true
         } else {
             const lastUpdate = new Date(profile.last_streak_update)
-            // check if last update was before today
-            if (
-                lastUpdate.getUTCFullYear() < now.getUTCFullYear() ||
-                lastUpdate.getUTCMonth() < now.getUTCMonth() ||
-                lastUpdate.getUTCDate() < now.getUTCDate()
-            ) {
+            const lastUpdateDay = new Date(lastUpdate.getFullYear(), lastUpdate.getMonth(), lastUpdate.getDate()).getTime()
+            
+            if (lastUpdateDay < today) {
+                // To be realistic, if it's strictly yesterday, we add 1. If older, they lost the streak and we reset to 1.
+                // But as requested, just incrementing for now if it's a new day:
                 updatedStreak += 1
                 shouldUpdate = true
             }
         }
 
         if (shouldUpdate) {
-            const { error: updateError } = await supabase
+            console.log("Attempting to update Supabase row:", { updatedStreak, now: now.toISOString(), userId: user.id });
+            const { data: updateData, error: updateError } = await supabase
                 .from('profiles')
                 .update({ 
                     streak: updatedStreak, 
                     last_streak_update: now.toISOString() 
                 })
                 .eq('id', user.id)
+                .select()
+                .single()
 
             if (updateError) {
-                console.error('Error updating streak:', updateError)
-                return NextResponse.json({ error: 'Failed to update streak' }, { status: 500 })
+                console.error('Error updating streak (Could be RLS policy missing for UPDATE):', updateError)
+                return NextResponse.json({ error: 'Failed to update streak - Missing UPDATE RLS Policy in Supabase?' }, { status: 500 })
             }
+            console.log("Successfully updated Supabase row!", updateData);
+        } else {
+            console.log("Decided NOT to update Supabase row:", { updatedStreak, lastUpdateDate: profile.last_streak_update, today });
         }
 
-        return NextResponse.json({ streak: updatedStreak, updated: shouldUpdate })
+        return NextResponse.json({ streak: updatedStreak, updated: shouldUpdate, last_streak_update: now.toISOString() })
     } catch (error: any) {
         console.error('Streak API error:', error)
         return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

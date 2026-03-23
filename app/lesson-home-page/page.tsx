@@ -2,6 +2,7 @@ import LanguageDropdown from "@/components/codelingo/language/dropdown"
 import LanguageSections from "@/components/codelingo/language/sections"
 import StreakCard from "@/components/codelingo/streak-card"
 import StreakBadge from "@/components/codelingo/streak-badge"
+import ProfileBadge from "@/components/codelingo/profile-badge"
 import WeeklyGoal from "@/components/codelingo/weekly-goal"
 import ContinueLessonCard from "@/components/codelingo/continue-lesson"
 import { Button } from "@/components/ui/button"
@@ -11,6 +12,7 @@ export default function LessonHomePage() {
   return (
     <main className="mx-auto max-w-3xl p-6 pb-24 space-y-6">
       <StreakBadge />
+      <ProfileBadge />
       <header className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-foreground">Welcome back</h1>

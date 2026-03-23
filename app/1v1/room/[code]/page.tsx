@@ -203,17 +203,11 @@ function BattleRoomInner({ code }: { code: string }) {
                     setVerdict(JSON.parse(roomData.result || '{}'))
                     setPhaseSync('result')
                     if (pollIntervalRef.current) clearInterval(pollIntervalRef.current)
-                    
-                    // Increment streak when match concludes
-                    fetch('/api/user/streak/increment', { method: 'POST' }).catch(console.error)
                 } catch { /* ignore */ }
             } else if (role === 'host') {
                 judgingRef.current = true
                 setPhaseSync('judging')
-                judgeAnswers(roomData).then(() => {
-                     // Host increments streak after judging completes
-                     fetch('/api/user/streak/increment', { method: 'POST' }).catch(console.error)
-                })
+                judgeAnswers(roomData)
             } else {
                 // Guest waits for verdict
                 if (currentPhase !== 'judging') setPhaseSync('judging')
