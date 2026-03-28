@@ -6,7 +6,7 @@ import { Zap, Crown } from "lucide-react"
 
 export default function ProfileStats({ xp, level }: { xp: number; level: number }) {
   const xpToNextLevel = 500 // XP needed for next level
-  const currentLevelXp = xp % 1000 // XP in current level
+  const currentLevelXp = xp % xpToNextLevel // XP tracking accurately between levels
   const progressPercentage = (currentLevelXp / xpToNextLevel) * 100
 
   return (

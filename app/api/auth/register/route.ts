@@ -22,7 +22,7 @@ export async function POST(request: Request) {
                 data: {
                     username: username,
                     // We can initialize other stuff like XP and level here if needed
-                    level: 1,
+                    level: 0,
                     xp: 0,
                 },
             },

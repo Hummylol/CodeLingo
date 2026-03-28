@@ -43,8 +43,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           name: session.user.user_metadata?.username || session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || 'User',
           email: session.user.email || '',
           avatar: session.user.user_metadata?.avatar_url || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + session.user.email,
-          level: session.user.user_metadata?.level || 1,
-          xp: session.user.user_metadata?.xp || 0,
+          level: session.user.user_metadata?.level ?? 0,
+          xp: session.user.user_metadata?.xp ?? 0,
         })
       } else {
         setUser(null)
@@ -61,8 +61,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           name: session.user.user_metadata?.username || session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || 'User',
           email: session.user.email || '',
           avatar: session.user.user_metadata?.avatar_url || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + session.user.email,
-          level: session.user.user_metadata?.level || 1,
-          xp: session.user.user_metadata?.xp || 0,
+          level: session.user.user_metadata?.level ?? 0,
+          xp: session.user.user_metadata?.xp ?? 0,
         })
       } else {
         setUser(null)
@@ -74,6 +74,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       subscription.unsubscribe()
     }
   }, [supabase])
+
+  // Time-based XP incrementer
+  useEffect(() => {
+    // Only run if user is logged in
+    if (!user?.id) return;
+    
+    // Add 10 XP per minute, 500 XP per level
+    const XP_PER_MINUTE = 10;
+    const XP_PER_LEVEL = 500;
+
+    const interval = setInterval(async () => {
+      // Fetch latest session to ensure we have the most up-to-date XP
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.user) return;
+
+      const currentXp = session.user.user_metadata?.xp ?? 0;
+      const newXp = currentXp + XP_PER_MINUTE;
+      const newLevel = Math.floor(newXp / XP_PER_LEVEL);
+
+      // Securely update the user's metadata in Supabase
+      const { error } = await supabase.auth.updateUser({
+        data: {
+          xp: newXp,
+          level: newLevel,
+        }
+      });
+
+      if (!error) {
+        setUser(prev => prev ? { ...prev, xp: newXp, level: newLevel } : null);
+      }
+    }, 60000); // 60,000ms = 1 minute
+
+    return () => clearInterval(interval);
+  }, [user?.id, supabase]);
 
   const login = async (provider: string, data?: Record<string, string>) => {
     setIsLoading(true)
