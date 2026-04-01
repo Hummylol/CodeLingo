@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next"
 import MobileNav from "@/components/codelingo/mobile-nav"
 import { Suspense } from "react"
 import { Providers } from "@/components/providers"
+import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function RootLayout({
             <div className="min-h-[100dvh] pb-16">{children}</div>
             <MobileNav />
           </Suspense>
+          <Toaster />
         </Providers>
       </body>
     </html>

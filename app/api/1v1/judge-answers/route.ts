@@ -2,6 +2,45 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "edge";
 
+/**
+ * Hard deterministic pre-scorer.
+ * Returns a maximum score cap for a given answer [0-100].
+ * The AI score will be clamped to min(aiScore, cap).
+ *
+ * Cap rules:
+ *  0  – cheating marker, empty, or pure gibberish (<20 chars with no code tokens)
+ *  15 – answer that has no recognisable programming keywords at all
+ *  50 – answer that is very short (< 50 meaningful chars after trimming)
+ * 100 – normal answer (let the AI decide)
+ */
+function determinisitcScoreCap(answer: string): number {
+    const trimmed = (answer ?? "").trim();
+
+    // Cheating-detected marker injected by the tab-out enforcement
+    if (trimmed.startsWith("// CHEATING DETECTED")) return 0;
+
+    // Completely empty
+    if (trimmed.length === 0) return 0;
+
+    // Pure gibberish: very short and contains no code-like characters
+    // Code typically has at least one of: brackets, operators, keywords, semicolons
+    const hasCodeTokens = /[{}()\[\];=><+\-*/\\|&!~^%@#]/.test(trimmed) ||
+        /\b(if|else|for|while|return|def|function|class|import|var|let|const|int|string|void|public|private|true|false|null|undefined|print|cout|scanf|printf)\b/i.test(trimmed);
+
+    if (!hasCodeTokens) {
+        // No code tokens at all: if also very short, it's definitely garbage
+        if (trimmed.length < 30) return 0;
+        // Longer text without code – might be pseudocode, but still poor
+        return 10;
+    }
+
+    // Has code tokens but very short (incomplete snippet, not a real solution)
+    if (trimmed.length < 50) return 15;
+
+    // Seems like actual code, let the AI judge properly
+    return 100;
+}
+
 export async function POST(req: NextRequest) {
     try {
         const apiKey = process.env.GEMINI_API_KEY;
@@ -13,6 +52,10 @@ export async function POST(req: NextRequest) {
         if (!question || !hostAnswer || !guestAnswer) {
             return NextResponse.json({ error: "question, hostAnswer, guestAnswer are required" }, { status: 400 });
         }
+
+        // ── Pre-score cap: deterministic pass before the AI ────────────────────
+        const hostCap = determinisitcScoreCap(hostAnswer);
+        const guestCap = determinisitcScoreCap(guestAnswer);
 
         const hostMins = Math.floor((hostTime ?? 0) / 60);
         const hostSecs = (hostTime ?? 0) % 60;
@@ -38,11 +81,18 @@ ${guestAnswer}
 \`\`\`
 
 ## Your Task
-Evaluate both answers on:
+Evaluate both answers on a scale from 0 to 100 based on:
 1. Correctness (does it solve the problem correctly?)
 2. Code quality (is it clean, readable, well-structured?)
 3. Time complexity (is the algorithm efficient?)
 4. Time taken (faster submission is a tiebreaker when answers are equal)
+
+## STRICT SCORING RULES - IMPORTANT
+- If the code is just gibberish (e.g., "abcd", random letters), empty, or uncompilable, the score MUST be 0.
+- If the code has major syntax errors or entirely misses the logic, the score MUST be between 0-10.
+- If the code is a very poor or incomplete attempt, it MUST score below 30.
+- Only award >70 points if the solution is structurally complete, compiles, and logically solves the problem.
+- Do NOT be lenient. Be a harsh, uncompromising judge. If it's a completely wrong answer, give it a 0.
 
 Return ONLY valid JSON in this exact format, no markdown, no extra text:
 {
@@ -204,6 +254,36 @@ winner must be exactly one of: "host", "guest", or "tie".`;
         } catch {
             return NextResponse.json({ error: "Failed to parse verdict JSON", raw }, { status: 500 });
         }
+
+        // ── Post-process: clamp AI scores with our deterministic caps ──────────
+        const rawHostScore = typeof verdict.hostScore === "number" ? verdict.hostScore : 0;
+        const rawGuestScore = typeof verdict.guestScore === "number" ? verdict.guestScore : 0;
+
+        const clampedHostScore = Math.min(rawHostScore, hostCap);
+        const clampedGuestScore = Math.min(rawGuestScore, guestCap);
+
+        // Recalculate winner based on clamped scores
+        let recalculatedWinner: "host" | "guest" | "tie";
+        if (clampedHostScore > clampedGuestScore) recalculatedWinner = "host";
+        else if (clampedGuestScore > clampedHostScore) recalculatedWinner = "guest";
+        else recalculatedWinner = "tie";
+
+        // Override caps feedback when answer is clearly invalid
+        const hostFeedback = hostCap === 0
+            ? (verdict.hostFeedback || "") + " [Score overridden to 0: answer is empty, gibberish, or cheating was detected.]"
+            : verdict.hostFeedback;
+        const guestFeedback = guestCap === 0
+            ? (verdict.guestFeedback || "") + " [Score overridden to 0: answer is empty, gibberish, or cheating was detected.]"
+            : verdict.guestFeedback;
+
+        verdict = {
+            ...verdict,
+            hostScore: clampedHostScore,
+            guestScore: clampedGuestScore,
+            winner: recalculatedWinner,
+            hostFeedback,
+            guestFeedback,
+        };
 
         return NextResponse.json({ verdict });
     } catch (err: unknown) {

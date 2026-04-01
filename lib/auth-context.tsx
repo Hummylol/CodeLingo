@@ -2,6 +2,7 @@
 
 import { useState, useEffect, createContext, useContext } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import { toast } from 'sonner'
 
 interface User {
   id: string
@@ -118,7 +119,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           password: data.password,
         })
         if (error) {
-          alert('Login failed: ' + error.message)
+          toast.error('Login failed: ' + error.message)
         }
       } else if (provider === 'google') {
         // Use NEXT_PUBLIC_SITE_URL if defined (for prod), otherwise use window.location.origin
@@ -130,14 +131,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         })
         if (error) {
-          alert('Login failed: ' + error.message)
+          toast.error('Login failed: ' + error.message)
         }
       } else {
-        alert('Unsupported provider: ' + provider)
+        toast.error('Unsupported provider: ' + provider)
       }
     } catch (error) {
       console.error('Login error:', error)
-      alert('Login failed. Please try again.')
+      toast.error('Login failed. Please try again.')
     } finally {
       setIsLoading(false)
     }

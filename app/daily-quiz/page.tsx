@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Target, CheckCircle2, XCircle, ArrowRight, Home, Flame, Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import StreakBadge from '@/components/codelingo/streak-badge'
 import ProfileBadge from '@/components/codelingo/profile-badge'
@@ -118,10 +119,10 @@ export default function DailyQuizPage() {
         .then(async (res) => {
             if (!res.ok) {
                 const text = await res.text();
-                alert(`Streak update failed: ${text}`);
+                toast.error(`Streak update failed: ${text}`);
             }
         })
-        .catch((e) => alert("Network error during streak update: " + e.message))
+        .catch((e) => toast.error("Network error during streak update: " + e.message))
         .finally(() => setIsUpdatingStreak(false))
     }
   }, [showResult, score])

@@ -5,6 +5,7 @@ import { useParams, useSearchParams, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { createClient } from '@/utils/supabase/client'
 import { useAuth } from '@/lib/auth-context'
+import { toast } from 'sonner'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Phase = 'waiting' | 'generating' | 'battle' | 'judging' | 'result'
@@ -78,6 +79,8 @@ function BattleRoomInner({ code }: { code: string }) {
     const [error, setError] = useState('')
     const [copied, setCopied] = useState(false)
     const [showHint, setShowHint] = useState(false)
+    const [tabOutCount, setTabOutCount] = useState(0)
+    const lastTabOutTimeRef = useRef(0)
 
     // ── Refs to avoid stale closures ──────────────────────────────────────────
     const phaseRef = useRef<Phase>('waiting')
@@ -246,6 +249,50 @@ function BattleRoomInner({ code }: { code: string }) {
         await supabase.from('battle_rooms').update(field).eq('code', code)
     }
 
+    async function forceCheatingSubmit() {
+        if (submitted) return
+        setSubmitted(true)
+        const answer = "// CHEATING DETECTED: User switched tabs or windows. Test Invalidated."
+        setMyAnswer(answer)
+        const field = role === 'host'
+            ? { host_answer: answer, host_time: elapsed }
+            : { guest_answer: answer, guest_time: elapsed }
+        await supabase.from('battle_rooms').update(field).eq('code', code)
+    }
+
+    // ── Tab out tracking ──────────────────────────────────────────────────────
+    useEffect(() => {
+        if (phase !== 'battle' || submitted) return
+
+        function handleTabOut() {
+            const now = Date.now()
+            if (now - lastTabOutTimeRef.current < 2000) return // debounce 2s
+            lastTabOutTimeRef.current = now
+
+            setTabOutCount(prev => {
+                const newCount = prev + 1
+                if (newCount === 1) {
+                    toast.warning("Warning: Please do not switch tabs or windows! If you leave again, your test will be invalidated.", { duration: 6000 })
+                } else if (newCount >= 2) {
+                    toast.error("Test invalidated due to switching tabs/windows.")
+                    forceCheatingSubmit()
+                }
+                return newCount
+            })
+        }
+
+        function handleVisibility() {
+            if (document.hidden) handleTabOut()
+        }
+
+        document.addEventListener('visibilitychange', handleVisibility)
+        window.addEventListener('blur', handleTabOut)
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibility)
+            window.removeEventListener('blur', handleTabOut)
+        }
+    }, [phase, submitted])
+
     function copyCode() {
         navigator.clipboard.writeText(code)
         setCopied(true)
@@ -328,7 +375,7 @@ function BattleRoomInner({ code }: { code: string }) {
                         </div>
 
                         {/* Question card */}
-                        <div className="rounded-2xl border border-border bg-card p-6 space-y-4">
+                        <div className="rounded-2xl border border-border bg-card p-6 space-y-4 select-none" onCopy={e => { e.preventDefault(); toast.error("Copying is disabled!") }}>
                             <h1 className="text-xl font-bold">{question.title}</h1>
                             <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap">{question.description}</p>
 
@@ -391,6 +438,7 @@ function BattleRoomInner({ code }: { code: string }) {
                                 rows={16}
                                 className="w-full p-4 font-mono text-sm bg-background text-foreground resize-none focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                                 spellCheck={false}
+                                onPaste={e => { e.preventDefault(); toast.error("Pasting is disabled!") }}
                             />
                         </div>
 
