@@ -1,0 +1,146 @@
+========================================
+   CODELINGO - DEPLOYMENT STEPS GUIDE
+========================================
+
+LIVE PRODUCTION URL: https://jcecode.vercel.app
+
+STEP 1: CLONE THE PROJECT
+--------------------------
+Open Command Prompt or PowerShell and run:
+
+    git clone https://github.com/Hummylol/CodeLingo.git
+    cd CodeLingo-main
+
+If you already have the project folder, just navigate to it:
+
+    cd C:\Users\humai\Downloads\CodeLingo-main
+
+
+STEP 2: INSTALL DEPENDENCIES
+------------------------------
+Make sure you are inside the project folder, then run:
+
+    npm install
+
+This will install all required packages listed in package.json.
+
+
+STEP 3: SET UP ENVIRONMENT VARIABLES
+--------------------------------------
+Create a file named ".env.local" in the root directory.
+Add the following keys with your actual values:
+
+    NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your_supabase_publishable_key
+    NEXTAUTH_URL=https://jcecode.vercel.app  (use this for production)
+                  OR
+    NEXTAUTH_URL=http://localhost:3000          (use this for local dev)
+    NEXTAUTH_SECRET=your_random_secret_key
+    GOOGLE_CLIENT_ID=your_google_oauth_client_id
+    GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
+    GEMINI_API_KEY=your_google_gemini_api_key
+
+NOTE: Never share or upload your .env.local file to GitHub.
+
+
+STEP 4: SET UP SUPABASE DATABASE
+----------------------------------
+1. Go to https://supabase.com and log in.
+2. Open your project dashboard.
+3. Navigate to the SQL Editor.
+4. Run any required SQL migration scripts to set up tables
+   (users, streaks, lessons, quiz_attempts, etc.)
+5. Enable Row Level Security (RLS) policies as needed.
+6. Enable Google OAuth in Supabase > Authentication > Providers.
+
+
+STEP 5: SET UP GOOGLE OAUTH
+-----------------------------
+1. Go to https://console.cloud.google.com
+2. Create a new project (or select existing one).
+3. Navigate to APIs & Services > Credentials.
+4. Create an OAuth 2.0 Client ID (Web Application type).
+5. Add Authorized Redirect URIs:
+       http://localhost:3000/api/auth/callback/google  (for local)
+       https://jcecode.vercel.app/api/auth/callback/google  (for production)
+6. Copy the Client ID and Client Secret into your .env.local file.
+
+
+STEP 6: RUN LOCALLY (DEVELOPMENT MODE)
+----------------------------------------
+    npm run dev
+
+Open your browser and go to:
+    http://localhost:3000
+
+The app will hot-reload on file changes.
+
+
+STEP 7: BUILD FOR PRODUCTION
+------------------------------
+To build the optimized production bundle:
+
+    npm run build
+
+To start the production server:
+
+    npm start
+
+The app will run on:
+    http://localhost:3000
+
+
+STEP 8: DEPLOY TO VERCEL (RECOMMENDED)
+----------------------------------------
+Option A - Via Vercel CLI:
+    1. Install Vercel CLI:
+           npm install -g vercel
+    2. Login to Vercel:
+           vercel login
+    3. Deploy the project:
+           vercel
+    4. Follow the prompts and add your environment variables.
+
+Option B - Via Vercel Dashboard:
+    1. Go to https://vercel.com and log in.
+    2. Click "Add New Project".
+    3. Import your GitHub repository.
+    4. In the "Environment Variables" section, add all keys
+       from your .env.local file.
+    5. Click "Deploy".
+    6. Vercel will build and host the app automatically.
+
+    After deployment, update:
+    - NEXTAUTH_URL  -->  https://jcecode.vercel.app
+    - Google OAuth redirect URI  -->  https://jcecode.vercel.app/api/auth/callback/google
+    - Supabase allowed URLs  -->  https://jcecode.vercel.app
+
+
+STEP 9: VERIFY DEPLOYMENT
+---------------------------
+Live URL: https://jcecode.vercel.app
+
+1. Open https://jcecode.vercel.app in the browser.
+2. Test Google Login.
+3. Test Daily Quiz and Streak features.
+4. Test 1v1 Battle Room.
+5. Check the Leaderboard and Profile pages.
+
+
+========================================
+          TROUBLESHOOTING TIPS
+========================================
+
+- If npm install fails:  Try deleting node_modules and package-lock.json,
+  then run npm install again.
+
+- If login doesn't work: Double-check NEXTAUTH_URL and NEXTAUTH_SECRET
+  in your .env.local file.
+
+- If Supabase errors appear: Verify your Supabase URL and key are correct
+  and that RLS policies are properly configured.
+
+- If Google OAuth fails: Ensure redirect URIs are correctly set in
+  Google Cloud Console.
+
+========================================

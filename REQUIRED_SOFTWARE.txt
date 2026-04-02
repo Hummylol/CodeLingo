@@ -1,0 +1,170 @@
+========================================
+  CODELINGO - REQUIRED SOFTWARE LIST
+========================================
+
+These are all the tools and accounts you need to run,
+develop, and deploy the CodeLingo application.
+
+
+----------------------------------------
+  1. NODE.JS (RUNTIME ENVIRONMENT)
+----------------------------------------
+Name      : Node.js
+Version   : v18.x or higher (LTS recommended)
+Download  : https://nodejs.org/en/download
+Purpose   : Required to run the Next.js application and
+            install npm packages.
+
+Verify installation:
+    node --version
+    npm --version
+
+
+----------------------------------------
+  2. NPM (PACKAGE MANAGER)
+----------------------------------------
+Name      : npm (comes bundled with Node.js)
+Version   : v9.x or higher
+Purpose   : Used to install all project dependencies
+            from package.json.
+
+Alternative: You can use pnpm or yarn, but npm is recommended.
+
+
+----------------------------------------
+  3. GIT (VERSION CONTROL)
+----------------------------------------
+Name      : Git
+Version   : Any recent version
+Download  : https://git-scm.com/downloads
+Purpose   : Clone the repository and track code changes.
+
+Verify installation:
+    git --version
+
+
+----------------------------------------
+  4. CODE EDITOR
+----------------------------------------
+Name      : Visual Studio Code (Recommended)
+Download  : https://code.visualstudio.com/
+Purpose   : Write and edit the project code.
+
+Recommended VS Code Extensions:
+  - ESLint
+  - Prettier
+  - Tailwind CSS IntelliSense
+  - TypeScript Language Support
+  - GitLens
+
+Alternative editors: WebStorm, Sublime Text, Cursor
+
+
+----------------------------------------
+  5. SUPABASE (DATABASE & AUTH BACKEND)
+----------------------------------------
+Name      : Supabase
+Type      : Cloud Service (Free tier available)
+Website   : https://supabase.com
+Purpose   : Provides PostgreSQL database, authentication
+            (Google OAuth), and Row Level Security.
+
+What you need:
+  - A free Supabase account
+  - A new Supabase project
+  - SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY from project settings
+
+
+----------------------------------------
+  6. GOOGLE CLOUD CONSOLE (OAUTH PROVIDER)
+----------------------------------------
+Name      : Google Cloud Console
+Type      : Cloud Service (Free)
+Website   : https://console.cloud.google.com
+Purpose   : Used to set up Google Sign-In (OAuth 2.0)
+            for user authentication.
+
+What you need:
+  - A Google account
+  - A Google Cloud project
+  - OAuth 2.0 Client ID and Client Secret
+
+
+----------------------------------------
+  7. GOOGLE GEMINI API (AI FEATURES)
+----------------------------------------
+Name      : Google Gemini API
+Type      : Cloud AI Service
+Website   : https://aistudio.google.com
+Purpose   : Powers the AI chatbot, code evaluation,
+            and 1v1 Battle Room answer scoring.
+
+What you need:
+  - A Google account
+  - An API key from Google AI Studio (https://aistudio.google.com/apikey)
+
+
+----------------------------------------
+  8. VERCEL (DEPLOYMENT - RECOMMENDED)
+----------------------------------------
+Name      : Vercel
+Type      : Cloud Hosting Platform (Free tier available)
+Website   : https://vercel.com
+Purpose   : Deploy and host the Next.js application.
+
+What you need:
+  - A Vercel account (can sign up with GitHub)
+  - GitHub repository with the project code
+
+Optional - Vercel CLI:
+    npm install -g vercel
+
+
+----------------------------------------
+  9. WEB BROWSER
+----------------------------------------
+Name      : Google Chrome or Microsoft Edge (Recommended)
+Purpose   : Testing and using the application.
+
+Useful browser tools:
+  - Chrome DevTools (F12) for debugging
+  - Responsive design testing (mobile simulation)
+
+
+----------------------------------------
+  10. OPTIONAL TOOLS
+----------------------------------------
+
+a) Postman or Thunder Client
+   - For testing API routes manually
+   - Download: https://www.postman.com/downloads/
+
+b) Supabase CLI
+   - For managing database migrations locally
+   - Install: npm install -g supabase
+   - Docs: https://supabase.com/docs/guides/cli
+
+c) GitHub Desktop
+   - Visual Git interface for managing code
+   - Download: https://desktop.github.com/
+
+d) Windows Terminal
+   - Better command-line experience on Windows
+   - Download from Microsoft Store
+
+
+========================================
+         QUICK SETUP CHECKLIST
+========================================
+
+  [ ] Node.js installed (v18+)
+  [ ] Git installed
+  [ ] VS Code installed
+  [ ] Supabase account created + project set up
+  [ ] Google Cloud project + OAuth credentials created
+  [ ] Gemini API key obtained
+  [ ] Vercel account created (for deployment)
+  [ ] .env.local file created with all required keys
+  [ ] npm install run in project folder
+
+========================================

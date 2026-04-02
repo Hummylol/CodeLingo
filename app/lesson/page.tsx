@@ -115,7 +115,7 @@ export default function LessonPage() {
         ) : (
           <div style={{ height: svgHeight }} className="relative">
             <svg
-              className="absolute inset-0 w-full h-full "
+              className="absolute inset-0 w-full h-full text-slate-400 dark:text-slate-500"
               viewBox={`0 0 100 ${svgHeight}`}
               preserveAspectRatio="none"
             >
@@ -135,8 +135,8 @@ export default function LessonPage() {
               <path
                 d={pathD}
                 fill="none"
-                stroke="white"
-                opacity={0.5}
+                stroke="currentColor"
+                opacity={0.6}
                 strokeWidth={3}
                 strokeLinecap="round"
               />
