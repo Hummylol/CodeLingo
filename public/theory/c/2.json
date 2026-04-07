@@ -1,0 +1,177 @@
+{
+    "levelno": 2,
+    "topic": "Data Types & Variables",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Data Types & Variables — Beginner",
+            "theory": "Variables act as storage containers for data. In C, you must **declare** a variable and its **type** before using it. A data type tells the compiler how much memory to allocate and what kind of data can be stored.\n\nCore Data Types in C:\n- **`int`**: Stores integers (whole numbers), like `10` or `-50`.\n- **`float`**: Stores single-precision floating-point numbers (decimals), like `3.14`.\n- **`double`**: Stores double-precision floating-point numbers (more decimal accuracy).\n- **`char`**: Stores a single character inside single quotes, like `'A'` or `'z'`.\n\nTo declare and initialize a variable:\n`int myAge = 25;`\n`char grade = 'A';`\n\nWhen printing variables with `printf()`, C uses **format specifiers**:\n- `%d` for `int`\n- `%f` for `float`/`double`\n- `%c` for `char`\n\nExample:\n`printf(\"My age is %d\", myAge);`",
+            "questions": [
+                {
+                    "question": "Which data type would you use to store a whole number in C?",
+                    "options": ["char", "int", "float", "double"],
+                    "answer": "int"
+                },
+                {
+                    "question": "How do you declare a variable holding the character 'C'?",
+                    "options": ["char letter = 'C';", "string letter = \"C\";", "char letter = \"C\";", "int letter = 'C';"],
+                    "answer": "char letter = 'C';"
+                },
+                {
+                    "question": "Which format specifier is used to print an integer?",
+                    "options": ["%i or %d", "%f", "%c", "%s"],
+                    "answer": "%i or %d"
+                },
+                {
+                    "question": "What is the primary difference between a float and a double?",
+                    "options": ["float holds numbers; double holds letters", "double has twice the precision (memory) of a float", "float is for negative numbers; double is for positive", "There is no difference"],
+                    "answer": "double has twice the precision (memory) of a float"
+                },
+                {
+                    "question": "Which format specifier is used to print a char?",
+                    "options": ["%d", "%c", "%f", "%char"],
+                    "answer": "%c"
+                },
+                {
+                    "question": "Which keyword is NOT a valid fundamental data type in standard C?",
+                    "options": ["int", "char", "string", "float"],
+                    "answer": "string"
+                },
+                {
+                    "question": "Is it required to declare a variable's type in C?",
+                    "options": ["Yes, C is statically typed", "No, C is dynamically typed", "Only for ints", "Only inside functions"],
+                    "answer": "Yes, C is statically typed"
+                },
+                {
+                    "question": "What is wrong with: `int x = 5.5;`?",
+                    "options": ["Syntax error", "You cannot assign decimals to integers; it will truncate to 5", "Variables must start with capitals", "Semicolon missing"],
+                    "answer": "You cannot assign decimals to integers; it will truncate to 5"
+                },
+                {
+                    "question": "What will `printf(\"Value: %f\", 5.5);` output?",
+                    "options": ["Value: 5", "Value: %f", "Value: 5.500000", "Error"],
+                    "answer": "Value: 5.500000"
+                },
+                {
+                    "question": "Which of the following creates a double variable?",
+                    "options": ["double val = 3.14;", "flt val = 3.14;", "int val = 3.14d;", "dec val = 3.14;"],
+                    "answer": "double val = 3.14;"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Data Types & Variables — Intermediate",
+            "theory": "Identifiers (variable names) in C have strict naming rules: they can only contain letters, digits, and underscores, and *must not* start with a digit. C is case-sensitive, so `MyVar` and `myVar` are different variables.\n\nTo restrict a variable from being changed, use the **`const`** keyword:\n`const float PI = 3.14159;`\nIf you try to reassign a `const` variable, the compiler will throw an error.\n\nThe `sizeof` operator can be used to determine how many bytes a data type consumes in memory on your specific machine:\n`printf(\"Size of int: %lu bytes\", sizeof(int));`\nOn most modern 64-bit systems:\n- `char` is 1 byte\n- `int` is usually 4 bytes\n- `float` is 4 bytes\n- `double` is 8 bytes",
+            "questions": [
+                {
+                    "question": "Which of the following is an INVALID variable name?",
+                    "options": ["_myVar", "myVar123", "1stVariable", "user_age"],
+                    "answer": "1stVariable"
+                },
+                {
+                    "question": "How do you declare a constant variable that cannot be modified?",
+                    "options": ["static int x = 5;", "const int x = 5;", "final int x = 5;", "immutable int x = 5;"],
+                    "answer": "const int x = 5;"
+                },
+                {
+                    "question": "What operator is used to find the memory size of a data type?",
+                    "options": ["lengthof()", "typeof()", "sizeof", "measure()"],
+                    "answer": "sizeof"
+                },
+                {
+                    "question": "What size is a 'char' data type guaranteed to be in C?",
+                    "options": ["1 byte", "2 bytes", "4 bytes", "8 bytes"],
+                    "answer": "1 byte"
+                },
+                {
+                    "question": "Are variable names in C case-sensitive?",
+                    "options": ["Yes", "No", "Only if they start with underscores", "Only for const variables"],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "What happens if you attempt to assign a new value to a const variable?",
+                    "options": ["It works fine", "It fails silently at runtime", "The compiler throws an error", "It overwrites memory incorrectly"],
+                    "answer": "The compiler throws an error"
+                },
+                {
+                    "question": "What format specifier is typically used for the output of sizeof (which returns size_t)?",
+                    "options": ["%d", "%lu or %zu", "%f", "%c"],
+                    "answer": "%lu or %zu"
+                },
+                {
+                    "question": "Typically, how many bytes does a double take on a modern 64-bit machine?",
+                    "options": ["1", "4", "8", "16"],
+                    "answer": "8"
+                },
+                {
+                    "question": "Which of the following keywords cannot be used as a variable name?",
+                    "options": ["main", "value", "return", "data"],
+                    "answer": "return"
+                },
+                {
+                    "question": "What is the expected output of `sizeof(char)`?",
+                    "options": ["1", "4", "0", "8"],
+                    "answer": "1"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Data Types & Variables — Expert",
+            "theory": "C provides **Type Modifiers** to alter the range and space of integer types:\n- `signed` / `unsigned` (affects if negative numbers are allowed)\n- `short` / `long` (affects byte size)\n\nAn `unsigned int` uses the sign bit for magnitude, doubling the upper limit, but it cannot store negative values.\n\nType casting allows you to forcibly convert one data type into another. \n- **Implicit Casting** (Coercion) happens automatically: e.g., when saving an `int` into a `float`.\n- **Explicit Casting** is manually declared using parentheses: `float res = (float) 5 / 2;` (ensures floating-point division is used instead of integer division).\n\nIf you exceed the maximum value of a data type, it results in **integer overflow**, often wrapping around to the lowest negative value.",
+            "questions": [
+                {
+                    "question": "What does the 'unsigned' modifier do to an integer?",
+                    "options": ["Allows decimals", "Restricts the integer to positive values only, doubling its positive range", "Halves its memory allocation", "Makes it constant"],
+                    "answer": "Restricts the integer to positive values only, doubling its positive range"
+                },
+                {
+                    "question": "What causes an 'integer overflow'?",
+                    "options": ["Dividing by zero", "Storing a value larger than the max limit of the data type", "Using float instead of int", "Passing too many arguments"],
+                    "answer": "Storing a value larger than the max limit of the data type"
+                },
+                {
+                    "question": "What is the result of the integer division `5 / 2` in C?",
+                    "options": ["2.5", "2", "3", "Error"],
+                    "answer": "2"
+                },
+                {
+                    "question": "How do you perform explicit type casting to convert an int 'x' to a float?",
+                    "options": ["float(x)", "to_float(x)", "(float) x", "x.float()"],
+                    "answer": "(float) x"
+                },
+                {
+                    "question": "What is Type Coercion?",
+                    "options": ["Manually forcing a type change", "The compiler automatically converting one data type to another", "Deleting variable values", "Locking a variable via const"],
+                    "answer": "The compiler automatically converting one data type to another"
+                },
+                {
+                    "question": "Which combination of modifiers is valid?",
+                    "options": ["unsigned float", "signed double", "unsigned long int", "short char"],
+                    "answer": "unsigned long int"
+                },
+                {
+                    "question": "If you add 1 to the absolute maximum value an `int` can hold, what conceptually happens?",
+                    "options": ["Program crashes instantly", "Memory is expanded to a long", "Integer overflow occurs, wrapping to a negative value", "It becomes a float"],
+                    "answer": "Integer overflow occurs, wrapping to a negative value"
+                },
+                {
+                    "question": "Why would `float x = 5 / 2;` result in `2.000` rather than `2.500`?",
+                    "options": ["Floats can't hold .5", "The integer division 5/2 happens first, truncating to 2, before assigning to the float.", "Syntax error", "Because division is always rounded up"],
+                    "answer": "The integer division 5/2 happens first, truncating to 2, before assigning to the float."
+                },
+                {
+                    "question": "What format specifier must be used when printing an `unsigned int`?",
+                    "options": ["%d", "%u", "%i", "%f"],
+                    "answer": "%u"
+                },
+                {
+                    "question": "What happens if you assign a negative number to an unsigned int?",
+                    "options": ["Compiler error", "It is converted to 0", "It underflows, resulting in a massive positive number", "It works perfectly"],
+                    "answer": "It underflows, resulting in a massive positive number"
+                }
+            ]
+        }
+    ]
+}

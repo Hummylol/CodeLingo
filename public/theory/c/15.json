@@ -1,0 +1,177 @@
+{
+    "levelno": 15,
+    "topic": "Preprocessor Directives (#define, #include)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Preprocessor — Beginner",
+            "theory": "Before the C Compiler actually looks at your code, the **Preprocessor** scans your file top-to-bottom. It strictly executes lines beginning with the `#` (Hash) symbol.\n\n**`#include`**\nThis directive tells the preprocessor to physically copy-and-paste the entire contents of a header file securely into your code at that exact exact line.\n- `#include <stdio.h>` (Angle Brackets): Tells the preprocessor to search the system's standard hidden library folders.\n- `#include \"mymath.h\"` (Quotes): Tells the preprocessor to search your CURRENT local project folder first.\n\n**`#define` (Macros)**\nThis defines a text replacement alias. Before compiling, the preprocessor blindly searches your code for this word and replaces it verbatim.\n```c\n#define PI 3.14159\n// Later in code...\nfloat area = PI * r * r;\n```\n`#define` does NOT consume runtime memory or act as a real variable. It is a literal text copy-paste mechanism.",
+            "questions": [
+                {
+                    "question": "What entity executes directives starting with `#` in C?",
+                    "options": ["The Linker", "The Preprocessor", "The Main Compiler", "The Assembler"],
+                    "answer": "The Preprocessor"
+                },
+                {
+                    "question": "When does the Preprocessor run?",
+                    "options": ["During runtime", "After linking", "Before the main compilation stage even begins", "During the crash"],
+                    "answer": "Before the main compilation stage even begins"
+                },
+                {
+                    "question": "What does `#include <stdio.h>` physically do?",
+                    "options": ["Executes a script", "Tells the preprocessor to copy-paste the entire contents of the stdio.h file directly into your code right at that exact line", "Links a dynamic DLL", "Creates a variable"],
+                    "answer": "Tells the preprocessor to copy-paste the entire contents of the stdio.h file directly into your code right at that exact line"
+                },
+                {
+                    "question": "What is the difference between `<file.h>` and `\"file.h\"`?",
+                    "options": ["Angle brackets are for C++, quotes for C", "Angle brackets search standard system libraries; Quotes search the local project directory first.", "Quotes are strings", "No difference"],
+                    "answer": "Angle brackets search standard system libraries; Quotes search the local project directory first."
+                },
+                {
+                    "question": "What does `#define LIMIT 10` do?",
+                    "options": ["Creates an int variable LIMIT", "Tells the compiler to allocate 10 bytes", "Instructs the preprocessor to perform a literal text search-and-replace, swapping the word 'LIMIT' for '10' everywhere in the file below it", "Throws an error"],
+                    "answer": "Instructs the preprocessor to perform a literal text search-and-replace, swapping the word 'LIMIT' for '10' everywhere in the file below it"
+                },
+                {
+                    "question": "Does a `#define` macro consume real RAM like a standard variable?",
+                    "options": ["Yes, on the Heap", "No, it is purely a textual copy-paste done before compiling; it has no memory address.", "Yes, on the Stack", "Yes, 4 bytes"],
+                    "answer": "No, it is purely a textual copy-paste done before compiling; it has no memory address."
+                },
+                {
+                    "question": "Do you place a semicolon `;` at the end of a `#define PI 3.14` statement?",
+                    "options": ["Yes, always", "No, because if you do, the preprocessor will stupidly copy-paste the semicolon everywhere PI is used, breaking the math syntax.", "Only on Linux", "Yes, it is required"],
+                    "answer": "No, because if you do, the preprocessor will stupidly copy-paste the semicolon everywhere PI is used, breaking the math syntax."
+                },
+                {
+                    "question": "What is conventionally true about `#define` macro names to make them stand out?",
+                    "options": ["They start with an underscore", "They are entirely ALL_CAPS", "They are strictly snake_case", "They must begin with 'macro_'"],
+                    "answer": "They are entirely ALL_CAPS"
+                },
+                {
+                    "question": "Which of these is a correct #define directive?",
+                    "options": ["#define MAX = 100;", "#define MAX 100", "#define int MAX 100", "define MAX 100"],
+                    "answer": "#define MAX 100"
+                },
+                {
+                    "question": "Can you undefine a macro later in the file so it stops replacing text?",
+                    "options": ["No", "Yes, using `#undef MACRO_NAME`", "Only by deleting it", "Yes, using `#delete`"],
+                    "answer": "Yes, using `#undef MACRO_NAME`"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Preprocessor — Intermediate",
+            "theory": "**Macro Functions**\nYou can use `#define` to create \"functions\" that act like inline code replacements.\n```c\n#define SQUARE(x) x * x\n```\nIf you type `SQUARE(5)`, the preprocessor replaces it verbatim with `5 * 5`.\nBut this is dangerously flawed! If you type `SQUARE(2 + 3)`, it replaces it with `2 + 3 * 2 + 3`. Because of BEDMAS math precedence, `3*2` executes first! The result is `11`, not `25`!\nFix: ALWAYS wrap macro variables in parentheses!\n`#define SQUARE(x) ((x) * (x))`\n\n**Conditional Compilation**\nYou can wrap code in `#ifdef` (if defined) or `#ifndef` (if not defined). If the condition fails, the preprocessor **deletes** the physical code before the compiler ever sees it.",
+            "questions": [
+                {
+                    "question": "What is a Macro Function?",
+                    "options": ["A function returning a macro", "A `#define` that takes arguments and performs an inline textual replacement of logic", "A function from the system", "A recursive function"],
+                    "answer": "A `#define` that takes arguments and performs an inline textual replacement of logic"
+                },
+                {
+                    "question": "If `#define MULT(a, b) a * b`, what happens if you invoke `MULT(1+2, 3)`?",
+                    "options": ["Evaluates to 9", "The text replaces blindly as `1 + 2 * 3`, which math precedence executes as `1 + 6 = 7`.", "Syntax error", "Compiler crash"],
+                    "answer": "The text replaces blindly as `1 + 2 * 3`, which math precedence executes as `1 + 6 = 7`."
+                },
+                {
+                    "question": "How do you protect Macro Functions against mathematical order-of-operation bugs?",
+                    "options": ["You can't", "By heavily wrapping every single argument and the entire expression in parentheses `((a) * (b))`", "By using curly braces", "By typing fast"],
+                    "answer": "By heavily wrapping every single argument and the entire expression in parentheses `((a) * (b))`"
+                },
+                {
+                    "question": "What is Conditional Compilation?",
+                    "options": ["Compiling only if there are no errors", "Using `#if`/`#ifdef` directives to instruct the preprocessor to include or completely delete chunks of code before compilation, depending on criteria (like OS type).", "Using `if/else` statements in main", "Skipping loops"],
+                    "answer": "Using `#if`/`#ifdef` directives to instruct the preprocessor to include or completely delete chunks of code before compilation, depending on criteria (like OS type)."
+                },
+                {
+                    "question": "What marks the end of an `#ifdef` block?",
+                    "options": ["}", "#endif", "end", "return"],
+                    "answer": "#endif"
+                },
+                {
+                    "question": "If you build cross-platform code, how do you prevent Linux code from compiling on Windows?",
+                    "options": ["You write an if/else checking the OS", "You wrap the Linux logic in `#ifdef __linux__` so the preprocessor completely deletes the Linux code on a Windows compiler", "You use dual compilers", "You cannot"],
+                    "answer": "You wrap the Linux logic in `#ifdef __linux__` so the preprocessor completely deletes the Linux code on a Windows compiler"
+                },
+                {
+                    "question": "What is the primary advantage of a Macro Function `MIN(a, b)` over a real C function `int min(int a, int b)`?",
+                    "options": ["It is slower", "Because Macros are purely text-replacement, they don't care about data types and have almost zero runtime CPU invocation overhead", "It validates memory", "It cannot be hacked"],
+                    "answer": "Because Macros are purely text-replacement, they don't care about data types and have almost zero runtime CPU invocation overhead"
+                },
+                {
+                    "question": "What does `#ifndef` stand for?",
+                    "options": ["If Next Defined", "If Not Defined", "If Null Defined", "Include File New Directory"],
+                    "answer": "If Not Defined"
+                },
+                {
+                    "question": "What happens if a Macro Function contains the `++` operator on an argument: `#define MAX(a,b) ((a)>(b)?(a):(b))`. And you call `MAX(x++, y)`?",
+                    "options": ["It works perfectly", "x is incremented exactly once", "Because text is blindly duplicated, `x++` appears twice in the replaced logic `((x++)>(y)?(x++):(y))`, meaning `x` tragically increments TWICE!", "Compiler catches it"],
+                    "answer": "Because text is blindly duplicated, `x++` appears twice in the replaced logic `((x++)>(y)?(x++):(y))`, meaning `x` tragically increments TWICE!"
+                },
+                {
+                    "question": "Which of these allows defining a macro directly from the command line while compiling?",
+                    "options": ["gcc -m MACRO", "gcc -D MACRO=1 main.c", "gcc --macro", "gcc #define"],
+                    "answer": "gcc -D MACRO=1 main.c"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Preprocessor — Expert",
+            "theory": "**Include Guards**\nA massive problem in C is cyclic includes. If `A.h` includes `B.h`, and `B.h` includes `A.h`, the preprocessor gets trapped in an infinite copy-paste loop!\nTo stop this, EVERY header file must use an **Include Guard**: \n```c\n#ifndef MATH_H\n#define MATH_H\n// ... header code ...\n#endif\n```\nIf included a second time, `MATH_H` is already defined, so the preprocessor instantly skips the file.\n\nModern compilers also offer an alternative: **`#pragma once`**. It instructs the compiler to never open this file again. It's cleaner, but technically not part of the strict older C standards.\n\nLastly, the Stringification Operator `#x` takes a macro variable and converts it into a literal \"string\", incredibly useful for printing variable names while debugging.",
+            "questions": [
+                {
+                    "question": "What terrible event occurs if two header files aggressively `#include` each other without protection?",
+                    "options": ["They merge", "An infinite copy-paste loop causing the compiler to run out of memory or crash", "Syntax error", "The compiler fixes it automatically"],
+                    "answer": "An infinite copy-paste loop causing the compiler to run out of memory or crash"
+                },
+                {
+                    "question": "What is an 'Include Guard'?",
+                    "options": ["A virus scanner", "A design pattern using `#ifndef`, `#define`, and `#endif` to guarantee a header file is only processed exactly ONE time per compilation unit", "A firewall", "A const pointer"],
+                    "answer": "A design pattern using `#ifndef`, `#define`, and `#endif` to guarantee a header file is only processed exactly ONE time per compilation unit"
+                },
+                {
+                    "question": "What is the cleaner, one-line modern alternative to standard Include Guards?",
+                    "options": ["#include_once", "#pragma once", "#stop_include", "#protect"],
+                    "answer": "#pragma once"
+                },
+                {
+                    "question": "Why do some strict developers heavily prefer standard Include Guards over `#pragma once`?",
+                    "options": ["It is faster", "`#pragma once` is not strictly part of the older ISO C standards and may not be supported by incredibly obscure or extremely old vendor compilers", "It saves memory", "It stops hackers"],
+                    "answer": "`#pragma once` is not strictly part of the older ISO C standards and may not be supported by incredibly obscure or extremely old vendor compilers"
+                },
+                {
+                    "question": "What does the `#error` directive do?",
+                    "options": ["Fixes an error", "Intentionally halts the compiler and displays a custom physical error message if a specific condition is met (e.g., `#error \"Windows not supported!\"`)", "Ignores errors", "Writes logs"],
+                    "answer": "Intentionally halts the compiler and displays a custom physical error message if a specific condition is met (e.g., `#error \"Windows not supported!\"`)"
+                },
+                {
+                    "question": "What does the Stringify operator `#` do inside a macro? (e.g., `#define PRINT(x) printf(#x)` )",
+                    "options": ["Converts it to an int", "Comments it out", "Treats the literal given token entirely as a \"String\" literal enclosed in quotes", "Encrypts it"],
+                    "answer": "Treats the literal given token entirely as a \"String\" literal enclosed in quotes"
+                },
+                {
+                    "question": "What does the Token Pasting operator `##` do in a macro?",
+                    "options": ["Deletes code", "Glues two separate tokens together to logically form a completely new variable/function name before compilation", "Throws an error", "Concatenates strings"],
+                    "answer": "Glues two separate tokens together to logically form a completely new variable/function name before compilation"
+                },
+                {
+                    "question": "What dictates the predefined macro `__FILE__`?",
+                    "options": ["The file size", "The string literal of the current file's name being compiled (used heavily in error logging)", "The file directory", "The file owner"],
+                    "answer": "The string literal of the current file's name being compiled (used heavily in error logging)"
+                },
+                {
+                    "question": "What are `__LINE__`, `__DATE__`, and `__TIME__`?",
+                    "options": ["Functions", "Built-in Predefined Macros that substitute the current line number and compilation timestamp, invaluable for debugging asserts", "Syntax errors", "Types of loops"],
+                    "answer": "Built-in Predefined Macros that substitute the current line number and compilation timestamp, invaluable for debugging asserts"
+                },
+                {
+                    "question": "Because macro text replacement is entirely blind, what phase of compilation will actually catch the Syntax Errors if your macro logic produces garbage code?",
+                    "options": ["The Linker", "The Preprocessor itself", "The main Compilation phase (when it tries to assemble the C code syntax tree)", "Execution phase"],
+                    "answer": "The main Compilation phase (when it tries to assemble the C code syntax tree)"
+                }
+            ]
+        }
+    ]
+}

@@ -38,4 +38,18 @@ export const LANGUAGES: Language[] = [
     description: "Core Data Structures & Algorithms for interviews and problem solving.",
     sampleTopics: ["Arrays", "Linked Lists", "Stacks & Queues", "Trees", "Graphs & Traversals"],
   },
+  {
+    id: "javascript",
+    name: "JavaScript",
+    icon: Terminal,
+    description: "The language of the web, powering dynamic and interactive websites.",
+    sampleTopics: ["Variables", "Functions", "DOM Manipulation", "Async/Await"],
+  },
+  {
+    id: "c",
+    name: "C",
+    icon: Terminal,
+    description: "Low-level system programming with manual memory management.",
+    sampleTopics: ["Pointers", "Memory Allocation", "Structs", "File I/O"],
+  },
 ]

@@ -1,0 +1,177 @@
+{
+    "levelno": 3,
+    "topic": "Control Flow (If/Switch)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Control Flow — Beginner",
+            "theory": "Your code executes top-to-bottom automatically. But what if you only want certain code to run when a user is logged in? You use **Conditionals**.\n\n**`if` statement**\nThe IF statement runs code *only* if its condition magically evaluates to `true` (or a loosely \"truthy\" value like a populated string).\n```javascript\nlet money = 10;\nif (money > 5) {\n    console.log(\"You can afford this!\");\n}\n```\n\n**`else if` and `else`**\nYou can chain alternative conditions securely using `else if`. If every single condition violently fails, the `else` block catches it.\n```javascript\nif (score == 100) {\n    alert(\"Perfect!\");\n} else if (score > 50) {\n    alert(\"Pass\");\n} else {\n    alert(\"Fail\");\n}\n```",
+            "questions": [
+                {
+                    "question": "What is the primary function of an `if` statement?",
+                    "options": ["To loop code forever", "To literally evaluate a logical condition and exclusively execute a localized block of code ONLY if that condition returns true", "To print data", "To declare a new string"],
+                    "answer": "To literally evaluate a logical condition and exclusively execute a localized block of code ONLY if that condition returns true"
+                },
+                {
+                    "question": "What punctuation heavily wraps the condition being evaluated in an `if` statement?",
+                    "options": ["{ Braces }", "[ Brackets ]", "( Parentheses )", "\" Quotes \""],
+                    "answer": "( Parentheses )"
+                },
+                {
+                    "question": "What punctuation structurally wraps the actual code block that gets executed?",
+                    "options": ["[ Brackets ]", "{ Curly Braces }", "( Parentheses )", "Nothing"],
+                    "answer": "{ Curly Braces }"
+                },
+                {
+                    "question": "What happens fundamentally if the `if` condition evaluates to `false`?",
+                    "options": ["The program violently crashes", "It reruns the check", "JavaScript completely ignores that code block and silently skips directly over it to continue reading the next lines of the script", "It executes anyway"],
+                    "answer": "JavaScript completely ignores that code block and silently skips directly over it to continue reading the next lines of the script"
+                },
+                {
+                    "question": "What explicitly does an `else` block do?",
+                    "options": ["It reruns the `if` statement", "It executes immediately if, and ONLY if, every single previously chained `if` statement evaluated to completely `false`", "It runs alongside the `if`", "It declares variables"],
+                    "answer": "It executes immediately if, and ONLY if, every single previously chained `if` statement evaluated to completely `false`"
+                },
+                {
+                    "question": "Can an `else if` block securely possess its own new condition?",
+                    "options": ["Yes, it seamlessly allows you to chain a secondary alternative condition check right after the first one fails", "No", "Only for strings", "Only using math"],
+                    "answer": "Yes, it seamlessly allows you to chain a secondary alternative condition check right after the first one fails"
+                },
+                {
+                    "question": "What happens physically if Multiple `else if` conditions actually evaluate to true at once?",
+                    "options": ["All of them execute heavily", "The script crashes", "Only the very FIRST physically encountered true condition executes. The block finishes instantly, and all subsequent `else if` conditions are abruptly ignored.", "Only the last one runs"],
+                    "answer": "Only the very FIRST physically encountered true condition executes. The block finishes instantly, and all subsequent `else if` conditions are abruptly ignored."
+                },
+                {
+                    "question": "If you write `if (\"Apple\") { }`, will the code execute?",
+                    "options": ["No, it requires == true", "Yes, because non-empty strings are inherently considered 'truthy' values in JavaScript's flexible coercion system", "Only if it is 'true'", "It throws a syntax error"],
+                    "answer": "Yes, because non-empty strings are inherently considered 'truthy' values in JavaScript's flexible coercion system"
+                },
+                {
+                    "question": "What happens specifically if there is NO `else` block and the `if` statement fiercely fails?",
+                    "options": ["It crashes", "Nothing executes internally, and the JavaScript engine simply moves onward to the next line of code undisturbed", "It loops", "It returns NULL"],
+                    "answer": "Nothing executes internally, and the JavaScript engine simply moves onward to the next line of code undisturbed"
+                },
+                {
+                    "question": "Do you need curly braces natively for an `if` statement if it structurally only contains ONE single line of code?",
+                    "options": ["Yes, you must", "No, JavaScript optionally allows you to omit the curly braces if the block consists of only one single execution line", "Only on Linux", "No, for up to 3 lines"],
+                    "answer": "No, JavaScript optionally allows you to omit the curly braces if the block consists of only one single execution line"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Control Flow — Intermediate",
+            "theory": "**Ternary Operator (The One-Line IF)**\nIf you have a brutally simple `if/else` that just rigidly assigns a variable, you can drastically compress it using the Ternary Operator `? :`.\n`let status = (age >= 18) ? \"Adult\" : \"Child\";`\n(If age >= 18 is true, it assigns Adult. If false, it assigns Child).\n\n**`switch` statement**\nWhen you have an insane chain of 10 `else if` statements aggressively checking the *same exact variable* against different exact values, a `switch` is much cleaner!\n```javascript\nswitch (mode) {\n    case \"dark\": setDarkMode(); break;\n    case \"light\": setLightMode(); break;\n    default: setSystemMode();\n}\n```\nThe `break` keyword is absolutely critical to stop it from spilling into the next cases!",
+            "questions": [
+                {
+                    "question": "What is the primary visual purpose of the Ternary Operator?",
+                    "options": ["To encrypt code", "To drastically compress a simple if/else variable-assignment logic tree into a single clean line of mathematical code", "To create math loops", "To delete strings"],
+                    "answer": "To drastically compress a simple if/else variable-assignment logic tree into a single clean line of mathematical code"
+                },
+                {
+                    "question": "What are the three core structural components of a Ternary Operation?",
+                    "options": ["Function, Array, String", "Condition `?` True_Value `:` False_Value", "If `+` Else `+` Null", "If `>=` Then `<=` Else"],
+                    "answer": "Condition `?` True_Value `:` False_Value"
+                },
+                {
+                    "question": "If `let data = (5 > 10) ? \"High\" : \"Low\";`, what specifically is `data`?",
+                    "options": ["\"High\"", "\"Low\"", "true", "error"],
+                    "answer": "\"Low\""
+                },
+                {
+                    "question": "When is a `switch` statement widely considered significantly vastly superior to `if` statements?",
+                    "options": ["For math", "When you are brutally comparing one single variable against a massive list of exact explicitly known values (like game states or string commands)", "When checking ranges like `> 50`", "For looping arrays"],
+                    "answer": "When you are brutally comparing one single variable against a massive list of exact explicitly known values (like game states or string commands)"
+                },
+                {
+                    "question": "How securely does a `switch` statement compare variables?",
+                    "options": ["It uses loose equality (`==`)", "It aggressively uses Strict Equality (`===`), meaning `case \"5\"` will NOT match the integer 5.", "It doesn't compare them", "It uses >, <"],
+                    "answer": "It aggressively uses Strict Equality (`===`), meaning `case \"5\"` will NOT match the integer 5."
+                },
+                {
+                    "question": "What incredibly vital keyword must physically terminate a `case` block inside a switch statement?",
+                    "options": ["stop", "return", "break", "halt"],
+                    "answer": "break"
+                },
+                {
+                    "question": "What horrific bug occurs specifically if you forget to include a `break` in a switch case?",
+                    "options": ["The script crashes", "Syntax error", "Fall-Through Bug: The JS engine executes your case, but then maliciously blindly executes every single case located immediately below it until it forcefully hits a break!", "It loops infinitely"],
+                    "answer": "Fall-Through Bug: The JS engine executes your case, but then maliciously blindly executes every single case located immediately below it until it forcefully hits a break!"
+                },
+                {
+                    "question": "What keyword inside a `switch` effectively violently replaces the `else` fallback from an if statement?",
+                    "options": ["fallback:", "else:", "catch:", "default:"],
+                    "answer": "default:"
+                },
+                {
+                    "question": "Can you intentionally strategically group multiple cases together flawlessly without breaks?",
+                    "options": ["No", "Yes, writing `case 1: case 2: runCode(); break;` executes seamlessly if the variable violently equals 1 OR 2 natively", "Only in C++", "Only using standard strings"],
+                    "answer": "Yes, writing `case 1: case 2: runCode(); break;` executes seamlessly if the variable violently equals 1 OR 2 natively"
+                },
+                {
+                    "question": "Are ternary operators securely permitted to be massively aggressively chained `cond ? A : cond2 ? B : C`?",
+                    "options": ["Yes, but it is heavily discouraged as it makes the text utterly completely unreadable", "No, it throws a syntax crash", "Only on Node.js", "Only for ints"],
+                    "answer": "Yes, but it is heavily discouraged as it makes the text utterly completely unreadable"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Control Flow — Expert",
+            "theory": "**Error Handling Control Flow (`try/catch/finally`)**\nWhen your JavaScript hits a fatal error (like a failing network request), the entire script violently crashes, abruptly destroying the webpage.\n\nTo prevent this, you intelligently wrap dangerous operations in a `try` block. If the engine detects an explosion, it instantly pauses the script and reroutes the panic directly into the `catch` block—preventing the crash entirely!\n```javascript\ntry {\n   riskyFunction(); // If this crashes...\n} catch (err) {\n   console.log(\"Caught the fire!\", err.message); // This runs instead of dying\n} finally {\n   console.log(\"I always run no matter what\");\n}\n```\nYou can even fiercely trigger your own deliberate crashes structurally using `throw new Error(\"Bad Input\");`.",
+            "questions": [
+                {
+                    "question": "What does an unhandled fatal error heavily result in?",
+                    "options": ["A warning popup", "The literal total termination of the JavaScript engine file execution process, freezing the webpage logic dead", "It ignores it securely", "It restarts the page"],
+                    "answer": "The literal total termination of the JavaScript engine file execution process, freezing the webpage logic dead"
+                },
+                {
+                    "question": "What specifically is the massive strategic purpose of a `try...catch` block?",
+                    "options": ["To catch variables", "To safely test a heavily dangerous block of code (`try`). If an error is unexpectedly triggered, it elegantly intercepts the crash and handles it inside `catch` without violently killing the script.", "To loop code natively", "To encrypt logic"],
+                    "answer": "To safely test a heavily dangerous block of code (`try`). If an error is unexpectedly triggered, it elegantly intercepts the crash and handles it inside `catch` without violently killing the script."
+                },
+                {
+                    "question": "If absolutely zero errors are encountered aggressively traversing the `try` block, what happens?",
+                    "options": ["The script halts", "The script seamlessly completely ignores the `catch` block entirely and simply proceeds normally onward", "The script loops", "The catch block fires anyway"],
+                    "answer": "The script seamlessly completely ignores the `catch` block entirely and simply proceeds normally onward"
+                },
+                {
+                    "question": "What incredibly crucial dynamic data parameter is typically silently supplied into the `catch` parenthesis?",
+                    "options": ["The array length", "A unique natively forged Error instance containing the fatal `message` and the massive system `stack` trace log", "A boolean", "Nothing natively"],
+                    "answer": "A unique natively forged Error instance containing the fatal `message` and the massive system `stack` trace log"
+                },
+                {
+                    "question": "How do you forcefully intentionally trigger an Error structurally in JavaScript to gracefully halt invalid actions?",
+                    "options": ["crash();", "halt();", "throw new Error(\"Message\");", "return error;"],
+                    "answer": "throw new Error(\"Message\");"
+                },
+                {
+                    "question": "What happens fundamentally if you strategically write a `throw new Error()` inside a `try` block?",
+                    "options": ["It crashes fully", "It is intensely immediately intercepted by its localized paired `catch` block", "It skips to `finally`", "It deletes it"],
+                    "answer": "It is intensely immediately intercepted by its localized paired `catch` block"
+                },
+                {
+                    "question": "What does a `finally` block structurally do globally?",
+                    "options": ["It crashes", "It contains logic that is unequivocally guaranteed to execute ALWAYS, regardless of whether a brutal error was successfully thrown or the `try` definitively succeeded", "It catches loops", "It ends the file"],
+                    "answer": "It contains logic that is unequivocally guaranteed to execute ALWAYS, regardless of whether a brutal error was successfully thrown or the `try` definitively succeeded"
+                },
+                {
+                    "question": "What is a massive restriction natively regarding `try/catch` resolving strictly asynchronous operations (like `setTimeout`)?",
+                    "options": ["It deletes them", "It perfectly works", "Old `try/catch` inherently cannot fiercely intercept errors thrown mysteriously inside asynchronous asynchronous callbacks because the `try` block has already finished executing beforehand", "It slows them down"],
+                    "answer": "Old `try/catch` inherently cannot fiercely intercept errors thrown mysteriously inside asynchronous asynchronous callbacks because the `try` block has already finished executing beforehand"
+                },
+                {
+                    "question": "Can you use heavily `catch` without a strictly defined `err` identifier variable parameter in modern ES2019+ JS? (e.g. `catch { }`)",
+                    "options": ["Yes, it's called 'Optional Catch Binding'", "No, it's a fatal crash", "Only strictly using TypeScript", "Only in async"],
+                    "answer": "Yes, it's called 'Optional Catch Binding'"
+                },
+                {
+                    "question": "Is using `try/catch` brutally expensive fundamentally for CPU program performance optimizations?",
+                    "options": ["No", "Yes, traditionally V8/JS engines horribly struggle to cleanly optimize large code paths entirely wrapped deeply inside a massive global `try/catch`.", "Only for strings", "Only using floats"],
+                    "answer": "Yes, traditionally V8/JS engines horribly struggle to cleanly optimize large code paths entirely wrapped deeply inside a massive global `try/catch`."
+                }
+            ]
+        }
+    ]
+}

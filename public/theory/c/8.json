@@ -1,0 +1,177 @@
+{
+    "levelno": 8,
+    "topic": "Pointers Basics",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Pointers — Beginner",
+            "theory": "A **Pointer** is simply a variable that stores the *Memory Address* of another variable, rather than storing a standard value like an integer or character.\n\nEvery variable you create gets stored in your computer's RAM at a unique \"hexadecimal\" memory address (e.g., `0x7ffeb...`).\n- The **`&` (Address-Of) Operator**: Returns the exact memory address of a variable.\n  `int age = 25; printf(\"Address: %p\", &age);`\n\nTo declare a pointer variable, you use the **`*` (Asterisk)** operator in the definition:\n`int *ptr;` (ptr is a pointer to an integer block of memory).\n\nYou can then store the address of `age` inside `ptr`:\n`ptr = &age;`\n\nIf you want to view or change the actual value residing at that pointed address, you use the **`*` (Dereference) Operator** again:\n`printf(\"Value is: %d\", *ptr);   // Prints 25`",
+            "questions": [
+                {
+                    "question": "What specifically does a pointer variable store?",
+                    "options": ["A duplicate value", "A memory address", "A function", "Global variables"],
+                    "answer": "A memory address"
+                },
+                {
+                    "question": "Which operator is used to get the memory address of an existing variable?",
+                    "options": ["*", "&&", "&", "@"],
+                    "answer": "&"
+                },
+                {
+                    "question": "Which symbol is used to declare a pointer variable?",
+                    "options": ["&", "*", "%", "!"],
+                    "answer": "*"
+                },
+                {
+                    "question": "What is 'Dereferencing' a pointer?",
+                    "options": ["Deleting the pointer", "Removing the reference to free memory", "Using the * operator to access or modify the actual value at the pointed memory address", "Changing what the pointer points to"],
+                    "answer": "Using the * operator to access or modify the actual value at the pointed memory address"
+                },
+                {
+                    "question": "If `int *p = &x;`, what does `*p` represent?",
+                    "options": ["The memory address of x", "The value stored inside x", "The memory space of p", "Syntax error"],
+                    "answer": "The value stored inside x"
+                },
+                {
+                    "question": "What format specifier is standard for printing a memory address?",
+                    "options": ["%d", "%m", "%p", "%a"],
+                    "answer": "%p"
+                },
+                {
+                    "question": "If you use `*ptr = 50;`, what happens?",
+                    "options": ["ptr now points to memory address 50", "The variable that ptr points to has its value changed to 50", "ptr throws an error", "A new variable is created"],
+                    "answer": "The variable that ptr points to has its value changed to 50"
+                },
+                {
+                    "question": "Why is it necessary to declare the data type for a pointer (like `int *p`)?",
+                    "options": ["It is not necessary", "Because addresses for ints are formatted differently", "So the compiler knows how many bytes to read/write when the pointer is dereferenced", "So it can store ints"],
+                    "answer": "So the compiler knows how many bytes to read/write when the pointer is dereferenced"
+                },
+                {
+                    "question": "What is the output format of `%p` usually like?",
+                    "options": ["Base 10 integers", "Hexadecimal strings (like 0x7ffd...)", "Binary strings", "Words"],
+                    "answer": "Hexadecimal strings (like 0x7ffd...)"
+                },
+                {
+                    "question": "If `int a = 10; int *p = &a; a = 20;`, what does `*p` evaluate to?",
+                    "options": ["10", "20", "Unknown/Garbage", "Error"],
+                    "answer": "20"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Pointers — Intermediate",
+            "theory": "**Null Pointers**\nIt is incredibly dangerous to declare a pointer without assigning it a value: `int *ptr;`. It will point to a random garbage memory address. If you dereference it, your program will Segfault. Always initialize pointers! If you don't have an address yet, assign it to `NULL`:\n`int *ptr = NULL;`\n\n**Pointer Arithmetic**\nYou can perform math on pointers, but it operates based on the *data type size*. \nIf `ptr` points to an `int` (which is 4 bytes), doing `ptr++` does NOT add `1` to the address. It adds `4 bytes` to the address, effectively jumping to the *next integer* in memory. This is exactly how Array iteration works under the hood!",
+            "questions": [
+                {
+                    "question": "What is a Null Pointer?",
+                    "options": ["A pointer that points to the number 0 memory area (NULL macro), meaning it consciously points to 'nothing'", "A pointer to a negative number", "A pointer that creates a black hole", "A deleted variable"],
+                    "answer": "A pointer that points to the number 0 memory area (NULL macro), meaning it consciously points to 'nothing'"
+                },
+                {
+                    "question": "Why should you always initialize an idle pointer to NULL?",
+                    "options": ["It improves performance", "To prevent it from acting as a Wild Pointer pointing to random, dangerous memory", "Because compiler forces it", "It saves disk space"],
+                    "answer": "To prevent it from acting as a Wild Pointer pointing to random, dangerous memory"
+                },
+                {
+                    "question": "What happens if you accidentally dereference a NULL pointer (`*ptr = 5;`)?",
+                    "options": ["It safely creates a variable", "It silently ignores the command", "It crashes the program violently (Segmentation Fault / Null Pointer Dereference)", "It points to 0"],
+                    "answer": "It crashes the program violently (Segmentation Fault / Null Pointer Dereference)"
+                },
+                {
+                    "question": "If an `int` pointer `p` holds the address `1000`, and an integer is 4 bytes, what address does `p + 1` point to?",
+                    "options": ["1001", "1004", "1008", "2000"],
+                    "answer": "1004"
+                },
+                {
+                    "question": "Why does pointer arithmetic scale by the size of the data type?",
+                    "options": ["To confuse beginners", "To safely leap across arrays, hopping exactly from one full element to the next without landing inside the middle of a byte", "Because CPUs only do math in chunks of 4", "It's an unintended glitch"],
+                    "answer": "To safely leap across arrays, hopping exactly from one full element to the next without landing inside the middle of a byte"
+                },
+                {
+                    "question": "If you subtract two pointers (`ptr2 - ptr1`) that point to the same array, what does it return?",
+                    "options": ["The physical byte difference", "The total RAM size", "The number of array elements lying between the two pointers", "0"],
+                    "answer": "The number of array elements lying between the two pointers"
+                },
+                {
+                    "question": "Can you add two pointers together (`ptr1 + ptr2`)?",
+                    "options": ["Yes", "No, it makes no logical sense to add two memory addresses together and is illegal in C.", "Only if they point to ints", "Yes, it averages them"],
+                    "answer": "No, it makes no logical sense to add two memory addresses together and is illegal in C."
+                },
+                {
+                    "question": "What is a 'Dangling Pointer'?",
+                    "options": ["A pointer swinging on a thread", "A pointer initialized to NULL", "A pointer that still holds the address of a memory location that has already been deleted or fallen out of scope", "A pointer targeting a global"],
+                    "answer": "A pointer that still holds the address of a memory location that has already been deleted or fallen out of scope"
+                },
+                {
+                    "question": "How do you protect against Dangling Pointers after freeing memory?",
+                    "options": ["Restart the computer", "Reassign the pointer to NULL immediately after freeing it", "Change it to a const", "Delete the pointer"],
+                    "answer": "Reassign the pointer to NULL immediately after freeing it"
+                },
+                {
+                    "question": "What header file typically defines the NULL macro?",
+                    "options": ["<null.h>", "<string.h>", "<stddef.h> or <stdio.h>", "<math.h>"],
+                    "answer": "<stddef.h> or <stdio.h>"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Pointers — Expert",
+            "theory": "The **`void` Pointer** (`void *ptr`) is a generic, type-less pointer. It can store the address of *any* data type. However, because it has no type, the compiler doesn't know how many bytes to read, so **you cannot dereference a void pointer directly**. You must Type Cast it first: `*(int*)ptr`.\n\n**Pointers to Pointers** (Double Pointers)\nA pointer stores a memory address. Well, that pointer *itself* has a memory address! You can create a pointer that points to another pointer using two asterisks: `int **pp;`.\n\nThis is commonly used in dynamic 2D arrays or when passing a pointer into a function with the intent to modify the *original* pointer's target address, rather than just the target value.",
+            "questions": [
+                {
+                    "question": "What is a void pointer `void *p`?",
+                    "options": ["A pointer that deletes data", "A generic pointer that is agnostic to data type", "A pointer that points to NULL explicitly", "A syntax error"],
+                    "answer": "A generic pointer that is agnostic to data type"
+                },
+                {
+                    "question": "Can you dereference a void pointer directly via `*p`?",
+                    "options": ["Yes, it returns bytes", "No, the compiler throws an error because it doesn't know the byte size of the target data", "Yes, it assumes int", "Only if it points to char"],
+                    "answer": "No, the compiler throws an error because it doesn't know the byte size of the target data"
+                },
+                {
+                    "question": "How do you properly extract an integer from a void pointer `vptr`?",
+                    "options": ["*vptr", "(int)vptr", "*(int*)vptr", "int(*vptr)"],
+                    "answer": "*(int*)vptr"
+                },
+                {
+                    "question": "What is a Double Pointer?",
+                    "options": ["A pointer that takes double the memory", "A pointer pointing to a double float", "A pointer that stores the memory address of another pointer", "An array with two items"],
+                    "answer": "A pointer that stores the memory address of another pointer"
+                },
+                {
+                    "question": "How do you declare a double pointer to an int?",
+                    "options": ["int double *p;", "int *p[2];", "int **p;", "int p**;"],
+                    "answer": "int **p;"
+                },
+                {
+                    "question": "If `int a = 5; int *p = &a; int **pp = &p;`, how do you access the value 5 using `pp`?",
+                    "options": ["pp", "*pp", "**pp", "&pp"],
+                    "answer": "**pp"
+                },
+                {
+                    "question": "Why would you pass a double pointer `int **ptr` into a function?",
+                    "options": ["To speed up execution", "To allow the function to change what the original pointer `*ptr` actually points to", "Because single pointers are deprecated", "To pass a 1D array"],
+                    "answer": "To allow the function to change what the original pointer `*ptr` actually points to"
+                },
+                {
+                    "question": "What is the typical memory size of a pointer on a 64-bit architecture?",
+                    "options": ["1 byte", "4 bytes", "8 bytes", "Depends on data type"],
+                    "answer": "8 bytes"
+                },
+                {
+                    "question": "Does `sizeof(char*)` differ from `sizeof(double*)` on the same machine?",
+                    "options": ["Yes, double is bigger", "Yes, chars use less space", "No, all pointers are just memory addresses and thus practically always the same size", "Only on Linux"],
+                    "answer": "No, all pointers are just memory addresses and thus practically always the same size"
+                },
+                {
+                    "question": "What does `const int *p` mean?",
+                    "options": ["The pointer cannot change addresses", "The value pointed to cannot be modified through this pointer, but the pointer CAN point to a different address.", "Neither the value nor the address can change", "Both can change freely"],
+                    "answer": "The value pointed to cannot be modified through this pointer, but the pointer CAN point to a different address."
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,177 @@
+{
+    "levelno": 1,
+    "topic": "Hello World & Basic Syntax",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Hello World & Basic Syntax — Beginner",
+            "theory": "C is a high-level, procedural programming language developed in 1972 by Dennis Ritchie. It is the foundation for many modern languages and operating systems (including Linux).\n\nEvery C program must have exactly one **`main()`** function, which serves as the entry point of the program. Execution begins here.\n\nTo display text on the screen, C provides the **`printf()`** function. However, to use `printf()`, you must first include the Standard Input/Output library header file at the top of your program: **`#include <stdio.h>`**.\n\nA simple C program looks like this:\n```c\n#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}\n```\nEvery statement in a C program must end with a **semicolon (`;`)**.",
+            "questions": [
+                {
+                    "question": "Which function serves as the starting point of execution for every C program?",
+                    "options": ["start()", "main()", "init()", "run()"],
+                    "answer": "main()"
+                },
+                {
+                    "question": "Which header file must be included to use the printf() function?",
+                    "options": ["<stdlib.h>", "<math.h>", "<stdio.h>", "<conio.h>"],
+                    "answer": "<stdio.h>"
+                },
+                {
+                    "question": "What character is used to terminate a statement in C?",
+                    "options": [". (period)", ": (colon)", "; (semicolon)", ", (comma)"],
+                    "answer": "; (semicolon)"
+                },
+                {
+                    "question": "Who developed the C programming language?",
+                    "options": ["Bjarne Stroustrup", "James Gosling", "Dennis Ritchie", "Guido van Rossum"],
+                    "answer": "Dennis Ritchie"
+                },
+                {
+                    "question": "Which function is used to print text to the console in C?",
+                    "options": ["print()", "cout", "console.log()", "printf()"],
+                    "answer": "printf()"
+                },
+                {
+                    "question": "What does '\\n' represent in a printf statement?",
+                    "options": ["New line character", "Null character", "Number character", "Next command"],
+                    "answer": "New line character"
+                },
+                {
+                    "question": "What is the typical return value indicating successful execution of main()?",
+                    "options": ["return 1;", "return 0;", "return -1;", "return null;"],
+                    "answer": "return 0;"
+                },
+                {
+                    "question": "Which of the following is an invalid C statement?",
+                    "options": ["printf(\"Hi\");", "return 0;", "int main()", "printf(\"Hello\")"],
+                    "answer": "printf(\"Hello\")"
+                },
+                {
+                    "question": "Is C a procedural or object-oriented language?",
+                    "options": ["Procedural", "Object-Oriented", "Functional", "Logic-based"],
+                    "answer": "Procedural"
+                },
+                {
+                    "question": "What symbol starts a preprocessor directive like include?",
+                    "options": ["@", "$", "#", "!"],
+                    "answer": "#"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Hello World & Basic Syntax — Intermediate",
+            "theory": "Comments are crucial for documenting C code, but are completely ignored by the compiler.\n\nThere are two types of comments in Modern C:\n1. **Single-line comments**: start with `//` and extend to the end of the line.\n2. **Multi-line comments**: start with `/*` and end with `*/`.\n\nWhite space (spaces, tabs, newlines) is generally ignored by the C compiler, except within string literals or when separating keywords. You can format your code however you like, but consistent indentation is a best practice.\n\nThe compilation process in C usually consists of 4 steps:\n1. **Preprocessing** (handling `#include`, `#define`, removing comments)\n2. **Compilation** (converting C code to assembly code)\n3. **Assembly** (converting assembly to machine code / object files)\n4. **Linking** (combining object files and libraries to create an executable)",
+            "questions": [
+                {
+                    "question": "How do you start a single-line comment in C?",
+                    "options": ["//", "/*", "#", "--"],
+                    "answer": "//"
+                },
+                {
+                    "question": "How do you start a multi-line comment in C?",
+                    "options": ["/*", "*/", "//", "<--"],
+                    "answer": "/*"
+                },
+                {
+                    "question": "What is the first step in the compilation process of a C program?",
+                    "options": ["Linking", "Assembly", "Compilation", "Preprocessing"],
+                    "answer": "Preprocessing"
+                },
+                {
+                    "question": "What role does the Linker play in the C build process?",
+                    "options": ["Checks for syntax errors", "Converts C code to assembly", "Combines object files and libraries into an executable", "Executes the main function"],
+                    "answer": "Combines object files and libraries into an executable"
+                },
+                {
+                    "question": "Does the C compiler ignore whitespace outside of string literals?",
+                    "options": ["Yes", "No, it strictly relies on indentation", "No, it counts spaces to determine blocks", "Only if there are no comments"],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "Which of the following is removed from the source code during the Preprocessing stage?",
+                    "options": ["Loops", "Functions", "Comments", "Variables"],
+                    "answer": "Comments"
+                },
+                {
+                    "question": "Can multi-line comments (/* ... */) be safely nested inside each other in standard C?",
+                    "options": ["Yes, infinitely", "Yes, up to 3 levels", "No, they cannot be nested", "Only if you use a special compiler flag"],
+                    "answer": "No, they cannot be nested"
+                },
+                {
+                    "question": "What file extension is traditionally used for an un-compiled C source file?",
+                    "options": [".obj", ".exe", ".h", ".c"],
+                    "answer": ".c"
+                },
+                {
+                    "question": "What file extension is used for C header files?",
+                    "options": [".head", ".h", ".c", ".cpp"],
+                    "answer": ".h"
+                },
+                {
+                    "question": "Which output file does 'gcc main.c' typically generate by default on Linux/Unix systems?",
+                    "options": ["a.out", "main.exe", "main.o", "output.bin"],
+                    "answer": "a.out"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Hello World & Basic Syntax — Expert",
+            "theory": "The `main()` function's signature can take arguments if you want your program to accept command-line input: \n**`int main(int argc, char *argv[])`**.\n- `argc` (argument count) holds the number of command-line arguments passed.\n- `argv` (argument vector) is an array of strings representing the arguments. `argv[0]` is always the program's name.\n\nWhile `#include <stdio.h>` is technically a preprocessor directive, if you forget it before using `printf()`, modern C compilers (C99 and later) will throw a warning or error about an \"implicit declaration\" of `printf`. In older C89 standard, the compiler would assume `printf` returns an `int` and guess its parameter types, which could lead to nasty linking errors!\n\nAdditionally, the C standard guarantees three standard streams are open when a program starts: `stdin` (keyboard), `stdout` (screen), and `stderr` (screen for errors).",
+            "questions": [
+                {
+                    "question": "What does 'argc' represent in the main function signature?",
+                    "options": ["Argument Count", "Argument Characters", "Array Code", "ASCII character"],
+                    "answer": "Argument Count"
+                },
+                {
+                    "question": "What does 'argv[0]' conventionally hold?",
+                    "options": ["The first user-provided argument", "The name of the program being executed", "NULL", "The user's environment variables"],
+                    "answer": "The name of the program being executed"
+                },
+                {
+                    "question": "What happens in Modern C (C99 and above) if you use printf without including <stdio.h>?",
+                    "options": ["It works perfectly.", "The program crashes at runtime.", "The compiler warns or errors about an implicit declaration.", "The CPU halts."],
+                    "answer": "The compiler warns or errors about an implicit declaration."
+                },
+                {
+                    "question": "What is 'stderr' used for in a C program?",
+                    "options": ["Accepting standard input", "Outputting standard errors and diagnostics", "Reading files", "Writing standard output"],
+                    "answer": "Outputting standard errors and diagnostics"
+                },
+                {
+                    "question": "Is void main() currently considered standard-compliant C starting code?",
+                    "options": ["Yes, it is fully compliant", "No, standard C requires main to return int", "Yes, but only on Linux", "No, it must return float"],
+                    "answer": "No, standard C requires main to return int"
+                },
+                {
+                    "question": "If you passed 3 custom arguments to your program via command line, what is the value of argc?",
+                    "options": ["2", "3", "4", "0"],
+                    "answer": "4"
+                },
+                {
+                    "question": "In the C89 standard, what happened if a function was used before it was declared?",
+                    "options": ["The compiler crashed", "It was implicitly assumed to return an int", "It threw a fatal error immediately", "It assumed the function took no parameters"],
+                    "answer": "It was implicitly assumed to return an int"
+                },
+                {
+                    "question": "What does 'char *argv[]' mean conceptually?",
+                    "options": ["An array of characters", "A pointer to an integer", "An array of pointers to characters (effectively an array of strings)", "A multi-dimensional array of floats"],
+                    "answer": "An array of pointers to characters (effectively an array of strings)"
+                },
+                {
+                    "question": "What is the equivalent of returning 0 from main() when using the <stdlib.h> macro?",
+                    "options": ["return EXIT_SUCCESS;", "return EXIT_FAILURE;", "return NULL;", "return OK;"],
+                    "answer": "return EXIT_SUCCESS;"
+                },
+                {
+                    "question": "What are the three predefined standard streams in C?",
+                    "options": ["stdin, stdout, stddisk", "in, out, err", "stdin, stdout, stderr", "file, memory, socket"],
+                    "answer": "stdin, stdout, stderr"
+                }
+            ]
+        }
+    ]
+}

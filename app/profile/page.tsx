@@ -120,7 +120,7 @@ function ProfileContent() {
                   <div>
                     <p className="text-xs text-muted-foreground">Experience</p>
                     <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-                      {displayXp.toLocaleString()}
+                      {displayXp.toLocaleString()} <span className="text-sm font-normal text-muted-foreground">XP</span>
                     </p>
                   </div>
                   <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />

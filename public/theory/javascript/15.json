@@ -1,0 +1,327 @@
+{
+    "levelno": 15,
+    "topic": "Intro to OOP (Classes & Objects)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Intro to OOP — Beginner Level",
+            "theory": "**OOP (Object-Oriented Programming)** models real-world concepts as **classes** and **objects**.\n\n- **Class** — a blueprint: `class Dog:`\n- **Object** — an instance of a class: `my_dog = Dog('Fido', 5)`\n\n`__init__()` is the constructor — called automatically when creating an object. `self` refers to the specific instance.\n\n```python\nclass Dog:\n    def __init__(self, name, age):\n        self.name = name  # instance attribute\n        self.age = age\n\n    def bark(self):\n        return 'Woof!'\n\nmy_dog = Dog('Fido', 5)\nprint(my_dog.name)  # Fido\nprint(my_dog.bark())  # Woof!\n```",
+            "questions": [
+                {
+                    "question": "What is a class?",
+                    "options": [
+                        "An object",
+                        "A blueprint for creating objects",
+                        "A built-in function",
+                        "A data type"
+                    ],
+                    "answer": "A blueprint for creating objects"
+                },
+                {
+                    "question": "What is an object?",
+                    "options": [
+                        "A class definition",
+                        "An instance of a class",
+                        "A global variable",
+                        "A module"
+                    ],
+                    "answer": "An instance of a class"
+                },
+                {
+                    "question": "What is `__init__()` used for?",
+                    "options": [
+                        "To destroy an object",
+                        "To initialize an object's attributes (constructor)",
+                        "To print the object",
+                        "To define the class"
+                    ],
+                    "answer": "To initialize an object's attributes (constructor)"
+                },
+                {
+                    "question": "What does `self` refer to in a method?",
+                    "options": [
+                        "The class itself",
+                        "A global variable",
+                        "The specific instance the method is called on",
+                        "The parent class"
+                    ],
+                    "answer": "The specific instance the method is called on"
+                },
+                {
+                    "question": "How do you define a class named `Car`?",
+                    "options": [
+                        "def Car:",
+                        "class Car:",
+                        "Car():",
+                        "object Car:"
+                    ],
+                    "answer": "class Car:"
+                },
+                {
+                    "question": "How do you create a `Person` object with `def __init__(self, name):`?",
+                    "options": [
+                        "p = Person()",
+                        "p = Person.new('Alice')",
+                        "p = Person('Alice')",
+                        "p = new Person('Alice')"
+                    ],
+                    "answer": "p = Person('Alice')"
+                },
+                {
+                    "question": "Variables belonging to an object are called:",
+                    "options": [
+                        "Global variables",
+                        "Local variables",
+                        "Class attributes",
+                        "Instance attributes"
+                    ],
+                    "answer": "Instance attributes"
+                },
+                {
+                    "question": "Functions defined inside a class are called:",
+                    "options": [
+                        "Global functions",
+                        "Methods",
+                        "Procedures",
+                        "Lambdas"
+                    ],
+                    "answer": "Methods"
+                },
+                {
+                    "question": "Do you explicitly pass `self` when calling a method on an object?",
+                    "options": [
+                        "Yes, always",
+                        "No, Python passes it automatically",
+                        "Only for __init__",
+                        "Only when there are other parameters"
+                    ],
+                    "answer": "No, Python passes it automatically"
+                },
+                {
+                    "question": "How do you access attribute `color` of object `my_car`?",
+                    "options": [
+                        "my_car['color']",
+                        "my_car(color)",
+                        "my_car.color",
+                        "color(my_car)"
+                    ],
+                    "answer": "my_car.color"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Intro to OOP — Intermediate Level",
+            "theory": "**Instance vs Class attributes:**\n- **Instance attribute** — unique per object, set via `self.x = value`\n- **Class attribute** — shared by all instances, set in the class body\n\n**`__str__` and `__repr__`** — dunder methods:\n- `__str__` — human-readable string (used by `print()` and `str()`)\n- `__repr__` — developer representation (used by `repr()`, REPL)\n\n```python\nclass Point:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __str__(self):\n        return f'Point({self.x}, {self.y})'\n    def __repr__(self):\n        return f'Point(x={self.x}, y={self.y})'\n```\n\n**`@classmethod`** — receives the class (`cls`) as first argument.\n**`@staticmethod`** — neither class nor instance as first argument.",
+            "questions": [
+                {
+                    "question": "What is a class attribute?",
+                    "options": [
+                        "An attribute specific to one instance",
+                        "An attribute shared by ALL instances of the class",
+                        "A local variable inside a method",
+                        "A global variable"
+                    ],
+                    "answer": "An attribute shared by ALL instances of the class"
+                },
+                {
+                    "question": "What is `__str__` used for?",
+                    "options": [
+                        "Storing strings",
+                        "Defining the human-readable string representation used by print()",
+                        "Comparing two objects",
+                        "Destroying an object"
+                    ],
+                    "answer": "Defining the human-readable string representation used by print()"
+                },
+                {
+                    "question": "What is the difference between `__str__` and `__repr__`?",
+                    "options": [
+                        "They are identical",
+                        "__str__ is for end users; __repr__ is aimed at developers/debugging",
+                        "__repr__ is for end users; __str__ is for debugging",
+                        "__str__ is only for numbers"
+                    ],
+                    "answer": "__str__ is for end users; __repr__ is aimed at developers/debugging"
+                },
+                {
+                    "question": "What decorator marks a class method?",
+                    "options": [
+                        "@method",
+                        "@instance",
+                        "@classmethod",
+                        "@staticmethod"
+                    ],
+                    "answer": "@classmethod"
+                },
+                {
+                    "question": "What is the first parameter of a `@classmethod`?",
+                    "options": [
+                        "self",
+                        "cls",
+                        "obj",
+                        "klass"
+                    ],
+                    "answer": "cls"
+                },
+                {
+                    "question": "What does a `@staticmethod` have as its first parameter?",
+                    "options": [
+                        "self",
+                        "cls",
+                        "No special first parameter",
+                        "obj"
+                    ],
+                    "answer": "No special first parameter"
+                },
+                {
+                    "question": "If you change a class attribute on one instance, does it affect other instances?",
+                    "options": [
+                        "Yes, all instances see the change",
+                        "No, it only creates a new instance attribute on that object, shadowing the class one",
+                        "It raises AttributeError",
+                        "Yes, but only for new instances"
+                    ],
+                    "answer": "No, it only creates a new instance attribute on that object, shadowing the class one"
+                },
+                {
+                    "question": "What does `obj.__class__` give you?",
+                    "options": [
+                        "The parent class",
+                        "The class the object is an instance of",
+                        "The module",
+                        "The object's ID"
+                    ],
+                    "answer": "The class the object is an instance of"
+                },
+                {
+                    "question": "Which built-in checks if an object is an instance of a class?",
+                    "options": [
+                        "type(obj) == ClassName",
+                        "isinstance(obj, ClassName)",
+                        "obj.isInstance(ClassName)",
+                        "istype(obj, ClassName)"
+                    ],
+                    "answer": "isinstance(obj, ClassName)"
+                },
+                {
+                    "question": "What is the process of creating an object from a class called?",
+                    "options": [
+                        "Compilation",
+                        "Instantiation",
+                        "Declaration",
+                        "Initialization"
+                    ],
+                    "answer": "Instantiation"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Intro to OOP — Expert Level",
+            "theory": "**Magic (dunder) methods** enable operator overloading:\n- `__eq__` — `==` operator\n- `__lt__` — `<` operator\n- `__add__` — `+` operator\n- `__len__` — `len()` function\n- `__getitem__` — indexing `obj[key]`\n- `__iter__` / `__next__` — make objects iterable\n\n**`dataclasses`** (Python 3.7+) auto-generate `__init__`, `__repr__`, `__eq__`:\n```python\nfrom dataclasses import dataclass\n@dataclass\nclass Point:\n    x: float\n    y: float\n```\n\n**`__new__`** — called before `__init__` to create the object. Rarely needed except for singletons or metaclasses.",
+            "questions": [
+                {
+                    "question": "Which dunder method is called when you use `==` between two objects?",
+                    "options": [
+                        "__cmp__",
+                        "__eq__",
+                        "__is__",
+                        "__match__"
+                    ],
+                    "answer": "__eq__"
+                },
+                {
+                    "question": "Which dunder method enables `obj[key]` syntax on a custom object?",
+                    "options": [
+                        "__access__",
+                        "__index__",
+                        "__getitem__",
+                        "__key__"
+                    ],
+                    "answer": "__getitem__"
+                },
+                {
+                    "question": "What does `@dataclass` auto-generate?",
+                    "options": [
+                        "Only __init__",
+                        "__init__, __repr__, and __eq__ (and more optionally)",
+                        "Only __repr__",
+                        "All dunder methods"
+                    ],
+                    "answer": "__init__, __repr__, and __eq__ (and more optionally)"
+                },
+                {
+                    "question": "What is `__new__` responsible for?",
+                    "options": [
+                        "Destroying objects",
+                        "Creating the object instance before __init__ is called",
+                        "Cloning objects",
+                        "Registering the class"
+                    ],
+                    "answer": "Creating the object instance before __init__ is called"
+                },
+                {
+                    "question": "Which dunder method allows `len(obj)` on a custom class?",
+                    "options": [
+                        "__size__",
+                        "__count__",
+                        "__len__",
+                        "__length__"
+                    ],
+                    "answer": "__len__"
+                },
+                {
+                    "question": "Which module provides the `@dataclass` decorator?",
+                    "options": [
+                        "typing",
+                        "dataclasses",
+                        "collections",
+                        "abc"
+                    ],
+                    "answer": "dataclasses"
+                },
+                {
+                    "question": "What does `__slots__` do in a class?",
+                    "options": [
+                        "Limits which attributes an instance can have and reduces memory usage",
+                        "Adds slots for new methods",
+                        "Makes the class immutable",
+                        "Enables multi-inheritance"
+                    ],
+                    "answer": "Limits which attributes an instance can have and reduces memory usage"
+                },
+                {
+                    "question": "What does `__hash__` need to be consistent with?",
+                    "options": [
+                        "__str__",
+                        "__eq__ — if a == b then hash(a) must == hash(b)",
+                        "__repr__",
+                        "__init__"
+                    ],
+                    "answer": "__eq__ — if a == b then hash(a) must == hash(b)"
+                },
+                {
+                    "question": "What does `__call__` allow on an object `obj`?",
+                    "options": [
+                        "Iteration with for",
+                        "Calling obj like a function: obj()",
+                        "Indexing obj[0]",
+                        "Using obj in a with statement"
+                    ],
+                    "answer": "Calling obj like a function: obj()"
+                },
+                {
+                    "question": "If `@dataclass(frozen=True)` is used, the object becomes:",
+                    "options": [
+                        "Faster only",
+                        "Immutable (setting attributes raises FrozenInstanceError)",
+                        "A namedtuple",
+                        "A singleton"
+                    ],
+                    "answer": "Immutable (setting attributes raises FrozenInstanceError)"
+                }
+            ]
+        }
+    ]
+}

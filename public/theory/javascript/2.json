@@ -1,0 +1,177 @@
+{
+    "levelno": 2,
+    "topic": "Operators & Expressions",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Operators — Beginner",
+            "theory": "Operators allow you to perform actions on variables and values.\n\n**Math Operators**\n- `+` Addition, `-` Subtraction\n- `*` Multiplication, `/` Division\n- `%` Modulo (Returns the remainder. `10 % 3` is `1`)\n- `**` Exponentiation (`2 ** 3` is `8`)\n\n**Assignment Operators**\n- `=` Basic equal assignment (`let x = 5`)\n- `+=` Add AND assign (`x += 3` is the same as `x = x + 3`)\n\n**String Concatenation**\nThe `+` operator has a dual purpose. If you use it on purely strings, it fuses (concatenates) them seamlessly.\n`let name = \"John\" + \" \" + \"Doe\"; // \"John Doe\"`",
+            "questions": [
+                {
+                    "question": "What is the purpose of Operators?",
+                    "options": ["To define variables", "To perform mathematical or logical calculations and actions on values", "To print to the console", "To loop code"],
+                    "answer": "To perform mathematical or logical calculations and actions on values"
+                },
+                {
+                    "question": "Which operator returns the remainder of division?",
+                    "options": ["/", "//", "% (Modulo)", "\\"],
+                    "answer": "% (Modulo)"
+                },
+                {
+                    "question": "If `val = 14 % 5;`, what is the value of `val`?",
+                    "options": ["2.8", "4", "3", "1"],
+                    "answer": "4"
+                },
+                {
+                    "question": "Which operator performs exponentiation (power)?",
+                    "options": ["^", "**", "power()", "%%"],
+                    "answer": "**"
+                },
+                {
+                    "question": "What does `a += b` fundamentally mean?",
+                    "options": ["a is greater than or equal to b", "a + b", "a = a + b (It adds b to a, and saves the new result securely inside a)", "a and b are added"],
+                    "answer": "a = a + b (It adds b to a, and saves the new result securely inside a)"
+                },
+                {
+                    "question": "If `let count = 5; count++;`, what is the final value of count?",
+                    "options": ["5", "6 (The ++ increments value by exactly 1)", "4", "Error"],
+                    "answer": "6 (The ++ increments value by exactly 1)"
+                },
+                {
+                    "question": "What happens if you use the `+` operator on two strings? (`\"Hello\" + \"World\"`)",
+                    "options": ["A math error occurs", "It returns 0", "It brilliantly concatenates (glues) the strings together resulting in `\"HelloWorld\"`", "It deletes the strings"],
+                    "answer": "It brilliantly concatenates (glues) the strings together resulting in `\"HelloWorld\"`"
+                },
+                {
+                    "question": "What is the decrement operator?",
+                    "options": ["-=", "---", "--", "-"],
+                    "answer": "--"
+                },
+                {
+                    "question": "If you perform multiplication `*` on two variables, what does JS strictly expect them to be?",
+                    "options": ["Numbers", "Strings", "Booleans", "Arrays"],
+                    "answer": "Numbers"
+                },
+                {
+                    "question": "What is the standard assignment operator used to initially set a value to a variable?",
+                    "options": ["==", ":", "=>", "="],
+                    "answer": "="
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Operators — Intermediate",
+            "theory": "JavaScript's Type Coercion is incredibly infamous.\n\n**Type Coercion Magic**\nIf you mix strings and numbers using the `+` operator, JavaScript panics and converts the Number into a String!\n`5 + \"5\"` evaluate to `\"55\"` (string)!\n\nHowever, if you use `-`, `*`, or `/`, JS converts the String boldly into a Number!\n`\"10\" - 2` evaluates to `8` (number).\n`\"Apple\" - 5` evaluates to `NaN` (Not a Number).\n\n**Equality Operators**\n- `==` (Loose Equality): Checks if values are the same, *allowing* type coercion. (`5 == \"5\"` is true).\n- `===` (Strict Equality): Checks if values AND data types are definitively identical. (`5 === \"5\"` is completely false).\nALWAYS use `===` to prevent logic bugs!",
+            "questions": [
+                {
+                    "question": "What is Implicit Type Coercion in JavaScript?",
+                    "options": ["A server crash", "JS automatically and silently converting data from one type to another (e.g., Number to String) to force operations to succeed without throwing errors", "Encrypting data", "Looping strings"],
+                    "answer": "JS automatically and silently converting data from one type to another (e.g., Number to String) to force operations to succeed without throwing errors"
+                },
+                {
+                    "question": "What does `10 + \"20\"` evaluate to due to coercion?",
+                    "options": ["30", "\"1020\" (It converts the 10 to a string and concatenates them)", "NaN", "Error"],
+                    "answer": "\"1020\" (It converts the 10 to a string and concatenates them)"
+                },
+                {
+                    "question": "What does `\"20\" - 5` evaluate to?",
+                    "options": ["\"20-5\"", "15 (The minus operator violently forces the string to convert into a mathematical Number)", "NaN", "Error"],
+                    "answer": "15 (The minus operator violently forces the string to convert into a mathematical Number)"
+                },
+                {
+                    "question": "What is `NaN`?",
+                    "options": ["Not a Node", "Null and Negative", "Not a Number (A special error value returned when a math operation physically fails to compute, like multiplying a word by a number)", "A string"],
+                    "answer": "Not a Number (A special error value returned when a math operation physically fails to compute, like multiplying a word by a number)"
+                },
+                {
+                    "question": "What is the difference securely between `==` and `===`?",
+                    "options": ["No difference", "`==` is loose and allows auto type conversion; `===` strictly checks that both the value AND the data type perfectly match", "`===` does not exist", "`==` is faster"],
+                    "answer": "`==` is loose and allows auto type conversion; `===` strictly checks that both the value AND the data type perfectly match"
+                },
+                {
+                    "question": "What does `3 == \"3\"` realistically return?",
+                    "options": ["false", "error", "true (Because Loose Equality converts the string '3' into a number before comparing)", "null"],
+                    "answer": "true (Because Loose Equality converts the string '3' into a number before comparing)"
+                },
+                {
+                    "question": "What does `3 === \"3\"` strictly return?",
+                    "options": ["true", "false (Because one is a distinct Number and the other is a String, they instantly fail strict comparison)", "undefined", "error"],
+                    "answer": "false (Because one is a distinct Number and the other is a String, they instantly fail strict comparison)"
+                },
+                {
+                    "question": "Which inequality operator correctly strictly checks \"Not Equal\" (checking both type and value)?",
+                    "options": ["!=", "<>", "!==", "!!="],
+                    "answer": "!=="
+                },
+                {
+                    "question": "Why do virtually all modern JS developers heavily enforce using `===` exclusively?",
+                    "options": ["It looks cooler", "To physically prevent horrible logical security bugs birthed from JavaScript blindly coercing things (like `0 == false` being weirdly true)", "It uses less RAM", "It is required by HTML"],
+                    "answer": "To physically prevent horrible logical security bugs birthed from JavaScript blindly coercing things (like `0 == false` being weirdly true)"
+                },
+                {
+                    "question": "What does `typeof NaN` bizarrely return?",
+                    "options": ["\"null\"", "\"string\"", "\"number\" (Yes, bizarrely, Not-A-Number is categorized logically under the Number prototype data type!)", "\"NaN\""],
+                    "answer": "\"number\" (Yes, bizarrely, Not-A-Number is categorized logically under the Number prototype data type!)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Operators — Expert",
+            "theory": "**Logical Short-Circuiting (`&&` and `||`)**\nLogical operators don't actually just return `true` or `false` in JS. They powerfully return the *actual value* that stopped the evaluation!\n\nThe **Logical OR (`||`)** operator finds the first \"truthy\" value and returns it immediately. If none are truthy, it returns the last one.\n`let username = input || \"Guest\";` (If input is empty/falsy, it intelligently assigns \"Guest\").\n\n**The Nullish Coalescing Operator (`??`)**\nBecause `||` treats `0` and `\"\"` as falsy, it can cause bugs if `0` is a valid score.\nThe newer `??` operator ONLY triggers gracefully if the left side is definitively `null` or `undefined`.\n`let score = 0 || 10; // score becomes 10 (Bug)`\n`let score = 0 ?? 10; // score brilliantly stays 0`",
+            "questions": [
+                {
+                    "question": "In JavaScript, Logical operators (`&&`, `||`) do NOT strictly return Boolean true/false. What do they fundamentally do?",
+                    "options": ["Return strings", "They mathematically evaluate and return one of the original actual operand values that successfully triggered the short-circuit logic", "Return null", "Return 0 or 1"],
+                    "answer": "They mathematically evaluate and return one of the original actual operand values that successfully triggered the short-circuit logic"
+                },
+                {
+                    "question": "What are \"Falsy\" values in JavaScript?",
+                    "options": ["Variables named false", "A strict list of specific values evaluated as physically false: `false, 0, \"\" (empty string), null, undefined, and NaN`", "Any string", "Only NULL"],
+                    "answer": "A strict list of specific values evaluated as physically false: `false, 0, \"\" (empty string), null, undefined, and NaN`"
+                },
+                {
+                    "question": "What is any value not on the Falsy list inherently called in JS?",
+                    "options": ["Secure", "Truthy (It evaluates as true in logical conditions)", "Solid", "Real"],
+                    "answer": "Truthy (It evaluates as true in logical conditions)"
+                },
+                {
+                    "question": "If you evaluate `\"Apple\" || \"Orange\"`, what exact value is returned?",
+                    "options": ["true", "false", "\"Apple\" (Because it is truthy, OR short-circuits instantly and outputs it)", "\"Orange\""],
+                    "answer": "\"Apple\" (Because it is truthy, OR short-circuits instantly and outputs it)"
+                },
+                {
+                    "question": "How is `||` commonly brilliantly leveraged in older JavaScript for default variable assignments?",
+                    "options": ["To encrypt variables", "To cleanly provide a fallback backup value if a variable is currently empty/falsy (e.g., `name = user || \"Unknown\"`)", "To delete strings", "To multiply them"],
+                    "answer": "To cleanly provide a fallback backup value if a variable is currently empty/falsy (e.g., `name = user || \"Unknown\"`)"
+                },
+                {
+                    "question": "What severe bug often occurs when using `||` for default fallback numbers?",
+                    "options": ["It crashes", "If the user intentionally submits the vastly legitimate number `0`, the `||` blindly sees it as Falsy and forcefully overrides it with the fallback value anyway!", "It converts to strings", "It divides by 0"],
+                    "answer": "If the user intentionally submits the vastly legitimate number `0`, the `||` blindly sees it as Falsy and forcefully overrides it with the fallback value anyway!"
+                },
+                {
+                    "question": "How does the ultra-modern Nullish Coalescing Operator (`??`) fix the `||` zero bug?",
+                    "options": ["It deletes zeroes", "It converts 0 to strings", "It ONLY provides the fallback if the left variable is explicitly undeniably `null` or `undefined`. It perfectly accepts `0` and `\"\"` as valid data.", "It crashes on zero"],
+                    "answer": "It ONLY provides the fallback if the left variable is explicitly undeniably `null` or `undefined`. It perfectly accepts `0` and `\"\"` as valid data."
+                },
+                {
+                    "question": "If `let count = 0 ?? 10;`, what is the exact value of count?",
+                    "options": ["10", "true", "0 (Because 0 is neither null nor undefined, the ?? operator accepts it)", "undefined"],
+                    "answer": "0 (Because 0 is neither null nor undefined, the ?? operator accepts it)"
+                },
+                {
+                    "question": "How does Logical AND (`&&`) intelligently short-circuit?",
+                    "options": ["It is random", "It forcefully returns the FIRST completely falsy value it finds. If everything succeeds and is truthy, it returns the very LAST truthy value.", "It only returns true", "It deletes truthy values"],
+                    "answer": "It forcefully returns the FIRST completely falsy value it finds. If everything succeeds and is truthy, it returns the very LAST truthy value."
+                },
+                {
+                    "question": "What is the Optional Chaining operator `?.` natively used for?",
+                    "options": ["Connecting strings", "Math addition", "To safely attempt to access deeply nested data properties deeply inside an Object. If the chain breaks (it hits null), it safely returns undefined without fatally crashing the page.", "Deleting arrays"],
+                    "answer": "To safely attempt to access deeply nested data properties deeply inside an Object. If the chain breaks (it hits null), it safely returns undefined without fatally crashing the page."
+                }
+            ]
+        }
+    ]
+}

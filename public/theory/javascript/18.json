@@ -1,0 +1,327 @@
+{
+    "levelno": 18,
+    "topic": "Modules & Packages",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Modules & Packages — Beginner Level",
+            "theory": "A **module** is any `.py` file. You use `import` to bring its code into your script.\n\n**Three import styles:**\n```python\nimport math               # use math.sqrt(16)\nfrom math import sqrt     # use sqrt(16) directly\nimport math as m          # use m.sqrt(16)\n```\n\n**Standard Library** — Python ships with many useful modules:\n- `math` — `sqrt`, `pi`, `floor`, `ceil`\n- `random` — `randint`, `choice`, `shuffle`\n- `datetime` — `date`, `datetime`, `timedelta`\n- `os` — operating system interface\n- `sys` — system-specific parameters and functions\n\nA **package** is a folder of modules with an `__init__.py` file.",
+            "questions": [
+                {
+                    "question": "What is a Python module?",
+                    "options": [
+                        "A class",
+                        "A Python .py file containing code",
+                        "A directory of files",
+                        "A function"
+                    ],
+                    "answer": "A Python .py file containing code"
+                },
+                {
+                    "question": "Which keyword imports a module?",
+                    "options": [
+                        "include",
+                        "using",
+                        "import",
+                        "load"
+                    ],
+                    "answer": "import"
+                },
+                {
+                    "question": "With `import math`, how do you use square root?",
+                    "options": [
+                        "sqrt(16)",
+                        "math.sqrt(16)",
+                        "math->sqrt(16)",
+                        "math::sqrt(16)"
+                    ],
+                    "answer": "math.sqrt(16)"
+                },
+                {
+                    "question": "With `from math import sqrt`, how do you use it?",
+                    "options": [
+                        "math.sqrt(16)",
+                        "sqrt(16)",
+                        "Must alias it",
+                        "Not possible"
+                    ],
+                    "answer": "sqrt(16)"
+                },
+                {
+                    "question": "What is the Python Standard Library?",
+                    "options": [
+                        "All third-party packages",
+                        "The official documentation",
+                        "A collection of modules bundled with every Python installation",
+                        "A repository of open-source code"
+                    ],
+                    "answer": "A collection of modules bundled with every Python installation"
+                },
+                {
+                    "question": "What does `import random as r` allow?",
+                    "options": [
+                        "Import only r from random",
+                        "Use r as an alias for the random module",
+                        "Import r as a variable",
+                        "Import random twice"
+                    ],
+                    "answer": "Use r as an alias for the random module"
+                },
+                {
+                    "question": "What distinguishes a package from a module?",
+                    "options": [
+                        "Packages are faster",
+                        "A package is a directory of modules (typically with __init__.py)",
+                        "Packages have no functions",
+                        "Modules include packages"
+                    ],
+                    "answer": "A package is a directory of modules (typically with __init__.py)"
+                },
+                {
+                    "question": "What does `from random import *` do?",
+                    "options": [
+                        "Imports nothing",
+                        "Imports all public names from random into the current namespace",
+                        "Imports only the most common functions",
+                        "Raises ImportError"
+                    ],
+                    "answer": "Imports all public names from random into the current namespace"
+                },
+                {
+                    "question": "What does `math.pi` give you?",
+                    "options": [
+                        "3",
+                        "3.14",
+                        "3.141592653589793",
+                        "Error"
+                    ],
+                    "answer": "3.141592653589793"
+                },
+                {
+                    "question": "What is `__init__.py` used for?",
+                    "options": [
+                        "To start a Python script",
+                        "To mark a directory as a Python package",
+                        "To declare global variables",
+                        "To document the module"
+                    ],
+                    "answer": "To mark a directory as a Python package"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Modules & Packages — Intermediate Level",
+            "theory": "**`__all__`** — a list in a module that defines which names are exported with `from module import *`:\n```python\n# mymodule.py\n__all__ = ['public_func']\ndef public_func(): ...\ndef _private_func(): ...\n```\n\n**`if __name__ == '__main__':`** — code under this guard runs only when the file is executed directly, not when imported.\n\n**`sys.path`** — a list of directories Python searches for modules. You can append to it.\n\n**Relative imports** — used inside packages:\n`from . import sibling  # same package`\n`from .. import parent_module`\n\n**`importlib.import_module(name)`** — dynamically import a module at runtime.",
+            "questions": [
+                {
+                    "question": "What does `__all__` control in a module?",
+                    "options": [
+                        "All global variables",
+                        "Which names are exported with 'from module import *'",
+                        "All class names",
+                        "The module's execution order"
+                    ],
+                    "answer": "Which names are exported with 'from module import *'"
+                },
+                {
+                    "question": "What runs under `if __name__ == '__main__':`?",
+                    "options": [
+                        "Code that runs only when imported",
+                        "Code that runs only when the file is executed directly",
+                        "Code that never runs",
+                        "The main class"
+                    ],
+                    "answer": "Code that runs only when the file is executed directly"
+                },
+                {
+                    "question": "What is `sys.path`?",
+                    "options": [
+                        "The file path of sys.py",
+                        "A list of directories Python searches for modules to import",
+                        "The Python executable path",
+                        "The import history"
+                    ],
+                    "answer": "A list of directories Python searches for modules to import"
+                },
+                {
+                    "question": "What does `from . import utils` mean inside a package?",
+                    "options": [
+                        "Import utils from the parent package",
+                        "Import utils from the current package (relative import)",
+                        "Import utils from sys",
+                        "Raises SyntaxError outside packages"
+                    ],
+                    "answer": "Import utils from the current package (relative import)"
+                },
+                {
+                    "question": "What does `importlib.import_module('os')` do?",
+                    "options": [
+                        "Same as import os at runtime",
+                        "Creates a new module",
+                        "Reloads os if already imported",
+                        "Lists os functions"
+                    ],
+                    "answer": "Same as import os at runtime"
+                },
+                {
+                    "question": "What does a single underscore prefix `_name` in a module signal?",
+                    "options": [
+                        "The name is a constant",
+                        "The name is intended as internal/private; won't be exported by *",
+                        "The name is a built-in",
+                        "A deprecated function"
+                    ],
+                    "answer": "The name is intended as internal/private; won't be exported by *"
+                },
+                {
+                    "question": "What does `importlib.reload(module)` do?",
+                    "options": [
+                        "Deletes the module",
+                        "Re-executes the module's code and updates the existing module object",
+                        "Creates a second copy",
+                        "Raises ImportError"
+                    ],
+                    "answer": "Re-executes the module's code and updates the existing module object"
+                },
+                {
+                    "question": "What is `__name__` set to when a module is imported?",
+                    "options": [
+                        "'__main__'",
+                        "The module's file path",
+                        "The module's name (as a string)",
+                        "None"
+                    ],
+                    "answer": "The module's name (as a string)"
+                },
+                {
+                    "question": "What is `from .. import module` in a package?",
+                    "options": [
+                        "Import from Python built-ins",
+                        "Import from the parent directory's package",
+                        "Import from sys.path",
+                        "Raises SyntaxError"
+                    ],
+                    "answer": "Import from the parent directory's package"
+                },
+                {
+                    "question": "How do you install a third-party package like `requests`?",
+                    "options": [
+                        "import install requests",
+                        "pip install requests",
+                        "python get requests",
+                        "os.install('requests')"
+                    ],
+                    "answer": "pip install requests"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Modules & Packages — Expert Level",
+            "theory": "**Module caching** — Python caches every imported module in `sys.modules`. Subsequent imports return the cached object without re-executing the file.\n\n**Namespace packages** (PEP 420, Python 3.3+) — packages without `__init__.py`. Python searches for matching names across multiple directories.\n\n**`__init__.py` tricks:**\n- Control what's visible at package level\n- Aggregate sub-module exports\n- Initialize package-level state\n\n**Lazy imports** — defer expensive imports to first use for faster startup:\n```python\ndef get_numpy():\n    import numpy as np\n    return np\n```\n\n**`importlib.abc`** — allows creating custom finders and loaders to import from non-standard sources (zip files, databases, etc.).",
+            "questions": [
+                {
+                    "question": "Where does Python cache imported modules?",
+                    "options": [
+                        "disk",
+                        "sys.modules",
+                        "importlib.cache",
+                        "module.__cache__"
+                    ],
+                    "answer": "sys.modules"
+                },
+                {
+                    "question": "What happens on a second `import os` in the same session?",
+                    "options": [
+                        "os.py is re-executed",
+                        "Python returns the cached module from sys.modules",
+                        "A new copy is created",
+                        "ImportError is raised"
+                    ],
+                    "answer": "Python returns the cached module from sys.modules"
+                },
+                {
+                    "question": "What is a namespace package (PEP 420)?",
+                    "options": [
+                        "A package with multiple __init__.py files",
+                        "A package without __init__.py that can span multiple directories",
+                        "A package only in the standard library",
+                        "A virtual environment package"
+                    ],
+                    "answer": "A package without __init__.py that can span multiple directories"
+                },
+                {
+                    "question": "What is the purpose of lazy imports?",
+                    "options": [
+                        "Prevent any import errors",
+                        "Defer expensive imports until first use to speed up startup",
+                        "Required by PEP 8",
+                        "Prevent circular imports"
+                    ],
+                    "answer": "Defer expensive imports until first use to speed up startup"
+                },
+                {
+                    "question": "What is a circular import?",
+                    "options": [
+                        "Importing the same module twice",
+                        "Two modules that import each other, causing an import loop",
+                        "A module that imports itself",
+                        "An import inside a class"
+                    ],
+                    "answer": "Two modules that import each other, causing an import loop"
+                },
+                {
+                    "question": "How can you often fix a circular import?",
+                    "options": [
+                        "Use from ... import * instead",
+                        "Move the import inside the function or class where it's used",
+                        "Delete one module",
+                        "Use sys.path.remove"
+                    ],
+                    "answer": "Move the import inside the function or class where it's used"
+                },
+                {
+                    "question": "What does `importlib.abc.Loader` allow?",
+                    "options": [
+                        "Faster imports",
+                        "Custom loading: importing from non-standard sources (e.g., databases, zip files)",
+                        "Lazy evaluation of modules",
+                        "Only used for C extensions"
+                    ],
+                    "answer": "Custom loading: importing from non-standard sources (e.g., databases, zip files)"
+                },
+                {
+                    "question": "What is `__file__` on a module?",
+                    "options": [
+                        "The module's name",
+                        "The filesystem path to the module's source file",
+                        "The Python executable",
+                        "The module's version"
+                    ],
+                    "answer": "The filesystem path to the module's source file"
+                },
+                {
+                    "question": "What is `__package__` on a module?",
+                    "options": [
+                        "The module's class",
+                        "The name of the package containing the module",
+                        "The module's parent file",
+                        "The pip package name"
+                    ],
+                    "answer": "The name of the package containing the module"
+                },
+                {
+                    "question": "What does deleting a key from `sys.modules` do?",
+                    "options": [
+                        "Safely unloads the module",
+                        "Forces Python to re-import the module from disk next time it's imported",
+                        "Raises ImportError everywhere it was imported",
+                        "Has no effect"
+                    ],
+                    "answer": "Forces Python to re-import the module from disk next time it's imported"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,177 @@
+{
+    "levelno": 3,
+    "topic": "Operators & Expressions",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Operators & Expressions — Beginner",
+            "theory": "Operators in C are symbols that perform operations on variables and values.\n\n**Arithmetic Operators**:\n- `+` (Addition)\n- `-` (Subtraction)\n- `*` (Multiplication)\n- `/` (Division)\n- `%` (Modulus) — **Important:** Returns the *remainder* of a division. Example: `10 % 3 = 1`.\n\n**Assignment Operators** are used to assign values:\n- `=` sets the right side to the left side.\n- `+=` adds and assigns (`x += 5` is `x = x + 5`).\n- Similar shortcuts exist: `-=`, `*=`, `/=`.\n\nOperations follow standard mathematical precedence (BEDMAS/PEMDAS). Parentheses `()` can be used to manually group operations and force precedence.",
+            "questions": [
+                {
+                    "question": "Which operator is used to find the remainder of a division?",
+                    "options": ["/", "\\", "%", "mod"],
+                    "answer": "%"
+                },
+                {
+                    "question": "What does the expression `15 % 4` evaluate to?",
+                    "options": ["3", "3.75", "4", "1"],
+                    "answer": "3"
+                },
+                {
+                    "question": "How do you multiply two numbers in C?",
+                    "options": ["x x y", "x * y", "x # y", "x . y"],
+                    "answer": "x * y"
+                },
+                {
+                    "question": "What is the result of `x = 10; x += 5;`?",
+                    "options": ["15", "5", "10", "50"],
+                    "answer": "15"
+                },
+                {
+                    "question": "The shorthand `x *= 2;` is exactly identical to:",
+                    "options": ["x = 2 * 2;", "x = x * 2;", "x = x ^ 2;", "x = 2;"],
+                    "answer": "x = x * 2;"
+                },
+                {
+                    "question": "Which of these is NOT an arithmetic operator in C?",
+                    "options": ["+", "-", "*", "$"],
+                    "answer": "$"
+                },
+                {
+                    "question": "What is the output of `2 + 3 * 4` in C?",
+                    "options": ["20", "14", "24", "10"],
+                    "answer": "14"
+                },
+                {
+                    "question": "How can you force addition to execute before multiplication in C?",
+                    "options": ["Use brackets: [2+3]*4", "Use parentheses: (2+3)*4", "Put addition at the start of the line", "Use curlies: {2+3}*4"],
+                    "answer": "Use parentheses: (2+3)*4"
+                },
+                {
+                    "question": "If `int a = 10; int b = 3;`, what is `a / b`?",
+                    "options": ["3", "3.333", "4", "0"],
+                    "answer": "3"
+                },
+                {
+                    "question": "Can the modulus `%` operator be used directly on floating-point floats?",
+                    "options": ["Yes", "No, it only works on integers", "Yes, but it returns a string", "Yes, but you must include math.h"],
+                    "answer": "No, it only works on integers"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Operators & Expressions — Intermediate",
+            "theory": "**Relational Operators** compare two values and return `1` (true) or `0` (false):\n- `==` (Equal to) - *Do not confuse with `=` (Assignment)!*\n- `!=` (Not equal to)\n- `>`, `<`, `>=`, `<=`\n\n**Logical Operators** combine true/false conditions:\n- `&&` (Logical AND): Returns true if BOTH sides are true.\n- `||` (Logical OR): Returns true if AT LEAST ONE side is true.\n- `!` (Logical NOT): Reverses the boolean result.\n\n**Increment/Decrement Operators**:\n- `x++` (Post-increment): uses `x`, then increases it by 1.\n- `++x` (Pre-increment): increases `x` by 1, then uses it.\n- Similarly, `x--` and `--x` decrease the value by 1.",
+            "questions": [
+                {
+                    "question": "Which operator checks if two values are equal?",
+                    "options": ["=", "==", "===", "=>"],
+                    "answer": "=="
+                },
+                {
+                    "question": "What is the key difference between `=` and `==`?",
+                    "options": ["They are the same.", "`=` is assignment, `==` is comparison.", "`==` is assignment, `=` is comparison.", "`=` is for ints, `==` is for chars."],
+                    "answer": "`=` is assignment, `==` is comparison."
+                },
+                {
+                    "question": "If `x = 5`, what does `(x > 3 && x < 10)` evaluate to?",
+                    "options": ["0 (False)", "1 (True)", "5", "Error"],
+                    "answer": "1 (True)"
+                },
+                {
+                    "question": "Which logical operator means OR?",
+                    "options": ["&&", "!", "||", "OR"],
+                    "answer": "||"
+                },
+                {
+                    "question": "What does the `!` operator do?",
+                    "options": ["Runs a shell command", "Reverses a boolean truth value", "Calculates factorials", "Signifies a pointer"],
+                    "answer": "Reverses a boolean truth value"
+                },
+                {
+                    "question": "If `int a = 5; int b = a++;`, what are the values of a and b?",
+                    "options": ["a=5, b=6", "a=6, b=6", "a=6, b=5", "a=5, b=5"],
+                    "answer": "a=6, b=5"
+                },
+                {
+                    "question": "If `int a = 5; int b = ++a;`, what are the values of a and b?",
+                    "options": ["a=5, b=6", "a=6, b=6", "a=6, b=5", "a=5, b=5"],
+                    "answer": "a=6, b=6"
+                },
+                {
+                    "question": "What does `!(5 == 5)` evaluate to?",
+                    "options": ["1 (True)", "0 (False)", "Error", "-1"],
+                    "answer": "0 (False)"
+                },
+                {
+                    "question": "Which of these expresses 'Is x NOT equal to y?'",
+                    "options": ["x <> y", "x != y", "x ~ y", "x not= y"],
+                    "answer": "x != y"
+                },
+                {
+                    "question": "Does C have a built-in 'boolean' data type prior to C99?",
+                    "options": ["Yes, bool", "No, it just used integers where 0 is false and non-zero is true", "Yes, True and False keywords", "No, conditions strings only"],
+                    "answer": "No, it just used integers where 0 is false and non-zero is true"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Operators & Expressions — Expert",
+            "theory": "C features powerful but easily misused operators:\n\n**Ternary Operator (`?:`)**\nThe only operator taking three operands. It is an inline if-else statement.\nSyntax: `condition ? value_if_true : value_if_false;`\nExample: `int min = (a < b) ? a : b;`\n\n**Bitwise Operators**\nOperate directly on the binary representations of integer data.\n- `&` (Bitwise AND)\n- `|` (Bitwise OR)\n- `^` (Bitwise XOR)\n- `~` (Bitwise NOT)\n- `<<` (Left Shift: multiplies by 2)\n- `>>` (Right Shift: divides by 2)\n\n**Operator Short-Circuiting**\nWhen evaluating `&&` and `||`, C uses short-circuit logic. If the first operand of an `&&` is False, the second operand is NEVER evaluated (because the result is already doomed to be False). This is critical when avoiding null pointer dereferences or division-by-zero errors.",
+            "questions": [
+                {
+                    "question": "What is the syntax for the ternary operator?",
+                    "options": ["condition ? true_val : false_val;", "true_val ? condition : false_val;", "condition : true_val ? false_val;", "if condition ? true : false;"],
+                    "answer": "condition ? true_val : false_val;"
+                },
+                {
+                    "question": "What is the primary advantage of the ternary operator?",
+                    "options": ["It runs faster than standard if/else", "It allows a compact inline conditional assignment", "It can handle 3 conditions at once", "It runs synchronously"],
+                    "answer": "It allows a compact inline conditional assignment"
+                },
+                {
+                    "question": "What does `5 << 1` (Bitwise Left Shift) effectively do to the integer 5?",
+                    "options": ["Divides by 2", "Adds 1", "Multiplies by 2", "Negates it"],
+                    "answer": "Multiplies by 2"
+                },
+                {
+                    "question": "Which operator is the Bitwise XOR?",
+                    "options": ["^", "|", "&", "~"],
+                    "answer": "^"
+                },
+                {
+                    "question": "What does 'short-circuit evaluation' mean in C?",
+                    "options": ["Code skips a function if it's too long", "Logical Expressions stop evaluating as soon as the final result is determined", "The compiler optimizes out math expressions", "Loops break early"],
+                    "answer": "Logical Expressions stop evaluating as soon as the final result is determined"
+                },
+                {
+                    "question": "In the expression `(0 && x / 0 == 5)`, what happens?",
+                    "options": ["A division by zero crash", "Syntax Error", "The expression evaluates strictly to 0 (False) because short-circuiting ignores the right side.", "It calculates x then exits"],
+                    "answer": "The expression evaluates strictly to 0 (False) because short-circuiting ignores the right side."
+                },
+                {
+                    "question": "In the expression `(1 || crash_func())`, what happens?",
+                    "options": ["crash_func() runs and crashes", "Short-circuiting occurs, ignoring crash_func() since the OR condition is already satisfied as True.", "Execution halts", "Undefined Behavior"],
+                    "answer": "Short-circuiting occurs, ignoring crash_func() since the OR condition is already satisfied as True."
+                },
+                {
+                    "question": "What does the bitwise NOT (~) do?",
+                    "options": ["Reverses boolean true/false", "Flips every bit (0s become 1s, 1s become 0s)", "Turns negative numbers positive", "Removes trailing zeroes"],
+                    "answer": "Flips every bit (0s become 1s, 1s become 0s)"
+                },
+                {
+                    "question": "Is the comma `,` considered an operator in C?",
+                    "options": ["No, it's just punctuation", "Yes, it evaluates left-to-right and returns the right-most value", "Yes, but only in arrays", "No, it's a compiler directive"],
+                    "answer": "Yes, it evaluates left-to-right and returns the right-most value"
+                },
+                {
+                    "question": "What will `(10 > 5) ? 100 : 200` evaluate to?",
+                    "options": ["10", "200", "100", "5"],
+                    "answer": "100"
+                }
+            ]
+        }
+    ]
+}

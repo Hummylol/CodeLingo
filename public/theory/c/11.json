@@ -1,0 +1,177 @@
+{
+    "levelno": 11,
+    "topic": "Structures (structs)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Structures — Beginner",
+            "theory": "Unlike arrays (which hold many variables of the *same* type), a **struct** allows you to group different data types together under a single name. Structs are the closest thing C has to objects or classes.\n\n```c\nstruct Player {\n    int health;\n    float speed;\n    char name[50];\n};\n```\nTo declare a variable of this custom type in `main`, you must use the `struct` keyword:\n`struct Player p1;`\n\nYou access the individual fields belonging to `p1` using the **`.` (Dot) Operator**:\n```c\np1.health = 100;\np1.speed = 4.5;\nstrcpy(p1.name, \"Hero\");\n```",
+            "questions": [
+                {
+                    "question": "What is the primary difference between an Array and a Struct in C?",
+                    "options": ["Structs are faster", "Arrays hold identical data types; Structs can hold drastically different data types grouped together", "Structs can only hold ints", "Arrays are dynamically sized"],
+                    "answer": "Arrays hold identical data types; Structs can hold drastically different data types grouped together"
+                },
+                {
+                    "question": "Which keyword is used to define a structure?",
+                    "options": ["class", "object", "struct", "group"],
+                    "answer": "struct"
+                },
+                {
+                    "question": "What punctuation must go at the very end of a struct's curly brace definition?",
+                    "options": [". (period)", "(none)", "; (semicolon)", ": (colon)"],
+                    "answer": "; (semicolon)"
+                },
+                {
+                    "question": "How do you declare a variable of type `struct Car` in main?",
+                    "options": ["Car c1;", "struct Car c1;", "new struct Car c1;", "var Car c1;"],
+                    "answer": "struct Car c1;"
+                },
+                {
+                    "question": "Which operator do you use to access the variables inside a struct?",
+                    "options": ["->", ":", ".", "::"],
+                    "answer": "."
+                },
+                {
+                    "question": "If `struct Point { int x; int y; };`, how do you assign the X coordinate of a variable `p1` to 5?",
+                    "options": ["p1(x) = 5;", "p1->x = 5;", "p1.x = 5;", "Point.p1(x) = 5;"],
+                    "answer": "p1.x = 5;"
+                },
+                {
+                    "question": "Can you assign one struct directly to another if they are the exact same type? (e.g., `p2 = p1;`)",
+                    "options": ["Yes, it performs a bulk memory copy of all members natively", "No, you must copy each variable inside manually", "Only using memcpy", "No, syntax error"],
+                    "answer": "Yes, it performs a bulk memory copy of all members natively"
+                },
+                {
+                    "question": "Can a struct contain a function (method) inside it natively in C?",
+                    "options": ["Yes", "No! Standard C structs contain ONLY data variables, no functions/methods (unlike C++)", "Yes, but they must be private", "Only main()"],
+                    "answer": "No! Standard C structs contain ONLY data variables, no functions/methods (unlike C++)"
+                },
+                {
+                    "question": "Can a struct contain an array?",
+                    "options": ["No", "Only char arrays", "Yes, it can contain arrays of any standard type", "Only dynamically sized arrays"],
+                    "answer": "Yes, it can contain arrays of any standard type"
+                },
+                {
+                    "question": "Does standard C allow you to initialize a struct at declaration? `struct Point p1 = {5, 10};`",
+                    "options": ["Yes", "No", "Only in C11", "Only for ints"],
+                    "answer": "Yes"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Structures — Intermediate",
+            "theory": "**Struct Pointers & the Arrow Operator**\nWhen you pass a large struct to a function, C copies the *entire* struct (Pass-by-Value), which is incredibly slow. Instead, you should pass a **pointer** to the struct (Pass-by-Reference).\n\nHowever, if `ptr` is a pointer to a struct, you *cannot* use the dot operator `ptr.health = 50;` because `.` has higher precedence than `*`. You would have to write `(*ptr).health = 50;` which is ugly.\n\nC solves this with the **`->` (Arrow) Operator**!\n`ptr->health = 50;`\nThe Arrow operator safely dereferences a struct pointer and accesses the member variable in one step.",
+            "questions": [
+                {
+                    "question": "Why is it generally better to pass a struct to a function using a pointer rather than by value?",
+                    "options": ["It looks cleaner", "Passing by value physically duplicates the entire struct in memory, which is slow and eats Stack space. Pointers only copy 8 bytes.", "Pointers are required for all functions", "Passing by value is illegal"],
+                    "answer": "Passing by value physically duplicates the entire struct in memory, which is slow and eats Stack space. Pointers only copy 8 bytes."
+                },
+                {
+                    "question": "If `p` is a pointer to a struct, why is `p.x = 5;` a syntax error?",
+                    "options": ["Because p is a pointer, and the dot operator does not dereference pointers", "Because x is private", "Because it needs brackets [p]", "Because structs don't have pointers"],
+                    "answer": "Because p is a pointer, and the dot operator does not dereference pointers"
+                },
+                {
+                    "question": "What is the equivalent syntax to `(*p).x`?",
+                    "options": ["p->x", "p::x", "p>x", "p~x"],
+                    "answer": "p->x"
+                },
+                {
+                    "question": "What operator combining a hyphen and a greater-than sign is used to access struct members through a pointer?",
+                    "options": ["=> (Rocket)", "-> (Arrow)", "~> (Squiggle)", "->> (Double push)"],
+                    "answer": "-> (Arrow)"
+                },
+                {
+                    "question": "If `struct Node { int val; struct Node *next; };`, can the struct define a pointer targeting its own type inside itself?",
+                    "options": ["No, infinite loop", "Yes, this is completely legal and is the basis for advanced Data Structures like Linked Lists", "Only if it is typedef'd", "Only static pointers"],
+                    "answer": "Yes, this is completely legal and is the basis for advanced Data Structures like Linked Lists"
+                },
+                {
+                    "question": "If you dynamically allocate a struct: `struct Car *c = malloc(sizeof(struct Car));`, what operator must you use to edit its variables?",
+                    "options": [". (Dot)", "[]", "-> (Arrow)", "&"],
+                    "answer": "-> (Arrow)"
+                },
+                {
+                    "question": "What happens if you omit the `struct` keyword when declaring a variable, assuming you didn't use typedef? (e.g. `Car myCar;`)",
+                    "options": ["It compiles perfectly", "It causes a compiler syntax error (Unknown type name 'Car')", "It defaults to an int", "It creates a pointer"],
+                    "answer": "It causes a compiler syntax error (Unknown type name 'Car')"
+                },
+                {
+                    "question": "Can you return an entire struct from a function by value natively in standard C?",
+                    "options": ["Yes, the compiler natively supports struct copying on return", "No, you must return a pointer", "Only if it consists of 2 ints", "No"],
+                    "answer": "Yes, the compiler natively supports struct copying on return"
+                },
+                {
+                    "question": "If you declare an Array of Structs: `struct Point line[5];`, how do you access the X value of the second point?",
+                    "options": ["line->x[1]", "line[1]->x", "line[1].x", "line(1).x"],
+                    "answer": "line[1].x"
+                },
+                {
+                    "question": "What is Struct Padding?",
+                    "options": ["Adding extra vars", "The compiler automatically inserting invisible \"empty\" bytes between struct members to align them optimally for the CPU memory bus", "Moving structs to the heap", "A bug in C"],
+                    "answer": "The compiler automatically inserting invisible \"empty\" bytes between struct members to align them optimally for the CPU memory bus"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Structures — Expert",
+            "theory": "**Struct Padding & Packing**: The compiler will automatically insert empty \"padding\" bytes between struct members so that variables align perfectly with your CPU's memory read lanes (e.g., placing 4-byte ints on addresses neatly divisible by 4). This makes CPU reads faster, but wastes RAM. You can disable this with `__attribute__((packed))` on GCC.\n\n**`typedef struct`**:\nTo avoid typing the annoyance keyword `struct` every time you declare a variable, C devs commonly create a type definition synonym: \n```c\ntypedef struct {\n    int x;\n    int y;\n} Point;\n\nPoint p1; // No 'struct' keyword needed anymore!\n```",
+            "questions": [
+                {
+                    "question": "What is the consequence of Struct Padding/Alignment on memory size?",
+                    "options": ["It reduces size", "sizeof(struct) will often be LARGER than the sum of its individual variable byte sizes due to the invisible empty padding bytes", "It makes the struct size exactly the sum of its parts", "It compresses strings"],
+                    "answer": "sizeof(struct) will often be LARGER than the sum of its individual variable byte sizes due to the invisible empty padding bytes"
+                },
+                {
+                    "question": "Why does the compiler pad structs to align data on specific byte boundaries?",
+                    "options": ["To make the code readable", "Because reading misaligned memory across word boundaries incurs a massive speed penalty on modern CPUs (or straight up crashes on some architectures like ARM)", "To protect against buffer overflows", "It's a bug in GCC"],
+                    "answer": "Because reading misaligned memory across word boundaries incurs a massive speed penalty on modern CPUs (or straight up crashes on some architectures like ARM)"
+                },
+                {
+                    "question": "What does a `packed` attribute directive do?",
+                    "options": ["Zips the file", "Tells the compiler to NOT insert any padding bytes, ensuring the struct occupies the absolute minimum RAM possible, at the cost of slower CPU access speeds", "Aligns it dynamically", "Moves it to the heap"],
+                    "answer": "Tells the compiler to NOT insert any padding bytes, ensuring the struct occupies the absolute minimum RAM possible, at the cost of slower CPU access speeds"
+                },
+                {
+                    "question": "What is `typedef`?",
+                    "options": ["A function to define variables", "A keyword that creates a custom alias/synonym for an existing data type", "A type of struct", "A pointer type"],
+                    "answer": "A keyword that creates a custom alias/synonym for an existing data type"
+                },
+                {
+                    "question": "If you use `typedef struct { int x; } Coord;`, you can then declare variables using:",
+                    "options": ["struct Coord c1;", "Coord c1;", "type Coord c1;", "int Coord c1;"],
+                    "answer": "Coord c1;"
+                },
+                {
+                    "question": "If you have a self-referential struct for a Linked List being initialized WITH a typedef, what is the caveat?",
+                    "options": ["It's impossible", "Inside the struct body, the typedef name hasn't finished being declared yet, so the internal self-pointer must still use the `struct TagName*` syntax", "It crashes", "You must use void pointers"],
+                    "answer": "Inside the struct body, the typedef name hasn't finished being declared yet, so the internal self-pointer must still use the `struct TagName*` syntax"
+                },
+                {
+                    "question": "What is an 'Opaque Pointer' or 'Opaque Struct' design pattern in C library creation?",
+                    "options": ["A struct with no variables", "Defining a struct pointer in a header file, but keeping the actual struct body hidden in the .c source file to enforce encapsulation/data-hiding", "A completely empty struct", "A struct with only void pointers"],
+                    "answer": "Defining a struct pointer in a header file, but keeping the actual struct body hidden in the .c source file to enforce encapsulation/data-hiding"
+                },
+                {
+                    "question": "In C, can an empty struct `struct Empty {};` exist?",
+                    "options": ["Yes, size 0", "No, standard C explicitly forbids structs with zero members", "Yes, size 1", "Yes, size -1"],
+                    "answer": "No, standard C explicitly forbids structs with zero members"
+                },
+                {
+                    "question": "What is a 'Bit-field' inside a struct?",
+                    "options": ["An array of bits", "Declaring exactly how many binary bits (e.g. `int flags : 3;`) a variable should uniquely consume, packing multiple variables into a single byte", "A pointer to a bit", "A boolean data type"],
+                    "answer": "Declaring exactly how many binary bits (e.g. `int flags : 3;`) a variable should uniquely consume, packing multiple variables into a single byte"
+                },
+                {
+                    "question": "What is the primary benefit of bit-fields?",
+                    "options": ["Increased math speed", "Extreme memory savings on embedded systems by packing 8 booleans into 1 single physical byte", "Preventing memory leaks", "Easier syntax"],
+                    "answer": "Extreme memory savings on embedded systems by packing 8 booleans into 1 single physical byte"
+                }
+            ]
+        }
+    ]
+}

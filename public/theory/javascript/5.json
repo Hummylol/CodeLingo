@@ -1,0 +1,327 @@
+{
+    "levelno": 5,
+    "topic": "User Input",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "User Input — Beginner Level",
+            "theory": "Python's `input()` function pauses execution and waits for the user to type something and press Enter. The text inside `input('...')` is displayed as a **prompt**.\n\n**Important:** `input()` **always returns a string**, even if the user types a number. To do arithmetic you must convert it:\n`age = int(input('Your age: '))`\n`price = float(input('Price: '))`\n\nExample:\n`name = input('Enter your name: ')`\n`print(f'Hello, {name}!')`\n\nIf you multiply a string by a number (`'5' * 2`) you get `'55'`, not `10` — always convert types before arithmetic.",
+            "questions": [
+                {
+                    "question": "Which function is used to get user input from the console?",
+                    "options": [
+                        "get_input()",
+                        "read()",
+                        "input()",
+                        "scan()"
+                    ],
+                    "answer": "input()"
+                },
+                {
+                    "question": "What data type does `input()` always return?",
+                    "options": [
+                        "int",
+                        "float",
+                        "str",
+                        "It depends on what the user types"
+                    ],
+                    "answer": "str"
+                },
+                {
+                    "question": "What must you do before adding 1 to a value received from `input()`?",
+                    "options": [
+                        "Nothing, it works directly",
+                        "Convert it to int using int()",
+                        "Convert it to str using str()",
+                        "Use a special add() function"
+                    ],
+                    "answer": "Convert it to int using int()"
+                },
+                {
+                    "question": "What will `n = input(); print(n * 2)` print if the user types `5`?",
+                    "options": [
+                        "10",
+                        "55",
+                        "Error",
+                        "5 5"
+                    ],
+                    "answer": "55"
+                },
+                {
+                    "question": "Which code correctly reads an integer from the user?",
+                    "options": [
+                        "age = int.input('Age:')",
+                        "age = input.int('Age:')",
+                        "age = int(input('Age:'))",
+                        "age = input('Age:')"
+                    ],
+                    "answer": "age = int(input('Age:'))"
+                },
+                {
+                    "question": "What is the text inside `input('Enter name: ')` called?",
+                    "options": [
+                        "Variable",
+                        "Prompt",
+                        "Return value",
+                        "Argument type"
+                    ],
+                    "answer": "Prompt"
+                },
+                {
+                    "question": "What happens if you run `int('hello')`?",
+                    "options": [
+                        "Returns 0",
+                        "Returns None",
+                        "Works fine",
+                        "Raises a ValueError"
+                    ],
+                    "answer": "Raises a ValueError"
+                },
+                {
+                    "question": "To get a decimal number from the user, use:",
+                    "options": [
+                        "int(input())",
+                        "str(input())",
+                        "float(input())",
+                        "bool(input())"
+                    ],
+                    "answer": "float(input())"
+                },
+                {
+                    "question": "Does `input()` add a space after the prompt automatically?",
+                    "options": [
+                        "Yes, always",
+                        "No, add it yourself if you want one",
+                        "Only on Windows",
+                        "Only in IDLE"
+                    ],
+                    "answer": "No, add it yourself if you want one"
+                },
+                {
+                    "question": "What does `input()` do when called with no argument?",
+                    "options": [
+                        "Raises TypeError",
+                        "Waits for input with no prompt displayed",
+                        "Returns None immediately",
+                        "Prints a blank line"
+                    ],
+                    "answer": "Waits for input with no prompt displayed"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "User Input — Intermediate Level",
+            "theory": "**Input validation** — checking that the user entered a valid value — is essential in real programs. The standard pattern uses `try/except`:\n\n```python\ntry:\n    age = int(input('Enter age: '))\nexcept ValueError:\n    print('Please enter a valid number')\n```\n\nYou can **collect multiple inputs in one line** using `split()`:\n`x, y = input('Enter two numbers: ').split()`\n`x, y = int(x), int(y)`\n\nA **loop** can keep asking until valid input is received:\n```python\nwhile True:\n    s = input('Enter positive int: ')\n    if s.isdigit():\n        n = int(s)\n        break\n```",
+            "questions": [
+                {
+                    "question": "What does `input().split()` do when the user types `3 5`?",
+                    "options": [
+                        "Returns '3 5'",
+                        "Returns ['3', '5']",
+                        "Returns (3, 5)",
+                        "Raises Error"
+                    ],
+                    "answer": "Returns ['3', '5']"
+                },
+                {
+                    "question": "How do you read two integers on one line from the user?",
+                    "options": [
+                        "a, b = input(), input()",
+                        "a, b = int(input().split())",
+                        "a, b = map(int, input().split())",
+                        "a, b = input(2)"
+                    ],
+                    "answer": "a, b = map(int, input().split())"
+                },
+                {
+                    "question": "What does `'123'.isdigit()` return?",
+                    "options": [
+                        "False",
+                        "True",
+                        "123",
+                        "Error"
+                    ],
+                    "answer": "True"
+                },
+                {
+                    "question": "What exception is raised by `int('abc')`?",
+                    "options": [
+                        "TypeError",
+                        "ValueError",
+                        "KeyError",
+                        "RuntimeError"
+                    ],
+                    "answer": "ValueError"
+                },
+                {
+                    "question": "What is the output of `int(input())` if the user types `' 42 '` (with spaces)?",
+                    "options": [
+                        "Error (whitespace not trimmed)",
+                        "42 (int() trims whitespace)",
+                        "' 42 '",
+                        "None"
+                    ],
+                    "answer": "42 (int() trims whitespace)"
+                },
+                {
+                    "question": "What does `map(int, ['1','2','3'])` produce?",
+                    "options": [
+                        "[1, 2, 3]",
+                        "A map object of integers",
+                        "'1 2 3'",
+                        "Error"
+                    ],
+                    "answer": "A map object of integers"
+                },
+                {
+                    "question": "What is the best practice to validate that the user entered a positive integer?",
+                    "options": [
+                        "Trust the user and parse directly",
+                        "Use try/except ValueError with a while loop",
+                        "Use assert",
+                        "Input always validates automatically"
+                    ],
+                    "answer": "Use try/except ValueError with a while loop"
+                },
+                {
+                    "question": "What does `float('3.14')` return?",
+                    "options": [
+                        "'3.14'",
+                        "3.14 as a float",
+                        "314",
+                        "Error"
+                    ],
+                    "answer": "3.14 as a float"
+                },
+                {
+                    "question": "What does `input('Enter CSV: ').split(',')` return when user types `a,b,c`?",
+                    "options": [
+                        "'a,b,c'",
+                        "['a', 'b', 'c']",
+                        "('a', 'b', 'c')",
+                        "Error"
+                    ],
+                    "answer": "['a', 'b', 'c']"
+                },
+                {
+                    "question": "What does `'hello'.isdigit()` return?",
+                    "options": [
+                        "True",
+                        "False",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "False"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "User Input — Expert Level",
+            "theory": "**`sys.stdin`** is the file-like object behind standard input. You can read from it directly:\n`import sys`\n`data = sys.stdin.read()  # reads all stdin until EOF`\n`for line in sys.stdin:  # iterate line by line`\n\n**`getpass.getpass()`** reads a password without echoing it to the terminal — essential for secure input.\n\n**`argparse`** is the standard library module for parsing command-line arguments:\n```python\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument('--name', type=str)\nargs = parser.parse_args()\nprint(args.name)\n```\n\n**`readline` module** provides GNU readline support (history, tab completion) for `input()` in interactive programs.",
+            "questions": [
+                {
+                    "question": "What does `sys.stdin.read()` do?",
+                    "options": [
+                        "Reads one character",
+                        "Reads one line",
+                        "Reads all of stdin until EOF",
+                        "Raises TypeError"
+                    ],
+                    "answer": "Reads all of stdin until EOF"
+                },
+                {
+                    "question": "What is `getpass.getpass()` used for?",
+                    "options": [
+                        "Reading passwords without echoing them to the terminal",
+                        "Getting user age securely",
+                        "Encrypting user input",
+                        "Reading environment variables"
+                    ],
+                    "answer": "Reading passwords without echoing them to the terminal"
+                },
+                {
+                    "question": "Which module is used to parse command-line arguments in Python?",
+                    "options": [
+                        "sys",
+                        "optparse",
+                        "argparse",
+                        "cli"
+                    ],
+                    "answer": "argparse"
+                },
+                {
+                    "question": "What does `sys.stdin.readline()` return?",
+                    "options": [
+                        "A single character",
+                        "A single line including the newline",
+                        "All lines as a list",
+                        "None"
+                    ],
+                    "answer": "A single line including the newline"
+                },
+                {
+                    "question": "What is the difference between `input()` and `sys.stdin.readline()`?",
+                    "options": [
+                        "They are identical",
+                        "input() strips the trailing newline; sys.stdin.readline() keeps it",
+                        "sys.stdin.readline() strips the newline; input() keeps it",
+                        "input() only works interactively"
+                    ],
+                    "answer": "input() strips the trailing newline; sys.stdin.readline() keeps it"
+                },
+                {
+                    "question": "Which method reads all lines of stdin into a list?",
+                    "options": [
+                        "sys.stdin.read()",
+                        "sys.stdin.readline()",
+                        "sys.stdin.readlines()",
+                        "sys.stdin.readall()"
+                    ],
+                    "answer": "sys.stdin.readlines()"
+                },
+                {
+                    "question": "What does `argparse.add_argument('--count', type=int)` do?",
+                    "options": [
+                        "Creates a required positional argument",
+                        "Creates an optional flag --count that expects an integer",
+                        "Raises an error",
+                        "Reads count from stdin"
+                    ],
+                    "answer": "Creates an optional flag --count that expects an integer"
+                },
+                {
+                    "question": "What is EOF in the context of stdin?",
+                    "options": [
+                        "End of File / stream signal (Ctrl+D on Unix, Ctrl+Z on Windows)",
+                        "An error message",
+                        "Empty Output Format",
+                        "A type of exception"
+                    ],
+                    "answer": "End of File / stream signal (Ctrl+D on Unix, Ctrl+Z on Windows)"
+                },
+                {
+                    "question": "What does `for line in sys.stdin:` do?",
+                    "options": [
+                        "Reads one character at a time",
+                        "Iterates over each line of standard input",
+                        "Reads the file backward",
+                        "Only works in scripts, not REPL"
+                    ],
+                    "answer": "Iterates over each line of standard input"
+                },
+                {
+                    "question": "What module provides readline history and tab-completion for `input()`?",
+                    "options": [
+                        "history",
+                        "autocomplete",
+                        "readline",
+                        "inputlib"
+                    ],
+                    "answer": "readline"
+                }
+            ]
+        }
+    ]
+}

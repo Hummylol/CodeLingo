@@ -1,0 +1,177 @@
+{
+    "levelno": 6,
+    "topic": "Functions & Scope",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Functions & Scope — Beginner",
+            "theory": "A **Function** is a block of code that performs a specific task. They make code reusable and easier to read.\n\nTo create a function, you need:\n1. **Return Type**: What kind of data does it give back? (`int`, `float`, or `void` if nothing).\n2. **Name**: How you call it.\n3. **Parameters (Arguments)**: Data passed into the function (optional).\n\n```c\n// A simple function that adds two integers\nint add(int a, int b) {\n    return a + b;\n}\n```\nTo use it, you **call** it from `main()`:\n`int result = add(5, 3);`\n\nIf your function appears *after* the `main()` function in your file, you must provide a **Function Prototype** (a declaration of the function signature) at the very top of your file to warn the compiler it exists.",
+            "questions": [
+                {
+                    "question": "What is the primary purpose of writing functions?",
+                    "options": ["To make the program run faster", "To make code reusable, organized, and modular", "To encrypt variables", "To replace loops"],
+                    "answer": "To make code reusable, organized, and modular"
+                },
+                {
+                    "question": "What keyword is used as the return type if a function does NOT return a value?",
+                    "options": ["null", "empty", "void", "none"],
+                    "answer": "void"
+                },
+                {
+                    "question": "In the function `int multiply(int x, int y)`, what are `x` and `y`?",
+                    "options": ["Return values", "Parameters (arguments)", "Pointers", "Global variables"],
+                    "answer": "Parameters (arguments)"
+                },
+                {
+                    "question": "What keyword sends a value back to the caller of the function?",
+                    "options": ["send", "output", "break", "return"],
+                    "answer": "return"
+                },
+                {
+                    "question": "What happens when a `return` statement is executed?",
+                    "options": ["The program terminates", "The function instantly exits and passes the value back", "The loop restarts", "It prints to the console"],
+                    "answer": "The function instantly exits and passes the value back"
+                },
+                {
+                    "question": "What is a 'Function Prototype'?",
+                    "options": ["An experimental function", "A declaration at the top of the file telling the compiler the function's name, return type, and parameters before it's defined", "The first function in a file", "A function that has no body"],
+                    "answer": "A declaration at the top of the file telling the compiler the function's name, return type, and parameters before it's defined"
+                },
+                {
+                    "question": "Which of these is a correct function call?",
+                    "options": ["int result = add[5, 10];", "int result = add(5, 10);", "result = add{5, 10};", "call add(5, 10);"],
+                    "answer": "int result = add(5, 10);"
+                },
+                {
+                    "question": "Can two different functions have variables with the exact same name?",
+                    "options": ["Yes, because they are evaluated in different local scopes", "No, it causes a 'redefinition' error", "Only if one is a global variable", "Only if they are constant"],
+                    "answer": "Yes, because they are evaluated in different local scopes"
+                },
+                {
+                    "question": "What must a function returning `int` do?",
+                    "options": ["Calculate math", "Print an integer", "Return an integer value", "Accept an integer argument"],
+                    "answer": "Return an integer value"
+                },
+                {
+                    "question": "Does `main()` have to be the first function physically written in a C file?",
+                    "options": ["Yes", "No, order rarely matters as long as prototypes are used or functions are defined before use", "Only on Windows", "No, but it must be the last"],
+                    "answer": "No, order rarely matters as long as prototypes are used or functions are defined before use"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Functions & Scope — Intermediate",
+            "theory": "**Variable Scope** determines where a variable can be accessed:\n- **Local Scope**: Variables declared *inside* a block `{}` or function only exist within that block. They are destroyed when the function finishes.\n- **Global Scope**: Variables declared *outside* all functions. They can be accessed and modified by *any* function. (Use sparingly!)\n\n**Pass-by-Value**:\nWhen you pass a standard variable into a C function, C makes a **copy** of its value. If the function changes the value of its parameter, the original variable in `main()` is NOT affected.\n```c\nvoid modify(int x) { x = 10; }\nint main() {\n   int a = 5;\n   modify(a);\n   // 'a' is still 5 here!\n}\n```",
+            "questions": [
+                {
+                    "question": "What is Local Scope?",
+                    "options": ["A variable accessible globally", "A variable accessible only within the function or block where it was declared", "A variable defined in the local file system", "A variable locked by a pointer"],
+                    "answer": "A variable accessible only within the function or block where it was declared"
+                },
+                {
+                    "question": "Where is a Global Variable declared?",
+                    "options": ["Inside main()", "Outside of all functions", "Inside standard library headers", "In a separate .global file"],
+                    "answer": "Outside of all functions"
+                },
+                {
+                    "question": "Why are Global Variables generally discouraged?",
+                    "options": ["They crash the compiler", "They take too long to allocate", "Any function can secretly modify them, making bugs incredibly hard to track down", "They cause infinite loops"],
+                    "answer": "Any function can secretly modify them, making bugs incredibly hard to track down"
+                },
+                {
+                    "question": "What does 'Pass-by-Value' mean in C?",
+                    "options": ["The function receives a duplicate copy of the argument, not the original", "The function receives direct control over the passed variable", "The function assigns values directly to memory", "The compiler optimizes it into a constant"],
+                    "answer": "The function receives a duplicate copy of the argument, not the original"
+                },
+                {
+                    "question": "If you pass `int a=10;` to `func(int x)` which does `x=20;`, what is `a` after the function returns?",
+                    "options": ["20", "10", "Undefined", "0"],
+                    "answer": "10"
+                },
+                {
+                    "question": "If there is a global variable `x=5` and a local variable in main `x=10`, what gets printed if main calls `printf(\"%d\", x)`?",
+                    "options": ["5", "10 (Local shadows global)", "Error: Redefinition", "15"],
+                    "answer": "10 (Local shadows global)"
+                },
+                {
+                    "question": "What happens to local variables when their function finishes executing?",
+                    "options": ["They are saved permanently", "They remain in memory indefinitely", "Their memory is deallocated and their values are lost", "They become global"],
+                    "answer": "Their memory is deallocated and their values are lost"
+                },
+                {
+                    "question": "How do you allow a function to modify a variable declared in main()?",
+                    "options": ["Pass it implicitly", "Pass it by value", "Pass its memory address via a Pointer (Pass-by-Reference)", "Declare it const"],
+                    "answer": "Pass its memory address via a Pointer (Pass-by-Reference)"
+                },
+                {
+                    "question": "Are function parameters considered local or global variables?",
+                    "options": ["Global", "Local to that specific function", "Both", "Neither"],
+                    "answer": "Local to that specific function"
+                },
+                {
+                    "question": "Can a function return multiple primitive values natively in standard C?",
+                    "options": ["Yes, using commas", "Yes, using arrays", "No, it inherently returns exactly one value", "Only void functions can"],
+                    "answer": "No, it inherently returns exactly one value"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Functions & Scope — Expert",
+            "theory": "The **`static` Keyword** alters how and where variables are stored.\n- **Inside a function**: A `static` variable is not destroyed when the function exits. It retains its value across multiple calls to the function (stored in the data segment rather than the stack).\n- **Globally (outside a function)**: A `static` global variable or function is restricted to ONLY the file it is declared in. It limits the \"linkage\", effectively acting as a private variable/function for that specific C file.\n\n**Recursion** is when a function calls itself. You must always have a **Base Case** to stop the recursion, otherwise it repeatedly calls itself until the Call Stack overflows and the program crashes.",
+            "questions": [
+                {
+                    "question": "What does the `static` keyword do to a local variable inside a function?",
+                    "options": ["Makes it constant", "Destroys it immediately", "It retains its value in memory across multiple function calls instead of being destroyed", "It shares it with all functions globally"],
+                    "answer": "It retains its value in memory across multiple function calls instead of being destroyed"
+                },
+                {
+                    "question": "Where are static local variables typically stored in memory?",
+                    "options": ["The Stack", "The Heap", "The Data Segment", "The CPU Registers"],
+                    "answer": "The Data Segment"
+                },
+                {
+                    "question": "What does the `static` keyword do to a global variable or function?",
+                    "options": ["Makes it accessible everywhere", "Restricts its visibility (linkage) strictly to the file it was declared in", "Prevents it from compiling", "Optimizes its memory usage"],
+                    "answer": "Restricts its visibility (linkage) strictly to the file it was declared in"
+                },
+                {
+                    "question": "What is Recursion in C?",
+                    "options": ["A loop inside a switch", "A function that constantly returns 0", "A function that calls itself", "A compiler optimization"],
+                    "answer": "A function that calls itself"
+                },
+                {
+                    "question": "What is absolutely required in a recursive function to prevent a stack overflow?",
+                    "options": ["A break statement", "A static variable", "A Base Case condition to stop the recursion", "A switch statement"],
+                    "answer": "A Base Case condition to stop the recursion"
+                },
+                {
+                    "question": "What happens if a recursive function lacks a base case?",
+                    "options": ["It converts to a while loop automatically", "It returns NULL", "It causes a Stack Overflow and crashes the program", "The compiler fixes it"],
+                    "answer": "It causes a Stack Overflow and crashes the program"
+                },
+                {
+                    "question": "Which mathematical operation is canonically taught using recursion?",
+                    "options": ["Addition", "Factorial (e.g., 5!)", "Division", "Modulus"],
+                    "answer": "Factorial (e.g., 5!)"
+                },
+                {
+                    "question": "Can `main()` be called recursively in C?",
+                    "options": ["No, it's strictly prohibited by the standard", "Yes, but it is highly unconventional and generally bad practice", "Only in C++", "Only on microcontrollers"],
+                    "answer": "Yes, but it is highly unconventional and generally bad practice"
+                },
+                {
+                    "question": "What does the `inline` keyword request the compiler to do?",
+                    "options": ["Create an infinite loop", "Place the variable on one line", "Replace the function call with the actual function code to save jump overhead", "Delete the function"],
+                    "answer": "Replace the function call with the actual function code to save jump overhead"
+                },
+                {
+                    "question": "What concept allows C to support varying numbers of arguments to a function (like printf)?",
+                    "options": ["Multiple inheritance", "Variadic functions (stdarg.h)", "Overloading", "Polymorphism"],
+                    "answer": "Variadic functions (stdarg.h)"
+                }
+            ]
+        }
+    ]
+}

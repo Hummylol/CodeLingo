@@ -159,7 +159,7 @@ export default function TheoryPage() {
       }
     }
     loadTheoryData()
-  }, [selected, currentLevelId, user])
+  }, [selected, currentLevelId, user?.id])
 
   // --- Difficulty quiz handlers ---
   const handleDifficultyOptionSelect = (questionIndex: number, option: string) => {

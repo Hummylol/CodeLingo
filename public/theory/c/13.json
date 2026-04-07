@@ -1,0 +1,177 @@
+{
+    "levelno": 13,
+    "topic": "Unions & Enums",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Unions & Enums — Beginner",
+            "theory": "**Enumerations (`enum`)**\nAn `enum` is a user-defined data type used to assign names to integral constants, making your code highly readable.\n```c\nenum Day { SUNDAY, MONDAY, TUESDAY };\n```\nBy default, C assigns `0` to the first item (SUNDAY), `1` to the next (MONDAY), etc. You can also assign values manually: `enum Status { PASS = 1, FAIL = -1 };`.\n\n**Unions (`union`)**\nA `union` looks exactly like a `struct`, but it behaves fundamentally differently. In a `struct`, every variable gets its own distinct memory space. In a `union`, **ALL variables share the *exact same* memory location**.\n```c\nunion Data {\n    int i;\n    float f;\n    char str[20];\n};\n```\nA union can only store one value at any given time. If you write to `str`, you instantly corrupt `i` and `f`.",
+            "questions": [
+                {
+                    "question": "What is the primary purpose of an `enum`?",
+                    "options": ["To create an array", "To assign readable text names to integer constants to make code self-documenting", "To define variables that change automatically", "To encrypt integers"],
+                    "answer": "To assign readable text names to integer constants to make code self-documenting"
+                },
+                {
+                    "question": "In `enum TrafficLight { RED, YELLOW, GREEN };`, what integer value does `RED` default to?",
+                    "options": ["-1", "0", "1", "Null"],
+                    "answer": "0"
+                },
+                {
+                    "question": "If `enum State { START=5, RUNNING, STOPPED };`, what is the value of `RUNNING`?",
+                    "options": ["0", "1", "6", "Unknown"],
+                    "answer": "6"
+                },
+                {
+                    "question": "What is the primary physical difference between a `struct` and a `union`?",
+                    "options": ["Syntax formatting", "A struct allocates memory for every member individually; a union allocates one shared memory block used by all its members simultaneously", "Structs hold ints; unions hold floats", "Unions are much larger"],
+                    "answer": "A struct allocates memory for every member individually; a union allocates one shared memory block used by all its members simultaneously"
+                },
+                {
+                    "question": "How many values from a union can you safely store and read at any one exact moment?",
+                    "options": ["All of them", "Exactly two", "Only one", "Depends on the CPU"],
+                    "answer": "Only one"
+                },
+                {
+                    "question": "If you write an `int` to a union, and immediately try to read the `float` variable from that same union, what happens?",
+                    "options": ["It converts the int to float", "You read corrupted/garbage data because the float interpretation of that int's binary memory is mathematically nonsensical", "It crashes", "It works perfectly"],
+                    "answer": "You read corrupted/garbage data because the float interpretation of that int's binary memory is mathematically nonsensical"
+                },
+                {
+                    "question": "Can you use standard `typedef` with an `enum` or `union` like you do with structs?",
+                    "options": ["Yes", "No", "Only with enums", "Only with unions"],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "What happens if two items in an enum are manually assigned the exact same integer value?",
+                    "options": ["Compiler error", "It is completely valid; both names will represent the same constant value", "The program crashes", "The second one is skipped"],
+                    "answer": "It is completely valid; both names will represent the same constant value"
+                },
+                {
+                    "question": "Which of these perfectly creates an enum variable?",
+                    "options": ["enum Day today = MONDAY;", "Day today = MONDAY;", "enum today = MONDAY;", "int today = enum MONDAY;"],
+                    "answer": "enum Day today = MONDAY;"
+                },
+                {
+                    "question": "Is memory allocated permanently for an `enum` definition itself?",
+                    "options": ["Yes, equivalent to an array", "No, enums are essentially compile-time constants (replaced with integers by the compiler)", "Yes, on the Heap", "Yes, as floats"],
+                    "answer": "No, enums are essentially compile-time constants (replaced with integers by the compiler)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Unions & Enums — Intermediate",
+            "theory": "The **Size of a Union** is determined by its largest member.\nIf a union contains an `int` (4 bytes), a `double` (8 bytes), and a `char str[20]` (20 bytes), the physical size of the entire union is exactly 20 bytes. (Perhaps with a slight pad to align it to a 4 or 8-byte boundary).\n\nWhy use Unions? Memory Savings!\nOften used in embedded systems or complex structs representing abstract \"Nodes\" or \"Events\". If an Event struct represents either a `MouseClick` or a `KeyPress`, you create a `union` inside the struct holding both. Because an event can only ever visibly be ONE of those actions, joining them in a union saves massive amounts of memory compared to a struct where both exist uselessly at the same time.",
+            "questions": [
+                {
+                    "question": "How is the total memory size of a union calculated?",
+                    "options": ["Sum of all members", "Average of all members", "The size of its single largest member data type (plus possible padding)", "Always 4 bytes"],
+                    "answer": "The size of its single largest member data type (plus possible padding)"
+                },
+                {
+                    "question": "If `union Test { int a; char b; double c; };`, what is the `sizeof(union Test)` assuming standard sizing?",
+                    "options": ["13", "8", "4", "1"],
+                    "answer": "8"
+                },
+                {
+                    "question": "Are unions inherently Type-Safe in C?",
+                    "options": ["Yes, the compiler tracks what you wrote last", "No, C provides zero tracking of what was last written. Reading the wrong union member causes silent logic bugs.", "Yes, C99 added safety", "Yes, it throws runtime errors"],
+                    "answer": "No, C provides zero tracking of what was last written. Reading the wrong union member causes silent logic bugs."
+                },
+                {
+                    "question": "What is an 'Anonymous Union'?",
+                    "options": ["A union without members", "A union declared inside a struct without a name, allowing its members to be accessed directly as if they belonged to the parent struct", "A union containing functions", "A deleted union"],
+                    "answer": "A union declared inside a struct without a name, allowing its members to be accessed directly as if they belonged to the parent struct"
+                },
+                {
+                    "question": "How do developers generally solve the safety issue of not knowing which union variable is currently active?",
+                    "options": ["By checking for NULL", "By wrapping the union inside a struct alongside an `enum` Tag/Type tracker variable that indicates what data type is currently stored inside the union", "By using sizeof()", "There is no way to solve it"],
+                    "answer": "By wrapping the union inside a struct alongside an `enum` Tag/Type tracker variable that indicates what data type is currently stored inside the union"
+                },
+                {
+                    "question": "What operator do you use to access a member of a union through a pointer `union Data *p`?",
+                    "options": [". (Dot)", "::", "-> (Arrow)", "=>"],
+                    "answer": "-> (Arrow)"
+                },
+                {
+                    "question": "Can an enum value realistically be negative in C?",
+                    "options": ["No", "Yes, `enum { START = -5 };` is perfectly legal since enums are backed by signed integers.", "Only if typedef'd", "Only in C++"],
+                    "answer": "Yes, `enum { START = -5 };` is perfectly legal since enums are backed by signed integers."
+                },
+                {
+                    "question": "If you initialize a union: `union Test t = {10};`, what happens?",
+                    "options": ["Syntax error", "It assigns 10 strictly to the VERY FIRST element defined in the union", "It assigns 10 to all elements", "It randomly assigns it"],
+                    "answer": "It assigns 10 strictly to the VERY FIRST element defined in the union"
+                },
+                {
+                    "question": "Can you declare a union that contains a struct, and vice-versa?",
+                    "options": ["No, never", "Yes, standard C allows arbitrary nesting of structs and unions", "Only structs inside unions", "Only unions inside structs"],
+                    "answer": "Yes, standard C allows arbitrary nesting of structs and unions"
+                },
+                {
+                    "question": "Why are unions incredibly common in Network Packets or low-level Hardware Registers?",
+                    "options": ["They are faster", "They allow you to treat the exact same block of raw memory bytes as different data types on the fly (e.g., viewing an int as 4 separate bytes)", "They compress the data over WiFi", "They are encrypted"],
+                    "answer": "They allow you to treat the exact same block of raw memory bytes as different data types on the fly (e.g., viewing an int as 4 separate bytes)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Unions & Enums — Expert",
+            "theory": "**Type Punning via Unions**\nType Punning is a tricky technique used to subvert the type system. If you take a float, you usually can't read its raw internal binary bits using bitwise `&` operators directly. \nHowever, if you put that `float` into a union with an `int`, you can write the Float, and immediately read the Int. This isn't a conversion—it's reading the *exact raw binary IEEE-754 representation* of the float as if it were a literal integer.\n\nWhile strict aliasing rules in C make casting through pointers `*(int*)&float_val` technically Undefined Behavior, modern standards specifically grant an exception allowing type punning via `union` reading!\n\n*(Note: The famous Inverse Square Root algorithm from Quake III Arena used this exact pointer-casting type punning trick to manipulate float bits!)*",
+            "questions": [
+                {
+                    "question": "What is 'Type Punning'?",
+                    "options": ["Converting float to int mathematically", "Circumventing the type system to treat the raw memory bits of one data type directly as if it were a different data type", "A syntax error", "Deleting variables"],
+                    "answer": "Circumventing the type system to treat the raw memory bits of one data type directly as if it were a different data type"
+                },
+                {
+                    "question": "Why is utilizing a `union` typically the safest, standard-compliant way to perform type punning in C?",
+                    "options": ["It is faster", "Reading a different union member than what was written is explicitly allowed by C99 standards, sidestepping Strict Aliasing rules", "It uses the heap", "It converts the values mathematically"],
+                    "answer": "Reading a different union member than what was written is explicitly allowed by C99 standards, sidestepping Strict Aliasing rules"
+                },
+                {
+                    "question": "What is the 'Strict Aliasing' Rule in C?",
+                    "options": ["Global vars must be named uniquely", "Pointers of completely unrelated types (like int* and float*) are assumed by the compiler's optimizer to NEVER point to the exact same memory address", "Casts are illegal", "Arrays cannot decay"],
+                    "answer": "Pointers of completely unrelated types (like int* and float*) are assumed by the compiler's optimizer to NEVER point to the exact same memory address"
+                },
+                {
+                    "question": "What horrible consequence can happen if you violate Strict Aliasing using wild pointer casts (e.g. `*(int*)&float_var`)?",
+                    "options": ["Syntax Error", "The compiler's optimizer may reorder or delete your instructions because it assumes your pointers don't overlap, causing insane runtime logic bugs", "The CPU melts", "Nothing"],
+                    "answer": "The compiler's optimizer may reorder or delete your instructions because it assumes your pointers don't overlap, causing insane runtime logic bugs"
+                },
+                {
+                    "question": "Can the compiler choose the backing integer size of an `enum`?",
+                    "options": ["No, it is strictly 4 bytes", "Yes, the C standard allows the compiler to use char, short, or int depending on the largest value defined in the enum", "No, it is strictly 8 bytes", "Only on 64-bit"],
+                    "answer": "Yes, the C standard allows the compiler to use char, short, or int depending on the largest value defined in the enum"
+                },
+                {
+                    "question": "What is an Endianness issue when reading structs/unions?",
+                    "options": ["Strings terminating poorly", "Different CPU architectures (Big-Endian vs Little-Endian) store multi-byte integers in reversed byte orders, making raw memory sharing across networks broken", "A Linux-only issue", "Memory leaks"],
+                    "answer": "Different CPU architectures (Big-Endian vs Little-Endian) store multi-byte integers in reversed byte orders, making raw memory sharing across networks broken"
+                },
+                {
+                    "question": "If you have `union { unsigned int i; unsigned char c[4]; }`, what happens if you write to `i` and read `c[0]` on a Little-Endian CPU?",
+                    "options": ["You get the MOST significant byte", "You get the LEAST significant byte of the integer", "You get 0", "A crash occurs"],
+                    "answer": "You get the LEAST significant byte of the integer"
+                },
+                {
+                    "question": "Are you allowed to check if two unions are equal natively using `union1 == union2`?",
+                    "options": ["Yes", "No, C does not support direct comparison operators on structs or unions", "Only using the string library", "Only on chars"],
+                    "answer": "No, C does not support direct comparison operators on structs or unions"
+                },
+                {
+                    "question": "How are Bit-Fields combined with Unions in hardware programming?",
+                    "options": ["They aren't", "A union can contain a struct of bit-fields alongside a standard integer, allowing devs to read/write specific hardware bits OR wipe the entire register at once via the integer member", "It creates a string", "It causes buffer overflow"],
+                    "answer": "A union can contain a struct of bit-fields alongside a standard integer, allowing devs to read/write specific hardware bits OR wipe the entire register at once via the integer member"
+                },
+                {
+                    "question": "What does standard C99 named-initializer syntax look like for a union?",
+                    "options": ["union Test t = (f = 3.14);", "union Test t = { .f = 3.14 };", "union Test t->f = 3.14;", "union Test t : f(3.14);"],
+                    "answer": "union Test t = { .f = 3.14 };"
+                }
+            ]
+        }
+    ]
+}

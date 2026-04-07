@@ -1,0 +1,177 @@
+{
+    "levelno": 18,
+    "topic": "Advanced File I/O (Serialization)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "File Handling — Beginner",
+            "theory": "Text processing in C can be tricky when parsing complex documents (like CSV files or configuration scripts).\n\n**`fscanf()` and `sscanf()`**\nWhile `fgets` reads whole lines safely, `fscanf(fptr, \"%s %d\", name, &age)` can be used to extract highly specific formatted data from a file.\nAdditionally, `sscanf` (String Scan) takes a string you ALREADY extracted, and parses it for formatted tokens!\n```c\nchar data[] = \"Hero 100\";\nchar name[20];\nint hp;\nsscanf(data, \"%s %d\", name, &hp);\n```\nHowever, you must be terrified of buffer overflows when using `%s`. Always use limits: `%19s` forces `sscanf` to stop reading before crashing your 20-character array.",
+            "questions": [
+                {
+                    "question": "What does `fscanf()` essentially do?",
+                    "options": ["Formats a script", "Reads from a file pointer and attempts to match the text to complex format specifiers (like %d, %s) instantly converting them", "Finds strings in memory", "Closes a file"],
+                    "answer": "Reads from a file pointer and attempts to match the text to complex format specifiers (like %d, %s) instantly converting them"
+                },
+                {
+                    "question": "What is the primary danger of using `%s` in `fscanf`?",
+                    "options": ["It reads too slow", "It only reads numbers", "If the text in the file is longer than your array, it causes a Buffer Overflow, destroying adjacent memory", "It crashes the OS"],
+                    "answer": "If the text in the file is longer than your array, it causes a Buffer Overflow, destroying adjacent memory"
+                },
+                {
+                    "question": "How do you securely limit `fscanf` to reading exactly 19 characters into a string?",
+                    "options": ["fscanf(..., \"%size19\")", "fscanf(..., \"%19s\")", "fscanf(..., \"%s\", 19)", "Use fseek"],
+                    "answer": "fscanf(..., \"%19s\")"
+                },
+                {
+                    "question": "Under what condition does `fscanf` immediately stop reading a `%s` string token?",
+                    "options": ["When it hits 100 characters", "It never stops", "When it hits any whitespace character (space, tab, or newline)", "When the file ends"],
+                    "answer": "When it hits any whitespace character (space, tab, or newline)"
+                },
+                {
+                    "question": "What does `sscanf()` accomplish?",
+                    "options": ["Searches a disk drive", "Secure String Scan", "It functions identically to fscanf, but it reads text from a standard string variable/buffer you provide instead of from a physical file.", "It deletes strings"],
+                    "answer": "It functions identically to fscanf, but it reads text from a standard string variable/buffer you provide instead of from a physical file."
+                },
+                {
+                    "question": "If you `sscanf(\"Apple 5\", \"%s %d\", fruit, count);`, what is required to correctly save the `count` integer?",
+                    "options": ["It is fine as is", "You must use `&count` to pass the pointer/address so sscanf can successfully write the integer to your variable.", "You must use `*count`", "Use %.d"],
+                    "answer": "You must use `&count` to pass the pointer/address so sscanf can successfully write the integer to your variable."
+                },
+                {
+                    "question": "Why don't you need the `&` operator for the string `fruit` in `sscanf`?",
+                    "options": ["Because strings are magic", "Because strings don't exist", "Because `fruit` is an Array, and array names naturally naturally decay into memory address pointers automatically.", "Because it's a char"],
+                    "answer": "Because `fruit` is an Array, and array names naturally naturally decay into memory address pointers automatically."
+                },
+                {
+                    "question": "What does `fscanf` return?",
+                    "options": ["The string it read", "NULL", "The number of items/tokens it successfully managed to match and assign variables to", "A pointer"],
+                    "answer": "The number of items/tokens it successfully managed to match and assign variables to"
+                },
+                {
+                    "question": "What happens if `fscanf` hits the end of the file before matching anything?",
+                    "options": ["It closes", "It loops", "It returns the special constant integer EOF", "It returns 0"],
+                    "answer": "It returns the special constant integer EOF"
+                },
+                {
+                    "question": "Which function allows securely dumping a formatted string completely into a memory buffer instead of printing it to a screen?",
+                    "options": ["print_buffer()", "fprintf()", "sprintf() / snprintf()", "strput()"],
+                    "answer": "sprintf() / snprintf()"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "File Handling — Intermediate",
+            "theory": "**Struct Serialization**\nIf you have an array of 1000 Structs representing items in a game, reading/writing them manually as text (`\"Item Name: Sword, ATK: 50\\n\"`) is excruciatingly slow and takes massive disk space.\n\nInstead, you use **Binary Serialization** with `\"wb\"` modes.\n`fwrite(&inventory, sizeof(struct Item), 1000, fptr);`\nThis single line takes all 1000 structs in RAM, completely bypasses text translation, and physically blasts the raw binary bytes directly onto the hard drive in milliseconds.\n\nTo load the entire game state back on your next program run:\n`fread(&inventory, sizeof(struct Item), 1000, fptr);`",
+            "questions": [
+                {
+                    "question": "What is 'Serialization'?",
+                    "options": ["Numbering items 1 to 100", "Converting complex data structures in RAM (like Structs) into a linear format (like raw bytes or text) so it can be saved to a file or sent over a network", "Encrypting files", "Deleting arrays"],
+                    "answer": "Converting complex data structures in RAM (like Structs) into a linear format (like raw bytes or text) so it can be saved to a file or sent over a network"
+                },
+                {
+                    "question": "What is the incredible advantage of Binary Serialization via `fwrite` over Text Files?",
+                    "options": ["It doesn't require `<stdio.h>`", "It is extraordinarily fast and disk-efficient since the CPU doesn't waste time translating binary integers back-and-forth into readable string characters", "It looks prettier in Notepad", "It supports Java"],
+                    "answer": "It is extraordinarily fast and disk-efficient since the CPU doesn't waste time translating binary integers back-and-forth into readable string characters"
+                },
+                {
+                    "question": "If you open a file for `fwrite` binary structs, what mode must you definitely use?",
+                    "options": ["\"w\"", "\"w+\"", "\"txt\"", "\"wb\""],
+                    "answer": "\"wb\""
+                },
+                {
+                    "question": "What does the '3rd argument' in `fwrite` dictate: `fwrite(data, size, COUNT, file)`?",
+                    "options": ["The maximum file size", "The number of individual structural elements (chunks of 'size') you want to write sequentially in one swoop", "The memory limit", "The loop count"],
+                    "answer": "The number of individual structural elements (chunks of 'size') you want to write sequentially in one swoop"
+                },
+                {
+                    "question": "Can you safely `fwrite` an array of structs containing strings defined as `char name[50];`?",
+                    "options": ["Yes! Because `name` is a fixed array INSIDE the struct, the 50 bytes of characters physically live right there and get written successfully.", "No", "Only if it is null terminated", "Only in C++"],
+                    "answer": "Yes! Because `name` is a fixed array INSIDE the struct, the 50 bytes of characters physically live right there and get written successfully."
+                },
+                {
+                    "question": "Can you safely `fwrite` an array of structs containing strongly dynamic Pointers `char *name;`?",
+                    "options": ["Yes, it writes the string", "Never! The struct only holds the Memory Address. You will write a useless hex address to disk, while the actual string string data located elsewhere in RAM is totally lost.", "Only on Linux", "Yes, with macros"],
+                    "answer": "Never! The struct only holds the Memory Address. You will write a useless hex address to disk, while the actual string string data located elsewhere in RAM is totally lost."
+                },
+                {
+                    "question": "What happens if a hacker opens your `\"wb\"` binary `.dat` file in a simple Text editor?",
+                    "options": ["It displays properly as text", "It shows a virus", "It appears as absolute unintelligible gibberish and weird symbols because the text editor is attempting to decode pure mathematical binary values as ASCII characters.", "It deletes the file"],
+                    "answer": "It appears as absolute unintelligible gibberish and weird symbols because the text editor is attempting to decode pure mathematical binary values as ASCII characters."
+                },
+                {
+                    "question": "What prevents a binary `.dat` file saved by a C program on a Windows computer from loading perfectly into a C program running on a Mac/Linux computer?",
+                    "options": ["Absolutely nothing", "OS restrictions", "File Extensions", "Struct Padding rules and Endianness (byte order) can drastically differ between compilers and completely different CPU Architectures, corrupting the un-formatted struct alignment"],
+                    "answer": "Struct Padding rules and Endianness (byte order) can drastically differ between compilers and completely different CPU Architectures, corrupting the un-formatted struct alignment"
+                },
+                {
+                    "question": "If you `fread` 100 structs from a file, but the file only contains 40, what does `fread` return?",
+                    "options": ["NULL", "Program crashes", "It returns the number 40 (the amount of items successfully fully read)", "It returns 100 with garbage"],
+                    "answer": "It returns the number 40 (the amount of items successfully fully read)"
+                },
+                {
+                    "question": "How do you append newly created binary structs safely to an already populated `.dat` file?",
+                    "options": ["Open in \"w+b\"", "Open in \"ab\" (Append Binary Mode)", "Read it all, then rewrite it", "You cannot append binary"],
+                    "answer": "Open in \"ab\" (Append Binary Mode)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "File Handling — Expert",
+            "theory": "**Memory Mapping (`mmap`)**\nFor absolute maximum performance on Unix systems, you don't even use `fread/fwrite`. You use POSIX Memory Mapping.\n\n`mmap()` asks the OS kernel to magically link a file on your Hard Drive directly into your program's internal RAM address space. You receive a standard Pointer. \nIf you write to `ptr[5] = 'A'`, it natively modifies the Hard Drive file transparently in the background! It bypasses all standard C copying buffers entirely.\n\n**File Descriptors**\nUnder underneath the friendly `FILE *` pointer from C `stdio`, the underlying Operating System purely relies on **File Descriptors**: simple integers (like `3`, `4`, `5`). You can access OS-level raw system calls bypassing C standard library by using `read()` and `write()` with these ints directly.",
+            "questions": [
+                {
+                    "question": "What incredibly advanced concept physically maps a hard drive file transparently into your RAM?",
+                    "options": ["malloc", "mmap() (Memory Mapping)", "fseek", "disk_map"],
+                    "answer": "mmap() (Memory Mapping)"
+                },
+                {
+                    "question": "Why is `mmap()` significantly faster than standard `fread/fwrite` for gigantic files (e.g., 10GB databases)?",
+                    "options": ["It compresses the disk", "It completely bypasses creating temporary copying buffers in standard RAM; you read/write exactly directly to the OS disk cache", "It uses the GPU", "It's written in Assembly"],
+                    "answer": "It completely bypasses creating temporary copying buffers in standard RAM; you read/write exactly directly to the OS disk cache"
+                },
+                {
+                    "question": "Behind the scenes of `<stdio.h>`, what does the OS (like Linux/Unix) actually use to uniquely identify an open file?",
+                    "options": ["Strings containing the file path", "A complex Hex key", "A simple 'File Descriptor' Integer (e.g. 3, 4, 5)", "A struct FILE"],
+                    "answer": "A simple 'File Descriptor' Integer (e.g. 3, 4, 5)"
+                },
+                {
+                    "question": "When your C program launches on Linux, what File Descriptors are automatically pre-opened at integers 0, 1, and 2?",
+                    "options": ["Network cards", "Standard Input (stdin), Standard Output (stdout), and Standard Error (stderr)", "System config files", "NULL ports"],
+                    "answer": "Standard Input (stdin), Standard Output (stdout), and Standard Error (stderr)"
+                },
+                {
+                    "question": "If you want to extract the underlying OS File Descriptor int from a C `FILE *` pointer, what Unix function do you use?",
+                    "options": ["get_int()", "unix_file()", "fileno(fptr)", "file_id(fptr)"],
+                    "answer": "fileno(fptr)"
+                },
+                {
+                    "question": "What is the raw POSIX System Call for writing bytes directly to a File Descriptor?",
+                    "options": ["fwrite()", "write()", "syscall_w()", "sys_print()"],
+                    "answer": "write()"
+                },
+                {
+                    "question": "What is 'File Locking' (`flock` / `fcntl`)?",
+                    "options": ["Password protecting a file", "Encrypting a file", "Requesting the OS block any other programs from simultaneously modifying a given file while you are writing to it, preventing horrible race condition corruption", "Closing a file permantently"],
+                    "answer": "Requesting the OS block any other programs from simultaneously modifying a given file while you are writing to it, preventing horrible race condition corruption"
+                },
+                {
+                    "question": "What happens if two totally separate programs furiously write to the exact same log file concurrently without File Locking?",
+                    "options": ["It works perfectly", "It creates two files", "Their textual outputs violently interleave together mid-sentence, permanently corrupting the log file data layout", "The OS crashes"],
+                    "answer": "Their textual outputs violently interleave together mid-sentence, permanently corrupting the log file data layout"
+                },
+                {
+                    "question": "How do you permanently rename or move a file strictly using C standard libraries?",
+                    "options": ["system(\"rename\")", "rename(\"old.txt\", \"new.txt\")", "move()", "f_rename()"],
+                    "answer": "rename(\"old.txt\", \"new.txt\")"
+                },
+                {
+                    "question": "What does `remove(\"data.txt\")` do?",
+                    "options": ["Closes a file", "Hides it", "Permanently deletes the file from your Hard Drive", "Moves it to recycle bin"],
+                    "answer": "Permanently deletes the file from your Hard Drive"
+                }
+            ]
+        }
+    ]
+}

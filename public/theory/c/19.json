@@ -1,0 +1,177 @@
+{
+    "levelno": 19,
+    "topic": "Data Structures (Linked Lists)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Data Structures — Beginner",
+            "theory": "In an Array, all elements are packed tightly next to each other in physical Memory. If an array is full and you need to add one more element, it's impossible to simply add it if the neighboring memory is occupied. You have to allocate a completely new massive array and painfully copy everything over.\n\nA **Linked List** brilliantly solves this. Instead of a contiguous block of RAM, elements (called **Nodes**) are scattered wildly all over the Heap memory.\n\nTo keep track of them, every Node holds two things:\n1. The actual Data (like an `int`).\n2. A internal **Pointer** pointing to the memory address of the NEXT scattered Node in the chain!",
+            "questions": [
+                {
+                    "question": "What is the primary physical constraint of a standard Array?",
+                    "options": ["It can only hold ints", "All of its elements absolutely must physically occupy contiguous, unbroken blocks of memory right next to each other", "It cannot be looped over", "It has to be odd numbered"],
+                    "answer": "All of its elements absolutely must physically occupy contiguous, unbroken blocks of memory right next to each other"
+                },
+                {
+                    "question": "What is a Linked List?",
+                    "options": ["A list of strings", "A data structure where each element (Node) is scattered randomly in memory, but contains a pointer linking it physically to the next one", "An array with extra padding", "A file system structure"],
+                    "answer": "A data structure where each element (Node) is scattered randomly in memory, but contains a pointer linking it physically to the next one"
+                },
+                {
+                    "question": "What is an individual unit/element of a Linked List called?",
+                    "options": ["A Node", "A Box", "A Chain", "A Cell"],
+                    "answer": "A Node"
+                },
+                {
+                    "question": "What two core components generally make up a Linked List Node?",
+                    "options": ["Two ints", "A String and a Float", "The data payload, and a Pointer containing the address of the next Node", "An Array and a Size int"],
+                    "answer": "The data payload, and a Pointer containing the address of the next Node"
+                },
+                {
+                    "question": "What specifically does the pointer in the final terminal Node of the list point to?",
+                    "options": ["The first Node", "Random Garbage memory", "It points to explicitly `NULL` to signify the abrupt end of the chain", "A zero value"],
+                    "answer": "It points to explicitly `NULL` to signify the abrupt end of the chain"
+                },
+                {
+                    "question": "What is the 'Head' in a Linked List?",
+                    "options": ["The largest number", "A separate pointer variable that permanently tracks the memory address of solely the very first Node", "The central Node", "A function"],
+                    "answer": "A separate pointer variable that permanently tracks the memory address of solely the very first Node"
+                },
+                {
+                    "question": "If you brutally overwrite/lose the 'Head' pointer, what happens?",
+                    "options": ["Nothing, it regenerates", "The program crashes instantly", "You permanently lose the entire List, causing a massive Memory Leak because you have absolutely no way to find where the scattered Nodes are", "You can search for them using a loop"],
+                    "answer": "You permanently lose the entire List, causing a massive Memory Leak because you have absolutely no way to find where the scattered Nodes are"
+                },
+                {
+                    "question": "Why is inserting a completely new item at the physical beginning of a Linked List infinitely faster than inserting at the beginning of an Array?",
+                    "options": ["Arrays are slow to read", "In an Array, inserting at index 0 requires desperately shifting/moving EVERY OTHER element rightward. In a Linked List, you literally just change 1 pointer address.", "It's not faster", "Linked Lists use the stack"],
+                    "answer": "In an Array, inserting at index 0 requires desperately shifting/moving EVERY OTHER element rightward. In a Linked List, you literally just change 1 pointer address."
+                },
+                {
+                    "question": "Which of these is NOT an advantage of Linked Lists?",
+                    "options": ["Dynamic runtime expansion", "Instant 0(1) insertion at the Head", "No memory wasted on un-filled array slots", "Instant access to internal elements (e.g., getting element 50 directly)"],
+                    "answer": "Instant access to internal elements (e.g., getting element 50 directly)"
+                },
+                {
+                    "question": "Why are Linked Lists slower for accessing `element[50]`?",
+                    "options": ["They aren't", "Because you MUST sequentially hop through elements 0, 1, 2...49, following each pointer until you physically reach the 50th one.", "Pointers are banned", "Because they use disk space"],
+                    "answer": "Because you MUST sequentially hop through elements 0, 1, 2...49, following each pointer until you physically reach the 50th one."
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Data Structures — Intermediate",
+            "theory": "Here is the standard C Code to define a Linked List Node:\n```c\nstruct Node {\n    int data;\n    struct Node *next;\n};\n```\nTo literally append a new node to the end of a vast Linked List, you have to \"Traverse\" (walk) the list.\n```c\nstruct Node *current = head;\nwhile (current->next != NULL) {\n    current = current->next;\n}\n// 'current' is now the last node!\ncurrent->next = new_node;\n```\n\nWhen deleting a Node in the middle, you CANNOT just `free()` it immediately! If you do, the chain breaks and the rest of the list is lost. You must carefully re-wire the pointer of the PREVIOUS node to point to the NEXT node, bridging the gap, before you `free` the isolated middle node.",
+            "questions": [
+                {
+                    "question": "What does a Self-Referential Struct physically contain?",
+                    "options": ["A copy of itself", "A pointer that points to another struct of the exact same type", "A recursive loop", "A void pointer"],
+                    "answer": "A pointer that points to another struct of the exact same type"
+                },
+                {
+                    "question": "Why do you use a temporary `current` pointer to traverse a list instead of directly modifying `head`?",
+                    "options": ["Head is constant", "Because if you use the `head` pointer to walk the list, you lose the address of the start, permanently destroying the list", "It uses less memory", "It's faster"],
+                    "answer": "Because if you use the `head` pointer to walk the list, you lose the address of the start, permanently destroying the list"
+                },
+                {
+                    "question": "What is the condition `current->next != NULL` generally checking for?",
+                    "options": ["If the list is empty", "If the current Node is the absolute final trailing Node in the entire chain", "If the data is corrupted", "If we are at the start"],
+                    "answer": "If the current Node is the absolute final trailing Node in the entire chain"
+                },
+                {
+                    "question": "What happens if you aggressively `free()` a node localized in the middle of a Linked List without adjusting pointers?",
+                    "options": ["The surrounding nodes connect automatically", "The program fixes it", "The chain is brutally severed, and any nodes physically located after the deleted node are orphaned as a fatal Memory Leak", "Nothing"],
+                    "answer": "The chain is brutally severed, and any nodes physically located after the deleted node are orphaned as a fatal Memory Leak"
+                },
+                {
+                    "question": "How do you properly delete `Node B` situated between `Node A` and `Node C`?",
+                    "options": ["free(B)", "Set B->data = 0", "Make Node A's pointer brutally point over B straight to Node C (`A->next = C`), isolating B. Then `free(B)` safely.", "Just delete C"],
+                    "answer": "Make Node A's pointer brutally point over B straight to Node C (`A->next = C`), isolating B. Then `free(B)` safely."
+                },
+                {
+                    "question": "To completely erase an entire Linked List, do you just `free(head)`?",
+                    "options": ["Yes, it inherently frees everything chained to it", "No!!! `free(head)` only frees that ONE SINGLE struct. The remaining thousands of nodes stay locked in memory forever. You must write a loop to free them one-by-one.", "Yes, via recursion", "Only in C++"],
+                    "answer": "No!!! `free(head)` only frees that ONE SINGLE struct. The remaining thousands of nodes stay locked in memory forever. You must write a loop to free them one-by-one."
+                },
+                {
+                    "question": "Where are individual Linked List nodes allocated in C physically?",
+                    "options": ["The Stack", "Sequentially in Registers", "Dynamically on the Heap individually via malloc requests", "In the CPU Cache"],
+                    "answer": "Dynamically on the Heap individually via malloc requests"
+                },
+                {
+                    "question": "What is a 'Tail' pointer?",
+                    "options": ["A bug", "An optional auxiliary pointer kept permanently synced to the absolute LAST node, allowing instant inserts at the end without painfully iterating through the whole list.", "A pointer to previous node", "A recursive pointer"],
+                    "answer": "An optional auxiliary pointer kept permanently synced to the absolute LAST node, allowing instant inserts at the end without painfully iterating through the whole list."
+                },
+                {
+                    "question": "If you reverse a string via an array, it's fast. Reversing a strictly Singly Linked List physically is hard because...",
+                    "options": ["They are too heavy", "They only point FORWARD; you cannot easily look backwards to see what the previous node was unless you use a temporary variable loop trick to flip the pointers", "They don't have indexes", "Strings aren't linked lists"],
+                    "answer": "They only point FORWARD; you cannot easily look backwards to see what the previous node was unless you use a temporary variable loop trick to flip the pointers"
+                },
+                {
+                    "question": "What is `a->next->next->data` conceptually querying?",
+                    "options": ["An error", "The numeric data of the node situated exactly 2 jumps ahead of node a", "Array bounds", "Nothing"],
+                    "answer": "The numeric data of the node situated exactly 2 jumps ahead of node a"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Data Structures — Expert",
+            "theory": "**Doubly Linked Lists**\nA massive limitation of Singly Linked Lists is you can only travel forward (`next`). \nA **Doubly Linked List** fixes this by storing TWO pointers in every single Node: `struct Node *next;` AND `struct Node *prev;`.\nNow you can cleanly traverse backward! But deleting/inserting nodes is incredibly dangerous because you now have to flawlessly update *four* different pointers perfectly, or the chain scrambles.\n\n**Circular Linked Lists**\nIn this variant, the very final Node doesn't point to `NULL`. Its `next` pointer aggressively wraps around and points squarely back at the `head` Node, creating an infinite circle. (Often used heavily by the Operating System's CPU Scheduler to seamlessly cycle giving time between 10 running programs infinitely in a loop).",
+            "questions": [
+                {
+                    "question": "What is the primary feature of a Doubly Linked List?",
+                    "options": ["It uses double data types", "Every node holds two pointers: one pointing forward to the Next node, and one pointing backward to the Previous node.", "It is twice as fast", "It deletes itself"],
+                    "answer": "Every node holds two pointers: one pointing forward to the Next node, and one pointing backward to the Previous node."
+                },
+                {
+                    "question": "What is the distinct memory downside of a Doubly Linked List?",
+                    "options": ["It uses the Stack", "It uses arrays", "Every single node maliciously consumes an extra 8 bytes of precious RAM just to comfortably hold the 'prev' pointer", "It causes fragmentation"],
+                    "answer": "Every single node maliciously consumes an extra 8 bytes of precious RAM just to comfortably hold the 'prev' pointer"
+                },
+                {
+                    "question": "What pointer must carefully be updated if you insert a node physically at the very beginning (Head) of a Doubly Linked List?",
+                    "options": ["Only the Head", "The old Head's 'prev' pointer AND the new Head's 'next' pointer AND the global Head tracker", "Just the next pointer", "You can't insert at the head"],
+                    "answer": "The old Head's 'prev' pointer AND the new Head's 'next' pointer AND the global Head tracker"
+                },
+                {
+                    "question": "What is a Circular Linked List?",
+                    "options": ["A list drawn as a circle", "A list where the absolute final Node intentionally points back to the Head Node instead of pointing to NULL, forging an infinite loop", "A list without a head", "A list that cycles data types"],
+                    "answer": "A list where the absolute final Node intentionally points back to the Head Node instead of pointing to NULL, forging an infinite loop"
+                },
+                {
+                    "question": "Because a Circular List loops infinitely, what happens if you lazily iterate using `while(current != NULL)`?",
+                    "options": ["It stops at the end", "An infinite loop occurs; the program hangs completely because no pointer will EVER inherently be NULL.", "A crash", "It loops twice"],
+                    "answer": "An infinite loop occurs; the program hangs completely because no pointer will EVER inherently be NULL."
+                },
+                {
+                    "question": "How do you properly stop an iteration loop inside a Circular Linked List?",
+                    "options": ["You can't", "You must carefully check if `current->next == head`; if it is, you've completed exactly one full lap around the circle", "You use a for loop with an int", "You wait for it to crash"],
+                    "answer": "You must carefully check if `current->next == head`; if it is, you've completed exactly one full lap around the circle"
+                },
+                {
+                    "question": "What incredibly famous OS architecture extensively abuses Circular Linked Lists?",
+                    "options": ["File saving", "Round-Robin CPU Task Scheduling (letting Firefox run for 5ms, then Discord for 5ms, looping forever seamlessly)", "Graphics rendering", "Network packets"],
+                    "answer": "Round-Robin CPU Task Scheduling (letting Firefox run for 5ms, then Discord for 5ms, looping forever seamlessly)"
+                },
+                {
+                    "question": "What is the widely renowned mathematical trick known as 'Floyd’s Cycle-Finding Algorithm' (The Tortoise and the Hare) used for?",
+                    "options": ["Sorting the list", "Deleting the list fast", "Deploying a slow pointer (hops 1) and a fast pointer (hops 2) simultaneously to definitively test if a broken standard Linked List accidentally loops back on itself in an infinite cycle", "Finding the max value"],
+                    "answer": "Deploying a slow pointer (hops 1) and a fast pointer (hops 2) simultaneously to definitively test if a broken standard Linked List accidentally loops back on itself in an infinite cycle"
+                },
+                {
+                    "question": "In the Tortoise and Hare algorithm, how do you verify a malicious infinite loop cycle truly exists?",
+                    "options": ["If they hit NULL", "If the Fast 'Hare' pointer eventually crashes directly back into the Slow 'Tortoise' pointer from behind, overlapping it exactly, a cycle mathematically exists", "If they take too long", "If they equal 0"],
+                    "answer": "If the Fast 'Hare' pointer eventually crashes directly back into the Slow 'Tortoise' pointer from behind, overlapping it exactly, a cycle mathematically exists"
+                },
+                {
+                    "question": "If you need a Data Structure that primarily reads element #5000 rapidly, but rarely inserts/deletes, which is vastly superior?",
+                    "options": ["Linked List", "Doubly Linked List", "A standard Array (Because O(1) mathematical index access immediately calculates the memory offset instantly without walking through 4999 nodes)", "Circular List"],
+                    "answer": "A standard Array (Because O(1) mathematical index access immediately calculates the memory offset instantly without walking through 4999 nodes)"
+                }
+            ]
+        }
+    ]
+}

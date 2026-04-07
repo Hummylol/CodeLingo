@@ -1,0 +1,177 @@
+{
+    "levelno": 10,
+    "topic": "Dynamic Memory Allocation",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Dynamic Memory — Beginner",
+            "theory": "In C, normal arrays are created on the **Stack**. Their sizes must be fixed at compile-time and they are destroyed when the function ends.\n\nBut what if you need to create an array where the size isn't known until the user inputs it? Or what if you need data to survive outside of its local function scope? You use **Dynamic Memory Allocation**, which allocates memory on the **Heap**.\n\nThe Heap is a massive pool of RAM managed by the OS. To request memory from the Heap, you use functions from `<stdlib.h>`.\n- **`malloc(size_t size)`**: (Memory Allocation). It asks the OS for a specific number of bytes and returns a `void` pointer to the first byte of that block. \n\nExample: allocating space for an integer dynamically:\n`int *ptr = (int*) malloc(sizeof(int));`",
+            "questions": [
+                {
+                    "question": "Which memory region are standard local variables and fixed arrays stored in?",
+                    "options": ["The Heap", "The Stack", "The CPU Register", "The Data Segment"],
+                    "answer": "The Stack"
+                },
+                {
+                    "question": "Which memory region is used for dynamic memory allocation at runtime?",
+                    "options": ["The BIOS", "The Stack", "The Heap", "The Storage Drive"],
+                    "answer": "The Heap"
+                },
+                {
+                    "question": "Which Header file must be included to use dynamic memory allocation functions like malloc?",
+                    "options": ["<stdio.h>", "<stdlib.h>", "<memory.h>", "<heap.h>"],
+                    "answer": "<stdlib.h>"
+                },
+                {
+                    "question": "What does `malloc` stand for?",
+                    "options": ["Memory Allocation", "Machine Allocation", "Main Location", "Math Logic"],
+                    "answer": "Memory Allocation"
+                },
+                {
+                    "question": "What does `malloc` actually do?",
+                    "options": ["Initializes variables", "Requests a contiguous block of bytes from the Heap and returns a pointer to the start of it", "Copies memory", "Frees memory"],
+                    "answer": "Requests a contiguous block of bytes from the Heap and returns a pointer to the start of it"
+                },
+                {
+                    "question": "What is the return type of `malloc()`?",
+                    "options": ["int pointer", "char pointer", "void pointer (void*)", "It returns nothing"],
+                    "answer": "void pointer (void*)"
+                },
+                {
+                    "question": "How do you safely determine how many bytes an integer requires when calling malloc?",
+                    "options": ["Guess 4", "sizeof(int)", "int.bytes", "lengthof(int)"],
+                    "answer": "sizeof(int)"
+                },
+                {
+                    "question": "If you want to allocate memory for an array of 10 integers, how would you write the malloc argument?",
+                    "options": ["malloc(10)", "malloc(sizeof(10 ints))", "malloc(10 * sizeof(int))", "malloc(int, 10)"],
+                    "answer": "malloc(10 * sizeof(int))"
+                },
+                {
+                    "question": "Why do programmers usually cast the result of malloc? (e.g., `(int*) malloc...`)",
+                    "options": ["To prevent errors", "Because void pointers must be given a data-type context before they can be used mathematically or dereferenced", "Because the compiler crashes otherwise", "To save memory"],
+                    "answer": "Because void pointers must be given a data-type context before they can be used mathematically or dereferenced"
+                },
+                {
+                    "question": "Can variables stored on the Heap automatically disappear when a function finishes?",
+                    "options": ["Yes", "No, Heap memory persists until manually freed or the program entirely ends", "Only ints", "Yes, if it's a void function"],
+                    "answer": "No, Heap memory persists until manually freed or the program entirely ends"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Dynamic Memory — Intermediate",
+            "theory": "The danger of the Heap is that **YOU** are entirely responsible for it. C will never clean up Heap memory automatically.\n\n**`free(ptr)`**\nWhen you are done using dynamic memory, you MUST return it to the OS using `free()`. \n`free(ptr);`\nIf you lose the pointer or forget to call `free()`, that memory remains locked until the program exits. This is known as a **Memory Leak**. For servers that run 24/7, a memory leak will slowly consume all RAM until the server crashes.\n\n**`calloc(num_elements, size_per_element)`**\nSimilar to `malloc`, but it takes two arguments and securely **initializes all allocated bytes to Zero**. (`malloc` leaves garbage data in the memory).",
+            "questions": [
+                {
+                    "question": "What function must you call to release dynamically allocated Heap memory back to the system?",
+                    "options": ["release()", "delete()", "free()", "clear()"],
+                    "answer": "free()"
+                },
+                {
+                    "question": "What is a Memory Leak?",
+                    "options": ["When data spills onto the drive", "When you forget to `free()` allocated Heap memory, preventing the OS from reusing that lost chunk of RAM", "When arrays go out of bounds", "When a pointer points to NULL"],
+                    "answer": "When you forget to `free()` allocated Heap memory, preventing the OS from reusing that lost chunk of RAM"
+                },
+                {
+                    "question": "What happens if a program with a Memory Leak runs endlessly (like a 24/7 server)?",
+                    "options": ["It gets faster over time", "Nothing, the OS auto-fixes it eventually", "It continuously eats RAM until the entire machine runs out of memory and crashes", "The compiler stops it"],
+                    "answer": "It continuously eats RAM until the entire machine runs out of memory and crashes"
+                },
+                {
+                    "question": "What is the key difference between `malloc()` and `calloc()`?",
+                    "options": ["calloc is slower", "calloc initializes all requested memory bytes to 0, whereas malloc leaves existing garbage data.", "calloc works on the Stack", "malloc requires two arguments"],
+                    "answer": "calloc initializes all requested memory bytes to 0, whereas malloc leaves existing garbage data."
+                },
+                {
+                    "question": "Which of these is the correct syntax for calloc allocating 5 integers?",
+                    "options": ["calloc(5 * sizeof(int))", "calloc(5, sizeof(int))", "calloc(int, 5)", "malloc(5, sizeof(int))"],
+                    "answer": "calloc(5, sizeof(int))"
+                },
+                {
+                    "question": "What happens if malloc cannot find a large enough contiguous block of memory to fulfill your request?",
+                    "options": ["It crashes", "It gives you a smaller block", "It returns a NULL pointer", "It deletes old files"],
+                    "answer": "It returns a NULL pointer"
+                },
+                {
+                    "question": "Because malloc can fail, what is the best practice after calling it?",
+                    "options": ["Print the result", "Immediately write data to it", "Check if the pointer is NULL using `if (ptr == NULL)` before attempting to use it", "Free it instantly"],
+                    "answer": "Check if the pointer is NULL using `if (ptr == NULL)` before attempting to use it"
+                },
+                {
+                    "question": "If you `free(ptr);`, what value does `ptr` hold immediately after?",
+                    "options": ["NULL", "0", "It still holds the exact same memory address, but that memory is now un-owned (making it a dangling pointer)", "It is deleted"],
+                    "answer": "It still holds the exact same memory address, but that memory is now un-owned (making it a dangling pointer)"
+                },
+                {
+                    "question": "What is typically done right after `free(ptr);` to prevent Dangling Pointer bugs?",
+                    "options": ["ptr = NULL;", "ptr = 0;", "free(ptr) again", "Return 0"],
+                    "answer": "ptr = NULL;"
+                },
+                {
+                    "question": "Can you use `free()` on a variable declared locally on the Stack (e.g., `int x; free(&x);`)?",
+                    "options": ["Yes", "No! Standard C crashes severely if you attempt to free memory that was not allocated by malloc/calloc/realloc", "Only if it is static", "Yes, but it does nothing"],
+                    "answer": "No! Standard C crashes severely if you attempt to free memory that was not allocated by malloc/calloc/realloc"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Dynamic Memory — Expert",
+            "theory": "**`realloc(ptr, new_size)`**\nIf you allocated an array with `malloc`, but later realize it's too small, you can resize it using `realloc()`. It attempts to expand the memory block in-place. If there is no contiguous space next to it, `realloc` will internally find a new larger space, copy all your old data over, free the old space automatically, and return the new address.\n\n**Double Free Vulnerability**\nIf you call `free(ptr)` twice on the same memory block, it corrupts the Heap management structures (the `malloc` bookkeeping data). This often leads to immediate program termination (abort), but can maliciously be exploited by hackers to hijack program control.\n\nHeap memory fragmentation occurs when many small allocations and frees leave tiny useless \"holes\" across the RAM.",
+            "questions": [
+                {
+                    "question": "What function is used to change the size of an already allocated block of heap memory?",
+                    "options": ["malloc_expand()", "resize()", "realloc()", "alloc_new()"],
+                    "answer": "realloc()"
+                },
+                {
+                    "question": "If `realloc` cannot expand the block at its current location, what does it intelligently do?",
+                    "options": ["Crashes the app", "Allocates a new block elsewhere, copies the existing data into it, frees the old block, and returns the new pointer", "Returns NULL and deletes your data", "Breaks your code"],
+                    "answer": "Allocates a new block elsewhere, copies the existing data into it, frees the old block, and returns the new pointer"
+                },
+                {
+                    "question": "What happens if `realloc` fails to find enough total memory?",
+                    "options": ["It returns the old pointer", "It returns NULL but leaves the old memory block untouched and perfectly intact", "It crashes", "It frees the old block and returns NULL"],
+                    "answer": "It returns NULL but leaves the old memory block untouched and perfectly intact"
+                },
+                {
+                    "question": "Why is it dangerous to do `ptr = realloc(ptr, new_size);` directly?",
+                    "options": ["It is too slow", "Because if realloc fails and returns NULL, you just overwrote your only pointer to the original memory, causing an irreversible Memory Leak", "Syntax error", "It is perfectly safe"],
+                    "answer": "Because if realloc fails and returns NULL, you just overwrote your only pointer to the original memory, causing an irreversible Memory Leak"
+                },
+                {
+                    "question": "What is a 'Double Free'?",
+                    "options": ["Freeing two pointers at once", "A severe security vulnerability caused by executing `free()` on the same memory address twice", "A compiler optimization", "Freeing a pointer twice to ensure it's gone"],
+                    "answer": "A severe security vulnerability caused by executing `free()` on the same memory address twice"
+                },
+                {
+                    "question": "What does a Double Free usually cause behind the scenes?",
+                    "options": ["Speed boosts", "Memory fragmentation", "It corrupts the hidden LinkedList the OS/C uses to keep track of free Heap chunks", "It clears the Stack"],
+                    "answer": "It corrupts the hidden LinkedList the OS/C uses to keep track of free Heap chunks"
+                },
+                {
+                    "question": "What is 'Heap Memory Fragmentation'?",
+                    "options": ["File corruption", "When continuous allocations and frees leave scattered, tiny bits of unusable free space between allocated blocks", "When the heap merges into the stack", "When variables split across sectors"],
+                    "answer": "When continuous allocations and frees leave scattered, tiny bits of unusable free space between allocated blocks"
+                },
+                {
+                    "question": "If you perform `free(NULL);`, what happens according to exactly the C Standard?",
+                    "options": ["Program crashes", "Syntax error", "Absolutely nothing (it safely acts as a no-op)", "Double free error"],
+                    "answer": "Absolutely nothing (it safely acts as a no-op)"
+                },
+                {
+                    "question": "What tool on Linux is famously used to test C binaries for Memory Leaks and memory out-of-bounds errors?",
+                    "options": ["GCC", "GDB", "Valgrind", "Make"],
+                    "answer": "Valgrind"
+                },
+                {
+                    "question": "Which system call lies beneath `malloc` on Linux to ask the kernel directly for memory pages?",
+                    "options": ["system()", "kill()", "brk() / sbrk() or mmap()", "fork()"],
+                    "answer": "brk() / sbrk() or mmap()"
+                }
+            ]
+        }
+    ]
+}

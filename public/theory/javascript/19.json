@@ -1,0 +1,327 @@
+{
+    "levelno": 19,
+    "topic": "File I/O",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "File I/O — Beginner Level",
+            "theory": "Python makes reading and writing files straightforward with the built-in `open()` function.\n\n**Opening and closing a file:**\n```python\n# Always use 'with' — it automatically closes the file\nwith open('file.txt', 'r') as f:\n    content = f.read()\n```\n\n**File modes:**\n- `'r'` — read (default)\n- `'w'` — write (overwrites!)\n- `'a'` — append\n- `'x'` — create (fails if file exists)\n\n**Reading methods:**\n- `f.read()` — entire file as one string\n- `f.readline()` — one line at a time\n- `f.readlines()` — all lines as a list\n\n**Writing:**\n`f.write('Hello\\n')`",
+            "questions": [
+                {
+                    "question": "Which function opens a file in Python?",
+                    "options": [
+                        "file()",
+                        "open()",
+                        "read()",
+                        "load()"
+                    ],
+                    "answer": "open()"
+                },
+                {
+                    "question": "What does mode `'w'` do?",
+                    "options": [
+                        "Read the file",
+                        "Append to the file",
+                        "Create or overwrite the file",
+                        "Read and write"
+                    ],
+                    "answer": "Create or overwrite the file"
+                },
+                {
+                    "question": "What does mode `'a'` do?",
+                    "options": [
+                        "Abort writing",
+                        "Append to the end of the file without overwriting",
+                        "Read all lines",
+                        "Open in binary mode"
+                    ],
+                    "answer": "Append to the end of the file without overwriting"
+                },
+                {
+                    "question": "Why use `with open(...) as f:`?",
+                    "options": [
+                        "It's shorter to type",
+                        "The file is automatically closed when the block exits",
+                        "It reads faster",
+                        "Required for binary files"
+                    ],
+                    "answer": "The file is automatically closed when the block exits"
+                },
+                {
+                    "question": "What does `f.read()` return?",
+                    "options": [
+                        "The first line",
+                        "A list of lines",
+                        "The entire file contents as a string",
+                        "The file size"
+                    ],
+                    "answer": "The entire file contents as a string"
+                },
+                {
+                    "question": "What does `f.readlines()` return?",
+                    "options": [
+                        "One character at a time",
+                        "All lines as a list of strings",
+                        "The file as bytes",
+                        "None"
+                    ],
+                    "answer": "All lines as a list of strings"
+                },
+                {
+                    "question": "What does `f.write('Hello')` do?",
+                    "options": [
+                        "Prints Hello to console",
+                        "Writes 'Hello' to the file; returns character count",
+                        "Appends only if mode is 'a'",
+                        "Reads Hello from the file"
+                    ],
+                    "answer": "Writes 'Hello' to the file; returns character count"
+                },
+                {
+                    "question": "What does mode `'x'` do?",
+                    "options": [
+                        "Execute the file",
+                        "Create file; raises FileExistsError if it already exists",
+                        "Read XML files",
+                        "Compress the file"
+                    ],
+                    "answer": "Create file; raises FileExistsError if it already exists"
+                },
+                {
+                    "question": "What is the default mode of `open('file.txt')`?",
+                    "options": [
+                        "'w'",
+                        "'a'",
+                        "'r'",
+                        "'rb'"
+                    ],
+                    "answer": "'r'"
+                },
+                {
+                    "question": "What happens if you `open()` a file in `'r'` mode that doesn't exist?",
+                    "options": [
+                        "Empty file is created",
+                        "Returns None",
+                        "FileNotFoundError is raised",
+                        "Returns empty string"
+                    ],
+                    "answer": "FileNotFoundError is raised"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "File I/O — Intermediate Level",
+            "theory": "**Binary mode** — add `'b'` to mode for binary files:\n`open('image.png', 'rb')` — read binary\n`open('data.bin', 'wb')` — write binary\n\n**Iterating line by line** is memory-efficient for large files:\n```python\nwith open('big.txt') as f:\n    for line in f:       # streams one line at a time\n        print(line.strip())\n```\n\n**JSON files** — use `json.dump()` / `json.load()`:\n```python\nimport json\nwith open('data.json','w') as f:\n    json.dump({'key': 'value'}, f)\nwith open('data.json') as f:\n    data = json.load(f)\n```\n\n**CSV files** — use the `csv` module:\n```python\nimport csv\nwith open('data.csv', newline='') as f:\n    reader = csv.DictReader(f)\n    for row in reader: print(row)\n```",
+            "questions": [
+                {
+                    "question": "What does `'rb'` mode do?",
+                    "options": [
+                        "Read as base64",
+                        "Read as binary bytes",
+                        "Read and write binary",
+                        "Reverse binary"
+                    ],
+                    "answer": "Read as binary bytes"
+                },
+                {
+                    "question": "What does `json.dump(data, f)` do?",
+                    "options": [
+                        "Reads JSON from f into data",
+                        "Serializes data to JSON and writes it to file f",
+                        "Prints data as JSON",
+                        "Compresses data to f"
+                    ],
+                    "answer": "Serializes data to JSON and writes it to file f"
+                },
+                {
+                    "question": "What does `json.load(f)` do?",
+                    "options": [
+                        "Writes JSON to f",
+                        "Reads JSON from file f and returns a Python object",
+                        "Loads json module into f",
+                        "Reads bytes from f"
+                    ],
+                    "answer": "Reads JSON from file f and returns a Python object"
+                },
+                {
+                    "question": "Why iterate over a file with `for line in f:` instead of `f.readlines()`?",
+                    "options": [
+                        "It's faster overall",
+                        "It reads one line at a time, so the whole file isn't loaded into memory",
+                        "It's the only way for large files",
+                        "readlines() is not available"
+                    ],
+                    "answer": "It reads one line at a time, so the whole file isn't loaded into memory"
+                },
+                {
+                    "question": "What does `f.seek(0)` do?",
+                    "options": [
+                        "Closes the file",
+                        "Moves the file pointer to the beginning",
+                        "Reads from position 0",
+                        "Deletes first line"
+                    ],
+                    "answer": "Moves the file pointer to the beginning"
+                },
+                {
+                    "question": "What does `f.tell()` return?",
+                    "options": [
+                        "File size",
+                        "Current file pointer position (byte offset)",
+                        "Number of lines",
+                        "File name"
+                    ],
+                    "answer": "Current file pointer position (byte offset)"
+                },
+                {
+                    "question": "What does `csv.DictReader(f)` provide?",
+                    "options": [
+                        "Reads CSV as list of lists",
+                        "Reads each CSV row as a dict (keys from header row)",
+                        "Writes CSV with dict headers",
+                        "Reads JSON as CSV"
+                    ],
+                    "answer": "Reads each CSV row as a dict (keys from header row)"
+                },
+                {
+                    "question": "What does `f.readline()` return when at end of file?",
+                    "options": [
+                        "None",
+                        "An empty string ''",
+                        "Raises EOFError",
+                        "Raises StopIteration"
+                    ],
+                    "answer": "An empty string ''"
+                },
+                {
+                    "question": "What does `mode='r+'` do?",
+                    "options": [
+                        "Read only",
+                        "Write only",
+                        "Read AND write (file must exist)",
+                        "Append and read"
+                    ],
+                    "answer": "Read AND write (file must exist)"
+                },
+                {
+                    "question": "What does `json.dumps(data)` (with 's') return?",
+                    "options": [
+                        "File handle",
+                        "A JSON string (not written to file)",
+                        "A JSON bytes object",
+                        "None"
+                    ],
+                    "answer": "A JSON string (not written to file)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "File I/O — Expert Level",
+            "theory": "**`pathlib.Path`** (Python 3.4+) provides object-oriented filesystem paths:\n```python\nfrom pathlib import Path\np = Path('data/config.json')\np.read_text()          # read file\np.write_text('hello')  # write file\nlist(p.parent.glob('*.json'))  # glob\np.stat().st_size       # file size\n```\n\n**`os.path`** — classic alternative: `os.path.join()`, `os.path.exists()`, `os.path.getsize()`\n\n**Buffering and flushing:** Python buffers file writes. Use `f.flush()` or `open(..., buffering=0)` (binary only) for unbuffered I/O.\n\n**`mmap`** — memory-mapped files allow treating a file as a byte array in memory for very fast random access.\n\n**`io.StringIO` / `io.BytesIO`** — in-memory file-like objects for testing without touching the disk.",
+            "questions": [
+                {
+                    "question": "What does `Path('data/file.txt').read_text()` do?",
+                    "options": [
+                        "Opens a file editor",
+                        "Reads the entire file as a string using pathlib",
+                        "Returns a file object",
+                        "Raises DeprecationWarning"
+                    ],
+                    "answer": "Reads the entire file as a string using pathlib"
+                },
+                {
+                    "question": "What does `Path.glob('*.py')` return?",
+                    "options": [
+                        "A list of strings",
+                        "A generator of Path objects matching the pattern",
+                        "A list of file contents",
+                        "Error unless the pattern is quoted"
+                    ],
+                    "answer": "A generator of Path objects matching the pattern"
+                },
+                {
+                    "question": "What does `io.StringIO()` provide?",
+                    "options": [
+                        "A disk-backed text file",
+                        "An in-memory file-like object for strings — useful for testing",
+                        "A socket-based stream",
+                        "A binary buffer"
+                    ],
+                    "answer": "An in-memory file-like object for strings — useful for testing"
+                },
+                {
+                    "question": "What does `f.flush()` do?",
+                    "options": [
+                        "Closes the file",
+                        "Forces buffered data to be written to the OS immediately",
+                        "Reads all remaining content",
+                        "Resets the file pointer"
+                    ],
+                    "answer": "Forces buffered data to be written to the OS immediately"
+                },
+                {
+                    "question": "What is `mmap` used for?",
+                    "options": [
+                        "Memory monitoring",
+                        "Memory-mapping a file so it can be accessed like a byte array for fast random access",
+                        "Mapping variables to memory addresses",
+                        "Compressing files in memory"
+                    ],
+                    "answer": "Memory-mapping a file so it can be accessed like a byte array for fast random access"
+                },
+                {
+                    "question": "What does `p.stat().st_size` give you?",
+                    "options": [
+                        "The file's last modification time",
+                        "The file's size in bytes",
+                        "The number of lines",
+                        "The file's permissions"
+                    ],
+                    "answer": "The file's size in bytes"
+                },
+                {
+                    "question": "What does `Path.mkdir(parents=True, exist_ok=True)` do?",
+                    "options": [
+                        "Creates only the final directory",
+                        "Creates the directory and any missing parent directories, without error if it exists",
+                        "Raises FileExistsError if exists",
+                        "Deletes then recreates the directory"
+                    ],
+                    "answer": "Creates the directory and any missing parent directories, without error if it exists"
+                },
+                {
+                    "question": "What is `os.path.join('a','b','c.txt')` equivalent to in pathlib?",
+                    "options": [
+                        "Path('a') + 'b/c.txt'",
+                        "Path('a') / 'b' / 'c.txt'",
+                        "Path('a', 'b', 'c.txt')",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What does `open('file','w', encoding='utf-8')` ensure?",
+                    "options": [
+                        "File is binary",
+                        "Text is written with UTF-8 encoding",
+                        "Only ASCII characters are written",
+                        "File is compressed with UTF-8"
+                    ],
+                    "answer": "Text is written with UTF-8 encoding"
+                },
+                {
+                    "question": "What does a context manager (`with` statement) guarantee for file I/O?",
+                    "options": [
+                        "The file is flushed only",
+                        "The file's __exit__ method (close) is called even if an exception occurs",
+                        "The file is read completely",
+                        "The file is memory-mapped"
+                    ],
+                    "answer": "The file's __exit__ method (close) is called even if an exception occurs"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,177 @@
+{
+    "levelno": 4,
+    "topic": "Control Flow (If/Else, Switch)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Control Flow — Beginner",
+            "theory": "By default, C executes code line-by-line. **Control Flow** statements allow you to alter this flow based on conditions.\n\nThe most basic condition is the **`if` statement**. If the condition inside the parentheses is True (non-zero), the code block executes. If False (0), it skips the block.\n```c\nif (score >= 50) {\n    printf(\"You passed!\");\n}\n```\n\nYou can add an **`else` statement** to execute code when the condition is False.\n```c\nif (score >= 50) {\n    printf(\"Pass\");\n} else {\n    printf(\"Fail\");\n}\n```\nFor multiple conditions, you can chain them using **`else if`**.",
+            "questions": [
+                {
+                    "question": "What is the purpose of an 'if' statement?",
+                    "options": ["To loop code forever", "To execute block of code only if a condition is true", "To define a function", "To import libraries"],
+                    "answer": "To execute block of code only if a condition is true"
+                },
+                {
+                    "question": "What must wrap the condition in an if statement?",
+                    "options": ["[ ]", "{ }", "< >", "( )"],
+                    "answer": "( )"
+                },
+                {
+                    "question": "What happens if an 'if' condition is false?",
+                    "options": ["The program crashes", "It runs anyway", "The code block is skipped", "The program restarts"],
+                    "answer": "The code block is skipped"
+                },
+                {
+                    "question": "Which keyword is used to provide an alternative block of code if the 'if' condition is false?",
+                    "options": ["otherwise", "else", "except", "alternate"],
+                    "answer": "else"
+                },
+                {
+                    "question": "How do you check multiple specific conditions sequentially?",
+                    "options": ["else if", "if else", "elseif", "then if"],
+                    "answer": "else if"
+                },
+                {
+                    "question": "What evaluates to 'True' in C?",
+                    "options": ["Only the number 1", "Any non-zero value", "The keyword 'True'", "Strings"],
+                    "answer": "Any non-zero value"
+                },
+                {
+                    "question": "What evaluates to 'False' in C?",
+                    "options": ["The number -1", "Empty strings", "The number 0", "Null pointers only"],
+                    "answer": "The number 0"
+                },
+                {
+                    "question": "Can an 'else' block exist without an 'if' block preceding it?",
+                    "options": ["Yes, it acts as a default", "No, it must immediately follow an if or else if block", "Yes, inside loops", "Yes, if compiled with special flags"],
+                    "answer": "No, it must immediately follow an if or else if block"
+                },
+                {
+                    "question": "If `int x = 0; if (x) { printf(\"A\"); } else { printf(\"B\"); }`, what prints?",
+                    "options": ["A", "B", "AB", "Nothing"],
+                    "answer": "B"
+                },
+                {
+                    "question": "If there are no curly braces `{}` after an `if` statement, what happens?",
+                    "options": ["Syntax error", "The entire file is conditional", "Only the immediate next line is considered part of the 'if' block", "It skips exactly two lines"],
+                    "answer": "Only the immediate next line is considered part of the 'if' block"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Control Flow — Intermediate",
+            "theory": "When you have many explicit cases to check against a single integer or character variable, a **`switch` statement** is cleaner and often faster than a long chain of `else if`s.\n\n```c\nswitch (grade) {\n    case 'A':\n        printf(\"Excellent\");\n        break;\n    case 'B':\n        printf(\"Good\");\n        break;\n    default:\n        printf(\"Unknown grade\");\n}\n```\n\nThe **`break`** keyword is crucial! If you omit `break`, Execution will \"fall through\" into the next case, executing its code regardless of whether the condition matches. \n\nThe **`default`** block is optional and acts like an `else` block—it catches anything that didn't match a defined `case`.",
+            "questions": [
+                {
+                    "question": "What does a switch statement compare a variable against?",
+                    "options": ["Ranges (like > 10)", "Multiple specific values (cases)", "Strings only", "Boolean true/false only"],
+                    "answer": "Multiple specific values (cases)"
+                },
+                {
+                    "question": "Which keyword specifies a possible match in a switch block?",
+                    "options": ["match", "if", "case", "val"],
+                    "answer": "case"
+                },
+                {
+                    "question": "What is the purpose of 'break' inside a switch case?",
+                    "options": ["It stops the entire program", "It breaks the compiler loop", "It stops execution from falling through to the next case", "It pauses the execution for user input"],
+                    "answer": "It stops execution from falling through to the next case"
+                },
+                {
+                    "question": "What happens if you forget the 'break' statement?",
+                    "options": ["Compiler error", "Execution 'falls through', running the code in the next cases too", "The switch statement exits immediately", "Undefined behavior"],
+                    "answer": "Execution 'falls through', running the code in the next cases too"
+                },
+                {
+                    "question": "Which keyword is used to handle values that do not match any case?",
+                    "options": ["else", "otherwise", "default", "fallback"],
+                    "answer": "default"
+                },
+                {
+                    "question": "Can you use standard strings (like \"Hello\") as a case condition in standard C?",
+                    "options": ["Yes", "No, cases must evaluate to integer constants (ints, chars, enums)", "Only with strcpy", "Yes, but only short strings"],
+                    "answer": "No, cases must evaluate to integer constants (ints, chars, enums)"
+                },
+                {
+                    "question": "Is the 'default' case mandatory in every switch statement?",
+                    "options": ["Yes", "No, it is optional", "Only if there are more than 3 cases", "Yes, to prevent crashes"],
+                    "answer": "No, it is optional"
+                },
+                {
+                    "question": "Where should the 'default' case be placed?",
+                    "options": ["It must be the first item", "It must be the last item", "It can be placed anywhere, but it is conventional to put it last", "Outside the switch block"],
+                    "answer": "It can be placed anywhere, but it is conventional to put it last"
+                },
+                {
+                    "question": "If `x=2`, what happens in `switch(x){ case 1: print(\"A\"); case 2: print(\"B\"); case 3: print(\"C\"); }` assuming no breaks?",
+                    "options": ["Only B prints", "B and C print", "Syntax error", "A, B, and C print"],
+                    "answer": "B and C print"
+                },
+                {
+                    "question": "Which data type is legally allowed as a switch controlling expression?",
+                    "options": ["float", "double", "int", "struct"],
+                    "answer": "int"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Control Flow — Expert",
+            "theory": "Beyond standard `if` and `switch`, C has a specialized (and highly discouraged) control flow mechanism: the **`goto` statement**.\n\n`goto` performs an unconditional jump to a named label within the same function.\n```c\n    if (error_occurred) {\n        goto cleanup;\n    }\n    // ... code ...\ncleanup:\n    free(memory);\n```\nWhile historically reviled for creating \"spaghetti code\", `goto` remains useful in Linux kernel code and complex C programs primarily for a single pattern: **Centralized Error Cleanup**, as C lacks modern `try/catch/finally` blocks.\n\nAnother advanced trick is intentionally using **switch fallthrough**: stacking cases without `break` when multiple cases should execute exactly the same code (e.g., matching multiple vowel characters to single output logic).",
+            "questions": [
+                {
+                    "question": "What does the 'goto' statement do?",
+                    "options": ["Calls a function", "Exits the program immediately", "Jumps unconditionally to a defined label in the same function", "Jumps to another file"],
+                    "answer": "Jumps unconditionally to a defined label in the same function"
+                },
+                {
+                    "question": "Why is 'goto' generally discouraged in modern programming?",
+                    "options": ["It is too slow", "It causes memory leaks", "It creates 'spaghetti code' that is hard to follow and maintain", "It was removed in C99"],
+                    "answer": "It creates 'spaghetti code' that is hard to follow and maintain"
+                },
+                {
+                    "question": "What is the one major scenario where 'goto' is still considered acceptable or idiomatic in C?",
+                    "options": ["Creating infinite loops", "Centralized error handling and memory cleanup functions", "Replacing switch statements", "Printing recursive outputs"],
+                    "answer": "Centralized error handling and memory cleanup functions"
+                },
+                {
+                    "question": "How do you define a jump label for a goto statement?",
+                    "options": ["labelName()", "labelName;", "labelName:", "@labelName"],
+                    "answer": "labelName:"
+                },
+                {
+                    "question": "Can 'goto' jump directly into a different function?",
+                    "options": ["Yes, unconditionally", "No, it can only jump within the scope of the current function", "Yes, if it's in the same file", "Yes, using supergoto"],
+                    "answer": "No, it can only jump within the scope of the current function"
+                },
+                {
+                    "question": "What is 'switch fallthrough'?",
+                    "options": ["A compiler error from a missing break", "A switch loop", "Intentionally omitting 'break' to allow multiple cases to share the same execution block", "When all cases fail"],
+                    "answer": "Intentionally omitting 'break' to allow multiple cases to share the same execution block"
+                },
+                {
+                    "question": "Which of the following creates a fallthrough for testing if a char is a vowel 'a' or 'e'?",
+                    "options": ["case 'a' || 'e':", "case 'a': case 'e': do_logic(); break;", "case 'a', 'e':", "case 'a' && 'e':"],
+                    "answer": "case 'a': case 'e': do_logic(); break;"
+                },
+                {
+                    "question": "Which statement best describes standard control flow in C?",
+                    "options": ["Fully object-oriented", "Top-down, procedural execution", "Asynchronous event-driven execution", "Linearly recursive execution"],
+                    "answer": "Top-down, procedural execution"
+                },
+                {
+                    "question": "Because C has no `try/catch` exception blocks, how do standard C functions typically report errors to the calling control flow?",
+                    "options": ["By crashing the program", "By throwing an Event", "By returning a specific error code (like -1 or NULL)", "By pausing execution"],
+                    "answer": "By returning a specific error code (like -1 or NULL)"
+                },
+                {
+                    "question": "Can an 'if' statement contain nested 'switch' statements, and vice versa?",
+                    "options": ["No, nesting them is illegal", "Yes, C allows arbitrary nesting of valid control flow structures", "Only switch inside if", "Only if inside switch"],
+                    "answer": "Yes, C allows arbitrary nesting of valid control flow structures"
+                }
+            ]
+        }
+    ]
+}

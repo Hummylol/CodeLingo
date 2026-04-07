@@ -1,0 +1,327 @@
+{
+    "levelno": 13,
+    "topic": "Function Arguments",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Function Arguments — Beginner Level",
+            "theory": "Python functions accept different kinds of arguments:\n\n**Positional arguments** — matched by position:\n`def greet(first, last): return f'{first} {last}'`\n`greet('Alice', 'Smith')`  → `'Alice Smith'`\n\n**Default arguments** — have a fallback value:\n`def greet(name, msg='Hello'): return f'{msg}, {name}'`\n`greet('Bob')` → `'Hello, Bob'`\n`greet('Bob', 'Hi')` → `'Hi, Bob'`\n\nDefault parameters must come **after** non-default ones.\n\n**Keyword arguments** — passed by name (order doesn't matter):\n`greet(msg='Hey', name='Charlie')`",
+            "questions": [
+                {
+                    "question": "What is a keyword argument?",
+                    "options": [
+                        "A string argument",
+                        "An argument passed by specifying the parameter name",
+                        "A reserved word argument",
+                        "The last argument"
+                    ],
+                    "answer": "An argument passed by specifying the parameter name"
+                },
+                {
+                    "question": "Given `def f(a, b):`, how do you call it with keyword args?",
+                    "options": [
+                        "f(a=1, b=2)",
+                        "f(1, 2)",
+                        "f({a:1, b:2})",
+                        "You can't"
+                    ],
+                    "answer": "f(a=1, b=2)"
+                },
+                {
+                    "question": "What is a default argument?",
+                    "options": [
+                        "An argument that is always 0",
+                        "A fallback value used when no argument is provided for that parameter",
+                        "The first argument",
+                        "An optional keyword"
+                    ],
+                    "answer": "A fallback value used when no argument is provided for that parameter"
+                },
+                {
+                    "question": "Which function definition is INVALID?",
+                    "options": [
+                        "def f(a, b=1):",
+                        "def f(a=1, b=1):",
+                        "def f(a=1, b):",
+                        "def f(a, b, c=3):"
+                    ],
+                    "answer": "def f(a=1, b):"
+                },
+                {
+                    "question": "In a function call, which must come first?",
+                    "options": [
+                        "Keyword arguments",
+                        "Positional arguments",
+                        "It doesn't matter",
+                        "They can't be mixed"
+                    ],
+                    "answer": "Positional arguments"
+                },
+                {
+                    "question": "What does `def f(name, age=18): print(name, age)` print for `f('Alice')`?",
+                    "options": [
+                        "Alice",
+                        "Alice 18",
+                        "Error",
+                        "Alice None"
+                    ],
+                    "answer": "Alice 18"
+                },
+                {
+                    "question": "Can you pass keyword arguments in any order?",
+                    "options": [
+                        "No, must match definition order",
+                        "Yes, order doesn't matter for keyword args",
+                        "Only when all args are keyword",
+                        "Only in Python 3.8+"
+                    ],
+                    "answer": "Yes, order doesn't matter for keyword args"
+                },
+                {
+                    "question": "What is a positional argument?",
+                    "options": [
+                        "Named by the caller",
+                        "Matched by position to the function parameter",
+                        "Always has a default",
+                        "Must be an integer"
+                    ],
+                    "answer": "Matched by position to the function parameter"
+                },
+                {
+                    "question": "Which is a valid call for `def f(a, b, c=3):`?",
+                    "options": [
+                        "f(1, 2)",
+                        "f(1, c=5, b=2)",
+                        "f(c=5, 1, 2)",
+                        "Both A and B"
+                    ],
+                    "answer": "Both A and B"
+                },
+                {
+                    "question": "What does `def f(a, /, b):` mean (positional-only with `/`)?",
+                    "options": [
+                        "b is position only",
+                        "a must be given as positional (not keyword); b can be either",
+                        "a is keyword-only",
+                        "Invalid syntax"
+                    ],
+                    "answer": "a must be given as positional (not keyword); b can be either"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Function Arguments — Intermediate Level",
+            "theory": "**`*args`** — collects extra positional arguments into a **tuple**:\n`def add(*nums): return sum(nums)`\n`add(1, 2, 3, 4)  # 10`\n\n**`**kwargs`** — collects extra keyword arguments into a **dict**:\n`def info(**data): print(data)`\n`info(name='Alice', age=30)  # {'name':'Alice','age':30}`\n\n**Keyword-only arguments** — placed after `*` or `*args`:\n`def f(a, *, b):  # b must be passed as keyword`\n\n**Argument unpacking** when calling:\n`args = [1, 2]; f(*args)  # unpacks list as positional`\n`kw = {'x': 1}; f(**kw)  # unpacks dict as keyword`",
+            "questions": [
+                {
+                    "question": "What type is `args` inside `def f(*args)`?",
+                    "options": [
+                        "List",
+                        "Dict",
+                        "Tuple",
+                        "Set"
+                    ],
+                    "answer": "Tuple"
+                },
+                {
+                    "question": "What type is `kwargs` inside `def f(**kwargs)`?",
+                    "options": [
+                        "List",
+                        "Dict",
+                        "Tuple",
+                        "Set"
+                    ],
+                    "answer": "Dict"
+                },
+                {
+                    "question": "What does `def f(a, *, b):` enforce?",
+                    "options": [
+                        "a is keyword-only",
+                        "b is keyword-only",
+                        "Both are positional",
+                        "b must be an integer"
+                    ],
+                    "answer": "b is keyword-only"
+                },
+                {
+                    "question": "What does `f(*[1,2,3])` do?",
+                    "options": [
+                        "Passes [1,2,3] as one argument",
+                        "Unpacks the list as three positional arguments",
+                        "Raises TypeError",
+                        "Passes a tuple"
+                    ],
+                    "answer": "Unpacks the list as three positional arguments"
+                },
+                {
+                    "question": "What does `f(**{'a':1,'b':2})` do?",
+                    "options": [
+                        "Passes the dict as one argument",
+                        "Unpacks dict as keyword arguments a=1, b=2",
+                        "Raises TypeError",
+                        "Passes two tuples"
+                    ],
+                    "answer": "Unpacks dict as keyword arguments a=1, b=2"
+                },
+                {
+                    "question": "What does `def f(a, *args, **kwargs): pass` accept?",
+                    "options": [
+                        "Only one argument",
+                        "Only keyword arguments",
+                        "Any combination of positional and keyword arguments",
+                        "Only *args"
+                    ],
+                    "answer": "Any combination of positional and keyword arguments"
+                },
+                {
+                    "question": "What is the output of `def f(*a): return sum(a); print(f(1,2,3))`?",
+                    "options": [
+                        "6",
+                        "(1,2,3)",
+                        "Error",
+                        "3"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "What does `def f(a, b, /):` mean?",
+                    "options": [
+                        "Both a and b are keyword-only",
+                        "Both a and b are positional-only (cannot be passed by name)",
+                        "Both are optional",
+                        "/ is invalid syntax"
+                    ],
+                    "answer": "Both a and b are positional-only (cannot be passed by name)"
+                },
+                {
+                    "question": "What is the correct order of parameter types in a function signature?",
+                    "options": [
+                        "**kwargs, *args, defaults, positional",
+                        "positional, defaults, *args, keyword-only, **kwargs",
+                        "Positional, **kwargs, *args",
+                        "No fixed order"
+                    ],
+                    "answer": "positional, defaults, *args, keyword-only, **kwargs"
+                },
+                {
+                    "question": "What happens if you call `def f(a, b): pass` with `f(1, 2, 3)`?",
+                    "options": [
+                        "3 is ignored",
+                        "f is called with a=1, b=2, 3 is extra",
+                        "TypeError: too many positional arguments",
+                        "a=1, b=(2,3)"
+                    ],
+                    "answer": "TypeError: too many positional arguments"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Function Arguments — Expert Level",
+            "theory": "**Introspection with `inspect` module:**\n`import inspect`\n`inspect.signature(f)` — returns the signature object\n`inspect.getfullargspec(f)` — returns names of args, varargs, varkw, defaults\n\n**Mutable default argument pitfall:**\n```python\ndef append(item, lst=[]):  # WRONG: lst shared across calls\n    lst.append(item)\n    return lst\n# Fix:\ndef append(item, lst=None):\n    if lst is None: lst = []\n    lst.append(item)\n    return lst\n```\n\n**`functools.partial`** pre-fills arguments:\n`from functools import partial`\n`double = partial(pow, 2)  # double(8) == pow(2, 8) == 256`\n\n**PEP 484 type hints** document expected types:\n`def greet(name: str, repeat: int = 1) -> str:`",
+            "questions": [
+                {
+                    "question": "What is the mutable default argument pitfall?",
+                    "options": [
+                        "Default args are reset each call",
+                        "Mutable defaults (like []) are shared across all calls where the default is used — not re-created each call",
+                        "Mutable args raise errors",
+                        "Default args can't be mutated"
+                    ],
+                    "answer": "Mutable defaults (like []) are shared across all calls where the default is used — not re-created each call"
+                },
+                {
+                    "question": "What is the fix for the mutable default argument pitfall?",
+                    "options": [
+                        "Use a tuple instead",
+                        "Use None as default and create a new list inside the function if None",
+                        "Use *args instead",
+                        "Use global variables"
+                    ],
+                    "answer": "Use None as default and create a new list inside the function if None"
+                },
+                {
+                    "question": "What does `inspect.signature(f)` return?",
+                    "options": [
+                        "A string of the function's source code",
+                        "A Signature object describing the function's parameters",
+                        "The return type",
+                        "The function's docstring"
+                    ],
+                    "answer": "A Signature object describing the function's parameters"
+                },
+                {
+                    "question": "What does `functools.partial(print, end='')` create?",
+                    "options": [
+                        "A new print() with end='' pre-set",
+                        "Error",
+                        "An empty string",
+                        "A partial class"
+                    ],
+                    "answer": "A new print() with end='' pre-set"
+                },
+                {
+                    "question": "What does `-> str` in `def f(x: int) -> str:` indicate?",
+                    "options": [
+                        "A type check enforced at runtime",
+                        "A type annotation hint (not enforced by Python itself)",
+                        "A syntax error pre-Python 3.5",
+                        "A decorator"
+                    ],
+                    "answer": "A type annotation hint (not enforced by Python itself)"
+                },
+                {
+                    "question": "How do you get the names of a function's parameters at runtime?",
+                    "options": [
+                        "f.args",
+                        "f.__code__.co_varnames",
+                        "inspect.getfullargspec(f).args",
+                        "Both B and C"
+                    ],
+                    "answer": "Both B and C"
+                },
+                {
+                    "question": "What does `__defaults__` on a function hold?",
+                    "options": [
+                        "All argument names",
+                        "Default values of positional parameters as a tuple",
+                        "Keyword-only defaults",
+                        "The function's return type"
+                    ],
+                    "answer": "Default values of positional parameters as a tuple"
+                },
+                {
+                    "question": "What does `__kwdefaults__` hold?",
+                    "options": [
+                        "All defaults",
+                        "Default values for keyword-only arguments as a dict",
+                        "The full function signature",
+                        "Return annotation"
+                    ],
+                    "answer": "Default values for keyword-only arguments as a dict"
+                },
+                {
+                    "question": "What does `f.__annotations__` contain?",
+                    "options": [
+                        "List of argument names",
+                        "Dict of parameter and return type annotations",
+                        "Docstring of the function",
+                        "Default values"
+                    ],
+                    "answer": "Dict of parameter and return type annotations"
+                },
+                {
+                    "question": "What happens if you call `f(**{'a':1}, **{'a':2})`?",
+                    "options": [
+                        "a=2 wins",
+                        "a=1 wins",
+                        "TypeError: keyword argument repeated",
+                        "Returns both values"
+                    ],
+                    "answer": "TypeError: keyword argument repeated"
+                }
+            ]
+        }
+    ]
+}

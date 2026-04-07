@@ -1,0 +1,177 @@
+{
+    "levelno": 17,
+    "topic": "Multi-file Compilation & Makefiles",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Multi-file Projects — Beginner",
+            "theory": "No real-world C program is entirely written inside one massive `main.c` file. Code is split aggressively into multiple files for readability and reusability.\n\n**Header Files (`.h`)**\nThese contain the *Declarations* (Function Prototypes, Struct definitions, Macros, Extern variables). You use `#include \"math_utils.h\"` to import these into your other files.\n\n**Source Files (`.c`)**\nThese contain the actual executable *Definitions* (the `{ body }` of the functions). \n\nIf `main.c` uses an `add()` function defined physically inside `math_utils.c`, how do they connect? \nYou compile them simultaneously!\n`gcc main.c math_utils.c -o myprogram.exe`\nThe Linker merges them at the very end.",
+            "questions": [
+                {
+                    "question": "Why do programmers split C projects into multiple files?",
+                    "options": ["To make the code faster", "For modularity, code reusability, and readability, preventing a single massive file", "Because GCC restricts files to 1000 lines", "To bypass memory limits"],
+                    "answer": "For modularity, code reusability, and readability, preventing a single massive file"
+                },
+                {
+                    "question": "What specifically should standard `.h` Header Files contain?",
+                    "options": ["The main() function", "Only Structs", "Declarations (Prototypes, Structs, Macros) acting as a 'Table of Contents' for other files", "The actual executable logic and loops of functions"],
+                    "answer": "Declarations (Prototypes, Structs, Macros) acting as a 'Table of Contents' for other files"
+                },
+                {
+                    "question": "What specifically should `.c` Source Files contain?",
+                    "options": ["Include Guards", "Only Structs", "The actual Executable Function Definitions (the `{ ... body }` logic)", "Nothing"],
+                    "answer": "The actual Executable Function Definitions (the `{ ... body }` logic)"
+                },
+                {
+                    "question": "If `main.c` needs to use a function declared in `math.h`, what must `main.c` do?",
+                    "options": ["Inherit math.c", "Use `#include \"math.h\"` at the top of the file", "It automatically knows", "Copy/paste the code"],
+                    "answer": "Use `#include \"math.h\"` at the top of the file"
+                },
+                {
+                    "question": "How do you correctly compile a program that is split across `main.c` and `helper.c`?",
+                    "options": ["gcc main.c", "gcc helper.c", "gcc main.c helper.c -o output", "gcc *.h"],
+                    "answer": "gcc main.c helper.c -o output"
+                },
+                {
+                    "question": "Which phase of compilation actually \"connects\" the function call in `main.c` to the function logic located physically inside `helper.c`?",
+                    "options": ["Preprocessing", "Assembling", "Translating", "Linking"],
+                    "answer": "Linking"
+                },
+                {
+                    "question": "What error do you get if you compile `main.c` but forget to compile/link `helper.c` alongside it?",
+                    "options": ["Syntax Error", "Undefined Reference / Unresolved External Symbol (Linker Error)", "Null Pointer", "Stack Overflow"],
+                    "answer": "Undefined Reference / Unresolved External Symbol (Linker Error)"
+                },
+                {
+                    "question": "Should you ever put `#include \"helper.c\"` inside your `main.c` file?",
+                    "options": ["Yes, it's standard", "No! Standard C practice is to only #include `.h` files, NEVER physically #include `.c` source files.", "Only if it is short", "Yes, to speed up compiling"],
+                    "answer": "No! Standard C practice is to only #include `.h` files, NEVER physically #include `.c` source files."
+                },
+                {
+                    "question": "If multiple C files need to share the same exact Global Variable, what keyword must be used in the header file declaration?",
+                    "options": ["global", "static", "shared", "extern"],
+                    "answer": "extern"
+                },
+                {
+                    "question": "What happens if you define the `{ body }` of a function inside a Header file `math.h`, and you include that header in 3 different `.c` files?",
+                    "options": ["It works perfectly", "It runs 3 times faster", "Multiple Definition Linker Error; the actual code will physically exist 3 times, causing the Linker to crash when merging", "It deletes it"],
+                    "answer": "Multiple Definition Linker Error; the actual code will physically exist 3 times, causing the Linker to crash when merging"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Multi-file Projects — Intermediate",
+            "theory": "If you have 50 `.c` files, typing `gcc file1.c file2.c ... file50.c -o app` every time you make a tiny edit is insane. What's worse, GCC will completely recompile all 50 files from scratch, literally taking minutes!\n\n**Object Files (`.o` or `.obj`)**\nInstead of compiling straight to `.exe`, you use `gcc -c main.c` to create `main.o` (an unconnected, compiled binary puzzle piece of just that one file). \n\n**Makefiles (`make`)**\nA Makefile is a script that tracks dependencies. If you only edit `math_utils.c`, `make` is smart enough to ONLY recompile `math_utils.c` into `math_utils.o`, and then simply re-link it with the existing `main.o` and other unchanged files. It turns a 2-minute build into 1 second!",
+            "questions": [
+                {
+                    "question": "What is an Object file (`.o` or `.obj`)?",
+                    "options": ["A text file", "An un-linked, compiled binary 'puzzle piece' of a single C source file", "A Java program", "A database"],
+                    "answer": "An un-linked, compiled binary 'puzzle piece' of a single C source file"
+                },
+                {
+                    "question": "What compiler flag creates an Object file without attempting to invoke the Linker?",
+                    "options": ["-o", "-c", "-obj", "-x"],
+                    "answer": "-c"
+                },
+                {
+                    "question": "What is the primary benefit of Object Files in giant projects?",
+                    "options": ["They look nice", "They compress code", "If one C file changes, you only recompile that single Object file; you don't have to recompile the other 99 unchanged C files", "They run asynchronously"],
+                    "answer": "If one C file changes, you only recompile that single Object file; you don't have to recompile the other 99 unchanged C files"
+                },
+                {
+                    "question": "What does a `Makefile` conceptually do?",
+                    "options": ["Writes C code for you", "Tracks file dependencies and intelligently automates the compilation of only the files that changed since the last build", "Compiles C to HTML", "Encrypts strings"],
+                    "answer": "Tracks file dependencies and intelligently automates the compilation of only the files that changed since the last build"
+                },
+                {
+                    "question": "What is the syntax format of a Makefile rule?",
+                    "options": ["target: dependencies \\n \\t command", "if (target): command", "build target { command; }", "target = command()"],
+                    "answer": "target: dependencies \\n \\t command"
+                },
+                {
+                    "question": "What crucially specific invisible character MUST precede the compilation command inside a Makefile rule?",
+                    "options": ["4 Spaces", "A Tab character", "A Semicolon", "A Slashes //"],
+                    "answer": "A Tab character"
+                },
+                {
+                    "question": "If you just type `make` in the terminal, what does it do by default?",
+                    "options": ["Cleans the directory", "Runs the entire program", "Executes the very first target rule defined at the top of the Makefile", "Creates a new file"],
+                    "answer": "Executes the very first target rule defined at the top of the Makefile"
+                },
+                {
+                    "question": "What is typically the purpose of a `make clean` rule?",
+                    "options": ["To format the code", "To delete the final executables and all `.o` object files so you can force a fresh, absolute rebuild", "To close the compiler", "To clear RAM"],
+                    "answer": "To delete the final executables and all `.o` object files so you can force a fresh, absolute rebuild"
+                },
+                {
+                    "question": "In a Makefile, if `main.o: main.c math.h`, what happens if you edit `math.h`?",
+                    "options": ["Nothing", "Make notices the timestamp of `math.h` is newer than `main.o`, so it destroys and rebuilds `main.o` automatically", "It crashes", "It deletes main.c"],
+                    "answer": "Make notices the timestamp of `math.h` is newer than `main.o`, so it destroys and rebuilds `main.o` automatically"
+                },
+                {
+                    "question": "What tool replaces standard Makefiles in the modern era to generate project configurations cross-platform seamlessly?",
+                    "options": ["Webpack", "CMake", "GDB", "Valgrind"],
+                    "answer": "CMake"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Multi-file Projects — Expert",
+            "theory": "**Static Libraries (`.a` / `.lib`)**\nIf you create a physics engine out of 20 `.o` object files, you can zip them all together using the `ar` (Archiver) tool into a single Static Library file (`libphysics.a`). \nWhen you compile your main program and link it against `libphysics.a`, the Linker literally extracts ONLY the exact functions you actually used, and physically pastes them inside your final `.exe`, making your `.exe` stand-alone!\n\n**Dynamic/Shared Libraries (`.so` / `.dll`)**\nUnlike Static linking, Dynamic Libraries are NOT pasted inside your `.exe`. Your `.exe` remains tiny. Instead, your program loads the DLL from your computer's hard drive into RAM *at runtime*. Multiple programs can share a single DLL in memory simultaneously!",
+            "questions": [
+                {
+                    "question": "What is a Static Library (`.a`) fundamentally?",
+                    "options": ["A zip of text files", "A bundled archive containing exclusively compiled `.o` object files", "A new IDE", "A C header file"],
+                    "answer": "A bundled archive containing exclusively compiled `.o` object files"
+                },
+                {
+                    "question": "What happens during Static Linking?",
+                    "options": ["The library is ignored", "The linker extracts the specific required functions from the library and physically embeds their machine code directly inside your final `.exe`", "The code links via the internet", "It deletes the library"],
+                    "answer": "The linker extracts the specific required functions from the library and physically embeds their machine code directly inside your final `.exe`"
+                },
+                {
+                    "question": "What is a major advantage of Static Linking?",
+                    "options": ["It requires DLLs", "Your final executable is 100% physically self-contained and stand-alone (no \"missing DLL\" errors when sharing your app)", "It creates tiny files", "It encrypts the code"],
+                    "answer": "Your final executable is 100% physically self-contained and stand-alone (no \"missing DLL\" errors when sharing your app)"
+                },
+                {
+                    "question": "What does a Dynamic / Shared Library (`.so` on Linux, `.dll` on Windows) do differently?",
+                    "options": ["It doesn't compile", "It is NOT embedded in the exe; the program searches for it on the hard drive and loads it dynamically into RAM while running", "It converts into a struct", "It acts as a database"],
+                    "answer": "It is NOT embedded in the exe; the program searches for it on the hard drive and loads it dynamically into RAM while running"
+                },
+                {
+                    "question": "What is a massive advantage of Dynamic Libraries?",
+                    "options": ["They never crash", "They prevent viruses", "If 10 running programs use the same DLL, the OS only loads ONE copy of it into RAM, massive saving system memory.", "They don't need header files"],
+                    "answer": "If 10 running programs use the same DLL, the OS only loads ONE copy of it into RAM, massive saving system memory."
+                },
+                {
+                    "question": "If you update a Dynamic Library (e.g. `libmath.dll`) with a critical bug fix, do you need to physically recompile your main `.exe` program?",
+                    "options": ["Yes, unconditionally", "No, because the program just loads whatever is currently in the DLL file at runtime; you only need to swap the DLL file! (Assuming signatures didn't change)", "Only on Linux", "Yes, to update pointers"],
+                    "answer": "No, because the program just loads whatever is currently in the DLL file at runtime; you only need to swap the DLL file! (Assuming signatures didn't change)"
+                },
+                {
+                    "question": "What command creates a static library archive from multiple object files?",
+                    "options": ["gcc -static", "ar rcs libname.a file1.o file2.o", "tar -cvf", "make static"],
+                    "answer": "ar rcs libname.a file1.o file2.o"
+                },
+                {
+                    "question": "If you have a global variable declared in `fileA.c`, but you prepend it with `static` (e.g., `static int config_var = 1;`), what effect does this have on Multi-file Compilation?",
+                    "options": ["It goes incredibly fast", "It restricts the variable's \"Linkage\" so that it is physically totally invisible to all other files; no other file can 'extern' it.", "It shares it with all files globally", "It freezes it"],
+                    "answer": "It restricts the variable's \"Linkage\" so that it is physically totally invisible to all other files; no other file can 'extern' it."
+                },
+                {
+                    "question": "What happens if a Dynamic Library your program relies on is unexpectedly deleted from your computer?",
+                    "options": ["It creates a new one", "The program crashes upon launching with a missing dependency / DLL Not Found error", "It runs silently without that code", "It throws a syntax error"],
+                    "answer": "The program crashes upon launching with a missing dependency / DLL Not Found error"
+                },
+                {
+                    "question": "Can you use `#include` to load a DLL?",
+                    "options": ["Yes", "No, `#include` is strictly for text-based Header files during compilation. To load a DLL at runtime manually you use `dlopen()` on Linux or `LoadLibrary()` on Windows.", "Yes, use `#include <dll>`", "Only in Java"],
+                    "answer": "No, `#include` is strictly for text-based Header files during compilation. To load a DLL at runtime manually you use `dlopen()` on Linux or `LoadLibrary()` on Windows."
+                }
+            ]
+        }
+    ]
+}

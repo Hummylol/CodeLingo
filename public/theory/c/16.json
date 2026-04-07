@@ -1,0 +1,177 @@
+{
+    "levelno": 16,
+    "topic": "Bitwise Operations",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Bitwise — Beginner",
+            "theory": "In system programming, memory is tight. You don't want to use a massive 4-byte `int` to store a simple True/False boolean. Instead, you manipulate the individual binary bits (`0` or `1`) inside variables!\n\n**Bitwise AND (`&`)**: Returns `1` only if BOTH bits are `1`.\n  `1100 & 1010  =>  1000`\n\n**Bitwise OR (`|`)**: Returns `1` if AT LEAST ONE bit is `1`.\n  `1100 | 1010  =>  1110`\n\n**Bitwise XOR (`^`)**: Returns `1` if the bits are DIFFERENT.\n  `1100 ^ 1010  =>  0110`\n\n**Bitwise NOT (`~`)**: Flips every single bit (0 becomes 1, 1 becomes 0).\n  `~1100  =>  0011`\n\n*(Note: Do not confuse these with Logical operators `&&`, `||`, which only look at the final boolean entirety of the variables!)*",
+            "questions": [
+                {
+                    "question": "What exactly do Bitwise Operators manipulate?",
+                    "options": ["Strings", "Files", "The raw, individual 0 and 1 binary bits forming an integer", "Pointers"],
+                    "answer": "The raw, individual 0 and 1 binary bits forming an integer"
+                },
+                {
+                    "question": "Which operator is the Bitwise AND?",
+                    "options": ["&&", "&", "%", "AND"],
+                    "answer": "&"
+                },
+                {
+                    "question": "If you Bitwise AND `1010` with `0011`, what is the result?",
+                    "options": ["1111", "1000", "0010", "0000"],
+                    "answer": "0010"
+                },
+                {
+                    "question": "Which operator is the Bitwise OR?",
+                    "options": ["||", "|", "!", "+"],
+                    "answer": "|"
+                },
+                {
+                    "question": "If you Bitwise OR `1000` with `0100`, what is the result?",
+                    "options": ["0000", "1100", "1000", "0100"],
+                    "answer": "1100"
+                },
+                {
+                    "question": "What does the Bitwise XOR (`^`) operator do?",
+                    "options": ["Returns 1 if both bits are identically 1", "Returns 1 if both bits are different, and 0 if they are exactly the same", "Exponents the bits", "Copies the bits"],
+                    "answer": "Returns 1 if both bits are different, and 0 if they are exactly the same"
+                },
+                {
+                    "question": "If you Bitwise XOR `1100` with `1100`, what is the result?",
+                    "options": ["1100", "0000 (Because identical bits XOR to 0)", "1111", "Unknown"],
+                    "answer": "0000 (Because identical bits XOR to 0)"
+                },
+                {
+                    "question": "What happens if you use the Logical AND (`&&`) instead of Bitwise AND (`&`) on numbers?",
+                    "options": ["It crashes", "It treats the entire number simply as a single truth value (True if non-zero, False if zero), returning just 1 or 0", "It performs exponentiation", "It works perfectly the same"],
+                    "answer": "It treats the entire number simply as a single truth value (True if non-zero, False if zero), returning just 1 or 0"
+                },
+                {
+                    "question": "Which operator is the Bitwise NOT (Invert)?",
+                    "options": ["!", "-", "~", "/"],
+                    "answer": "~"
+                },
+                {
+                    "question": "What does the Bitwise NOT (`~`) do to `0000`?",
+                    "options": ["0000", "1111", "1000", "0110"],
+                    "answer": "1111"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Bitwise — Intermediate",
+            "theory": "**Bit Shifting**\nYou can slide all the binary bits in a variable to the Left or Right.\n- **Left Shift (`<<`)**: Pushes bits left, adding `0`s to the right. Mathematically, it **Multiplies by 2** instantly.\n  `00000001 << 2  =>  00000100` (1 becomes 4)\n- **Right Shift (`>>`)**: Pushes bits right. **Divides by 2** (integer division).\n  `00000100 >> 1  =>  00000010` (4 becomes 2)\n\n**Bit Masking (Setting Bits)**\nIf you want to forcefully turn ON the 3rd bit of a variable `status`, you create a \"mask\" `(1 << 3)` and use Bitwise OR (`|`).\n`status = status | (1 << 3);` \nThis safely forces the 3rd bit to `1` while leaving every other bit completely untouched!",
+            "questions": [
+                {
+                    "question": "Which operator is used to Shift Bits to the Left?",
+                    "options": [">>", "<<", "<", "shift_L"],
+                    "answer": "<<"
+                },
+                {
+                    "question": "Mathematically, what is the hyper-efficient result of Left Shifting an integer by 1 position (`x << 1`)?",
+                    "options": ["Division by 2", "Multiplication by 10", "Multiplication by 2", "Adds 1"],
+                    "answer": "Multiplication by 2"
+                },
+                {
+                    "question": "Mathematically, what is the result of Right Shifting an integer by 1 position (`x >> 1`)?",
+                    "options": ["Integer Division by 2", "Subtraction by 1", "Modulo 2", "Square Root"],
+                    "answer": "Integer Division by 2"
+                },
+                {
+                    "question": "If you take `00000001` (1) and left shift it by 3 (`1 << 3`), what is the binary result?",
+                    "options": ["00001000 (8 in decimal)", "00000011", "00000100", "10000000"],
+                    "answer": "00001000 (8 in decimal)"
+                },
+                {
+                    "question": "What is 'Bit Masking'?",
+                    "options": ["Hiding passwords", "Using a pattern of bits (a mask) combined with Bitwise operators to precisely isolate, toggle, or alter incredibly specific bits within a variable", "Encrypting files", "Deleting memory"],
+                    "answer": "Using a pattern of bits (a mask) combined with Bitwise operators to precisely isolate, toggle, or alter incredibly specific bits within a variable"
+                },
+                {
+                    "question": "Which operation is used to forcefully 'SET' (turn ON to 1) a specific bit, leaving the others completely untouched?",
+                    "options": ["Bitwise AND (&) with the mask", "Bitwise OR (|) with the mask", "Left Shift (<<) with the mask", "Bitwise XOR (^) with the mask"],
+                    "answer": "Bitwise OR (|) with the mask"
+                },
+                {
+                    "question": "Which operation is used to 'CLEAR' (turn OFF to 0) a specific bit safely?",
+                    "options": ["Bitwise OR (|) with mask", "Bitwise AND (&) with the INVERTED mask", "Right Shift (>>)", "Addition (+)"],
+                    "answer": "Bitwise AND (&) with the INVERTED mask"
+                },
+                {
+                    "question": "Which operation is used to logically 'TOGGLE' (flip 1 to 0, or 0 to 1) a specific bit?",
+                    "options": ["Bitwise XOR (^) with the mask", "Bitwise AND (&)", "Bitwise NOT (~)", "Minus (-)"],
+                    "answer": "Bitwise XOR (^) with the mask"
+                },
+                {
+                    "question": "If `x = 5 (0101)` and we want to check ONLY if the lowest bit is set (is it Odd?), what operation safely isolates that bit for an `if` statement?",
+                    "options": ["if (x | 1)", "if (x >> 1)", "if (x & 1)", "if (x ^ 1)"],
+                    "answer": "if (x & 1)"
+                },
+                {
+                    "question": "Why would developers use complex Bitwise operations instead of standard if/else statements?",
+                    "options": ["Because C requires it", "Because bitwise operations map directly to single CPU clock cycles natively, making them infinitesimally fast compared to complex control flow trees", "Because strings need it", "Because it looks cooler"],
+                    "answer": "Because bitwise operations map directly to single CPU clock cycles natively, making them infinitesimally fast compared to complex control flow trees"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Bitwise — Expert",
+            "theory": "**Logical vs Arithmetic Right Shift**\nIf you right-shift (`>>`) an `unsigned` integer, the compiler safely adds `0`s to the empty left side (Logical Shift). But what if you right-shift a *negative signed* integer? If it just added `0`s, the number would abruptly turn positive! \nTo prevent this, C uses an Arithmetic Shift for signed variables: it aggressively copies the Sign Bit (a `1`) into the empty left slots, aggressively preserving the number's negative status!\n\n**Swapping variables without a Temp variable**\nUsing Bitwise XOR (`^`), you can logically swap the values of two integers perfectly without allocating a temporary variable.\n`a = a ^ b;`\n`b = a ^ b;`\n`a = a ^ b;`\n(This works because XORing a number with itself permanently cancels it out to 0).",
+            "questions": [
+                {
+                    "question": "When Right Shifting (`>>`) an UN-signed integer, what physically fills the newly created empty slots on the left?",
+                    "options": ["Ones", "Zeroes (Logical Shift)", "Random Garbage", "It crashes"],
+                    "answer": "Zeroes (Logical Shift)"
+                },
+                {
+                    "question": "What drastically different action occurs when Right Shifting (`>>`) a SIGNED negative integer on most architectures?",
+                    "options": ["It fills with zeroes", "It fills with ones to aggressively maintain the negative sign bit (Arithmetic Shift)", "It throws a syntax error", "It converts to a float"],
+                    "answer": "It fills with ones to aggressively maintain the negative sign bit (Arithmetic Shift)"
+                },
+                {
+                    "question": "What notoriously famous trick swaps the values of two integer variables without needing a third 'temp' variable?",
+                    "options": ["The OR Swap mechanism", "The Triple XOR Swap Trick (`a^=b; b^=a; a^=b;`)", "The Addition trick", "The Shift trick"],
+                    "answer": "The Triple XOR Swap Trick (`a^=b; b^=a; a^=b;`)"
+                },
+                {
+                    "question": "Why does the Triple XOR Swap Trick actually work mathematically?",
+                    "options": ["Because XOR copies memory", "Because anything XORed perfectly with itself perfectly cancels out to 0, mathematically decrypting the alternate variable", "It is a compiler glitch", "Because XOR is addition"],
+                    "answer": "Because anything XORed perfectly with itself perfectly cancels out to 0, mathematically decrypting the alternate variable"
+                },
+                {
+                    "question": "If you want to rapidly extract the Red, Green, and Blue 8-bit channels from a massive packed 24-bit Hex Color Integer `0xRRGGBB`, how do you do it?",
+                    "options": ["Using strings", "Using Bitwise Right Shifts combined with Bitwise AND Masks (`& 0xFF`) to neatly extract specific bytes", "Using float math", "Using file I/O"],
+                    "answer": "Using Bitwise Right Shifts combined with Bitwise AND Masks (`& 0xFF`) to neatly extract specific bytes"
+                },
+                {
+                    "question": "What is the result of `~0` (Bitwise NOT zero)?",
+                    "options": ["0", "-1 (In Two's Complement, all binary bits become 1)", "1", "Null"],
+                    "answer": "-1 (In Two's Complement, all binary bits become 1)"
+                },
+                {
+                    "question": "How do you swiftly check if an unsigned integer `x` is perfectly a Power of 2 (e.g. 2, 4, 8, 16)?",
+                    "options": ["if (x % 2 == 0)", "if (x * 2 == x)", "if ((x & (x - 1)) == 0) (This definitively clears the lowest set bit)", "if (~x == 0)"],
+                    "answer": "if ((x & (x - 1)) == 0) (This definitively clears the lowest set bit)"
+                },
+                {
+                    "question": "What is a 'Bit-field' structure?",
+                    "options": ["An array of bits", "A C `struct` where each member's exact bit-width is completely forcefully defined (e.g., `unsigned int flag : 1;`), squeezing them all into a single physical byte", "A pointer masking technique", "A macro trick"],
+                    "answer": "A C `struct` where each member's exact bit-width is completely forcefully defined (e.g., `unsigned int flag : 1;`), squeezing them all into a single physical byte"
+                },
+                {
+                    "question": "If you left-shift a signed integer too far so that the highest '1' bit violently overwrites the Sign Bit, what occurs?",
+                    "options": ["Nothing", "Undefined Behavior / Sign Reversal Bug (It suddenly turns deeply negative)", "It corrects itself", "It becomes a float"],
+                    "answer": "Undefined Behavior / Sign Reversal Bug (It suddenly turns deeply negative)"
+                },
+                {
+                    "question": "In hardware programming, if you have a massive Memory-Mapped Register at address `0x4000`, how do you bitwise toggle its 3rd bit securely?",
+                    "options": ["You can't", "You cast the raw address to a volatile pointer and XOR the mask: `*(volatile int*)0x4000 ^= (1 << 3);`", "You write a file", "You use a string"],
+                    "answer": "You cast the raw address to a volatile pointer and XOR the mask: `*(volatile int*)0x4000 ^= (1 << 3);`"
+                }
+            ]
+        }
+    ]
+}

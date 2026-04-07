@@ -25,10 +25,10 @@ export default function LessonHomePage() {
       <div className="grid grid-cols-6 gap-4">
         {/* Row 1: 3 and 3 */}
         <div className="col-span-3">
-          <StreakCard days={3} />
+          <StreakCard />
         </div>
-        <div className="rounded-xl border bg-card p-4 flex flex-col justify-center col-span-3">
-            <WeeklyGoal current={45} target={120} />
+        <div className="relative rounded-xl border bg-card p-4 flex flex-col justify-center col-span-3">
+            <WeeklyGoal />
         </div>
 
         {/* Row 2: 2 and 4 */}

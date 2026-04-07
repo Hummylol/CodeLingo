@@ -1,0 +1,177 @@
+{
+    "levelno": 7,
+    "topic": "Arrays (1D and 2D)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Arrays — Beginner",
+            "theory": "An **Array** is a collection of variables of the *same data type*, stored sequentially in memory. \n\nInstead of declaring `int score1, score2, score3;`, you declare an array:\n`int scores[5];`\n\nYou can also initialize an array at the time of declaration:\n`int scores[3] = {90, 85, 100};`\n\nArray elements are accessed using an **index** placed inside square brackets `[]`. In C, array indexing is **Zero-Based**, meaning the FIRST element is at index `0`, not `1`.\n- Accessing the 1st element: `int first = scores[0];`\n- Accessing the 3rd element: `int third = scores[2];`\n\nIf you declare `int arr[5]`, valid indices are `0, 1, 2, 3, 4`.",
+            "questions": [
+                {
+                    "question": "What is an array in C?",
+                    "options": ["A function that stores logic", "A collection of items of the *same* data type stored sequentially in memory", "A dynamic variable that can hold ints, floats, and strings simultaneously", "A mathematical loop"],
+                    "answer": "A collection of items of the *same* data type stored sequentially in memory"
+                },
+                {
+                    "question": "If you have an array `int nums[10]`, what is the lowest valid index?",
+                    "options": ["1", "0", "-1", "Depends on the compiler"],
+                    "answer": "0"
+                },
+                {
+                    "question": "If you have an array `int nums[10]`, what is the highest valid index?",
+                    "options": ["10", "9", "11", "Depends on the system"],
+                    "answer": "9"
+                },
+                {
+                    "question": "How do you access the very first element of `arr`?",
+                    "options": ["arr[1]", "arr.first", "arr[0]", "arr"],
+                    "answer": "arr[0]"
+                },
+                {
+                    "question": "Which of the following correctly initializes an array with 3 integers?",
+                    "options": ["int arr = {1, 2, 3};", "int arr[3] = {1, 2, 3};", "int arr[3] = (1, 2, 3);", "array arr(3) = [1, 2, 3];"],
+                    "answer": "int arr[3] = {1, 2, 3};"
+                },
+                {
+                    "question": "If you write `int arr[5];`, what is initially stored in the array before you assign any values?",
+                    "options": ["0 in all slots", "Null", "Garbage values (whatever was left in that memory space previously)", "-1"],
+                    "answer": "Garbage values (whatever was left in that memory space previously)"
+                },
+                {
+                    "question": "Can an array in C store a mix of ints and floats at the same time?",
+                    "options": ["Yes, standard feature", "Yes, using mixed arrays", "No, an array can only hold elements of one single data type", "Only if it is a double array"],
+                    "answer": "No, an array can only hold elements of one single data type"
+                },
+                {
+                    "question": "What happens if you omit the size when initializing an array, like `int arr[] = {1, 2, 3};`?",
+                    "options": ["Syntax error", "The compiler automatically sizes it to hold exactly those 3 elements", "It creates an array of infinite size", "It sets size to 0"],
+                    "answer": "The compiler automatically sizes it to hold exactly those 3 elements"
+                },
+                {
+                    "question": "If `int coins[4] = {1, 5, 10, 25};`, what is `coins[2]`?",
+                    "options": ["1", "5", "10", "25"],
+                    "answer": "10"
+                },
+                {
+                    "question": "Are arrays in C pass-by-value or pass-by-reference?",
+                    "options": ["Pass-by-value exactly like integers", "Pass-by-reference (passing the array passes a pointer to its first element)", "They cannot be passed to functions", "It depends on if they are const"],
+                    "answer": "Pass-by-reference (passing the array passes a pointer to its first element)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Arrays — Intermediate",
+            "theory": "C does **NOT** perform 'Bounds Checking' on arrays.\nIf you declare `int nums[3];` and try to write to `nums[10] = 5;`, the C compiler will usually allow it. This overwrites unrelated memory, causing nasty bugs or a complete **Segmentation Fault** (program crash).\n\nTo find the physical number of elements in an array, you use `sizeof`:\n`int length = sizeof(nums) / sizeof(nums[0]);`\n(Total bytes of array divided by bytes of one element).\n\n**2D Arrays (Matrices)**\nYou can create arrays of arrays using two sets of brackets:\n`int matrix[3][4];` (An array with 3 rows, where each row holds 4 elements).\nAccess element at row 1, column 2: `matrix[1][2];`",
+            "questions": [
+                {
+                    "question": "Does standard C check if you go out of bounds on an array?",
+                    "options": ["Yes, it throws an ArrayOutOfBounds exception", "No, there is zero built-in bounds checking; it just writes to neighboring memory", "Yes, it creates a syntax error", "Only when writing, not when reading"],
+                    "answer": "No, there is zero built-in bounds checking; it just writes to neighboring memory"
+                },
+                {
+                    "question": "What error frequently occurs if you severely overshoot an array boundary and corrupt other memory?",
+                    "options": ["Stack Underflow", "Segmentation Fault (Segfault)", "Index Error", "Division by zero"],
+                    "answer": "Segmentation Fault (Segfault)"
+                },
+                {
+                    "question": "How can you programmatically calculate the number of elements in an array `arr`?",
+                    "options": ["arr.length", "len(arr)", "sizeof(arr) / sizeof(arr[0])", "size(arr)"],
+                    "answer": "sizeof(arr) / sizeof(arr[0])"
+                },
+                {
+                    "question": "If `int arr[5] = {1, 2};`, what values do indices 2, 3, and 4 hold?",
+                    "options": ["Garbage values", "Null", "0 (Partial initialization forces remaining elements to 0)", "Compiler error"],
+                    "answer": "0 (Partial initialization forces remaining elements to 0)"
+                },
+                {
+                    "question": "What is `int grid[4][5];`?",
+                    "options": ["A 4 by 5 two-dimensional array (matrix)", "Two separate arrays sized 4 and 5", "A 9 element array", "Syntax error"],
+                    "answer": "A 4 by 5 two-dimensional array (matrix)"
+                },
+                {
+                    "question": "How do you access the value in the 1st row, 2nd column of `grid`?",
+                    "options": ["grid[1, 2]", "grid[1][2]", "grid[0][1]", "grid[2][1]"],
+                    "answer": "grid[0][1]"
+                },
+                {
+                    "question": "How are 2D arrays physically stored in standard memory?",
+                    "options": ["In a grid physically inside the RAM", "Row-major order (a single contiguous flat block of memory)", "Column-major order", "As a linked list of pointers"],
+                    "answer": "Row-major order (a single contiguous flat block of memory)"
+                },
+                {
+                    "question": "Can you dynamically change the size of a standard array after declaring `int arr[5];`?",
+                    "options": ["Yes, using arr.resize()", "No, static array sizes are completely fixed at declaration", "Yes, just assign arr[10]", "Only if it is a const array"],
+                    "answer": "No, static array sizes are completely fixed at declaration"
+                },
+                {
+                    "question": "If you pass an array to a function `void check(int a[])` and `sizeof(a)` is called inside the function, what does it return?",
+                    "options": ["The total size of the array", "The size of a pointer (usually 8 bytes on 64-bit), because arrays decay into pointers when passed to functions", "0", "Syntax error"],
+                    "answer": "The size of a pointer (usually 8 bytes on 64-bit), because arrays decay into pointers when passed to functions"
+                },
+                {
+                    "question": "When defining a 2D array, which dimension can be omitted if initialized immediately `int matrix[][3] = {...};`?",
+                    "options": ["Both", "The second dimension (columns)", "The first dimension (rows)", "Neither"],
+                    "answer": "The first dimension (rows)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Arrays — Expert",
+            "theory": "In C, **Arrays and Pointers are intimately linked**.\nThe name of an array (e.g., `nums`) acts as a constant pointer to the very first element of that array. Therefore, `nums` is fundamentally equivalent to `&nums[0]`.\n\nMulti-dimensional arrays (like 3D or 4D arrays) are supported: `int space[5][5][5];`.\n\n**Variable-Length Arrays (VLAs)** were introduced in C99. They allow you to define an array size using a variable at runtime:\n```c\nint n = 10; \nint arr[n]; // VLA\n```\nHowever, VLAs are generally frowned upon in secure systems programming because they allocate on the Stack. If `n` is provided by malicious user input and is massive, it will trigger a Stack Overflow. Most modern standards (C11+) made VLAs strictly optional for compilers to support.",
+            "questions": [
+                {
+                    "question": "What does the unbracketed name of an array represent in C?",
+                    "options": ["The total size of the array", "A constant pointer to the first element's memory address", "The last element", "A null pointer"],
+                    "answer": "A constant pointer to the first element's memory address"
+                },
+                {
+                    "question": "Because arrays decay to pointers, `arr[i]` is mathematically identical to what pointer arithmetic expression?",
+                    "options": ["*(arr + i)", "arr + i", "&arr", "*(arr * i)"],
+                    "answer": "*(arr + i)"
+                },
+                {
+                    "question": "What is a Variable-Length Array (VLA) in C99?",
+                    "options": ["An array that can be resized after creation", "An array whose length is dictated by a runtime variable rather than a compile-time constant", "An array that holds strings", "An array strictly stored on the heap"],
+                    "answer": "An array whose length is dictated by a runtime variable rather than a compile-time constant"
+                },
+                {
+                    "question": "Why are VLAs considered dangerous in secure programming?",
+                    "options": ["They are too slow", "They leak memory permanently", "They allocate dynamically on the bounded Stack; a huge size will cause a dangerous Stack Overflow crash", "They can only hold integers"],
+                    "answer": "They allocate dynamically on the bounded Stack; a huge size will cause a dangerous Stack Overflow crash"
+                },
+                {
+                    "question": "Where are local static arrays stored?",
+                    "options": ["Stack", "Heap", "Data Segment (same as other static variables)", "Registers"],
+                    "answer": "Data Segment (same as other static variables)"
+                },
+                {
+                    "question": "Is `array[-1]` legally compilable syntax in C?",
+                    "options": ["No, syntax error", "Yes, but it accesses memory immediately before the array, causing undefined behavior", "Yes, it wraps around to the last element (like Python)", "Yes, it safely returns 0"],
+                    "answer": "Yes, but it accesses memory immediately before the array, causing undefined behavior"
+                },
+                {
+                    "question": "What is a 'Ragged Array'?",
+                    "options": ["A 2D array where rows have different lengths (usually built with an array of pointers)", "An array with garbage values", "An array that hasn't been compiled", "A 1D array of floats"],
+                    "answer": "A 2D array where rows have different lengths (usually built with an array of pointers)"
+                },
+                {
+                    "question": "Can you return an array from a function directly using standard syntax like `int[5] func()`?",
+                    "options": ["Yes", "No, C functions cannot return arrays natively; they can only return pointers to arrays.", "Only if it is a const array", "Only in C++"],
+                    "answer": "No, C functions cannot return arrays natively; they can only return pointers to arrays."
+                },
+                {
+                    "question": "If you return a pointer to a local array from a function, what is the consequence?",
+                    "options": ["It works perfectly", "It leaks memory", "Severe bug: the local array is destroyed when the function ends, so the pointer is dangling and points to garbage memory", "It crashes the compiler"],
+                    "answer": "Severe bug: the local array is destroyed when the function ends, so the pointer is dangling and points to garbage memory"
+                },
+                {
+                    "question": "Did the C11 standard make VLAs mandatory?",
+                    "options": ["Yes", "No, C11 made VLAs an optional compiler feature", "Yes, but only for Linux", "They were completely banned"],
+                    "answer": "No, C11 made VLAs an optional compiler feature"
+                }
+            ]
+        }
+    ]
+}

@@ -293,7 +293,6 @@ export default function DailyQuizPage() {
 
       <div className="text-sm font-semibold text-muted-foreground mb-4 flex justify-between items-center">
         <span>Question {currentIdx + 1} of 15 • <span className="text-primary uppercase tracking-wider text-xs">{currentQ.topic}</span></span>
-        <span className="text-xs bg-amber-500/10 text-amber-600 px-2 py-1 rounded-md border border-amber-500/20 font-mono">Dev: {currentQ.answer}</span>
       </div>
 
       {/* Question Card */}

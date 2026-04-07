@@ -1,0 +1,176 @@
+{
+    "levelno": 14,
+    "topic": "Advanced Pointers",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Advanced Pointers — Beginner",
+            "theory": "You already know that Pointers store the memory address of standard variables (like `int` or `char`). But they can do much more!\n\n**Constant Pointers vs Pointers to Constants**\n- `const int *ptr;` (Pointer to a Constant): You CAN randomly change which memory address the pointer looks at (`ptr = &b;`), but you CANNOT change the actual value stored at that address (`*ptr = 5;` is illegal).\n- `int * const ptr;` (Constant Pointer): You CAN perfectly change the target value (`*ptr = 5;` is fine), but you CANNOT alter the pointer to look at a new address (`ptr = &b;` is illegal).\n\n**Array of Pointers**\nInstead of a 2D array, you can create a 1D array where every element is a pointer to another array. This is how `char *argv[]` works in your main function—it's just a raw array pointing to different strings of various lengths scattered in memory.",
+            "questions": [
+                {
+                    "question": "What does a Pointer to a Constant (`const int *ptr`) prevent you from doing?",
+                    "options": ["Changing what address the pointer targets", "Changing the value stored at the target address using the pointer", "Using it with arrays", "Freeing the pointer"],
+                    "answer": "Changing the value stored at the target address using the pointer"
+                },
+                {
+                    "question": "What does a Constant Pointer (`int * const ptr`) prevent you from doing?",
+                    "options": ["Changing the value stored at the target address", "Passing it to a function", "Changing the physical memory address that the pointer holds", "Printing the pointer"],
+                    "answer": "Changing the physical memory address that the pointer holds"
+                },
+                {
+                    "question": "How do you declare a 'Constant Pointer to a Constant' (nothing can be changed)?",
+                    "options": ["const const int p", "int const const p;", "const int * const ptr;", "const * * ptr;"],
+                    "answer": "const int * const ptr;"
+                },
+                {
+                    "question": "What is `char *words[10];` defining?",
+                    "options": ["A string of length 10", "An Array consisting of exactly 10 character Pointers", "10 arrays of 10 characters", "A syntax error"],
+                    "answer": "An Array consisting of exactly 10 character Pointers"
+                },
+                {
+                    "question": "Why is an Array of Pointers (`char *words[]`) more memory efficient for storing words than a 2D Array (`char words[10][50]`)?",
+                    "options": ["Because pointers are encrypted", "Because a 2D array allocates 50 bytes for EVERY word even if the word is only 3 letters long. An array of pointers just points to strings of exact sizes.", "It isn't more efficient", "It stores them on disk"],
+                    "answer": "Because a 2D array allocates 50 bytes for EVERY word even if the word is only 3 letters long. An array of pointers just points to strings of exact sizes."
+                },
+                {
+                    "question": "If `int arr[] = {1, 2, 3}; int *p = arr;`, what does `*(p++)` evaluate to?",
+                    "options": ["Memory Error", "2", "3", "It evaluates to 1, and THEN moves the pointer forward to point to 2 (post-increment happen after dereference evaluation)", "It evaluates to 1, and THEN moves the pointer forward to point to 2 (post-increment happen after dereference evaluation)"]
+                },
+                {
+                    "question": "What happens if you run `*p++ = 10;` where p points to an array element?",
+                    "options": ["Adds 10 to standard pointer", "It assigns 10 to the current element pointed to, and then silently advances the pointer to the next element", "Syntax Error", "Resets the array"],
+                    "answer": "It assigns 10 to the current element pointed to, and then silently advances the pointer to the next element"
+                },
+                {
+                    "question": "What is the memory size of `char *words[10];` on a standard 64-bit architecture?",
+                    "options": ["10 bytes", "40 bytes", "80 bytes (10 pointers * 8 bytes each)", "0 bytes"],
+                    "answer": "80 bytes (10 pointers * 8 bytes each)"
+                },
+                {
+                    "question": "What is `void *` typically used for?",
+                    "options": ["Crashing the OS", "A generic pointer that can safely store the memory address of ANY data type (used in malloc)", "A pointer to nothing/NULL", "A pointer that deletes data automatically"],
+                    "answer": "A generic pointer that can safely store the memory address of ANY data type (used in malloc)"
+                },
+                {
+                    "question": "If `x = 5;`, can a pointer point to `&x` if `x` is declared as a `register` variable?",
+                    "options": ["Yes", "No, register variables are stored on the CPU hardware itself, not in RAM, so they strictly do NOT have a memory address", "Only if it is a const", "Only in C++"],
+                    "answer": "No, register variables are stored on the CPU hardware itself, not in RAM, so they strictly do NOT have a memory address"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Advanced Pointers — Intermediate",
+            "theory": "**Function Pointers**\nBelieve it or not, Functions also sit in RAM (in the Text/Code segment)! Because they reside in memory, they have a Memory Address. Therefore, you can create a pointer that physically points to a function.\n\nSyntax to declare a function pointer:\n`return_type (*pointer_name)(parameter_types);`\nExample: A pointer to a function that takes two `int`s and returns an `int`:\n`int (*mathPtr)(int, int);`\n\nTo use it, you assign the name of a function (which acts like an array name—evaluating to its address):\n```c\nmathPtr = &add;\nint total = mathPtr(5, 10); // Calls the add() function dynamically\n```",
+            "questions": [
+                {
+                    "question": "What does a Function Pointer store?",
+                    "options": ["The return value of a function", "The physical memory address where the executable code of a function is stored", "The name of the function", "A copy of the function"],
+                    "answer": "The physical memory address where the executable code of a function is stored"
+                },
+                {
+                    "question": "Which of the following correctly declares a pointer `ptr` to a function returning void and taking no arguments?",
+                    "options": ["void ptr();", "void *ptr();", "void (*ptr)();", "void ptr*();"],
+                    "answer": "void (*ptr)();"
+                },
+                {
+                    "question": "Why are the parentheses around `(*ptr)` absolutely mandatory when declaring a function pointer?",
+                    "options": ["To look pretty", "Because `()` has higher operator precedence than `*`. Without them, it declares a normal function that returns a void pointer! ", "To protect the pointer", "It is optional"],
+                    "answer": "Because `()` has higher operator precedence than `*`. Without them, it declares a normal function that returns a void pointer! "
+                },
+                {
+                    "question": "How do you correctly assign the function `void greet()` to the function pointer `fptr`?",
+                    "options": ["fptr = greet();", "fptr = greet;", "fptr = *greet;", "fptr = &greet();"],
+                    "answer": "fptr = greet;"
+                },
+                {
+                    "question": "Once `fptr` points to `greet`, how do you execute it?",
+                    "options": ["execute fptr;", "fptr();", "run fptr();", "call fptr;"],
+                    "answer": "fptr();"
+                },
+                {
+                    "question": "What is an 'Array of Function Pointers' commonly used for?",
+                    "options": ["Nothing, it's illegal", "Replacing massive `switch` statements by using an integer index to instantly call a specific function (a Dispatch Table)", "Sorting arrays", "Printing strings"],
+                    "answer": "Replacing massive `switch` statements by using an integer index to instantly call a specific function (a Dispatch Table)"
+                },
+                {
+                    "question": "What does the declaration `int *func();` mean?",
+                    "options": ["A pointer to a function returning an int", "A standard function that returns a pointer-to-an-int", "A syntax error", "A double pointer"],
+                    "answer": "A standard function that returns a pointer-to-an-int"
+                },
+                {
+                    "question": "Can you cast a Function Pointer to a `void *` (Standard Object Pointer)?",
+                    "options": ["Yes", "No! Standard C explicitly forbids casting function pointers to void* because Code memory and Data memory can be completely different sizes on some obscure architectures.", "Only if it returns void", "Yes, safely"],
+                    "answer": "No! Standard C explicitly forbids casting function pointers to void* because Code memory and Data memory can be completely different sizes on some obscure architectures."
+                },
+                {
+                    "question": "Where does the executable machine code of a function reside?",
+                    "options": ["The Stack", "The Heap", "The Read-Only Text/Code Segment", "Registers"],
+                    "answer": "The Read-Only Text/Code Segment"
+                },
+                {
+                    "question": "Why are function pointers considered slightly dangerous to security?",
+                    "options": ["They leak memory", "Hackers can exploit buffer overflows to overwrite a function pointer's address with the address of malicious virus code", "They delete files", "They freeze the CPU"],
+                    "answer": "Hackers can exploit buffer overflows to overwrite a function pointer's address with the address of malicious virus code"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Advanced Pointers — Expert",
+            "theory": "**Callbacks**\nBecause you can create a pointer to a function, you can actually pass a Function Pointer as an Argument into another function! This creates a **Callback** pattern.\n\nStandard C uses this heavily. The `<stdlib.h>` sorting function **`qsort`** can sort an array of completely custom structs, but it doesn't know how to compare them. You must write your own custom comparison function, and pass a pointer to your function directly into `qsort`.\n\n`qsort(array, element_count, element_size, &my_compare_function);`\nWhen `qsort` runs, it will \"call back\" your function blindly every time it needs to compare two elements.",
+            "questions": [
+                {
+                    "question": "What is a Callback Function?",
+                    "options": ["A function that crashes", "A function whose memory address is passed as an argument to another function, so that it can be invoked/called later", "A recursive loop", "A function that returns its own name"],
+                    "answer": "A function whose memory address is passed as an argument to another function, so that it can be invoked/called later"
+                },
+                {
+                    "question": "How does `qsort()` physically know how to compare complex, custom structs it has never seen before?",
+                    "options": ["It guesses using magic", "It relies entirely on a custom comparison Callback Function that you provide to it as a function pointer", "It only sorts ints", "The compiler rewrites qsort automatically"],
+                    "answer": "It relies entirely on a custom comparison Callback Function that you provide to it as a function pointer"
+                },
+                {
+                    "question": "What must the signature of the comparison callback for `qsort` look like?",
+                    "options": ["int cmp(int a, int b)", "void cmp()", "int cmp(const void *a, const void *b)", "bool cmp(var a, var b)"],
+                    "answer": "int cmp(const void *a, const void *b)"
+                },
+                {
+                    "question": "Why does the `qsort` callback use `const void *`?",
+                    "options": ["To look complex", "Because qsort must be completely generic and able to accept ANY data type; you must safely manually cast the void pointers back to your real struct type inside the callback", "To save memory", "To throw errors"],
+                    "answer": "Because qsort must be completely generic and able to accept ANY data type; you must safely manually cast the void pointers back to your real struct type inside the callback"
+                },
+                {
+                    "question": "What is an asynchronous callback?",
+                    "options": ["A callback fired synchronously", "A function pointer registered with the OS or an Event Loop that gets called automatically at an unpredictable future time when an event happens (e.g., a Mouse Click or Network packet arrival)", "A syntax glitch", "A compiler error"],
+                    "answer": "A function pointer registered with the OS or an Event Loop that gets called automatically at an unpredictable future time when an event happens (e.g., a Mouse Click or Network packet arrival)"
+                },
+                {
+                    "question": "If `void (*f[10])(int);` is declared, what is `f`?",
+                    "options": ["A function taking 10 ints", "Syntax Error", "An array of 10 pointers to functions that take an int and return void", "A 10D Array"],
+                    "answer": "An array of 10 pointers to functions that take an int and return void"
+                },
+                {
+                    "question": "Can you allocate a function dynamically on the Heap using `malloc`?",
+                    "options": ["Yes, flawlessly", "Technically yes, but Modern OS security (DEP/NX bit) explicitly blocks executing raw code located on the Heap or Stack to stop hackers, resulting in a crash.", "Only in Windows", "Only for void functions"],
+                    "answer": "Technically yes, but Modern OS security (DEP/NX bit) explicitly blocks executing raw code located on the Heap or Stack to stop hackers, resulting in a crash."
+                },
+                {
+                    "question": "What does creating a 'Closure' in C involve?",
+                    "options": ["It is a core C language feature", "C does not support closures natively at all; developers fake them by passing a function pointer and an accompanying `void*` context pointer holding state data", "Closing files", "Closing brackets"],
+                    "answer": "C does not support closures natively at all; developers fake them by passing a function pointer and an accompanying `void*` context pointer holding state data"
+                },
+                {
+                    "question": "Is `typedef` commonly used to simplify messy function pointer syntax?",
+                    "options": ["Yes, e.g., `typedef int (*MathFunc)(int, int);` allows you to simply use `MathFunc myPtr;`", "No, typedef only works on structs", "Only in C++", "No, it causes compiler errors"],
+                    "answer": "Yes, e.g., `typedef int (*MathFunc)(int, int);` allows you to simply use `MathFunc myPtr;`"
+                },
+                {
+                    "question": "What happens if you typecast a function pointer to the WRONG signature (e.g., wrong parameters) and then execute it?",
+                    "options": ["Compiler automatically fixes it", "It runs fine", "Total Undefined Behavior. It likely corrupts the CPU Call Stack and violently crashes because it pushes/pops the wrong amount of memory bytes for arguments", "It returns NULL"],
+                    "answer": "Total Undefined Behavior. It likely corrupts the CPU Call Stack and violently crashes because it pushes/pops the wrong amount of memory bytes for arguments"
+                }
+            ]
+        }
+    ]
+}

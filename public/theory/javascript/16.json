@@ -1,0 +1,327 @@
+{
+    "levelno": 16,
+    "topic": "Class Attributes & Methods",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Class Attributes & Methods — Beginner Level",
+            "theory": "**Instance attributes** are unique per object — defined inside `__init__` using `self`:\n`self.color = 'red'`\n\n**Class attributes** are shared by all instances — defined directly in the class body:\n```python\nclass Car:\n    wheels = 4         # class attribute\n    def __init__(self, color):\n        self.color = color  # instance attribute\n\ncar1 = Car('red')\ncar2 = Car('blue')\nprint(car1.wheels)  # 4\nprint(Car.wheels)   # 4\n```\n\nAccess a class attribute via the class name (`Car.wheels`) or an instance (`car1.wheels`). Instance attributes take precedence over class attributes with the same name.",
+            "questions": [
+                {
+                    "question": "What is an instance attribute?",
+                    "options": [
+                        "Shared by all instances",
+                        "Belongs to a specific instance",
+                        "A class-level variable",
+                        "A global variable"
+                    ],
+                    "answer": "Belongs to a specific instance"
+                },
+                {
+                    "question": "Where are instance attributes typically defined?",
+                    "options": [
+                        "In the class body directly",
+                        "Inside __init__ using self",
+                        "Outside the class",
+                        "In a @classmethod"
+                    ],
+                    "answer": "Inside __init__ using self"
+                },
+                {
+                    "question": "A class attribute is accessible via:",
+                    "options": [
+                        "Only the class name",
+                        "Only through instances",
+                        "Both the class name and instances",
+                        "Neither"
+                    ],
+                    "answer": "Both the class name and instances"
+                },
+                {
+                    "question": "If `car1.wheels = 3`, does it affect other Car instances?",
+                    "options": [
+                        "Yes",
+                        "No, it only creates a new instance attribute on car1",
+                        "Yes but only new ones",
+                        "Raises AttributeError"
+                    ],
+                    "answer": "No, it only creates a new instance attribute on car1"
+                },
+                {
+                    "question": "What is the first parameter of any instance method?",
+                    "options": [
+                        "cls",
+                        "self",
+                        "The first data attribute",
+                        "No special param"
+                    ],
+                    "answer": "self"
+                },
+                {
+                    "question": "A method working with the class (not an instance) is a:",
+                    "options": [
+                        "Instance method",
+                        "@classmethod",
+                        "Global function",
+                        "Private method"
+                    ],
+                    "answer": "@classmethod"
+                },
+                {
+                    "question": "A method not needing class or instance access is a:",
+                    "options": [
+                        "Instance method",
+                        "@staticmethod",
+                        "@classmethod",
+                        "Free function"
+                    ],
+                    "answer": "@staticmethod"
+                },
+                {
+                    "question": "What does `Car.wheels = 5` do?",
+                    "options": [
+                        "Only changes wheel count for one car",
+                        "Changes the class attribute for all instances without their own instance attribute",
+                        "Raises AttributeError",
+                        "Creates a new Car"
+                    ],
+                    "answer": "Changes the class attribute for all instances without their own instance attribute"
+                },
+                {
+                    "question": "Your class `Dog` has class attribute `species = 'Canis'`. How do you access it?",
+                    "options": [
+                        "self.species",
+                        "Dog.species or self.species",
+                        "self.__class__.species only",
+                        "global species"
+                    ],
+                    "answer": "Dog.species or self.species"
+                },
+                {
+                    "question": "What does `@staticmethod` above a method mean?",
+                    "options": [
+                        "It's the first method defined",
+                        "The method doesn't receive self or cls",
+                        "The method cannot be called",
+                        "It's shared across instances"
+                    ],
+                    "answer": "The method doesn't receive self or cls"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Class Attributes & Methods — Intermediate Level",
+            "theory": "**`@classmethod`** receives `cls` (the class itself) and can be used as a factory method:\n```python\nclass Date:\n    def __init__(self, y, m, d): ...\n    @classmethod\n    def from_string(cls, date_str):\n        y, m, d = date_str.split('-')\n        return cls(int(y), int(m), int(d))\nd = Date.from_string('2024-01-15')\n```\n\n**`@staticmethod`** is essentially a regular function placed inside a class namespace:\n```python\nclass Math:\n    @staticmethod\n    def add(a, b): return a + b\nMath.add(3, 5)  # 8\n```\n\n**`@property`** makes a method behave like an attribute:\n```python\nclass Circle:\n    def __init__(self, r): self.r = r\n    @property\n    def area(self): return 3.14 * self.r ** 2\nc = Circle(5)\nprint(c.area)  # no parentheses needed\n```",
+            "questions": [
+                {
+                    "question": "What is a common use case for `@classmethod`?",
+                    "options": [
+                        "Replacing __init__",
+                        "Factory methods (alternative constructors)",
+                        "Static calculations",
+                        "Memory optimization"
+                    ],
+                    "answer": "Factory methods (alternative constructors)"
+                },
+                {
+                    "question": "What does `@property` allow?",
+                    "options": [
+                        "Making a method private",
+                        "Calling a method as if it were an attribute (no parentheses)",
+                        "Making an attribute static",
+                        "Making an attribute a class attribute"
+                    ],
+                    "answer": "Calling a method as if it were an attribute (no parentheses)"
+                },
+                {
+                    "question": "How do you call `@staticmethod add(a,b)` on class `Math`?",
+                    "options": [
+                        "Math.add(self, 3, 5)",
+                        "Math.add(3, 5)",
+                        "add(Math, 3, 5)",
+                        "Math().add(3, 5) only"
+                    ],
+                    "answer": "Math.add(3, 5)"
+                },
+                {
+                    "question": "What parameter does `@classmethod` receive as its first argument?",
+                    "options": [
+                        "self",
+                        "cls",
+                        "type",
+                        "klass"
+                    ],
+                    "answer": "cls"
+                },
+                {
+                    "question": "How do you define a setter for a property `x`?",
+                    "options": [
+                        "@x.setter",
+                        "@property.setter(x)",
+                        "@setproperty(x)",
+                        "@setter.x"
+                    ],
+                    "answer": "@x.setter"
+                },
+                {
+                    "question": "What does `@x.deleter` allow?",
+                    "options": [
+                        "Deleting the property's class",
+                        "Defining behavior when `del obj.x` is called",
+                        "Making x immutable",
+                        "Raising AttributeError on delete"
+                    ],
+                    "answer": "Defining behavior when `del obj.x` is called"
+                },
+                {
+                    "question": "What is the difference between a class method and a static method?",
+                    "options": [
+                        "They are identical",
+                        "Class method receives cls; static method receives nothing extra",
+                        "Static method receives cls; class method receives self",
+                        "Class methods are faster"
+                    ],
+                    "answer": "Class method receives cls; static method receives nothing extra"
+                },
+                {
+                    "question": "Can a `@classmethod` create instances of its class?",
+                    "options": [
+                        "No",
+                        "Yes, using cls()",
+                        "Only if __init__ is public",
+                        "Only for immutable classes"
+                    ],
+                    "answer": "Yes, using cls()"
+                },
+                {
+                    "question": "How do you access a computed property `area` on object `c`?",
+                    "options": [
+                        "c.area()",
+                        "c.area",
+                        "c.get_area()",
+                        "area(c)"
+                    ],
+                    "answer": "c.area"
+                },
+                {
+                    "question": "What does `__dict__` on an instance return?",
+                    "options": [
+                        "All class attributes",
+                        "Only instance attributes as a dict",
+                        "The class definition",
+                        "Nothing"
+                    ],
+                    "answer": "Only instance attributes as a dict"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Class Attributes & Methods — Expert Level",
+            "theory": "**Descriptors** — objects that define `__get__`, `__set__`, or `__delete__`. `@property` is implemented using the descriptor protocol.\n\n**`__slots__`** — replaces `__dict__` with a fixed set of slots, reducing memory and providing faster attribute access:\n```python\nclass Point:\n    __slots__ = ('x', 'y')\n    def __init__(self, x, y): self.x, self.y = x, y\n```\n\n**Metaclasses** control class creation. `type` is the default metaclass — `type(ClassName, bases, dict)` can create classes dynamically.\n\n**`__init_subclass__`** — called on the parent whenever a subclass is defined:\n```python\nclass Plugin:\n    subclasses = []\n    def __init_subclass__(cls):\n        Plugin.subclasses.append(cls)\n```",
+            "questions": [
+                {
+                    "question": "What is the descriptor protocol?",
+                    "options": [
+                        "A network protocol for Python classes",
+                        "An interface (via __get__/__set__/__delete__) that controls attribute access",
+                        "A way to document class attributes",
+                        "The method resolution order"
+                    ],
+                    "answer": "An interface (via __get__/__set__/__delete__) that controls attribute access"
+                },
+                {
+                    "question": "What does `__slots__` replace in an instance?",
+                    "options": [
+                        "__dict__ — preventing arbitrary attribute creation and saving memory",
+                        "__init__",
+                        "__class__",
+                        "__weakref__"
+                    ],
+                    "answer": "__dict__ — preventing arbitrary attribute creation and saving memory"
+                },
+                {
+                    "question": "What happens if you try to set an attribute not in `__slots__`?",
+                    "options": [
+                        "It silently creates it",
+                        "AttributeError is raised",
+                        "It is added to __dict__",
+                        "TypeError is raised"
+                    ],
+                    "answer": "AttributeError is raised"
+                },
+                {
+                    "question": "What is a metaclass?",
+                    "options": [
+                        "A class with only class methods",
+                        "A class whose instances are classes — controls how classes are created",
+                        "An abstract base class",
+                        "A class with no instances"
+                    ],
+                    "answer": "A class whose instances are classes — controls how classes are created"
+                },
+                {
+                    "question": "What is the default metaclass in Python?",
+                    "options": [
+                        "object",
+                        "type",
+                        "meta",
+                        "class"
+                    ],
+                    "answer": "type"
+                },
+                {
+                    "question": "What does `type('MyClass', (Base,), {'x': 5})` do?",
+                    "options": [
+                        "Checks if MyClass is of type Base",
+                        "Dynamically creates a new class named MyClass inheriting from Base with attribute x=5",
+                        "Raises TypeError",
+                        "Creates a new module"
+                    ],
+                    "answer": "Dynamically creates a new class named MyClass inheriting from Base with attribute x=5"
+                },
+                {
+                    "question": "What does `__init_subclass__` allow?",
+                    "options": [
+                        "Controls instance creation",
+                        "Hooks into subclass creation — called on the parent when a subclass is defined",
+                        "Initializes the parent class",
+                        "Prevents subclassing"
+                    ],
+                    "answer": "Hooks into subclass creation — called on the parent when a subclass is defined"
+                },
+                {
+                    "question": "What is a data descriptor vs a non-data descriptor?",
+                    "options": [
+                        "Data: defines __get__ only; Non-data: defines __set__ or __delete__ too",
+                        "Data: defines __get__ AND __set__/__delete__; Non-data: defines only __get__",
+                        "They are identical",
+                        "Data descriptors are faster"
+                    ],
+                    "answer": "Data: defines __get__ AND __set__/__delete__; Non-data: defines only __get__"
+                },
+                {
+                    "question": "What does `ClassName.__mro__` show?",
+                    "options": [
+                        "A list of all methods",
+                        "The Method Resolution Order — the order classes are searched for attributes",
+                        "The module resolution order",
+                        "All registered metaclasses"
+                    ],
+                    "answer": "The Method Resolution Order — the order classes are searched for attributes"
+                },
+                {
+                    "question": "Can `__slots__` be used with inheritance?",
+                    "options": [
+                        "No, it breaks inheritance",
+                        "Yes, but each class in the hierarchy should define its own __slots__",
+                        "Yes, but instances lose all __dict__ even if parent has it",
+                        "Only with single inheritance"
+                    ],
+                    "answer": "Yes, but each class in the hierarchy should define its own __slots__"
+                }
+            ]
+        }
+    ]
+}

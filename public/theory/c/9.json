@@ -1,0 +1,177 @@
+{
+    "levelno": 9,
+    "topic": "Strings (Character Arrays)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Strings — Beginner",
+            "theory": "Unlike modern languages like Python or Java, C does **not** have a built-in `string` data type!\n\nIn C, a String is simply a **1D Array of Characters**.\n```c\nchar greeting[6] = {'H', 'e', 'l', 'l', 'o', '\\0'};\n```\nThe `\\0` (Null Terminator) is absolutely critical. It is a special character that tells the C compiler: \"This is where the string ends.\" Without it, printing the string will cause the program to keep reading adjacent memory until it randomly hits a zero, printing garbage.\n\nC provides a shortcut to declare strings using double quotes, which automatically adds the `\\0` behind the scenes:\n```c\nchar name[] = \"Bob\"; // Actually takes 4 bytes: 'B', 'o', 'b', '\\0'\n```\nTo print a string with `printf`, use the `%s` format specifier.",
+            "questions": [
+                {
+                    "question": "Does C have a native 'string' primitive data type?",
+                    "options": ["Yes", "No, strings are constructed using arrays of characters", "Yes, but you have to include <string.h>", "Only in C11"],
+                    "answer": "No, strings are constructed using arrays of characters"
+                },
+                {
+                    "question": "What is mathematically required at the end of a character array for it to be treated safely as a string?",
+                    "options": ["A period '.'", "A newline '\\n'", "A Null Terminator '\\0'", "An EOF marker"],
+                    "answer": "A Null Terminator '\\0'"
+                },
+                {
+                    "question": "What does the Null Terminator do?",
+                    "options": ["Crashes the program", "Clears the memory", "Marks the absolute end of the string array", "Starts a new line"],
+                    "answer": "Marks the absolute end of the string array"
+                },
+                {
+                    "question": "If you declare `char word[] = \"Hi\";`, how many bytes of memory does the array actually take?",
+                    "options": ["2", "3", "4", "8"],
+                    "answer": "3"
+                },
+                {
+                    "question": "What format specifier is used to print a full string?",
+                    "options": ["%c", "%str", "%s", "%p"],
+                    "answer": "%s"
+                },
+                {
+                    "question": "Why would `char arr[3] = {'A', 'B', 'C'}; printf(\"%s\", arr);` be incredibly dangerous?",
+                    "options": ["It doesn't compile", "It prints in reverse", "It lacks a Null Terminator, so printf will print garbage memory beyond 'C' until it finds a zero", "Strings can only be 2 characters max"],
+                    "answer": "It lacks a Null Terminator, so printf will print garbage memory beyond 'C' until it finds a zero"
+                },
+                {
+                    "question": "Which of these correctly creates a string greeting?",
+                    "options": ["string s = \"Hello\";", "char s = \"Hello\";", "char s[] = \"Hello\";", "char s{} = \"Hello\";"],
+                    "answer": "char s[] = \"Hello\";"
+                },
+                {
+                    "question": "What is the ASCII integer value of the Null Terminator '\\0'?",
+                    "options": ["-1", "0", "1", "255"],
+                    "answer": "0"
+                },
+                {
+                    "question": "Can you reassign an entire string array at once after its initial declaration? e.g., `char name[10]; name = \"Alice\";`",
+                    "options": ["Yes", "No, arrays cannot be reassigned like this in C", "Only if sizes exactly match", "Only using pointers"],
+                    "answer": "No, arrays cannot be reassigned like this in C"
+                },
+                {
+                    "question": "If you define `char str[10] = \"Hi\";`, what fills the remaining 8 indices?",
+                    "options": ["Garbage", "Null Terminators ('\\0')", "Spaces", "Errors"],
+                    "answer": "Null Terminators ('\\0')"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Strings — Intermediate",
+            "theory": "Because strings are arrays, you cannot use basic operators like `==` to compare them, or `=` to copy them. You must use the functions from the **`<string.h>`** standard library.\n\nKey Functions:\n- `strlen(str)`: Returns the length of the string, **excluding** the Null Terminator.\n- `strcpy(dest, source)`: Copies the source string into the destination array.\n- `strcat(dest, source)`: Concatenates (appends) source to the end of dest.\n- `strcmp(str1, str2)`: Compares two strings. Returns `0` if they are absolutely identical.\n\nBeware: When using `strcpy` or `strcat`, C does not check if the destination array is large enough! If destination is too small, a **Buffer Overflow** occurs, corrupting adjacent memory and causing massive security vulnerabilities.",
+            "questions": [
+                {
+                    "question": "Which header file provides functions for string manipulation?",
+                    "options": ["<stdio.h>", "<math.h>", "<string.h>", "<ctype.h>"],
+                    "answer": "<string.h>"
+                },
+                {
+                    "question": "If `char a[] = \"Cat\";`, what does `strlen(a)` return?",
+                    "options": ["4", "3", "0", "Unknown"],
+                    "answer": "3"
+                },
+                {
+                    "question": "How do you securely copy the contents of string B into string A?",
+                    "options": ["A = B;", "A == B;", "copy(A, B);", "strcpy(A, B);"],
+                    "answer": "strcpy(A, B);"
+                },
+                {
+                    "question": "What function is used to join or merge two strings together (Concatenation)?",
+                    "options": ["stradd()", "strjoin()", "strcat()", "strcmp()"],
+                    "answer": "strcat()"
+                },
+                {
+                    "question": "If `strcmp(str1, str2)` returns `0`, what does that mean?",
+                    "options": ["str1 is longer", "An error occurred", "The strings are identically equal", "str2 is NULL"],
+                    "answer": "The strings are identically equal"
+                },
+                {
+                    "question": "Why is `if (str1 == str2)` incorrect for comparing the contents of two character arrays?",
+                    "options": ["Syntax error", "It only compares the first character", "It compares the pointer memory addresses of the arrays, not the textual contents", "It always returns true"],
+                    "answer": "It compares the pointer memory addresses of the arrays, not the textual contents"
+                },
+                {
+                    "question": "What happens during a Buffer Overflow with strings?",
+                    "options": ["The string is truncated", "Memory adjacent to the array is illegally overwritten, corrupting data and causing vulnerabilities", "The compiler expands the array automatically", "Nothing"],
+                    "answer": "Memory adjacent to the array is illegally overwritten, corrupting data and causing vulnerabilities"
+                },
+                {
+                    "question": "Which safer alternative to `strcpy` exists that requires you to specify a maximum number of characters to copy?",
+                    "options": ["strcpy_max", "strncpy", "strcpy_s", "str_safe_copy"],
+                    "answer": "strncpy"
+                },
+                {
+                    "question": "If `str1` is \"Apple\" and `str2` is \"Zebra\", what kind of value will `strcmp(str1, str2)` return?",
+                    "options": ["0", "A positive number", "A negative number (because 'A' is less than 'Z' alphabetically/in ASCII)", "Error"],
+                    "answer": "A negative number (because 'A' is less than 'Z' alphabetically/in ASCII)"
+                },
+                {
+                    "question": "Does `strlen()` count the final Null Terminator `\\0`?",
+                    "options": ["Yes", "No", "Depends on the system", "Only in C11"],
+                    "answer": "No"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Strings — Expert",
+            "theory": "There is a massive distinction between Array Strings and Pointer Strings.\n\n1. **Array String**: `char str[] = \"Hello\";`\n   This allocates memory on the Stack and copies the word \"Hello\" into it. You are completely free to modify it (e.g., `str[0] = 'J';`).\n\n2. **Pointer String**: `char *ptr = \"Hello\";`\n   This creates a pointer pointing to a **String Literal**. String literals are stored in the *Read-Only Data Segment* of the program's binary. If you try to modify it `ptr[0] = 'J';`, the program will instantly crash with a Segmentation Fault because that memory is strictly write-protected.\n\nWhen storing arrays of strings, you use an array of pointers: `char *words[] = {\"One\", \"Two\", \"Three\"};`. This saves memory over 2D char grids.",
+            "questions": [
+                {
+                    "question": "What is the key difference between `char str[]=\"Hi\";` and `char *str=\"Hi\";`?",
+                    "options": ["No difference", "`char str[]` is mutable on the stack; `char *str` points to an immutable string literal in read-only memory.", "The array takes less memory", "The pointer version doesn't have a Null Terminator"],
+                    "answer": "`char str[]` is mutable on the stack; `char *str` points to an immutable string literal in read-only memory."
+                },
+                {
+                    "question": "Where are String Literals (e.g., \"Hello\") usually physically stored when compiled?",
+                    "options": ["The Stack", "The Heap", "The Read-Only Data Segment (Text Segment) of the executable file", "Registers"],
+                    "answer": "The Read-Only Data Segment (Text Segment) of the executable file"
+                },
+                {
+                    "question": "If `char *ptr = \"Constant\";` and you execute `ptr[0] = 'M';`, what is guaranteed to happen?",
+                    "options": ["The string becomes \"Monstant\"", "Syntax error", "Segmentation Fault crash (access violation writing to read-only memory)", "It writes 'M' to the heap"],
+                    "answer": "Segmentation Fault crash (access violation writing to read-only memory)"
+                },
+                {
+                    "question": "How do you define an Array of Strings (where each string can be a different length) most efficiently?",
+                    "options": ["A 2D char array", "An array of chars", "An array of char pointers (char *arr[])", "A linked list"],
+                    "answer": "An array of char pointers (char *arr[])"
+                },
+                {
+                    "question": "If you need a string whose size changes continuously at runtime, how must you create it?",
+                    "options": ["Using VLAs", "Using `#define`", "Using dynamic memory allocation (malloc/realloc) from the Heap", "By omitting the array bounds `char s[]`"],
+                    "answer": "Using dynamic memory allocation (malloc/realloc) from the Heap"
+                },
+                {
+                    "question": "What function is used to locate the first occurrence of a specific character in a string?",
+                    "options": ["strfind()", "strchr()", "strscan()", "findchar()"],
+                    "answer": "strchr()"
+                },
+                {
+                    "question": "What does the function `strstr(haystack, needle)` do?",
+                    "options": ["Finds a string inside another string", "Sorts two strings", "Parses tokens", "Reverses a string"],
+                    "answer": "Finds a string inside another string"
+                },
+                {
+                    "question": "What function tokenizes a string (breaks it apart by a delimiter like spaces or commas)?",
+                    "options": ["strsplit()", "strbreak()", "strtok()", "strparse()"],
+                    "answer": "strtok()"
+                },
+                {
+                    "question": "Does standard C have a garbage collector to clean up strings abandoned in memory?",
+                    "options": ["Yes, when out of scope", "No, C never has a native garbage collector", "Only for strings, not ints", "Only in C++"],
+                    "answer": "No, C never has a native garbage collector"
+                },
+                {
+                    "question": "In the format specifier `%20s`, what does `20` mean?",
+                    "options": ["Print 20 times", "Stop after 20 strings", "Minimum print width of 20 characters (pads with spaces)", "Maximum of 20 chars printed"],
+                    "answer": "Minimum print width of 20 characters (pads with spaces)"
+                }
+            ]
+        }
+    ]
+}

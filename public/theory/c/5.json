@@ -1,0 +1,177 @@
+{
+    "levelno": 5,
+    "topic": "Loops (For, While, Do-While)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "Loops — Beginner",
+            "theory": "Loops allow a block of code to be executed repeatedly as long as a specified condition remains true.\n\nThe **`while` loop** is the simplest. It evaluates a condition *before* executing the block. If it's true, it runs the block and checks again.\n```c\nint i = 0;\nwhile (i < 5) {\n    printf(\"%d \", i);\n    i++;\n}\n```\n\nThe **`for` loop** is ideal when you know exactly how many times you want to iterate. It has three parts separated by semicolons: `for (initialization; condition; increment)`.\n```c\nfor (int i = 0; i < 5; i++) {\n    printf(\"%d \", i);\n}\n```\nBoth snippets print `0 1 2 3 4`.",
+            "questions": [
+                {
+                    "question": "What is the primary purpose of a loop in C?",
+                    "options": ["To skip lines of code", "To execute a block of code repeatedly", "To declare multiple variables instantly", "To exit the program"],
+                    "answer": "To execute a block of code repeatedly"
+                },
+                {
+                    "question": "Which type of loop is best when you know exactly how many times the loop should run?",
+                    "options": ["while loop", "infinite loop", "for loop", "do-while loop"],
+                    "answer": "for loop"
+                },
+                {
+                    "question": "What happens if a while loop's condition is false upon its very first check?",
+                    "options": ["It crashes the program", "It runs exactly once", "It never runs the code block at all", "It converts to a for loop"],
+                    "answer": "It never runs the code block at all"
+                },
+                {
+                    "question": "What are the three components defined inside the parentheses of a for loop?",
+                    "options": ["start, stop, step", "initialization; condition; increment", "variable, limit, operation", "define; check; execute"],
+                    "answer": "initialization; condition; increment"
+                },
+                {
+                    "question": "What symbol separates the three parts of a 'for' loop declaration?",
+                    "options": [", (comma)", ": (colon)", "; (semicolon)", "| (pipe)"],
+                    "answer": "; (semicolon)"
+                },
+                {
+                    "question": "In `for(int i = 0; i < 3; i++)`, what value causes the loop to terminate?",
+                    "options": ["1", "2", "3", "0"],
+                    "answer": "3"
+                },
+                {
+                    "question": "If you forget to increment the variable inside a while loop, what happens?",
+                    "options": ["Syntax error", "The loop terminates immediately", "The code creates an infinite loop", "The compiler auto-increments it"],
+                    "answer": "The code creates an infinite loop"
+                },
+                {
+                    "question": "Can variables declared inside the `for` loop initialization (e.g., `int i=0`) be used outside the loop?",
+                    "options": ["Yes, globally", "No, they only exist within the loop's scope (in standard C99+)", "Yes, within the same function", "No, they are destroyed before the loop starts"],
+                    "answer": "No, they only exist within the loop's scope (in standard C99+)"
+                },
+                {
+                    "question": "What does `while(1)` or `while(true)` do?",
+                    "options": ["Runs the loop once", "Creates an infinite loop (it runs forever unless broken out of)", "Results in a syntax error", "Loops until 1 becomes 0"],
+                    "answer": "Creates an infinite loop (it runs forever unless broken out of)"
+                },
+                {
+                    "question": "Which keyword abruptly stops all subsequent loop iterations and exits the loop block?",
+                    "options": ["exit", "continue", "stop", "break"],
+                    "answer": "break"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "Loops — Intermediate",
+            "theory": "The **`do-while` loop** is a variant of the while loop. It evaluates its condition *at the bottom* of the block.\n```c\ndo {\n    printf(\"Runs at least once!\");\n} while (1 == 0);\n```\nBecause the condition is checked after execution, a `do-while` loop is guaranteed to execute its block **at least one time**, even if the condition is completely false.\n\nControlling Loop Execution:\n- **`break`**: Immediately exits the entire loop.\n- **`continue`**: Immediately skips the remainder of the *current* iteration, jumping back up to the loop's condition check (or increment step in a `for` loop) to begin the next iteration.",
+            "questions": [
+                {
+                    "question": "What is the defining characteristic of a do-while loop compared to a while loop?",
+                    "options": ["It is faster", "The condition is checked after the code executes, ensuring it runs at least once", "It doesn't require curly braces", "It cannot create infinite loops"],
+                    "answer": "The condition is checked after the code executes, ensuring it runs at least once"
+                },
+                {
+                    "question": "What keyword is used to skip the rest of the current loop iteration and move directly to the next one?",
+                    "options": ["break", "skip", "continue", "next"],
+                    "answer": "continue"
+                },
+                {
+                    "question": "What punctuation character must follow the `while(condition)` statement at the end of a do-while loop?",
+                    "options": ["(nothing)", "; (semicolon)", ": (colon)", "{ (opening brace)"],
+                    "answer": "; (semicolon)"
+                },
+                {
+                    "question": "If you hit a `break` statement inside a loop, what happens?",
+                    "options": ["The program crashes", "The current iteration skips to the end", "The loop terminates completely and execution continues past it", "The loop restarts from the beginning"],
+                    "answer": "The loop terminates completely and execution continues past it"
+                },
+                {
+                    "question": "Does the `continue` statement exit the outer loop if used inside a nested loop?",
+                    "options": ["Yes, it exits all loops", "No, it only affects the innermost loop where it was called", "Yes, it acts like break", "No, it restarts the program"],
+                    "answer": "No, it only affects the innermost loop where it was called"
+                },
+                {
+                    "question": "What is the output of: `int x = 0; do { x++; } while(x < 0);`?",
+                    "options": ["x becomes 0", "x becomes 1", "Infinite loop", "Syntax error"],
+                    "answer": "x becomes 1"
+                },
+                {
+                    "question": "Why is do-while often used for user menu inputs?",
+                    "options": ["Because it runs faster", "Because you want to display the menu at least once before checking if they want to exit", "Because it is required by standard C", "Because while loops cannot read input"],
+                    "answer": "Because you want to display the menu at least once before checking if they want to exit"
+                },
+                {
+                    "question": "In a `for` loop, after hitting a `continue` statement, what executes next?",
+                    "options": ["The initialization step", "The loop condition check", "The loop increment step", "The loop terminates"],
+                    "answer": "The loop increment step"
+                },
+                {
+                    "question": "Which loop guarantees that the code block will execute ZERO times if the condition starts out false?",
+                    "options": ["do-while", "Both while and for", "None of them", "Only the for loop"],
+                    "answer": "Both while and for"
+                },
+                {
+                    "question": "If `for (int i=0; i<3; i++) { if (i==1) continue; printf(\"%d\", i); }`, what prints?",
+                    "options": ["012", "02", "12", "01"],
+                    "answer": "02"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "Loops — Expert",
+            "theory": "All three components of a `for` loop are entirely optional. `for (;;)` creates a perfectly valid infinite loop identical to `while(1)`.\n\nYou can also use the **comma operator** to include multiple initializations or increments in a single `for` statement:\n`for (int i = 0, j = 10; i < 5; i++, j--)`\n\n**Loop Optimization Concepts:**\nCompilers often perform *Loop Unrolling*—a technique where the body of the loop is replicated multiple times to decrease the overhead of condition checking and jumping. \n\nBeware of using floating-point numbers as loop counters (e.g., `for (float f = 0.0; f != 1.0; f += 0.1)`). Due to binary precision issues, `f` might become `0.999999` and skip `1.0` entirely, causing an infinite loop!",
+            "questions": [
+                {
+                    "question": "What does the statement `for (;;)` do?",
+                    "options": ["Syntax error", "Creates an infinite loop", "Runs once and ends", "A loop that skips immediately"],
+                    "answer": "Creates an infinite loop"
+                },
+                {
+                    "question": "How can you declare two variables within the first section of a for loop?",
+                    "options": ["By using a semicolon: int i=0; int j=0;", "By using the comma operator: int i=0, j=0", "You cannot define two variables", "By nesting for loops"],
+                    "answer": "By using the comma operator: int i=0, j=0"
+                },
+                {
+                    "question": "Why is it dangerous to use a floating-point number with an exact equality condition (e.g., f != 1.0) in a loop?",
+                    "options": ["Floats take too much memory", "Floats cannot be incremented", "Floating-point precision rounding errors can cause it to miss the exact target, causing an infinite loop", "It is not allowed in C"],
+                    "answer": "Floating-point precision rounding errors can cause it to miss the exact target, causing an infinite loop"
+                },
+                {
+                    "question": "What is 'Loop Unrolling'?",
+                    "options": ["Removing a loop entirely", "A compiler optimization that decreases loop overhead by replicating the loop body", "An error where a loop falls apart", "Converting a for loop to a while loop"],
+                    "answer": "A compiler optimization that decreases loop overhead by replicating the loop body"
+                },
+                {
+                    "question": "Which of these is mathematically faster on modern CPUs?",
+                    "options": ["while(1)", "for(;;)", "do-while(0)", "Typically, they are optimized to execute identically"],
+                    "answer": "Typically, they are optimized to execute identically"
+                },
+                {
+                    "question": "Can the condition expression in a for loop be a function call?",
+                    "options": ["No", "Yes, but it will be evaluated on every single iteration", "Yes, but it is only evaluated once", "Only if it returns a boolean pointer"],
+                    "answer": "Yes, but it will be evaluated on every single iteration"
+                },
+                {
+                    "question": "If you omit the condition in `for(int i=0; ; i++)`, what is assumed?",
+                    "options": ["Assumes false", "Assumes true (creates infinite loop)", "Syntax error", "Assumes i < 0"],
+                    "answer": "Assumes true (creates infinite loop)"
+                },
+                {
+                    "question": "In `for(int i=0; i<5; printf(\"x\"), i++)`, where does the printf occur?",
+                    "options": ["Before the loop starts", "After the loop finishes", "During the increment phase after the body has executed each iteration", "Syntax error"],
+                    "answer": "During the increment phase after the body has executed each iteration"
+                },
+                {
+                    "question": "What is 'Nested Looping'?",
+                    "options": ["Using recursion", "Placing a loop inside the body of another loop", "Looping backwards", "Using a loop within a switch"],
+                    "answer": "Placing a loop inside the body of another loop"
+                },
+                {
+                    "question": "In a nested traversal of a 2D matrix, which loop typically governs traversing rows (in standard C optimization)?",
+                    "options": ["The innermost loop", "The outermost (first) loop", "It doesn't matter for caching", "A single for(;;) loop"],
+                    "answer": "The outermost (first) loop"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,177 @@
+{
+    "levelno": 1,
+    "topic": "JavaScript Basics (Variables & Data Types)",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "JS Basics — Beginner",
+            "theory": "JavaScript (JS) is the programming language of the Web. While HTML defines the structure and CSS defines the styling, JavaScript makes websites interactive.\n\n**Variables**\nVariables store data. Modern JavaScript uses two keywords to define variables:\n- **`let`**: Used for variables that *can* change later.\n  `let age = 25;`\n  `age = 26; // Perfectly valid`\n- **`const`**: Used for values that must *never* change (Constants).\n  `const pi = 3.14;`\n\n**Primitive Data Types**\nJavaScript has several basic types of data:\n- **Number**: Integers or decimals (`let score = 100; let price = 9.99;`)\n- **String**: Text wrapped in quotes (`let name = \"Alice\";`)\n- **Boolean**: Logical true or false (`let isLoggedIn = true;`)",
+            "questions": [
+                {
+                    "question": "What is the primary role of JavaScript in web development?",
+                    "options": ["To create database schemas", "To add interactivity and logic to web pages", "To structure the HTML layout", "To style buttons with colors"],
+                    "answer": "To add interactivity and logic to web pages"
+                },
+                {
+                    "question": "Which keyword is used to declare a variable whose value can be updated later?",
+                    "options": ["var", "let", "const", "def"],
+                    "answer": "let"
+                },
+                {
+                    "question": "Which keyword prevents a variable's value from ever being reassigned?",
+                    "options": ["static", "final", "const", "let"],
+                    "answer": "const"
+                },
+                {
+                    "question": "If you write `const gravity = 9.8; gravity = 10;`, what will happen?",
+                    "options": ["gravity becomes 10", "A runtime error is thrown because you cannot reassign a constant", "gravity becomes 19.8", "Nothing"],
+                    "answer": "A runtime error is thrown because you cannot reassign a constant"
+                },
+                {
+                    "question": "What data type is `\"Hello World\"`?",
+                    "options": ["Character", "String", "Word", "Object"],
+                    "answer": "String"
+                },
+                {
+                    "question": "What data type represents `true` or `false`?",
+                    "options": ["Binary", "Logical", "Boolean", "Number"],
+                    "answer": "Boolean"
+                },
+                {
+                    "question": "Does JavaScript separate whole numbers (integers) and decimals (floats) into different data types?",
+                    "options": ["Yes", "No! All numbers in javascript are simply stored as the 'Number' data type", "Only in strict mode", "Only decimals are Numbers"],
+                    "answer": "No! All numbers in javascript are simply stored as the 'Number' data type"
+                },
+                {
+                    "question": "How do you correctly declare a string variable?",
+                    "options": ["string name = 'Bob';", "let name = Bob;", "let name = \"Bob\";", "name: \"Bob\""],
+                    "answer": "let name = \"Bob\";"
+                },
+                {
+                    "question": "Is JavaScript case-sensitive? (e.g., are `age` and `Age` the same variable?)",
+                    "options": ["No", "Yes, they are completely different variables", "Only for strings", "Only for consts"],
+                    "answer": "Yes, they are completely different variables"
+                },
+                {
+                    "question": "What punctuation character conventionally marks the end of a statement in JavaScript?",
+                    "options": [". (Period)", ": (Colon)", "; (Semicolon)", "} (Brace)"],
+                    "answer": "; (Semicolon)"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "JS Basics — Intermediate",
+            "theory": "**The `var` Keyword**\nBefore 2015 (ES6), JS used `var`. `var` is heavily outdated because it ignores block scopes (like inside `if` statements) and causes messy bugs. Always use `let` and `const`!\n\n**Empty Types**\n- **`undefined`**: A variable has been declared, but absolutely NO value has been assigned to it yet. `let x; console.log(x); // undefined`\n- **`null`**: An intentional absence of value. You manually assign it to say \"this genuinely contains nothing right now\".\n\n**`typeof` Operator**\nReturns a string telling you what type a variable is. \n`typeof \"Hello\"` returns `\"string\"`.\n`typeof 42` returns `\"number\"`.",
+            "questions": [
+                {
+                    "question": "Why is the `var` keyword heavily discouraged in modern JavaScript?",
+                    "options": ["It is too slow", "It makes the file larger", "It has messy scoping rules that ignore block-level boundaries, leading to unpredictable bugs", "It only supports strings"],
+                    "answer": "It has messy scoping rules that ignore block-level boundaries, leading to unpredictable bugs"
+                },
+                {
+                    "question": "What is the default value of a variable declared with `let` but never assigned a value? (e.g., `let a;`)",
+                    "options": ["0", "\"\"", "null", "undefined"],
+                    "answer": "undefined"
+                },
+                {
+                    "question": "What is the conceptual difference between `null` and `undefined`?",
+                    "options": ["There is no difference", "null is a string, undefined is a number", "`undefined` means 'not initialized yet', while `null` is a deliberate, manual assignment meaning 'empty value'", "null is a bug"],
+                    "answer": "`undefined` means 'not initialized yet', while `null` is a deliberate, manual assignment meaning 'empty value'"
+                },
+                {
+                    "question": "What operator is used to immediately discover the data type of a variable at runtime?",
+                    "options": ["type()", "typeof", "classof", "instanceof"],
+                    "answer": "typeof"
+                },
+                {
+                    "question": "What does `typeof true` return?",
+                    "options": ["\"true\"", "\"string\"", "\"boolean\"", "\"number\""],
+                    "answer": "\"boolean\""
+                },
+                {
+                    "question": "In JavaScript, can a variable seamlessly change its data type? (e.g., `let data = 5; data = \"Hello\";`)",
+                    "options": ["No, that causes a crash", "Yes, JavaScript is Dynamically Typed, so a variable can hold a number and later hold a string without any errors natively.", "Only if you use var", "Only if casted"],
+                    "answer": "Yes, JavaScript is Dynamically Typed, so a variable can hold a number and later hold a string without any errors natively."
+                },
+                {
+                    "question": "What does `typeof undefined` evaluate to?",
+                    "options": ["\"error\"", "\"null\"", "\"undefined\"", "\"string\""],
+                    "answer": "\"undefined\""
+                },
+                {
+                    "question": "What is the famous historical bug related to `typeof null` in JavaScript?",
+                    "options": ["It crashes the browser", "It erroneously returns `\"object\"` instead of `\"null\"` due to an original error in JavaScript's genesis design", "It returns undefined", "It loops infinitely"],
+                    "answer": "It erroneously returns `\"object\"` instead of `\"null\"` due to an original error in JavaScript's genesis design"
+                },
+                {
+                    "question": "Can you declare multiple variables on one line? (e.g., `let a = 1, b = 2;`)",
+                    "options": ["Yes", "No", "Only for const", "Only in Node.js"],
+                    "answer": "Yes"
+                },
+                {
+                    "question": "What is the recommended naming convention for local variables in JavaScript?",
+                    "options": ["PascalCase (MyVariable)", "snake_case (my_variable)", "camelCase (myVariable)", "kebab-case (my-variable)"],
+                    "answer": "camelCase (myVariable)"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "JS Basics — Expert",
+            "theory": "**Hoisting**\nJavaScript engine physically scans variables and functions and hoists their declarations to the absolute top of the file before execution. \n- `var` declarations are hoisted and initialized as `undefined`. This allows you to use a `var` variable BEFORE you declare it (which is insane).\n- `let` and `const` are also historically hoisted, but they remain trapped in a **Temporal Dead Zone (TDZ)**. If you try to access them before the code physically reaches the declaration line, it throws a strict `ReferenceError`.\n\n**Symbol and BigInt**\nJS introduced two newer primitive types:\n- `Symbol`: Creates a guaranteed fundamentally unique identifier. `let sym = Symbol('id');`\n- `BigInt`: Normal numbers max out safely at `2^53 - 1`. `BigInt` allows arbitrarily massive integers by appending an `n`: `let massive = 9007199254740991n;`",
+            "questions": [
+                {
+                    "question": "What is Variable Hoisting?",
+                    "options": ["Deleting variables", "The JavaScript engine automatically moving variable and function declarations to the top of their scope before code execution actually begins", "Encrypting memory", "Looping variables"],
+                    "answer": "The JavaScript engine automatically moving variable and function declarations to the top of their scope before code execution actually begins"
+                },
+                {
+                    "question": "What happens if you `console.log(x)` before the line `var x = 5;`?",
+                    "options": ["It crashes", "It prints 5", "It prints `undefined` (because the declaration was hoisted, but the initialization assignment `x=5` was not)", "It prints null"],
+                    "answer": "It prints `undefined` (because the declaration was hoisted, but the initialization assignment `x=5` was not)"
+                },
+                {
+                    "question": "What happens if you `console.log(y)` before the line `let y = 10;`?",
+                    "options": ["It prints 10", "It prints undefined", "It throws a crushing `ReferenceError` because the variable is trapped in the Temporal Dead Zone (TDZ) prior to execution", "It prints null"],
+                    "answer": "It throws a crushing `ReferenceError` because the variable is trapped in the Temporal Dead Zone (TDZ) prior to execution"
+                },
+                {
+                    "question": "What is the Temporal Dead Zone (TDZ)?",
+                    "options": ["A time delay function", "The period between entering the scope and the actual execution of the `let`/`const` declaration where accessing them is strictly illegal", "A server crash", "A memory leak"],
+                    "answer": "The period between entering the scope and the actual execution of the `let`/`const` declaration where accessing them is strictly illegal"
+                },
+                {
+                    "question": "Are `let` and `const` technically hoisted?",
+                    "options": ["No, never", "Yes, they formally are hoisted physically to the top of the block, but are left uninitialized in the TDZ", "Only let is hoisted", "Only inside functions"],
+                    "answer": "Yes, they formally are hoisted physically to the top of the block, but are left uninitialized in the TDZ"
+                },
+                {
+                    "question": "What is the `Symbol` primitive primarily used for?",
+                    "options": ["Drawing icons", "Storing massive numbers", "Generating mathematically guaranteed completely unique identifier values, often used to hide keys inside Objects securely", "Translating strings"],
+                    "answer": "Generating mathematically guaranteed completely unique identifier values, often used to hide keys inside Objects securely"
+                },
+                {
+                    "question": "If you do `Symbol(\"A\") === Symbol(\"A\")`, what does it surprisingly evaluate to?",
+                    "options": ["true", "false (Every created Symbol is absolutely violently unique from every other Symbol, forever)", "undefined", "error"],
+                    "answer": "false (Every created Symbol is absolutely violently unique from every other Symbol, forever)"
+                },
+                {
+                    "question": "Why was the `BigInt` primitive introduced to ES2020?",
+                    "options": ["To handle floats", "Because the standard JavaScript `Number` (which is a 64-bit float) scientifically loses precision on gigantic whole numbers exceeding 9 quadrillion", "To speed up math", "To save memory"],
+                    "answer": "Because the standard JavaScript `Number` (which is a 64-bit float) scientifically loses precision on gigantic whole numbers exceeding 9 quadrillion"
+                },
+                {
+                    "question": "How do you explicitly define a `BigInt` literal in code?",
+                    "options": ["let num = Big(10);", "let num = 10b;", "let num = 10n;", "let num = 10L;"],
+                    "answer": "let num = 10n;"
+                },
+                {
+                    "question": "Can you comfortably mix traditional `Number` types and `BigInt` types in a single math equation? (e.g., `5n + 2`)",
+                    "options": ["Yes", "No, it violently throws a `TypeError`. You explicitly cannot mix them without manually casting them to the same type to prevent precision loss.", "Only using subtraction", "Yes, but it returns a string"],
+                    "answer": "No, it violently throws a `TypeError`. You explicitly cannot mix them without manually casting them to the same type to prevent precision loss."
+                }
+            ]
+        }
+    ]
+}

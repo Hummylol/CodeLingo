@@ -1,0 +1,177 @@
+{
+    "levelno": 12,
+    "topic": "File I/O Basics",
+    "sublevels": [
+        {
+            "sublevel": "beginner",
+            "topic": "File I/O — Beginner",
+            "theory": "In C, files are not accessed directly natively; they are processed as streams of bytes through pointers of type **`FILE *`**.\nEverything for File Input/Output is contained in `#include <stdio.h>`.\n\nSteps to read or write a file:\n1. **Open the file**: `FILE *fptr = fopen(\"data.txt\", \"r\");`\n   - `\"r\"` means Read mode.\n   - `\"w\"` means Write mode (WARNING: this instantly deletes the file's current contents and creates a blank file!).\n   - `\"a\"` means Append mode (adds to the end without deleting).\n2. **Verify it opened**: Always check `if (fptr == NULL)`. If the file doesn't exist in \"r\" mode, `fopen` returns `NULL`.\n3. **Close the file**: Once done, you MUST release the file lock via `fclose(fptr);`.",
+            "questions": [
+                {
+                    "question": "What data type is used as a \"Handle\" for all file operations in C?",
+                    "options": ["int handle", "FILE *", "str file", "ptr"],
+                    "answer": "FILE *"
+                },
+                {
+                    "question": "Which function opens a file in C?",
+                    "options": ["file_open()", "fopen()", "open_f()", "read()"],
+                    "answer": "fopen()"
+                },
+                {
+                    "question": "What must you include to perform file operations?",
+                    "options": ["<file.h>", "<stdlib.h>", "<stdio.h>", "<io.h>"],
+                    "answer": "<stdio.h>"
+                },
+                {
+                    "question": "What is the mode string `\"r\"` used for?",
+                    "options": ["Running a file", "Reading a file", "Removing a file", "Rewriting a file"],
+                    "answer": "Reading a file"
+                },
+                {
+                    "question": "What is the terrifying default danger of opening heavily populated files in `\"w\"` (Write) mode?",
+                    "options": ["It crashes", "If the file exists, it instantly truncates (deletes) all current contents making it a blank file. If it doesn't exist, it creates it.", "It encrypts the file", "It locks the compiler"],
+                    "answer": "If the file exists, it instantly truncates (deletes) all current contents making it a blank file. If it doesn't exist, it creates it."
+                },
+                {
+                    "question": "Which mode is used to safely add new text to the very end of an existing file?",
+                    "options": ["\"w\"", "\"r\"", "\"a\" (Append)", "\"add\""],
+                    "answer": "\"a\" (Append)"
+                },
+                {
+                    "question": "What does `fopen` return if you try to open a file for reading (\"r\") but the file does not exist on your computer?",
+                    "options": ["Syntax Error", "NULL Pointer", "It crashes the OS", "It creates the file automatically"],
+                    "answer": "NULL Pointer"
+                },
+                {
+                    "question": "What function is used to sever the connection to the file and release the OS file lock when you are entirely done with it?",
+                    "options": ["fclose()", "delete()", "exit()", "file_close()"],
+                    "answer": "fclose()"
+                },
+                {
+                    "question": "Is it completely safe and OK to ignore closing files? (e.g., omitting `fclose`)",
+                    "options": ["Yes", "No, it causes Resource Leaks (leaving file locks hanging until the OS forcefully kills the process)", "Yes, modern compilers do it", "Only in read mode"],
+                    "answer": "No, it causes Resource Leaks (leaving file locks hanging until the OS forcefully kills the process)"
+                },
+                {
+                    "question": "If you open a file in append `\"a\"` mode but it doesn't physically exist anywhere, what happens?",
+                    "options": ["It returns NULL", "It creates the file for you", "It crashes", "It prints an error"],
+                    "answer": "It creates the file for you"
+                }
+            ]
+        },
+        {
+            "sublevel": "intermediate",
+            "topic": "File I/O — Intermediate",
+            "theory": "To interact with standard Text Files line-by-line, C provides `fprintf` and `fgets`.\n\n- **Writing to a file**: `fprintf(fptr, \"Score: %d\", 100);` \n  This is literally identical to `printf`, except the first argument is your file pointer! It sends the formatted text to the file instead of the screen.\n\n- **Reading a string**: `fgets(buffer, chunk_size, fptr);`\n  `fgets` reads characters securely until it hits a Newline (`\\n`), an End-of-File marker (EOF), or hits the max buffer size you supplied (preventing buffer overflows!). It then automatically adds a `\\0` Null Terminator.\n  (Note: `fscanf` exists but is highly discouraged because it breaks easily on white-spaces and can overflow!)",
+            "questions": [
+                {
+                    "question": "Which function allows you to write formatted text (with specifiers like %d and %s) directly to a file?",
+                    "options": ["file_print()", "fprintf()", "print_f()", "fputs()"],
+                    "answer": "fprintf()"
+                },
+                {
+                    "question": "What is the very first argument provided to `fprintf()`?",
+                    "options": ["The FILE pointer (e.g. fptr)", "The text string", "The mode", "The format block"],
+                    "answer": "The FILE pointer (e.g. fptr)"
+                },
+                {
+                    "question": "What is the recommended function for securely reading an entire string or line from a text file?",
+                    "options": ["fread()", "fscanf()", "fgets()", "gets()"],
+                    "answer": "fgets()"
+                },
+                {
+                    "question": "Why is `fgets()` incredibly safe compared to older functions strictly for strings?",
+                    "options": ["It encrypts the string", "It forces you to supply a maximum buffer size parameter, entirely preventing malicious Buffer Overflows", "It deletes white-spaces", "It's faster"],
+                    "answer": "It forces you to supply a maximum buffer size parameter, entirely preventing malicious Buffer Overflows"
+                },
+                {
+                    "question": "If `fgets` encounters a newline character `'\\n'` in the file while reading, what does it do?",
+                    "options": ["It crashes", "It skips the newline", "It stops reading, includes the newline in the buffer, adds a Null Terminator '\\0', and returns", "It loops infinitely"],
+                    "answer": "It stops reading, includes the newline in the buffer, adds a Null Terminator '\\0', and returns"
+                },
+                {
+                    "question": "If `fgets` reaches the absolute end of the file, what does it return?",
+                    "options": ["0", "NULL", "EOF string", "-1"],
+                    "answer": "NULL"
+                },
+                {
+                    "question": "Why is `fscanf()` generally discouraged for fetching text data?",
+                    "options": ["It is too fast", "It frequently stops reading the moment it hits any 'space' or 'newline', and it has high Buffer Overflow risks", "It requires <math.h>", "It deletes the file by accident"],
+                    "answer": "It frequently stops reading the moment it hits any 'space' or 'newline', and it has high Buffer Overflow risks"
+                },
+                {
+                    "question": "What does EOF stand for?",
+                    "options": ["Error On File", "End Of Function", "End Of File (a special negative integer constant returned by I/O functions)", "Execute On Finish"],
+                    "answer": "End Of File (a special negative integer constant returned by I/O functions)"
+                },
+                {
+                    "question": "What function writes a single character strictly to a file?",
+                    "options": ["fputc()", "fwrite()", "cprint()", "writec()"],
+                    "answer": "fputc()"
+                },
+                {
+                    "question": "What is `stderr` inherently?",
+                    "options": ["A function", "A standard pre-opened FILE pointer reserved for error output, mapped to the screen by the OS", "A file named stderr.txt", "A memory region"],
+                    "answer": "A standard pre-opened FILE pointer reserved for error output, mapped to the screen by the OS"
+                }
+            ]
+        },
+        {
+            "sublevel": "expert",
+            "topic": "File I/O — Expert",
+            "theory": "Text files vs. Binary Files.\nIf you open a file with `\"rb\"` or `\"wb\"`, C treats it as a raw **Binary Data File** (like a `.jpg` or a saved `.sav` database instance). \nWhen using binary, `fprintf` is useless. You must dump pure memory blocks using `fwrite()` or load blocks using `fread()`.\n\n`fwrite(&myStruct, sizeof(struct Player), 1, fptr);`\nThis command grabs the exact raw memory layout of your struct and clones it directly into the hard drive file bytes, ignoring text formatting completely.\n\n**File Navigation**\n`fseek(fptr, offset, origin);` allows you to move the invisible Read/Write \"cursor\" to a specific byte location anywhere within the file. You can skip ahead or jump back to the beginning (`SEEK_SET`).",
+            "questions": [
+                {
+                    "question": "What mode string opens a file specifically intended for raw binary writing?",
+                    "options": ["\"w\"", "\"wb\" (Write Binary)", "\"bw\"", "\"binary\""],
+                    "answer": "\"wb\" (Write Binary)"
+                },
+                {
+                    "question": "Why would you use Binary mode instead of Text mode for data?",
+                    "options": ["Text mode cannot hold numbers", "Binary securely and rapidly dumps raw structs / structs with arrays verbatim, avoiding slow string formatting/parsing", "Binary is required by Linux", "Binary makes the file size larger"],
+                    "answer": "Binary securely and rapidly dumps raw structs / structs with arrays verbatim, avoiding slow string formatting/parsing"
+                },
+                {
+                    "question": "Which function pushes a block of raw binary memory straight into a file?",
+                    "options": ["fprintf()", "fwrite()", "fputs()", "fputblock()"],
+                    "answer": "fwrite()"
+                },
+                {
+                    "question": "Which function retrieves a block of raw binary data from a file into a memory address?",
+                    "options": ["fread()", "fscanf()", "fgets()", "readb()"],
+                    "answer": "fread()"
+                },
+                {
+                    "question": "What does `fseek()` do?",
+                    "options": ["Finds a string in a file", "Modifies the internal file cursor to jump to a specific byte offset anywhere in the file", "Seek out corrupted data", "Closes the file"],
+                    "answer": "Modifies the internal file cursor to jump to a specific byte offset anywhere in the file"
+                },
+                {
+                    "question": "What does `ftell()` return?",
+                    "options": ["The name of the file", "The file's size in MB", "The exact current byte location/index of the file cursor", "The number of lines in the file"],
+                    "answer": "The exact current byte location/index of the file cursor"
+                },
+                {
+                    "question": "How can you use `fseek` and `ftell` together to easily find the total byte size of an opened file?",
+                    "options": ["It's impossible", "fseek to SEEK_END, then call ftell() to get the cursor's byte index, representing total size.", "Just call fseek() with size mode", "Call ftell(SEEK_SIZE)"],
+                    "answer": "fseek to SEEK_END, then call ftell() to get the cursor's byte index, representing total size."
+                },
+                {
+                    "question": "Why is it mathematically dangerous to `fwrite` standard C structs containing Pointers into a file for later loading?",
+                    "options": ["It corrupts the pointer", "Because a Memory Address pointer is entirely irrelevant on the next program run; loading it back later will point to invalid Random access memory, not the referenced data.", "Because pointers are strings", "Because structs can't be wrote"],
+                    "answer": "Because a Memory Address pointer is entirely irrelevant on the next program run; loading it back later will point to invalid Random access memory, not the referenced data."
+                },
+                {
+                    "question": "What happens differently if you use `\"w\"` on Windows vs Unix? (The main distinction between Text & Binary modes historically)",
+                    "options": ["Windows deletes the file", "Unix crashes", "Windows automatically translates/expands single newline '\\n' characters to \"\\r\\n\" internally in text mode. Unix does not.", "Unix uses Binary for everything"],
+                    "answer": "Windows automatically translates/expands single newline '\\n' characters to \"\\r\\n\" internally in text mode. Unix does not."
+                },
+                {
+                    "question": "What does `fflush(stdout);` functionally do?",
+                    "options": ["Deletes standard output", "Forces any buffered/waiting text held in the output stream memory to be instantly printed to the console/file physically", "Crashes print command", "Returns NULL"],
+                    "answer": "Forces any buffered/waiting text held in the output stream memory to be instantly printed to the console/file physically"
+                }
+            ]
+        }
+    ]
+}
